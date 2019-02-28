@@ -1,0 +1,32 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'MYIMDemo' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for MYIMDemo
+  pod 'MJRefresh'                 #上下拉刷新
+  pod 'SDAutoLayout'              #自动约束布局
+  pod 'SDWebImage'                #图片加载库
+  pod 'SVProgressHUD'             #弹窗指示器
+  pod 'AFNetworking'              #网络请求库
+  pod 'TZImagePickerController'
+  pod 'FMDB'                      #数据存储
+  pod 'CocoaLumberjack'           #日志框架
+  pod 'ZZFLEX'
+  # TLKit 基础库，包含常用宏定义、常用分类、常用功能组件（HUD、actionSheet等）
+  pod 'TLKit'
+
+
+  target 'MYIMDemoTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'MYIMDemoUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
