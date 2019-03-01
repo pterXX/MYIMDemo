@@ -9,7 +9,7 @@
 #import "IMSearchMessageViewController.h"
 #import "IMConversationModel.h"
 #import "IMChatViewController.h"
-#import "IMMessageListTableViewCell.h"
+#import "IMMessagesListTableViewCell.h"
 
 
 static NSString *const cellIdentifier = @"kCellIdentifier";

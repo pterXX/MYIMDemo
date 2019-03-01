@@ -61,19 +61,19 @@
             return @"";
             break;
             case IMMessageTypeText:
-            return @"KChatTextTableViewCell";
+            return @"IMChatTextTableViewCell";
             break;
             case IMMessageTypeMail:
-            return @"KChatMailTableViewCell";
+            return @"IMChatMailTableViewCell";
             break;
             case IMMessageTypeVoice:
-            return @"KChatVoiceTableViewCell";
+            return @"IMChatVoiceTableViewCell";
             break;
             case IMMessageTypeImage:
-            return @"KChatImageTableViewCell";
+            return @"IMChatImageTableViewCell";
             break;
             case IMMessageTypeVideo:
-            return @"KChatVideoTableViewCell";
+            return @"IMChatVideoTableViewCell";
             break;
             case IMMessageTypeFile:
             return @"";

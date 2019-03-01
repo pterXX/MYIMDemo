@@ -29,8 +29,8 @@
 #define KTabarTitleTintColor        [IMColorTools colorWithHexString:@"#ff2e3e"]
 
 // 左视图
-#define KMailTableViewCellTextColor         [UIColor blackColor]
-#define KMailLeftTableViewCellSelectColor   SETCOLOR(255,47,63,.8)
+#define IMMailTableViewCellTextColor         [UIColor blackColor]
+#define IMMailLeftTableViewCellSelectColor   SETCOLOR(255,47,63,.8)
 
 // 登录界面
 #define KBlueColor                  SETCOLOR(53,141,255,1.0)

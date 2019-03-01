@@ -33,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @return 是否授权
  */
-- (BOOL)checkPhotoAlbumAuthorization;
+- (BOOL)checIMPhotoAlbumAuthorization;
 
 /**
  跳转到设置页面

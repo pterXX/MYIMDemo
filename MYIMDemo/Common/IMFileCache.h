@@ -1,5 +1,5 @@
 //
-//  KFileCache.h
+//  IMFileCache.h
 //  KXiniuCloud
 //
 //  Created by RPK on 2018/8/14.

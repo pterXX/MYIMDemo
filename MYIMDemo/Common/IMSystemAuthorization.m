@@ -82,7 +82,7 @@
  
  @return 是否授权
  */
-- (BOOL)checkPhotoAlbumAuthorization {
+- (BOOL)checIMPhotoAlbumAuthorization {
     
     dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
     __block BOOL isAuthorization = NO;

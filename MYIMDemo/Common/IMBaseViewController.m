@@ -20,14 +20,6 @@
     [super viewDidLoad];
     [self im_addSubViews];
     [self im_bindViewModel];
-    
-    [self setIsExtendLayout:NO];
-    if ([self respondsToSelector:@selector(setAutomaticallyAdjustsScrollViewInsets:)]) {
-        [self setAutomaticallyAdjustsScrollViewInsets:NO];
-    }
-    
-    self.view.userInteractionEnabled = YES;
-    self.view.backgroundColor = SETCOLOR(255,255,255,1.0);
 }
 
 - (void)viewWillAppear:(BOOL)animated{

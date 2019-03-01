@@ -20,7 +20,7 @@
 #import "IMConversationModel.h"
 #import "IMConversationModel.h"
 #import "IMChatViewController.h"
-#import "IMMessageListTableViewCell.h"
+#import "IMMessagesListTableViewCell.h"
 #import "IMSearchMessageViewController.h"
 #import <AVFoundation/AVFoundation.h>
 
@@ -103,13 +103,14 @@
     receiverLock   = [NSLock new];
     defaultQueue   = dispatch_queue_create("defaultQueue", NULL);
     receiveQueue   = dispatch_queue_create("receiveQueue", NULL);
-    
-    [self initView];
 }
 
-- (void)initView {
-    
-    CGFloat systemVersion = [UIDevice currentDevice].systemVersion.doubleValue;
+- (void)im_layoutNavigation{
+      self.title = @"消息";
+}
+
+- (void)im_addSubViews{
+    CGFloat systemVersion = [UIDevice systemVersion].doubleValue;
     // iOS 11以前搜索框的高度是44 iOS 11及以后的高度是56
     searchBarHeight = systemVersion < 11.0 ? 44 : 56;
     _segmentDataSource = [NSMutableArray arrayWithObjects:@"消息", @"访客", nil];
@@ -120,8 +121,7 @@
     _bottomLine.backgroundColor = kSegmentItemColor;
     [_titleView addSubview:_bottomLine];
     
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    self.navigationController.title = @"消息";
+    self.isExtendLayout = NO;
     
     _tableView                 = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     _tableView.delegate        = self;
@@ -130,7 +130,8 @@
     _tableView.tableFooterView = [UIView new];
     [self.view addSubview:_tableView];
     
-    _tableView.sd_layout.bottomEqualToView(self.view).topSpaceToView(self.navigationController.navigationBar, 0).leftEqualToView(self.view).rightEqualToView(self.view);
+
+    _tableView.sd_layout.bottomEqualToView(self.view).topSpaceToView(self.view, 0).leftEqualToView(self.view).rightEqualToView(self.view);
     
     // 提示网络不可用或无网络连接
     _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, IMSCREEN_WIDTH, searchBarHeight)];

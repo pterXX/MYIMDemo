@@ -74,7 +74,7 @@
 - (void)setMailInfo:(IMMailAccountInfoModel *)model {
     
     if (model != nil) {
-       // [KMailConfig savePasswordWithMail:model.emailAccount password:model.emailPassword];
+       // [IMMailConfig savePasswordWithMail:model.emailAccount password:model.emailPassword];
     }
     
     [defaults setObject:model.mailId forKey:KEY_MAIL_ID];
@@ -107,7 +107,7 @@
     mailModel.emailName         = [defaults stringForKey:KEY_MAIL_NAME];
     mailModel.emailAccount      = [defaults stringForKey:KEY_MAIL_ACCOUNT];
     if (mailModel.emailAccount != nil) {
-        //mailModel.emailPassword = [KMailConfig getMailPassword:mailModel.emailAccount];
+        //mailModel.emailPassword = [IMMailConfig getMailPassword:mailModel.emailAccount];
     }
     mailModel.receviePort       = (int)[defaults integerForKey:KEY_MAIL_RECEVIEPORT];
     mailModel.isReceiveSSL      = (int)[defaults integerForKey:KEY_MAIL_ISRECEIVESSL];

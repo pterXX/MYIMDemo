@@ -17,9 +17,10 @@
 #define     IMSCREEN_HEIGHT               IMSCREEN_SIZE.height
 
 #pragma mark - # 常用控件高度
-#define     IMSTATUSBAR_HEIGHT            (isNotchScreen() ? 44.0f : 20.0f)
+#define     IMSTATUSBAR_HEIGHT            ([[UIApplication sharedApplication] statusBarFrame].size.height)
 #define     IMTABBAR_HEIGHT               (isNotchScreen() ? 49.0f + 34.0f : 49.0f)
 #define     IMNAVBAR_HEIGHT               44.0f
+#define     IMSTATUSBAR_NAVBAR_HEIGHT     (IMSTATUSBAR_HEIGHT + IMNAVBAR_HEIGHT)
 #define     IMSEARCHBAR_HEIGHT            (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"11.0") ? 52.0f : 44.0f)
 #define     IMBORDER_WIDTH_1PX            ([[UIScreen mainScreen] scale] > 0.0 ? 1.0 / [[UIScreen mainScreen] scale] : 1.0)
 
@@ -146,7 +147,7 @@ static const CGFloat EMOJI_SPACE = 2;
 // 消息框最大宽度
 #define MESSAGE_MAX_WIDTH            (IMSCREEN_WIDTH - (AVATAR_SCREEN_SPACE + AVATAR_WIDTH + AVATAR_USERNAME_SPACE) - MESSAGE_MAX_FREE_SPACE)
 // 图片最大高度
-#define IMAGE_MAX_HEIGHT             (IMSCREEN_HEIGHT - kStatusBarAndNavigationBarHeight - IMTABBAR_HEIGHT - 100)
+#define IMAGE_MAX_HEIGHT             (IMSCREEN_HEIGHT - IMSTATUSBAR_NAVBAR_HEIGHT - IMTABBAR_HEIGHT - 100)
 // 最大的语音长度
 #define MAX_VOICE_LENGTH             60 * 1000.f
 

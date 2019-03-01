@@ -361,7 +361,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 
 - (void)onEnsureAction:(UIButton *)sender
 {
-    if ([[IMSystemAuthorization shareInstance] checkPhotoAlbumAuthorization]) {
+    if ([[IMSystemAuthorization shareInstance] checIMPhotoAlbumAuthorization]) {
         [self save];
     }
 }

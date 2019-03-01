@@ -1,5 +1,5 @@
 //
-//  KMailAccountInfoModel.h
+//  IMMailAccountInfoModel.h
 //  KXiniuCloud
 //
 //  Created by RPK on 2017/8/14.

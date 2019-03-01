@@ -1,5 +1,5 @@
 //
-//  KFileCache.m
+//  IMFileCache.m
 //  KXiniuCloud
 //
 //  Created by RPK on 2018/8/14.
