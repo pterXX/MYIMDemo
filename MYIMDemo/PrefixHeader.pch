@@ -1,0 +1,36 @@
+//
+//  PrefixHeader.pch
+//  MYIMDemo
+//
+//  Created by 徐世杰 on 2019/2/28.
+//  Copyright © 2019 徐世杰. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+
+#import "UITableView+SDAutoTableViewCellHeight.h"           // SDAutoLayout
+#import "UIView+SDAutoLayout.h"                             // SDAutoLayout
+#import <MJRefresh.h>
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <SDWebImageManager.h>
+#import <SVProgressHUD.h>
+#import <ZZFLEX/ZZFLEX.h>
+
+#import "IMBaseModel.h" // 基础model
+#import "IMBaseTableViewCell.h" //  基础cell
+#import "IMBaseViewController.h" //  基础视图控制器
+
+#import "IMUtils.h" //  工具类
+
+#import "IMChatMessageHelper.h"
+
+#import "IMCategory.h"  
+
+#endif /* PrefixHeader_pch */
