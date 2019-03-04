@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "85407D653E1E1525EECFECD395E9C4BC"
+               BlueprintIdentifier = "808AC2F344F46A93ADA2EB66BD847287"
                BlueprintName = "KissXML"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "libKissXML.a">
+               BuildableName = "KissXML.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

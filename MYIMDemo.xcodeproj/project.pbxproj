@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		397C5A5E3D97F0A5932F90FC /* libPods-MYIMDemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C9EBCD87E3329766E867F726 /* libPods-MYIMDemoTests.a */; };
-		5DAFC249B813677CF263A0F6 /* libPods-MYIMDemoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCADB06942BB386082F87630 /* libPods-MYIMDemoUITests.a */; };
-		E6F4433700624FDC0018563B /* libPods-MYIMDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 043D7BCF57FD4488CAB52DD0 /* libPods-MYIMDemo.a */; };
+		9330B5BB72954608CB742A23 /* Pods_MYIMDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECA892BB53FE8E5F6A5CBF5D /* Pods_MYIMDemoTests.framework */; };
+		AE6AE5E7E160C14E5371D105 /* Pods_MYIMDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2189E704B4F186789328318 /* Pods_MYIMDemo.framework */; };
 		EE7234D7222CCEB200A6F7E2 /* NSArray+zh_SafeAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7234D6222CCEB200A6F7E2 /* NSArray+zh_SafeAccess.m */; };
 		EE7FE3F92229224A00073210 /* IMPhotoPreviewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7FE3F82229224900073210 /* IMPhotoPreviewModel.m */; };
 		EE7FE433222CB29200073210 /* IMMailAccountInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7FE432222CB29200073210 /* IMMailAccountInfoModel.m */; };
@@ -434,6 +433,7 @@
 		EE893A3B22291B18004F1F6E /* IMChatVoiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE893A3222291B17004F1F6E /* IMChatVoiceTableViewCell.m */; };
 		EE893A3C22291B18004F1F6E /* IMChatTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE893A3422291B18004F1F6E /* IMChatTextTableViewCell.m */; };
 		EE893A3D22291B18004F1F6E /* IMChatVideoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE893A3622291B18004F1F6E /* IMChatVideoTableViewCell.m */; };
+		F2E52DB26843626F10098870 /* Pods_MYIMDemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D860C256600F743D300C21AA /* Pods_MYIMDemoUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -454,15 +454,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		043D7BCF57FD4488CAB52DD0 /* libPods-MYIMDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MYIMDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3087DD474203342523F9E96C /* Pods-MYIMDemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MYIMDemoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MYIMDemoUITests/Pods-MYIMDemoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		39DF2069CEA9F7E953DC83F1 /* Pods-MYIMDemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MYIMDemoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MYIMDemoUITests/Pods-MYIMDemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		76326C6BA8BD9170028D7055 /* Pods-MYIMDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MYIMDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MYIMDemo/Pods-MYIMDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		7C3F4F19E5365490C5CF6230 /* Pods-MYIMDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MYIMDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-MYIMDemo/Pods-MYIMDemo.release.xcconfig"; sourceTree = "<group>"; };
-		C9EBCD87E3329766E867F726 /* libPods-MYIMDemoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MYIMDemoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CCADB06942BB386082F87630 /* libPods-MYIMDemoUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MYIMDemoUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2189E704B4F186789328318 /* Pods_MYIMDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MYIMDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D860C256600F743D300C21AA /* Pods_MYIMDemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MYIMDemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2096A5A554B98AB75306A3F /* Pods-MYIMDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MYIMDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MYIMDemoTests/Pods-MYIMDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		E3FAE9F2B5538351A8D11771 /* Pods-MYIMDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MYIMDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MYIMDemoTests/Pods-MYIMDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		ECA892BB53FE8E5F6A5CBF5D /* Pods_MYIMDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MYIMDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE7234D5222CCEB200A6F7E2 /* NSArray+zh_SafeAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+zh_SafeAccess.h"; sourceTree = "<group>"; };
 		EE7234D6222CCEB200A6F7E2 /* NSArray+zh_SafeAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+zh_SafeAccess.m"; sourceTree = "<group>"; };
 		EE7FE3F72229224900073210 /* IMPhotoPreviewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMPhotoPreviewModel.h; sourceTree = "<group>"; };
@@ -988,7 +988,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E6F4433700624FDC0018563B /* libPods-MYIMDemo.a in Frameworks */,
+				AE6AE5E7E160C14E5371D105 /* Pods_MYIMDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -996,7 +996,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				397C5A5E3D97F0A5932F90FC /* libPods-MYIMDemoTests.a in Frameworks */,
+				9330B5BB72954608CB742A23 /* Pods_MYIMDemoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1004,7 +1004,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5DAFC249B813677CF263A0F6 /* libPods-MYIMDemoUITests.a in Frameworks */,
+				F2E52DB26843626F10098870 /* Pods_MYIMDemoUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1027,9 +1027,9 @@
 		567AB16A9E442A5C98E0D9D8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				043D7BCF57FD4488CAB52DD0 /* libPods-MYIMDemo.a */,
-				C9EBCD87E3329766E867F726 /* libPods-MYIMDemoTests.a */,
-				CCADB06942BB386082F87630 /* libPods-MYIMDemoUITests.a */,
+				A2189E704B4F186789328318 /* Pods_MYIMDemo.framework */,
+				ECA892BB53FE8E5F6A5CBF5D /* Pods_MYIMDemoTests.framework */,
+				D860C256600F743D300C21AA /* Pods_MYIMDemoUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1811,7 +1811,7 @@
 				EE89367D2227D997004F1F6E /* Sources */,
 				EE89367E2227D997004F1F6E /* Frameworks */,
 				EE89367F2227D997004F1F6E /* Resources */,
-				A6433D9568E0AA6D17DD114E /* [CP] Copy Pods Resources */,
+				BDF1AEF951A58B641686EAB6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2285,48 +2285,48 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A6433D9568E0AA6D17DD114E /* [CP] Copy Pods Resources */ = {
+		BDF1AEF951A58B641686EAB6 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MYIMDemo/Pods-MYIMDemo-resources.sh",
-				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
-				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
-				"${PODS_ROOT}/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle",
-				"${PODS_ROOT}/XMPPFramework/Extensions/Roster/CoreDataStorage/XMPPRoster.xcdatamodel",
-				"${PODS_ROOT}/XMPPFramework/Extensions/XEP-0045/CoreDataStorage/XMPPRoom.xcdatamodeld",
-				"${PODS_ROOT}/XMPPFramework/Extensions/XEP-0045/CoreDataStorage/XMPPRoom.xcdatamodeld/XMPPRoom.xcdatamodel",
-				"${PODS_ROOT}/XMPPFramework/Extensions/XEP-0045/HybridStorage/XMPPRoomHybrid.xcdatamodeld",
-				"${PODS_ROOT}/XMPPFramework/Extensions/XEP-0045/HybridStorage/XMPPRoomHybrid.xcdatamodeld/XMPPRoomHybrid.xcdatamodel",
-				"${PODS_ROOT}/XMPPFramework/Extensions/XEP-0054/CoreDataStorage/XMPPvCard.xcdatamodeld",
-				"${PODS_ROOT}/XMPPFramework/Extensions/XEP-0054/CoreDataStorage/XMPPvCard.xcdatamodeld/XMPPvCard.xcdatamodel",
-				"${PODS_ROOT}/XMPPFramework/Extensions/XEP-0115/CoreDataStorage/XMPPCapabilities.xcdatamodel",
-				"${PODS_ROOT}/XMPPFramework/Extensions/XEP-0136/CoreDataStorage/XMPPMessageArchiving.xcdatamodeld",
-				"${PODS_ROOT}/XMPPFramework/Extensions/XEP-0136/CoreDataStorage/XMPPMessageArchiving.xcdatamodeld/XMPPMessageArchiving.xcdatamodel",
-				"${PODS_ROOT}/XMPPFramework/Extensions/XMPPMUCLight/CoreDataStorage/XMPPRoomLight.xcdatamodel",
+				"${SRCROOT}/Pods/Target Support Files/Pods-MYIMDemo/Pods-MYIMDemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
+				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
+				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
+				"${BUILT_PRODUCTS_DIR}/KissXML/KissXML.framework",
+				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/SDAutoLayout/SDAutoLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework",
+				"${BUILT_PRODUCTS_DIR}/XMPPFramework/XMPPFramework.framework",
+				"${BUILT_PRODUCTS_DIR}/YYKit/YYKit.framework",
+				"${BUILT_PRODUCTS_DIR}/ZZFLEX/ZZFLEX.framework",
+				"${BUILT_PRODUCTS_DIR}/libidn/libidn.framework",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TZImagePickerController.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/XMPPRoster.mom",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/XMPPRoom.momd",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/XMPPRoom.mom",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/XMPPRoomHybrid.momd",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/XMPPRoomHybrid.mom",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/XMPPvCard.momd",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/XMPPvCard.mom",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/XMPPCapabilities.mom",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/XMPPMessageArchiving.momd",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/XMPPMessageArchiving.mom",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/XMPPRoomLight.mom",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KissXML.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDAutoLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TZImagePickerController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XMPPFramework.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZZFLEX.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libidn.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MYIMDemo/Pods-MYIMDemo-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MYIMDemo/Pods-MYIMDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D03E9788294A55644E7FED84 /* [CP] Check Pods Manifest.lock */ = {
