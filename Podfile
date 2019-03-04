@@ -16,6 +16,7 @@ target 'MYIMDemo' do
   pod 'CocoaLumberjack'           #日志框架
   pod 'ZZFLEX'
   pod 'YYKit'
+  pod 'XMPPFramework'
 
 
   target 'MYIMDemoTests' do
