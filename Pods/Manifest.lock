@@ -26,81 +26,10 @@ PODS:
     - SDWebImage/Core (= 4.4.6)
   - SDWebImage/Core (4.4.6)
   - SVProgressHUD (2.2.5)
-  - TLKit (0.0.3):
-    - TLKit/TLCategories (= 0.0.3)
-    - TLKit/TLShortcut (= 0.0.3)
-  - TLKit/TLCategories (0.0.3):
-    - TLKit/TLCategories/Foundation (= 0.0.3)
-    - TLKit/TLCategories/UIKit (= 0.0.3)
-  - TLKit/TLCategories/Foundation (0.0.3):
-    - TLKit/TLCategories/Foundation/NSArray (= 0.0.3)
-    - TLKit/TLCategories/Foundation/NSBundle (= 0.0.3)
-    - TLKit/TLCategories/Foundation/NSData (= 0.0.3)
-    - TLKit/TLCategories/Foundation/NSDate (= 0.0.3)
-    - TLKit/TLCategories/Foundation/NSDictionary (= 0.0.3)
-    - TLKit/TLCategories/Foundation/NSDictionary (= 0.0.3)
-    - TLKit/TLCategories/Foundation/NSFileManager (= 0.0.3)
-    - TLKit/TLCategories/Foundation/NSMutableArray (= 0.0.3)
-    - TLKit/TLCategories/Foundation/NSMutableDictionary (= 0.0.3)
-    - TLKit/TLCategories/Foundation/NSNotificationCenter (= 0.0.3)
-    - TLKit/TLCategories/Foundation/NSObject (= 0.0.3)
-    - TLKit/TLCategories/Foundation/NSString (= 0.0.3)
-    - TLKit/TLCategories/Foundation/NSTimer (= 0.0.3)
-    - TLKit/TLCategories/Foundation/NSURL (= 0.0.3)
-  - TLKit/TLCategories/Foundation/NSArray (0.0.3)
-  - TLKit/TLCategories/Foundation/NSBundle (0.0.3)
-  - TLKit/TLCategories/Foundation/NSData (0.0.3)
-  - TLKit/TLCategories/Foundation/NSDate (0.0.3)
-  - TLKit/TLCategories/Foundation/NSDictionary (0.0.3)
-  - TLKit/TLCategories/Foundation/NSFileManager (0.0.3)
-  - TLKit/TLCategories/Foundation/NSMutableArray (0.0.3)
-  - TLKit/TLCategories/Foundation/NSMutableDictionary (0.0.3)
-  - TLKit/TLCategories/Foundation/NSNotificationCenter (0.0.3)
-  - TLKit/TLCategories/Foundation/NSObject (0.0.3)
-  - TLKit/TLCategories/Foundation/NSString (0.0.3):
-    - TLKit/TLCategories/Foundation/NSData
-  - TLKit/TLCategories/Foundation/NSTimer (0.0.3)
-  - TLKit/TLCategories/Foundation/NSURL (0.0.3)
-  - TLKit/TLCategories/UIKit (0.0.3):
-    - TLKit/TLCategories/UIKit/UIBarButtonItem (= 0.0.3)
-    - TLKit/TLCategories/UIKit/UIButton (= 0.0.3)
-    - TLKit/TLCategories/UIKit/UICollectionViewCell (= 0.0.3)
-    - TLKit/TLCategories/UIKit/UIColor (= 0.0.3)
-    - TLKit/TLCategories/UIKit/UIControl (= 0.0.3)
-    - TLKit/TLCategories/UIKit/UIImage (= 0.0.3)
-    - TLKit/TLCategories/UIKit/UINavigationBar (= 0.0.3)
-    - TLKit/TLCategories/UIKit/UINavigationController (= 0.0.3)
-    - TLKit/TLCategories/UIKit/UINavigationItem (= 0.0.3)
-    - TLKit/TLCategories/UIKit/UIScrollView (= 0.0.3)
-    - TLKit/TLCategories/UIKit/UITextField (= 0.0.3)
-    - TLKit/TLCategories/UIKit/UITextView (= 0.0.3)
-    - TLKit/TLCategories/UIKit/UIView (= 0.0.3)
-    - TLKit/TLCategories/UIKit/UIViewController (= 0.0.3)
-    - TLKit/TLCategories/UIKit/UIWindow (= 0.0.3)
-  - TLKit/TLCategories/UIKit/UIBarButtonItem (0.0.3)
-  - TLKit/TLCategories/UIKit/UIButton (0.0.3):
-    - TLKit/TLCategories/UIKit/UIImage
-  - TLKit/TLCategories/UIKit/UICollectionViewCell (0.0.3)
-  - TLKit/TLCategories/UIKit/UIColor (0.0.3)
-  - TLKit/TLCategories/UIKit/UIControl (0.0.3)
-  - TLKit/TLCategories/UIKit/UIImage (0.0.3)
-  - TLKit/TLCategories/UIKit/UINavigationBar (0.0.3)
-  - TLKit/TLCategories/UIKit/UINavigationController (0.0.3)
-  - TLKit/TLCategories/UIKit/UINavigationItem (0.0.3):
-    - TLKit/TLCategories/UIKit/UIBarButtonItem
-  - TLKit/TLCategories/UIKit/UIScrollView (0.0.3)
-  - TLKit/TLCategories/UIKit/UITextField (0.0.3)
-  - TLKit/TLCategories/UIKit/UITextView (0.0.3)
-  - TLKit/TLCategories/UIKit/UIView (0.0.3):
-    - TLKit/TLCategories/Foundation/NSObject
-    - TLKit/TLShortcut
-  - TLKit/TLCategories/UIKit/UIViewController (0.0.3):
-    - TLKit/TLCategories/UIKit/UIBarButtonItem
-    - TLKit/TLCategories/UIKit/UINavigationController
-    - TLKit/TLCategories/UIKit/UIView
-  - TLKit/TLCategories/UIKit/UIWindow (0.0.3)
-  - TLKit/TLShortcut (0.0.3)
   - TZImagePickerController (3.1.9)
+  - YYKit (1.0.9):
+    - YYKit/no-arc (= 1.0.9)
+  - YYKit/no-arc (1.0.9)
   - ZZFLEX (0.2.0)
 
 DEPENDENCIES:
@@ -111,8 +40,8 @@ DEPENDENCIES:
   - SDAutoLayout
   - SDWebImage
   - SVProgressHUD
-  - TLKit
   - TZImagePickerController
+  - YYKit
   - ZZFLEX
 
 SPEC REPOS:
@@ -124,8 +53,8 @@ SPEC REPOS:
     - SDAutoLayout
     - SDWebImage
     - SVProgressHUD
-    - TLKit
     - TZImagePickerController
+    - YYKit
     - ZZFLEX
 
 SPEC CHECKSUMS:
@@ -136,10 +65,10 @@ SPEC CHECKSUMS:
   SDAutoLayout: 8bf6b3bbc8b01f775d4defbb4fda2ace805461be
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  TLKit: 85bbd71d96639db7f1ca91ca87d06f1a476bd85e
   TZImagePickerController: c3f7c505d23281e21e98df6dbeae372946caa28f
+  YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
   ZZFLEX: 48ad9faf261c9589a3d16d44a701219ad41883b8
 
-PODFILE CHECKSUM: d5512c6e6f697c71db37220e29635aa0b94159ab
+PODFILE CHECKSUM: cd278571b6aab7223d34165e841d6d53fa4bd8e4
 
 COCOAPODS: 1.5.0
