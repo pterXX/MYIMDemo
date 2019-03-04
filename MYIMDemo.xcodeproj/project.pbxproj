@@ -11,25 +11,25 @@
 		5DAFC249B813677CF263A0F6 /* libPods-MYIMDemoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCADB06942BB386082F87630 /* libPods-MYIMDemoUITests.a */; };
 		E6F4433700624FDC0018563B /* libPods-MYIMDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 043D7BCF57FD4488CAB52DD0 /* libPods-MYIMDemo.a */; };
 		EE7FE3F92229224A00073210 /* IMPhotoPreviewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7FE3F82229224900073210 /* IMPhotoPreviewModel.m */; };
-		EE7FE4202229313800073210 /* IMPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7FE3FD2229313800073210 /* IMPhoto.m */; };
-		EE7FE4212229313800073210 /* IMZoomingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7FE4022229313800073210 /* IMZoomingScrollView.m */; };
-		EE7FE4222229313800073210 /* FSActionSheetConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7FE4062229313800073210 /* FSActionSheetConfig.m */; };
-		EE7FE4232229313800073210 /* FSActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7FE4072229313800073210 /* FSActionSheet.m */; };
-		EE7FE4242229313800073210 /* FSActionSheetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7FE4082229313800073210 /* FSActionSheetCell.m */; };
-		EE7FE4252229313800073210 /* FSActionSheetItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7FE4092229313800073210 /* FSActionSheetItem.m */; };
-		EE7FE4262229313800073210 /* BAProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7FE40D2229313800073210 /* BAProgressView.m */; };
-		EE7FE4272229313800073210 /* IMPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7FE40E2229313800073210 /* IMPhotoBrowser.m */; };
-		EE7FE4282229313800073210 /* TADotView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7FE4122229313800073210 /* TADotView.m */; };
-		EE7FE4292229313800073210 /* TAPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7FE4132229313800073210 /* TAPageControl.m */; };
-		EE7FE42A2229313800073210 /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7FE4142229313800073210 /* TAAnimatedDotView.m */; };
-		EE7FE42B2229313800073210 /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7FE4152229313800073210 /* TAAbstractDotView.m */; };
-		EE7FE42C2229313800073210 /* IMVideoPlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7FE4192229313800073210 /* IMVideoPlayView.m */; };
-		EE7FE42D2229313800073210 /* icon_inputBox_videoPlay_cancel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EE7FE41B2229313800073210 /* icon_inputBox_videoPlay_cancel@3x.png */; };
-		EE7FE42E2229313800073210 /* icon_inputBox_video_bttom_play@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EE7FE41C2229313800073210 /* icon_inputBox_video_bttom_play@3x.png */; };
-		EE7FE42F2229313800073210 /* icon_inputBox_video_play@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EE7FE41D2229313800073210 /* icon_inputBox_video_play@3x.png */; };
-		EE7FE4302229313800073210 /* icon_inputBox_video_ pause@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EE7FE41E2229313800073210 /* icon_inputBox_video_ pause@3x.png */; };
-		EE7FE4312229313800073210 /* icon_inputBox_thumb@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EE7FE41F2229313800073210 /* icon_inputBox_thumb@3x.png */; };
 		EE7FE433222CB29200073210 /* IMMailAccountInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7FE432222CB29200073210 /* IMMailAccountInfoModel.m */; };
+		EE7FE45A222CC42500073210 /* IMPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7FE437222CC42500073210 /* IMPhoto.m */; };
+		EE7FE45B222CC42500073210 /* IMZoomingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7FE43C222CC42500073210 /* IMZoomingScrollView.m */; };
+		EE7FE45C222CC42500073210 /* FSActionSheetConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7FE440222CC42500073210 /* FSActionSheetConfig.m */; };
+		EE7FE45D222CC42500073210 /* FSActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7FE441222CC42500073210 /* FSActionSheet.m */; };
+		EE7FE45E222CC42500073210 /* FSActionSheetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7FE442222CC42500073210 /* FSActionSheetCell.m */; };
+		EE7FE45F222CC42500073210 /* FSActionSheetItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7FE443222CC42500073210 /* FSActionSheetItem.m */; };
+		EE7FE460222CC42500073210 /* BAProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7FE447222CC42500073210 /* BAProgressView.m */; };
+		EE7FE461222CC42500073210 /* IMPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7FE448222CC42500073210 /* IMPhotoBrowser.m */; };
+		EE7FE462222CC42500073210 /* TADotView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7FE44C222CC42500073210 /* TADotView.m */; };
+		EE7FE463222CC42500073210 /* TAPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7FE44D222CC42500073210 /* TAPageControl.m */; };
+		EE7FE464222CC42500073210 /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7FE44E222CC42500073210 /* TAAnimatedDotView.m */; };
+		EE7FE465222CC42500073210 /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7FE44F222CC42500073210 /* TAAbstractDotView.m */; };
+		EE7FE466222CC42500073210 /* IMVideoPlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7FE453222CC42500073210 /* IMVideoPlayView.m */; };
+		EE7FE467222CC42500073210 /* icon_inputBox_videoPlay_cancel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EE7FE455222CC42500073210 /* icon_inputBox_videoPlay_cancel@3x.png */; };
+		EE7FE468222CC42500073210 /* icon_inputBox_video_bttom_play@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EE7FE456222CC42500073210 /* icon_inputBox_video_bttom_play@3x.png */; };
+		EE7FE469222CC42500073210 /* icon_inputBox_video_play@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EE7FE457222CC42500073210 /* icon_inputBox_video_play@3x.png */; };
+		EE7FE46A222CC42500073210 /* icon_inputBox_video_ pause@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EE7FE458222CC42500073210 /* icon_inputBox_video_ pause@3x.png */; };
+		EE7FE46B222CC42500073210 /* icon_inputBox_thumb@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EE7FE459222CC42500073210 /* icon_inputBox_thumb@3x.png */; };
 		EE8936862227D997004F1F6E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8936852227D997004F1F6E /* AppDelegate.m */; };
 		EE89368C2227D997004F1F6E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE89368A2227D997004F1F6E /* Main.storyboard */; };
 		EE89368E2227D997004F1F6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE89368D2227D997004F1F6E /* Assets.xcassets */; };
@@ -464,39 +464,39 @@
 		E3FAE9F2B5538351A8D11771 /* Pods-MYIMDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MYIMDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MYIMDemoTests/Pods-MYIMDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EE7FE3F72229224900073210 /* IMPhotoPreviewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMPhotoPreviewModel.h; sourceTree = "<group>"; };
 		EE7FE3F82229224900073210 /* IMPhotoPreviewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMPhotoPreviewModel.m; sourceTree = "<group>"; };
-		EE7FE3FB2229313800073210 /* IMPhotoBrowserConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMPhotoBrowserConfig.h; sourceTree = "<group>"; };
-		EE7FE3FD2229313800073210 /* IMPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMPhoto.m; sourceTree = "<group>"; };
-		EE7FE3FE2229313800073210 /* IMPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMPhoto.h; sourceTree = "<group>"; };
-		EE7FE4002229313800073210 /* IMPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMPhotoBrowser.h; sourceTree = "<group>"; };
-		EE7FE4012229313800073210 /* BAProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAProgressView.h; sourceTree = "<group>"; };
-		EE7FE4022229313800073210 /* IMZoomingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMZoomingScrollView.m; sourceTree = "<group>"; };
-		EE7FE4042229313800073210 /* FSActionSheetItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSActionSheetItem.h; sourceTree = "<group>"; };
-		EE7FE4052229313800073210 /* FSActionSheetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSActionSheetCell.h; sourceTree = "<group>"; };
-		EE7FE4062229313800073210 /* FSActionSheetConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSActionSheetConfig.m; sourceTree = "<group>"; };
-		EE7FE4072229313800073210 /* FSActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSActionSheet.m; sourceTree = "<group>"; };
-		EE7FE4082229313800073210 /* FSActionSheetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSActionSheetCell.m; sourceTree = "<group>"; };
-		EE7FE4092229313800073210 /* FSActionSheetItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSActionSheetItem.m; sourceTree = "<group>"; };
-		EE7FE40A2229313800073210 /* FSActionSheetConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSActionSheetConfig.h; sourceTree = "<group>"; };
-		EE7FE40B2229313800073210 /* FSActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSActionSheet.h; sourceTree = "<group>"; };
-		EE7FE40C2229313800073210 /* IMVideoPlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMVideoPlayView.h; sourceTree = "<group>"; };
-		EE7FE40D2229313800073210 /* BAProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAProgressView.m; sourceTree = "<group>"; };
-		EE7FE40E2229313800073210 /* IMPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMPhotoBrowser.m; sourceTree = "<group>"; };
-		EE7FE40F2229313800073210 /* IMZoomingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMZoomingScrollView.h; sourceTree = "<group>"; };
-		EE7FE4112229313800073210 /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
-		EE7FE4122229313800073210 /* TADotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TADotView.m; sourceTree = "<group>"; };
-		EE7FE4132229313800073210 /* TAPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAPageControl.m; sourceTree = "<group>"; };
-		EE7FE4142229313800073210 /* TAAnimatedDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAnimatedDotView.m; sourceTree = "<group>"; };
-		EE7FE4152229313800073210 /* TAAbstractDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAbstractDotView.m; sourceTree = "<group>"; };
-		EE7FE4162229313800073210 /* TADotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TADotView.h; sourceTree = "<group>"; };
-		EE7FE4172229313800073210 /* TAAnimatedDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAnimatedDotView.h; sourceTree = "<group>"; };
-		EE7FE4182229313800073210 /* TAPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAPageControl.h; sourceTree = "<group>"; };
-		EE7FE4192229313800073210 /* IMVideoPlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMVideoPlayView.m; sourceTree = "<group>"; };
-		EE7FE41B2229313800073210 /* icon_inputBox_videoPlay_cancel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_inputBox_videoPlay_cancel@3x.png"; sourceTree = "<group>"; };
-		EE7FE41C2229313800073210 /* icon_inputBox_video_bttom_play@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_inputBox_video_bttom_play@3x.png"; sourceTree = "<group>"; };
-		EE7FE41D2229313800073210 /* icon_inputBox_video_play@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_inputBox_video_play@3x.png"; sourceTree = "<group>"; };
-		EE7FE41E2229313800073210 /* icon_inputBox_video_ pause@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_inputBox_video_ pause@3x.png"; sourceTree = "<group>"; };
-		EE7FE41F2229313800073210 /* icon_inputBox_thumb@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_inputBox_thumb@3x.png"; sourceTree = "<group>"; };
 		EE7FE432222CB29200073210 /* IMMailAccountInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMMailAccountInfoModel.m; sourceTree = "<group>"; };
+		EE7FE435222CC42500073210 /* IMPhotoBrowserConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMPhotoBrowserConfig.h; sourceTree = "<group>"; };
+		EE7FE437222CC42500073210 /* IMPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMPhoto.m; sourceTree = "<group>"; };
+		EE7FE438222CC42500073210 /* IMPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMPhoto.h; sourceTree = "<group>"; };
+		EE7FE43A222CC42500073210 /* IMPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMPhotoBrowser.h; sourceTree = "<group>"; };
+		EE7FE43B222CC42500073210 /* BAProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAProgressView.h; sourceTree = "<group>"; };
+		EE7FE43C222CC42500073210 /* IMZoomingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMZoomingScrollView.m; sourceTree = "<group>"; };
+		EE7FE43E222CC42500073210 /* FSActionSheetItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSActionSheetItem.h; sourceTree = "<group>"; };
+		EE7FE43F222CC42500073210 /* FSActionSheetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSActionSheetCell.h; sourceTree = "<group>"; };
+		EE7FE440222CC42500073210 /* FSActionSheetConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSActionSheetConfig.m; sourceTree = "<group>"; };
+		EE7FE441222CC42500073210 /* FSActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSActionSheet.m; sourceTree = "<group>"; };
+		EE7FE442222CC42500073210 /* FSActionSheetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSActionSheetCell.m; sourceTree = "<group>"; };
+		EE7FE443222CC42500073210 /* FSActionSheetItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSActionSheetItem.m; sourceTree = "<group>"; };
+		EE7FE444222CC42500073210 /* FSActionSheetConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSActionSheetConfig.h; sourceTree = "<group>"; };
+		EE7FE445222CC42500073210 /* FSActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSActionSheet.h; sourceTree = "<group>"; };
+		EE7FE446222CC42500073210 /* IMVideoPlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMVideoPlayView.h; sourceTree = "<group>"; };
+		EE7FE447222CC42500073210 /* BAProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAProgressView.m; sourceTree = "<group>"; };
+		EE7FE448222CC42500073210 /* IMPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMPhotoBrowser.m; sourceTree = "<group>"; };
+		EE7FE449222CC42500073210 /* IMZoomingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMZoomingScrollView.h; sourceTree = "<group>"; };
+		EE7FE44B222CC42500073210 /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
+		EE7FE44C222CC42500073210 /* TADotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TADotView.m; sourceTree = "<group>"; };
+		EE7FE44D222CC42500073210 /* TAPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAPageControl.m; sourceTree = "<group>"; };
+		EE7FE44E222CC42500073210 /* TAAnimatedDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAnimatedDotView.m; sourceTree = "<group>"; };
+		EE7FE44F222CC42500073210 /* TAAbstractDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAbstractDotView.m; sourceTree = "<group>"; };
+		EE7FE450222CC42500073210 /* TADotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TADotView.h; sourceTree = "<group>"; };
+		EE7FE451222CC42500073210 /* TAAnimatedDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAnimatedDotView.h; sourceTree = "<group>"; };
+		EE7FE452222CC42500073210 /* TAPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAPageControl.h; sourceTree = "<group>"; };
+		EE7FE453222CC42500073210 /* IMVideoPlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMVideoPlayView.m; sourceTree = "<group>"; };
+		EE7FE455222CC42500073210 /* icon_inputBox_videoPlay_cancel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_inputBox_videoPlay_cancel@3x.png"; sourceTree = "<group>"; };
+		EE7FE456222CC42500073210 /* icon_inputBox_video_bttom_play@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_inputBox_video_bttom_play@3x.png"; sourceTree = "<group>"; };
+		EE7FE457222CC42500073210 /* icon_inputBox_video_play@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_inputBox_video_play@3x.png"; sourceTree = "<group>"; };
+		EE7FE458222CC42500073210 /* icon_inputBox_video_ pause@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_inputBox_video_ pause@3x.png"; sourceTree = "<group>"; };
+		EE7FE459222CC42500073210 /* icon_inputBox_thumb@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_inputBox_thumb@3x.png"; sourceTree = "<group>"; };
 		EE8936812227D997004F1F6E /* MYIMDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MYIMDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE8936842227D997004F1F6E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EE8936852227D997004F1F6E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -1031,82 +1031,81 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		EE7FE3FA2229313700073210 /* BAPhotoBrowser */ = {
+		EE7FE434222CC42500073210 /* BAPhotoBrowser */ = {
 			isa = PBXGroup;
 			children = (
-				EE7FE3FB2229313800073210 /* IMPhotoBrowserConfig.h */,
-				EE7FE3FC2229313800073210 /* Model */,
-				EE7FE3FF2229313800073210 /* View */,
-				EE7FE41A2229313800073210 /* Resource */,
+				EE7FE435222CC42500073210 /* IMPhotoBrowserConfig.h */,
+				EE7FE436222CC42500073210 /* Model */,
+				EE7FE439222CC42500073210 /* View */,
+				EE7FE454222CC42500073210 /* Resource */,
 			);
-			name = BAPhotoBrowser;
-			path = ../../third/BAPhotoBrowser;
+			path = BAPhotoBrowser;
 			sourceTree = "<group>";
 		};
-		EE7FE3FC2229313800073210 /* Model */ = {
+		EE7FE436222CC42500073210 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				EE7FE3FD2229313800073210 /* IMPhoto.m */,
-				EE7FE3FE2229313800073210 /* IMPhoto.h */,
+				EE7FE437222CC42500073210 /* IMPhoto.m */,
+				EE7FE438222CC42500073210 /* IMPhoto.h */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		EE7FE3FF2229313800073210 /* View */ = {
+		EE7FE439222CC42500073210 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				EE7FE4002229313800073210 /* IMPhotoBrowser.h */,
-				EE7FE4012229313800073210 /* BAProgressView.h */,
-				EE7FE4022229313800073210 /* IMZoomingScrollView.m */,
-				EE7FE4032229313800073210 /* FSActionSheet */,
-				EE7FE40C2229313800073210 /* IMVideoPlayView.h */,
-				EE7FE40D2229313800073210 /* BAProgressView.m */,
-				EE7FE40E2229313800073210 /* IMPhotoBrowser.m */,
-				EE7FE40F2229313800073210 /* IMZoomingScrollView.h */,
-				EE7FE4102229313800073210 /* PageControl */,
-				EE7FE4192229313800073210 /* IMVideoPlayView.m */,
+				EE7FE43A222CC42500073210 /* IMPhotoBrowser.h */,
+				EE7FE43B222CC42500073210 /* BAProgressView.h */,
+				EE7FE43C222CC42500073210 /* IMZoomingScrollView.m */,
+				EE7FE43D222CC42500073210 /* FSActionSheet */,
+				EE7FE446222CC42500073210 /* IMVideoPlayView.h */,
+				EE7FE447222CC42500073210 /* BAProgressView.m */,
+				EE7FE448222CC42500073210 /* IMPhotoBrowser.m */,
+				EE7FE449222CC42500073210 /* IMZoomingScrollView.h */,
+				EE7FE44A222CC42500073210 /* PageControl */,
+				EE7FE453222CC42500073210 /* IMVideoPlayView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		EE7FE4032229313800073210 /* FSActionSheet */ = {
+		EE7FE43D222CC42500073210 /* FSActionSheet */ = {
 			isa = PBXGroup;
 			children = (
-				EE7FE4042229313800073210 /* FSActionSheetItem.h */,
-				EE7FE4052229313800073210 /* FSActionSheetCell.h */,
-				EE7FE4062229313800073210 /* FSActionSheetConfig.m */,
-				EE7FE4072229313800073210 /* FSActionSheet.m */,
-				EE7FE4082229313800073210 /* FSActionSheetCell.m */,
-				EE7FE4092229313800073210 /* FSActionSheetItem.m */,
-				EE7FE40A2229313800073210 /* FSActionSheetConfig.h */,
-				EE7FE40B2229313800073210 /* FSActionSheet.h */,
+				EE7FE43E222CC42500073210 /* FSActionSheetItem.h */,
+				EE7FE43F222CC42500073210 /* FSActionSheetCell.h */,
+				EE7FE440222CC42500073210 /* FSActionSheetConfig.m */,
+				EE7FE441222CC42500073210 /* FSActionSheet.m */,
+				EE7FE442222CC42500073210 /* FSActionSheetCell.m */,
+				EE7FE443222CC42500073210 /* FSActionSheetItem.m */,
+				EE7FE444222CC42500073210 /* FSActionSheetConfig.h */,
+				EE7FE445222CC42500073210 /* FSActionSheet.h */,
 			);
 			path = FSActionSheet;
 			sourceTree = "<group>";
 		};
-		EE7FE4102229313800073210 /* PageControl */ = {
+		EE7FE44A222CC42500073210 /* PageControl */ = {
 			isa = PBXGroup;
 			children = (
-				EE7FE4112229313800073210 /* TAAbstractDotView.h */,
-				EE7FE4122229313800073210 /* TADotView.m */,
-				EE7FE4132229313800073210 /* TAPageControl.m */,
-				EE7FE4142229313800073210 /* TAAnimatedDotView.m */,
-				EE7FE4152229313800073210 /* TAAbstractDotView.m */,
-				EE7FE4162229313800073210 /* TADotView.h */,
-				EE7FE4172229313800073210 /* TAAnimatedDotView.h */,
-				EE7FE4182229313800073210 /* TAPageControl.h */,
+				EE7FE44B222CC42500073210 /* TAAbstractDotView.h */,
+				EE7FE44C222CC42500073210 /* TADotView.m */,
+				EE7FE44D222CC42500073210 /* TAPageControl.m */,
+				EE7FE44E222CC42500073210 /* TAAnimatedDotView.m */,
+				EE7FE44F222CC42500073210 /* TAAbstractDotView.m */,
+				EE7FE450222CC42500073210 /* TADotView.h */,
+				EE7FE451222CC42500073210 /* TAAnimatedDotView.h */,
+				EE7FE452222CC42500073210 /* TAPageControl.h */,
 			);
 			path = PageControl;
 			sourceTree = "<group>";
 		};
-		EE7FE41A2229313800073210 /* Resource */ = {
+		EE7FE454222CC42500073210 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				EE7FE41B2229313800073210 /* icon_inputBox_videoPlay_cancel@3x.png */,
-				EE7FE41C2229313800073210 /* icon_inputBox_video_bttom_play@3x.png */,
-				EE7FE41D2229313800073210 /* icon_inputBox_video_play@3x.png */,
-				EE7FE41E2229313800073210 /* icon_inputBox_video_ pause@3x.png */,
-				EE7FE41F2229313800073210 /* icon_inputBox_thumb@3x.png */,
+				EE7FE455222CC42500073210 /* icon_inputBox_videoPlay_cancel@3x.png */,
+				EE7FE456222CC42500073210 /* icon_inputBox_video_bttom_play@3x.png */,
+				EE7FE457222CC42500073210 /* icon_inputBox_video_play@3x.png */,
+				EE7FE458222CC42500073210 /* icon_inputBox_video_ pause@3x.png */,
+				EE7FE459222CC42500073210 /* icon_inputBox_thumb@3x.png */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -1136,7 +1135,7 @@
 		EE8936832227D997004F1F6E /* MYIMDemo */ = {
 			isa = PBXGroup;
 			children = (
-				EE7FE3FA2229313700073210 /* BAPhotoBrowser */,
+				EE7FE434222CC42500073210 /* BAPhotoBrowser */,
 				EE8936BD2227DA4E004F1F6E /* Category */,
 				EE8936BE2227DA4E004F1F6E /* Common */,
 				EE8936B82227DA4E004F1F6E /* Controller */,
@@ -1928,7 +1927,7 @@
 				EE893909222902C3004F1F6E /* emotion_quantou_gif.gif in Resources */,
 				EE8936912227D997004F1F6E /* LaunchScreen.storyboard in Resources */,
 				EE893890222902C3004F1F6E /* emotion_kaiche_gif.gif in Resources */,
-				EE7FE42F2229313800073210 /* icon_inputBox_video_play@3x.png in Resources */,
+				EE7FE469222CC42500073210 /* icon_inputBox_video_play@3x.png in Resources */,
 				EE893887222902C3004F1F6E /* emotion_caiqiu.png in Resources */,
 				EE89368E2227D997004F1F6E /* Assets.xcassets in Resources */,
 				EE8938C0222902C3004F1F6E /* emotion_xia.png in Resources */,
@@ -2149,7 +2148,7 @@
 				EE8939EA222907AC004F1F6E /* icon_message_attachments@3x.png in Resources */,
 				EE8939F2222907AC004F1F6E /* icon_message_sending@3x.png in Resources */,
 				EE8938FA222902C3004F1F6E /* emotion_cahan.png in Resources */,
-				EE7FE42D2229313800073210 /* icon_inputBox_videoPlay_cancel@3x.png in Resources */,
+				EE7FE467222CC42500073210 /* icon_inputBox_videoPlay_cancel@3x.png in Resources */,
 				EE893967222902C3004F1F6E /* emotion_diaoxie_gif.gif in Resources */,
 				EE89395F222902C3004F1F6E /* emotion_pijiu.png in Resources */,
 				EE89395E222902C3004F1F6E /* emotion_meigui.png in Resources */,
@@ -2181,7 +2180,7 @@
 				EE893953222902C3004F1F6E /* emotion_dashuai.png in Resources */,
 				EE8938DD222902C3004F1F6E /* emotion_aoman.png in Resources */,
 				EE893957222902C3004F1F6E /* emotion_xiayu_gif.gif in Resources */,
-				EE7FE4302229313800073210 /* icon_inputBox_video_ pause@3x.png in Resources */,
+				EE7FE46A222CC42500073210 /* icon_inputBox_video_ pause@3x.png in Resources */,
 				EE89394A222902C3004F1F6E /* emotion_yueliang_gif.gif in Resources */,
 				EE8938C8222902C3004F1F6E /* emotion_yun.png in Resources */,
 				EE89388C222902C3004F1F6E /* emotion_zuohengheng_gif.gif in Resources */,
@@ -2199,7 +2198,7 @@
 				EE8939A7222902C3004F1F6E /* icon_message_expression@3x.png in Resources */,
 				EE8938E2222902C3004F1F6E /* emotion_ciya.png in Resources */,
 				EE8938A0222902C3004F1F6E /* emotion_youhengheng_gif.gif in Resources */,
-				EE7FE4312229313800073210 /* icon_inputBox_thumb@3x.png in Resources */,
+				EE7FE46B222CC42500073210 /* icon_inputBox_thumb@3x.png in Resources */,
 				EE89399C222902C3004F1F6E /* InputBoxMore.plist in Resources */,
 				EE893964222902C3004F1F6E /* emotion_youjian_gif.gif in Resources */,
 				EE89393D222902C3004F1F6E /* emotion_baoquan_gif.gif in Resources */,
@@ -2236,7 +2235,7 @@
 				EE89398E222902C3004F1F6E /* emotion_kun_gif.gif in Resources */,
 				EE8938A3222902C3004F1F6E /* emotion_qinqin_gif.gif in Resources */,
 				EE893960222902C3004F1F6E /* emotion_ketou_gif.gif in Resources */,
-				EE7FE42E2229313800073210 /* icon_inputBox_video_bttom_play@3x.png in Resources */,
+				EE7FE468222CC42500073210 /* icon_inputBox_video_bttom_play@3x.png in Resources */,
 				EE8938AC222902C3004F1F6E /* emotion_naozhong.png in Resources */,
 				EE893962222902C3004F1F6E /* emotion_ku_gif.gif in Resources */,
 				EE893905222902C3004F1F6E /* emotion_ganga_gif.gif in Resources */,
@@ -2350,20 +2349,20 @@
 				EE893A3722291B18004F1F6E /* IMChatTableViewCell.m in Sources */,
 				EE8937012228D6B8004F1F6E /* UIViewController+IMCategory.m in Sources */,
 				EE8939BB222902C3004F1F6E /* IMInputBoxEmojiView.m in Sources */,
-				EE7FE4202229313800073210 /* IMPhoto.m in Sources */,
+				EE7FE45A222CC42500073210 /* IMPhoto.m in Sources */,
 				EE8936FD2228D55F004F1F6E /* IMSystemAuthorization.m in Sources */,
 				EE893A1522290C13004F1F6E /* NSString+Size.m in Sources */,
 				EE893A1422290C13004F1F6E /* NSString+Category.m in Sources */,
-				EE7FE4282229313800073210 /* TADotView.m in Sources */,
+				EE7FE462222CC42500073210 /* TADotView.m in Sources */,
 				EE8939B4222902C3004F1F6E /* IMInputBoxEmojiMenuView.m in Sources */,
 				EE8936CE2227DF37004F1F6E /* UIDevice+IMCategory.m in Sources */,
 				EE893A3A22291B18004F1F6E /* IMChatImageTableViewCell.m in Sources */,
-				EE7FE4252229313800073210 /* FSActionSheetItem.m in Sources */,
+				EE7FE45F222CC42500073210 /* FSActionSheetItem.m in Sources */,
 				EE8939B8222902C3004F1F6E /* IMInputBoxMoreItemView.m in Sources */,
 				EE8936FC2228D33B004F1F6E /* UIColor+IMChat.m in Sources */,
 				EE893A0B22290A55004F1F6E /* UIImage+Compression.m in Sources */,
 				EE7FE3F92229224A00073210 /* IMPhotoPreviewModel.m in Sources */,
-				EE7FE4262229313800073210 /* BAProgressView.m in Sources */,
+				EE7FE460222CC42500073210 /* BAProgressView.m in Sources */,
 				EE893A0C22290A55004F1F6E /* UIImage+IMVideo.m in Sources */,
 				EE8937172228F91A004F1F6E /* UILabel+IMAutoLabelHeightAndWidth.m in Sources */,
 				EE8936942227D997004F1F6E /* main.m in Sources */,
@@ -2374,7 +2373,7 @@
 				EE8939B7222902C3004F1F6E /* IMInputBoxViewCtrl.m in Sources */,
 				EE8936C42227DA4F004F1F6E /* IMColorTools.m in Sources */,
 				EE8939B6222902C3004F1F6E /* IMVideoProgressView.m in Sources */,
-				EE7FE4222229313800073210 /* FSActionSheetConfig.m in Sources */,
+				EE7FE45C222CC42500073210 /* FSActionSheetConfig.m in Sources */,
 				EE8939BA222902C3004F1F6E /* IMTextView.m in Sources */,
 				EE8936EF2228C81F004F1F6E /* IMChatMessageHelper.m in Sources */,
 				EE893A3822291B18004F1F6E /* IMMessagesListTableViewCell.m in Sources */,
@@ -2383,12 +2382,12 @@
 				EE893A0322290901004F1F6E /* NSArray+Json.m in Sources */,
 				EE893A3C22291B18004F1F6E /* IMChatTextTableViewCell.m in Sources */,
 				EE8939C422290380004F1F6E /* NSAttributedString+Addition.m in Sources */,
-				EE7FE42C2229313800073210 /* IMVideoPlayView.m in Sources */,
+				EE7FE466222CC42500073210 /* IMVideoPlayView.m in Sources */,
 				EE893A3B22291B18004F1F6E /* IMChatVoiceTableViewCell.m in Sources */,
 				EE8937042228D82B004F1F6E /* IMBaseTableViewCell.m in Sources */,
 				EE89387C222902C3004F1F6E /* IMEmojiModel.m in Sources */,
-				EE7FE42B2229313800073210 /* TAAbstractDotView.m in Sources */,
 				EE8936F22228CB2C004F1F6E /* IMChatBaseViewController.m in Sources */,
+				EE7FE465222CC42500073210 /* TAAbstractDotView.m in Sources */,
 				EE89387D222902C3004F1F6E /* IMTextBackedString.m in Sources */,
 				EE89371D2228FFEB004F1F6E /* NSDictionary+Json.m in Sources */,
 				EE893A3D22291B18004F1F6E /* IMChatVideoTableViewCell.m in Sources */,
@@ -2399,12 +2398,12 @@
 				EE89370D2228F5C7004F1F6E /* IMAppDefaultUtil.m in Sources */,
 				EE8939C722290408004F1F6E /* IMFileManagement.m in Sources */,
 				EE8936C32227DA4F004F1F6E /* IMMessageViewController.m in Sources */,
-				EE7FE4242229313800073210 /* FSActionSheetCell.m in Sources */,
+				EE7FE45E222CC42500073210 /* FSActionSheetCell.m in Sources */,
 				EE893A24222918AE004F1F6E /* IMChatViewController+Voice.m in Sources */,
 				EE8939AE222902C3004F1F6E /* IMInputBoxMoreView.m in Sources */,
-				EE7FE4232229313800073210 /* FSActionSheet.m in Sources */,
+				EE7FE45D222CC42500073210 /* FSActionSheet.m in Sources */,
 				EE8936CA2227DC57004F1F6E /* UIButton+IMExtra.m in Sources */,
-				EE7FE4272229313800073210 /* IMPhotoBrowser.m in Sources */,
+				EE7FE461222CC42500073210 /* IMPhotoBrowser.m in Sources */,
 				EE893A0A22290A55004F1F6E /* UIImage+Color.m in Sources */,
 				EE893A23222918AE004F1F6E /* IMChatViewController+Image.m in Sources */,
 				EE8939AD222902C3004F1F6E /* IMVideoViewController.m in Sources */,
@@ -2419,12 +2418,12 @@
 				EE893720222900BE004F1F6E /* UIView+Frame.m in Sources */,
 				EE8939B1222902C3004F1F6E /* IMPlayer.m in Sources */,
 				EE8936E32228C331004F1F6E /* IMChatViewController.m in Sources */,
-				EE7FE4292229313800073210 /* TAPageControl.m in Sources */,
+				EE7FE463222CC42500073210 /* TAPageControl.m in Sources */,
 				EE89387B222902C3004F1F6E /* IMEmojiGroup.m in Sources */,
 				EE8936862227D997004F1F6E /* AppDelegate.m in Sources */,
 				EE8939CA22290419004F1F6E /* IMFileCache.m in Sources */,
-				EE7FE4212229313800073210 /* IMZoomingScrollView.m in Sources */,
-				EE7FE42A2229313800073210 /* TAAnimatedDotView.m in Sources */,
+				EE7FE45B222CC42500073210 /* IMZoomingScrollView.m in Sources */,
+				EE7FE464222CC42500073210 /* TAAnimatedDotView.m in Sources */,
 				EE8939B3222902C3004F1F6E /* IMRecordView.m in Sources */,
 				EE8936E62228C4B6004F1F6E /* IMBaseModel.m in Sources */,
 			);
