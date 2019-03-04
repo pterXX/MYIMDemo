@@ -12,9 +12,9 @@
 #import "UIViewController+IMCategory.h"
 
 @implementation IMSystemAuthorization
+static IMSystemAuthorization *systemAuth = nil;
 
 +(instancetype)shareInstance{
-    static IMSystemAuthorization *systemAuth = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         systemAuth =  [[IMSystemAuthorization alloc] init];
@@ -22,10 +22,16 @@
     return systemAuth;
 }
 
-+(instancetype)allocWithZone:(struct _NSZone *)zone{
-    return [IMSystemAuthorization shareInstance];
-}
 
+/**第2步: 分配内存孔家时都会调用这个方法. 保证分配内存alloc时都相同*/
++(id)allocWithZone:(struct _NSZone *)zone{
+    //调用dispatch_once保证在多线程中也只被实例化一次
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        systemAuth = [super allocWithZone:zone];
+    });
+    return systemAuth;
+}
 
 /**
  获取相机

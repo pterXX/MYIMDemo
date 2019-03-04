@@ -210,7 +210,7 @@
         isAuthorized = [[IMSystemAuthorization shareInstance] checkAudioAuthrization];
         if (!isAuthorized) {
             [self settingAuthorizationWithTitle:@"权限设置" message:@"录音需要访问你的麦克风权限" cancel:^(BOOL isCancel) {
-                isAuthorized = !isCancel;
+                self->isAuthorized = !isCancel;
             }];
         }
         

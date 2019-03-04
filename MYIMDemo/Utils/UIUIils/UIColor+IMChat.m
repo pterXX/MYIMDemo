@@ -65,6 +65,10 @@
     return SETCOLOR(74.0, 99.0, 141.0, 1.0);
 }
 
++ (UIColor *)colorBlueImagePicker{
+    return SETCOLOR(0, 140, 224, 1.0);
+}
+
 #pragma mark - 黑色
 + (UIColor *)colorBlackForNavBar {
     return SETCOLOR(20.0, 20.0, 20.0, 1.0);

@@ -34,7 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - 蓝色
 + (UIColor *)colorBlueMoment;
-
++ (UIColor *)colorBlueImagePicker;
 
 #pragma mark - 黑色
 + (UIColor *)colorBlackForNavBar;

@@ -186,7 +186,7 @@
                 self.avatarImageView.image = [UIImage imageWithContentsOfFile:imagePath];
                 
             }
-            else if ([messageModel.toUserAvatar containsString:@"http://"]) {
+            else if ([messageModel.toUserAvatar containsString:@"http://"] || [messageModel.toUserAvatar containsString:@"https://"]) {
                 [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:messageModel.toUserAvatar]];
             }
             else {

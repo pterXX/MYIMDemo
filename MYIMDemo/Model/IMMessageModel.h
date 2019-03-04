@@ -21,7 +21,7 @@
 #define from_user_id_key @"from_user_id"
 #define from_user_id_key @"from_user_id"
 #define from_user_name_key @"from_user_name"
-#define head_img_key @"head_img"
+#define head_img_key @"head_image"
 #define msg_content_key @"content"
 #define msg_height_key @"msg_height"
 #define msg_id_key @"msg_id"

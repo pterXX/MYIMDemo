@@ -73,7 +73,7 @@ static CGFloat damping = 0.25;
 - (void)animateToActiveState
 {
     [UIView animateWithDuration:kAnimateDuration delay:0 usingSpringWithDamping:damping initialSpringVelocity:-20 options:UIViewAnimationOptionCurveLinear animations:^{
-        self.backgroundColor = _dotColor;
+        self.backgroundColor = self->_dotColor;
         self.transform = CGAffineTransformMakeScale(1.4, 1.4);
     } completion:nil];
 }

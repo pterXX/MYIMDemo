@@ -87,9 +87,30 @@
 
 @end
 
+
+#define LIST_VIEW_FRAME
 @implementation IMChatViewController
 
 @synthesize backBut;
+
++ (CGRect)listViewCtrlWrthFrame{
+    static CGRect frame;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        frame = CGRectMake(0, 0, IMSCREEN_WIDTH, IMSCREEN_HEIGHT - IMSTATUSBAR_NAVBAR_HEIGHT - IMTABBAR_HEIGHT);
+    });
+    return frame;
+}
+
++ (CGRect)inputBoxViewCtrlWrthFrame{
+    static CGRect frame;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        CGRect listViewFrame = [self listViewCtrlWrthFrame];
+        frame = CGRectMake(0,listViewFrame.origin.y + listViewFrame.size.height, IMSCREEN_WIDTH, IMTABBAR_HEIGHT);
+    });
+    return frame;
+}
 
 - (void)setConversation:(IMConversationModel *)conversation {
     _conversation  = conversation;
@@ -150,7 +171,7 @@
     
     [[NSNotificationCenter defaultCenter] postNotificationName:kConversationCommonNot object:nil userInfo:@{@"notType":@(IMConversationCommonNotificationUpdateBedgeNumber), @"conversationId":_conversation.conversationId}];
     
-    self.listView                 = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, IMSCREEN_WIDTH, IMSCREEN_HEIGHT - IMSTATUSBAR_NAVBAR_HEIGHT - IMTABBAR_HEIGHT) style:UITableViewStylePlain];
+    self.listView                 = [[UITableView alloc] initWithFrame:[[self class] listViewCtrlWrthFrame] style:UITableViewStylePlain];
     self.listView.delegate        = self;
     self.listView.dataSource      = self;
     // 这行代码很重要，一定不能删，删了会导致隐藏键盘时cell闪烁
@@ -179,7 +200,7 @@
     [headRefresh setRefreshingTarget:self refreshingAction:@selector(pullDownLoadMoreData)];
     self.listView.mj_header                 = headRefresh;
     
-    self.inputBoxCtrl = [[IMInputBoxViewCtrl alloc] initWithFrame:CGRectMake(0, self.listView.maxY, IMSCREEN_WIDTH, IMTABBAR_HEIGHT)];
+    self.inputBoxCtrl = [[IMInputBoxViewCtrl alloc] initWithFrame:[[self class] inputBoxViewCtrlWrthFrame]];
     self.inputBoxCtrl.delegate = self;
     [self.view addSubview:self.inputBoxCtrl];
     
@@ -819,14 +840,15 @@
     
     [UIView animateWithDuration:0.15 animations:^{
         
-        CGFloat height = IMSCREEN_HEIGHT - IMSTATUSBAR_NAVBAR_HEIGHT - self.inputBoxCtrl.inputBox.curHeight - IMSAFEAREA_INSETS_BOTTOM;
+        CGRect listViewFrame = [[self class] listViewCtrlWrthFrame];
+        CGFloat height = listViewFrame.size.height;
         
         if (self.inputBoxCtrl.inputBox.inputBoxStatus == IMInputBoxStatusShowVoice) {
             height = IMSCREEN_HEIGHT - IMSTATUSBAR_NAVBAR_HEIGHT - self.inputBoxCtrl.inputBox.curHeight;
         }
         
         if (height != self.listView.mj_h) {
-            self.listView.frame = CGRectMake(0, IMSTATUSBAR_NAVBAR_HEIGHT, IMSCREEN_WIDTH, height);
+            self.listView.frame = CGRectMake(0, listViewFrame.origin.y, IMSCREEN_WIDTH, height);
             if (self->isTapListView) {
                 [self scrollTableViewBottom];
                 self->isTapListView = NO;
@@ -1048,10 +1070,15 @@
 
 #pragma mark - IMInputBoxViewCtrl代理
 - (void)inputBoxCtrl:(IMInputBoxViewCtrl *)inputBoxCtrl didChangeInputBoxHeight:(CGFloat)height {
-    
-    self.listView.frame  = CGRectMake(0, 0, IMSCREEN_WIDTH, IMSCREEN_HEIGHT - IMSTATUSBAR_NAVBAR_HEIGHT - height);
+    CGRect inputRect = [[self class] inputBoxViewCtrlWrthFrame];
+    CGFloat inputHeight = inputRect.size.height;
+    //  不能小于输入框规定的高度
+    if (height >= inputHeight) {
+        inputHeight = height;
+    }
+    self.listView.frame  = CGRectMake(0, 0, IMSCREEN_WIDTH, IMSCREEN_HEIGHT - IMSTATUSBAR_NAVBAR_HEIGHT - inputHeight);
     [self scrollTableViewBottom];
-    self.inputBoxCtrl.frame = CGRectMake(0, self.listView.maxY, IMSCREEN_WIDTH, height);
+    self.inputBoxCtrl.frame = CGRectMake(0, self.listView.maxY, IMSCREEN_WIDTH, inputHeight);
 }
 
 #pragma mark - 发送消息

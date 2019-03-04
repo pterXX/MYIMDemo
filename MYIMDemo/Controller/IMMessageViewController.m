@@ -18,7 +18,6 @@
 #import "IMMessageModel.h"
 #import "IMNetworkDetection.h"
 #import "IMConversationModel.h"
-#import "IMConversationModel.h"
 #import "IMChatViewController.h"
 #import "IMMessagesListTableViewCell.h"
 #import "IMSearchMessageViewController.h"
@@ -402,6 +401,7 @@
             message.content           = msgdic[msg_content_key];
             message.msgType           = [msgdic[msg_type_key]integerValue];
             message.messageSendStatus = [msgdic[send_status_key] integerValue];
+            model.message             = message;
             [weakSelf.dataSource addObject:model];
         }];
     }
