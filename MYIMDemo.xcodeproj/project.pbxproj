@@ -29,6 +29,7 @@
 		EE7FE42F2229313800073210 /* icon_inputBox_video_play@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EE7FE41D2229313800073210 /* icon_inputBox_video_play@3x.png */; };
 		EE7FE4302229313800073210 /* icon_inputBox_video_ pause@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EE7FE41E2229313800073210 /* icon_inputBox_video_ pause@3x.png */; };
 		EE7FE4312229313800073210 /* icon_inputBox_thumb@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EE7FE41F2229313800073210 /* icon_inputBox_thumb@3x.png */; };
+		EE7FE433222CB29200073210 /* IMMailAccountInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7FE432222CB29200073210 /* IMMailAccountInfoModel.m */; };
 		EE8936862227D997004F1F6E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8936852227D997004F1F6E /* AppDelegate.m */; };
 		EE89368C2227D997004F1F6E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE89368A2227D997004F1F6E /* Main.storyboard */; };
 		EE89368E2227D997004F1F6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE89368D2227D997004F1F6E /* Assets.xcassets */; };
@@ -57,7 +58,6 @@
 		EE8937082228DDF3004F1F6E /* UIImage+IMChat.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8937072228DDF3004F1F6E /* UIImage+IMChat.m */; };
 		EE89370A2228DFB8004F1F6E /* WechatIMG5.png in Resources */ = {isa = PBXBuildFile; fileRef = EE8937092228DFB8004F1F6E /* WechatIMG5.png */; };
 		EE89370D2228F5C7004F1F6E /* IMAppDefaultUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = EE89370C2228F5C7004F1F6E /* IMAppDefaultUtil.m */; };
-		EE8937112228F77A004F1F6E /* IMMailAccountInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8937102228F77A004F1F6E /* IMMailAccountInfoModel.m */; };
 		EE8937142228F811004F1F6E /* NSDate+IMCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8937122228F811004F1F6E /* NSDate+IMCategory.m */; };
 		EE8937172228F91A004F1F6E /* UILabel+IMAutoLabelHeightAndWidth.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8937152228F91A004F1F6E /* UILabel+IMAutoLabelHeightAndWidth.m */; };
 		EE89371A2228FE6A004F1F6E /* IMNetworkDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8937192228FE6A004F1F6E /* IMNetworkDetection.m */; };
@@ -496,6 +496,7 @@
 		EE7FE41D2229313800073210 /* icon_inputBox_video_play@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_inputBox_video_play@3x.png"; sourceTree = "<group>"; };
 		EE7FE41E2229313800073210 /* icon_inputBox_video_ pause@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_inputBox_video_ pause@3x.png"; sourceTree = "<group>"; };
 		EE7FE41F2229313800073210 /* icon_inputBox_thumb@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_inputBox_thumb@3x.png"; sourceTree = "<group>"; };
+		EE7FE432222CB29200073210 /* IMMailAccountInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMMailAccountInfoModel.m; sourceTree = "<group>"; };
 		EE8936812227D997004F1F6E /* MYIMDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MYIMDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE8936842227D997004F1F6E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EE8936852227D997004F1F6E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -555,7 +556,6 @@
 		EE89370B2228F5C6004F1F6E /* IMAppDefaultUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMAppDefaultUtil.h; sourceTree = "<group>"; };
 		EE89370C2228F5C7004F1F6E /* IMAppDefaultUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMAppDefaultUtil.m; sourceTree = "<group>"; };
 		EE89370F2228F77A004F1F6E /* IMMailAccountInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMailAccountInfoModel.h; sourceTree = "<group>"; };
-		EE8937102228F77A004F1F6E /* IMMailAccountInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMMailAccountInfoModel.m; sourceTree = "<group>"; };
 		EE8937122228F811004F1F6E /* NSDate+IMCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+IMCategory.m"; sourceTree = "<group>"; };
 		EE8937132228F811004F1F6E /* NSDate+IMCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+IMCategory.h"; sourceTree = "<group>"; };
 		EE8937152228F91A004F1F6E /* UILabel+IMAutoLabelHeightAndWidth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+IMAutoLabelHeightAndWidth.m"; sourceTree = "<group>"; };
@@ -1243,10 +1243,10 @@
 		EE8936BC2227DA4E004F1F6E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EE7FE432222CB29200073210 /* IMMailAccountInfoModel.m */,
 				EE7FE3F72229224900073210 /* IMPhotoPreviewModel.h */,
 				EE7FE3F82229224900073210 /* IMPhotoPreviewModel.m */,
 				EE89370F2228F77A004F1F6E /* IMMailAccountInfoModel.h */,
-				EE8937102228F77A004F1F6E /* IMMailAccountInfoModel.m */,
 				EE8936E72228C506004F1F6E /* IMConversationModel.h */,
 				EE8936E82228C506004F1F6E /* IMConversationModel.m */,
 				EE8936EA2228C687004F1F6E /* IMMessageModel.h */,
@@ -2387,12 +2387,12 @@
 				EE893A3B22291B18004F1F6E /* IMChatVoiceTableViewCell.m in Sources */,
 				EE8937042228D82B004F1F6E /* IMBaseTableViewCell.m in Sources */,
 				EE89387C222902C3004F1F6E /* IMEmojiModel.m in Sources */,
-				EE8937112228F77A004F1F6E /* IMMailAccountInfoModel.m in Sources */,
 				EE7FE42B2229313800073210 /* TAAbstractDotView.m in Sources */,
 				EE8936F22228CB2C004F1F6E /* IMChatBaseViewController.m in Sources */,
 				EE89387D222902C3004F1F6E /* IMTextBackedString.m in Sources */,
 				EE89371D2228FFEB004F1F6E /* NSDictionary+Json.m in Sources */,
 				EE893A3D22291B18004F1F6E /* IMChatVideoTableViewCell.m in Sources */,
+				EE7FE433222CB29200073210 /* IMMailAccountInfoModel.m in Sources */,
 				EE8936E92228C506004F1F6E /* IMConversationModel.m in Sources */,
 				EE8936EC2228C687004F1F6E /* IMMessageModel.m in Sources */,
 				EE8939B2222902C3004F1F6E /* IMEmojiCollectionViewCell.m in Sources */,
