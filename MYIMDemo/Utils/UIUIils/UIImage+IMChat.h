@@ -14,7 +14,12 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - # 默认头像
 + (UIImage *) imageDefaultHeadPortrait;
 
-
+#pragma mark - # InputBox
++ (UIImage *)imageInputBoxVideoPlayCancel;
++ (UIImage *)imageInputBoxVideoBttomPlay;
++ (UIImage *)imageInputBoxVideoPlay;
++ (UIImage *)imageInputBoxVideoPause;
++ (UIImage *)imageInputBoxThumb;
 @end
 
 NS_ASSUME_NONNULL_END

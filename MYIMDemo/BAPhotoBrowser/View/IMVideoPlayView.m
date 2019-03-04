@@ -66,7 +66,7 @@
     [self.layer addSublayer:self.playerLayer];
 
     self.cancelBtn                  = [[UIButton alloc] init];
-    [self.cancelBtn setImage:[UIImage imageNamed:@"icon_inputBox_videoPlay_cancel"] forState:UIControlStateNormal];
+    [self.cancelBtn setImage:[UIImage imageInputBoxVideoPlayCancel] forState:UIControlStateNormal];
     [self.cancelBtn addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.cancelBtn];
     
@@ -74,7 +74,7 @@
     self.cancelBtn.sd_layout.topSpaceToView(self, 30 + topSpace).leftSpaceToView(self, 30).widthIs(20).heightIs(20);
 
     self.playBtn                    = [[UIButton alloc] init];
-    [self.playBtn setImage:[UIImage imageNamed:@"icon_inputBox_video_ pause"] forState:UIControlStateNormal];
+    [self.playBtn setImage:[UIImage imageInputBoxVideoPause] forState:UIControlStateNormal];
     [self.playBtn addTarget:self action:@selector(playAction:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.playBtn];
     
@@ -105,8 +105,8 @@
         self.slider                     = [[UISlider alloc] init];
         self.slider.tintColor           = [UIColor whiteColor];
         self.slider.backgroundColor     = [UIColor lightGrayColor];
-        [self.slider setThumbImage:[UIImage imageNamed:@"icon_inputBox_thumb"] forState:UIControlStateNormal];
-        [self.slider setThumbImage:[UIImage imageNamed:@"icon_inputBox_thumb"] forState:UIControlStateHighlighted];
+        [self.slider setThumbImage:[UIImage imageInputBoxThumb] forState:UIControlStateNormal];
+        [self.slider setThumbImage:[UIImage imageInputBoxThumb] forState:UIControlStateHighlighted];
         self.slider.continuous          = YES;
         self.slider.layer.cornerRadius  = 2;
         [self.slider addTarget:self action:@selector(sliderAction:) forControlEvents:UIControlEventValueChanged];
@@ -115,7 +115,7 @@
         self.slider.sd_layout.leftSpaceToView(self.currentTime, 10).centerYEqualToView(self.playBtn).rightSpaceToView(self.endTime, 10).heightIs(4);
         
         _playButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_playButton setImage:[UIImage imageNamed:@"icon_inputBox_video_play"] forState:UIControlStateNormal];
+        [_playButton setImage:[UIImage imageInputBoxVideoPlay] forState:UIControlStateNormal];
         [_playButton addTarget:self action:@selector(playAction:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_playButton];
         _playButton.sd_layout.centerXEqualToView(self).centerYEqualToView(self).widthIs(60).heightIs(60);
@@ -184,12 +184,12 @@
     if (_isPlaying) {
         _isPlaying = NO;
         [self.player pause];
-        [self.playBtn setImage:[UIImage imageNamed:@"icon_inputBox_video_bttom_play"] forState:UIControlStateNormal];
+        [self.playBtn setImage:[UIImage imageInputBoxVideoBttomPlay] forState:UIControlStateNormal];
     }
     else {
         _isPlaying = YES;
         [self play];
-        [self.playBtn setImage:[UIImage imageNamed:@"icon_inputBox_video_ pause"] forState:UIControlStateNormal];
+        [self.playBtn setImage:[UIImage imageInputBoxVideoPause] forState:UIControlStateNormal];
         
     }
 }
