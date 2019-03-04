@@ -10,7 +10,7 @@
 		397C5A5E3D97F0A5932F90FC /* libPods-MYIMDemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C9EBCD87E3329766E867F726 /* libPods-MYIMDemoTests.a */; };
 		5DAFC249B813677CF263A0F6 /* libPods-MYIMDemoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCADB06942BB386082F87630 /* libPods-MYIMDemoUITests.a */; };
 		E6F4433700624FDC0018563B /* libPods-MYIMDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 043D7BCF57FD4488CAB52DD0 /* libPods-MYIMDemo.a */; };
-		EE7234D1222CCD5F00A6F7E2 /* NSArray+zh_SafeAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7234CF222CCD5E00A6F7E2 /* NSArray+zh_SafeAccess.m */; };
+		EE7234D7222CCEB200A6F7E2 /* NSArray+zh_SafeAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7234D6222CCEB200A6F7E2 /* NSArray+zh_SafeAccess.m */; };
 		EE7FE3F92229224A00073210 /* IMPhotoPreviewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7FE3F82229224900073210 /* IMPhotoPreviewModel.m */; };
 		EE7FE433222CB29200073210 /* IMMailAccountInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7FE432222CB29200073210 /* IMMailAccountInfoModel.m */; };
 		EE7FE45A222CC42500073210 /* IMPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7FE437222CC42500073210 /* IMPhoto.m */; };
@@ -463,8 +463,8 @@
 		CCADB06942BB386082F87630 /* libPods-MYIMDemoUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MYIMDemoUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2096A5A554B98AB75306A3F /* Pods-MYIMDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MYIMDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MYIMDemoTests/Pods-MYIMDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		E3FAE9F2B5538351A8D11771 /* Pods-MYIMDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MYIMDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MYIMDemoTests/Pods-MYIMDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
-		EE7234CF222CCD5E00A6F7E2 /* NSArray+zh_SafeAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+zh_SafeAccess.m"; path = "../../../../ys_ios/韩国版/YunShiFinance/Category/NSArray/NSArray+zh_SafeAccess.m"; sourceTree = "<group>"; };
-		EE7234D0222CCD5E00A6F7E2 /* NSArray+zh_SafeAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+zh_SafeAccess.h"; path = "../../../../ys_ios/韩国版/YunShiFinance/Category/NSArray/NSArray+zh_SafeAccess.h"; sourceTree = "<group>"; };
+		EE7234D5222CCEB200A6F7E2 /* NSArray+zh_SafeAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+zh_SafeAccess.h"; sourceTree = "<group>"; };
+		EE7234D6222CCEB200A6F7E2 /* NSArray+zh_SafeAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+zh_SafeAccess.m"; sourceTree = "<group>"; };
 		EE7FE3F72229224900073210 /* IMPhotoPreviewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMPhotoPreviewModel.h; sourceTree = "<group>"; };
 		EE7FE3F82229224900073210 /* IMPhotoPreviewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMPhotoPreviewModel.m; sourceTree = "<group>"; };
 		EE7FE432222CB29200073210 /* IMMailAccountInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMMailAccountInfoModel.m; sourceTree = "<group>"; };
@@ -1748,10 +1748,10 @@
 		EE893A0E22290AEE004F1F6E /* NS_Category */ = {
 			isa = PBXGroup;
 			children = (
+				EE7234D5222CCEB200A6F7E2 /* NSArray+zh_SafeAccess.h */,
+				EE7234D6222CCEB200A6F7E2 /* NSArray+zh_SafeAccess.m */,
 				EE893A0122290900004F1F6E /* NSArray+Json.h */,
 				EE893A0222290901004F1F6E /* NSArray+Json.m */,
-				EE7234D0222CCD5E00A6F7E2 /* NSArray+zh_SafeAccess.h */,
-				EE7234CF222CCD5E00A6F7E2 /* NSArray+zh_SafeAccess.m */,
 				EE8939C22229037F004F1F6E /* NSAttributedString+Addition.h */,
 				EE8939C322290380004F1F6E /* NSAttributedString+Addition.m */,
 				EE8937132228F811004F1F6E /* NSDate+IMCategory.h */,
@@ -2399,7 +2399,7 @@
 				EE7FE433222CB29200073210 /* IMMailAccountInfoModel.m in Sources */,
 				EE8936E92228C506004F1F6E /* IMConversationModel.m in Sources */,
 				EE8936EC2228C687004F1F6E /* IMMessageModel.m in Sources */,
-				EE7234D1222CCD5F00A6F7E2 /* NSArray+zh_SafeAccess.m in Sources */,
+				EE7234D7222CCEB200A6F7E2 /* NSArray+zh_SafeAccess.m in Sources */,
 				EE8939B2222902C3004F1F6E /* IMEmojiCollectionViewCell.m in Sources */,
 				EE89370D2228F5C7004F1F6E /* IMAppDefaultUtil.m in Sources */,
 				EE8939C722290408004F1F6E /* IMFileManagement.m in Sources */,
