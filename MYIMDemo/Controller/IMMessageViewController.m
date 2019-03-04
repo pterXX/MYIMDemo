@@ -110,7 +110,7 @@
 }
 
 - (void)im_addSubViews{
-    CGFloat systemVersion = [UIDevice systemVersion].doubleValue;
+    CGFloat systemVersion = [UIDevice currentSystemVersion].doubleValue;
     // iOS 11以前搜索框的高度是44 iOS 11及以后的高度是56
     searchBarHeight = systemVersion < 11.0 ? 44 : 56;
     _segmentDataSource = [NSMutableArray arrayWithObjects:@"消息", @"访客", nil];

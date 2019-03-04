@@ -16,7 +16,7 @@
 + (NSString *)identifierNumber; //手机序列号
 + (NSString *)localPhoneModel; //地方型号  （国际化区域名称）
 + (NSString *)phoneModel; // 手机型号
-+ (NSString *)systemVersion; //  系统版本
++ (NSString *)currentSystemVersion; //  系统版本
 + (NSString *)userPhoneName; //  手机别名
 
 //  判断是否是iPhoneX以后有刘海的机型
