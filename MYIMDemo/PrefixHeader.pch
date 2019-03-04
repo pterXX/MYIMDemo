@@ -22,6 +22,7 @@
 #import <SDWebImageManager.h>
 #import <SVProgressHUD.h>
 #import <ZZFLEX/ZZFLEX.h>
+#import 
 
 #import "IMBaseModel.h" // 基础model
 #import "IMBaseTableViewCell.h" //  基础cell

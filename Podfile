@@ -15,8 +15,7 @@ target 'MYIMDemo' do
   pod 'FMDB'                      #数据存储
   pod 'CocoaLumberjack'           #日志框架
   pod 'ZZFLEX'
-  # TLKit 基础库，包含常用宏定义、常用分类、常用功能组件（HUD、actionSheet等）
-  pod 'TLKit'
+  pod 'YYKit'
 
 
   target 'MYIMDemoTests' do

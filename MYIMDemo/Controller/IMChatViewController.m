@@ -229,7 +229,7 @@
     kWeakSelf
     dispatch_async(defaultQueue, ^{
         
-        if (unreadMsgCount)
+        if (self->unreadMsgCount)
         {
             [weakSelf updateMessageReadState];
         }
@@ -356,7 +356,7 @@
                 model.messageId    = obj[@"msg_id"];
                 model.content      = obj[@"content"];
                 
-                if (isFirstLoad)
+                if (self->isFirstLoad)
                 {
                     [weakSelf.allImageDatas addObject:model];
                 }
@@ -535,6 +535,12 @@
     }
 }
 
+
+/**
+ 添加消息
+
+ @param model 当前的消息model
+ */
 - (void)addMessage:(IMMessageModel *)model
 {
     if (model.msgType == IMMessageTypeImage || model.msgType == IMMessageTypeVideo)
@@ -549,10 +555,10 @@
     kWeakSelf
     dispatch_async(dispatch_get_main_queue(), ^{
         model.isDelayShowSendStatus = YES;
-        [_dataSource addObject:model];
+        [weakSelf.dataSource addObject:model];
         
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:_dataSource.count - 1 inSection:0];
-        [_listView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:0];
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:weakSelf.dataSource.count - 1 inSection:0];
+        [weakSelf.listView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:0];
         
         [weakSelf scrollTableViewBottom];
     });
@@ -921,7 +927,7 @@
     
     dispatch_async(defaultQueue, ^{
         
-        indexPathRow = indexPath.row;
+        self->indexPathRow = indexPath.row;
         [self updateMessageSendStatus:IMMessageSendStatusSending
                             indexPath:indexPath
                        localMessageId:messageModel.messageId
@@ -966,7 +972,7 @@
                 fileData = [[NSData alloc] initWithContentsOfFile:[kDocDir stringByAppendingPathComponent:messageModel.content]];
             }
             
-            NSString *type = messageModel.msgType == IMMessageTypeImage ? @"png" : @"aac";
+//            NSString *type = messageModel.msgType == IMMessageTypeImage ? @"png" : @"aac";
             //            [IMInteractionWrapper uploadFileToFileServerWithData:fileData fileName:type block:^(NSString *url, int errorCode, NSString *errorMsg) {
             //
             //                if (!errorCode)
@@ -1059,7 +1065,7 @@
     __block NSInteger index = 0;
     [self.imageDatas enumerateObjectsUsingBlock:^(IMPhotoPreviewModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
         
-        if ([obj.messageId isEqualToString:crrentTapPhoto.messageId]) {
+        if ([obj.messageId isEqualToString:self->crrentTapPhoto.messageId]) {
             index = idx;
         }
     }];
@@ -1127,9 +1133,9 @@
             
             cellHeight = rowHeight;
             
-            [sendMessage lock];
+            [self->sendMessage lock];
             [weakSelf addMessage:model];
-            [sendMessage unlock];
+            [self->sendMessage unlock];
             
         }];
         //        向服务端发消息
