@@ -1,0 +1,29 @@
+//
+//  NSArray+zh_SafeAccess.h
+//  zhPopupController
+//
+//  Created by zhanghao on 2017/9/15.
+//  Copyright © 2017年 snail-z. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface NSArray (zh_SafeAccess)
+
+- (NSUInteger)zh_indexOfObject:(id _Nullable )anObject;
+
+///  删除指定条件object
+- (id _Nullable )zh_removeOfObject:(BOOL(^_Nonnull)(id _Nonnull value))block;
+
+///  替换指定条件Object
+- (id)zh_replaceOfObject:(id(^)(id value))block;
+
+///  遍历数组并且返回一个处理后的新数组
+- (NSArray *)zh_enumerateObjectsUsingBlock:(id(^)(id obj))block;
+
+///  这个方法可以获取到html中的所有图片
++ (NSArray *)zh_getAllImgOfHtml:(NSString *)webString;
+
+///  用指定字符串连接
+- (id)zh_Join:(NSString *)joinStr;
+@end
