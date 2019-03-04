@@ -14,12 +14,15 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
+  - CocoaAsyncSocket (7.6.3)
   - CocoaLumberjack (3.5.1):
     - CocoaLumberjack/Core (= 3.5.1)
   - CocoaLumberjack/Core (3.5.1)
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
+  - KissXML (5.2.3)
+  - libidn (1.35)
   - MJRefresh (3.1.15.7)
   - SDAutoLayout (2.2.1)
   - SDWebImage (4.4.6):
@@ -27,6 +30,13 @@ PODS:
   - SDWebImage/Core (4.4.6)
   - SVProgressHUD (2.2.5)
   - TZImagePickerController (3.1.9)
+  - XMPPFramework (4.0.0):
+    - XMPPFramework/default (= 4.0.0)
+  - XMPPFramework/default (4.0.0):
+    - CocoaAsyncSocket (~> 7.6)
+    - CocoaLumberjack
+    - KissXML (~> 5.2)
+    - libidn (~> 1.35)
   - YYKit (1.0.9):
     - YYKit/no-arc (= 1.0.9)
   - YYKit/no-arc (1.0.9)
@@ -41,34 +51,43 @@ DEPENDENCIES:
   - SDWebImage
   - SVProgressHUD
   - TZImagePickerController
+  - XMPPFramework
   - YYKit
   - ZZFLEX
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - AFNetworking
+    - CocoaAsyncSocket
     - CocoaLumberjack
     - FMDB
+    - KissXML
+    - libidn
     - MJRefresh
     - SDAutoLayout
     - SDWebImage
     - SVProgressHUD
     - TZImagePickerController
+    - XMPPFramework
     - YYKit
     - ZZFLEX
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
   CocoaLumberjack: 2101f8a5508197a305e737d16c5c2e9e2157628c
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
+  KissXML: 09f88ff8161fd058d67b70740b8b516687b52823
+  libidn: e4576a956b797c584c77aaedfc6e3dd639b61bdc
   MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
   SDAutoLayout: 8bf6b3bbc8b01f775d4defbb4fda2ace805461be
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   TZImagePickerController: c3f7c505d23281e21e98df6dbeae372946caa28f
+  XMPPFramework: 5d31ff9f73dce031b24bc49bcf88093627a3a86e
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
   ZZFLEX: 48ad9faf261c9589a3d16d44a701219ad41883b8
 
-PODFILE CHECKSUM: cd278571b6aab7223d34165e841d6d53fa4bd8e4
+PODFILE CHECKSUM: d078099d6b1641876ed2e82cb1e95446669a329c
 
 COCOAPODS: 1.5.0
