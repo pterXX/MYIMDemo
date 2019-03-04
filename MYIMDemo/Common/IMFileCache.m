@@ -8,7 +8,7 @@
 
 #import "IMFileCache.h"
 
-#import <AFNetworking.h>
+#import "AFNetworking.h"
 
 static IMFileCache *fileCache = nil;
 
