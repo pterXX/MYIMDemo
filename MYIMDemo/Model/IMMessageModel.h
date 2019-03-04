@@ -8,6 +8,38 @@
 
 #import <UIKit/UIKit.h>
 #import "IMBaseModel.h"
+#import "IMPhotoPreviewModel.h"
+
+
+#define attach_key @"attach"
+#define cell_height_key @"cell_height"
+#define chat_type_key @"chat_type"
+#define conversation_id_key  @"conversation_id"
+#define conversation_name_key  @"conversation_name"
+#define email_id_key @"email_id"
+#define from_employee_id_key @"from_employee_id"
+#define from_user_id_key @"from_user_id"
+#define from_user_id_key @"from_user_id"
+#define from_user_name_key @"from_user_name"
+#define head_img_key @"head_img"
+#define msg_content_key @"content"
+#define msg_height_key @"msg_height"
+#define msg_id_key @"msg_id"
+#define msg_key @"msg"
+#define msg_type_key @"msg_type"
+#define msg_width_key @"msg_width"
+#define picture_type_key @"picture_type"
+#define recv_time_key @"recv_time"
+#define send_status_key @"send_status"
+#define send_time_key @"send_time"
+#define subject_key @"subject"
+#define to_user_id_key @"to_user_id"
+#define to_user_name_key @"to_user_name"
+#define uid_key @"uid"
+#define unreead_num_key @"unread_num"
+#define voice_time_key @"voice_time"
+
+
 NS_ASSUME_NONNULL_BEGIN
 
 typedef void (^FinishedRowHeightCalculate)(CGFloat rowHeight, CGSize messageSize, BOOL complete);
@@ -127,6 +159,15 @@ typedef void (^FinishedRowHeightCalculate)(CGFloat rowHeight, CGSize messageSize
  */
 - (void)photoHeightWithImageWidth:(CGFloat)imageWidth imageHeight:(CGFloat)imageHeight complete:(FinishedRowHeightCalculate)complete;
 
+
+/**
+ Dictionary  转换为model
+ 
+ @param obj 当前需要转换的字典
+ @param complete 其他操作回调
+ @return 返回一个由dictionary 转换为 Model 的MessgaeModel
+ */
++ (IMMessageModel *)modelWithDictionary:(NSDictionary *)obj complete:(IMMessageModel * _Nonnull (^)(IMMessageModel *objModel,NSDictionary *objDict))complete;
 @end
 
 NS_ASSUME_NONNULL_END

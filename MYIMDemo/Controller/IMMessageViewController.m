@@ -334,15 +334,15 @@
         weakSelf.receiveJson   = [NSString stringWithFormat:@"%@", jsonStr];
         
         NSDictionary *dic      = [NSDictionary dictionaryWithJsonString:weakSelf.receiveJson];
-        NSDictionary *message  = [NSDictionary dictionaryWithDictionary:dic[@"msg"]];
+        NSDictionary *message  = [NSDictionary dictionaryWithDictionary:dic[msg_key]];
         
         IMMessageModel *messageModel = [IMMessageModel new];
-        messageModel.content   = message[@"content"];
-        messageModel.messageId = message[@"msg_id"];
-        messageModel.msgType   = [message[@"msg_type"] integerValue];
+        messageModel.content   = message[msg_content_key];
+        messageModel.messageId = message[msg_id_key];
+        messageModel.msgType   = [message[msg_type_key]integerValue];
         
-        NSString *lastConvId   = dic[@"conversation_id"];
-        if ([message[@"msg_type"] integerValue] == IMMessageTypeImage)
+        NSString *lastConvId   = dic[conversation_id_key];
+        if ([message[msg_type_key]integerValue] == IMMessageTypeImage)
         {
             [weakSelf saveReceivedMessageWithMsgJson:weakSelf.receiveJson cellHeight:-1 messageSize:CGSizeMake(-1, -1) lastConverId:lastConvId messageDic:message imageData:nil];
         }
@@ -389,20 +389,19 @@
         [messageList enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
             
             IMConversationModel *model = [IMConversationModel new];
-            model.conversationId      = obj[@"conversation_id"];
-            model.conversationName    = obj[@"conversation_name"];
-            model.badgeNumber         = [obj[@"unread_num"] intValue];
-            model.headImage           = obj[@"head_img"];
-            model.toUserId            = obj[@"to_user_id"];
+            model.conversationId      = obj[conversation_id_key];
+            model.conversationName    = obj[conversation_name_key];
+            model.badgeNumber         = [obj[unreead_num_key] intValue];
+            model.headImage           = obj[head_img_key];
+            model.toUserId            = obj[to_user_id_key];
             
-            NSDictionary *msgDic      = obj[@"msg"];
+            NSDictionary *msgdic      = obj[msg_key];
             
             IMMessageModel *message    = [IMMessageModel new];
-            message.recvTime          = msgDic[@"recv_time"];
-            message.content           = msgDic[@"content"];
-            message.msgType           = [msgDic[@"msg_type"] integerValue];
-            message.messageSendStatus = [msgDic[@"send_status"] integerValue];
-            model.message             = message;
+            message.recvTime          = msgdic[send_time_key];
+            message.content           = msgdic[msg_content_key];
+            message.msgType           = [msgdic[msg_type_key]integerValue];
+            message.messageSendStatus = [msgdic[send_status_key] integerValue];
             [weakSelf.dataSource addObject:model];
         }];
     }

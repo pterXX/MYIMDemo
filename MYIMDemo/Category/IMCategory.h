@@ -9,21 +9,22 @@
 #ifndef IMCategory_h
 #define IMCategory_h
 
+
+
 #import "NSArray+Json.h"
+#import "NSArray+zh_SafeAccess.h"
 #import "NSAttributedString+Addition.h"
-#import "NSTextAttachment+Emoji.h"
 #import "NSDate+IMCategory.h"
 #import "NSDictionary+Json.h"
-#import "NSTextAttachment+Emoji.h"
 #import "NSString+Category.h"
 #import "NSString+Size.h"
-
-
+#import "NSTextAttachment+Emoji.h"
+#import "NSTextAttachment+Emoji.h"
+#import "UIButton+IMExtra.h"
+#import "UIDevice+IMCategory.h"
 #import "UIImage+Color.h"
 #import "UIImage+Compression.h"
 #import "UIImage+IMVideo.h"
-#import "UIButton+IMExtra.h"
-#import "UIDevice+IMCategory.h"
 #import "UILabel+IMAutoLabelHeightAndWidth.h"
 #import "UIScrollView+Addition.h"
 #import "UIView+Frame.h"

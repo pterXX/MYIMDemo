@@ -283,92 +283,60 @@
         kWeakSelf;
         __block IMMessageModel *previousMessage = nil;
         __block NSInteger num = 0;
-        [convMsgList enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            __block IMMessageModel *model  = [IMMessageModel new];
-            model.messageId       = obj[@"msg_id"];
-            model.msgType         = [obj[@"msg_type"] intValue];
-            model.cellHeight      = [obj[@"cell_height"] floatValue];
-            model.messageSize     = CGSizeMake([obj[@"msg_width"] floatValue], [obj[@"msg_height"] floatValue]);
-            model.messageChatType = [obj[@"chat_type"] intValue];
-            model.content         = obj[@"content"];
-            model.fromUserId      = obj[@"from_user_id"];
-            model.toUserId        = obj[@"to_user_id"];
-            model.pictureType     = [obj[@"picture_type"] intValue];
-            model.recvTime        = obj[@"recv_time"];
-            model.toUserAvatar    = obj[@"head_image"];
-            model.sendTime        = obj[@"send_time"];
-            model.duringTime      = [obj[@"voice_time"] intValue];
-            model.direction       = ![obj[@"from_user_id"] isEqualToString:@"143701"];
-            model.uid             = obj[@"uid"];
-            model.emailId         = obj[@"email_id"];
-            model.subject         = obj[@"subject"] ? obj[@"subject"] : obj[@"content"];
-            model.attach          = [obj[@"attach"] integerValue];
-            //            NSString *contentSynopsis = obj[@"contentSynopsis"];
-            //            contentSynopsis       = [contentSynopsis flattenHTML];
-            //            model.contentSynopsis = [contentSynopsis filterLineBreaks];
-            model.messageSendStatus = [obj[@"send_status"] integerValue];
-            model.aotoResend      = model.messageSendStatus == IMMessageSendStatusSending;
-            
-            if (model.msgType == IMMessageTypeText) {
-                CGSize messageSize = [model.messageAtt boundingRectWithSize:CGSizeMake(ceil(MESSAGE_MAX_WIDTH)-10, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
-                messageSize = CGSizeMake(ceil(messageSize.width) + 10, ceil(messageSize.height) + 16);
-                if (model.messageSize.width != messageSize.width || model.messageSize.height != messageSize.height) {
-                    model.cellHeight = -1;
-                    model.messageSize = CGSizeMake(-1, -1);
+        [weakSelf.dataSource addObjectsFromArray:[convMsgList zh_enumerateObjectsUsingBlock:^id(NSDictionary * obj) {
+            __block IMMessageModel *model  = [IMMessageModel modelWithDictionary:obj complete:^IMMessageModel * _Nonnull(IMMessageModel * _Nonnull objModel, NSDictionary * _Nonnull objDict) {
+                objModel.lastMessage     = previousMessage;
+                NSTimeInterval prevTime = 0;
+                NSTimeInterval lastTime = 0;
+                if (objModel.direction == IMMessageSenderTypeSender) {
+                    lastTime = [objModel.sendTime integerValue];
                 }
-            }
-            
-            model.lastMessage     = previousMessage;
-            NSTimeInterval prevTime = 0;
-            NSTimeInterval lastTime = 0;
-            if (model.direction == IMMessageSenderTypeSender) {
-                lastTime = [model.sendTime integerValue];
-            }
-            else {
-                lastTime = [model.recvTime integerValue];
-            }
-            
-            if (previousMessage.direction == IMMessageSenderTypeSender) {
-                prevTime = [previousMessage.sendTime integerValue];
-            }
-            else {
-                prevTime = [previousMessage.recvTime integerValue];
-            }
-            
-            BOOL isShowTime       = [NSDate showTimeWithPreviousTime:prevTime lastTime:lastTime];
-            
-            model.showMessageTime = isShowTime;
-            previousMessage       = model;
-            
-            if (model.msgType == IMMessageTypeImage && model.cellHeight == -1) {
-                CGFloat showTimeHeight = isShowTime ? SHOW_MESSAGE_TIME_HEIGHT : 0;
-                [model messageProcessingWithFinishedCalculate:^(CGFloat rowHeight, CGSize messageSize, BOOL complete) { }];
-                model.estimateHeight = 200 + showTimeHeight;
-                model.estimateSize   = CGSizeMake(102, model.estimateHeight - showTimeHeight - 20);
-            }
-            else {
-                [model messageProcessingWithFinishedCalculate:^(CGFloat rowHeight, CGSize messageSize, BOOL complete) { }];
-            }
-            
-            if ([obj[@"msg_type"] intValue] == IMMessageTypeImage)
-            {
-                IMPhotoPreviewModel *model = [IMPhotoPreviewModel new];
-                model.messageId    = obj[@"msg_id"];
-                model.content      = obj[@"content"];
+                else {
+                    lastTime = [objModel.recvTime integerValue];
+                }
                 
-                if (self->isFirstLoad)
-                {
-                    [weakSelf.allImageDatas addObject:model];
+                if (previousMessage.direction == IMMessageSenderTypeSender) {
+                    prevTime = [previousMessage.sendTime integerValue];
                 }
-                else
-                {
-                    [weakSelf.allImageDatas insertObject:model atIndex:num];
-                    num ++;
+                else {
+                    prevTime = [previousMessage.recvTime integerValue];
                 }
-            }
-            
-            [weakSelf.dataSource addObject:model];
-        }];
+                
+                BOOL isShowTime       = [NSDate showTimeWithPreviousTime:prevTime lastTime:lastTime];
+                
+                objModel.showMessageTime = isShowTime;
+                previousMessage       = objModel;
+                
+                if (objModel.msgType == IMMessageTypeImage && objModel.cellHeight == -1) {
+                    CGFloat showTimeHeight = isShowTime ? SHOW_MESSAGE_TIME_HEIGHT : 0;
+                    [objModel messageProcessingWithFinishedCalculate:^(CGFloat rowHeight, CGSize messageSize, BOOL complete) { }];
+                    objModel.estimateHeight = 200 + showTimeHeight;
+                    objModel.estimateSize   = CGSizeMake(102, objModel.estimateHeight - showTimeHeight - 20);
+                }
+                else {
+                    [objModel messageProcessingWithFinishedCalculate:^(CGFloat rowHeight, CGSize messageSize, BOOL complete) { }];
+                }
+                
+                if ([obj[msg_type_key]intValue] == IMMessageTypeImage)
+                {
+                    IMPhotoPreviewModel *photoPreviewModel = [IMPhotoPreviewModel new];
+                    photoPreviewModel.messageId    = obj[msg_id_key];
+                    photoPreviewModel.content      = obj[msg_content_key];
+                    
+                    if (self->isFirstLoad)
+                    {
+                        [weakSelf.allImageDatas addObject:photoPreviewModel];
+                    }
+                    else
+                    {
+                        [weakSelf.allImageDatas insertObject:photoPreviewModel atIndex:num];
+                        num ++;
+                    }
+                }
+                return objModel;
+            }];
+            return model;
+        }]];
         
         [self.listView reloadData];
         [self scrollTableViewBottom];
@@ -538,7 +506,7 @@
 
 /**
  添加消息
-
+ 
  @param model 当前的消息model
  */
 - (void)addMessage:(IMMessageModel *)model
@@ -762,22 +730,22 @@
     
     [self updateViewFrame];
     switch (messageModel.msgType) {
-            case IMMessageTypeNone:
+        case IMMessageTypeNone:
             break;
-            case IMMessageTypeText:
+        case IMMessageTypeText:
             break;
-            case IMMessageTypeMail:
+        case IMMessageTypeMail:
         {
             [self intoMailDetailWithMessageModel:messageModel];
         }
             break;
-            case IMMessageTypeImage:
+        case IMMessageTypeImage:
         {
             [self photoBrowserWithChatTableViewCell:tableViewCell messageModel:messageModel];
             
         }
             break;
-            case IMMessageTypeVoice:
+        case IMMessageTypeVoice:
         {
             NSIndexPath *indexPath = [tableViewCell indexPath];
             // 第一次点击或者点击不同的cell是触发
@@ -793,7 +761,7 @@
         }
             
             break;
-            case IMMessageTypeVideo:
+        case IMMessageTypeVideo:
         {
             [self photoBrowserWithChatTableViewCell:tableViewCell messageModel:messageModel];
         }
@@ -937,31 +905,31 @@
         NSString *fromUserName = [[IMAppDefaultUtil sharedInstance] getUserName];
         
         NSMutableDictionary *messageDic       = [NSMutableDictionary dictionary];
-        messageDic[@"msg_id"]                 = @0;
-        messageDic[@"to_user_name"]           = model.conversationName;
-        messageDic[@"to_user_id"]             = model.toUserId;
-        messageDic[@"from_user_name"]         = fromUserName;
-        messageDic[@"from_user_id"]           = KXINIUID;
-        messageDic[@"from_employee_id"]       = @"-1";
-        messageDic[@"msg_type"]               = @(messageModel.msgType);
+        messageDic[msg_id_key]                 = @0;
+        messageDic[to_user_name_key]           = model.conversationName;
+        messageDic[to_user_id_key]             = model.toUserId;
+        messageDic[from_user_name_key]        = fromUserName;
+        messageDic[from_user_id_key]          = KXINIUID;
+        messageDic[from_employee_id_key]      = @"-1";
+        messageDic[msg_type_key]              = @(messageModel.msgType);
         if (![messageModel.content isKindOfClass:[NSData class]]) {
-            messageDic[@"content"]            = messageModel.content;
+            messageDic[msg_content_key]           = messageModel.content;
         }
         if (messageModel.fileUrl && messageModel.fileUrl.length == 0) {
-            messageDic[@"content"]            = messageModel.fileUrl;
+            messageDic[msg_content_key]           = messageModel.fileUrl;
         }
         
-        messageDic[@"send_time"]              = [NSString stringWithFormat:@"%ld",(long)messageModel.sendTime];
-        messageDic[@"recv_time"]              = @"";
-        messageDic[@"voice_time"]             = [NSString stringWithFormat:@"%d", messageModel.duringTime];
-        messageDic[@"picture_type"]           = @0;
+        messageDic[send_time_key]             = [NSString stringWithFormat:@"%ld",(long)messageModel.sendTime];
+        messageDic[recv_time_key]              = @"";
+        messageDic[voice_time_key]             = [NSString stringWithFormat:@"%d", messageModel.duringTime];
+        messageDic[picture_type_key]           = @0;
         
         NSMutableDictionary *conversationDic  = [NSMutableDictionary dictionary];
-        conversationDic[@"conversation_name"] = model.conversationName;
-        conversationDic[@"conversation_id"]   = model.conversationId;
-        conversationDic[@"chat_type"]         = @0;
-        conversationDic[@"head_img"]          = @"";
-        conversationDic[@"msg"]               = messageDic;
+        conversationDic[conversation_name_key] = model.conversationName;
+        conversationDic[conversation_id_key]   = model.conversationId;
+        conversationDic[chat_type_key]         = @0;
+        conversationDic[head_img_key]          = @"";
+        conversationDic[msg_key]               = messageDic;
         
         if (messageModel.msgType == IMMessageTypeImage || messageModel.msgType == IMMessageTypeVoice) {
             NSData *fileData;
@@ -972,13 +940,13 @@
                 fileData = [[NSData alloc] initWithContentsOfFile:[kDocDir stringByAppendingPathComponent:messageModel.content]];
             }
             
-//            NSString *type = messageModel.msgType == IMMessageTypeImage ? @"png" : @"aac";
+            //            NSString *type = messageModel.msgType == IMMessageTypeImage ? @"png" : @"aac";
             //            [IMInteractionWrapper uploadFileToFileServerWithData:fileData fileName:type block:^(NSString *url, int errorCode, NSString *errorMsg) {
             //
             //                if (!errorCode)
             //                {
-            //                    messageDic[@"content"]        = url;
-            //                    conversationDic[@"msg"]       = messageDic;
+            //                    messageDic[MSG_CONTENT_KEY]       = url;
+            //                    conversationDic[kMSG_KEY]       = messageDic;
             //                    jsonStr = [conversationDic dictionaryTurnJson];
             //
             //                    if (transformComplete) {
@@ -1243,7 +1211,7 @@
     // do something yourself
     switch (actionSheetindex)
     {
-            case 0: // 保存
+        case 0: // 保存
         {
             [browser saveCurrentShowImage];
         }

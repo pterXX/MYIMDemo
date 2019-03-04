@@ -57,31 +57,31 @@
 - (NSString *)cellIdendtifier
 {
     switch (_msgType) {
-            case IMMessageTypeNone:
+        case IMMessageTypeNone:
             return @"";
             break;
-            case IMMessageTypeText:
+        case IMMessageTypeText:
             return @"IMChatTextTableViewCell";
             break;
-            case IMMessageTypeMail:
+        case IMMessageTypeMail:
             return @"IMChatMailTableViewCell";
             break;
-            case IMMessageTypeVoice:
+        case IMMessageTypeVoice:
             return @"IMChatVoiceTableViewCell";
             break;
-            case IMMessageTypeImage:
+        case IMMessageTypeImage:
             return @"IMChatImageTableViewCell";
             break;
-            case IMMessageTypeVideo:
+        case IMMessageTypeVideo:
             return @"IMChatVideoTableViewCell";
             break;
-            case IMMessageTypeFile:
+        case IMMessageTypeFile:
             return @"";
             break;
-            case IMMessageTypeLocation:
+        case IMMessageTypeLocation:
             return @"";
             break;
-            case IMMessageTypeCard:
+        case IMMessageTypeCard:
             return @"";
             break;
             
@@ -110,7 +110,7 @@
                 
                 switch (self.msgType)
                 {
-                        case IMMessageTypeText:
+                    case IMMessageTypeText:
                     {
                         if ((!weakSelf.messageAtt || weakSelf.messageAtt.length == 0) && weakSelf.content) {
                             weakSelf.messageAtt = [IMChatMessageHelper formatMessageString:weakSelf.content];
@@ -129,12 +129,12 @@
                         [weakSelf updateDatabaseMessageHeightAndWidthWithRowHeight:weakSelf.cellHeight];
                     }
                         break;
-                        case IMMessageTypeMail:
+                    case IMMessageTypeMail:
                     {
                         [weakSelf mailHeight];
                     }
                         break;
-                        case IMMessageTypeVoice:
+                    case IMMessageTypeVoice:
                     {
                         CGFloat rowHeight = AVATAR_WIDTH + 2 * AVATAR_SCREEN_SPACE;
                         if (weakSelf.direction == IMMessageSenderTypeReceiver && weakSelf.showUsername)
@@ -147,7 +147,7 @@
                     }
                         break;
                         
-                        case IMMessageTypeImage:
+                    case IMMessageTypeImage:
                     {
                         __block UIImage *image;
                         if (weakSelf.fileData) {
@@ -155,7 +155,7 @@
                             [weakSelf photoHeightWithImageWidth:image.size.width imageHeight:image.size.height complete:finishedCalculate];
                             return;
                         }
-                        NSString *path = _content;
+                        NSString *path = self->_content;
                         if ([path containsString:@"storage/msgs"]) {
                             NSString *imagePath = [kDocDir stringByAppendingPathComponent:path];
                             image               = [UIImage imageWithContentsOfFile:imagePath];
@@ -176,7 +176,7 @@
                         }
                     }
                         break;
-                        case IMMessageTypeVideo:
+                    case IMMessageTypeVideo:
                     {
                         NSURL *url = [NSURL URLWithString:weakSelf.content];
                         weakSelf.fileData = UIImagePNGRepresentation([UIImage imageWithVideo:url]);
@@ -359,5 +359,59 @@
         complete(_cellHeight, messageSize, YES);
     }
 }
+
+
+/**
+ Dictionary  转换为model
+ 
+ @param obj 当前需要转换的字典
+ @param complete 其他操作回调
+ @return 返回一个由dictionary 转换为 Model 的MessgaeModel
+ */
++ (IMMessageModel *)modelWithDictionary:(NSDictionary *)obj complete:(IMMessageModel * _Nonnull (^)(IMMessageModel *objModel,NSDictionary *objDict))complete{
+    IMMessageModel *model  = [IMMessageModel new];
+    model.messageId       = obj[msg_id_key];
+    model.msgType         = [obj[msg_type_key]intValue];
+    model.cellHeight      = [obj[cell_height_key] floatValue];
+    model.messageSize     = CGSizeMake([obj[msg_width_key] floatValue], [obj[msg_height_key] floatValue]);
+    model.messageChatType = [obj[chat_type_key] intValue];
+    model.content         = obj[msg_content_key];
+    model.fromUserId      = obj[from_user_id_key];
+    model.toUserId        = obj[to_user_id_key];
+    model.pictureType     = [obj[picture_type_key] intValue];
+    model.recvTime        = obj[recv_time_key];
+    model.toUserAvatar    = obj[head_img_key];
+    model.sendTime        = obj[send_time_key];
+    model.duringTime      = [obj[voice_time_key] intValue];
+    model.direction       = ![obj[from_user_id_key]isEqualToString:@"143701"];
+    model.uid             = obj[uid_key];
+    model.emailId         = obj[email_id_key];
+    model.subject         = obj[subject_key] ? obj[subject_key] : obj[msg_content_key];
+    model.attach          = [obj[attach_key] integerValue];
+    //            NSString *contentSynopsis = obj[@"contentSynopsis"];
+    //            contentSynopsis       = [contentSynopsis flattenHTML];
+    //            model.contentSynopsis = [contentSynopsis filterLineBreaks];
+    model.messageSendStatus = [obj[send_status_key] integerValue];
+    model.aotoResend      = model.messageSendStatus == IMMessageSendStatusSending;
+    
+    if (model.msgType == IMMessageTypeText) {
+        CGSize messageSize = [model.messageAtt boundingRectWithSize:CGSizeMake(ceil(MESSAGE_MAX_WIDTH)-10, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
+        messageSize = CGSizeMake(ceil(messageSize.width) + 10, ceil(messageSize.height) + 16);
+        if (model.messageSize.width != messageSize.width || model.messageSize.height != messageSize.height) {
+            model.cellHeight = -1;
+            model.messageSize = CGSizeMake(-1, -1);
+        }
+    }
+    
+    if (complete) {
+        IMMessageModel *completeModel  = complete(model,obj);
+        if (completeModel) {
+            model = completeModel;
+        }
+    }
+    
+    return model;
+}
+
 
 @end
