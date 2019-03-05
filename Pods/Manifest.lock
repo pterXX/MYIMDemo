@@ -23,6 +23,7 @@ PODS:
   - FMDB/standard (2.7.5)
   - KissXML (5.2.3)
   - libidn (1.35)
+  - Masonry (1.1.0)
   - MJRefresh (3.1.15.7)
   - SDAutoLayout (2.2.1)
   - SDWebImage (4.4.6):
@@ -46,6 +47,7 @@ DEPENDENCIES:
   - AFNetworking
   - CocoaLumberjack
   - FMDB
+  - Masonry
   - MJRefresh
   - SDAutoLayout
   - SDWebImage
@@ -63,6 +65,7 @@ SPEC REPOS:
     - FMDB
     - KissXML
     - libidn
+    - Masonry
     - MJRefresh
     - SDAutoLayout
     - SDWebImage
@@ -79,6 +82,7 @@ SPEC CHECKSUMS:
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   KissXML: 09f88ff8161fd058d67b70740b8b516687b52823
   libidn: e4576a956b797c584c77aaedfc6e3dd639b61bdc
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
   SDAutoLayout: 8bf6b3bbc8b01f775d4defbb4fda2ace805461be
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
@@ -88,6 +92,6 @@ SPEC CHECKSUMS:
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
   ZZFLEX: 48ad9faf261c9589a3d16d44a701219ad41883b8
 
-PODFILE CHECKSUM: a3b8c3068b99f3ceed149fbbf729256e0184bbd0
+PODFILE CHECKSUM: 1e74f5f140deead62e48f40798c95bc5e378d1d0
 
 COCOAPODS: 1.5.0
