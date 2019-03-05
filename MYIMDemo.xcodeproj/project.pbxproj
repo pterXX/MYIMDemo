@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		842510F2222E240A004C3954 /* bg_login.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 842510F1222E240A004C3954 /* bg_login.jpeg */; };
+		842510F5222E24A7004C3954 /* IMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842510F4222E24A7004C3954 /* IMLoginViewController.m */; };
+		842510F7222E24E0004C3954 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842510F6222E24E0004C3954 /* Launch Screen.storyboard */; };
 		9330B5BB72954608CB742A23 /* Pods_MYIMDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECA892BB53FE8E5F6A5CBF5D /* Pods_MYIMDemoTests.framework */; };
 		AE6AE5E7E160C14E5371D105 /* Pods_MYIMDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2189E704B4F186789328318 /* Pods_MYIMDemo.framework */; };
 		EE7234D7222CCEB200A6F7E2 /* NSArray+zh_SafeAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7234D6222CCEB200A6F7E2 /* NSArray+zh_SafeAccess.m */; };
@@ -458,6 +461,10 @@
 		8422038E222E0ED300D4B479 /* icon_message_voice_receive_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_message_voice_receive_1@2x.png"; sourceTree = "<group>"; };
 		8422038F222E0ED300D4B479 /* icon_inputBox_recorder_prompt2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_inputBox_recorder_prompt2.png; sourceTree = "<group>"; };
 		84220390222E0ED300D4B479 /* icon_message_send_failure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_message_send_failure.png; sourceTree = "<group>"; };
+		842510F1222E240A004C3954 /* bg_login.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg_login.jpeg; sourceTree = "<group>"; };
+		842510F3222E24A7004C3954 /* IMLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMLoginViewController.h; sourceTree = "<group>"; };
+		842510F4222E24A7004C3954 /* IMLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMLoginViewController.m; sourceTree = "<group>"; };
+		842510F6222E24E0004C3954 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		A2189E704B4F186789328318 /* Pods_MYIMDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MYIMDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D860C256600F743D300C21AA /* Pods_MYIMDemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MYIMDemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2096A5A554B98AB75306A3F /* Pods-MYIMDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MYIMDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MYIMDemoTests/Pods-MYIMDemoTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -1016,6 +1023,57 @@
 			path = XmppHelper;
 			sourceTree = "<group>";
 		};
+		842510E9222E2255004C3954 /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				EE8936BC2227DA4E004F1F6E /* Model */,
+				EE8936B62227DA4E004F1F6E /* View */,
+				EE8936B82227DA4E004F1F6E /* Controller */,
+			);
+			path = Messages;
+			sourceTree = "<group>";
+		};
+		842510EA222E2276004C3954 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				842510ED222E229D004C3954 /* Controller */,
+				842510EC222E2296004C3954 /* View */,
+				842510EB222E2290004C3954 /* Model */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		842510EB222E2290004C3954 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		842510EC222E2296004C3954 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		842510ED222E229D004C3954 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				842510F3222E24A7004C3954 /* IMLoginViewController.h */,
+				842510F4222E24A7004C3954 /* IMLoginViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		842510EE222E23C2004C3954 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				842510F1222E240A004C3954 /* bg_login.jpeg */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		EE7FE434222CC42500073210 /* BAPhotoBrowser */ = {
 			isa = PBXGroup;
 			children = (
@@ -1120,17 +1178,16 @@
 		EE8936832227D997004F1F6E /* MYIMDemo */ = {
 			isa = PBXGroup;
 			children = (
+				842510EA222E2276004C3954 /* Login */,
+				842510E9222E2255004C3954 /* Messages */,
 				84220391222E16A200D4B479 /* XmppHelper */,
 				EE7FE434222CC42500073210 /* BAPhotoBrowser */,
 				EE8936BD2227DA4E004F1F6E /* Category */,
 				EE8936BE2227DA4E004F1F6E /* Common */,
-				EE8936B82227DA4E004F1F6E /* Controller */,
 				EE8936BB2227DA4E004F1F6E /* InputBox */,
-				EE8936BC2227DA4E004F1F6E /* Model */,
 				EE8936BF2227DA4F004F1F6E /* PrefixHeader.pch */,
 				EE8936B72227DA4E004F1F6E /* Resource */,
 				EE8936C02227DA4F004F1F6E /* Utils */,
-				EE8936B62227DA4E004F1F6E /* View */,
 				EE8936842227D997004F1F6E /* AppDelegate.h */,
 				EE8936852227D997004F1F6E /* AppDelegate.m */,
 				EE89368A2227D997004F1F6E /* Main.storyboard */,
@@ -1138,6 +1195,7 @@
 				EE89368F2227D997004F1F6E /* LaunchScreen.storyboard */,
 				EE8936922227D997004F1F6E /* Info.plist */,
 				EE8936932227D997004F1F6E /* main.m */,
+				842510F6222E24E0004C3954 /* Launch Screen.storyboard */,
 			);
 			path = MYIMDemo;
 			sourceTree = "<group>";
@@ -1185,6 +1243,7 @@
 		EE8936B72227DA4E004F1F6E /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				842510EE222E23C2004C3954 /* Login */,
 				EE893A1A222915F4004F1F6E /* conversationList */,
 				EE893A1B222915F4004F1F6E /* reviewVideo.mp4 */,
 				EE893A18222915E4004F1F6E /* previewPicture.jpeg */,
@@ -1948,6 +2007,7 @@
 				EE89388D222902C3004F1F6E /* emotion_pingpang.png in Resources */,
 				EE8938F7222902C3004F1F6E /* emotion_tiaopi_gif.gif in Resources */,
 				EE8938AF222902C3004F1F6E /* emotion_deyi_gif.gif in Resources */,
+				842510F7222E24E0004C3954 /* Launch Screen.storyboard in Resources */,
 				EE8938A7222902C3004F1F6E /* emotion_zaijian_gif.gif in Resources */,
 				EE89394E222902C3004F1F6E /* emotion_yiwen_gif.gif in Resources */,
 				EE893916222902C3004F1F6E /* emotion_hanxiao.png in Resources */,
@@ -2080,6 +2140,7 @@
 				EE893917222902C3004F1F6E /* emotion_guzhang.png in Resources */,
 				EE89396E222902C3004F1F6E /* emotion_aini_gif.gif in Resources */,
 				EE893970222902C3004F1F6E /* emotion_tiaosheng_gif.gif in Resources */,
+				842510F2222E240A004C3954 /* bg_login.jpeg in Resources */,
 				EE89392B222902C3004F1F6E /* emotion_denglong.png in Resources */,
 				EE89397B222902C3004F1F6E /* emotion_nanguo_gif.gif in Resources */,
 				EE893992222902C3004F1F6E /* emotion_ok.png in Resources */,
@@ -2370,6 +2431,7 @@
 				EE7FE466222CC42500073210 /* IMVideoPlayView.m in Sources */,
 				EE893A3B22291B18004F1F6E /* IMChatVoiceTableViewCell.m in Sources */,
 				EE8937042228D82B004F1F6E /* IMBaseTableViewCell.m in Sources */,
+				842510F5222E24A7004C3954 /* IMLoginViewController.m in Sources */,
 				EE89387C222902C3004F1F6E /* IMEmojiModel.m in Sources */,
 				EE8936F22228CB2C004F1F6E /* IMChatBaseViewController.m in Sources */,
 				EE7FE465222CC42500073210 /* TAAbstractDotView.m in Sources */,

@@ -23,6 +23,7 @@
 #import "SVProgressHUD.h"
 #import <ZZFLEX/ZZFLEX.h>
 #import "YYKit.h"
+#import <ma>
 
 #import "IMBaseModel.h" // 基础model
 #import "IMBaseTableViewCell.h" //  基础cell

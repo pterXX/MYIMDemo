@@ -17,6 +17,7 @@ target 'MYIMDemo' do
   pod 'ZZFLEX'
   pod 'YYKit'
   pod 'XMPPFramework'
+  pod 'Masonry'
 
 
   target 'MYIMDemoTests' do
