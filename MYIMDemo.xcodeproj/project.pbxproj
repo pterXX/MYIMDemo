@@ -10,6 +10,31 @@
 		842510F2222E240A004C3954 /* bg_login.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 842510F1222E240A004C3954 /* bg_login.jpeg */; };
 		842510F5222E24A7004C3954 /* IMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842510F4222E24A7004C3954 /* IMLoginViewController.m */; };
 		842510F7222E24E0004C3954 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842510F6222E24E0004C3954 /* Launch Screen.storyboard */; };
+		842510F8222E4E5C004C3954 /* icon_inputBox_recoder_too_short.png in Resources */ = {isa = PBXBuildFile; fileRef = 84220384222E0ED000D4B479 /* icon_inputBox_recoder_too_short.png */; };
+		842510F9222E4E5C004C3954 /* icon_inputBox_recorder_prompt_recall.png in Resources */ = {isa = PBXBuildFile; fileRef = 8422037A222E0ECE00D4B479 /* icon_inputBox_recorder_prompt_recall.png */; };
+		842510FA222E4E5C004C3954 /* icon_inputBox_recorder_prompt_voice.png in Resources */ = {isa = PBXBuildFile; fileRef = 84220385222E0ED100D4B479 /* icon_inputBox_recorder_prompt_voice.png */; };
+		842510FB222E4E5C004C3954 /* icon_inputBox_recorder_prompt1.png in Resources */ = {isa = PBXBuildFile; fileRef = 84220383222E0ED000D4B479 /* icon_inputBox_recorder_prompt1.png */; };
+		842510FC222E4E5C004C3954 /* icon_inputBox_recorder_prompt2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8422038F222E0ED300D4B479 /* icon_inputBox_recorder_prompt2.png */; };
+		842510FD222E4E5C004C3954 /* icon_inputBox_recorder_prompt3.png in Resources */ = {isa = PBXBuildFile; fileRef = 84220377222E0ECD00D4B479 /* icon_inputBox_recorder_prompt3.png */; };
+		842510FE222E4E5C004C3954 /* icon_inputBox_recorder_prompt4.png in Resources */ = {isa = PBXBuildFile; fileRef = 8422038D222E0ED300D4B479 /* icon_inputBox_recorder_prompt4.png */; };
+		842510FF222E4E5C004C3954 /* icon_inputBox_recorder_prompt5.png in Resources */ = {isa = PBXBuildFile; fileRef = 8422038B222E0ED200D4B479 /* icon_inputBox_recorder_prompt5.png */; };
+		84251100222E4E5C004C3954 /* icon_message_attachments@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84220378222E0ECD00D4B479 /* icon_message_attachments@3x.png */; };
+		84251101222E4E5C004C3954 /* icon_message_send_failure.png in Resources */ = {isa = PBXBuildFile; fileRef = 84220390222E0ED300D4B479 /* icon_message_send_failure.png */; };
+		84251102222E4E5C004C3954 /* icon_message_sending@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8422037E222E0ECF00D4B479 /* icon_message_sending@3x.png */; };
+		84251103222E4E5C004C3954 /* icon_message_voice_receive_0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84220388222E0ED100D4B479 /* icon_message_voice_receive_0@2x.png */; };
+		84251104222E4E5C004C3954 /* icon_message_voice_receive_0@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8422037F222E0ECF00D4B479 /* icon_message_voice_receive_0@3x.png */; };
+		84251105222E4E5C004C3954 /* icon_message_voice_receive_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8422038E222E0ED300D4B479 /* icon_message_voice_receive_1@2x.png */; };
+		84251106222E4E5C004C3954 /* icon_message_voice_receive_1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84220386222E0ED100D4B479 /* icon_message_voice_receive_1@3x.png */; };
+		84251107222E4E5C004C3954 /* icon_message_voice_receive_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84220381222E0ED000D4B479 /* icon_message_voice_receive_2@2x.png */; };
+		84251108222E4E5C004C3954 /* icon_message_voice_receive_2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8422037D222E0ECF00D4B479 /* icon_message_voice_receive_2@3x.png */; };
+		84251109222E4E5C004C3954 /* icon_message_voice_send_0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84220382222E0ED000D4B479 /* icon_message_voice_send_0@2x.png */; };
+		8425110A222E4E5C004C3954 /* icon_message_voice_send_0@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84220389222E0ED100D4B479 /* icon_message_voice_send_0@3x.png */; };
+		8425110B222E4E5C004C3954 /* icon_message_voice_send_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84220379222E0ECD00D4B479 /* icon_message_voice_send_1@2x.png */; };
+		8425110C222E4E5C004C3954 /* icon_message_voice_send_1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8422037C222E0ECE00D4B479 /* icon_message_voice_send_1@3x.png */; };
+		8425110D222E4E5C004C3954 /* icon_message_voice_send_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8422038C222E0ED200D4B479 /* icon_message_voice_send_2@2x.png */; };
+		8425110E222E4E5C004C3954 /* icon_message_voice_send_2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84220387222E0ED100D4B479 /* icon_message_voice_send_2@3x.png */; };
+		8425110F222E4E5C004C3954 /* receiver_message_background@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8422037B222E0ECE00D4B479 /* receiver_message_background@3x.png */; };
+		84251110222E4E5C004C3954 /* sender_message_background@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8422038A222E0ED200D4B479 /* sender_message_background@3x.png */; };
 		9330B5BB72954608CB742A23 /* Pods_MYIMDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECA892BB53FE8E5F6A5CBF5D /* Pods_MYIMDemoTests.framework */; };
 		AE6AE5E7E160C14E5371D105 /* Pods_MYIMDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2189E704B4F186789328318 /* Pods_MYIMDemo.framework */; };
 		EE7234D7222CCEB200A6F7E2 /* NSArray+zh_SafeAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7234D6222CCEB200A6F7E2 /* NSArray+zh_SafeAccess.m */; };
@@ -1949,6 +1974,31 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				842510F8222E4E5C004C3954 /* icon_inputBox_recoder_too_short.png in Resources */,
+				842510F9222E4E5C004C3954 /* icon_inputBox_recorder_prompt_recall.png in Resources */,
+				842510FA222E4E5C004C3954 /* icon_inputBox_recorder_prompt_voice.png in Resources */,
+				842510FB222E4E5C004C3954 /* icon_inputBox_recorder_prompt1.png in Resources */,
+				842510FC222E4E5C004C3954 /* icon_inputBox_recorder_prompt2.png in Resources */,
+				842510FD222E4E5C004C3954 /* icon_inputBox_recorder_prompt3.png in Resources */,
+				842510FE222E4E5C004C3954 /* icon_inputBox_recorder_prompt4.png in Resources */,
+				842510FF222E4E5C004C3954 /* icon_inputBox_recorder_prompt5.png in Resources */,
+				84251100222E4E5C004C3954 /* icon_message_attachments@3x.png in Resources */,
+				84251101222E4E5C004C3954 /* icon_message_send_failure.png in Resources */,
+				84251102222E4E5C004C3954 /* icon_message_sending@3x.png in Resources */,
+				84251103222E4E5C004C3954 /* icon_message_voice_receive_0@2x.png in Resources */,
+				84251104222E4E5C004C3954 /* icon_message_voice_receive_0@3x.png in Resources */,
+				84251105222E4E5C004C3954 /* icon_message_voice_receive_1@2x.png in Resources */,
+				84251106222E4E5C004C3954 /* icon_message_voice_receive_1@3x.png in Resources */,
+				84251107222E4E5C004C3954 /* icon_message_voice_receive_2@2x.png in Resources */,
+				84251108222E4E5C004C3954 /* icon_message_voice_receive_2@3x.png in Resources */,
+				84251109222E4E5C004C3954 /* icon_message_voice_send_0@2x.png in Resources */,
+				8425110A222E4E5C004C3954 /* icon_message_voice_send_0@3x.png in Resources */,
+				8425110B222E4E5C004C3954 /* icon_message_voice_send_1@2x.png in Resources */,
+				8425110C222E4E5C004C3954 /* icon_message_voice_send_1@3x.png in Resources */,
+				8425110D222E4E5C004C3954 /* icon_message_voice_send_2@2x.png in Resources */,
+				8425110E222E4E5C004C3954 /* icon_message_voice_send_2@3x.png in Resources */,
+				8425110F222E4E5C004C3954 /* receiver_message_background@3x.png in Resources */,
+				84251110222E4E5C004C3954 /* sender_message_background@3x.png in Resources */,
 				EE893897222902C3004F1F6E /* emotion_jingkong_gif.gif in Resources */,
 				EE8938D3222902C3004F1F6E /* emotion_baoquan.png in Resources */,
 				EE8939A9222902C3004F1F6E /* icon_inputBox_more_takeVideo_confirm@3x.png in Resources */,
@@ -2653,7 +2703,10 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = MYIMDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xushijie.www.MYIMDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2671,7 +2724,10 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = MYIMDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xushijie.www.MYIMDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2685,7 +2741,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MYIMDemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xushijie.www.MYIMDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2700,7 +2760,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MYIMDemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xushijie.www.MYIMDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2714,7 +2778,11 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MYIMDemoUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xushijie.www.MYIMDemoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2728,7 +2796,11 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MYIMDemoUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xushijie.www.MYIMDemoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

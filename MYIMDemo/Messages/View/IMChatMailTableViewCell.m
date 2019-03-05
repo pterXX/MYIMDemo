@@ -258,7 +258,7 @@
     }
 
     // 显示的图片
-    UIImage *image                           = [UIImage imageNamed:@"icon_message_attachments"];
+    UIImage *image                           = [UIImage imageMessageAttachments];
     NSTextAttachment *textAttach             = [NSTextAttachment new];
     textAttach.image                         = image;
     NSAttributedString *attachment           = [NSAttributedString attributedStringWithAttachment:textAttach];

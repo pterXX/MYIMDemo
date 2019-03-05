@@ -13,6 +13,10 @@
     return  [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"WechatIMG5" ofType:@"png"]];
 }
 
++ (UIImage *)imageLoginBackground{
+    return  [UIImage imageNamed:@"bg_login.jpeg"];
+}
+
 + (UIImage *)imageInputBoxVideoBttomPlay{
     return  [UIImage imageNamed:@"icon_inputBox_video_bttom_play"];
 }
@@ -81,7 +85,23 @@
 
 
 + (UIImage *)imageMessageSendFailure{
-    return  [UIImage imageNamed:@"icon_message_send_failure"];
+    return [UIImage imageNamed:@"icon_message_send_failure"];
+}
+
++ (UIImage *)imageMessageSending{
+    return [UIImage imageNamed:@"icon_message_sending"];
+}
+
++ (UIImage *)imageReceiverMessageBackground{
+    return [UIImage imageNamed:@"receiver_message_background"];
+}
+
++ (UIImage *)imageSenderMessageBackground{
+    return [UIImage imageNamed:@"sender_message_background"];
+}
+
++ (UIImage *)imageMessageAttachments{
+    return [UIImage imageNamed:@"icon_message_attachments"];
 }
 
 

@@ -12,12 +12,12 @@ target 'MYIMDemo' do
   pod 'SVProgressHUD'             #弹窗指示器
   pod 'AFNetworking'              #网络请求库
   pod 'TZImagePickerController'
-  pod 'FMDB'                      #数据存储
+  pod 'JQFMDB'                     #数据存储
   pod 'CocoaLumberjack'           #日志框架
   pod 'ZZFLEX'
   pod 'YYKit'
-  pod 'XMPPFramework'
-  pod 'Masonry'
+  pod 'XMPPFramework'             #xmmp协议框架
+  pod 'Masonry'                   #自动约束布局
 
 
   target 'MYIMDemoTests' do

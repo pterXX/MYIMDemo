@@ -93,7 +93,7 @@
         _playImageView = [[UIImageView alloc] init];
         [_playImageView setSize:CGSizeMake(40, 40)];
         _playImageView.userInteractionEnabled = YES;
-        _playImageView.image = [UIImage imageNamed:@"icon_inputBox_video_play"];
+        _playImageView.image = [UIImage imageInputBoxVideoPlay];
     }
     return _playImageView;
 }

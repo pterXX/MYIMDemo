@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 // 字体大小
+static const CGFloat KSystemFontOfSize32     = 32;
 static const CGFloat KSystemFontOfSize16     = 16;
 static const CGFloat KSystemFontOfSize14     = 14;
 static const CGFloat KSystemFontOfSize13     = 13;
@@ -22,6 +23,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UIFont (IMChat)
 #pragma mark - Common
 + (UIFont *)fontNavBarTitle;
+
+#pragma mark - Login
++ (UIFont *) fontLoginLogo;
++ (UIFont *) fontLoginUserAndPassword;
 
 #pragma mark - Message list
 + (UIFont *) fontMessageListUpdateTime;

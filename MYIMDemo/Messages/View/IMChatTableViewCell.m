@@ -166,14 +166,14 @@
             }
             else if (userAvatar.length == 0)
             {
-                self.avatarImageView.image = [UIImage imageNamed:@"logo"];
+                self.avatarImageView.image = [UIImage imageDefaultHeadPortrait];
             }
             
             [self.messageBackgroundImageView setHidden:NO];
             // 聊天背景拉伸
             // UIImageResizingModeStretch：拉伸模式，通过拉伸UIEdgeInsets指定的矩形区域来填充图片
             // UIImageResizingModeTile：平铺模式，通过重复显示UIEdgeInsets指定 的矩形区域来填充图片
-            self.messageBackgroundImageView.image = [[UIImage imageNamed:@"sender_message_background"] resizableImageWithCapInsets:UIEdgeInsetsMake(15, 10, 10, 10) resizingMode:UIImageResizingModeStretch];
+            self.messageBackgroundImageView.image = [[UIImage imageSenderMessageBackground] resizableImageWithCapInsets:UIEdgeInsetsMake(15, 10, 10, 10) resizingMode:UIImageResizingModeStretch];
         }
             break;
         case IMMessageSenderTypeReceiver:
@@ -198,7 +198,7 @@
             
             [self.messageBackgroundImageView setHidden:NO];
             // 聊天背景拉伸
-            self.messageBackgroundImageView.image = [[UIImage imageNamed:@"receiver_message_background"] resizableImageWithCapInsets:UIEdgeInsetsMake(10, 10, 10, 15) resizingMode:UIImageResizingModeStretch];
+            self.messageBackgroundImageView.image = [[UIImage imageReceiverMessageBackground] resizableImageWithCapInsets:UIEdgeInsetsMake(10, 10, 10, 15) resizingMode:UIImageResizingModeStretch];
             
             [self.username setHidden:!self.messageModel.showUsername];
             NSAttributedString *usernameAtt = [[NSAttributedString alloc] initWithString:self.messageModel.toUserName ? self.messageModel.toUserName: @""];
@@ -314,7 +314,7 @@
             rotationAnimation.cumulative  = YES;
             rotationAnimation.repeatCount = 10000;
             
-            image = [UIImage imageNamed:@"icon_message_sending"];
+            image = [UIImage imageMessageSending];
             self.messageSendStatusImageView.image = image;
             [self.messageSendStatusImageView.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];//开始动画
         }

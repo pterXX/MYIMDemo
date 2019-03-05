@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "Controller/IMMessageViewController.h"
+#import "IMMessageViewController.h"
 @interface AppDelegate ()
 
 @end

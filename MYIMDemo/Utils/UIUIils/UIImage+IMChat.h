@@ -14,6 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - # 默认头像
 + (UIImage *) imageDefaultHeadPortrait;
 
+#pragma mark - # Login
++ (UIImage *)imageLoginBackground;
+
 #pragma mark - # InputBox
 + (UIImage *)imageInputBoxVideoPlayCancel;
 + (UIImage *)imageInputBoxVideoBttomPlay;
@@ -34,6 +37,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - # Status
 + (UIImage *)imageMessageSendFailure;
+
+#pragma mark - # massage
++ (UIImage *)imageMessageSending;
++ (UIImage *)imageReceiverMessageBackground;
++ (UIImage *)imageSenderMessageBackground;
++ (UIImage *)imageMessageAttachments;
+
 @end
 
 NS_ASSUME_NONNULL_END
