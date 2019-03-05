@@ -11,4 +11,8 @@
 @interface NSString (Category)
 // 判断字符串是否是全空格
 - (BOOL)isEmptyString;
+
+//  拼音
+- (NSString *)pinyin;
+- (NSString *)pinyinInitial;
 @end

@@ -35,6 +35,8 @@
 		8425110E222E4E5C004C3954 /* icon_message_voice_send_2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84220387222E0ED100D4B479 /* icon_message_voice_send_2@3x.png */; };
 		8425110F222E4E5C004C3954 /* receiver_message_background@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8422037B222E0ECE00D4B479 /* receiver_message_background@3x.png */; };
 		84251110222E4E5C004C3954 /* sender_message_background@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8422038A222E0ED200D4B479 /* sender_message_background@3x.png */; };
+		84251113222E53F5004C3954 /* IMUserHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 84251112222E53F5004C3954 /* IMUserHelper.m */; };
+		84251116222E542B004C3954 /* IMUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 84251115222E542B004C3954 /* IMUser.m */; };
 		9330B5BB72954608CB742A23 /* Pods_MYIMDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECA892BB53FE8E5F6A5CBF5D /* Pods_MYIMDemoTests.framework */; };
 		AE6AE5E7E160C14E5371D105 /* Pods_MYIMDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2189E704B4F186789328318 /* Pods_MYIMDemo.framework */; };
 		EE7234D7222CCEB200A6F7E2 /* NSArray+zh_SafeAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7234D6222CCEB200A6F7E2 /* NSArray+zh_SafeAccess.m */; };
@@ -490,6 +492,10 @@
 		842510F3222E24A7004C3954 /* IMLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMLoginViewController.h; sourceTree = "<group>"; };
 		842510F4222E24A7004C3954 /* IMLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMLoginViewController.m; sourceTree = "<group>"; };
 		842510F6222E24E0004C3954 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		84251111222E53F5004C3954 /* IMUserHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMUserHelper.h; sourceTree = "<group>"; };
+		84251112222E53F5004C3954 /* IMUserHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMUserHelper.m; sourceTree = "<group>"; };
+		84251114222E542B004C3954 /* IMUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMUser.h; sourceTree = "<group>"; };
+		84251115222E542B004C3954 /* IMUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMUser.m; sourceTree = "<group>"; };
 		A2189E704B4F186789328318 /* Pods_MYIMDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MYIMDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D860C256600F743D300C21AA /* Pods_MYIMDemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MYIMDemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2096A5A554B98AB75306A3F /* Pods-MYIMDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MYIMDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MYIMDemoTests/Pods-MYIMDemoTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -1071,6 +1077,10 @@
 		842510EB222E2290004C3954 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				84251111222E53F5004C3954 /* IMUserHelper.h */,
+				84251112222E53F5004C3954 /* IMUserHelper.m */,
+				84251114222E542B004C3954 /* IMUser.h */,
+				84251115222E542B004C3954 /* IMUser.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2464,6 +2474,7 @@
 				EE7FE3F92229224A00073210 /* IMPhotoPreviewModel.m in Sources */,
 				EE7FE460222CC42500073210 /* BAProgressView.m in Sources */,
 				EE893A0C22290A55004F1F6E /* UIImage+IMVideo.m in Sources */,
+				84251116222E542B004C3954 /* IMUser.m in Sources */,
 				EE8937172228F91A004F1F6E /* UILabel+IMAutoLabelHeightAndWidth.m in Sources */,
 				EE8936942227D997004F1F6E /* main.m in Sources */,
 				EE8936D42227E3AF004F1F6E /* IMSearchMessageViewController.m in Sources */,
@@ -2483,6 +2494,7 @@
 				EE893A3C22291B18004F1F6E /* IMChatTextTableViewCell.m in Sources */,
 				EE8939C422290380004F1F6E /* NSAttributedString+Addition.m in Sources */,
 				EE7FE466222CC42500073210 /* IMVideoPlayView.m in Sources */,
+				84251113222E53F5004C3954 /* IMUserHelper.m in Sources */,
 				EE893A3B22291B18004F1F6E /* IMChatVoiceTableViewCell.m in Sources */,
 				EE8937042228D82B004F1F6E /* IMBaseTableViewCell.m in Sources */,
 				842510F5222E24A7004C3954 /* IMLoginViewController.m in Sources */,
@@ -2705,7 +2717,10 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = MYIMDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xushijie.www.MYIMDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2723,7 +2738,10 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = MYIMDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xushijie.www.MYIMDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2737,7 +2755,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MYIMDemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xushijie.www.MYIMDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2752,7 +2774,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MYIMDemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xushijie.www.MYIMDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2766,7 +2792,11 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MYIMDemoUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xushijie.www.MYIMDemoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2780,7 +2810,11 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MYIMDemoUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xushijie.www.MYIMDemoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
