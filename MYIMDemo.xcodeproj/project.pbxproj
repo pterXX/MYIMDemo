@@ -1187,7 +1187,7 @@
 		EE7234DC222E5A8500A6F7E2 /* DBManager */ = {
 			isa = PBXGroup;
 			children = (
-				EE723550222E5AF300A6F7E2 /* TLUserManager */,
+				EE723553222E5B9200A6F7E2 /* TLUserManager */,
 				EE723514222E5AB400A6F7E2 /* TLMessageCenter */,
 				EE7234E4222E5AA000A6F7E2 /* TLAccountManager */,
 				EE7234DD222E5A9B00A6F7E2 /* TLDBManager */,
@@ -1329,23 +1329,23 @@
 			path = Store;
 			sourceTree = "<group>";
 		};
-		EE723550222E5AF300A6F7E2 /* TLUserManager */ = {
+		EE723553222E5B9200A6F7E2 /* TLUserManager */ = {
 			isa = PBXGroup;
 			children = (
-				EE723551222E5AF300A6F7E2 /* Models */,
-				EE723552222E5AF300A6F7E2 /* Store */,
+				EE723554222E5B9200A6F7E2 /* Models */,
+				EE723555222E5B9200A6F7E2 /* Store */,
 			);
 			path = TLUserManager;
 			sourceTree = "<group>";
 		};
-		EE723551222E5AF300A6F7E2 /* Models */ = {
+		EE723554222E5B9200A6F7E2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		EE723552222E5AF300A6F7E2 /* Store */ = {
+		EE723555222E5B9200A6F7E2 /* Store */ = {
 			isa = PBXGroup;
 			children = (
 			);
