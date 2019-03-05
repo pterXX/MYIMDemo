@@ -110,7 +110,7 @@
     textFiled.leftView = label;
     textFiled.leftViewMode = UITextFieldViewModeAlways;
     textFiled.placeholder = placeholder;
-    textField.tintColor = [UIColor whiteColor];
+    textFiled.tintColor = [UIColor whiteColor];
     textFiled.layer.cornerRadius = textFieldSize.height * 0.5;
     textFiled.layer.borderColor = [UIColor whiteColor].CGColor;
     textFiled.layer.borderWidth = IMBORDER_WIDTH_1PX;
