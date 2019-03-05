@@ -78,7 +78,7 @@
         [self setAutomaticallyAdjustsScrollViewInsets:NO];
     }
     if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
-        self.edgesForExtendedLayout=UIRectEdgeNone;
+        self.edgesForExtendedLayout = UIRectEdgeNone;
     }
 }
 

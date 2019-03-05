@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "IMMessageViewController.h"
+#import "IMLoginViewController.h"
+
 @interface AppDelegate ()
 
 @end
@@ -21,7 +23,8 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     IMMessageViewController *messageViewController = [[IMMessageViewController alloc] init];
-    self.window.rootViewController = addNavigationController(messageViewController);
+    id rootVc = [IMUserHelper sharedHelper].isLogin?addNavigationController(messageViewController):[[IMLoginViewController alloc] init];
+    self.window.rootViewController = rootVc;
     return YES;
 }
 

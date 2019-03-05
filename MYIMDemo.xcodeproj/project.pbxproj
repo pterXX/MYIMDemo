@@ -35,8 +35,22 @@
 		8425110E222E4E5C004C3954 /* icon_message_voice_send_2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84220387222E0ED100D4B479 /* icon_message_voice_send_2@3x.png */; };
 		8425110F222E4E5C004C3954 /* receiver_message_background@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8422037B222E0ECE00D4B479 /* receiver_message_background@3x.png */; };
 		84251110222E4E5C004C3954 /* sender_message_background@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8422038A222E0ED200D4B479 /* sender_message_background@3x.png */; };
-		84251113222E53F5004C3954 /* IMUserHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 84251112222E53F5004C3954 /* IMUserHelper.m */; };
-		84251116222E542B004C3954 /* IMUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 84251115222E542B004C3954 /* IMUser.m */; };
+		84251175222E5E28004C3954 /* IMAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84251122222E5E27004C3954 /* IMAccountManager.m */; };
+		84251199222E600E004C3954 /* IMDBFriendStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 84251194222E600D004C3954 /* IMDBFriendStore.m */; };
+		8425119A222E600E004C3954 /* IMDBGroupStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 84251197222E600E004C3954 /* IMDBGroupStore.m */; };
+		8425119F222E6032004C3954 /* IMGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 8425119B222E6031004C3954 /* IMGroup.m */; };
+		842511A0222E6032004C3954 /* IMGroup+CreateAvatar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8425119C222E6031004C3954 /* IMGroup+CreateAvatar.m */; };
+		842511AB222E609A004C3954 /* IMUserChatSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 842511A1222E6099004C3954 /* IMUserChatSetting.m */; };
+		842511AC222E609A004C3954 /* IMUserDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 842511A2222E6099004C3954 /* IMUserDetail.m */; };
+		842511AD222E609A004C3954 /* IMUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 842511A3222E6099004C3954 /* IMUser.m */; };
+		842511AE222E609A004C3954 /* IMUserGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 842511A4222E6099004C3954 /* IMUserGroup.m */; };
+		842511AF222E609A004C3954 /* IMUserSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 842511A6222E609A004C3954 /* IMUserSetting.m */; };
+		842511B3222E60B3004C3954 /* IMDBUserStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 842511B0222E60B3004C3954 /* IMDBUserStore.m */; };
+		842511B8222E60BF004C3954 /* IMDBBaseStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 842511B4222E60BE004C3954 /* IMDBBaseStore.m */; };
+		842511B9222E60BF004C3954 /* IMDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 842511B7222E60BF004C3954 /* IMDBManager.m */; };
+		842511BE222E60D0004C3954 /* IMFriendHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 842511BB222E60D0004C3954 /* IMFriendHelper.m */; };
+		842511BF222E60D0004C3954 /* IMUserHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 842511BD222E60D0004C3954 /* IMUserHelper.m */; };
+		842511C3222E6539004C3954 /* NSFileManager+IMChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 842511C2222E6538004C3954 /* NSFileManager+IMChat.m */; };
 		9330B5BB72954608CB742A23 /* Pods_MYIMDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECA892BB53FE8E5F6A5CBF5D /* Pods_MYIMDemoTests.framework */; };
 		AE6AE5E7E160C14E5371D105 /* Pods_MYIMDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2189E704B4F186789328318 /* Pods_MYIMDemo.framework */; };
 		EE7234D7222CCEB200A6F7E2 /* NSArray+zh_SafeAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7234D6222CCEB200A6F7E2 /* NSArray+zh_SafeAccess.m */; };
@@ -492,10 +506,41 @@
 		842510F3222E24A7004C3954 /* IMLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMLoginViewController.h; sourceTree = "<group>"; };
 		842510F4222E24A7004C3954 /* IMLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMLoginViewController.m; sourceTree = "<group>"; };
 		842510F6222E24E0004C3954 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		84251111222E53F5004C3954 /* IMUserHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMUserHelper.h; sourceTree = "<group>"; };
-		84251112222E53F5004C3954 /* IMUserHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMUserHelper.m; sourceTree = "<group>"; };
-		84251114222E542B004C3954 /* IMUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMUser.h; sourceTree = "<group>"; };
-		84251115222E542B004C3954 /* IMUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMUser.m; sourceTree = "<group>"; };
+		84251122222E5E27004C3954 /* IMAccountManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMAccountManager.m; sourceTree = "<group>"; };
+		8425112E222E5E27004C3954 /* IMAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMAccountManager.h; sourceTree = "<group>"; };
+		84251174222E5E28004C3954 /* IMDBFriendStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDBFriendStore.h; sourceTree = "<group>"; };
+		84251194222E600D004C3954 /* IMDBFriendStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMDBFriendStore.m; sourceTree = "<group>"; };
+		84251195222E600E004C3954 /* IMDBGroupStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDBGroupStore.h; sourceTree = "<group>"; };
+		84251196222E600E004C3954 /* IMDBGroupSQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDBGroupSQL.h; sourceTree = "<group>"; };
+		84251197222E600E004C3954 /* IMDBGroupStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMDBGroupStore.m; sourceTree = "<group>"; };
+		84251198222E600E004C3954 /* IMDBFriendSQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDBFriendSQL.h; sourceTree = "<group>"; };
+		8425119B222E6031004C3954 /* IMGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMGroup.m; sourceTree = "<group>"; };
+		8425119C222E6031004C3954 /* IMGroup+CreateAvatar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IMGroup+CreateAvatar.m"; sourceTree = "<group>"; };
+		8425119D222E6031004C3954 /* IMGroup+CreateAvatar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IMGroup+CreateAvatar.h"; sourceTree = "<group>"; };
+		8425119E222E6031004C3954 /* IMGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMGroup.h; sourceTree = "<group>"; };
+		842511A1222E6099004C3954 /* IMUserChatSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMUserChatSetting.m; sourceTree = "<group>"; };
+		842511A2222E6099004C3954 /* IMUserDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMUserDetail.m; sourceTree = "<group>"; };
+		842511A3222E6099004C3954 /* IMUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMUser.m; sourceTree = "<group>"; };
+		842511A4222E6099004C3954 /* IMUserGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMUserGroup.m; sourceTree = "<group>"; };
+		842511A5222E609A004C3954 /* IMUserSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMUserSetting.h; sourceTree = "<group>"; };
+		842511A6222E609A004C3954 /* IMUserSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMUserSetting.m; sourceTree = "<group>"; };
+		842511A7222E609A004C3954 /* IMUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMUser.h; sourceTree = "<group>"; };
+		842511A8222E609A004C3954 /* IMUserChatSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMUserChatSetting.h; sourceTree = "<group>"; };
+		842511A9222E609A004C3954 /* IMUserDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMUserDetail.h; sourceTree = "<group>"; };
+		842511AA222E609A004C3954 /* IMUserGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMUserGroup.h; sourceTree = "<group>"; };
+		842511B0222E60B3004C3954 /* IMDBUserStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMDBUserStore.m; sourceTree = "<group>"; };
+		842511B1222E60B3004C3954 /* IMDBUserStoreSQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDBUserStoreSQL.h; sourceTree = "<group>"; };
+		842511B2222E60B3004C3954 /* IMDBUserStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDBUserStore.h; sourceTree = "<group>"; };
+		842511B4222E60BE004C3954 /* IMDBBaseStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMDBBaseStore.m; sourceTree = "<group>"; };
+		842511B5222E60BE004C3954 /* IMDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDBManager.h; sourceTree = "<group>"; };
+		842511B6222E60BF004C3954 /* IMDBBaseStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDBBaseStore.h; sourceTree = "<group>"; };
+		842511B7222E60BF004C3954 /* IMDBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMDBManager.m; sourceTree = "<group>"; };
+		842511BA222E60D0004C3954 /* IMUserHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMUserHelper.h; sourceTree = "<group>"; };
+		842511BB222E60D0004C3954 /* IMFriendHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMFriendHelper.m; sourceTree = "<group>"; };
+		842511BC222E60D0004C3954 /* IMFriendHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMFriendHelper.h; sourceTree = "<group>"; };
+		842511BD222E60D0004C3954 /* IMUserHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMUserHelper.m; sourceTree = "<group>"; };
+		842511C1222E6538004C3954 /* NSFileManager+IMChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+IMChat.h"; sourceTree = "<group>"; };
+		842511C2222E6538004C3954 /* NSFileManager+IMChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+IMChat.m"; sourceTree = "<group>"; };
 		A2189E704B4F186789328318 /* Pods_MYIMDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MYIMDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D860C256600F743D300C21AA /* Pods_MYIMDemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MYIMDemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2096A5A554B98AB75306A3F /* Pods-MYIMDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MYIMDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MYIMDemoTests/Pods-MYIMDemoTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -1060,8 +1105,8 @@
 		842510EA222E2276004C3954 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				84251118222E5D18004C3954 /* View */,
 				842510ED222E229D004C3954 /* Controller */,
-				842510EC222E2296004C3954 /* View */,
 				842510EB222E2290004C3954 /* Model */,
 			);
 			path = Login;
@@ -1070,19 +1115,8 @@
 		842510EB222E2290004C3954 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				84251111222E53F5004C3954 /* IMUserHelper.h */,
-				84251112222E53F5004C3954 /* IMUserHelper.m */,
-				84251114222E542B004C3954 /* IMUser.h */,
-				84251115222E542B004C3954 /* IMUser.m */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		842510EC222E2296004C3954 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		842510ED222E229D004C3954 /* Controller */ = {
@@ -1102,11 +1136,116 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		EE7234DC222E5A8500A6F7E2 /* DBManager */ = {
+		84251117222E5D09004C3954 /* DBManager */ = {
+			isa = PBXGroup;
+			children = (
+				84251121222E5E27004C3954 /* IMAccountManager */,
+				84251133222E5E27004C3954 /* IMDBManager */,
+				84251164222E5E28004C3954 /* IMUserManager */,
+			);
+			path = DBManager;
+			sourceTree = "<group>";
+		};
+		84251118222E5D18004C3954 /* View */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = DBManager;
+			path = View;
+			sourceTree = "<group>";
+		};
+		84251121222E5E27004C3954 /* IMAccountManager */ = {
+			isa = PBXGroup;
+			children = (
+				8425112E222E5E27004C3954 /* IMAccountManager.h */,
+				84251122222E5E27004C3954 /* IMAccountManager.m */,
+				84251123222E5E27004C3954 /* Models */,
+				8425112F222E5E27004C3954 /* Store */,
+			);
+			path = IMAccountManager;
+			sourceTree = "<group>";
+		};
+		84251123222E5E27004C3954 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				842511A7222E609A004C3954 /* IMUser.h */,
+				842511A3222E6099004C3954 /* IMUser.m */,
+				842511A8222E609A004C3954 /* IMUserChatSetting.h */,
+				842511A1222E6099004C3954 /* IMUserChatSetting.m */,
+				842511A9222E609A004C3954 /* IMUserDetail.h */,
+				842511A2222E6099004C3954 /* IMUserDetail.m */,
+				842511AA222E609A004C3954 /* IMUserGroup.h */,
+				842511A4222E6099004C3954 /* IMUserGroup.m */,
+				842511A5222E609A004C3954 /* IMUserSetting.h */,
+				842511A6222E609A004C3954 /* IMUserSetting.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8425112F222E5E27004C3954 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				842511B2222E60B3004C3954 /* IMDBUserStore.h */,
+				842511B0222E60B3004C3954 /* IMDBUserStore.m */,
+				842511B1222E60B3004C3954 /* IMDBUserStoreSQL.h */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		84251133222E5E27004C3954 /* IMDBManager */ = {
+			isa = PBXGroup;
+			children = (
+				842511B6222E60BF004C3954 /* IMDBBaseStore.h */,
+				842511B4222E60BE004C3954 /* IMDBBaseStore.m */,
+				842511B5222E60BE004C3954 /* IMDBManager.h */,
+				842511B7222E60BF004C3954 /* IMDBManager.m */,
+			);
+			path = IMDBManager;
+			sourceTree = "<group>";
+		};
+		84251164222E5E28004C3954 /* IMUserManager */ = {
+			isa = PBXGroup;
+			children = (
+				842511BC222E60D0004C3954 /* IMFriendHelper.h */,
+				842511BB222E60D0004C3954 /* IMFriendHelper.m */,
+				842511BA222E60D0004C3954 /* IMUserHelper.h */,
+				842511BD222E60D0004C3954 /* IMUserHelper.m */,
+				84251167222E5E28004C3954 /* Models */,
+				8425116E222E5E28004C3954 /* Store */,
+			);
+			path = IMUserManager;
+			sourceTree = "<group>";
+		};
+		84251167222E5E28004C3954 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8425119E222E6031004C3954 /* IMGroup.h */,
+				8425119B222E6031004C3954 /* IMGroup.m */,
+				8425119D222E6031004C3954 /* IMGroup+CreateAvatar.h */,
+				8425119C222E6031004C3954 /* IMGroup+CreateAvatar.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8425116E222E5E28004C3954 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				84251198222E600E004C3954 /* IMDBFriendSQL.h */,
+				84251194222E600D004C3954 /* IMDBFriendStore.m */,
+				84251196222E600E004C3954 /* IMDBGroupSQL.h */,
+				84251195222E600E004C3954 /* IMDBGroupStore.h */,
+				84251197222E600E004C3954 /* IMDBGroupStore.m */,
+				84251174222E5E28004C3954 /* IMDBFriendStore.h */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		842511C0222E64EE004C3954 /* DataUtils */ = {
+			isa = PBXGroup;
+			children = (
+				842511C1222E6538004C3954 /* NSFileManager+IMChat.h */,
+				842511C2222E6538004C3954 /* NSFileManager+IMChat.m */,
+			);
+			path = DataUtils;
 			sourceTree = "<group>";
 		};
 		EE7FE434222CC42500073210 /* BAPhotoBrowser */ = {
@@ -1213,7 +1352,7 @@
 		EE8936832227D997004F1F6E /* MYIMDemo */ = {
 			isa = PBXGroup;
 			children = (
-				EE7234DC222E5A8500A6F7E2 /* DBManager */,
+				84251117222E5D09004C3954 /* DBManager */,
 				842510EA222E2276004C3954 /* Login */,
 				842510E9222E2255004C3954 /* Messages */,
 				EE7FE434222CC42500073210 /* BAPhotoBrowser */,
@@ -1368,6 +1507,7 @@
 		EE8936C02227DA4F004F1F6E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				842511C0222E64EE004C3954 /* DataUtils */,
 				EE89370E2228F643004F1F6E /* APPUtils */,
 				EE8936F62228D0A4004F1F6E /* UIUIils */,
 				EE8936DA2228BCED004F1F6E /* IMUtils.h */,
@@ -2370,13 +2510,14 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MYIMDemo/Pods-MYIMDemo-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-MYIMDemo/Pods-MYIMDemo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
 				"${BUILT_PRODUCTS_DIR}/JQFMDB/JQFMDB.framework",
 				"${BUILT_PRODUCTS_DIR}/KissXML/KissXML.framework",
+				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/SDAutoLayout/SDAutoLayout.framework",
@@ -2396,6 +2537,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JQFMDB.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KissXML.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDAutoLayout.framework",
@@ -2409,7 +2551,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MYIMDemo/Pods-MYIMDemo-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MYIMDemo/Pods-MYIMDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D03E9788294A55644E7FED84 /* [CP] Check Pods Manifest.lock */ = {
@@ -2457,8 +2599,12 @@
 			files = (
 				EE8939B5222902C3004F1F6E /* IMInputBoxMoreUnitView.m in Sources */,
 				EE893A3722291B18004F1F6E /* IMChatTableViewCell.m in Sources */,
+				842511A0222E6032004C3954 /* IMGroup+CreateAvatar.m in Sources */,
 				EE8937012228D6B8004F1F6E /* UIViewController+IMCategory.m in Sources */,
+				842511B8222E60BF004C3954 /* IMDBBaseStore.m in Sources */,
 				EE8939BB222902C3004F1F6E /* IMInputBoxEmojiView.m in Sources */,
+				842511BE222E60D0004C3954 /* IMFriendHelper.m in Sources */,
+				8425119F222E6032004C3954 /* IMGroup.m in Sources */,
 				EE7FE45A222CC42500073210 /* IMPhoto.m in Sources */,
 				EE8936FD2228D55F004F1F6E /* IMSystemAuthorization.m in Sources */,
 				EE893A1522290C13004F1F6E /* NSString+Size.m in Sources */,
@@ -2470,11 +2616,12 @@
 				EE7FE45F222CC42500073210 /* FSActionSheetItem.m in Sources */,
 				EE8939B8222902C3004F1F6E /* IMInputBoxMoreItemView.m in Sources */,
 				EE8936FC2228D33B004F1F6E /* UIColor+IMChat.m in Sources */,
+				842511B3222E60B3004C3954 /* IMDBUserStore.m in Sources */,
 				EE893A0B22290A55004F1F6E /* UIImage+Compression.m in Sources */,
+				842511AD222E609A004C3954 /* IMUser.m in Sources */,
 				EE7FE3F92229224A00073210 /* IMPhotoPreviewModel.m in Sources */,
 				EE7FE460222CC42500073210 /* BAProgressView.m in Sources */,
 				EE893A0C22290A55004F1F6E /* UIImage+IMVideo.m in Sources */,
-				84251116222E542B004C3954 /* IMUser.m in Sources */,
 				EE8937172228F91A004F1F6E /* UILabel+IMAutoLabelHeightAndWidth.m in Sources */,
 				EE8936942227D997004F1F6E /* main.m in Sources */,
 				EE8936D42227E3AF004F1F6E /* IMSearchMessageViewController.m in Sources */,
@@ -2485,19 +2632,24 @@
 				EE8936C42227DA4F004F1F6E /* IMColorTools.m in Sources */,
 				EE8939B6222902C3004F1F6E /* IMVideoProgressView.m in Sources */,
 				EE7FE45C222CC42500073210 /* FSActionSheetConfig.m in Sources */,
+				842511C3222E6539004C3954 /* NSFileManager+IMChat.m in Sources */,
 				EE8939BA222902C3004F1F6E /* IMTextView.m in Sources */,
 				EE8936EF2228C81F004F1F6E /* IMChatMessageHelper.m in Sources */,
 				EE893A3822291B18004F1F6E /* IMMessagesListTableViewCell.m in Sources */,
 				EE8936F92228D0E5004F1F6E /* UIFont+IMChat.m in Sources */,
+				8425119A222E600E004C3954 /* IMDBGroupStore.m in Sources */,
+				84251199222E600E004C3954 /* IMDBFriendStore.m in Sources */,
 				EE8939BE222902EF004F1F6E /* NSTextAttachment+Emoji.m in Sources */,
 				EE893A0322290901004F1F6E /* NSArray+Json.m in Sources */,
 				EE893A3C22291B18004F1F6E /* IMChatTextTableViewCell.m in Sources */,
 				EE8939C422290380004F1F6E /* NSAttributedString+Addition.m in Sources */,
 				EE7FE466222CC42500073210 /* IMVideoPlayView.m in Sources */,
-				84251113222E53F5004C3954 /* IMUserHelper.m in Sources */,
 				EE893A3B22291B18004F1F6E /* IMChatVoiceTableViewCell.m in Sources */,
+				842511B9222E60BF004C3954 /* IMDBManager.m in Sources */,
 				EE8937042228D82B004F1F6E /* IMBaseTableViewCell.m in Sources */,
+				842511AF222E609A004C3954 /* IMUserSetting.m in Sources */,
 				842510F5222E24A7004C3954 /* IMLoginViewController.m in Sources */,
+				84251175222E5E28004C3954 /* IMAccountManager.m in Sources */,
 				EE89387C222902C3004F1F6E /* IMEmojiModel.m in Sources */,
 				EE8936F22228CB2C004F1F6E /* IMChatBaseViewController.m in Sources */,
 				EE7FE465222CC42500073210 /* TAAbstractDotView.m in Sources */,
@@ -2511,11 +2663,14 @@
 				EE8939B2222902C3004F1F6E /* IMEmojiCollectionViewCell.m in Sources */,
 				EE89370D2228F5C7004F1F6E /* IMAppDefaultUtil.m in Sources */,
 				EE8939C722290408004F1F6E /* IMFileManagement.m in Sources */,
+				842511AB222E609A004C3954 /* IMUserChatSetting.m in Sources */,
 				EE8936C32227DA4F004F1F6E /* IMMessageViewController.m in Sources */,
 				EE7FE45E222CC42500073210 /* FSActionSheetCell.m in Sources */,
 				EE893A24222918AE004F1F6E /* IMChatViewController+Voice.m in Sources */,
 				EE8939AE222902C3004F1F6E /* IMInputBoxMoreView.m in Sources */,
+				842511AE222E609A004C3954 /* IMUserGroup.m in Sources */,
 				EE7FE45D222CC42500073210 /* FSActionSheet.m in Sources */,
+				842511AC222E609A004C3954 /* IMUserDetail.m in Sources */,
 				EE8936CA2227DC57004F1F6E /* UIButton+IMExtra.m in Sources */,
 				EE7FE461222CC42500073210 /* IMPhotoBrowser.m in Sources */,
 				EE893A0A22290A55004F1F6E /* UIImage+Color.m in Sources */,
@@ -2535,6 +2690,7 @@
 				EE7FE463222CC42500073210 /* TAPageControl.m in Sources */,
 				EE89387B222902C3004F1F6E /* IMEmojiGroup.m in Sources */,
 				EE8936862227D997004F1F6E /* AppDelegate.m in Sources */,
+				842511BF222E60D0004C3954 /* IMUserHelper.m in Sources */,
 				EE8939CA22290419004F1F6E /* IMFileCache.m in Sources */,
 				EE7FE45B222CC42500073210 /* IMZoomingScrollView.m in Sources */,
 				EE7FE464222CC42500073210 /* TAAnimatedDotView.m in Sources */,

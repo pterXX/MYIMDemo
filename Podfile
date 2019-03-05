@@ -6,18 +6,19 @@ target 'MYIMDemo' do
   use_frameworks!
 
   # Pods for MYIMDemo
+  pod 'AFNetworking'              #网络请求库
+  pod 'CocoaLumberjack'           #日志框架
+  pod 'JQFMDB'                     #数据存储
+  pod 'MJExtension'
   pod 'MJRefresh'                 #上下拉刷新
+  pod 'Masonry'                   #自动约束布局
   pod 'SDAutoLayout'              #自动约束布局
   pod 'SDWebImage'                #图片加载库
   pod 'SVProgressHUD'             #弹窗指示器
-  pod 'AFNetworking'              #网络请求库
   pod 'TZImagePickerController'
-  pod 'JQFMDB'                     #数据存储
-  pod 'CocoaLumberjack'           #日志框架
-  pod 'ZZFLEX'
-  pod 'YYKit'
   pod 'XMPPFramework'             #xmmp协议框架
-  pod 'Masonry'                   #自动约束布局
+  pod 'YYKit'
+  pod 'ZZFLEX'
 
 
   target 'MYIMDemoTests' do

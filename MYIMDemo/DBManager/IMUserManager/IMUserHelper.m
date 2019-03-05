@@ -1,13 +1,13 @@
 //
 //  IMUserHelper.m
-//  MYIMDemo
+//  IMChat
 //
-//  Created by admin on 2019/3/5.
-//  Copyright © 2019 徐世杰. All rights reserved.
+//  Created by 徐世杰 on 16/2/6.
+//  Copyright © 2016年 徐世杰. All rights reserved.
 //
 
 #import "IMUserHelper.h"
-
+#import "IMDBUserStore.h"
 
 @implementation IMUserHelper
 @synthesize user = _user;
@@ -26,28 +26,34 @@
 {
     IMUser *user = [[IMUser alloc] init];
     user.userID = @"1000";
-    user.avatarUrl = @"http://p1.qq181.com/cms/120506/2012050623111097826.jpg";
-    user.nickName = @"徐青松";
-    user.userName = @"xu-qingsong";
+    user.avatarURL = @"http://p1.qq181.com/cms/120506/2012050623111097826.jpg";
+    user.nikeName = @"徐世杰";
+    user.username = @"li-bokun";
+    user.detailInfo.qqNumber = @"1159197873";
+    user.detailInfo.email = @"libokun@126.com";
+    user.detailInfo.location = @"山东 滨州";
+    user.detailInfo.sex = @"男";
+    user.detailInfo.motto = @"Hello world!";
+    user.detailInfo.momentsWallURL = @"http://pic1.win4000.com/wallpaper/c/5791e49b37a5c.jpg";
+
     [self setUser:user];
 }
 
 - (void)setUser:(IMUser *)user
 {
     _user = user;
-    TLDBUserStore *userStore = [[TLDBUserStore alloc] init];
+    IMDBUserStore *userStore = [[IMDBUserStore alloc] init];
     if (![userStore updateUser:user]) {
         DDLogError(@"登录数据存库失败");
     }
-    
+
     [[NSUserDefaults standardUserDefaults] setObject:user.userID forKey:@"loginUid"];
 }
-
-- (TLUser *)user
+- (IMUser *)user
 {
     if (!_user) {
         if (self.userID.length > 0) {
-            TLDBUserStore *userStore = [[TLDBUserStore alloc] init];
+            IMDBUserStore *userStore = [[IMDBUserStore alloc] init];
             _user = [userStore userByID:self.userID];
             _user.detailInfo.momentsWallURL = @"http://pic1.win4000.com/wallpaper/c/5791e49b37a5c.jpg";
             if (!_user) {
@@ -68,4 +74,5 @@
 {
     return self.user.userID.length > 0;
 }
+
 @end

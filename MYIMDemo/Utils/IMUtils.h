@@ -9,6 +9,7 @@
 #ifndef IMUtils_h
 #define IMUtils_h
 
+#import "NSFileManager+IMChat.h"
 #import "IMColorTools.h"      // 颜色工具类
 #import "IMShortcutMacros.h"  // 快捷宏
 #import "IMShortcutMethod.h"  // 快捷方法

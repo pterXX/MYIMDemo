@@ -26,81 +26,95 @@
     
 }
 
+
+
 - (void)im_addSubViews{
     //     CGFloat systemVersion = [UIDevice currentSystemVersion].doubleValue;
-     kWeakSelf;
+    kWeakSelf;
     //  背景
-    self.view.addImageView(1000)
-    .image([UIImage imageLoginBackground])
-    .contentMode(UIViewContentModeScaleAspectFit);
+    [self.view addSubview:({
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageLoginBackground]];
+        imageView.contentMode = UIViewContentModeScaleAspectFit;
+        imageView.frame = self.view.bounds;
+        imageView;
+    })];
+    
     
     // logo
-    self.nameLogo =  self.view.addLabel(1001)
-    .text(@"IMDemo").textColor([UIColor colorTextBlack])
-    .textAlignment(NSTextAlignmentCenter)
-    .font([UIFont fontLoginLogo])
-    .masonry(^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(200, 50));
-        make.top.mas_offset(IMNAVBAR_HEIGHT);
-        make.centerX.mas_equalTo(weakSelf.view.mas_centerX);
-    }).view;
+    [self.view addSubview:({
+        self.nameLogo = [[UILabel alloc] initWithFrame:CGRectMake((IMSCREEN_WIDTH - 200) * 0.5, IMNAVBAR_HEIGHT + IMSTATUSBAR_HEIGHT, 200, 50)];
+        self.nameLogo.text = @"IMDemo";
+        self.nameLogo.textAlignment = NSTextAlignmentCenter;
+        self.nameLogo.textColor = [UIColor whiteColor];
+        self.nameLogo.font = [UIFont fontLoginLogo];
+        self.nameLogo;
+    })];
     
     CGSize textFieldSize =  kTextFieldSize;
     //  账号
-    self.userField = [self addTextField:@"账号" placeholder:@"请输入账号" tag:1002];
-    self.userField.zz_make.masonry(^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(textFieldSize);
-        make.top.mas_equalTo(weakSelf.view.mas_bottom).mas_offset(40);
-        make.centerX.mas_equalTo(weakSelf.nameLogo.mas_centerX);
-    });
+    [self.view addSubview:({
+        self.userField = [self addTextField:@"账号" placeholder:@"请输入账号" ];
+        self.userField.size = textFieldSize;
+        self.userField.x = (self.view.width - self.userField.width) * 0.5;
+        self.userField.top = self.nameLogo.bottom + 40;
+        self.userField;
+    })] ;
     
     // 密码
-    self.passwordField = [self addTextField:@"账号" placeholder:@"请输入账号" tag:1003];
-    self.passwordField.zz_make.masonry(^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(weakSelf.userField);
-        make.top.mas_equalTo(weakSelf.userField.mas_bottom).mas_offset(10);
-        make.centerX.mas_equalTo(weakSelf.nameLogo.mas_centerX);
-    });
+    [self.view addSubview:({
+        self.passwordField = [self addTextField:@"密码" placeholder:@"请输入密码" ];
+        self.passwordField.size = textFieldSize;
+        self.passwordField.x = self.userField.x;
+        self.passwordField.top = self.userField.bottom + 10;
+        self.passwordField;
+    })];
     
-    self.signInBtn = self.view.addButton(1004)
-    .title(@"登录").titleColor([UIColor colorTextBlack])
-    .cornerRadius(textFieldSize.height * 0.5)
-    .border(IMBORDER_WIDTH_1PX, [UIColor whiteColor])
-    .masksToBounds(YES)
-    .backgroundColor([UIColor whiteColor])
-    .masonry(^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(weakSelf.userField);
-        make.top.mas_equalTo(weakSelf.passwordField.mas_bottom).mas_offset(10);
-        make.centerX.mas_equalTo(weakSelf.nameLogo.mas_centerX);
-    })
-    // 设置事件
-    .eventBlock(UIControlEventTouchDown, ^(UIButton *sender){
-        sender.enabled = NO;
-        sender.alpha = 0.5f;
-    })
-    .eventBlock(UIControlEventTouchUpInside, ^(UIButton *sender){
-        sender.enabled = YES;
-        sender.alpha = 1.0f;
-    }).view;
+    //  登录按钮
+    [self.view addSubview:({
+        self.signInBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [self.signInBtn setTitle:@"登录" forState:UIControlStateNormal | UIControlStateSelected | UIControlStateFocused];
+        [self.signInBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal | UIControlStateSelected | UIControlStateFocused];
+        self.signInBtn.layer.cornerRadius = textFieldSize.height * 0.5;
+        self.signInBtn.layer.borderColor = [UIColor whiteColor].CGColor;
+        self.signInBtn.layer.borderWidth = IMBORDER_WIDTH_1PX;
+        self.signInBtn.layer.masksToBounds = (YES);
+        //  点击事件
+        [self.signInBtn addIMCallBackAction:^(UIButton *button) {
+            button.enabled = NO;
+            button.alpha = 0.5f;
+        } forControlEvents:UIControlEventTouchDown];
+        //  手指提起的事件
+        [self.signInBtn addIMCallBackAction:^(UIButton *button) {
+            button.enabled = YES;
+            button.alpha = 1.0f;
+        } forControlEvents:UIControlEventTouchUpInside];
+        self.signInBtn;
+    })];
+    
     
 }
 
-- (UITextField *)addTextField:(NSString *)title placeholder:(NSString *)placeholder tag:(NSInteger)tag
+- (UITextField *)addTextField:(NSString *)title placeholder:(NSString *)placeholder
 {
-    UILabel *label = UILabel.zz_create(tag * 10 + 1)
-    .text(title).textColor([UIColor whiteColor])
-    .textAlignment(NSTextAlignmentCenter)
-    .font([UIFont fontLoginUserAndPassword]).view;
-    
     CGSize textFieldSize =  kTextFieldSize;
-    UITextField *textFiled =  UITextField.zz_create(tag)
-    .font([UIFont fontLoginUserAndPassword])
-    .textColor([UIColor whiteColor])
-    .leftView(label)
-    .placeholder(placeholder)
-    .cornerRadius(textFieldSize.height * 0.5)
-    .border(IMBORDER_WIDTH_1PX,[UIColor whiteColor])
-    .masksToBounds(YES).view;
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, textFieldSize.height)];
+    label.text = title;
+    label.textAlignment = NSTextAlignmentCenter;
+    label.font = [UIFont fontLoginUserAndPassword];
+    label.textColor = [UIColor whiteColor];
+
+    UITextField *textFiled = [[UITextField alloc] init];
+    textFiled.font = [UIFont fontLoginUserAndPassword];
+    textFiled.textColor = [UIColor whiteColor];
+    textFiled.leftView = label;
+    textFiled.leftViewMode = UITextFieldViewModeAlways;
+    textFiled.placeholder = placeholder;
+    textField.tintColor = [UIColor whiteColor];
+    textFiled.layer.cornerRadius = textFieldSize.height * 0.5;
+    textFiled.layer.borderColor = [UIColor whiteColor].CGColor;
+    textFiled.layer.borderWidth = IMBORDER_WIDTH_1PX;
+    textFiled.layer.masksToBounds = (YES);
     return textFiled;
 }
 @end

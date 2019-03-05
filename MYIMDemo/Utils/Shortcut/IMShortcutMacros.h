@@ -35,6 +35,26 @@ edgeInsets;  \
 
 #define     IMSAFEAREA_INSETS_BOTTOM      (IMSAFEAREA_INSETS.bottom)
 
+#pragma mark - # 系统方法简写
+/// 广播中心
+#define     IMNotificationCenter        [NSNotificationCenter defaultCenter]
+/// 用户自定义数据
+#define     IMUserDefaults              [NSUserDefaults standardUserDefaults]
+/// URL
+#define     IMURL(urlString)            [NSURL URLWithString:urlString]
+/// 图片
+#define     IMImage(imageName)          (imageName ? [UIImage imageNamed:imageName] : nil)
+#define     IMPNG(X)                    [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:X ofType:@"png"]]
+#define     IMJPG(X)                    [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:X ofType:@"jpg"]]
+/// 字符串
+#define     IMNoNilString(str)          (str.length > 0 ? str : @"")
+/// 方法名
+#define     IMStirngFormSelector(s)     [[NSString alloc] initWithUTF8String:sel_getName(s)]
+/// 颜色
+#define     RGBColor(r, g, b)           [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1.0]
+#define     RGBAColor(r, g, b, a)       [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:a]
+#define     HexColor(color)             [UIColor colorWithRed:((float)((color & 0xFF0000) >> 16))/255.0 green:((float)((color & 0xFF00) >> 8))/255.0 blue:((float)(color & 0xFF))/255.0 alpha:1.0]
+#define     HexAColor(color, a)         [UIColor colorWithRed:((float)((color & 0xFF0000) >> 16))/255.0 green:((float)((color & 0xFF00) >> 8))/255.0 blue:((float)(color & 0xFF))/255.0 alpha:a]
 
 #pragma mark - 消息输入框
 // 输入框字体颜色

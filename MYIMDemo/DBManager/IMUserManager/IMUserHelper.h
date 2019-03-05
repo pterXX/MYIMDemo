@@ -1,15 +1,13 @@
 //
 //  IMUserHelper.h
-//  MYIMDemo
+//  IMChat
 //
-//  Created by admin on 2019/3/5.
-//  Copyright © 2019 徐世杰. All rights reserved.
+//  Created by 徐世杰 on 16/2/6.
+//  Copyright © 2016年 徐世杰. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import "IMUser.h"
-
-NS_ASSUME_NONNULL_BEGIN
 
 @interface IMUserHelper : NSObject
 
@@ -24,5 +22,3 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)loginTestAccount;
 
 @end
-
-NS_ASSUME_NONNULL_END

@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
  @return YES 是刘海屏幕
  */
-BOOL isNotchScreen();
+BOOL isNotchScreen(void);
 
 
 /**

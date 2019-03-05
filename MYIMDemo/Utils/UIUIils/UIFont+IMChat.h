@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 // 字体大小
+static const CGFloat KSystemFontOfSize50    = 50;
 static const CGFloat KSystemFontOfSize32     = 32;
 static const CGFloat KSystemFontOfSize16     = 16;
 static const CGFloat KSystemFontOfSize14     = 14;

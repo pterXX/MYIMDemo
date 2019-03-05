@@ -17,7 +17,7 @@
 }
 
 + (UIFont *) fontLoginLogo{
-    return [UIFont systemFontOfSize:KSystemFontOfSize32];
+    return [UIFont systemFontOfSize:KSystemFontOfSize50];
 }
 
 + (UIFont *) fontLoginUserAndPassword{

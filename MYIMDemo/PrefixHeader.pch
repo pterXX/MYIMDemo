@@ -15,15 +15,40 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
-#import "UITableView+SDAutoTableViewCellHeight.h"           // SDAutoLayout
-#import "UIView+SDAutoLayout.h"                             // SDAutoLayout
+
+#ifdef __OBJC__
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "DDLog.h"
+
+#endif
+
+
+
+#ifdef DEBUG
+
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+
+#else
+
+static const int ddLogLevel = LOG_LEVEL_WARN;
+
+#endif
+
+
+
 #import "MJRefresh.h"
-#import <SDWebImage/UIImageView+WebCache.h>
 #import "SDWebImageManager.h"
 #import "SVProgressHUD.h"
-#import <ZZFLEX/ZZFLEX.h>
+#import "UITableView+SDAutoTableViewCellHeight.h"           // SDAutoLayout
+#import "UIView+SDAutoLayout.h"                             // SDAutoLayout
 #import "YYKit.h"
+#import <CocoaLumberjack/CocoaLumberjack.h>
+#import <MJExtension/MJExtension.h>
 #import <Masonry/Masonry.h>
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <ZZFLEX/ZZFLEX.h>
 
 #import "IMBaseModel.h" // 基础model
 #import "IMBaseTableViewCell.h" //  基础cell
@@ -31,8 +56,11 @@
 
 #import "IMUtils.h" //  工具类
 
+#import "IMUserHelper.h"
 #import "IMChatMessageHelper.h"
 
-#import "IMCategory.h"  
+#import "IMCategory.h"
+
+
 
 #endif /* PrefixHeader_pch */
