@@ -234,7 +234,7 @@
         _headerView.frame    = CGRectMake(0, 0, IMSCREEN_WIDTH, searchBarHeight+44);
         _networkTips.frame   = CGRectMake(0, _searchCtrl.searchBar.height, IMSCREEN_HEIGHT, 44);
         _titleLabel.text     = @"请检查你的网络，当前网络不可用";
-        _tipsImageView.image = [UIImage imageNamed:@"icon_message_send_failure"];
+        _tipsImageView.image = [UIImage imageMessageSendFailure];
     }
     else
     {
@@ -253,7 +253,7 @@
     _headerView.frame          = CGRectMake(0, 0, IMSCREEN_WIDTH, searchBarHeight+44);
     _networkTips.frame         = CGRectMake(0, _searchCtrl.searchBar.height, IMSCREEN_HEIGHT, 44);
     _titleLabel.text           = @"请检查你的网络，无网络连接";
-    _tipsImageView.image       = [UIImage imageNamed:@"icon_message_send_failure"];
+    _tipsImageView.image       = [UIImage imageMessageSendFailure];
     
     _tableView.tableHeaderView = _headerView;
 }

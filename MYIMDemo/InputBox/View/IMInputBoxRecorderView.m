@@ -9,9 +9,9 @@
 #import "IMInputBoxRecorderView.h"
 
 // 录音时间太短 提示图片
-#define tooShortImage [UIImage imageNamed:@"icon_inputBox_recoder_too_short"]
+#define tooShortImage [UIImage imageInputboxRecoderTooShort]
 // 录音撤销 提示图片
-#define recallImage   [UIImage imageNamed:@"icon_inputBox_recorder_prompt_recall"]
+#define recallImage   [UIImage imageInputboxRecorderPromptRecall]
 
 static IMInputBoxRecorderView *recorderPrompt = nil;
 
@@ -46,11 +46,11 @@ static IMInputBoxRecorderView *recorderPrompt = nil;
         self.layer.mask = shapeLayer;
         
         self.leftImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.mj_w - 79) / 2, (self.mj_h - 70)/2., 42, 60)];
-        self.leftImageView.image = [UIImage imageNamed:@"icon_inputBox_recorder_prompt_voice"];
+        self.leftImageView.image = [UIImage imageInputboxRecorderPromptVoice];
         [self addSubview:self.leftImageView];
         
         self.rightImageView = [[UIImageView alloc] initWithFrame:CGRectMake(_leftImageView.mj_x + 52, _leftImageView.mj_y, 27, 60)];
-        self.rightImageView.image = [UIImage imageNamed:@"icon_inputBox_recorder_prompt1"];
+        self.rightImageView.image = [UIImage imageInputboxRecorderPrompt1];
         [self addSubview:self.rightImageView];
 
         self.recallImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 60, 60)];

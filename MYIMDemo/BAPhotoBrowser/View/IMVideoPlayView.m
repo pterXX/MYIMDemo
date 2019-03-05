@@ -309,7 +309,7 @@
     [self.playerItem seekToTime:kCMTimeZero];
     [self.player seekToTime:CMTimeMake(0, 1)];
     _isPlaying = NO;
-    [self.playBtn setImage:[UIImage imageNamed:@"icon_inputBox_video_bttom_play"] forState:UIControlStateNormal];
+    [self.playBtn setImage:[UIImage imageInputBoxVideoBttomPlay] forState:UIControlStateNormal];
 
 }
 

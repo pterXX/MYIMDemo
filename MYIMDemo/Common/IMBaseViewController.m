@@ -205,7 +205,7 @@
     vc.edgesForExtendedLayout = UIRectEdgeNone;
     backBtn.frame = CGRectMake(0, 0, 44, 44);
     [backBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
-    [backBtn setImage:[UIImage imageNamed:@"fanhui"] forState:UIControlStateNormal];
+    [backBtn setImage:[UIImage imageNamed:@"nav_back"] forState:UIControlStateNormal];
     [backBtn addIMClickAction:^(UIButton *button) {
         [self backHandleForVc:vc];
     }];

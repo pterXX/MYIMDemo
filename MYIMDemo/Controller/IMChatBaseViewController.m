@@ -26,10 +26,6 @@
     self.navigationController.navigationBar.barTintColor = KNavigationColor;
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont fontNavBarTitle],NSForegroundColorAttributeName:[UIColor colorTextBlack]}];
     
-    // 自定义替换系统的“<"图标
-    [self.navigationController.navigationBar setBackIndicatorImage:[UIImage imageNamed:@"nav_back"]];
-    [self.navigationController.navigationBar setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"nav_back"]];
-    
     // 设置导航按钮颜色
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
     // 设置导航按钮字体

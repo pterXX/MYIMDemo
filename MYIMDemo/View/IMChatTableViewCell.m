@@ -320,7 +320,7 @@
         }
         else if (sendState == IMMessageSendStatusSendFailure) {
             [self.messageSendStatusImageView.layer removeAnimationForKey:@"rotationAnimation"];//结束动画
-            image = [UIImage imageNamed:@"icon_message_send_failure"];
+            image = [UIImage imageMessageSendFailure];
             self.messageSendStatusImageView.image = image;
         }
         else {

@@ -117,7 +117,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     [self addGenstureRecognizer];
     
     self.focusCursor = [[UIImageView alloc] initWithFrame:CGRectMake(28, 106, 60, 60)];
-    self.focusCursor.image = [UIImage imageNamed:@"icon_inputBox_more_takeVideo_focusing"];
+    self.focusCursor.image = [UIImage imageInputboxMoreTakevideoFocusing];
     [self.view addSubview:self.focusCursor];
     [self performSelector:@selector(onHiddenFocusCurSorAction) withObject:nil afterDelay:0.5];
     
@@ -140,7 +140,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     
     // 返回按钮
     self.btnBack = [UIButton new];
-    [self.btnBack setImage:[UIImage imageNamed:@"icon_inputBox_more_takeVideo_back"] forState:UIControlStateNormal];
+    [self.btnBack setImage:[UIImage imageInputboxMoreTakevideoBack] forState:UIControlStateNormal];
     [self.btnBack addTarget:self action:@selector(onCancelAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.btnBack];
     self.btnBack.sd_layout.centerXIs((IMSCREEN_WIDTH/2. - 67/2.)/2.).centerYEqualToView(self.progressView).widthIs(40).heightIs(40);
@@ -148,13 +148,13 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     // 录制按钮
     self.imgRecord = [UIImageView new];
     self.imgRecord.userInteractionEnabled = YES;
-    self.imgRecord.image = [UIImage imageNamed:@"icon_inputBox_more_takeVideo_photograph"];
+    self.imgRecord.image = [UIImage imageInputboxMoreTakevideoPhotograph];
     [self.view addSubview:self.imgRecord];
     self.imgRecord.sd_layout.centerYEqualToView(self.progressView).centerXEqualToView(self.progressView).widthIs(74).heightIs(74);
     
     // 取消，重拍
     self.btnAfresh = [UIButton new];
-    [self.btnAfresh setImage:[UIImage imageNamed:@"icon_inputBox_more_takeVideo_cancel"] forState:UIControlStateNormal];
+    [self.btnAfresh setImage:[UIImage imageInputboxMoreTakevideoCancel] forState:UIControlStateNormal];
     [self.btnAfresh setHidden:YES];
     [self.btnAfresh addTarget:self action:@selector(onAfreshAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.btnAfresh];
@@ -162,7 +162,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     
     // 选择图片按钮
     self.btnEnsure = [UIButton new];
-    [self.btnEnsure setImage:[UIImage imageNamed:@"icon_inputBox_more_takeVideo_confirm"] forState:UIControlStateNormal];
+    [self.btnEnsure setImage:[UIImage imageInputboxMoreTakevideoConfirm] forState:UIControlStateNormal];
     [self.btnEnsure setHidden:YES];
     [self.btnEnsure addTarget:self action:@selector(onEnsureAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.btnEnsure];
@@ -170,7 +170,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     
     // 切换镜头
     self.btnCamera = [UIButton new];
-    [self.btnCamera setImage:[UIImage imageNamed:@"icon_inputBox_more_takeVideo_camera"] forState:UIControlStateNormal];
+    [self.btnCamera setImage:[UIImage imageInputboxMoreTakevideoCamera] forState:UIControlStateNormal];
     [self.btnCamera addTarget:self action:@selector(onCameraAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.btnCamera];
     

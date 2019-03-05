@@ -165,7 +165,7 @@
     if (!_addButton)
     {
         _addButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, MENU_EMOJI_ITEM_HEIGHT, MENU_EMOJI_ITEM_HEIGHT)];
-        [_addButton setImage:[UIImage imageNamed:@"icon_inputBox_menu_add"] forState:UIControlStateNormal];
+        [_addButton setImage:[UIImage imageInputboxMenuAdd] forState:UIControlStateNormal];
         [_addButton setImageEdgeInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
         [_addButton addTarget:self action:@selector(clickAddButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     }

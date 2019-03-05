@@ -110,7 +110,7 @@
         NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] init];
         
         NSTextAttachment *textAttach = [[NSTextAttachment alloc] init];
-        textAttach.image = [UIImage imageNamed:@"icon_message_send_failure"];
+        textAttach.image = [UIImage imageMessageSendFailure];
         textAttach.bounds = CGRectMake(0, -2, 16, 16);
         NSAttributedString *imageStr = [NSAttributedString attributedStringWithAttachment:textAttach];
         [attributedString appendAttributedString:imageStr];
