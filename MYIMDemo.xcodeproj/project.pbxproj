@@ -40,6 +40,37 @@
 		9330B5BB72954608CB742A23 /* Pods_MYIMDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECA892BB53FE8E5F6A5CBF5D /* Pods_MYIMDemoTests.framework */; };
 		AE6AE5E7E160C14E5371D105 /* Pods_MYIMDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2189E704B4F186789328318 /* Pods_MYIMDemo.framework */; };
 		EE7234D7222CCEB200A6F7E2 /* NSArray+zh_SafeAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7234D6222CCEB200A6F7E2 /* NSArray+zh_SafeAccess.m */; };
+		EE7234E2222E5A9B00A6F7E2 /* TLDBBaseStore.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7234DE222E5A9B00A6F7E2 /* TLDBBaseStore.m */; };
+		EE7234E3222E5A9B00A6F7E2 /* TLDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7234E1222E5A9B00A6F7E2 /* TLDBManager.m */; };
+		EE7234F6222E5AA000A6F7E2 /* TLAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7234E5222E5AA000A6F7E2 /* TLAccountManager.m */; };
+		EE7234F7222E5AA000A6F7E2 /* TLUserChatSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7234E7222E5AA000A6F7E2 /* TLUserChatSetting.m */; };
+		EE7234F8222E5AA000A6F7E2 /* TLUserGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7234E8222E5AA000A6F7E2 /* TLUserGroup.m */; };
+		EE7234F9222E5AA000A6F7E2 /* TLUserSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7234E9222E5AA000A6F7E2 /* TLUserSetting.m */; };
+		EE7234FA222E5AA000A6F7E2 /* TLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7234EA222E5AA000A6F7E2 /* TLUser.m */; };
+		EE7234FB222E5AA000A6F7E2 /* TLUserDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7234EB222E5AA000A6F7E2 /* TLUserDetail.m */; };
+		EE7234FC222E5AA000A6F7E2 /* TLDBUserStore.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7234F3222E5AA000A6F7E2 /* TLDBUserStore.m */; };
+		EE72350E222E5AAB00A6F7E2 /* TLUserHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7234FE222E5AAB00A6F7E2 /* TLUserHelper.m */; };
+		EE72350F222E5AAB00A6F7E2 /* TLGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = EE723503222E5AAB00A6F7E2 /* TLGroup.m */; };
+		EE723510222E5AAB00A6F7E2 /* TLGroup+CreateAvatar.m in Sources */ = {isa = PBXBuildFile; fileRef = EE723504222E5AAB00A6F7E2 /* TLGroup+CreateAvatar.m */; };
+		EE723511222E5AAB00A6F7E2 /* TLFriendHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EE723505222E5AAB00A6F7E2 /* TLFriendHelper.m */; };
+		EE723512222E5AAB00A6F7E2 /* TLDBGroupStore.m in Sources */ = {isa = PBXBuildFile; fileRef = EE723508222E5AAB00A6F7E2 /* TLDBGroupStore.m */; };
+		EE723513222E5AAB00A6F7E2 /* TLDBFriendStore.m in Sources */ = {isa = PBXBuildFile; fileRef = EE723509222E5AAB00A6F7E2 /* TLDBFriendStore.m */; };
+		EE723540222E5AB400A6F7E2 /* TLMoreKBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EE723516222E5AB400A6F7E2 /* TLMoreKBHelper.m */; };
+		EE723541222E5AB400A6F7E2 /* TLEmojiKBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EE723517222E5AB400A6F7E2 /* TLEmojiKBHelper.m */; };
+		EE723542222E5AB400A6F7E2 /* TLMessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EE72351B222E5AB400A6F7E2 /* TLMessageManager.m */; };
+		EE723543222E5AB400A6F7E2 /* TLMessageManager+ConversationRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = EE72351D222E5AB400A6F7E2 /* TLMessageManager+ConversationRecord.m */; };
+		EE723544222E5AB400A6F7E2 /* TLMessageManager+MessageRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = EE72351E222E5AB400A6F7E2 /* TLMessageManager+MessageRecord.m */; };
+		EE723545222E5AB400A6F7E2 /* TLConversation+TLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EE723524222E5AB400A6F7E2 /* TLConversation+TLUser.m */; };
+		EE723546222E5AB400A6F7E2 /* TLConversation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE723527222E5AB400A6F7E2 /* TLConversation.m */; };
+		EE723547222E5AB400A6F7E2 /* TLMessageFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = EE72352A222E5AB400A6F7E2 /* TLMessageFrame.m */; };
+		EE723548222E5AB400A6F7E2 /* TLImageMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = EE723532222E5AB400A6F7E2 /* TLImageMessage.m */; };
+		EE723549222E5AB400A6F7E2 /* TLExpressionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = EE723533222E5AB400A6F7E2 /* TLExpressionMessage.m */; };
+		EE72354A222E5AB400A6F7E2 /* TLVideoMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = EE723534222E5AB400A6F7E2 /* TLVideoMessage.m */; };
+		EE72354B222E5AB400A6F7E2 /* TLVoiceMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = EE723536222E5AB400A6F7E2 /* TLVoiceMessage.m */; };
+		EE72354C222E5AB400A6F7E2 /* TLTextMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = EE723537222E5AB400A6F7E2 /* TLTextMessage.m */; };
+		EE72354D222E5AB400A6F7E2 /* TLMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = EE723538222E5AB400A6F7E2 /* TLMessage.m */; };
+		EE72354E222E5AB400A6F7E2 /* TLDBMessageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = EE72353A222E5AB400A6F7E2 /* TLDBMessageStore.m */; };
+		EE72354F222E5AB400A6F7E2 /* TLDBConversationStore.m in Sources */ = {isa = PBXBuildFile; fileRef = EE72353F222E5AB400A6F7E2 /* TLDBConversationStore.m */; };
 		EE7FE3F92229224A00073210 /* IMPhotoPreviewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7FE3F82229224900073210 /* IMPhotoPreviewModel.m */; };
 		EE7FE433222CB29200073210 /* IMMailAccountInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7FE432222CB29200073210 /* IMMailAccountInfoModel.m */; };
 		EE7FE45A222CC42500073210 /* IMPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7FE437222CC42500073210 /* IMPhoto.m */; };
@@ -503,6 +534,77 @@
 		ECA892BB53FE8E5F6A5CBF5D /* Pods_MYIMDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MYIMDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE7234D5222CCEB200A6F7E2 /* NSArray+zh_SafeAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+zh_SafeAccess.h"; sourceTree = "<group>"; };
 		EE7234D6222CCEB200A6F7E2 /* NSArray+zh_SafeAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+zh_SafeAccess.m"; sourceTree = "<group>"; };
+		EE7234DE222E5A9B00A6F7E2 /* TLDBBaseStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLDBBaseStore.m; sourceTree = "<group>"; };
+		EE7234DF222E5A9B00A6F7E2 /* TLDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDBManager.h; sourceTree = "<group>"; };
+		EE7234E0222E5A9B00A6F7E2 /* TLDBBaseStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDBBaseStore.h; sourceTree = "<group>"; };
+		EE7234E1222E5A9B00A6F7E2 /* TLDBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLDBManager.m; sourceTree = "<group>"; };
+		EE7234E5222E5AA000A6F7E2 /* TLAccountManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAccountManager.m; sourceTree = "<group>"; };
+		EE7234E7222E5AA000A6F7E2 /* TLUserChatSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLUserChatSetting.m; sourceTree = "<group>"; };
+		EE7234E8222E5AA000A6F7E2 /* TLUserGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLUserGroup.m; sourceTree = "<group>"; };
+		EE7234E9222E5AA000A6F7E2 /* TLUserSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLUserSetting.m; sourceTree = "<group>"; };
+		EE7234EA222E5AA000A6F7E2 /* TLUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLUser.m; sourceTree = "<group>"; };
+		EE7234EB222E5AA000A6F7E2 /* TLUserDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLUserDetail.m; sourceTree = "<group>"; };
+		EE7234EC222E5AA000A6F7E2 /* TLUserGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLUserGroup.h; sourceTree = "<group>"; };
+		EE7234ED222E5AA000A6F7E2 /* TLUserChatSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLUserChatSetting.h; sourceTree = "<group>"; };
+		EE7234EE222E5AA000A6F7E2 /* TLUserSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLUserSetting.h; sourceTree = "<group>"; };
+		EE7234EF222E5AA000A6F7E2 /* TLUserDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLUserDetail.h; sourceTree = "<group>"; };
+		EE7234F0222E5AA000A6F7E2 /* TLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLUser.h; sourceTree = "<group>"; };
+		EE7234F1222E5AA000A6F7E2 /* TLAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAccountManager.h; sourceTree = "<group>"; };
+		EE7234F3222E5AA000A6F7E2 /* TLDBUserStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLDBUserStore.m; sourceTree = "<group>"; };
+		EE7234F4222E5AA000A6F7E2 /* TLDBUserStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDBUserStore.h; sourceTree = "<group>"; };
+		EE7234F5222E5AA000A6F7E2 /* TLDBUserStoreSQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDBUserStoreSQL.h; sourceTree = "<group>"; };
+		EE7234FE222E5AAB00A6F7E2 /* TLUserHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLUserHelper.m; sourceTree = "<group>"; };
+		EE7234FF222E5AAB00A6F7E2 /* TLFriendHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLFriendHelper.h; sourceTree = "<group>"; };
+		EE723501222E5AAB00A6F7E2 /* TLGroup+CreateAvatar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TLGroup+CreateAvatar.h"; sourceTree = "<group>"; };
+		EE723502222E5AAB00A6F7E2 /* TLGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLGroup.h; sourceTree = "<group>"; };
+		EE723503222E5AAB00A6F7E2 /* TLGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLGroup.m; sourceTree = "<group>"; };
+		EE723504222E5AAB00A6F7E2 /* TLGroup+CreateAvatar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TLGroup+CreateAvatar.m"; sourceTree = "<group>"; };
+		EE723505222E5AAB00A6F7E2 /* TLFriendHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLFriendHelper.m; sourceTree = "<group>"; };
+		EE723506222E5AAB00A6F7E2 /* TLUserHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLUserHelper.h; sourceTree = "<group>"; };
+		EE723508222E5AAB00A6F7E2 /* TLDBGroupStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLDBGroupStore.m; sourceTree = "<group>"; };
+		EE723509222E5AAB00A6F7E2 /* TLDBFriendStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLDBFriendStore.m; sourceTree = "<group>"; };
+		EE72350A222E5AAB00A6F7E2 /* TLDBFriendSQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDBFriendSQL.h; sourceTree = "<group>"; };
+		EE72350B222E5AAB00A6F7E2 /* TLDBGroupSQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDBGroupSQL.h; sourceTree = "<group>"; };
+		EE72350C222E5AAB00A6F7E2 /* TLDBGroupStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDBGroupStore.h; sourceTree = "<group>"; };
+		EE72350D222E5AAB00A6F7E2 /* TLDBFriendStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDBFriendStore.h; sourceTree = "<group>"; };
+		EE723516222E5AB400A6F7E2 /* TLMoreKBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMoreKBHelper.m; sourceTree = "<group>"; };
+		EE723517222E5AB400A6F7E2 /* TLEmojiKBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLEmojiKBHelper.m; sourceTree = "<group>"; };
+		EE723518222E5AB400A6F7E2 /* TLMoreKBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMoreKBHelper.h; sourceTree = "<group>"; };
+		EE723519222E5AB400A6F7E2 /* TLEmojiKBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLEmojiKBHelper.h; sourceTree = "<group>"; };
+		EE72351B222E5AB400A6F7E2 /* TLMessageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMessageManager.m; sourceTree = "<group>"; };
+		EE72351C222E5AB400A6F7E2 /* TLMessageManagerChatVCDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMessageManagerChatVCDelegate.h; sourceTree = "<group>"; };
+		EE72351D222E5AB400A6F7E2 /* TLMessageManager+ConversationRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TLMessageManager+ConversationRecord.m"; sourceTree = "<group>"; };
+		EE72351E222E5AB400A6F7E2 /* TLMessageManager+MessageRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TLMessageManager+MessageRecord.m"; sourceTree = "<group>"; };
+		EE72351F222E5AB400A6F7E2 /* TLMessageManagerConvVCDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMessageManagerConvVCDelegate.h; sourceTree = "<group>"; };
+		EE723520222E5AB400A6F7E2 /* TLMessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMessageManager.h; sourceTree = "<group>"; };
+		EE723521222E5AB400A6F7E2 /* TLMessageManager+ConversationRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TLMessageManager+ConversationRecord.h"; sourceTree = "<group>"; };
+		EE723522222E5AB400A6F7E2 /* TLMessageManager+MessageRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TLMessageManager+MessageRecord.h"; sourceTree = "<group>"; };
+		EE723524222E5AB400A6F7E2 /* TLConversation+TLUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TLConversation+TLUser.m"; sourceTree = "<group>"; };
+		EE723525222E5AB400A6F7E2 /* TLConversation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLConversation.h; sourceTree = "<group>"; };
+		EE723526222E5AB400A6F7E2 /* TLConversation+TLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TLConversation+TLUser.h"; sourceTree = "<group>"; };
+		EE723527222E5AB400A6F7E2 /* TLConversation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLConversation.m; sourceTree = "<group>"; };
+		EE723529222E5AB400A6F7E2 /* TLExpressionMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLExpressionMessage.h; sourceTree = "<group>"; };
+		EE72352A222E5AB400A6F7E2 /* TLMessageFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMessageFrame.m; sourceTree = "<group>"; };
+		EE72352B222E5AB400A6F7E2 /* TLImageMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLImageMessage.h; sourceTree = "<group>"; };
+		EE72352C222E5AB400A6F7E2 /* TLMessageConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMessageConstants.h; sourceTree = "<group>"; };
+		EE72352D222E5AB400A6F7E2 /* TLVideoMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLVideoMessage.h; sourceTree = "<group>"; };
+		EE72352E222E5AB400A6F7E2 /* TLTextMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLTextMessage.h; sourceTree = "<group>"; };
+		EE72352F222E5AB400A6F7E2 /* TLVoiceMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLVoiceMessage.h; sourceTree = "<group>"; };
+		EE723530222E5AB400A6F7E2 /* TLMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMessage.h; sourceTree = "<group>"; };
+		EE723531222E5AB400A6F7E2 /* TLMessageFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMessageFrame.h; sourceTree = "<group>"; };
+		EE723532222E5AB400A6F7E2 /* TLImageMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLImageMessage.m; sourceTree = "<group>"; };
+		EE723533222E5AB400A6F7E2 /* TLExpressionMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLExpressionMessage.m; sourceTree = "<group>"; };
+		EE723534222E5AB400A6F7E2 /* TLVideoMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLVideoMessage.m; sourceTree = "<group>"; };
+		EE723535222E5AB400A6F7E2 /* TLMessageProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMessageProtocol.h; sourceTree = "<group>"; };
+		EE723536222E5AB400A6F7E2 /* TLVoiceMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLVoiceMessage.m; sourceTree = "<group>"; };
+		EE723537222E5AB400A6F7E2 /* TLTextMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLTextMessage.m; sourceTree = "<group>"; };
+		EE723538222E5AB400A6F7E2 /* TLMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMessage.m; sourceTree = "<group>"; };
+		EE72353A222E5AB400A6F7E2 /* TLDBMessageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLDBMessageStore.m; sourceTree = "<group>"; };
+		EE72353B222E5AB400A6F7E2 /* TLDBMessageStoreSQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDBMessageStoreSQL.h; sourceTree = "<group>"; };
+		EE72353C222E5AB400A6F7E2 /* TLDBConversationStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDBConversationStore.h; sourceTree = "<group>"; };
+		EE72353D222E5AB400A6F7E2 /* TLDBConversationSQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDBConversationSQL.h; sourceTree = "<group>"; };
+		EE72353E222E5AB400A6F7E2 /* TLDBMessageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDBMessageStore.h; sourceTree = "<group>"; };
+		EE72353F222E5AB400A6F7E2 /* TLDBConversationStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLDBConversationStore.m; sourceTree = "<group>"; };
 		EE7FE3F72229224900073210 /* IMPhotoPreviewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMPhotoPreviewModel.h; sourceTree = "<group>"; };
 		EE7FE3F82229224900073210 /* IMPhotoPreviewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMPhotoPreviewModel.m; sourceTree = "<group>"; };
 		EE7FE432222CB29200073210 /* IMMailAccountInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMMailAccountInfoModel.m; sourceTree = "<group>"; };
@@ -1047,13 +1149,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		84220391222E16A200D4B479 /* XmppHelper */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = XmppHelper;
-			sourceTree = "<group>";
-		};
 		842510E9222E2255004C3954 /* Messages */ = {
 			isa = PBXGroup;
 			children = (
@@ -1107,6 +1202,189 @@
 				842510F1222E240A004C3954 /* bg_login.jpeg */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		EE7234DC222E5A8500A6F7E2 /* DBManager */ = {
+			isa = PBXGroup;
+			children = (
+				EE723514222E5AB400A6F7E2 /* TLMessageCenter */,
+				EE7234FD222E5AAB00A6F7E2 /* TLUserManager */,
+				EE7234E4222E5AA000A6F7E2 /* TLAccountManager */,
+				EE7234DD222E5A9B00A6F7E2 /* TLDBManager */,
+			);
+			path = DBManager;
+			sourceTree = "<group>";
+		};
+		EE7234DD222E5A9B00A6F7E2 /* TLDBManager */ = {
+			isa = PBXGroup;
+			children = (
+				EE7234DE222E5A9B00A6F7E2 /* TLDBBaseStore.m */,
+				EE7234DF222E5A9B00A6F7E2 /* TLDBManager.h */,
+				EE7234E0222E5A9B00A6F7E2 /* TLDBBaseStore.h */,
+				EE7234E1222E5A9B00A6F7E2 /* TLDBManager.m */,
+			);
+			path = TLDBManager;
+			sourceTree = "<group>";
+		};
+		EE7234E4222E5AA000A6F7E2 /* TLAccountManager */ = {
+			isa = PBXGroup;
+			children = (
+				EE7234E5222E5AA000A6F7E2 /* TLAccountManager.m */,
+				EE7234E6222E5AA000A6F7E2 /* Models */,
+				EE7234F1222E5AA000A6F7E2 /* TLAccountManager.h */,
+				EE7234F2222E5AA000A6F7E2 /* Store */,
+			);
+			path = TLAccountManager;
+			sourceTree = "<group>";
+		};
+		EE7234E6222E5AA000A6F7E2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EE7234E7222E5AA000A6F7E2 /* TLUserChatSetting.m */,
+				EE7234E8222E5AA000A6F7E2 /* TLUserGroup.m */,
+				EE7234E9222E5AA000A6F7E2 /* TLUserSetting.m */,
+				EE7234EA222E5AA000A6F7E2 /* TLUser.m */,
+				EE7234EB222E5AA000A6F7E2 /* TLUserDetail.m */,
+				EE7234EC222E5AA000A6F7E2 /* TLUserGroup.h */,
+				EE7234ED222E5AA000A6F7E2 /* TLUserChatSetting.h */,
+				EE7234EE222E5AA000A6F7E2 /* TLUserSetting.h */,
+				EE7234EF222E5AA000A6F7E2 /* TLUserDetail.h */,
+				EE7234F0222E5AA000A6F7E2 /* TLUser.h */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		EE7234F2222E5AA000A6F7E2 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				EE7234F3222E5AA000A6F7E2 /* TLDBUserStore.m */,
+				EE7234F4222E5AA000A6F7E2 /* TLDBUserStore.h */,
+				EE7234F5222E5AA000A6F7E2 /* TLDBUserStoreSQL.h */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		EE7234FD222E5AAB00A6F7E2 /* TLUserManager */ = {
+			isa = PBXGroup;
+			children = (
+				EE7234FE222E5AAB00A6F7E2 /* TLUserHelper.m */,
+				EE7234FF222E5AAB00A6F7E2 /* TLFriendHelper.h */,
+				EE723500222E5AAB00A6F7E2 /* Models */,
+				EE723505222E5AAB00A6F7E2 /* TLFriendHelper.m */,
+				EE723506222E5AAB00A6F7E2 /* TLUserHelper.h */,
+				EE723507222E5AAB00A6F7E2 /* Store */,
+			);
+			name = TLUserManager;
+			path = ../../../third/TLChat/TLChat/AppControlCenter/TLUserManager;
+			sourceTree = "<group>";
+		};
+		EE723500222E5AAB00A6F7E2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EE723501222E5AAB00A6F7E2 /* TLGroup+CreateAvatar.h */,
+				EE723502222E5AAB00A6F7E2 /* TLGroup.h */,
+				EE723503222E5AAB00A6F7E2 /* TLGroup.m */,
+				EE723504222E5AAB00A6F7E2 /* TLGroup+CreateAvatar.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		EE723507222E5AAB00A6F7E2 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				EE723508222E5AAB00A6F7E2 /* TLDBGroupStore.m */,
+				EE723509222E5AAB00A6F7E2 /* TLDBFriendStore.m */,
+				EE72350A222E5AAB00A6F7E2 /* TLDBFriendSQL.h */,
+				EE72350B222E5AAB00A6F7E2 /* TLDBGroupSQL.h */,
+				EE72350C222E5AAB00A6F7E2 /* TLDBGroupStore.h */,
+				EE72350D222E5AAB00A6F7E2 /* TLDBFriendStore.h */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		EE723514222E5AB400A6F7E2 /* TLMessageCenter */ = {
+			isa = PBXGroup;
+			children = (
+				EE723515222E5AB400A6F7E2 /* ChatKeyboardHelper */,
+				EE72351A222E5AB400A6F7E2 /* TLMessageManager */,
+				EE723523222E5AB400A6F7E2 /* TLConversation */,
+				EE723528222E5AB400A6F7E2 /* TLMessage */,
+				EE723539222E5AB400A6F7E2 /* Store */,
+			);
+			path = TLMessageCenter;
+			sourceTree = "<group>";
+		};
+		EE723515222E5AB400A6F7E2 /* ChatKeyboardHelper */ = {
+			isa = PBXGroup;
+			children = (
+				EE723516222E5AB400A6F7E2 /* TLMoreKBHelper.m */,
+				EE723517222E5AB400A6F7E2 /* TLEmojiKBHelper.m */,
+				EE723518222E5AB400A6F7E2 /* TLMoreKBHelper.h */,
+				EE723519222E5AB400A6F7E2 /* TLEmojiKBHelper.h */,
+			);
+			path = ChatKeyboardHelper;
+			sourceTree = "<group>";
+		};
+		EE72351A222E5AB400A6F7E2 /* TLMessageManager */ = {
+			isa = PBXGroup;
+			children = (
+				EE72351B222E5AB400A6F7E2 /* TLMessageManager.m */,
+				EE72351C222E5AB400A6F7E2 /* TLMessageManagerChatVCDelegate.h */,
+				EE72351D222E5AB400A6F7E2 /* TLMessageManager+ConversationRecord.m */,
+				EE72351E222E5AB400A6F7E2 /* TLMessageManager+MessageRecord.m */,
+				EE72351F222E5AB400A6F7E2 /* TLMessageManagerConvVCDelegate.h */,
+				EE723520222E5AB400A6F7E2 /* TLMessageManager.h */,
+				EE723521222E5AB400A6F7E2 /* TLMessageManager+ConversationRecord.h */,
+				EE723522222E5AB400A6F7E2 /* TLMessageManager+MessageRecord.h */,
+			);
+			path = TLMessageManager;
+			sourceTree = "<group>";
+		};
+		EE723523222E5AB400A6F7E2 /* TLConversation */ = {
+			isa = PBXGroup;
+			children = (
+				EE723524222E5AB400A6F7E2 /* TLConversation+TLUser.m */,
+				EE723525222E5AB400A6F7E2 /* TLConversation.h */,
+				EE723526222E5AB400A6F7E2 /* TLConversation+TLUser.h */,
+				EE723527222E5AB400A6F7E2 /* TLConversation.m */,
+			);
+			path = TLConversation;
+			sourceTree = "<group>";
+		};
+		EE723528222E5AB400A6F7E2 /* TLMessage */ = {
+			isa = PBXGroup;
+			children = (
+				EE723529222E5AB400A6F7E2 /* TLExpressionMessage.h */,
+				EE72352A222E5AB400A6F7E2 /* TLMessageFrame.m */,
+				EE72352B222E5AB400A6F7E2 /* TLImageMessage.h */,
+				EE72352C222E5AB400A6F7E2 /* TLMessageConstants.h */,
+				EE72352D222E5AB400A6F7E2 /* TLVideoMessage.h */,
+				EE72352E222E5AB400A6F7E2 /* TLTextMessage.h */,
+				EE72352F222E5AB400A6F7E2 /* TLVoiceMessage.h */,
+				EE723530222E5AB400A6F7E2 /* TLMessage.h */,
+				EE723531222E5AB400A6F7E2 /* TLMessageFrame.h */,
+				EE723532222E5AB400A6F7E2 /* TLImageMessage.m */,
+				EE723533222E5AB400A6F7E2 /* TLExpressionMessage.m */,
+				EE723534222E5AB400A6F7E2 /* TLVideoMessage.m */,
+				EE723535222E5AB400A6F7E2 /* TLMessageProtocol.h */,
+				EE723536222E5AB400A6F7E2 /* TLVoiceMessage.m */,
+				EE723537222E5AB400A6F7E2 /* TLTextMessage.m */,
+				EE723538222E5AB400A6F7E2 /* TLMessage.m */,
+			);
+			path = TLMessage;
+			sourceTree = "<group>";
+		};
+		EE723539222E5AB400A6F7E2 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				EE72353A222E5AB400A6F7E2 /* TLDBMessageStore.m */,
+				EE72353B222E5AB400A6F7E2 /* TLDBMessageStoreSQL.h */,
+				EE72353C222E5AB400A6F7E2 /* TLDBConversationStore.h */,
+				EE72353D222E5AB400A6F7E2 /* TLDBConversationSQL.h */,
+				EE72353E222E5AB400A6F7E2 /* TLDBMessageStore.h */,
+				EE72353F222E5AB400A6F7E2 /* TLDBConversationStore.m */,
+			);
+			path = Store;
 			sourceTree = "<group>";
 		};
 		EE7FE434222CC42500073210 /* BAPhotoBrowser */ = {
@@ -1213,9 +1491,9 @@
 		EE8936832227D997004F1F6E /* MYIMDemo */ = {
 			isa = PBXGroup;
 			children = (
+				EE7234DC222E5A8500A6F7E2 /* DBManager */,
 				842510EA222E2276004C3954 /* Login */,
 				842510E9222E2255004C3954 /* Messages */,
-				84220391222E16A200D4B479 /* XmppHelper */,
 				EE7FE434222CC42500073210 /* BAPhotoBrowser */,
 				EE8936BD2227DA4E004F1F6E /* Category */,
 				EE8936BE2227DA4E004F1F6E /* Common */,
@@ -2458,11 +2736,17 @@
 				EE8939B5222902C3004F1F6E /* IMInputBoxMoreUnitView.m in Sources */,
 				EE893A3722291B18004F1F6E /* IMChatTableViewCell.m in Sources */,
 				EE8937012228D6B8004F1F6E /* UIViewController+IMCategory.m in Sources */,
+				EE72354D222E5AB400A6F7E2 /* TLMessage.m in Sources */,
+				EE7234F9222E5AA000A6F7E2 /* TLUserSetting.m in Sources */,
+				EE723544222E5AB400A6F7E2 /* TLMessageManager+MessageRecord.m in Sources */,
 				EE8939BB222902C3004F1F6E /* IMInputBoxEmojiView.m in Sources */,
 				EE7FE45A222CC42500073210 /* IMPhoto.m in Sources */,
 				EE8936FD2228D55F004F1F6E /* IMSystemAuthorization.m in Sources */,
 				EE893A1522290C13004F1F6E /* NSString+Size.m in Sources */,
 				EE893A1422290C13004F1F6E /* NSString+Category.m in Sources */,
+				EE723546222E5AB400A6F7E2 /* TLConversation.m in Sources */,
+				EE72354F222E5AB400A6F7E2 /* TLDBConversationStore.m in Sources */,
+				EE723512222E5AAB00A6F7E2 /* TLDBGroupStore.m in Sources */,
 				EE7FE462222CC42500073210 /* TADotView.m in Sources */,
 				EE8939B4222902C3004F1F6E /* IMInputBoxEmojiMenuView.m in Sources */,
 				EE8936CE2227DF37004F1F6E /* UIDevice+IMCategory.m in Sources */,
@@ -2470,6 +2754,7 @@
 				EE7FE45F222CC42500073210 /* FSActionSheetItem.m in Sources */,
 				EE8939B8222902C3004F1F6E /* IMInputBoxMoreItemView.m in Sources */,
 				EE8936FC2228D33B004F1F6E /* UIColor+IMChat.m in Sources */,
+				EE72350E222E5AAB00A6F7E2 /* TLUserHelper.m in Sources */,
 				EE893A0B22290A55004F1F6E /* UIImage+Compression.m in Sources */,
 				EE7FE3F92229224A00073210 /* IMPhotoPreviewModel.m in Sources */,
 				EE7FE460222CC42500073210 /* BAProgressView.m in Sources */,
@@ -2482,31 +2767,44 @@
 				EE8937142228F811004F1F6E /* NSDate+IMCategory.m in Sources */,
 				EE8939B9222902C3004F1F6E /* IMInputBoxRecorderView.m in Sources */,
 				EE8939B7222902C3004F1F6E /* IMInputBoxViewCtrl.m in Sources */,
+				EE723542222E5AB400A6F7E2 /* TLMessageManager.m in Sources */,
 				EE8936C42227DA4F004F1F6E /* IMColorTools.m in Sources */,
 				EE8939B6222902C3004F1F6E /* IMVideoProgressView.m in Sources */,
 				EE7FE45C222CC42500073210 /* FSActionSheetConfig.m in Sources */,
 				EE8939BA222902C3004F1F6E /* IMTextView.m in Sources */,
+				EE72354A222E5AB400A6F7E2 /* TLVideoMessage.m in Sources */,
 				EE8936EF2228C81F004F1F6E /* IMChatMessageHelper.m in Sources */,
 				EE893A3822291B18004F1F6E /* IMMessagesListTableViewCell.m in Sources */,
 				EE8936F92228D0E5004F1F6E /* UIFont+IMChat.m in Sources */,
 				EE8939BE222902EF004F1F6E /* NSTextAttachment+Emoji.m in Sources */,
+				EE723549222E5AB400A6F7E2 /* TLExpressionMessage.m in Sources */,
 				EE893A0322290901004F1F6E /* NSArray+Json.m in Sources */,
+				EE72354C222E5AB400A6F7E2 /* TLTextMessage.m in Sources */,
+				EE723541222E5AB400A6F7E2 /* TLEmojiKBHelper.m in Sources */,
 				EE893A3C22291B18004F1F6E /* IMChatTextTableViewCell.m in Sources */,
+				EE7234FC222E5AA000A6F7E2 /* TLDBUserStore.m in Sources */,
 				EE8939C422290380004F1F6E /* NSAttributedString+Addition.m in Sources */,
+				EE723545222E5AB400A6F7E2 /* TLConversation+TLUser.m in Sources */,
+				EE7234E3222E5A9B00A6F7E2 /* TLDBManager.m in Sources */,
 				EE7FE466222CC42500073210 /* IMVideoPlayView.m in Sources */,
 				84251113222E53F5004C3954 /* IMUserHelper.m in Sources */,
+				EE723540222E5AB400A6F7E2 /* TLMoreKBHelper.m in Sources */,
 				EE893A3B22291B18004F1F6E /* IMChatVoiceTableViewCell.m in Sources */,
 				EE8937042228D82B004F1F6E /* IMBaseTableViewCell.m in Sources */,
 				842510F5222E24A7004C3954 /* IMLoginViewController.m in Sources */,
 				EE89387C222902C3004F1F6E /* IMEmojiModel.m in Sources */,
 				EE8936F22228CB2C004F1F6E /* IMChatBaseViewController.m in Sources */,
+				EE723543222E5AB400A6F7E2 /* TLMessageManager+ConversationRecord.m in Sources */,
+				EE72350F222E5AAB00A6F7E2 /* TLGroup.m in Sources */,
 				EE7FE465222CC42500073210 /* TAAbstractDotView.m in Sources */,
+				EE723547222E5AB400A6F7E2 /* TLMessageFrame.m in Sources */,
 				EE89387D222902C3004F1F6E /* IMTextBackedString.m in Sources */,
 				EE89371D2228FFEB004F1F6E /* NSDictionary+Json.m in Sources */,
 				EE893A3D22291B18004F1F6E /* IMChatVideoTableViewCell.m in Sources */,
 				EE7FE433222CB29200073210 /* IMMailAccountInfoModel.m in Sources */,
 				EE8936E92228C506004F1F6E /* IMConversationModel.m in Sources */,
 				EE8936EC2228C687004F1F6E /* IMMessageModel.m in Sources */,
+				EE7234E2222E5A9B00A6F7E2 /* TLDBBaseStore.m in Sources */,
 				EE7234D7222CCEB200A6F7E2 /* NSArray+zh_SafeAccess.m in Sources */,
 				EE8939B2222902C3004F1F6E /* IMEmojiCollectionViewCell.m in Sources */,
 				EE89370D2228F5C7004F1F6E /* IMAppDefaultUtil.m in Sources */,
@@ -2514,24 +2812,34 @@
 				EE8936C32227DA4F004F1F6E /* IMMessageViewController.m in Sources */,
 				EE7FE45E222CC42500073210 /* FSActionSheetCell.m in Sources */,
 				EE893A24222918AE004F1F6E /* IMChatViewController+Voice.m in Sources */,
+				EE7234FA222E5AA000A6F7E2 /* TLUser.m in Sources */,
 				EE8939AE222902C3004F1F6E /* IMInputBoxMoreView.m in Sources */,
+				EE723511222E5AAB00A6F7E2 /* TLFriendHelper.m in Sources */,
+				EE7234F8222E5AA000A6F7E2 /* TLUserGroup.m in Sources */,
 				EE7FE45D222CC42500073210 /* FSActionSheet.m in Sources */,
 				EE8936CA2227DC57004F1F6E /* UIButton+IMExtra.m in Sources */,
 				EE7FE461222CC42500073210 /* IMPhotoBrowser.m in Sources */,
 				EE893A0A22290A55004F1F6E /* UIImage+Color.m in Sources */,
 				EE893A23222918AE004F1F6E /* IMChatViewController+Image.m in Sources */,
+				EE723513222E5AAB00A6F7E2 /* TLDBFriendStore.m in Sources */,
+				EE72354B222E5AB400A6F7E2 /* TLVoiceMessage.m in Sources */,
 				EE8939AD222902C3004F1F6E /* IMVideoViewController.m in Sources */,
 				EE893A3922291B18004F1F6E /* IMChatMailTableViewCell.m in Sources */,
+				EE7234F6222E5AA000A6F7E2 /* TLAccountManager.m in Sources */,
+				EE723510222E5AAB00A6F7E2 /* TLGroup+CreateAvatar.m in Sources */,
 				EE89387E222902C3004F1F6E /* IMInputBoxMoreModel.m in Sources */,
 				EE8937082228DDF3004F1F6E /* UIImage+IMChat.m in Sources */,
 				EE8939B0222902C3004F1F6E /* IMHorizontalPageFlowlayout.m in Sources */,
 				EE89371A2228FE6A004F1F6E /* IMNetworkDetection.m in Sources */,
 				EE8936C72227DBA2004F1F6E /* IMBaseViewController.m in Sources */,
+				EE72354E222E5AB400A6F7E2 /* TLDBMessageStore.m in Sources */,
 				EE8936DD2228BE68004F1F6E /* IMShortcutMethod.m in Sources */,
+				EE723548222E5AB400A6F7E2 /* TLImageMessage.m in Sources */,
 				EE8939AF222902C3004F1F6E /* IMInputBoxView.m in Sources */,
 				EE893720222900BE004F1F6E /* UIView+Frame.m in Sources */,
 				EE8939B1222902C3004F1F6E /* IMPlayer.m in Sources */,
 				EE8936E32228C331004F1F6E /* IMChatViewController.m in Sources */,
+				EE7234FB222E5AA000A6F7E2 /* TLUserDetail.m in Sources */,
 				EE7FE463222CC42500073210 /* TAPageControl.m in Sources */,
 				EE89387B222902C3004F1F6E /* IMEmojiGroup.m in Sources */,
 				EE8936862227D997004F1F6E /* AppDelegate.m in Sources */,
@@ -2540,6 +2848,7 @@
 				EE7FE464222CC42500073210 /* TAAnimatedDotView.m in Sources */,
 				EE8939B3222902C3004F1F6E /* IMRecordView.m in Sources */,
 				EE8936E62228C4B6004F1F6E /* IMBaseModel.m in Sources */,
+				EE7234F7222E5AA000A6F7E2 /* TLUserChatSetting.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
