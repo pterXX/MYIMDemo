@@ -44,7 +44,7 @@ static IMXMPPHelper *helper;
         [_xmppStream setHostName:IM_XMMP_HOST_NAME];  //设置xmpp服务器地址
         [_xmppStream setHostPort:IM_XMPP_HOST_PORT];  //设置xmpp服务器端口号
         [_xmppStream setKeepAliveInterval:30];        //心跳包间隔时长
-    
+        
         //  保证xmpp早后台运行。iOS10 需要使用iOS 10不再提供后台套接字。您必须使用Pushkit和XEP-0357模块。
         _xmppStream.enableBackgroundingOnSocket = YES;
         [_xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
@@ -77,7 +77,7 @@ static IMXMPPHelper *helper;
 //  登录
 -(void)loginWithName:(NSString *)userName andPassword:(NSString *)password success:(IMXMPPSuccessBlock)success fail:(IMXMPPFailBlock)fail{
     _myJID = [XMPPJID jidWithUser:userName domain:IM_XMPP_DOMAIN resource:nil];
-    NSLog(@"_myJID.user%@ ,_myJID.domain%@ ,resource %@",_myJID.user,_myJID.domain,_myJID.resource);
+    self.password = password;
     self.userHelper      = [IMUserHelper sharedHelper];
     IMUser *user         = [[IMUser alloc] init];
     user.nikeName        = userName;
@@ -89,8 +89,12 @@ static IMXMPPHelper *helper;
     [self.xmppStream setMyJID:_myJID];
     
     NSError *error = nil;
-    if (![_xmppStream connectWithTimeout:XMPPStreamTimeoutNone error:&error]) {
-        
+    // 如果以前连接过服务，要断开
+    [_xmppStream disconnect];
+    [_xmppStream connectWithTimeout:XMPPStreamTimeoutNone error:&error];
+    if (error) {
+        NSLog(@"%@",error);
+        [self failCompleteCode:IMXMPPErrorCodeConnect description:@"连接失败,请检查服务器地址"];
     }
 }
 
@@ -131,8 +135,9 @@ static IMXMPPHelper *helper;
 }
 
 - (void)xmppStreamDidDisconnect:(XMPPStream *)sender withError:(NSError *)error{
-    NSLog(@"%s --- %@",__func__,error);
-    [self failCompleteCode:IMXMPPErrorCodeConnect description:@"连接失败,请检查服务器地址"];
+    if (error) {
+        [self failCompleteCode:IMXMPPErrorCodeConnect description:@"连接失败,请检查服务器地址"];
+    }
 }
 
 //已经登录
@@ -157,8 +162,28 @@ static IMXMPPHelper *helper;
 
 
 /**
- 初始化错误信息
+ 此方法在流通过SSL/TLS得到保护之后调用。
+ 如果服务器在打开过程中需要安全连接，则可以调用此方法，
+ 或者如果secureConnection:方法是手动调用的。
+ */
+- (void)xmppStreamDidSecure:(XMPPStream *)sender{
+    [sender.asyncSocket readDataWithTimeout:-1 tag:1];
+}
 
+- (void)xmppStream:(XMPPStream *)sender willSecureWithSettings:(NSMutableDictionary<NSString *,NSObject *> *)settings{
+    [settings setObject:sender.myJID.domain forKey:(NSString *)kCFStreamSSLPeerName];
+    //  如果手动信任证书
+    if (self.customCertEvaluation) [settings setObject:@(YES) forKey:GCDAsyncSocketManuallyEvaluateTrust];
+}
+
+//  手动信任
+- (void)xmppStream:(XMPPStream *)sender didReceiveTrust:(SecTrustRef)trust completionHandler:(void (^)(BOOL))completionHandler{
+    completionHandler(self.customCertEvaluation);
+}
+
+/**
+ 初始化错误信息
+ 
  @param code 错误编码
  @param description 错误信息
  */
@@ -215,7 +240,6 @@ static IMXMPPHelper *helper;
     }
     
     XMPPMessage *message = [XMPPMessage messageWithType:@"chat" to:jid];
-    
     [message addAttributeWithName:@"from" stringValue:sender.xmppStream.myJID.bare];
     [message addSubject:subject];
     
@@ -223,9 +247,7 @@ static IMXMPPHelper *helper;
     path = [path stringByAppendingPathComponent:[XMPPStream generateUUID]];
     path = [path stringByAppendingPathExtension:extension];
     [data writeToFile:path atomically:YES];
-    
     [message addBody:path.lastPathComponent];
-    
     [self.xmppMessageArchivingCoreDataStorage archiveMessage:message outgoing:NO xmppStream:self.xmppStream];
 }
 

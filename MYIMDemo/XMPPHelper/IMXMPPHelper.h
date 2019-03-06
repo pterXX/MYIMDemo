@@ -28,7 +28,8 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
 @interface IMXMPPHelper : NSObject
 @property (nonatomic ,strong) IMUserHelper                        *userHelper;
 @property (nonatomic ,strong) NSString                            *password;
-
+//表示是否手动验证TLS/SSL
+@property (nonatomic ,assign) BOOL                                customCertEvaluation;
 //表示一个地址
 @property (nonatomic ,strong) XMPPJID                             *myJID;
 //用于连接服务器

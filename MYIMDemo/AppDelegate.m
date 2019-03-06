@@ -27,7 +27,7 @@
     self.window.rootViewController = rootVc;
     
     //  初始化xmpp
-    [IMXMPPHelper sharedHelper];
+    [IMXMPPHelper sharedHelper].customCertEvaluation = YES;
     
     return YES;
 }
