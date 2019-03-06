@@ -171,7 +171,7 @@
     
     self.tableView.tableHeaderView = _headerView;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(conversationCommonNotification:) name:kConversationCommonNot object:nil];
+    [IMNotificationCenter addObserver:self selector:@selector(conversationCommonNotification:) name:kConversationCommonNot object:nil];
     // 设置自己的头像
     [[IMAppDefaultUtil sharedInstance] setUserAvatar:@"http://cname-yunke.shovesoft.com/group1/M00/00/1A/CgAHEVuMyv6AKj6uAABukEJ7t3I575.png"];
     [self getConversationListWithConversationId:@"-1"];
@@ -272,7 +272,7 @@
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setObject:[NSString stringWithFormat:@"%ld", (long)_badgeNumber] forKey:@"badgeNumber"];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"updateBadgeNumber" object:nil userInfo:dic];
+    [IMNotificationCenter postNotificationName:@"updateBadgeNumber" object:nil userInfo:dic];
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:_badgeNumber];
     
 }
@@ -307,7 +307,7 @@
         });
         // 把消息推到聊天页面上显示出来
         NSDictionary *messageNot = @{@"conversationId":covId, @"messageId":msgId};
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"newMessage" object:nil userInfo:messageNot];
+        [IMNotificationCenter postNotificationName:@"newMessage" object:nil userInfo:messageNot];
     }
 }
 
@@ -495,5 +495,7 @@
     _searchCtrl.searchBar.backgroundColor = [IMColorTools colorWithHexString:@"0xffffff"];
     [self getConversationListWithConversationId:@"-1"];
 }
+
+
 
 @end

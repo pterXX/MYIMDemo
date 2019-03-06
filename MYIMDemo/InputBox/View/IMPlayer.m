@@ -77,14 +77,14 @@
     //监控网络加载情况属性
     [playerItem addObserver:self forKeyPath:@"loadedTimeRanges" options:NSKeyValueObservingOptionNew context:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playbackFinished:) name:AVPlayerItemDidPlayToEndTimeNotification object:self.player.currentItem];
+    [IMNotificationCenter addObserver:self selector:@selector(playbackFinished:) name:AVPlayerItemDidPlayToEndTimeNotification object:self.player.currentItem];
 }
 
 - (void)removePlayer {
     AVPlayerItem *playerItem = self.player.currentItem;
     [playerItem removeObserver:self forKeyPath:@"status"];
     [playerItem removeObserver:self forKeyPath:@"loadedTimeRanges"];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [IMNotificationCenter removeObserver:self];
 }
 
 - (void)stopPlayer {

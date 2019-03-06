@@ -251,14 +251,14 @@
     self.currentImageIndex = 0;
     self.imageCount = 0;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(orientationDidChange) name:UIDeviceOrientationDidChangeNotification  object:nil];
+    [IMNotificationCenter addObserver:self  selector:@selector(orientationDidChange) name:UIDeviceOrientationDidChangeNotification  object:nil];
     
 }
 
 - (void)dealloc {
     [self.reusableZoomingScrollViews removeAllObjects];
     [self.visibleZoomingScrollViews removeAllObjects];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [IMNotificationCenter removeObserver:self];
 }
 
 - (void)iniaialUI

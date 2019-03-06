@@ -38,7 +38,7 @@ static NSString * const kFSActionSheetCellIdentifier = @"kFSActionSheetCellIdent
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [IMNotificationCenter removeObserver:self];
 }
 
 /*! @brief 单文本选项快速初始化 */
@@ -131,7 +131,7 @@ static NSString * const kFSActionSheetCellIdentifier = @"kFSActionSheetCellIdent
     self.popupWindow.bounds = [UIScreen mainScreen].bounds;
     
     // 监听屏幕旋转
-    [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(orientationDidChange:) name:UIDeviceOrientationDidChangeNotification  object:nil];
+    [IMNotificationCenter addObserver:self  selector:@selector(orientationDidChange:) name:UIDeviceOrientationDidChangeNotification  object:nil];
 }
 
 // 屏幕旋转通知回调

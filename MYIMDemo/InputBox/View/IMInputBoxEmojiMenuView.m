@@ -98,7 +98,7 @@
         }
     }];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteEmojiToEmpty) name:@"deleteEmojiToEmpty" object:nil];
+    [IMNotificationCenter addObserver:self selector:@selector(deleteEmojiToEmpty) name:@"deleteEmojiToEmpty" object:nil];
     
 }
 
@@ -188,7 +188,7 @@
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [IMNotificationCenter removeObserver:self];
 }
 
 @end

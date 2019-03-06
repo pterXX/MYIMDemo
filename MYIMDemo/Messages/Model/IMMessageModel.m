@@ -228,7 +228,7 @@
                     if (weakSelf.showMessageTime) {
                         height += SHOW_MESSAGE_TIME_HEIGHT;
                     }
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"updateRowHeight" object:nil userInfo:@{@"messageId":weakSelf.messageId, @"cellHeight":@(height), @"messageSize":@(_messageSize)}];
+                    [IMNotificationCenter postNotificationName:@"updateRowHeight" object:nil userInfo:@{@"messageId":weakSelf.messageId, @"cellHeight":@(height), @"messageSize":@(_messageSize)}];
                 }
                 
             });
@@ -349,7 +349,7 @@
         height += SHOW_MESSAGE_TIME_HEIGHT;
     }
     // 通知聊天界面刷新这个消息
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"updateRowHeight" object:nil userInfo:@{@"messageId":self.messageId, @"cellHeight":@(height), @"messageSize":@(_messageSize)}];
+    [IMNotificationCenter postNotificationName:@"updateRowHeight" object:nil userInfo:@{@"messageId":self.messageId, @"cellHeight":@(height), @"messageSize":@(_messageSize)}];
     
     if (complete) {
         

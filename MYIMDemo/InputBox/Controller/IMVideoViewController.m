@@ -572,7 +572,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 #pragma mark - 通知
 - (void)setupObservers
 {
-    NSNotificationCenter *notification = [NSNotificationCenter defaultCenter];
+    NSNotificationCenter *notification = IMNotificationCenter;
     [notification addObserver:self selector:@selector(applicationDidEnterBackground:) name:UIApplicationWillResignActiveNotification object:[UIApplication sharedApplication]];
 }
 
@@ -589,24 +589,24 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     [self changeDeviceProperty:^(AVCaptureDevice *captureDevice) {
         captureDevice.subjectAreaChangeMonitoringEnabled =YES;
     }];
-    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    NSNotificationCenter *notificationCenter = IMNotificationCenter;
     //捕获区域发生改变
     [notificationCenter addObserver:self selector:@selector(areaChange:) name:AVCaptureDeviceSubjectAreaDidChangeNotification object:captureDevice];
 }
 - (void)removeNotificationFromCaptureDevice:(AVCaptureDevice *)captureDevice{
-    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    NSNotificationCenter *notificationCenter = IMNotificationCenter;
     [notificationCenter removeObserver:self name:AVCaptureDeviceSubjectAreaDidChangeNotification object:captureDevice];
 }
 /**
  *  移除所有通知
  */
 -(void)removeNotification{
-    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    NSNotificationCenter *notificationCenter = IMNotificationCenter;
     [notificationCenter removeObserver:self];
 }
 
 -(void)addNotificationToCaptureSession:(AVCaptureSession *)captureSession{
-    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    NSNotificationCenter *notificationCenter = IMNotificationCenter;
     //会话出错
     [notificationCenter addObserver:self selector:@selector(sessionRuntimeError:) name:AVCaptureSessionRuntimeErrorNotification object:captureSession];
 }
@@ -836,7 +836,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [IMNotificationCenter removeObserver:self];
 }
 /*
 #pragma mark - Navigation

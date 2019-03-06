@@ -84,7 +84,7 @@
 {
     IMInputBoxMoreStatus inputBoxMoreStatus = unitView.tag + 1;
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"IMInputBoxDidSelectedMoreView" object:nil userInfo:@{@"status":@(inputBoxMoreStatus)}];
+    [IMNotificationCenter postNotificationName:@"IMInputBoxDidSelectedMoreView" object:nil userInfo:@{@"status":@(inputBoxMoreStatus)}];
     
 }
 

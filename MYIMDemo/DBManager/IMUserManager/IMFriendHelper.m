@@ -82,7 +82,7 @@ static IMFriendHelper *friendHelper = nil;
 {
 //    BOOL ok = [[IMMessageManager sharedInstance] deleteMessagesByPartnerID:userID];
 //    if (ok) {
-//        [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_CHAT_VIEW_RESET object:nil];
+//        [IMNotificationCenter postNotificationName:NOTI_CHAT_VIEW_RESET object:nil];
 //    }
     BOOL ok = NO;
     return ok;

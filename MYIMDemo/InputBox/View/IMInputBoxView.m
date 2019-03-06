@@ -453,7 +453,7 @@
     }
     
     if ([textView.text isEqualToString:@""] || textView.text.length == 0) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"deleteEmojiToEmpty" object:nil];
+        [IMNotificationCenter postNotificationName:@"deleteEmojiToEmpty" object:nil];
     }
 }
 
@@ -533,7 +533,7 @@
 
 - (void)dealloc {
     [self.inputView removeObserver:self forKeyPath:@"text"];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [IMNotificationCenter removeObserver:self];
 }
 
 @end

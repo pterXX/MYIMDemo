@@ -19,6 +19,18 @@
 
 + (IMUserHelper *)sharedHelper;
 
+
+/**
+ 测试账号
+ */
 - (void)loginTestAccount;
+
+
+/**
+ 退出登录
+
+ @return YES退出成功 ，退出失败
+ */
+- (BOOL)signUp;
 
 @end

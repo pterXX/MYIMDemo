@@ -17,7 +17,7 @@
 }
 
 + (UIFont *) fontLoginLogo{
-    return [UIFont systemFontOfSize:KSystemFontOfSize50];
+    return [UIFont fontWithName:@"MarkerFelt-Thin" size:KSystemFontOfSize50];
 }
 
 + (UIFont *) fontLoginUserAndPassword{

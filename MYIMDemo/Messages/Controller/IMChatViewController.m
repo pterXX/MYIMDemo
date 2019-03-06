@@ -166,10 +166,10 @@
  添加子视图
  */
 - (void)im_addSubViews{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedNewMessage:) name:@"newMessage" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateRowHeight:) name:@"updateRowHeight" object:nil];
+    [IMNotificationCenter addObserver:self selector:@selector(receivedNewMessage:) name:@"newMessage" object:nil];
+    [IMNotificationCenter addObserver:self selector:@selector(updateRowHeight:) name:@"updateRowHeight" object:nil];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:kConversationCommonNot object:nil userInfo:@{@"notType":@(IMConversationCommonNotificationUpdateBedgeNumber), @"conversationId":_conversation.conversationId}];
+    [IMNotificationCenter postNotificationName:kConversationCommonNot object:nil userInfo:@{@"notType":@(IMConversationCommonNotificationUpdateBedgeNumber), @"conversationId":_conversation.conversationId}];
     
     self.listView                 = [[UITableView alloc] initWithFrame:[[self class] listViewCtrlWrthFrame] style:UITableViewStylePlain];
     self.listView.delegate        = self;
@@ -213,7 +213,7 @@
 }
 
 - (void)back:(UIButton *)sender {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"chatBack" object:nil];
+    [IMNotificationCenter postNotificationName:@"chatBack" object:nil];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -1260,7 +1260,7 @@
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [IMNotificationCenter removeObserver:self];
     [self.inputBoxCtrl.inputBox removeObserver:self forKeyPath:@"recordState" context:nil];
     [self.recordView removeFromSuperview];
     self.recordView = nil;

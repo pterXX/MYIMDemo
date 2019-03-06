@@ -25,6 +25,10 @@
     IMMessageViewController *messageViewController = [[IMMessageViewController alloc] init];
     id rootVc = [IMUserHelper sharedHelper].isLogin?addNavigationController(messageViewController):[[IMLoginViewController alloc] init];
     self.window.rootViewController = rootVc;
+    
+    //  初始化xmpp
+    [IMXMPPHelper sharedHelper];
+    
     return YES;
 }
 

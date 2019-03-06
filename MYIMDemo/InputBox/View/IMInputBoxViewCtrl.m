@@ -67,11 +67,11 @@
     [self addSubview:self.inputBox];
     [self moreView];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    [IMNotificationCenter addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
     // 键盘的Frame值即将发生变化的时候创建的额监听
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardFrameWillChange:) name:UIKeyboardWillChangeFrameNotification object:nil];
+    [IMNotificationCenter addObserver:self selector:@selector(keyboardFrameWillChange:) name:UIKeyboardWillChangeFrameNotification object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didSelectedMoreView:) name:@"IMInputBoxDidSelectedMoreView" object:nil];
+    [IMNotificationCenter addObserver:self selector:@selector(didSelectedMoreView:) name:@"IMInputBoxDidSelectedMoreView" object:nil];
 }
 
 - (void)setFrame:(CGRect)frame {
@@ -342,7 +342,7 @@
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [IMNotificationCenter removeObserver:self];
     [self.inputBox removeFromSuperview];
     self.inputBox = nil;
 }
