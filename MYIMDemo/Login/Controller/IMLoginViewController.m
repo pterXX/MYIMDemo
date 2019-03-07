@@ -7,13 +7,13 @@
 //
 
 #import "IMLoginViewController.h"
-
+#import "IMMessageViewController.h"
 
 @interface IMLoginViewController ()<UITextFieldDelegate>
+@property (nonatomic, strong) UIButton    *signInBtn;// 登录按钮
 @property (nonatomic, strong) UILabel     *nameLogo;//  logo
-@property (nonatomic, strong) UITextField *userField;// 用户名
 @property (nonatomic, strong) UITextField *passwordField;// 密码
-@property (nonatomic, strong) UIButton     *signInBtn;// 登录按钮
+@property (nonatomic, strong) UITextField *userField;// 用户名
 @end
 
 #define kTextFieldSize CGSizeMake(325,44);
@@ -118,8 +118,8 @@
 }
 
 /**
-初始化TextField
-
+ 初始化TextField
+ 
  @param title 标题
  @param placeholder 占位名
  @return 初始化后的UITextField
@@ -132,7 +132,7 @@
     label.textAlignment = NSTextAlignmentCenter;
     label.font          = [UIFont fontLoginUserAndPassword];
     label.textColor = [UIColor whiteColor];
-
+    
     UITextField *textField           = [[UITextField alloc] init];
     textField.font                   = [UIFont fontLoginUserAndPassword];
     textField.textColor              = [UIColor whiteColor];
@@ -152,7 +152,7 @@
 
 /**
  检查文本输入框是否有值
-
+ 
  @return BOOL yes 表示有值 NO便是不存在值
  */
 - (BOOL)checkTextFieldForValue{
@@ -184,8 +184,11 @@
             NSString *username = self.userField.text;
             NSString *password = self.passwordField.text;//123456
             [[IMXMPPHelper sharedHelper] loginWithName:username andPassword:password success:^{
-                [weakSelf loginSuccess];
+                [SVProgressHUD dismissWithCompletion:^{
+                    [weakSelf loginSuccess];
+                }];
                 [SVProgressHUD showSuccessWithStatus:@"登录成功"];
+                
             } fail:^(NSError *error) {
                 NSLog(@"error %@",error);
                 if (error.code == IMXMPPErrorCodeConnect) {
@@ -198,7 +201,9 @@
     }
 }
 
-//实现UITextField代理方法
+/**
+ 实现UITextField代理方法
+ */
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [self login];
     return YES;
@@ -206,9 +211,15 @@
 
 #pragma mark - notification event
 
+/**
+ 登录成功
+ */
 - (void)loginSuccess{
-    [self alertWithTitle:@"提示" message:@"登录成功" cancel:^(BOOL ok) {
+    //  判断是否登录
+    if ([IMXMPPHelper sharedHelper].userHelper.isLogin) {
+        [UIApplication sharedApplication].keyWindow.rootViewController = [[IMMessageViewController alloc] init];
+    }else{
         
-    }];
+    }
 }
 @end

@@ -26,15 +26,15 @@
 - (void)loginTestAccount
 {
     IMUser *user = [[IMUser alloc] init];
-    user.userID = @"admin1@admins";
-    user.avatarURL = @"http://p1.qq181.com/cms/120506/2012050623111097826.jpg";
-    user.nikeName = @"徐世杰";
-    user.username = @"xuqinngsong";
+    user.userID              = @"admin1@admins";
+    user.avatarURL           = @"http://p1.qq181.com/cms/120506/2012050623111097826.jpg";
+    user.nikeName            = @"徐世杰";
+    user.username            = @"xuqinngsong";
     user.detailInfo.qqNumber = @"7281023814";
-    user.detailInfo.email = @"7281023814@qq.com";
+    user.detailInfo.email    = @"7281023814@qq.com";
     user.detailInfo.location = @"垫江";
-    user.detailInfo.sex = @"男";
-    user.detailInfo.motto = @"Hello world!";
+    user.detailInfo.sex      = @"男";
+    user.detailInfo.motto    = @"Hello world!";
     user.detailInfo.momentsWallURL = @"http://pic1.win4000.com/wallpaper/c/5791e49b37a5c.jpg";
 
     [self setUser:user];
@@ -58,21 +58,19 @@
             _user = [userStore userByID:self.userID];
             _user.detailInfo.momentsWallURL = @"http://pic1.win4000.com/wallpaper/c/5791e49b37a5c.jpg";
             if (!_user) {
-                [[NSUserDefaults standardUserDefaults] removeObjectForKey:KLoginUid];
+                [IMUserDefaults removeObjectForKey:KLoginUid];
             }
         }
     }
     return _user;
 }
 
-- (NSString *)userID
-{
-    NSString *uid = [[NSUserDefaults standardUserDefaults] objectForKey:KLoginUid];
+- (NSString *)userID{
+    NSString *uid = [IMUserDefaults objectForKey:KLoginUid];
     return uid;
 }
 
-- (BOOL)isLogin
-{
+- (BOOL)isLogin{
     return self.user.userID.length > 0;
 }
 
@@ -85,7 +83,7 @@
                  DDLogError(@"登录数据存库失败");
                 ok = NO;
             }else{
-                [[NSUserDefaults standardUserDefaults] removeObjectForKey:KLoginUid];
+                [IMUserDefaults removeObjectForKey:KLoginUid];
             }
         }
     }

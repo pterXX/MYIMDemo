@@ -22,11 +22,11 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    IMMessageViewController *messageViewController = [[IMMessageViewController alloc] init];
-    id rootVc = [IMUserHelper sharedHelper].isLogin?addNavigationController(messageViewController):[[IMLoginViewController alloc] init];
+    //  判断是否登录并返回不同的视图控制器
+    id rootVc = [IMUserHelper sharedHelper].isLogin?addNavigationController([[IMMessageViewController alloc] init]):[[IMLoginViewController alloc] init];
     self.window.rootViewController = rootVc;
     
-    //  初始化xmpp
+    //  初始化xmpp,默认打开手动验证证书
     [IMXMPPHelper sharedHelper].customCertEvaluation = YES;
     
     return YES;

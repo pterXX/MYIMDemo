@@ -77,15 +77,10 @@ static IMXMPPHelper *helper;
 //  登录
 -(void)loginWithName:(NSString *)userName andPassword:(NSString *)password success:(IMXMPPSuccessBlock)success fail:(IMXMPPFailBlock)fail{
     _myJID = [XMPPJID jidWithUser:userName domain:IM_XMPP_DOMAIN resource:nil];
+    self.username = userName;
     self.password = password;
-    self.userHelper      = [IMUserHelper sharedHelper];
-    IMUser *user         = [[IMUser alloc] init];
-    user.nikeName        = userName;
-    user.username        = userName;
-    user.remarkName      = userName;
-    self.userHelper.user = user;
-    self.success         = success;
-    self.fail            = fail;
+    self.success  = success;
+    self.fail     = fail;
     [self.xmppStream setMyJID:_myJID];
     
     NSError *error = nil;
@@ -123,11 +118,12 @@ static IMXMPPHelper *helper;
 #pragma mark - XMPPStreamDelegate
 //将要连接
 - (void)xmppStreamWillConnect:(XMPPStream *)sender{
-    NSLog(@"%s",__func__);
+    NSLog(@"将要连接服务器");
 }
 
 //已经连接
 - (void)xmppStreamDidConnect:(XMPPStream *)sender{
+    NSLog(@"已经连接服务器");
     NSError *error = nil;
     if (![[self xmppStream] authenticateWithPassword:self.password error:&error]){
         NSLog(@"Error authenticating: %@", error);
@@ -142,21 +138,18 @@ static IMXMPPHelper *helper;
 
 //已经登录
 - (void)xmppStreamDidAuthenticate:(XMPPStream *)sender{
-    NSLog(@"%s",__func__);
+    NSLog(@"登录成功");
     [self goOnline];
+    //  登录成功后的回调
+    [self successComplete];
     //启用流管理
     [_xmppStreamManagement enableStreamManagementWithResumption:YES maxTimeout:0];
     
-    //  登录成功后的回调
-    if (self.success) {
-        self.success();
-        self.fail = nil;
-    }
 }
 
-//登陆失败
+// 登陆失败
 - (void)xmppStream:(XMPPStream *)sender didNotAuthenticate:(NSXMLElement *)error{
-    NSLog(@"%s",__func__);
+    NSLog(@"登录授权失败");
     [self failCompleteCode:IMXMPPErrorCodeLogin description:@"登录失败,请检查登录账户和密码"];
 }
 
@@ -196,17 +189,36 @@ static IMXMPPHelper *helper;
     }
 }
 
+
+/**
+ 成功后的回调
+ */
+- (void)successComplete {
+    if (self.success) {
+        self.userHelper      = [IMUserHelper sharedHelper];
+        IMUser *user         = [[IMUser alloc] init];
+        // 测试的userID和nickname，remarkName 都是username，具体等线上修改
+        user.userID          = self.username;
+        user.nikeName        = self.username;
+        user.username        = self.username;
+        user.remarkName      = self.username;
+        self.userHelper.user = user;
+        self.success();
+        self.fail = nil;
+    }
+}
+
 #pragma mark -- XMPPMessage Delegate
 - (void)xmppStream:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message{
-    NSLog(@"%s",__func__);
+    NSLog(@"接收消息--%@",message);
 }
 
 - (void)xmppStream:(XMPPStream *)sender didSendMessage:(XMPPMessage *)message{
-    NSLog(@"%s--%@",__FUNCTION__, message);
+    NSLog(@"发送消息成功--%@", message);
 }
 
 - (void)xmppStream:(XMPPStream *)sender didFailToSendMessage:(XMPPMessage *)message error:(NSError *)error{
-    NSLog(@"%s--%@",__FUNCTION__, message);
+    NSLog(@"发送消息失败--%@", message);
 }
 
 #pragma mark -- Roster
@@ -255,9 +267,8 @@ static IMXMPPHelper *helper;
 /**
  *  申请后台时间来清理下线的任务
  */
--(void)applicationWillTerminate
-{
-    UIApplication *app=[UIApplication sharedApplication];
+-(void)applicationWillTerminate{
+    UIApplication *app = [UIApplication sharedApplication];
     UIBackgroundTaskIdentifier taskId = 0;
     
     taskId = [app beginBackgroundTaskWithExpirationHandler:^(void){

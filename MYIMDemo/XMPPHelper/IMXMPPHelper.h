@@ -12,9 +12,20 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+
+#ifdef DEBUG
+
+#define IM_XMMP_HOST_NAME @"xmpp.maiyuantek.com"
+#define IM_XMPP_HOST_PORT (5222)
+#define IM_XMPP_DOMAIN @"xmpp.maiyuantek.com"
+
+#else
+
 #define IM_XMMP_HOST_NAME @"192.168.2.2"
 #define IM_XMPP_HOST_PORT (5222)
 #define IM_XMPP_DOMAIN @"xushijie"
+
+#endif
 
 @class IMUserHelper;
 typedef void(^IMXMPPSuccessBlock)(void);
@@ -27,6 +38,7 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
 
 @interface IMXMPPHelper : NSObject
 @property (nonatomic ,strong) IMUserHelper                        *userHelper;
+@property (nonatomic ,strong) NSString                            *username;
 @property (nonatomic ,strong) NSString                            *password;
 //表示是否手动验证TLS/SSL
 @property (nonatomic ,assign) BOOL                                customCertEvaluation;
