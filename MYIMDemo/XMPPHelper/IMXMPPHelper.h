@@ -10,9 +10,6 @@
 #import <XMPP.h>
 #import <XMPPFramework/XMPPFramework.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
-
 #ifdef DEBUG
 
 #define IM_XMMP_HOST_NAME @"xmpp.maiyuantek.com"
@@ -27,19 +24,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 #endif
 
+NS_ASSUME_NONNULL_BEGIN
 @class IMUserHelper;
 typedef void(^IMXMPPSuccessBlock)(void);
 typedef void(^IMXMPPFailBlock)(NSError *error);
 
 typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
-    IMXMPPErrorCodeConnect = 1001,
-    IMXMPPErrorCodeLogin
+    IMXMPPErrorCodeConnect = 1001, //  连接错误
+    IMXMPPErrorCodeLogin,          //  登录错误
+    IMXMPPErrorCodeRegister,       //  注册错误
+    IMXMPPErrorCodeDidRegister     //  已经注册，表示已存在用户
 };
 
 @interface IMXMPPHelper : NSObject
-@property (nonatomic ,strong) IMUserHelper                        *userHelper;
-@property (nonatomic ,strong) NSString                            *username;
-@property (nonatomic ,strong) NSString                            *password;
+@property (nonatomic ,copy) IMUserHelper                        *userHelper;
+
 //表示是否手动验证TLS/SSL
 @property (nonatomic ,assign) BOOL                                customCertEvaluation;
 //表示一个地址
@@ -52,7 +51,7 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
 @property (nonatomic ,strong) XMPPStreamManagementMemoryStorage   *storage;
 @property (nonatomic ,strong) XMPPStreamManagement                *xmppStreamManagement;
 //接入好友模块，可以获取好友列表
-@property (nonatomic ,strong) XMPPRosterMemoryStorage             *xmppRosterMemoryStorage;
+@property (nonatomic ,strong) XMPPRosterCoreDataStorage           *xmppRosterCoreDataStorage;
 @property (nonatomic ,strong) XMPPRoster                          *xmppRoster;
 //接入消息模块，将消息存储到本地
 @property (nonatomic ,strong) XMPPMessageArchivingCoreDataStorage *xmppMessageArchivingCoreDataStorage;
@@ -76,6 +75,21 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
          andPassword:(NSString *)password
              success:(IMXMPPSuccessBlock)success
                 fail:(IMXMPPFailBlock)fail;
+
+
+/**
+ 注册
+
+ @param userName 用户名
+ @param password 密码
+ @param success c登录成功后的回调
+ @param fail 失败后的回调
+ */
+-(void)registerWithName:(NSString *)userName
+            andPassword:(NSString *)password
+                success:(IMXMPPSuccessBlock)success
+                   fail:(IMXMPPFailBlock)fail;
+
 /**
  *  退出登录
  */

@@ -31,6 +31,6 @@
 
  @return YES退出成功 ，退出失败
  */
-- (BOOL)signUp;
+- (BOOL)signOut;
 
 @end

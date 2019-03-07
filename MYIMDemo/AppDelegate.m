@@ -23,7 +23,7 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     //  判断是否登录并返回不同的视图控制器
-    id rootVc = [IMUserHelper sharedHelper].isLogin?addNavigationController([[IMMessageViewController alloc] init]):[[IMLoginViewController alloc] init];
+    id rootVc = [IMUserHelper sharedHelper].isLogin?[IMMessageViewController navMessagesVc]:[[IMLoginViewController alloc] init];
     self.window.rootViewController = rootVc;
     
     //  初始化xmpp,默认打开手动验证证书

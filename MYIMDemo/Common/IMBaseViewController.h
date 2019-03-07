@@ -12,6 +12,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface IMBaseViewController : UIViewController
 /**
+ 是否触摸屏幕
+ */
+@property (assign,nonatomic) BOOL isTouchEndEditing;
+
+/**
  *  VIEW是否渗透导航栏
  * (YES_VIEW渗透导航栏下／NO_VIEW不渗透导航栏下)
  */

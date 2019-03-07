@@ -236,4 +236,11 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    if (self.isTouchEndEditing) {
+        [self.view endEditing:YES];
+    }
+}
+
 @end

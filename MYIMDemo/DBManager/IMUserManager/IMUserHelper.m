@@ -36,7 +36,7 @@
     user.detailInfo.sex      = @"男";
     user.detailInfo.motto    = @"Hello world!";
     user.detailInfo.momentsWallURL = @"http://pic1.win4000.com/wallpaper/c/5791e49b37a5c.jpg";
-
+    
     [self setUser:user];
 }
 
@@ -47,16 +47,15 @@
     if (![userStore updateUser:user]) {
         DDLogError(@"登录数据存库失败");
     }
-
+    
     [[NSUserDefaults standardUserDefaults] setObject:user.userID forKey:KLoginUid];
 }
-- (IMUser *)user
-{
+
+- (IMUser *)user{
     if (!_user) {
         if (self.userID.length > 0) {
             IMDBUserStore *userStore = [[IMDBUserStore alloc] init];
             _user = [userStore userByID:self.userID];
-            _user.detailInfo.momentsWallURL = @"http://pic1.win4000.com/wallpaper/c/5791e49b37a5c.jpg";
             if (!_user) {
                 [IMUserDefaults removeObjectForKey:KLoginUid];
             }
@@ -74,17 +73,15 @@
     return self.user.userID.length > 0;
 }
 
-- (BOOL)signUp{
+- (BOOL)signOut{
     BOOL ok = YES;
-    if (self.isLogin) {
-        if (self.userID) {
-            IMDBUserStore *userStore = [[IMDBUserStore alloc] init];
-            if (![userStore deleteUsersByUid:self.userID]) {
-                 DDLogError(@"登录数据存库失败");
-                ok = NO;
-            }else{
-                [IMUserDefaults removeObjectForKey:KLoginUid];
-            }
+    if (self.isLogin || self.userID) {
+        IMDBUserStore *userStore = [[IMDBUserStore alloc] init];
+        if (![userStore deleteUsersByUid:self.userID]) {
+            DDLogError(@"登录数据存库失败");
+            ok = NO;
+        }else{
+            [IMUserDefaults removeObjectForKey:KLoginUid];
         }
     }
     return ok;

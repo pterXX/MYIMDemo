@@ -11,8 +11,11 @@
 
 @interface IMXMPPHelper()<XMPPStreamDelegate>
 
-@property (nonatomic ,copy) IMXMPPFailBlock    fail;//  失败
-@property (nonatomic ,copy) IMXMPPSuccessBlock success;//  成功
+@property (nonatomic ,copy  ) IMXMPPFailBlock    fail;//  失败
+@property (nonatomic ,copy  ) IMXMPPSuccessBlock success;//  成功
+@property (nonatomic ,copy  ) NSString           *username;
+@property (nonatomic ,copy  ) NSString           *password;
+@property (nonatomic ,assign) BOOL               xmppNeedRegister;// 是否是注册
 
 @end
 
@@ -38,6 +41,13 @@ static IMXMPPHelper *helper;
     return self;
 }
 
+- (IMUserHelper *)userHelper{
+    if (!_userHelper) {
+        _userHelper = [IMUserHelper sharedHelper];
+    }
+    return _userHelper;
+}
+
 - (void)setupStream{
     if (!_xmppStream) {
         _xmppStream = [[XMPPStream alloc] init];
@@ -61,8 +71,8 @@ static IMXMPPHelper *helper;
         [_xmppStreamManagement activate:self.xmppStream];
         
         //接入好友模块，可以获取好友列表
-        _xmppRosterMemoryStorage = [[XMPPRosterMemoryStorage alloc] init];
-        _xmppRoster = [[XMPPRoster alloc] initWithRosterStorage:_xmppRosterMemoryStorage];
+        _xmppRosterCoreDataStorage = [[XMPPRosterCoreDataStorage alloc] init];
+        _xmppRoster = [[XMPPRoster alloc] initWithRosterStorage:_xmppRosterCoreDataStorage];
         [_xmppRoster activate:self.xmppStream];
         [_xmppRoster addDelegate:self delegateQueue:dispatch_get_main_queue()];
         
@@ -74,13 +84,12 @@ static IMXMPPHelper *helper;
 }
 
 #pragma mark -- go onlie, offline
-//  登录
--(void)loginWithName:(NSString *)userName andPassword:(NSString *)password success:(IMXMPPSuccessBlock)success fail:(IMXMPPFailBlock)fail{
+- (void)initUser:(IMXMPPFailBlock _Nonnull)fail password:(NSString * _Nonnull)password success:(IMXMPPSuccessBlock _Nonnull)success userName:(NSString * _Nonnull)userName {
     _myJID = [XMPPJID jidWithUser:userName domain:IM_XMPP_DOMAIN resource:nil];
-    self.username = userName;
-    self.password = password;
-    self.success  = success;
-    self.fail     = fail;
+    self.username        = userName;
+    self.password        = password;
+    self.success         = success;
+    self.fail            = fail;
     [self.xmppStream setMyJID:_myJID];
     
     NSError *error = nil;
@@ -93,9 +102,24 @@ static IMXMPPHelper *helper;
     }
 }
 
+//  登录
+-(void)loginWithName:(NSString *)userName andPassword:(NSString *)password success:(IMXMPPSuccessBlock)success fail:(IMXMPPFailBlock)fail{
+    self.xmppNeedRegister = NO;
+    [self initUser:fail password:password success:success userName:userName];
+}
+
+//  注册
+-(void)registerWithName:(NSString *)userName andPassword:(NSString *)password success:(IMXMPPSuccessBlock)success fail:(IMXMPPFailBlock)fail{
+    self.xmppNeedRegister = YES;
+    [self initUser:fail password:password success:success userName:userName];
+}
+
 -(void)logOut{
     [self goOffline];
     [_xmppStream disconnectAfterSending];
+    self.username = @"";
+    self.password = @"";
+    [self.userHelper signOut];
 }
 
 - (void)goOnline{
@@ -116,6 +140,7 @@ static IMXMPPHelper *helper;
 }
 
 #pragma mark - XMPPStreamDelegate
+#pragma mark ------ 连接
 //将要连接
 - (void)xmppStreamWillConnect:(XMPPStream *)sender{
     NSLog(@"将要连接服务器");
@@ -125,8 +150,12 @@ static IMXMPPHelper *helper;
 - (void)xmppStreamDidConnect:(XMPPStream *)sender{
     NSLog(@"已经连接服务器");
     NSError *error = nil;
-    if (![[self xmppStream] authenticateWithPassword:self.password error:&error]){
-        NSLog(@"Error authenticating: %@", error);
+    if (self.xmppNeedRegister) {
+        //  用户注册，发送注册请求
+        [[self xmppStream] registerWithPassword:self.password error:&error];
+    }else{
+        //  用户登录，发送身份验证请求
+        [[self xmppStream] authenticateWithPassword:self.password error:&error];
     }
 }
 
@@ -136,7 +165,8 @@ static IMXMPPHelper *helper;
     }
 }
 
-//已经登录
+#pragma mark ------ 授权
+//已经授权
 - (void)xmppStreamDidAuthenticate:(XMPPStream *)sender{
     NSLog(@"登录成功");
     [self goOnline];
@@ -147,13 +177,31 @@ static IMXMPPHelper *helper;
     
 }
 
-// 登陆失败
+// 授权失败
 - (void)xmppStream:(XMPPStream *)sender didNotAuthenticate:(NSXMLElement *)error{
-    NSLog(@"登录授权失败");
+    NSLog(@"登录授权失败 %@",error);
     [self failCompleteCode:IMXMPPErrorCodeLogin description:@"登录失败,请检查登录账户和密码"];
 }
 
+#pragma mark ------ 注册
+-(void)xmppStreamDidRegister:(XMPPStream *)sender{
+    self.xmppNeedRegister =NO;
+    [self goOnline];
+    //  登录成功后的回调
+    [self successComplete];
+}
 
+- (void)xmppStream:(XMPPStream *)sender didNotRegister:(NSXMLElement *)error{
+    NSLog(@"注册授权失败 %@",error);
+    NSString *str = [self analysisForDDXMLElement:error elementsName:@"error" nodeName:@"code"];
+    if (str && [str isEqualToString:@"409"]) {
+        [self failCompleteCode:IMXMPPErrorCodeDidRegister description:@"注册失败,请检查登录账户和密码"];
+    }else{
+        [self failCompleteCode:IMXMPPErrorCodeRegister description:@"注册失败,请检查登录账户和密码"];
+    }
+}
+
+#pragma mark ------ SSL/TLS
 /**
  此方法在流通过SSL/TLS得到保护之后调用。
  如果服务器在打开过程中需要安全连接，则可以调用此方法，
@@ -186,6 +234,7 @@ static IMXMPPHelper *helper;
         NSError *error = [NSError errorWithDomain:NSURLErrorDomain code:code userInfo:@{NSLocalizedDescriptionKey:IMNoNilString(description)}];
         self.fail(error);
         self.success = nil;
+        self.fail = nil;
     }
 }
 
@@ -195,7 +244,6 @@ static IMXMPPHelper *helper;
  */
 - (void)successComplete {
     if (self.success) {
-        self.userHelper      = [IMUserHelper sharedHelper];
         IMUser *user         = [[IMUser alloc] init];
         // 测试的userID和nickname，remarkName 都是username，具体等线上修改
         user.userID          = self.username;
@@ -205,7 +253,30 @@ static IMXMPPHelper *helper;
         self.userHelper.user = user;
         self.success();
         self.fail = nil;
+        self.success = nil;
     }
+}
+
+- (NSString *)analysisForDDXMLElement:(id )doc elementsName:(NSString *)elementsForName nodeName:(NSString *)nodeName  {
+    if (elementsForName == nil || doc == nil) return nil;
+    if ([doc isKindOfClass:[DDXMLElement class]]) {
+        DDXMLElement *element = (DDXMLElement *)doc;
+        NSArray<DDXMLElement *> *elements = [element elementsForName:elementsForName];
+        DDXMLNode *node = [element attributeForName:nodeName];
+        if (node){
+            return node.stringValue;
+        }else{
+            NSString *str = [self analysisForDDXMLElement:elements elementsName:elementsForName nodeName:nodeName];
+            if (str) return str;
+        }
+    }else if([doc isKindOfClass:[NSArray class]]){
+        NSArray *array = (NSArray *)doc;
+        for (id sub in array) {
+            NSString *str = [self analysisForDDXMLElement:sub elementsName:elementsForName nodeName:nodeName];
+            if (str) return str;
+        }
+    }
+    return nil;
 }
 
 #pragma mark -- XMPPMessage Delegate

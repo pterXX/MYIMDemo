@@ -20,6 +20,8 @@
 #import "NSString+Size.h"
 #import "NSTextAttachment+Emoji.h"
 #import "NSTextAttachment+Emoji.h"
+
+#import "UIBarButtonItem+Category.h"
 #import "UIButton+IMExtra.h"
 #import "UIDevice+IMCategory.h"
 #import "UIImage+Color.h"
@@ -29,5 +31,6 @@
 #import "UIScrollView+Addition.h"
 #import "UIView+Frame.h"
 #import "UIViewController+IMCategory.h"
+
 
 #endif /* IMCategory_h */

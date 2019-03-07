@@ -17,7 +17,11 @@
 }
 
 + (UIFont *) fontLoginLogo{
-    return [UIFont fontWithName:@"MarkerFelt-Thin" size:KSystemFontOfSize50];
+    return [UIFont fontWithName:@"MarkerFelt-Thin" size:KSystemFontOfSize32];
+}
+
++ (UIFont *) fontLoginSignUp{
+    return [UIFont systemFontOfSize:KSystemFontOfSize14];
 }
 
 + (UIFont *) fontLoginUserAndPassword{
@@ -36,4 +40,6 @@
 + (UIFont *) fontMessageListBadgeNumber{
     return [UIFont systemFontOfSize:KSystemFontOfSize12];
 }
+
+
 @end

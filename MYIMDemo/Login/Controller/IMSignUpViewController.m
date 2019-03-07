@@ -1,26 +1,26 @@
 //
-//  IMLoginViewController.m
+//  IMSignUpViewController.m
 //  MYIMDemo
 //
 //  Created by admin on 2019/3/5.
 //  Copyright © 2019 徐世杰. All rights reserved.
 //
 
-#import "IMLoginViewController.h"
 #import "IMSignUpViewController.h"
 #import "IMMessageViewController.h"
 
-@interface IMLoginViewController ()<UITextFieldDelegate>
+@interface IMSignUpViewController ()<UITextFieldDelegate>
 @property (nonatomic, strong) UIButton    *signUpBtn;// 注册按钮
 @property (nonatomic, strong) UIButton    *signInBtn;// 登录按钮
 @property (nonatomic, strong) UILabel     *nameLogo;//  logo
 @property (nonatomic, strong) UITextField *passwordField;// 密码
+@property (nonatomic, strong) UITextField *confirmPasswordField;// 确认密码
 @property (nonatomic, strong) UITextField *userField;// 用户名
 @end
 
 #define kTextFieldSize CGSizeMake(325,44);
 
-@implementation IMLoginViewController
+@implementation IMSignUpViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -44,7 +44,7 @@
     // logo
     [self.view addSubview:({
         self.nameLogo = [[UILabel alloc] initWithFrame:CGRectMake((IMSCREEN_WIDTH - 320) * 0.5, IMNAVBAR_HEIGHT + IMSTATUSBAR_HEIGHT + 50, 320, 50)];
-        self.nameLogo.text          = @"IMDemo Sign In";
+        self.nameLogo.text          = @"IMDemo Sign Up";
         self.nameLogo.textAlignment = NSTextAlignmentCenter;
         self.nameLogo.textColor     = [UIColor whiteColor];
         self.nameLogo.font          = [UIFont fontLoginLogo];
@@ -73,50 +73,62 @@
         self.passwordField;
     })];
     
-    //  登录按钮
+    // 确认密码
     [self.view addSubview:({
-        NSString *title = @"登录";
-        UIColor *titleColor                = [UIColor colorTextGray];
-        UIImage *image                     = [UIImage imageWithColor:[UIColor whiteColor]];
-        self.signInBtn                     = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.signInBtn.left                = self.userField.left;
-        self.signInBtn.top                 = self.passwordField.bottom + 20;
-        self.signInBtn.size                = textFieldSize;
-        self.signInBtn.layer.cornerRadius  = textFieldSize.height * 0.5;
-        self.signInBtn.layer.borderColor   = [UIColor whiteColor].CGColor;
-        self.signInBtn.layer.borderWidth   = 1;
-        self.signInBtn.layer.masksToBounds = (YES);
-        [self.signInBtn setTitle:title forState:UIControlStateNormal];
-        [self.signInBtn setTitle:title forState:UIControlStateSelected];
-        [self.signInBtn setTitle:title forState:UIControlStateFocused];
-        [self.signInBtn setTitleColor:titleColor forState:UIControlStateNormal];
-        [self.signInBtn setTitleColor:titleColor forState:UIControlStateSelected];
-        [self.signInBtn setTitleColor:titleColor forState:UIControlStateFocused];
-        [self.signInBtn setBackgroundImage:image forState:UIControlStateNormal];
-        [self.signInBtn setBackgroundImage:image forState:UIControlStateSelected];
-        [self.signInBtn setBackgroundImage:image forState:UIControlStateFocused];
-        self.signInBtn;
+        self.confirmPasswordField                 = [self addTextField:@"确认密码" placeholder:@"确认密码" ];
+        self.confirmPasswordField.size            = textFieldSize;
+        self.confirmPasswordField.left            = self.userField.left;
+        self.confirmPasswordField.top             = self.passwordField.bottom + 10;
+        self.confirmPasswordField.secureTextEntry = YES;
+        self.confirmPasswordField.returnKeyType   = UIReturnKeyGo;
+        self.confirmPasswordField.delegate        = self;
+        self.confirmPasswordField;
     })];
-   
+    
     //  注册按钮
     [self.view addSubview:({
-        NSString *title = @"没有账号?注册新用户";
-        UIColor *titleColor                = [UIColor whiteColor];
+        NSString *title = @"注册";
+        UIColor *titleColor                = [UIColor colorTextGray];
+        UIImage *image                     = [UIImage imageWithColor:[UIColor whiteColor]];
         self.signUpBtn                     = [UIButton buttonWithType:UIButtonTypeCustom];
         self.signUpBtn.left                = self.userField.left;
-        self.signUpBtn.bottom              = self.view.height - 100;
+        self.signUpBtn.top                 = self.confirmPasswordField.bottom + 20;
         self.signUpBtn.size                = textFieldSize;
-        self.signUpBtn.titleLabel.font     = [UIFont fontLoginSignUp];
+        self.signUpBtn.layer.cornerRadius  = textFieldSize.height * 0.5;
+        self.signUpBtn.layer.borderColor   = [UIColor whiteColor].CGColor;
+        self.signUpBtn.layer.borderWidth   = 1;
+        self.signUpBtn.layer.masksToBounds = (YES);
         [self.signUpBtn setTitle:title forState:UIControlStateNormal];
         [self.signUpBtn setTitle:title forState:UIControlStateSelected];
         [self.signUpBtn setTitle:title forState:UIControlStateFocused];
         [self.signUpBtn setTitleColor:titleColor forState:UIControlStateNormal];
         [self.signUpBtn setTitleColor:titleColor forState:UIControlStateSelected];
         [self.signUpBtn setTitleColor:titleColor forState:UIControlStateFocused];
+        [self.signUpBtn setBackgroundImage:image forState:UIControlStateNormal];
+        [self.signUpBtn setBackgroundImage:image forState:UIControlStateSelected];
+        [self.signUpBtn setBackgroundImage:image forState:UIControlStateFocused];
         self.signUpBtn;
     })];
     
-     [self signBtnWithEvents];
+    //  注册按钮
+    [self.view addSubview:({
+        NSString *title = @"已有账号,点击登录";
+        UIColor *titleColor                = [UIColor whiteColor];
+        self.signInBtn                     = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.signInBtn.left                = self.userField.left;
+        self.signInBtn.bottom              = self.view.height - 100;
+        self.signInBtn.size                = textFieldSize;
+        self.signInBtn.titleLabel.font     = [UIFont fontLoginSignUp];
+        [self.signInBtn setTitle:title forState:UIControlStateNormal];
+        [self.signInBtn setTitle:title forState:UIControlStateSelected];
+        [self.signInBtn setTitle:title forState:UIControlStateFocused];
+        [self.signInBtn setTitleColor:titleColor forState:UIControlStateNormal];
+        [self.signInBtn setTitleColor:titleColor forState:UIControlStateSelected];
+        [self.signInBtn setTitleColor:titleColor forState:UIControlStateFocused];
+        self.signInBtn;
+    })];
+    
+    [self signBtnWithEvents];
 }
 
 
@@ -126,17 +138,6 @@
 - (void)signBtnWithEvents{
     kWeakSelf;
     //  点击事件
-    [self.signInBtn addIMCallBackAction:^(UIButton *button) {
-        button.enabled = NO;
-        button.alpha = 0.5f;
-    } forControlEvents:UIControlEventTouchDown];
-    //  手指提起的事件
-    [self.signInBtn addIMCallBackAction:^(UIButton *button) {
-        button.enabled = YES;
-        button.alpha = 1.0f;
-        [weakSelf signIn];
-    } forControlEvents:UIControlEventTouchUpInside];
-    
     [self.signUpBtn addIMCallBackAction:^(UIButton *button) {
         button.enabled = NO;
         button.alpha = 0.5f;
@@ -146,6 +147,17 @@
         button.enabled = YES;
         button.alpha = 1.0f;
         [weakSelf signUp];
+    } forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.signInBtn addIMCallBackAction:^(UIButton *button) {
+        button.enabled = NO;
+        button.alpha = 0.5f;
+    } forControlEvents:UIControlEventTouchDown];
+    //  手指提起的事件
+    [self.signInBtn addIMCallBackAction:^(UIButton *button) {
+        button.enabled = YES;
+        button.alpha = 1.0f;
+        [weakSelf signIn];
     } forControlEvents:UIControlEventTouchUpInside];
 }
 
@@ -189,12 +201,19 @@
  */
 - (BOOL)checkTextFieldForValue{
     BOOL ok =  YES;
-    if ([self.userField.text isEmptyString]) {
+    NSString *user            = self.userField.text;
+    NSString *password        = self.passwordField.text;
+    NSString *confirmPassword = self.confirmPasswordField.text;
+    
+    if ([user isEmptyString]) {
         ok = NO;
         [SVProgressHUD showInfoWithStatus:self.userField.placeholder];
-    }else if ([self.passwordField.text isEmptyString]) {
+    }else if ([password isEmptyString]) {
         ok = NO;
         [SVProgressHUD showInfoWithStatus:self.passwordField.placeholder];
+    }else if ([confirmPassword isEmptyString] || ![confirmPassword isEqualToString:password]) {
+        ok = NO;
+        [SVProgressHUD showInfoWithStatus:self.confirmPasswordField.placeholder];
     }
     return ok;
 }
@@ -204,29 +223,7 @@
  登录
  */
 - (void)signIn{
-    kWeakSelf;
-    [self.view endEditing:YES];
-    if ([self checkTextFieldForValue]) {
-        //  文本框不z存在空值
-        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
-        [SVProgressHUD showWithStatus:@"登录中..."];
-        
-        if ([self checkTextFieldForValue]) {
-            NSString *username = self.userField.text;
-            NSString *password = self.passwordField.text;//123456
-            [[IMXMPPHelper sharedHelper] loginWithName:username andPassword:password success:^{
-                [SVProgressHUD showSuccessWithStatus:@"登录成功"];
-                [weakSelf loginSuccess];
-            } fail:^(NSError *error) {
-                NSLog(@"error %@",error);
-                if (error.code == IMXMPPErrorCodeConnect) {
-                    [SVProgressHUD showErrorWithStatus:@"网络连接失败"];
-                }else{
-                    [SVProgressHUD showErrorWithStatus:@"登录失败"];
-                }
-            }];
-        }
-    }
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
@@ -234,18 +231,38 @@
  注册
  */
 - (void)signUp{
+    kWeakSelf;
     [self.view endEditing:YES];
-    IMSignUpViewController *vc = [[IMSignUpViewController alloc] init];
-    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [self presentViewController:vc animated:YES completion:nil];
+    if ([self checkTextFieldForValue]) {
+        //  文本框不z存在空值
+        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
+        [SVProgressHUD showWithStatus:@"注册中..."];
+        
+        if ([self checkTextFieldForValue]) {
+            NSString *username = self.userField.text;
+            NSString *password = self.passwordField.text;//123456
+            [[IMXMPPHelper sharedHelper] registerWithName:username andPassword:password success:^{
+                [SVProgressHUD showSuccessWithStatus:@"注册成功"];
+                [weakSelf loginSuccess];
+            } fail:^(NSError *error) {
+                NSLog(@"error %@",error);
+                if (error.code == IMXMPPErrorCodeConnect) {
+                    [SVProgressHUD showErrorWithStatus:@"网络连接失败"];
+                }else if (error.code == IMXMPPErrorCodeDidRegister){
+                    [SVProgressHUD showErrorWithStatus:@"已存在用户"];
+                }else{
+                    [SVProgressHUD showErrorWithStatus:@"注册失败"];
+                }
+            }];
+        }
+    }
 }
-
 
 /**
  实现UITextField代理方法
  */
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [self signIn];
+    [self signUp];
     return YES;
 }
 

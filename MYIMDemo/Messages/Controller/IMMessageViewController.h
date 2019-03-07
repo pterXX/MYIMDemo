@@ -13,3 +13,8 @@
 
 @end
 
+
+@interface IMMessageViewController(Class)
++ (UINavigationController *)navMessagesVc;
+@end
+

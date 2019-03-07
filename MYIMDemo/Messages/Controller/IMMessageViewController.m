@@ -21,6 +21,7 @@
 #import "IMChatViewController.h"
 #import "IMMessagesListTableViewCell.h"
 #import "IMSearchMessageViewController.h"
+#import "IMLoginViewController.h"
 #import <AVFoundation/AVFoundation.h>
 
 
@@ -83,7 +84,7 @@
     if (KIsRefreshMessageView) {
         _badgeNumber = 0;
         [self getConversationListWithConversationId:@"-1"];
-        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isRefreshMessageView"];
+        [IMUserDefaults setBool:NO forKey:@"isRefreshMessageView"];
     }
     
     isCurrentPage = YES;
@@ -105,7 +106,16 @@
 }
 
 - (void)im_layoutNavigation{
-      self.title = @"消息";
+    self.title = @"消息";
+    UIBarButtonItem *barItem = [UIBarButtonItem
+                                barTitle:@"退出登录"
+                                callBack:^(UIBarButtonItem * _Nonnull barItem) {
+                                    [[IMXMPPHelper sharedHelper] logOut];
+                                    [UIApplication sharedApplication].keyWindow.rootViewController = [[IMLoginViewController alloc] init];
+                                }];
+    barItem.tintColor = [UIColor darkGrayColor];
+    [barItem setTitleTextAttributes:@{NSFontAttributeName:[UIFont fontNavBarTitle]} forState:UIControlStateNormal];
+    self.navigationItem.rightBarButtonItem = barItem;
 }
 
 - (void)im_addSubViews{
@@ -129,7 +139,7 @@
     _tableView.tableFooterView = [UIView new];
     [self.view addSubview:_tableView];
     
-
+    
     _tableView.sd_layout.bottomEqualToView(self.view).topSpaceToView(self.view, 0).leftEqualToView(self.view).rightEqualToView(self.view);
     
     // 提示网络不可用或无网络连接
@@ -182,22 +192,22 @@
     NSDictionary *notInfo = notification.userInfo;
     IMConversationCommonNotification notType = [notInfo[@"notType"] integerValue];
     switch (notType) {
-            case IMConversationCommonNotificationMail:
+        case IMConversationCommonNotificationMail:
             [self receiveMailMessageDictionary:notInfo];
             break;
-            case IMConversationCommonNotificationUpdateBedgeNumber:
+        case IMConversationCommonNotificationUpdateBedgeNumber:
             [self updateSelecteRowBadgeNumber:notInfo[@"conversationId"]];
             break;
-            case IMConversationCommonNotificationReceiveMessage:
+        case IMConversationCommonNotificationReceiveMessage:
             [self receiveConversationMessage:notInfo[@"json"]];
             break;
-            case IMConversationCommonNotificationNetworkConnectionStatus:
+        case IMConversationCommonNotificationNetworkConnectionStatus:
             [self networkDisconnection];
             break;
-            case IMConversationCommonNotificationNetworkStatus:
+        case IMConversationCommonNotificationNetworkStatus:
             [self networkConnectionDetection];
             break;
-            case IMConversationCommonNotificationEnterForeground:
+        case IMConversationCommonNotificationEnterForeground:
             [self getConversationListWithConversationId:@"-1"];
             break;
         default:
@@ -496,6 +506,11 @@
     [self getConversationListWithConversationId:@"-1"];
 }
 
+@end
 
 
+@implementation IMMessageViewController(Class)
++ (UINavigationController *)navMessagesVc {
+    return addNavigationController([[[self class] alloc] init]);
+}
 @end

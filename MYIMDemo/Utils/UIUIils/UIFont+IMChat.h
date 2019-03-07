@@ -28,6 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Login
 + (UIFont *) fontLoginLogo;
 + (UIFont *) fontLoginUserAndPassword;
++ (UIFont *) fontLoginSignUp;
 
 #pragma mark - Message list
 + (UIFont *) fontMessageListUpdateTime;
