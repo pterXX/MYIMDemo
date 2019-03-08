@@ -113,6 +113,8 @@
         //  添加好友
         [weakSelf addFriend:str];
     }];
+    
+    
 }
 
 //  添加好友

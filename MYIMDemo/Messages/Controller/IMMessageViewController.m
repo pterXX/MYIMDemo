@@ -106,6 +106,8 @@
     receiverLock   = [NSLock new];
     defaultQueue   = dispatch_queue_create("defaultQueue", NULL);
     receiveQueue   = dispatch_queue_create("receiveQueue", NULL);
+    
+    [self addNotification];
 }
 
 - (void)im_layoutNavigation{
@@ -182,10 +184,30 @@
     
     self.tableView.tableHeaderView = _headerView;
     
-    [IMNotificationCenter addObserver:self selector:@selector(conversationCommonNotification:) name:kConversationCommonNot object:nil];
     // 设置自己的头像
     [[IMAppDefaultUtil sharedInstance] setUserAvatar:@"http://cname-yunke.shovesoft.com/group1/M00/00/1A/CgAHEVuMyv6AKj6uAABukEJ7t3I575.png"];
     [self getConversationListWithConversationId:@"-1"];
+}
+
+//  添加通知
+- (void)addNotification{
+    kWeakSelf;
+     [IMNotificationCenter addObserver:self selector:@selector(conversationCommonNotification:) name:kConversationCommonNot object:nil];
+    
+    [IMNotificationCenter addObserverForName:kXmppSubscriptionRequestNotificationName object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+        XMPPPresence *presence = note.object;
+        if(!presence) return;
+        NSString *str = [NSString stringWithFormat:@"是否添加\"%@\"为你的好友",presence.from.user];
+        [weakSelf alertWithTitle:str message:@"此功能只做简单的添加好友操作,可根据产品需求改变" cancel:^(BOOL ok) {
+            if (ok) {
+                //  同意请求
+                [[IMXMPPHelper sharedHelper] acceptPresenceSubscriptionRequest];
+            }else{
+                //  拒绝请求
+                [[IMXMPPHelper sharedHelper] rejectPresenceSubscriptionRequest];
+            }
+        }];
+    }];
 }
 
 - (void)addAllDataSource{
