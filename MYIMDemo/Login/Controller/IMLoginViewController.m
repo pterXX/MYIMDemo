@@ -192,11 +192,13 @@
     if ([self.userField.text isEmptyString]) {
         ok = NO;
         [SVProgressHUD showInfoWithStatus:self.userField.placeholder];
+        [SVProgressHUD dismissWithDelay:2];
     }else if ([self.passwordField.text isEmptyString]) {
         ok = NO;
         [SVProgressHUD showInfoWithStatus:self.passwordField.placeholder];
+        [SVProgressHUD dismissWithDelay:2];
     }
-    [SVProgressHUD dismissWithDelay:2];
+    
     return ok;
 }
 
