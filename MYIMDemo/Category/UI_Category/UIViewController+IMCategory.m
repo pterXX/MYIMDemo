@@ -38,4 +38,31 @@
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
+
+
+/**
+ 重新设置window 的根视图 并伴随淡入淡出的动画
+
+ @param rootViewController 需要切换的视图
+ */
+- (void)restoreRootViewController:(UIViewController *)rootViewController
+{
+    if (rootViewController == nil) return;
+    typedef void (^Animation)(void);
+    UIWindow* window = [UIApplication sharedApplication].keyWindow;
+    
+    rootViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    Animation animation = ^{
+        BOOL oldState = [UIView areAnimationsEnabled];
+        [UIView setAnimationsEnabled:NO];
+        [UIApplication sharedApplication].keyWindow.rootViewController = rootViewController;
+        [UIView setAnimationsEnabled:oldState];
+    };
+    
+    [UIView transitionWithView:window
+                      duration:0.5f
+                       options:UIViewAnimationOptionTransitionCrossDissolve
+                    animations:animation
+                    completion:nil];
+}
 @end

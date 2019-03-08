@@ -57,6 +57,7 @@
 		8428F44D223209BE0064DA35 /* icon_menu_exit.png in Resources */ = {isa = PBXBuildFile; fileRef = 8428F44A223209BC0064DA35 /* icon_menu_exit.png */; };
 		8428F44E223209BE0064DA35 /* icon_menu_exit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8428F44B223209BD0064DA35 /* icon_menu_exit@2x.png */; };
 		8428F44F223209BE0064DA35 /* icon_menu_exit@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8428F44C223209BE0064DA35 /* icon_menu_exit@3x.png */; };
+		8428F45222320EE70064DA35 /* IMAddFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8428F45122320EE70064DA35 /* IMAddFriendsViewController.m */; };
 		8438D543222F60BF001FD530 /* IMXMPPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8438D542222F60BF001FD530 /* IMXMPPHelper.m */; };
 		84681F742230CA500056372A /* UIBarButtonItem+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 84681F732230CA500056372A /* UIBarButtonItem+Category.m */; };
 		84681F772230EF000056372A /* IMSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84681F762230EF000056372A /* IMSignUpViewController.m */; };
@@ -565,6 +566,8 @@
 		8428F44A223209BC0064DA35 /* icon_menu_exit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_menu_exit.png; sourceTree = "<group>"; };
 		8428F44B223209BD0064DA35 /* icon_menu_exit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_menu_exit@2x.png"; sourceTree = "<group>"; };
 		8428F44C223209BE0064DA35 /* icon_menu_exit@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_menu_exit@3x.png"; sourceTree = "<group>"; };
+		8428F45022320EE70064DA35 /* IMAddFriendsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMAddFriendsViewController.h; sourceTree = "<group>"; };
+		8428F45122320EE70064DA35 /* IMAddFriendsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMAddFriendsViewController.m; sourceTree = "<group>"; };
 		8438D541222F60BF001FD530 /* IMXMPPHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMXMPPHelper.h; sourceTree = "<group>"; };
 		8438D542222F60BF001FD530 /* IMXMPPHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMXMPPHelper.m; sourceTree = "<group>"; };
 		84681F722230CA500056372A /* UIBarButtonItem+Category.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Category.h"; sourceTree = "<group>"; };
@@ -1494,6 +1497,8 @@
 				EE8936D32227E3AF004F1F6E /* IMSearchMessageViewController.m */,
 				EE8936E12228C331004F1F6E /* IMChatViewController.h */,
 				EE8936E22228C331004F1F6E /* IMChatViewController.m */,
+				8428F45022320EE70064DA35 /* IMAddFriendsViewController.h */,
+				8428F45122320EE70064DA35 /* IMAddFriendsViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2751,6 +2756,7 @@
 				EE8939AE222902C3004F1F6E /* IMInputBoxMoreView.m in Sources */,
 				842511AE222E609A004C3954 /* IMUserGroup.m in Sources */,
 				EE7FE45D222CC42500073210 /* FSActionSheet.m in Sources */,
+				8428F45222320EE70064DA35 /* IMAddFriendsViewController.m in Sources */,
 				842511AC222E609A004C3954 /* IMUserDetail.m in Sources */,
 				EE8936CA2227DC57004F1F6E /* UIButton+IMExtra.m in Sources */,
 				EE7FE461222CC42500073210 /* IMPhotoBrowser.m in Sources */,

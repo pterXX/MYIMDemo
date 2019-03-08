@@ -36,6 +36,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 #endif
 
+#ifdef DEBUG
+//  测试头像
+#define kDebugAvatarURL @"https://avatars0.githubusercontent.com/u/26049250?s=40&v=4"
+#else
+#define kDebugAvatarURLA @""
+#endif
+
 
 
 #import "MJRefresh.h"

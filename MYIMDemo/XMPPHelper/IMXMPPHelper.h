@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <XMPP.h>
 #import <XMPPFramework/XMPPFramework.h>
+#import "IMUserHelper.h"
 
 #ifdef DEBUG
 
@@ -25,7 +26,12 @@
 #endif
 
 NS_ASSUME_NONNULL_BEGIN
-@class IMUserHelper;
+
+//  好友列表改变是会执行相应的通知
+#define kXmppRosterChangeNotificationName @"kXmppRosterChange"
+//  收到好友订阅请求是会执行这个通知
+#define kXmppSubscriptionRequestNotificationName @"kXmppSubscriptionRequest"
+
 typedef void(^IMXMPPSuccessBlock)(void);
 typedef void(^IMXMPPFailBlock)(NSError *error);
 
@@ -51,7 +57,7 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
 @property (nonatomic ,strong) XMPPStreamManagementMemoryStorage   *storage;
 @property (nonatomic ,strong) XMPPStreamManagement                *xmppStreamManagement;
 //接入好友模块，可以获取好友列表
-@property (nonatomic ,strong) XMPPRosterCoreDataStorage           *xmppRosterCoreDataStorage;
+@property (nonatomic ,strong) XMPPRosterMemoryStorage           *xmppMemoryStorage ;
 @property (nonatomic ,strong) XMPPRoster                          *xmppRoster;
 //接入消息模块，将消息存储到本地
 @property (nonatomic ,strong) XMPPMessageArchivingCoreDataStorage *xmppMessageArchivingCoreDataStorage;
@@ -112,6 +118,23 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
  *  @param jid     发送对方的ID
  */
 - (void)sendMessage:(NSString *)message to:(XMPPJID *)jid;
+
+
+/**
+ * 添加好友
+ * @param user 该好友的个人信息
+ */
+- (void)addFriend:(IMUser *)user;
+
+/**
+ * 同意订阅请求用户，执行被添加好友的操作
+ */
+-(void)acceptPresenceSubscriptionRequest;
+
+/**
+ * 拒接订阅请求，用户拒绝被添加好友的操作
+ */
+-(void)rejectPresenceSubscriptionRequest;
 
 @end
 

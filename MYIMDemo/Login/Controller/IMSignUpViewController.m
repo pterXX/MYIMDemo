@@ -215,6 +215,7 @@
         ok = NO;
         [SVProgressHUD showInfoWithStatus:self.confirmPasswordField.placeholder];
     }
+    [SVProgressHUD dismissWithDelay:2];
     return ok;
 }
 
@@ -242,7 +243,8 @@
             NSString *username = self.userField.text;
             NSString *password = self.passwordField.text;//123456
             [[IMXMPPHelper sharedHelper] registerWithName:username andPassword:password success:^{
-                [SVProgressHUD showSuccessWithStatus:@"注册成功"];
+                [SVProgressHUD showSuccessWithStatus:@"注册成功,请登录"];
+                [SVProgressHUD dismissWithDelay:2];
                 [weakSelf loginSuccess];
             } fail:^(NSError *error) {
                 NSLog(@"error %@",error);
@@ -253,6 +255,7 @@
                 }else{
                     [SVProgressHUD showErrorWithStatus:@"注册失败"];
                 }
+                [SVProgressHUD dismissWithDelay:2];
             }];
         }
     }
@@ -272,9 +275,6 @@
  登录成功
  */
 - (void)loginSuccess{
-    //  判断是否登录
-    if ([IMXMPPHelper sharedHelper].userHelper.isLogin) {
-        [UIApplication sharedApplication].keyWindow.rootViewController = [IMMessageViewController navMessagesVc];
-    }
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end

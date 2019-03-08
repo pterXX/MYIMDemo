@@ -22,6 +22,14 @@ NS_ASSUME_NONNULL_BEGIN
  @param block 回调
  */
 - (void)alertWithTitle:(NSString *)title message:(NSString *)message cancel:(void (^)(BOOL))block;
+
+
+/**
+ 重新设置window 的根视图 并伴随淡入淡出的动画
+ 
+ @param rootViewController 需要切换的视图
+ */
+- (void)restoreRootViewController:(UIViewController *)rootViewController;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -14,6 +14,7 @@
 #import "NSDictionary+Json.h"
 #import "UIViewController+IMCategory.h"
 
+#import "IMAddFriendsViewController.h"
 #import "IMChatViewController.h"
 #import "IMConversationModel.h"
 #import "IMEmojiGroup.h"
@@ -191,18 +192,22 @@
      _segmentDataSource = [NSMutableArray arrayWithObjects:@"消息", @"访客", nil];
     
     // 创建YCMenuAction
+    kWeakSelf;
     YCMenuAction *action = [YCMenuAction actionWithTitle:@"发起群聊" image:[UIImage imageMenuQunLiao] handler:^(YCMenuAction *action) {
         [SVProgressHUD showInfoWithStatus:@"功能尚未实现"];
+        [SVProgressHUD dismissWithDelay:2];
     }];
     YCMenuAction *action1 = [YCMenuAction actionWithTitle:@"添加朋友" image:[UIImage imageMenuAddFriends] handler:^(YCMenuAction *action) {
-        [SVProgressHUD showInfoWithStatus:@"功能尚未实现"];
+        [weakSelf.navigationController pushViewController:[[IMAddFriendsViewController alloc] init] animated:YES];
     }];
     YCMenuAction *action2 = [YCMenuAction actionWithTitle:@"扫一扫" image:[UIImage imageMenuScan] handler:^(YCMenuAction *action) {
         [SVProgressHUD showInfoWithStatus:@"功能尚未实现"];
+        [SVProgressHUD dismissWithDelay:2];
     }];
     YCMenuAction *action3 = [YCMenuAction actionWithTitle:@"退出" image:[UIImage imageMenuExit] handler:^(YCMenuAction *action) {
-        [IMXmpp]
-        [SVProgressHUD showInfoWithStatus:@"功能尚未实现"];
+        [[IMXMPPHelper sharedHelper] logOut];
+        //  重置根视图
+        [self restoreRootViewController:[[IMLoginViewController alloc] init]];
     }];
     self.menuDataSource = @[action,action1,action2,action3].mutableCopy;
 }

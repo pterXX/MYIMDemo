@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
-
+typedef void(^KeyboardRuturnBtnClick)(NSString *str);
 @interface IMSearchMessageViewController : IMBaseViewController <UISearchResultsUpdating, UISearchBarDelegate>
+//  键盘搜索按钮点击后的操作
+@property (nonatomic ,copy) KeyboardRuturnBtnClick keyboardRuturnBtnClick;
 
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) UITableView *listView;

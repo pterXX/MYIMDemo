@@ -28,8 +28,7 @@
     
     //  初始化xmpp,默认打开手动验证证书
     [IMXMPPHelper sharedHelper].customCertEvaluation = YES;
-    //  全局设置SVProgressHUD 持续时间
-    [SVProgressHUD dismissWithDelay:2];
+    
     
     return YES;
 }

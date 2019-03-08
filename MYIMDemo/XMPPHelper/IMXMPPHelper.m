@@ -8,14 +8,21 @@
 
 #import "IMXMPPHelper.h"
 
+static const NSString *kAvailable     = @"available";//  上线
+static const NSString *kAway          = @"away";//  离开
+static const NSString *kDotNotDisturb = @"do not disturb";//  忙碌
+static const NSString *kSubscribe     = @"subscribe";//  订阅
+static const NSString *kUnavailable   = @"unavailable";//  下线
+static const NSString *kUnsubscribe   = @"unsubscribe";//  取消订阅
 
-@interface IMXMPPHelper()<XMPPStreamDelegate>
+@interface IMXMPPHelper()<XMPPStreamDelegate,XMPPRosterMemoryStorageDelegate>
 
+@property (nonatomic ,assign) BOOL               xmppNeedRegister;// 是否是注册
 @property (nonatomic ,copy  ) IMXMPPFailBlock    fail;//  失败
 @property (nonatomic ,copy  ) IMXMPPSuccessBlock success;//  成功
-@property (nonatomic ,copy  ) NSString           *username;
 @property (nonatomic ,copy  ) NSString           *password;
-@property (nonatomic ,assign) BOOL               xmppNeedRegister;// 是否是注册
+@property (nonatomic ,copy  ) NSString           *username;
+@property (nonatomic ,copy  ) XMPPPresence       *presence;// 代表用户在线状态
 
 @end
 
@@ -71,10 +78,15 @@ static IMXMPPHelper *helper;
         [_xmppStreamManagement activate:self.xmppStream];
         
         //接入好友模块，可以获取好友列表
-        _xmppRosterCoreDataStorage = [[XMPPRosterCoreDataStorage alloc] init];
-        _xmppRoster = [[XMPPRoster alloc] initWithRosterStorage:_xmppRosterCoreDataStorage];
+        _xmppMemoryStorage  = [[XMPPRosterMemoryStorage  alloc] init];
+        _xmppRoster = [[XMPPRoster alloc] initWithRosterStorage:_xmppMemoryStorage ];
         [_xmppRoster activate:self.xmppStream];
         [_xmppRoster addDelegate:self delegateQueue:dispatch_get_main_queue()];
+        //设置好友同步策略,XMPP一旦连接成功，同步好友到本地
+        [_xmppRoster setAutoFetchRoster:YES]; //自动同步，从服务器取出好友
+        //关掉自动接收好友请求，默认开启自动同意
+        [_xmppRoster setAutoAcceptKnownPresenceSubscriptionRequests:NO];
+
         
         //接入消息模块，将消息存储到本地
         _xmppMessageArchivingCoreDataStorage = [XMPPMessageArchivingCoreDataStorage sharedInstance];
@@ -137,6 +149,28 @@ static IMXMPPHelper *helper;
     XMPPMessage* newMessage = [[XMPPMessage alloc] initWithType:@"chat" to:jid];
     [newMessage addBody:message]; //消息内容
     [_xmppStream sendElement:newMessage];
+}
+
+//  添加请求
+- (void)addFriend:(IMUser *)user{
+    if (!user) return;
+    XMPPJID *jid = [XMPPJID jidWithUser:user.userID domain:IM_XMPP_DOMAIN resource:nil];
+    //这里的nickname是我对它的备注，并非他得个人资料中得nickname
+    [[IMXMPPHelper sharedHelper].xmppRoster addUser:jid withNickname:user.remarkName];
+}
+
+//  同意订阅请求用户，执行被添加好友的操作
+-(void)acceptPresenceSubscriptionRequest{
+    if (self.presence == nil) return;
+    [self.xmppRoster acceptPresenceSubscriptionRequestFrom:self.presence.from andAddToRoster:YES];
+    self.presence = nil;
+}
+
+//  拒接订阅请求，用户拒绝被添加好友的操作
+-(void)rejectPresenceSubscriptionRequest{
+    if (self.presence == nil) return;
+    [self.xmppRoster rejectPresenceSubscriptionRequestFrom:self.presence.from];
+    self.presence = nil;
 }
 
 #pragma mark - XMPPStreamDelegate
@@ -222,6 +256,106 @@ static IMXMPPHelper *helper;
     completionHandler(self.customCertEvaluation);
 }
 
+#pragma mark -- XMPPMessage Delegate
+- (void)xmppStream:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message{
+    NSLog(@"接收消息--%@",message);
+}
+
+- (void)xmppStream:(XMPPStream *)sender didSendMessage:(XMPPMessage *)message{
+    NSLog(@"发送消息成功--%@", message);
+}
+
+- (void)xmppStream:(XMPPStream *)sender didFailToSendMessage:(XMPPMessage *)message error:(NSError *)error{
+    NSLog(@"发送消息失败--%@", message);
+}
+
+#pragma mark -- Roster
+//  好友改变
+- (void)xmppRosterDidChange:(XMPPRosterMemoryStorage *)sender{
+    NSLog(@"好友列表改变");
+    [IMNotificationCenter postNotificationName:kXmppRosterChangeNotificationName object:nil];
+}
+
+//  收到好友列表IQ会进入的方法，并且已经存入我的存储器
+- (void)xmppRosterDidEndPopulating:(XMPPRoster *)sender{
+    NSLog(@"好友列表改变");
+    [IMNotificationCenter postNotificationName:kXmppRosterChangeNotificationName object:nil];
+}
+
+/** 收到出席订阅请求（代表对方想添加自己为好友) */
+- (void)xmppRoster:(XMPPRoster *)sender didReceivePresenceSubscriptionRequest:(XMPPPresence *)presence
+{
+    NSLog(@"订阅请求 %@",presence);
+    //添加好友一定会订阅对方，但是接受订阅不一定要添加对方为好友
+    [IMNotificationCenter postNotificationName:kXmppSubscriptionRequestNotificationName object:presence];
+    
+    //同意并添加对方为好友
+    //    [self.xmppRoster acceptPresenceSubscriptionRequestFrom:presence.from andAddToRoster:YES];
+    //拒绝的方法
+    //    [self.xmppRoster rejectPresenceSubscriptionRequestFrom:presence.from];
+}
+
+- (void)xmppStream:(XMPPStream *)sender didReceivePresence:(XMPPPresence *)presence
+{
+    NSLog(@"%s",__FUNCTION__);
+    //收到对方取消定阅我得消息
+    if ([presence.type isEqualToString:kUnsubscribe]) {
+        //从我的本地通讯录中将他移除
+        [self.xmppRoster removeUser:presence.from];
+    }
+}
+
+#pragma mark ===== 文件接收=======
+
+//是否同意对方发文件
+- (void)xmppIncomingFileTransfer:(XMPPIncomingFileTransfer *)sender didReceiveSIOffer:(XMPPIQ *)offer{
+    NSLog(@"%s",__FUNCTION__);
+    [self.xmppIncomingFileTransfer acceptSIOffer:offer];
+}
+
+//存储文件 音频为amr格式  图片为jpg格式
+- (void)xmppIncomingFileTransfer:(XMPPIncomingFileTransfer *)sender didSucceedWithData:(NSData *)data named:(NSString *)name{
+    XMPPJID *jid = [sender.xmppStream.myJID copy];
+    NSString *subject;
+    NSString *extension = [name pathExtension];
+    if ([@"amr" isEqualToString:extension]) {
+        subject = @"voice";
+    }else if([@"jpg" isEqualToString:extension]){
+        subject = @"picture";
+    }
+    
+    XMPPMessage *message = [XMPPMessage messageWithType:@"chat" to:jid];
+    [message addAttributeWithName:@"from" stringValue:sender.xmppStream.myJID.bare];
+    [message addSubject:subject];
+    
+    NSString *path =  [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    path = [path stringByAppendingPathComponent:[XMPPStream generateUUID]];
+    path = [path stringByAppendingPathExtension:extension];
+    [data writeToFile:path atomically:YES];
+    [message addBody:path.lastPathComponent];
+    [self.xmppMessageArchivingCoreDataStorage archiveMessage:message outgoing:NO xmppStream:self.xmppStream];
+}
+
+#pragma mark -- terminate
+/**
+ *  申请后台时间来清理下线的任务
+ */
+-(void)applicationWillTerminate{
+    UIApplication *app = [UIApplication sharedApplication];
+    UIBackgroundTaskIdentifier taskId = 0;
+    
+    taskId = [app beginBackgroundTaskWithExpirationHandler:^(void){
+        [app endBackgroundTask:taskId];
+    }];
+    
+    if(taskId==UIBackgroundTaskInvalid){
+        return;
+    }
+    
+    //只能在主线层执行
+    [_xmppStream disconnectAfterSending];
+}
+
 /**
  初始化错误信息
  
@@ -277,81 +411,6 @@ static IMXMPPHelper *helper;
         }
     }
     return nil;
-}
-
-#pragma mark -- XMPPMessage Delegate
-- (void)xmppStream:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message{
-    NSLog(@"接收消息--%@",message);
-}
-
-- (void)xmppStream:(XMPPStream *)sender didSendMessage:(XMPPMessage *)message{
-    NSLog(@"发送消息成功--%@", message);
-}
-
-- (void)xmppStream:(XMPPStream *)sender didFailToSendMessage:(XMPPMessage *)message error:(NSError *)error{
-    NSLog(@"发送消息失败--%@", message);
-}
-
-#pragma mark -- Roster
-
-- (void)xmppStream:(XMPPStream *)sender didReceivePresence:(XMPPPresence *)presence{
-    //对方上线或离线,更新状态
-    //xmppRosterDidChange
-}
-
-- (void)xmppRosterDidChange:(XMPPRoster *)sender{
-    [IMNotificationCenter postNotificationName:@"RosterChanged" object:nil];
-}
-
-#pragma mark ===== 文件接收=======
-
-//是否同意对方发文件
-- (void)xmppIncomingFileTransfer:(XMPPIncomingFileTransfer *)sender didReceiveSIOffer:(XMPPIQ *)offer{
-    NSLog(@"%s",__FUNCTION__);
-    [self.xmppIncomingFileTransfer acceptSIOffer:offer];
-}
-
-//存储文件 音频为amr格式  图片为jpg格式
-- (void)xmppIncomingFileTransfer:(XMPPIncomingFileTransfer *)sender didSucceedWithData:(NSData *)data named:(NSString *)name{
-    XMPPJID *jid = [sender.xmppStream.myJID copy];
-    NSString *subject;
-    NSString *extension = [name pathExtension];
-    if ([@"amr" isEqualToString:extension]) {
-        subject = @"voice";
-    }else if([@"jpg" isEqualToString:extension]){
-        subject = @"picture";
-    }
-    
-    XMPPMessage *message = [XMPPMessage messageWithType:@"chat" to:jid];
-    [message addAttributeWithName:@"from" stringValue:sender.xmppStream.myJID.bare];
-    [message addSubject:subject];
-    
-    NSString *path =  [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    path = [path stringByAppendingPathComponent:[XMPPStream generateUUID]];
-    path = [path stringByAppendingPathExtension:extension];
-    [data writeToFile:path atomically:YES];
-    [message addBody:path.lastPathComponent];
-    [self.xmppMessageArchivingCoreDataStorage archiveMessage:message outgoing:NO xmppStream:self.xmppStream];
-}
-
-#pragma mark -- terminate
-/**
- *  申请后台时间来清理下线的任务
- */
--(void)applicationWillTerminate{
-    UIApplication *app = [UIApplication sharedApplication];
-    UIBackgroundTaskIdentifier taskId = 0;
-    
-    taskId = [app beginBackgroundTaskWithExpirationHandler:^(void){
-        [app endBackgroundTask:taskId];
-    }];
-    
-    if(taskId==UIBackgroundTaskInvalid){
-        return;
-    }
-    
-    //只能在主线层执行
-    [_xmppStream disconnectAfterSending];
 }
 
 @end

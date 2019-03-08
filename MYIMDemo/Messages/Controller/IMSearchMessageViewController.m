@@ -157,6 +157,9 @@ static NSString *const cellIdentifier = @"kCellIdentifier";
     [searchBar resignFirstResponder];
     UIButton *cancelBtn = [searchBar valueForKey:@"cancelButton"];
     cancelBtn.enabled = YES;
+    if (self.keyboardRuturnBtnClick) {
+        self.keyboardRuturnBtnClick(searchBar.text);
+    }
 }
 
 - (void)dealloc {

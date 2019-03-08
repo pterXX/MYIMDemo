@@ -196,6 +196,7 @@
         ok = NO;
         [SVProgressHUD showInfoWithStatus:self.passwordField.placeholder];
     }
+    [SVProgressHUD dismissWithDelay:2];
     return ok;
 }
 
@@ -216,6 +217,7 @@
             NSString *password = self.passwordField.text;//123456
             [[IMXMPPHelper sharedHelper] loginWithName:username andPassword:password success:^{
                 [SVProgressHUD showSuccessWithStatus:@"登录成功"];
+                [SVProgressHUD dismissWithDelay:2];
                 [weakSelf loginSuccess];
             } fail:^(NSError *error) {
                 NSLog(@"error %@",error);
@@ -224,6 +226,7 @@
                 }else{
                     [SVProgressHUD showErrorWithStatus:@"登录失败"];
                 }
+                [SVProgressHUD dismissWithDelay:2];
             }];
         }
     }
@@ -257,7 +260,8 @@
 - (void)loginSuccess{
     //  判断是否登录
     if ([IMXMPPHelper sharedHelper].userHelper.isLogin) {
-        [UIApplication sharedApplication].keyWindow.rootViewController = [IMMessageViewController navMessagesVc];
+        //  切换根视图
+        [self restoreRootViewController:[IMMessageViewController navMessagesVc]];
     }
 }
 @end

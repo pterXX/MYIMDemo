@@ -19,14 +19,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MYIMDemo/XMPPHelper/IMXMPPHelper.m"
-            timestampString = "573643366.2513061"
+            filePath = "MYIMDemo/Category/UI_Category/UIViewController+IMCategory.h"
+            timestampString = "573707557.272487"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
-            landmarkName = "-xmppStream:didNotRegister:"
-            landmarkType = "7">
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "UIViewController(IMCategory)"
+            landmarkType = "2">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
