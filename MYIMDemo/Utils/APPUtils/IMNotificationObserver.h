@@ -1,5 +1,5 @@
 //
-//  YSFNotificationObserver.h
+//  IMNotificationObserver.h
 //  YunShiFinance
 //
 //  Created by Apple on 2018/9/28.
@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wobjc-missing-property-synthesis"
 
-@interface NSNotificationCenter (YSFNotifications)
+@interface NSNotificationCenter (IMNotifications)
 
 - (id)addObserver:(id)observer
           forName:(nullable NSString *)name

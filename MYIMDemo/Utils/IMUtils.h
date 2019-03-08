@@ -9,15 +9,16 @@
 #ifndef IMUtils_h
 #define IMUtils_h
 
-#import "NSFileManager+IMChat.h"
+#import "IMAppDefaultUtil.h"  //  app 默认设置
 #import "IMColorTools.h"      // 颜色工具类
+#import "IMNetworkDetection.h" // 网络状态
+#import "IMNotificationObserver.h" //  通知
 #import "IMShortcutMacros.h"  // 快捷宏
 #import "IMShortcutMethod.h"  // 快捷方法
-#import "UIFont+IMChat.h"     // 字体
+#import "NSFileManager+IMChat.h"
 #import "UIColor+IMChat.h"    // 颜色
+#import "UIFont+IMChat.h"     // 字体
 #import "UIImage+IMChat.h"    // 图片
-#import "IMAppDefaultUtil.h"  //  app 默认设置
-#import "IMNetworkDetection.h" // 网络状态
 
 
 #pragma mark - 输入框枚举

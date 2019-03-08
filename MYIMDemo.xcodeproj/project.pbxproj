@@ -58,6 +58,7 @@
 		8428F44E223209BE0064DA35 /* icon_menu_exit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8428F44B223209BD0064DA35 /* icon_menu_exit@2x.png */; };
 		8428F44F223209BE0064DA35 /* icon_menu_exit@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8428F44C223209BE0064DA35 /* icon_menu_exit@3x.png */; };
 		8428F45222320EE70064DA35 /* IMAddFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8428F45122320EE70064DA35 /* IMAddFriendsViewController.m */; };
+		8428F4582232481F0064DA35 /* IMNotificationObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 8428F4572232481F0064DA35 /* IMNotificationObserver.m */; };
 		8438D543222F60BF001FD530 /* IMXMPPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8438D542222F60BF001FD530 /* IMXMPPHelper.m */; };
 		84681F742230CA500056372A /* UIBarButtonItem+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 84681F732230CA500056372A /* UIBarButtonItem+Category.m */; };
 		84681F772230EF000056372A /* IMSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84681F762230EF000056372A /* IMSignUpViewController.m */; };
@@ -568,6 +569,8 @@
 		8428F44C223209BE0064DA35 /* icon_menu_exit@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_menu_exit@3x.png"; sourceTree = "<group>"; };
 		8428F45022320EE70064DA35 /* IMAddFriendsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMAddFriendsViewController.h; sourceTree = "<group>"; };
 		8428F45122320EE70064DA35 /* IMAddFriendsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMAddFriendsViewController.m; sourceTree = "<group>"; };
+		8428F4562232481E0064DA35 /* IMNotificationObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMNotificationObserver.h; sourceTree = "<group>"; };
+		8428F4572232481F0064DA35 /* IMNotificationObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMNotificationObserver.m; sourceTree = "<group>"; };
 		8438D541222F60BF001FD530 /* IMXMPPHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMXMPPHelper.h; sourceTree = "<group>"; };
 		8438D542222F60BF001FD530 /* IMXMPPHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMXMPPHelper.m; sourceTree = "<group>"; };
 		84681F722230CA500056372A /* UIBarButtonItem+Category.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Category.h"; sourceTree = "<group>"; };
@@ -1608,6 +1611,8 @@
 		EE89370E2228F643004F1F6E /* APPUtils */ = {
 			isa = PBXGroup;
 			children = (
+				8428F4562232481E0064DA35 /* IMNotificationObserver.h */,
+				8428F4572232481F0064DA35 /* IMNotificationObserver.m */,
 				EE8937182228FE69004F1F6E /* IMNetworkDetection.h */,
 				EE8937192228FE6A004F1F6E /* IMNetworkDetection.m */,
 				EE89370B2228F5C6004F1F6E /* IMAppDefaultUtil.h */,
@@ -2729,6 +2734,7 @@
 				EE893A0322290901004F1F6E /* NSArray+Json.m in Sources */,
 				EE893A3C22291B18004F1F6E /* IMChatTextTableViewCell.m in Sources */,
 				EE8939C422290380004F1F6E /* NSAttributedString+Addition.m in Sources */,
+				8428F4582232481F0064DA35 /* IMNotificationObserver.m in Sources */,
 				EE7FE466222CC42500073210 /* IMVideoPlayView.m in Sources */,
 				EE893A3B22291B18004F1F6E /* IMChatVoiceTableViewCell.m in Sources */,
 				842511B9222E60BF004C3954 /* IMDBManager.m in Sources */,

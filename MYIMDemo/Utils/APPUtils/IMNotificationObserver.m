@@ -1,12 +1,12 @@
 //
-//  YSFNotificationObserver.m
+//  IMNotificationObserver.m
 //  YunShiFinance
 //
 //  Created by Apple on 2018/9/28.
 //  Copyright © 2018年 Apple. All rights reserved.
 //
 
-#import "YSFNotificationObserver.h"
+#import "IMNotificationObserver.h"
 #import <objc/runtime.h>
 
 
@@ -21,10 +21,10 @@
 #endif
 
 
-typedef void (^YSFNotificationBlock)(NSNotification *note, id observer);
+typedef void (^IMNotificationBlock)(NSNotification *note, id observer);
 
 
-static NSMutableArray *YSFNotificationsGetObservers(id object, BOOL create)
+static NSMutableArray *IMNotificationsGetObservers(id object, BOOL create)
 {
     @synchronized(object)
     {
@@ -40,12 +40,12 @@ static NSMutableArray *YSFNotificationsGetObservers(id object, BOOL create)
 }
 
 
-@interface YSFNotificationObserver : NSObject
+@interface IMNotificationObserver : NSObject
 
 @property (nonatomic, weak) NSObject *observer;
 @property (nonatomic, weak) NSObject *object;
 @property (nonatomic, copy) NSString *name;
-@property (nonatomic, copy) YSFNotificationBlock block;
+@property (nonatomic, copy) IMNotificationBlock block;
 @property (nonatomic, strong) NSOperationQueue *queue;
 @property (nonatomic, weak) NSNotificationCenter *center;
 
@@ -54,7 +54,7 @@ static NSMutableArray *YSFNotificationsGetObservers(id object, BOOL create)
 @end
 
 
-@implementation YSFNotificationObserver
+@implementation IMNotificationObserver
 
 - (void)action:(NSNotification *)note
 {
@@ -83,12 +83,12 @@ static NSMutableArray *YSFNotificationsGetObservers(id object, BOOL create)
 @end
 
 
-@implementation NSNotificationCenter (YSFNotifications)
+@implementation NSNotificationCenter (IMNotifications)
 
 + (void)load
 {
     SEL original = @selector(removeObserver:name:object:);
-    SEL replacement = @selector(YSFNotification_removeObserver:name:object:);
+    SEL replacement = @selector(IMNotification_removeObserver:name:object:);
     method_exchangeImplementations(class_getInstanceMethod(self, original),
                                    class_getInstanceMethod(self, replacement));
 }
@@ -97,9 +97,9 @@ static NSMutableArray *YSFNotificationsGetObservers(id object, BOOL create)
           forName:(nullable NSString *)name
            object:(nullable id)object
             queue:(nullable NSOperationQueue *)queue
-       usingBlock:(YSFNotificationBlock)block
+       usingBlock:(IMNotificationBlock)block
 {
-    YSFNotificationObserver *container = [[YSFNotificationObserver alloc] init];
+    IMNotificationObserver *container = [[IMNotificationObserver alloc] init];
     container.observer = observer;
     container.object = object;
     container.name = name;
@@ -107,30 +107,30 @@ static NSMutableArray *YSFNotificationsGetObservers(id object, BOOL create)
     container.queue = queue;
     container.center = self;
     
-    [YSFNotificationsGetObservers(observer, YES) addObject:container];
+    [IMNotificationsGetObservers(observer, YES) addObject:container];
     [self addObserver:container selector:@selector(action:) name:name object:object];
     return container;
 }
 
-- (void)YSFNotification_removeObserver:(id)observer name:(NSString *)name object:(id)object
+- (void)IMNotification_removeObserver:(id)observer name:(NSString *)name object:(id)object
 {
-    for (YSFNotificationObserver *container in [YSFNotificationsGetObservers(observer, NO) reverseObjectEnumerator])
+    for (IMNotificationObserver *container in [IMNotificationsGetObservers(observer, NO) reverseObjectEnumerator])
     {
         __strong id strongObject = container.object;
         if (container.center == self &&
             (!container.name || !name || [container.name isEqualToString:name]) &&
             (!strongObject || !object || strongObject == object))
         {
-            [YSFNotificationsGetObservers(observer, NO) removeObject:container];
+            [IMNotificationsGetObservers(observer, NO) removeObject:container];
         }
     }
-    if (object_getClass(observer) == [YSFNotificationObserver class])
+    if (object_getClass(observer) == [IMNotificationObserver class])
     {
-        YSFNotificationObserver *container = observer;
+        IMNotificationObserver *container = observer;
         __strong NSObject *strongObserver = container.observer;
-        [YSFNotificationsGetObservers(strongObserver, NO) removeObject:container];
+        [IMNotificationsGetObservers(strongObserver, NO) removeObject:container];
     }
-    [self YSFNotification_removeObserver:observer name:name object:object];
+    [self IMNotification_removeObserver:observer name:name object:object];
 }
 
 @end
