@@ -20,8 +20,6 @@ static NSString * const kUnsubscribe   = @"unsubscribe";//  取消订阅
 @property (nonatomic ,assign) BOOL               xmppNeedRegister;// 是否是注册
 @property (nonatomic ,copy  ) IMXMPPFailBlock    fail;//  失败
 @property (nonatomic ,copy  ) IMXMPPSuccessBlock success;//  成功
-@property (nonatomic ,copy  ) NSString           *password;
-@property (nonatomic ,copy  ) NSString           *username;
 @property (nonatomic ,copy  ) XMPPPresence       *presence;// 代表用户在线状态
 
 @end
@@ -43,7 +41,7 @@ static IMXMPPHelper *helper;
 {
     self = [super init];
     if (self) {
-        [IMNotificationCenter addObserver:self selector:@selector(applicationWillTerminate) name:UIApplicationWillTerminateNotification object:nil];
+        [self addApplicationNotification];
     }
     return self;
 }
@@ -98,8 +96,8 @@ static IMXMPPHelper *helper;
 #pragma mark -- go onlie, offline
 - (void)initUser:(IMXMPPFailBlock _Nonnull)fail password:(NSString * _Nonnull)password success:(IMXMPPSuccessBlock _Nonnull)success userName:(NSString * _Nonnull)userName {
     _myJID = [XMPPJID jidWithUser:userName domain:IM_XMPP_DOMAIN resource:nil];
-    self.username        = userName;
-    self.password        = password;
+    self.userHelper.userAccount = userName;
+    self.userHelper.password = password;
     self.success         = success;
     self.fail            = fail;
     [self.xmppStream setMyJID:_myJID];
@@ -126,11 +124,22 @@ static IMXMPPHelper *helper;
     [self initUser:fail password:password success:success userName:userName];
 }
 
+//  用户授权
+-(void)userAuth{
+    NSError *error = nil;
+    if (self.xmppNeedRegister) {
+        //  用户注册，发送注册请求
+        [[self xmppStream] registerWithPassword:self.userHelper.password error:&error];
+    }else{
+        //  用户登录，发送身份验证请求
+        [[self xmppStream] authenticateWithPassword:self.userHelper.password error:&error];
+    }
+    if (error) NSLog(@"%@",error);
+}
+
 -(void)logOut{
     [self goOffline];
     [_xmppStream disconnectAfterSending];
-    self.username = @"";
-    self.password = @"";
     [self.userHelper signOut];
 }
 
@@ -184,13 +193,8 @@ static IMXMPPHelper *helper;
 - (void)xmppStreamDidConnect:(XMPPStream *)sender{
     NSLog(@"已经连接服务器");
     NSError *error = nil;
-    if (self.xmppNeedRegister) {
-        //  用户注册，发送注册请求
-        [[self xmppStream] registerWithPassword:self.password error:&error];
-    }else{
-        //  用户登录，发送身份验证请求
-        [[self xmppStream] authenticateWithPassword:self.password error:&error];
-    }
+    //  用户授权
+    [self userAuth];
 }
 
 - (void)xmppStreamDidDisconnect:(XMPPStream *)sender withError:(NSError *)error{
@@ -336,7 +340,23 @@ static IMXMPPHelper *helper;
     [self.xmppMessageArchivingCoreDataStorage archiveMessage:message outgoing:NO xmppStream:self.xmppStream];
 }
 
-#pragma mark -- terminate
+#pragma mark -- Application life cycle
+- (void)addApplicationNotification{
+    //  程序将要推出操作
+    [IMNotificationCenter addObserver:self
+                             selector:@selector(applicationWillTerminate)
+                                 name:UIApplicationWillTerminateNotification object:nil];
+    
+    //  程序获得焦点
+    [IMNotificationCenter addObserver:self
+                             selector:@selector(applicationDidBecomeActive)
+                                 name:UIApplicationDidBecomeActiveNotification object:nil];
+    //  程序失去焦点
+    [IMNotificationCenter addObserver:self
+                             selector:@selector(applicationWillResignActiveNotification)
+                                 name:UIApplicationWillResignActiveNotification object:nil];
+}
+
 /**
  *  申请后台时间来清理下线的任务
  */
@@ -348,13 +368,37 @@ static IMXMPPHelper *helper;
         [app endBackgroundTask:taskId];
     }];
     
-    if(taskId==UIBackgroundTaskInvalid){
+    if(taskId == UIBackgroundTaskInvalid){
         return;
     }
     
-    //只能在主线层执行
+    //只能在主线层执行，断线
     [_xmppStream disconnectAfterSending];
 }
+
+/**
+ *  进入前台后的操作
+ */
+- (void)applicationDidBecomeActive{
+    //  如果已经登录的话就直接返回
+    if (self.userHelper.isLogin && self.userHelper.userAccount && self.userHelper.password) {
+        //  重新登录
+        [self loginWithName:self.userHelper.userAccount andPassword:self.userHelper.password success:nil fail:nil];
+    }
+    // 如果连接已经关闭
+    if (self.xmppStream.isDisconnected ) {
+       
+    }
+}
+
+
+/**
+ *  失去焦点
+ */
+- (void)applicationWillResignActiveNotification{
+    
+}
+
 
 /**
  初始化错误信息
@@ -380,10 +424,10 @@ static IMXMPPHelper *helper;
     if (self.success) {
         IMUser *user         = [[IMUser alloc] init];
         // 测试的userID和nickname，remarkName 都是username，具体等线上修改
-        user.userID          = self.username;
-        user.nikeName        = self.username;
-        user.username        = self.username;
-        user.remarkName      = self.username;
+        user.userID          = self.userHelper.userAccount;
+        user.nikeName        = self.userHelper.userAccount;
+        user.username        = self.userHelper.userAccount;
+        user.remarkName      = self.userHelper.userAccount;
         self.userHelper.user = user;
         self.success();
         self.fail = nil;

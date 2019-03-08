@@ -13,6 +13,9 @@
 
 @property (nonatomic, strong) IMUser *user;
 
+@property (nonatomic ,strong) NSString  *userAccount;
+@property (nonatomic ,strong) NSString  *password;
+
 @property (nonatomic, strong, readonly) NSString *userID;
 
 @property (nonatomic, assign, readonly) BOOL isLogin;

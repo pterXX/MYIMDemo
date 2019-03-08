@@ -119,7 +119,7 @@
 
 //  添加好友
 - (void)addFriend:(NSString *)uesrID{
-    if ([uesrID isEmptyString]) return;
+    if ([uesrID isEmptyString] && [IMXMPPHelper sharedHelper].userHelper.isLogin) return;
     __block NSString * uesrIDstr = uesrID;
     NSString *str = IMStirngFormat(@"是否添加好友\"%@\"",uesrID);
     kWeakSelf;

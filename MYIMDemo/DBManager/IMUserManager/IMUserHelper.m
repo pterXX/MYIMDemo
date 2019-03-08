@@ -10,6 +10,8 @@
 #import "IMDBUserStore.h"
 
 #define KLoginUid @"loginUid"
+#define KLoginPassword @"loginPassword"
+
 @implementation IMUserHelper
 @synthesize user = _user;
 
@@ -48,7 +50,7 @@
         DDLogError(@"登录数据存库失败");
     }
     
-    [[NSUserDefaults standardUserDefaults] setObject:user.userID forKey:KLoginUid];
+    [IMUserDefaults setObject:user.userID forKey:KLoginUid];
 }
 
 - (IMUser *)user{
@@ -58,6 +60,7 @@
             _user = [userStore userByID:self.userID];
             if (!_user) {
                 [IMUserDefaults removeObjectForKey:KLoginUid];
+                [IMUserDefaults removeObjectForKey:KLoginPassword];
             }
         }
     }
@@ -67,6 +70,20 @@
 - (NSString *)userID{
     NSString *uid = [IMUserDefaults objectForKey:KLoginUid];
     return uid;
+}
+
+- (void)setPassword:(NSString *)password{
+    [IMUserDefaults setObject:IMNoNilString(password) forKey:KLoginPassword];
+}
+
+- (NSString *)password{
+    NSString *password = [IMUserDefaults objectForKey:KLoginPassword];
+    return password;
+}
+
+- (NSString *)userAccount{
+    if (_userAccount == nil) _userAccount = self.userID;
+    return _userAccount;
 }
 
 - (BOOL)isLogin{
@@ -82,6 +99,7 @@
             ok = NO;
         }else{
             [IMUserDefaults removeObjectForKey:KLoginUid];
+            [IMUserDefaults removeObjectForKey:KLoginPassword];
         }
     }
     return ok;
