@@ -15,7 +15,7 @@ static NSString * const kSubscribe     = @"subscribe";//  订阅
 static NSString * const kUnavailable   = @"unavailable";//  下线
 static NSString * const kUnsubscribe   = @"unsubscribe";//  取消订阅
 
-@interface IMXMPPHelper()<XMPPStreamDelegate,XMPPRosterMemoryStorageDelegate>
+@interface IMXMPPHelper()<XMPPStreamDelegate,XMPPRosterMemoryStorageDelegate,XMPPRosterStorage>
 
 @property (nonatomic ,assign) BOOL               xmppNeedRegister;// 是否是注册
 @property (nonatomic ,copy  ) IMXMPPFailBlock    fail;//  失败
