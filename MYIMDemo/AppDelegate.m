@@ -29,7 +29,7 @@
     //  初始化xmpp,默认打开手动验证证书
     [IMXMPPHelper sharedHelper].customCertEvaluation = YES;
     
-    
+
     return YES;
 }
 
