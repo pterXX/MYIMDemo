@@ -56,8 +56,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 #import <SDWebImage/UIImageView+WebCache.h>
 
 #import "IMBaseModel.h" // 基础model
+#import "IMBaseNavigationController.h"
+#import "IMBaseTabBarController.h"
 #import "IMBaseTableViewCell.h" //  基础cell
 #import "IMBaseViewController.h" //  基础视图控制器
+
 
 #import "IMUtils.h" //  工具类
 

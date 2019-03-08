@@ -59,6 +59,9 @@
 		8428F44F223209BE0064DA35 /* icon_menu_exit@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8428F44C223209BE0064DA35 /* icon_menu_exit@3x.png */; };
 		8428F45222320EE70064DA35 /* IMAddFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8428F45122320EE70064DA35 /* IMAddFriendsViewController.m */; };
 		8428F4582232481F0064DA35 /* IMNotificationObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 8428F4572232481F0064DA35 /* IMNotificationObserver.m */; };
+		8428F46022326A5D0064DA35 /* IMFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8428F45F22326A5D0064DA35 /* IMFriendsViewController.m */; };
+		8428F46622326AD00064DA35 /* IMBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8428F46522326AD00064DA35 /* IMBaseNavigationController.m */; };
+		8428F46922326B060064DA35 /* IMBaseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8428F46822326B060064DA35 /* IMBaseTabBarController.m */; };
 		8438D543222F60BF001FD530 /* IMXMPPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8438D542222F60BF001FD530 /* IMXMPPHelper.m */; };
 		84681F742230CA500056372A /* UIBarButtonItem+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 84681F732230CA500056372A /* UIBarButtonItem+Category.m */; };
 		84681F772230EF000056372A /* IMSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84681F762230EF000056372A /* IMSignUpViewController.m */; };
@@ -571,6 +574,12 @@
 		8428F45122320EE70064DA35 /* IMAddFriendsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMAddFriendsViewController.m; sourceTree = "<group>"; };
 		8428F4562232481E0064DA35 /* IMNotificationObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMNotificationObserver.h; sourceTree = "<group>"; };
 		8428F4572232481F0064DA35 /* IMNotificationObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMNotificationObserver.m; sourceTree = "<group>"; };
+		8428F45E22326A5D0064DA35 /* IMFriendsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMFriendsViewController.h; sourceTree = "<group>"; };
+		8428F45F22326A5D0064DA35 /* IMFriendsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMFriendsViewController.m; sourceTree = "<group>"; };
+		8428F46422326AD00064DA35 /* IMBaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMBaseNavigationController.h; sourceTree = "<group>"; };
+		8428F46522326AD00064DA35 /* IMBaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMBaseNavigationController.m; sourceTree = "<group>"; };
+		8428F46722326B060064DA35 /* IMBaseTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMBaseTabBarController.h; sourceTree = "<group>"; };
+		8428F46822326B060064DA35 /* IMBaseTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMBaseTabBarController.m; sourceTree = "<group>"; };
 		8438D541222F60BF001FD530 /* IMXMPPHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMXMPPHelper.h; sourceTree = "<group>"; };
 		8438D542222F60BF001FD530 /* IMXMPPHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMXMPPHelper.m; sourceTree = "<group>"; };
 		84681F722230CA500056372A /* UIBarButtonItem+Category.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Category.h"; sourceTree = "<group>"; };
@@ -1295,6 +1304,49 @@
 			path = DataUtils;
 			sourceTree = "<group>";
 		};
+		8428F45922326A020064DA35 /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				8428F45C22326A270064DA35 /* Controller */,
+				8428F45B22326A210064DA35 /* Model */,
+				8428F45A22326A170064DA35 /* View */,
+			);
+			path = Friends;
+			sourceTree = "<group>";
+		};
+		8428F45A22326A170064DA35 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8428F45B22326A210064DA35 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8428F45C22326A270064DA35 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8428F45E22326A5D0064DA35 /* IMFriendsViewController.h */,
+				8428F45F22326A5D0064DA35 /* IMFriendsViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8428F45D22326A300064DA35 /* Page */ = {
+			isa = PBXGroup;
+			children = (
+				8428F45922326A020064DA35 /* Friends */,
+				842510EA222E2276004C3954 /* Login */,
+				842510E9222E2255004C3954 /* Messages */,
+			);
+			path = Page;
+			sourceTree = "<group>";
+		};
 		8438D53D222F6069001FD530 /* XMPPHelper */ = {
 			isa = PBXGroup;
 			children = (
@@ -1408,10 +1460,9 @@
 		EE8936832227D997004F1F6E /* MYIMDemo */ = {
 			isa = PBXGroup;
 			children = (
+				8428F45D22326A300064DA35 /* Page */,
 				8438D53D222F6069001FD530 /* XMPPHelper */,
 				84251117222E5D09004C3954 /* DBManager */,
-				842510EA222E2276004C3954 /* Login */,
-				842510E9222E2255004C3954 /* Messages */,
 				EE7FE434222CC42500073210 /* BAPhotoBrowser */,
 				EE8936BD2227DA4E004F1F6E /* Category */,
 				EE8936BE2227DA4E004F1F6E /* Common */,
@@ -1559,6 +1610,10 @@
 				EE8936C62227DBA2004F1F6E /* IMBaseViewController.m */,
 				EE8936F32228CC5D004F1F6E /* IMSystemAuthorization.h */,
 				EE8936F42228CC5D004F1F6E /* IMSystemAuthorization.m */,
+				8428F46422326AD00064DA35 /* IMBaseNavigationController.h */,
+				8428F46522326AD00064DA35 /* IMBaseNavigationController.m */,
+				8428F46722326B060064DA35 /* IMBaseTabBarController.h */,
+				8428F46822326B060064DA35 /* IMBaseTabBarController.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -2688,6 +2743,7 @@
 			files = (
 				EE8939B5222902C3004F1F6E /* IMInputBoxMoreUnitView.m in Sources */,
 				EE893A3722291B18004F1F6E /* IMChatTableViewCell.m in Sources */,
+				8428F46922326B060064DA35 /* IMBaseTabBarController.m in Sources */,
 				842511A0222E6032004C3954 /* IMGroup+CreateAvatar.m in Sources */,
 				EE8937012228D6B8004F1F6E /* UIViewController+IMCategory.m in Sources */,
 				842511B8222E60BF004C3954 /* IMDBBaseStore.m in Sources */,
@@ -2720,6 +2776,7 @@
 				EE8937142228F811004F1F6E /* NSDate+IMCategory.m in Sources */,
 				EE8939B9222902C3004F1F6E /* IMInputBoxRecorderView.m in Sources */,
 				EE8939B7222902C3004F1F6E /* IMInputBoxViewCtrl.m in Sources */,
+				8428F46622326AD00064DA35 /* IMBaseNavigationController.m in Sources */,
 				EE8936C42227DA4F004F1F6E /* IMColorTools.m in Sources */,
 				EE8939B6222902C3004F1F6E /* IMVideoProgressView.m in Sources */,
 				EE7FE45C222CC42500073210 /* FSActionSheetConfig.m in Sources */,
@@ -2749,6 +2806,7 @@
 				EE89371D2228FFEB004F1F6E /* NSDictionary+Json.m in Sources */,
 				EE893A3D22291B18004F1F6E /* IMChatVideoTableViewCell.m in Sources */,
 				EE7FE433222CB29200073210 /* IMMailAccountInfoModel.m in Sources */,
+				8428F46022326A5D0064DA35 /* IMFriendsViewController.m in Sources */,
 				EE8936E92228C506004F1F6E /* IMConversationModel.m in Sources */,
 				EE8936EC2228C687004F1F6E /* IMMessageModel.m in Sources */,
 				EE7234D7222CCEB200A6F7E2 /* NSArray+zh_SafeAccess.m in Sources */,

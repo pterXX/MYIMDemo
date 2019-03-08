@@ -196,12 +196,12 @@
 /**
  *  初始化一个nav
  */
-- (UINavigationController *)im_initializeNavigationController{
+- (IMBaseNavigationController *)im_initializeNavigationController{
     return [[self class] im_initializeNavigationControllerForVc:self];
 }
 
-+ (UINavigationController *)im_initializeNavigationControllerForVc:(UIViewController *)vc{
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
++ (IMBaseNavigationController *)im_initializeNavigationControllerForVc:(UIViewController *)vc{
+    IMBaseNavigationController *nav = [[IMBaseNavigationController alloc] initWithRootViewController:vc];
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     vc.edgesForExtendedLayout = UIRectEdgeNone;
     backBtn.frame = CGRectMake(0, 0, 44, 44);

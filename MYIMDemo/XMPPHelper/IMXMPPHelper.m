@@ -421,14 +421,14 @@ static IMXMPPHelper *helper;
  成功后的回调
  */
 - (void)successComplete {
+    IMUser *user         = [[IMUser alloc] init];
+    // 测试的userID和nickname，remarkName 都是username，具体等线上修改
+    user.userID          = self.userHelper.userAccount;
+    user.nikeName        = self.userHelper.userAccount;
+    user.username        = self.userHelper.userAccount;
+    user.remarkName      = self.userHelper.userAccount;
+    self.userHelper.user = user;
     if (self.success) {
-        IMUser *user         = [[IMUser alloc] init];
-        // 测试的userID和nickname，remarkName 都是username，具体等线上修改
-        user.userID          = self.userHelper.userAccount;
-        user.nikeName        = self.userHelper.userAccount;
-        user.username        = self.userHelper.userAccount;
-        user.remarkName      = self.userHelper.userAccount;
-        self.userHelper.user = user;
         self.success();
         self.fail = nil;
         self.success = nil;

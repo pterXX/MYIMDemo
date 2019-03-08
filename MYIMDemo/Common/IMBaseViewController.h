@@ -74,8 +74,8 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  初始化一个nav
  */
-- (UINavigationController *)im_initializeNavigationController;
-+ (UINavigationController *)im_initializeNavigationControllerForVc:(UIViewController *)vc;
+- (IMBaseNavigationController *)im_initializeNavigationController;
++ (IMBaseNavigationController *)im_initializeNavigationControllerForVc:(UIViewController *)vc;
 
 /**
  * 返回的操作
