@@ -8,12 +8,12 @@
 
 #import "IMXMPPHelper.h"
 
-static const NSString *kAvailable     = @"available";//  上线
-static const NSString *kAway          = @"away";//  离开
-static const NSString *kDotNotDisturb = @"do not disturb";//  忙碌
-static const NSString *kSubscribe     = @"subscribe";//  订阅
-static const NSString *kUnavailable   = @"unavailable";//  下线
-static const NSString *kUnsubscribe   = @"unsubscribe";//  取消订阅
+static NSString * const kAvailable     = @"available";//  上线
+static NSString * const kAway          = @"away";//  离开
+static NSString * const kDotNotDisturb = @"do not disturb";//  忙碌
+static NSString * const kSubscribe     = @"subscribe";//  订阅
+static NSString * const kUnavailable   = @"unavailable";//  下线
+static NSString * const kUnsubscribe   = @"unsubscribe";//  取消订阅
 
 @interface IMXMPPHelper()<XMPPStreamDelegate,XMPPRosterMemoryStorageDelegate>
 
@@ -273,13 +273,13 @@ static IMXMPPHelper *helper;
 //  好友改变
 - (void)xmppRosterDidChange:(XMPPRosterMemoryStorage *)sender{
     NSLog(@"好友列表改变");
-    [IMNotificationCenter postNotificationName:kXmppRosterChangeNotificationName object:nil];
+    [IMNotificationCenter postNotificationName:kXmppRosterChangeNot object:nil];
 }
 
 //  收到好友列表IQ会进入的方法，并且已经存入我的存储器
 - (void)xmppRosterDidEndPopulating:(XMPPRoster *)sender{
     NSLog(@"好友列表改变");
-    [IMNotificationCenter postNotificationName:kXmppRosterChangeNotificationName object:nil];
+    [IMNotificationCenter postNotificationName:kXmppRosterChangeNot object:nil];
 }
 
 /** 收到出席订阅请求（代表对方想添加自己为好友) */
@@ -287,7 +287,7 @@ static IMXMPPHelper *helper;
 {
     NSLog(@"订阅请求 %@",presence);
     //添加好友一定会订阅对方，但是接受订阅不一定要添加对方为好友
-    [IMNotificationCenter postNotificationName:kXmppSubscriptionRequestNotificationName object:presence];
+    [IMNotificationCenter postNotificationName:kXmppSubscriptionRequestNot object:presence];
     
     //同意并添加对方为好友
     //    [self.xmppRoster acceptPresenceSubscriptionRequestFrom:presence.from andAddToRoster:YES];

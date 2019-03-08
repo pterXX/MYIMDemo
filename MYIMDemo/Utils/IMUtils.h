@@ -62,6 +62,10 @@ typedef NS_OPTIONS(NSUInteger, IMInputBoxRecordStatus) {
 
 #pragma mark - 消息部分常量定义
 static NSString *const kConversationCommonNot = @"conversationCommonNot";
+//  好友列表改变是会执行相应的通知
+static NSString *const kXmppRosterChangeNot = @"kXmppRosterChange";
+//  收到好友订阅请求是会执行这个通知
+static NSString *const kXmppSubscriptionRequestNot = @"kXmppSubscriptionRequest";
 
 #pragma mark - 消息枚举
 typedef NS_OPTIONS(NSInteger, IMConversationCommonNotification) {

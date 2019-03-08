@@ -122,6 +122,7 @@
     if ([uesrID isEmptyString]) return;
     __block NSString * uesrIDstr = uesrID;
     NSString *str = IMStirngFormat(@"是否添加好友\"%@\"",uesrID);
+    kWeakSelf;
     [self alertWithTitle:str message:@"此功能只做简单的添加好友功能。具体实现可以根据产品需求改变" cancel:^(BOOL ok) {
         if (ok) {
             IMUser *user =  [[IMUser alloc] init];
@@ -132,6 +133,8 @@
             [[IMXMPPHelper sharedHelper] addFriend:user];
             [SVProgressHUD showInfoWithStatus:IMStirngFormat(@"等待\"%@\"接受请求",uesrIDstr)];
             [SVProgressHUD dismissWithDelay:2];
+            //  返回上个页面
+            [weakSelf im_backHandle];
         }
     }];
 }

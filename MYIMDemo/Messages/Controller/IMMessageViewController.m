@@ -191,23 +191,10 @@
 
 //  添加通知
 - (void)addNotification{
-    kWeakSelf;
-     [IMNotificationCenter addObserver:self selector:@selector(conversationCommonNotification:) name:kConversationCommonNot object:nil];
-    
-    [IMNotificationCenter addObserverForName:kXmppSubscriptionRequestNotificationName object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
-        XMPPPresence *presence = note.object;
-        if(!presence) return;
-        NSString *str = IMStirngFormat(@"是否添加\"%@\"为你的好友",presence.from.user);
-        [weakSelf alertWithTitle:str message:@"此功能只做简单的添加好友操作,可根据产品需求改变" cancel:^(BOOL ok) {
-            if (ok) {
-                //  同意请求
-                [[IMXMPPHelper sharedHelper] acceptPresenceSubscriptionRequest];
-            }else{
-                //  拒绝请求
-                [[IMXMPPHelper sharedHelper] rejectPresenceSubscriptionRequest];
-            }
-        }];
-    }];
+    //  消息对话通知
+    [IMNotificationCenter addObserver:self selector:@selector(conversationCommonNotification:) name:kConversationCommonNot object:nil];
+    // 订阅通知
+    [IMNotificationCenter addObserver:self selector:@selector(subscriptionRequetNotification:) name:kXmppSubscriptionRequestNot object:nil];
 }
 
 - (void)addAllDataSource{
@@ -260,6 +247,21 @@
         default:
             break;
     }
+}
+
+- (void)subscriptionRequetNotification:(NSNotification *)notification{
+    XMPPPresence *presence = notification.object;
+    if(!presence) return;
+    NSString *str = IMStirngFormat(@"是否添加\"%@\"为你的好友",presence.from.user);
+    [self alertWithTitle:str message:@"此功能只做简单的添加好友操作,可根据产品需求改变" cancel:^(BOOL ok) {
+        if (ok) {
+            //  同意请求
+            [[IMXMPPHelper sharedHelper] acceptPresenceSubscriptionRequest];
+        }else{
+            //  拒绝请求
+            [[IMXMPPHelper sharedHelper] rejectPresenceSubscriptionRequest];
+        }
+    }];
 }
 
 - (void)updateSelecteRowBadgeNumber:(NSString *)conversationId

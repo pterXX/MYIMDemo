@@ -27,10 +27,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-//  好友列表改变是会执行相应的通知
-#define kXmppRosterChangeNotificationName @"kXmppRosterChange"
-//  收到好友订阅请求是会执行这个通知
-#define kXmppSubscriptionRequestNotificationName @"kXmppSubscriptionRequest"
 
 typedef void(^IMXMPPSuccessBlock)(void);
 typedef void(^IMXMPPFailBlock)(NSError *error);
