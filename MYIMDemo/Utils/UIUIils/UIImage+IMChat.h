@@ -44,6 +44,12 @@ NS_ASSUME_NONNULL_BEGIN
 + (UIImage *)imageSenderMessageBackground;
 + (UIImage *)imageMessageAttachments;
 
+#pragma mark - # menu
++ (UIImage *)imageMenuAdd;
++ (UIImage *)imageMenuQunLiao;
++ (UIImage *)imageMenuScan;
++ (UIImage *)imageMenuAddFriends;
++ (UIImage *)imageMenuExit;
 @end
 
 NS_ASSUME_NONNULL_END

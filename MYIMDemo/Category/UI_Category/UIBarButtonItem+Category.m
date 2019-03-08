@@ -42,6 +42,17 @@ static IMBarButtonItemActionCallBack _callBack;
     return barItem;
 }
 
++ (UIBarButtonItem *)barImage:(UIImage *)barImage
+                     callBack:(IMBarButtonItemActionCallBack)callBack{
+    UIBarButtonItem *barItem = [[UIBarButtonItem alloc] init];
+    barItem.image = barImage;
+    barItem.target = barItem;
+    barItem.action = @selector(barAction:);
+    [barItem setIMCallBack:callBack];
+    return barItem;
+}
+
+
 - (void)barAction:(UIBarButtonItem *)barItem {
     if (self.getIMCallBack) {
         self.getIMCallBack(barItem);

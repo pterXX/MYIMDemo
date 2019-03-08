@@ -166,6 +166,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/XMPPFramework/XMPPFramework.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/YCMenuView/YCMenuView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/libidn/libidn.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -182,6 +183,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/XMPPFramework/XMPPFramework.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/YCMenuView/YCMenuView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/libidn/libidn.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then

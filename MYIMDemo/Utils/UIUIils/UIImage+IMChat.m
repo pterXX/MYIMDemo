@@ -104,6 +104,24 @@
     return [UIImage imageNamed:@"icon_message_attachments"];
 }
 
++ (UIImage *)imageMenuAdd{
+    return [UIImage imageNamed:@"icon_menu_add"];
+}
 
++ (UIImage *)imageMenuQunLiao{
+    return [UIImage imageNamed:@"icon_menu_qunliao"];
+}
+
++ (UIImage *)imageMenuScan{
+    return [UIImage imageNamed:@"icon_menu_scan"];
+}
+
++ (UIImage *)imageMenuExit{
+    return [UIImage imageNamed:@"icon_menu_exit"];
+}
+
++ (UIImage *)imageMenuAddFriends{
+    return [UIImage imageNamed:@"icon_menu_add_friends"];
+}
 
 @end

@@ -14,15 +14,16 @@
 #import "NSDictionary+Json.h"
 #import "UIViewController+IMCategory.h"
 
-#import "IMEmojiGroup.h"
-#import "IMMessageModel.h"
-#import "IMNetworkDetection.h"
-#import "IMConversationModel.h"
 #import "IMChatViewController.h"
-#import "IMMessagesListTableViewCell.h"
-#import "IMSearchMessageViewController.h"
+#import "IMConversationModel.h"
+#import "IMEmojiGroup.h"
 #import "IMLoginViewController.h"
+#import "IMMessageModel.h"
+#import "IMMessagesListTableViewCell.h"
+#import "IMNetworkDetection.h"
+#import "IMSearchMessageViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import <YCMenuView.h>
 
 
 @interface IMMessageViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchControllerDelegate> {
@@ -63,7 +64,8 @@
 @property (nonatomic, strong) NSMutableArray     *dataSource;
 // 分段控制器数据源
 @property (nonatomic, strong) NSMutableArray     *segmentDataSource;
-
+// 分段控制器数据源menu
+@property (nonatomic, strong) NSMutableArray     *menuDataSource;
 @end
 
 @implementation IMMessageViewController
@@ -107,11 +109,11 @@
 
 - (void)im_layoutNavigation{
     self.title = @"消息";
-    UIBarButtonItem *barItem = [UIBarButtonItem
-                                barTitle:@"退出登录"
-                                callBack:^(UIBarButtonItem * _Nonnull barItem) {
-                                    [[IMXMPPHelper sharedHelper] logOut];
-                                    [UIApplication sharedApplication].keyWindow.rootViewController = [[IMLoginViewController alloc] init];
+    kWeakSelf
+    UIBarButtonItem *barItem = [UIBarButtonItem barImage:[UIImage imageMenuAdd]
+                                                callBack:^(UIBarButtonItem * _Nonnull barItem) {
+                                                    //  按钮点击
+                                                    [weakSelf barItemAction:barItem];
                                 }];
     barItem.tintColor = [UIColor darkGrayColor];
     [barItem setTitleTextAttributes:@{NSFontAttributeName:[UIFont fontNavBarTitle]} forState:UIControlStateNormal];
@@ -119,18 +121,19 @@
 }
 
 - (void)im_addSubViews{
+    //  添加所有数据
+    [self addAllDataSource];
+    self.isExtendLayout = NO;
+    
     CGFloat systemVersion = [UIDevice currentSystemVersion].doubleValue;
     // iOS 11以前搜索框的高度是44 iOS 11及以后的高度是56
     searchBarHeight = systemVersion < 11.0 ? 44 : 56;
-    _segmentDataSource = [NSMutableArray arrayWithObjects:@"消息", @"访客", nil];
-    
+   
     _titleView  = [[UIView alloc] initWithFrame:CGRectMake(0, 0, IMSCREEN_WIDTH, 44)];
     _bottomLine = [[UIView alloc] initWithFrame:CGRectMake(IMSCREEN_WIDTH/4., 42, 40, 2)];
     _bottomLine.center = CGPointMake(IMSCREEN_WIDTH/4., 42);
     _bottomLine.backgroundColor = kSegmentItemColor;
     [_titleView addSubview:_bottomLine];
-    
-    self.isExtendLayout = NO;
     
     _tableView                 = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     _tableView.delegate        = self;
@@ -139,7 +142,6 @@
     _tableView.tableFooterView = [UIView new];
     [self.view addSubview:_tableView];
     
-    
     _tableView.sd_layout.bottomEqualToView(self.view).topSpaceToView(self.view, 0).leftEqualToView(self.view).rightEqualToView(self.view);
     
     // 提示网络不可用或无网络连接
@@ -147,7 +149,6 @@
     
     // 搜索框
     _searchCtrl = [[IMSearchMessageViewController alloc] init];
-    
     _searchViewCtrl = [[UISearchController alloc] initWithSearchResultsController:_searchCtrl];
     _searchViewCtrl.searchResultsUpdater             = _searchCtrl;
     _searchViewCtrl.delegate                         = self;
@@ -170,7 +171,6 @@
     _networkTips.backgroundColor = [UIColor colorWithRed:254/255. green:214/255. blue:216/255. alpha:1];
     [_headerView addSubview:_networkTips];
     
-    
     _tipsImageView = [[UIImageView alloc] initWithFrame:CGRectMake(22, 12, 20, 20)];
     [_networkTips addSubview:_tipsImageView];
     
@@ -185,6 +185,26 @@
     // 设置自己的头像
     [[IMAppDefaultUtil sharedInstance] setUserAvatar:@"http://cname-yunke.shovesoft.com/group1/M00/00/1A/CgAHEVuMyv6AKj6uAABukEJ7t3I575.png"];
     [self getConversationListWithConversationId:@"-1"];
+}
+
+- (void)addAllDataSource{
+     _segmentDataSource = [NSMutableArray arrayWithObjects:@"消息", @"访客", nil];
+    
+    // 创建YCMenuAction
+    YCMenuAction *action = [YCMenuAction actionWithTitle:@"发起群聊" image:[UIImage imageMenuQunLiao] handler:^(YCMenuAction *action) {
+        [SVProgressHUD showInfoWithStatus:@"功能尚未实现"];
+    }];
+    YCMenuAction *action1 = [YCMenuAction actionWithTitle:@"添加朋友" image:[UIImage imageMenuAddFriends] handler:^(YCMenuAction *action) {
+        [SVProgressHUD showInfoWithStatus:@"功能尚未实现"];
+    }];
+    YCMenuAction *action2 = [YCMenuAction actionWithTitle:@"扫一扫" image:[UIImage imageMenuScan] handler:^(YCMenuAction *action) {
+        [SVProgressHUD showInfoWithStatus:@"功能尚未实现"];
+    }];
+    YCMenuAction *action3 = [YCMenuAction actionWithTitle:@"退出" image:[UIImage imageMenuExit] handler:^(YCMenuAction *action) {
+        [IMXmpp]
+        [SVProgressHUD showInfoWithStatus:@"功能尚未实现"];
+    }];
+    self.menuDataSource = @[action,action1,action2,action3].mutableCopy;
 }
 
 - (void)conversationCommonNotification:(NSNotification *)notification
@@ -270,12 +290,10 @@
 
 - (void)updateTitle {
     // 更新未读数量
-    if (_badgeNumber)
-    {
+    if (_badgeNumber){
         self.navigationItem.title  = [NSString stringWithFormat:@"消息(%ld)", (long)_badgeNumber];
     }
-    else
-    {
+    else{
         self.navigationItem.title = @"消息";
     }
     
@@ -287,9 +305,26 @@
     
 }
 
+- (void)barItemAction:(UIBarButtonItem *)barItem{
+   
+    //  创建YCMenuView(根据关联点或者关联视图)
+    YCMenuView *view = [YCMenuView menuWithActions:self.menuDataSource width:140 relyonView:barItem];
+    view.menuColor = [UIColor colorBlackBG];
+    view.separatorColor = [UIColor colorGrayLine];
+    view.maxDisplayCount = 5;
+    view.offset = 0;
+    view.textColor = [UIColor whiteColor];
+    view.textFont = [UIFont boldSystemFontOfSize:16];
+    view.menuCellHeight = 60;
+    view.dismissOnselected = YES;
+    view.dismissOnTouchOutside = YES;
+    // 显示
+    [view show];
+
+}
+
 #pragma mark 收到邮件消息
-- (void)receiveMailMessageDictionary:(NSDictionary *)dictionary
-{
+- (void)receiveMailMessageDictionary:(NSDictionary *)dictionary{
     NSString *covId = dictionary[@"converId"];
     NSString *msgId = dictionary[@"messageId"];
     BOOL isCompany  = [dictionary[@"isCompany"] boolValue];
@@ -322,8 +357,7 @@
 }
 
 #pragma mark - 收到IM消息
-- (void)receiveConversationMessage:(NSString *)jsonStr
-{
+- (void)receiveConversationMessage:(NSString *)jsonStr{
     if ([jsonStr isEqualToString:@"001cb8ed56694183c520ca087b5940e2"] || !jsonStr.length || !jsonStr) {
         // 更新未读消息
         if (isCurrentPage) {

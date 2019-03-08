@@ -39,6 +39,7 @@ PODS:
     - CocoaLumberjack
     - KissXML (~> 5.2)
     - libidn (~> 1.35)
+  - YCMenuView (1.1.0)
 
 DEPENDENCIES:
   - AFNetworking
@@ -52,6 +53,7 @@ DEPENDENCIES:
   - SVProgressHUD
   - TZImagePickerController
   - XMPPFramework
+  - YCMenuView
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -69,6 +71,7 @@ SPEC REPOS:
     - SVProgressHUD
     - TZImagePickerController
     - XMPPFramework
+    - YCMenuView
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
@@ -85,7 +88,8 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   TZImagePickerController: c3f7c505d23281e21e98df6dbeae372946caa28f
   XMPPFramework: 5d31ff9f73dce031b24bc49bcf88093627a3a86e
+  YCMenuView: 1514dd2600e8a541bc1bf0f415e6a58a36ba562d
 
-PODFILE CHECKSUM: d711cde3190e73dcea3742fc47c5e220eb23e713
+PODFILE CHECKSUM: 8527ca180c46dd0ab71a4adf32d68863402b0a41
 
 COCOAPODS: 1.6.1

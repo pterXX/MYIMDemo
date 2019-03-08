@@ -17,6 +17,7 @@ target 'MYIMDemo' do
   pod 'SVProgressHUD'             #弹窗指示器
   pod 'TZImagePickerController'
   pod 'XMPPFramework'             #xmmp协议框架
+  pod 'YCMenuView'                #弹出式menuView框架
 
 
   target 'MYIMDemoTests' do
