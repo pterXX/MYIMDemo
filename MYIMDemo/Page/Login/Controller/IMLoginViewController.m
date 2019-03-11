@@ -8,7 +8,7 @@
 
 #import "IMLoginViewController.h"
 #import "IMSignUpViewController.h"
-#import "IMMessageViewController.h"
+#import "IMBaseTabBarController.h"
 
 @interface IMLoginViewController ()<UITextFieldDelegate>
 @property (nonatomic, strong) UIButton    *signUpBtn;// 注册按钮
@@ -217,7 +217,7 @@
         if ([self checkTextFieldForValue]) {
             NSString *username = self.userField.text;
             NSString *password = self.passwordField.text;//123456
-            [[IMXMPPHelper sharedHelper] loginWithName:username andPassword:password success:^{
+            [KIMXMPPHelper loginWithName:username andPassword:password success:^{
                 [SVProgressHUD showSuccessWithStatus:@"登录成功"];
                 [SVProgressHUD dismissWithDelay:2];
                 [weakSelf loginSuccess];
@@ -261,9 +261,9 @@
  */
 - (void)loginSuccess{
     //  判断是否登录
-    if ([IMXMPPHelper sharedHelper].userHelper.isLogin) {
+    if (KIMXMPPHelper.userHelper.isLogin) {
         //  切换根视图
-        [self restoreRootViewController:[IMMessageViewController navMessagesVc]];
+        [self restoreRootViewController:[IMBaseTabBarController tabbarVc]];
     }
 }
 @end

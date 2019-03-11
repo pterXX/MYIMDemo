@@ -62,6 +62,24 @@
 		8428F46022326A5D0064DA35 /* IMFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8428F45F22326A5D0064DA35 /* IMFriendsViewController.m */; };
 		8428F46622326AD00064DA35 /* IMBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8428F46522326AD00064DA35 /* IMBaseNavigationController.m */; };
 		8428F46922326B060064DA35 /* IMBaseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8428F46822326B060064DA35 /* IMBaseTabBarController.m */; };
+		8428F4782235F39E0064DA35 /* icon_tabbar_messages@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8428F46C2235F39C0064DA35 /* icon_tabbar_messages@2x.png */; };
+		8428F4792235F39E0064DA35 /* icon_tabbar_addressbook.png in Resources */ = {isa = PBXBuildFile; fileRef = 8428F46D2235F39C0064DA35 /* icon_tabbar_addressbook.png */; };
+		8428F47A2235F39E0064DA35 /* icon_tabbar_addressbook_sel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8428F46E2235F39C0064DA35 /* icon_tabbar_addressbook_sel@3x.png */; };
+		8428F47B2235F39E0064DA35 /* icon_tabbar_messages.png in Resources */ = {isa = PBXBuildFile; fileRef = 8428F46F2235F39C0064DA35 /* icon_tabbar_messages.png */; };
+		8428F47C2235F39E0064DA35 /* icon_tabbar_addressbook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8428F4702235F39C0064DA35 /* icon_tabbar_addressbook@2x.png */; };
+		8428F47D2235F39E0064DA35 /* icon_tabbar_addressbook_sel.png in Resources */ = {isa = PBXBuildFile; fileRef = 8428F4712235F39C0064DA35 /* icon_tabbar_addressbook_sel.png */; };
+		8428F47E2235F39E0064DA35 /* icon_tabbar_addressbook@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8428F4722235F39D0064DA35 /* icon_tabbar_addressbook@3x.png */; };
+		8428F47F2235F39E0064DA35 /* icon_tabbar_messages_sel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8428F4732235F39D0064DA35 /* icon_tabbar_messages_sel@2x.png */; };
+		8428F4802235F39E0064DA35 /* icon_tabbar_messages@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8428F4742235F39D0064DA35 /* icon_tabbar_messages@3x.png */; };
+		8428F4812235F39E0064DA35 /* icon_tabbar_addressbook_sel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8428F4752235F39D0064DA35 /* icon_tabbar_addressbook_sel@2x.png */; };
+		8428F4822235F39E0064DA35 /* icon_tabbar_messages_sel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8428F4762235F39D0064DA35 /* icon_tabbar_messages_sel@3x.png */; };
+		8428F4832235F39E0064DA35 /* icon_tabbar_messages_sel.png in Resources */ = {isa = PBXBuildFile; fileRef = 8428F4772235F39E0064DA35 /* icon_tabbar_messages_sel.png */; };
+		8428F4862235F5DB0064DA35 /* IMAddressBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8428F4852235F5DB0064DA35 /* IMAddressBookViewController.m */; };
+		8428F48D223623F60064DA35 /* IMAddressBookTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8428F48C223623F60064DA35 /* IMAddressBookTableViewCell.m */; };
+		8428F48F223639D10064DA35 /* WechatIMG5.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 8428F48E223639D00064DA35 /* WechatIMG5.jpeg */; };
+		8428F494223644860064DA35 /* icon_nav_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 8428F491223644860064DA35 /* icon_nav_back.png */; };
+		8428F495223644860064DA35 /* icon_nav_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8428F492223644860064DA35 /* icon_nav_back@2x.png */; };
+		8428F496223644860064DA35 /* icon_nav_back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8428F493223644860064DA35 /* icon_nav_back@3x.png */; };
 		8438D543222F60BF001FD530 /* IMXMPPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8438D542222F60BF001FD530 /* IMXMPPHelper.m */; };
 		84681F742230CA500056372A /* UIBarButtonItem+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 84681F732230CA500056372A /* UIBarButtonItem+Category.m */; };
 		84681F772230EF000056372A /* IMSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84681F762230EF000056372A /* IMSignUpViewController.m */; };
@@ -123,7 +141,6 @@
 		EE8937012228D6B8004F1F6E /* UIViewController+IMCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8937002228D6B8004F1F6E /* UIViewController+IMCategory.m */; };
 		EE8937042228D82B004F1F6E /* IMBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8937032228D82B004F1F6E /* IMBaseTableViewCell.m */; };
 		EE8937082228DDF3004F1F6E /* UIImage+IMChat.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8937072228DDF3004F1F6E /* UIImage+IMChat.m */; };
-		EE89370A2228DFB8004F1F6E /* WechatIMG5.png in Resources */ = {isa = PBXBuildFile; fileRef = EE8937092228DFB8004F1F6E /* WechatIMG5.png */; };
 		EE89370D2228F5C7004F1F6E /* IMAppDefaultUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = EE89370C2228F5C7004F1F6E /* IMAppDefaultUtil.m */; };
 		EE8937142228F811004F1F6E /* NSDate+IMCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8937122228F811004F1F6E /* NSDate+IMCategory.m */; };
 		EE8937172228F91A004F1F6E /* UILabel+IMAutoLabelHeightAndWidth.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8937152228F91A004F1F6E /* UILabel+IMAutoLabelHeightAndWidth.m */; };
@@ -580,6 +597,26 @@
 		8428F46522326AD00064DA35 /* IMBaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMBaseNavigationController.m; sourceTree = "<group>"; };
 		8428F46722326B060064DA35 /* IMBaseTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMBaseTabBarController.h; sourceTree = "<group>"; };
 		8428F46822326B060064DA35 /* IMBaseTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMBaseTabBarController.m; sourceTree = "<group>"; };
+		8428F46C2235F39C0064DA35 /* icon_tabbar_messages@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_tabbar_messages@2x.png"; sourceTree = "<group>"; };
+		8428F46D2235F39C0064DA35 /* icon_tabbar_addressbook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_tabbar_addressbook.png; sourceTree = "<group>"; };
+		8428F46E2235F39C0064DA35 /* icon_tabbar_addressbook_sel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_tabbar_addressbook_sel@3x.png"; sourceTree = "<group>"; };
+		8428F46F2235F39C0064DA35 /* icon_tabbar_messages.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_tabbar_messages.png; sourceTree = "<group>"; };
+		8428F4702235F39C0064DA35 /* icon_tabbar_addressbook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_tabbar_addressbook@2x.png"; sourceTree = "<group>"; };
+		8428F4712235F39C0064DA35 /* icon_tabbar_addressbook_sel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_tabbar_addressbook_sel.png; sourceTree = "<group>"; };
+		8428F4722235F39D0064DA35 /* icon_tabbar_addressbook@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_tabbar_addressbook@3x.png"; sourceTree = "<group>"; };
+		8428F4732235F39D0064DA35 /* icon_tabbar_messages_sel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_tabbar_messages_sel@2x.png"; sourceTree = "<group>"; };
+		8428F4742235F39D0064DA35 /* icon_tabbar_messages@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_tabbar_messages@3x.png"; sourceTree = "<group>"; };
+		8428F4752235F39D0064DA35 /* icon_tabbar_addressbook_sel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_tabbar_addressbook_sel@2x.png"; sourceTree = "<group>"; };
+		8428F4762235F39D0064DA35 /* icon_tabbar_messages_sel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_tabbar_messages_sel@3x.png"; sourceTree = "<group>"; };
+		8428F4772235F39E0064DA35 /* icon_tabbar_messages_sel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_tabbar_messages_sel.png; sourceTree = "<group>"; };
+		8428F4842235F5DB0064DA35 /* IMAddressBookViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMAddressBookViewController.h; sourceTree = "<group>"; };
+		8428F4852235F5DB0064DA35 /* IMAddressBookViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMAddressBookViewController.m; sourceTree = "<group>"; };
+		8428F48B223623F60064DA35 /* IMAddressBookTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMAddressBookTableViewCell.h; sourceTree = "<group>"; };
+		8428F48C223623F60064DA35 /* IMAddressBookTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMAddressBookTableViewCell.m; sourceTree = "<group>"; };
+		8428F48E223639D00064DA35 /* WechatIMG5.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = WechatIMG5.jpeg; sourceTree = "<group>"; };
+		8428F491223644860064DA35 /* icon_nav_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_nav_back.png; sourceTree = "<group>"; };
+		8428F492223644860064DA35 /* icon_nav_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_nav_back@2x.png"; sourceTree = "<group>"; };
+		8428F493223644860064DA35 /* icon_nav_back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_nav_back@3x.png"; sourceTree = "<group>"; };
 		8438D541222F60BF001FD530 /* IMXMPPHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMXMPPHelper.h; sourceTree = "<group>"; };
 		8438D542222F60BF001FD530 /* IMXMPPHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMXMPPHelper.m; sourceTree = "<group>"; };
 		84681F722230CA500056372A /* UIBarButtonItem+Category.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Category.h"; sourceTree = "<group>"; };
@@ -692,7 +729,6 @@
 		EE8937032228D82B004F1F6E /* IMBaseTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMBaseTableViewCell.m; sourceTree = "<group>"; };
 		EE8937062228DDF3004F1F6E /* UIImage+IMChat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+IMChat.h"; sourceTree = "<group>"; };
 		EE8937072228DDF3004F1F6E /* UIImage+IMChat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+IMChat.m"; sourceTree = "<group>"; };
-		EE8937092228DFB8004F1F6E /* WechatIMG5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WechatIMG5.png; sourceTree = "<group>"; };
 		EE89370B2228F5C6004F1F6E /* IMAppDefaultUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMAppDefaultUtil.h; sourceTree = "<group>"; };
 		EE89370C2228F5C7004F1F6E /* IMAppDefaultUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMAppDefaultUtil.m; sourceTree = "<group>"; };
 		EE89370F2228F77A004F1F6E /* IMMailAccountInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMailAccountInfoModel.h; sourceTree = "<group>"; };
@@ -1340,11 +1376,76 @@
 		8428F45D22326A300064DA35 /* Page */ = {
 			isa = PBXGroup;
 			children = (
+				8428F4872235F6120064DA35 /* AddresBook */,
 				8428F45922326A020064DA35 /* Friends */,
 				842510EA222E2276004C3954 /* Login */,
 				842510E9222E2255004C3954 /* Messages */,
 			);
 			path = Page;
+			sourceTree = "<group>";
+		};
+		8428F46B2235F38A0064DA35 /* tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				8428F46D2235F39C0064DA35 /* icon_tabbar_addressbook.png */,
+				8428F4702235F39C0064DA35 /* icon_tabbar_addressbook@2x.png */,
+				8428F4722235F39D0064DA35 /* icon_tabbar_addressbook@3x.png */,
+				8428F4712235F39C0064DA35 /* icon_tabbar_addressbook_sel.png */,
+				8428F4752235F39D0064DA35 /* icon_tabbar_addressbook_sel@2x.png */,
+				8428F46E2235F39C0064DA35 /* icon_tabbar_addressbook_sel@3x.png */,
+				8428F4772235F39E0064DA35 /* icon_tabbar_messages_sel.png */,
+				8428F4732235F39D0064DA35 /* icon_tabbar_messages_sel@2x.png */,
+				8428F4762235F39D0064DA35 /* icon_tabbar_messages_sel@3x.png */,
+				8428F46F2235F39C0064DA35 /* icon_tabbar_messages.png */,
+				8428F46C2235F39C0064DA35 /* icon_tabbar_messages@2x.png */,
+				8428F4742235F39D0064DA35 /* icon_tabbar_messages@3x.png */,
+			);
+			path = tabbar;
+			sourceTree = "<group>";
+		};
+		8428F4872235F6120064DA35 /* AddresBook */ = {
+			isa = PBXGroup;
+			children = (
+				8428F48A2235F6340064DA35 /* Model */,
+				8428F4892235F62B0064DA35 /* View */,
+				8428F4882235F6240064DA35 /* Controller */,
+			);
+			path = AddresBook;
+			sourceTree = "<group>";
+		};
+		8428F4882235F6240064DA35 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8428F4842235F5DB0064DA35 /* IMAddressBookViewController.h */,
+				8428F4852235F5DB0064DA35 /* IMAddressBookViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8428F4892235F62B0064DA35 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8428F48B223623F60064DA35 /* IMAddressBookTableViewCell.h */,
+				8428F48C223623F60064DA35 /* IMAddressBookTableViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8428F48A2235F6340064DA35 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8428F4902236447C0064DA35 /* nav */ = {
+			isa = PBXGroup;
+			children = (
+				8428F491223644860064DA35 /* icon_nav_back.png */,
+				8428F492223644860064DA35 /* icon_nav_back@2x.png */,
+				8428F493223644860064DA35 /* icon_nav_back@3x.png */,
+			);
+			path = nav;
 			sourceTree = "<group>";
 		};
 		8438D53D222F6069001FD530 /* XMPPHelper */ = {
@@ -1525,12 +1626,14 @@
 		EE8936B72227DA4E004F1F6E /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				8428F4902236447C0064DA35 /* nav */,
+				8428F48E223639D00064DA35 /* WechatIMG5.jpeg */,
+				8428F46B2235F38A0064DA35 /* tabbar */,
 				842510EE222E23C2004C3954 /* Login */,
 				EE893A1A222915F4004F1F6E /* conversationList */,
 				EE893A1B222915F4004F1F6E /* reviewVideo.mp4 */,
 				EE893A18222915E4004F1F6E /* previewPicture.jpeg */,
 				EE893A16222915DD004F1F6E /* messageList101824_143701 */,
-				EE8937092228DFB8004F1F6E /* WechatIMG5.png */,
 				EE893A1E22291610004F1F6E /* MessagesIcon */,
 			);
 			path = Resource;
@@ -2259,6 +2362,7 @@
 			files = (
 				842510F8222E4E5C004C3954 /* icon_inputBox_recoder_too_short.png in Resources */,
 				842510F9222E4E5C004C3954 /* icon_inputBox_recorder_prompt_recall.png in Resources */,
+				8428F4792235F39E0064DA35 /* icon_tabbar_addressbook.png in Resources */,
 				842510FA222E4E5C004C3954 /* icon_inputBox_recorder_prompt_voice.png in Resources */,
 				842510FB222E4E5C004C3954 /* icon_inputBox_recorder_prompt1.png in Resources */,
 				842510FC222E4E5C004C3954 /* icon_inputBox_recorder_prompt2.png in Resources */,
@@ -2272,10 +2376,12 @@
 				84251103222E4E5C004C3954 /* icon_message_voice_receive_0@2x.png in Resources */,
 				84251104222E4E5C004C3954 /* icon_message_voice_receive_0@3x.png in Resources */,
 				84251105222E4E5C004C3954 /* icon_message_voice_receive_1@2x.png in Resources */,
+				8428F4782235F39E0064DA35 /* icon_tabbar_messages@2x.png in Resources */,
 				84251106222E4E5C004C3954 /* icon_message_voice_receive_1@3x.png in Resources */,
 				84251107222E4E5C004C3954 /* icon_message_voice_receive_2@2x.png in Resources */,
 				84251108222E4E5C004C3954 /* icon_message_voice_receive_2@3x.png in Resources */,
 				84251109222E4E5C004C3954 /* icon_message_voice_send_0@2x.png in Resources */,
+				8428F47B2235F39E0064DA35 /* icon_tabbar_messages.png in Resources */,
 				8425110A222E4E5C004C3954 /* icon_message_voice_send_0@3x.png in Resources */,
 				8425110B222E4E5C004C3954 /* icon_message_voice_send_1@2x.png in Resources */,
 				8425110C222E4E5C004C3954 /* icon_message_voice_send_1@3x.png in Resources */,
@@ -2287,6 +2393,7 @@
 				EE8938D3222902C3004F1F6E /* emotion_baoquan.png in Resources */,
 				EE8939A9222902C3004F1F6E /* icon_inputBox_more_takeVideo_confirm@3x.png in Resources */,
 				EE89390C222902C3004F1F6E /* emotion_qiaoda_gif.gif in Resources */,
+				8428F47A2235F39E0064DA35 /* icon_tabbar_addressbook_sel@3x.png in Resources */,
 				84CB93A22231FF16007D4688 /* icon_menu_scan@2x.png in Resources */,
 				EE8938D4222902C3004F1F6E /* emotion_kuaikule_gif.gif in Resources */,
 				EE893945222902C3004F1F6E /* emotion_youtaiji.png in Resources */,
@@ -2297,12 +2404,14 @@
 				EE893978222902C3004F1F6E /* emotion_baiyan_gif.gif in Resources */,
 				EE893919222902C3004F1F6E /* emotion_duoyun.png in Resources */,
 				EE89391A222902C3004F1F6E /* emotion_haixiu.png in Resources */,
+				8428F47C2235F39E0064DA35 /* icon_tabbar_addressbook@2x.png in Resources */,
 				EE8938BA222902C3004F1F6E /* emotion_daku.png in Resources */,
 				EE893907222902C3004F1F6E /* emotion_weiqu_gif.gif in Resources */,
 				EE89397D222902C3004F1F6E /* emotion_xia_gif.gif in Resources */,
 				EE893891222902C3004F1F6E /* emotion_woshou_gif.gif in Resources */,
 				EE8938B5222902C3004F1F6E /* emotion_shuangxi_gif.gif in Resources */,
 				EE893974222902C3004F1F6E /* emotion_bangbangtang_gif.gif in Resources */,
+				8428F47E2235F39E0064DA35 /* icon_tabbar_addressbook@3x.png in Resources */,
 				EE893884222902C3004F1F6E /* emotion_caidao_gif.gif in Resources */,
 				EE893909222902C3004F1F6E /* emotion_quantou_gif.gif in Resources */,
 				EE8936912227D997004F1F6E /* LaunchScreen.storyboard in Resources */,
@@ -2349,6 +2458,7 @@
 				EE893916222902C3004F1F6E /* emotion_hanxiao.png in Resources */,
 				EE89395B222902C3004F1F6E /* emotion_xiayu.png in Resources */,
 				EE89399B222902C3004F1F6E /* emotion_fengche.png in Resources */,
+				8428F4812235F39E0064DA35 /* icon_tabbar_addressbook_sel@2x.png in Resources */,
 				EE893910222902C3004F1F6E /* emotion_shandian.png in Resources */,
 				EE8938A5222902C3004F1F6E /* emotion_xiongmao_gif.gif in Resources */,
 				EE8938AA222902C3004F1F6E /* emotion_weixiao_gif.gif in Resources */,
@@ -2364,10 +2474,12 @@
 				EE89390B222902C3004F1F6E /* emotion_zhuqiu_gif.gif in Resources */,
 				EE8938E4222902C3004F1F6E /* emotion_shengli_gif.gif in Resources */,
 				EE89391C222902C3004F1F6E /* emotion_zouma_gif.gif in Resources */,
+				8428F4832235F39E0064DA35 /* icon_tabbar_messages_sel.png in Resources */,
 				EE893943222902C3004F1F6E /* emotion_jiewu.png in Resources */,
 				EE893979222902C3004F1F6E /* emotion_baojing_gif.gif in Resources */,
 				EE8938F3222902C3004F1F6E /* emotion_ok_gif.gif in Resources */,
 				EE89390D222902C3004F1F6E /* emotion_xu_gif.gif in Resources */,
+				8428F496223644860064DA35 /* icon_nav_back@3x.png in Resources */,
 				EE89399D222902C3004F1F6E /* icon_inputBox_more_takeVideo_photograph@3x.png in Resources */,
 				EE893954222902C3004F1F6E /* emotion_biezui.png in Resources */,
 				EE89399A222902C3004F1F6E /* emotion_liulei_gif.gif in Resources */,
@@ -2475,6 +2587,7 @@
 				EE89398F222902C3004F1F6E /* emotion_henai_gif.gif in Resources */,
 				EE893989222902C3004F1F6E /* emotion_diaoxie.png in Resources */,
 				EE8939A8222902C3004F1F6E /* icon_inputBox_more_takeVideo_camera@3x.png in Resources */,
+				8428F47F2235F39E0064DA35 /* icon_tabbar_messages_sel@2x.png in Resources */,
 				EE8938A9222902C3004F1F6E /* emotion_zhuakuang.png in Resources */,
 				EE8938C9222902C3004F1F6E /* emotion_kafei_gif.gif in Resources */,
 				EE893984222902C3004F1F6E /* emotion_dengpao_gif.gif in Resources */,
@@ -2487,6 +2600,7 @@
 				EE89397B222902C3004F1F6E /* emotion_nanguo_gif.gif in Resources */,
 				EE893992222902C3004F1F6E /* emotion_ok.png in Resources */,
 				EE893882222902C3004F1F6E /* emotion_xiangjiao.png in Resources */,
+				8428F48F223639D10064DA35 /* WechatIMG5.jpeg in Resources */,
 				EE893981222902C3004F1F6E /* emotion_baobao.png in Resources */,
 				EE89397F222902C3004F1F6E /* emotion_tiaotiao.png in Resources */,
 				EE89398D222902C3004F1F6E /* emotion_haixiu_gif.gif in Resources */,
@@ -2500,6 +2614,7 @@
 				EE893932222902C3004F1F6E /* emotion_bishi.png in Resources */,
 				EE893971222902C3004F1F6E /* emotion_zuochetou_gif.gif in Resources */,
 				EE893993222902C3004F1F6E /* emotion_zuotaiji_gif.gif in Resources */,
+				8428F4822235F39E0064DA35 /* icon_tabbar_messages_sel@3x.png in Resources */,
 				EE8938FD222902C3004F1F6E /* emotion_dao_gif.gif in Resources */,
 				EE89392E222902C3004F1F6E /* emotion_ku.png in Resources */,
 				EE8939A5222902C3004F1F6E /* icon_inputBox_more_mobile@3x.png in Resources */,
@@ -2523,6 +2638,7 @@
 				EE89395F222902C3004F1F6E /* emotion_pijiu.png in Resources */,
 				EE89395E222902C3004F1F6E /* emotion_meigui.png in Resources */,
 				EE8938A8222902C3004F1F6E /* emotion_zhuanquan.png in Resources */,
+				8428F47D2235F39E0064DA35 /* icon_tabbar_addressbook_sel.png in Resources */,
 				EE8938E3222902C3004F1F6E /* emotion_jingya.png in Resources */,
 				8428F44D223209BE0064DA35 /* icon_menu_exit.png in Resources */,
 				EE893969222902C3004F1F6E /* emotion_dengpao.png in Resources */,
@@ -2579,7 +2695,6 @@
 				EE8938B9222902C3004F1F6E /* emotion_fadou_gif.gif in Resources */,
 				EE8938CD222902C3004F1F6E /* emotion_youchexiang_gif.gif in Resources */,
 				EE8938EC222902C3004F1F6E /* emotion_qingwa_gif.gif in Resources */,
-				EE89370A2228DFB8004F1F6E /* WechatIMG5.png in Resources */,
 				EE8938E0222902C3004F1F6E /* emotion_qiaoda.png in Resources */,
 				EE893951222902C3004F1F6E /* emotion_youtaiji_gif.gif in Resources */,
 				EE8938E8222902C3004F1F6E /* emotion_liulei.png in Resources */,
@@ -2595,6 +2710,7 @@
 				EE89391F222902C3004F1F6E /* emotion_facai_gif.gif in Resources */,
 				EE89392D222902C3004F1F6E /* emotion_zhijing.png in Resources */,
 				EE893999222902C3004F1F6E /* emotion_dashuai_gif.gif in Resources */,
+				8428F495223644860064DA35 /* icon_nav_back@2x.png in Resources */,
 				EE893913222902C3004F1F6E /* emotion_huishou.png in Resources */,
 				EE893994222902C3004F1F6E /* emotion_zhutou_gif.gif in Resources */,
 				EE8938FC222902C3004F1F6E /* emotion_bishi_gif.gif in Resources */,
@@ -2603,9 +2719,11 @@
 				EE8938A2222902C3004F1F6E /* emotion_keai.png in Resources */,
 				EE893935222902C3004F1F6E /* emotion_feiwen_gif.gif in Resources */,
 				EE8938D8222902C3004F1F6E /* emotion_xiongmao.png in Resources */,
+				8428F4802235F39E0064DA35 /* icon_tabbar_messages@3x.png in Resources */,
 				EE8938EF222902C3004F1F6E /* emotion_zhuakuang_gif.gif in Resources */,
 				EE8939A4222902C3004F1F6E /* icon_inputBox_more_take_video@3x.png in Resources */,
 				EE89398E222902C3004F1F6E /* emotion_kun_gif.gif in Resources */,
+				8428F494223644860064DA35 /* icon_nav_back.png in Resources */,
 				EE8938A3222902C3004F1F6E /* emotion_qinqin_gif.gif in Resources */,
 				EE893960222902C3004F1F6E /* emotion_ketou_gif.gif in Resources */,
 				EE7FE468222CC42500073210 /* icon_inputBox_video_bttom_play@3x.png in Resources */,
@@ -2827,6 +2945,7 @@
 				EE893A0A22290A55004F1F6E /* UIImage+Color.m in Sources */,
 				EE893A23222918AE004F1F6E /* IMChatViewController+Image.m in Sources */,
 				EE8939AD222902C3004F1F6E /* IMVideoViewController.m in Sources */,
+				8428F4862235F5DB0064DA35 /* IMAddressBookViewController.m in Sources */,
 				EE893A3922291B18004F1F6E /* IMChatMailTableViewCell.m in Sources */,
 				EE89387E222902C3004F1F6E /* IMInputBoxMoreModel.m in Sources */,
 				EE8937082228DDF3004F1F6E /* UIImage+IMChat.m in Sources */,
@@ -2844,6 +2963,7 @@
 				EE8936862227D997004F1F6E /* AppDelegate.m in Sources */,
 				842511BF222E60D0004C3954 /* IMUserHelper.m in Sources */,
 				EE8939CA22290419004F1F6E /* IMFileCache.m in Sources */,
+				8428F48D223623F60064DA35 /* IMAddressBookTableViewCell.m in Sources */,
 				EE7FE45B222CC42500073210 /* IMZoomingScrollView.m in Sources */,
 				EE7FE464222CC42500073210 /* TAAnimatedDotView.m in Sources */,
 				EE8939B3222902C3004F1F6E /* IMRecordView.m in Sources */,

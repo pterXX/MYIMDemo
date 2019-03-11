@@ -50,6 +50,16 @@ NS_ASSUME_NONNULL_BEGIN
 + (UIImage *)imageMenuScan;
 + (UIImage *)imageMenuAddFriends;
 + (UIImage *)imageMenuExit;
+
+#pragma mark - # tabbar
++ (UIImage *)imageTabbarMessagesNomal;
++ (UIImage *)imageTabbarMessagesSelected;
++ (UIImage *)imageTabbarAddressBookNomal;
++ (UIImage *)imageTabbarAddressBookSelected;
+
+#pragma mark - # tabbar
++ (UIImage *)imageNavBack;
+
 @end
 
 NS_ASSUME_NONNULL_END

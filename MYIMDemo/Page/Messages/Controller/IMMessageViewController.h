@@ -15,6 +15,6 @@
 
 
 @interface IMMessageViewController(Class)
-+ (UINavigationController *)navMessagesVc;
++ (IMBaseNavigationController *)navMessagesVc;
 @end
 

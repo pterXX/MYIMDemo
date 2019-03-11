@@ -37,4 +37,12 @@ UINavigationController *addNavigationController(UIViewController *viewController
  */
 void initTabBarItem(UITabBarItem *tabBarItem, NSString *tilte, NSString *image, NSString *imageHL);
 
+/**
+ 绘制圆角
+
+ @param view 需要设置的圆角的View
+ @param rect 大小
+ @param cornerRadii 角度
+ */
+void layoutRoundCorner(UIView *view, CGRect rect,CGFloat cornerRadii);
 NS_ASSUME_NONNULL_END

@@ -27,7 +27,7 @@
 
 #define     SQL_UPDATE_FRIEND               @"REPLACE INTO %@ ( uid, fid, username, nikename, avatar, remark, ext1, ext2, ext3, ext4, ext5) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
 
-#define     SQL_SELECT_FRIENDS              @"SELECT * FROM %@ WHERE uid = %@"
+#define     SQL_SELECT_FRIENDS              @"SELECT * FROM %@ WHERE uid = '%@'"
 
 #define     SQL_DELETE_FRIEND               @"DELETE FROM %@ WHERE uid = '%@' and fid = '%@'"
 

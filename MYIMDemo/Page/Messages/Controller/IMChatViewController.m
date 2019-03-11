@@ -155,7 +155,7 @@
     backBut.titleLabel.font = [UIFont systemFontOfSize:14];
     [backBut setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [backBut setTitle:@"消息" forState:UIControlStateNormal];
-    [backBut setImage:[UIImage imageNamed:@"nav_back"] forState:UIControlStateNormal];
+    [backBut setImage:[UIImage imageNavBack] forState:UIControlStateNormal];
     [backBut addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     backBut.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backBut];
@@ -168,8 +168,7 @@
 - (void)im_addSubViews{
     [IMNotificationCenter addObserver:self selector:@selector(receivedNewMessage:) name:@"newMessage" object:nil];
     [IMNotificationCenter addObserver:self selector:@selector(updateRowHeight:) name:@"updateRowHeight" object:nil];
-    
-    [IMNotificationCenter postNotificationName:kConversationCommonNot object:nil userInfo:@{@"notType":@(IMConversationCommonNotificationUpdateBedgeNumber), @"conversationId":_conversation.conversationId}];
+    [IMNotificationCenter postNotificationName:kConversationCommonNot object:nil userInfo:@{@"notType":@(IMConversationCommonNotificationUpdateBedgeNumber), @"conversationId":IMNoNilString(_conversation.chatToJid.user)}];
     
     self.listView                 = [[UITableView alloc] initWithFrame:[[self class] listViewCtrlWrthFrame] style:UITableViewStylePlain];
     self.listView.delegate        = self;
@@ -237,8 +236,7 @@
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"changeSelection"];
     
     [self initVoiceData];
-    // 获取会话成员邮箱
-    [self getConversationMail];
+    
     // 获取会话消息
     [self getMessagesDataWithMessageId:@"0"];
 }
@@ -255,11 +253,6 @@
             [weakSelf updateMessageReadState];
         }
     });
-    
-}
-
-// 获取会话成员邮箱
-- (void)getConversationMail {
     
 }
 
@@ -292,76 +285,94 @@
  */
 - (void)getMessagesDataWithMessageId:(NSString *)messageId
 {
+    XMPPMessageArchivingCoreDataStorage *storage = KIMXMPPHelper.xmppMessageArchivingCoreDataStorage;
+    //查询的时候要给上下文
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:storage.messageEntityName inManagedObjectContext:storage.mainThreadManagedObjectContext];
+    [fetchRequest setEntity:entity];
+    //查询条件
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"bareJidStr = %@", self.conversation.chatToJid.bare];
+    [fetchRequest setPredicate:predicate];
+    //排序方式
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timestamp"
+                                                                   ascending:YES];
+    [fetchRequest setSortDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
     
-    
-    NSString *fileName = [NSString stringWithFormat:@"messageList%@", _conversation.conversationId];
     NSError *error = nil;
-    NSString *path = [[NSBundle mainBundle] pathForResource:fileName ofType:nil];
-    NSString *jsonStr = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
-    if (!error) {
-        NSArray *convMsgList = [NSArray arrayWithJsonStr:jsonStr];
-        convMsgList = [[convMsgList reverseObjectEnumerator] allObjects];
-        kWeakSelf;
+    NSArray *fetchedObjects = [storage.mainThreadManagedObjectContext executeFetchRequest:fetchRequest error:&error];
+    if (fetchedObjects != nil ) {
+        [self.dataSource removeAllObjects];
         __block IMMessageModel *previousMessage = nil;
         __block NSInteger num = 0;
-        [weakSelf.dataSource addObjectsFromArray:[convMsgList zh_enumerateObjectsUsingBlock:^id(NSDictionary * obj) {
-            __block IMMessageModel *model  = [IMMessageModel modelWithDictionary:obj complete:^IMMessageModel * _Nonnull(IMMessageModel * _Nonnull objModel, NSDictionary * _Nonnull objDict) {
-                objModel.lastMessage     = previousMessage;
-                NSTimeInterval prevTime = 0;
-                NSTimeInterval lastTime = 0;
-                if (objModel.direction == IMMessageSenderTypeSender) {
-                    lastTime = [objModel.sendTime integerValue];
+        NSArray *array = [fetchedObjects zh_enumerateObjectsUsingBlock:^id(XMPPMessageArchiving_Message_CoreDataObject * obj) {
+            IMMessageModel *model = [[IMMessageModel alloc] init];
+            model.content = obj.message.body;
+            model.msgType = obj.message.isChatMessage?IMMessageTypeText:IMMessageTypeImage;
+            model.direction = obj.isOutgoing?IMMessageSenderTypeSender:IMMessageSenderTypeReceiver;
+            if (model.msgType == IMMessageTypeText) {
+                CGSize messageSize = [model.messageAtt boundingRectWithSize:CGSizeMake(ceil(MESSAGE_MAX_WIDTH)-10, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
+                messageSize = CGSizeMake(ceil(messageSize.width) + 10, ceil(messageSize.height) + 16);
+                if (model.messageSize.width != messageSize.width || model.messageSize.height != messageSize.height) {
+                    model.cellHeight = -1;
+                    model.messageSize = CGSizeMake(-1, -1);
                 }
-                else {
-                    lastTime = [objModel.recvTime integerValue];
-                }
+            }
+            
+            model.lastMessage     = previousMessage;
+            NSTimeInterval prevTime = 0;
+            NSTimeInterval lastTime = 0;
+            if (model.direction == IMMessageSenderTypeSender) {
+                lastTime = [model.sendTime integerValue];
+            }
+            else {
+                lastTime = [model.recvTime integerValue];
+            }
+            
+            if (previousMessage.direction == IMMessageSenderTypeSender) {
+                prevTime = [previousMessage.sendTime integerValue];
+            }
+            else {
+                prevTime = [previousMessage.recvTime integerValue];
+            }
+            
+            BOOL isShowTime       = [NSDate showTimeWithPreviousTime:prevTime lastTime:lastTime];
+            
+            model.showMessageTime = isShowTime;
+            previousMessage       = model;
+            
+            if (model.msgType == IMMessageTypeImage && model.cellHeight == -1) {
+                CGFloat showTimeHeight = isShowTime ? SHOW_MESSAGE_TIME_HEIGHT : 0;
+                [model messageProcessingWithFinishedCalculate:^(CGFloat rowHeight, CGSize messageSize, BOOL complete) { }];
+                model.estimateHeight = 200 + showTimeHeight;
+                model.estimateSize   = CGSizeMake(102, model.estimateHeight - showTimeHeight - 20);
+            }
+            else {
+                [model messageProcessingWithFinishedCalculate:^(CGFloat rowHeight, CGSize messageSize, BOOL complete) { }];
+            }
+            
+            if ([obj[@"msg_type"] intValue] == IMMessageTypeImage)
+            {
+                IMPhotoPreviewModel *model = [IMPhotoPreviewModel new];
+                model.messageId    = obj[@"msg_id"];
+                model.content      = obj[@"content"];
                 
-                if (previousMessage.direction == IMMessageSenderTypeSender) {
-                    prevTime = [previousMessage.sendTime integerValue];
-                }
-                else {
-                    prevTime = [previousMessage.recvTime integerValue];
-                }
-                
-                BOOL isShowTime       = [NSDate showTimeWithPreviousTime:prevTime lastTime:lastTime];
-                
-                objModel.showMessageTime = isShowTime;
-                previousMessage       = objModel;
-                
-                if (objModel.msgType == IMMessageTypeImage && objModel.cellHeight == -1) {
-                    CGFloat showTimeHeight = isShowTime ? SHOW_MESSAGE_TIME_HEIGHT : 0;
-                    [objModel messageProcessingWithFinishedCalculate:^(CGFloat rowHeight, CGSize messageSize, BOOL complete) { }];
-                    objModel.estimateHeight = 200 + showTimeHeight;
-                    objModel.estimateSize   = CGSizeMake(102, objModel.estimateHeight - showTimeHeight - 20);
-                }
-                else {
-                    [objModel messageProcessingWithFinishedCalculate:^(CGFloat rowHeight, CGSize messageSize, BOOL complete) { }];
-                }
-                
-                if ([obj[msg_type_key]intValue] == IMMessageTypeImage)
+                if (isFirstLoad)
                 {
-                    IMPhotoPreviewModel *photoPreviewModel = [IMPhotoPreviewModel new];
-                    photoPreviewModel.messageId    = obj[msg_id_key];
-                    photoPreviewModel.content      = obj[msg_content_key];
-                    
-                    if (self->isFirstLoad)
-                    {
-                        [weakSelf.allImageDatas addObject:photoPreviewModel];
-                    }
-                    else
-                    {
-                        [weakSelf.allImageDatas insertObject:photoPreviewModel atIndex:num];
-                        num ++;
-                    }
+                    [weakSelf.allImageDatas addObject:model];
                 }
-                return objModel;
-            }];
+                else
+                {
+                    [weakSelf.allImageDatas insertObject:model atIndex:num];
+                    num ++;
+                }
+            }
+            
             return model;
-        }]];
-        
-        [self.listView reloadData];
-        [self scrollTableViewBottom];
+        }];
+        [self.dataSource addObjectsFromArray:array];
     }
+    [self.listView reloadData];
+    [self scrollTableViewBottom];
 }
 
 /**
@@ -631,7 +642,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     IMMessageModel *messageModel = self.dataSource[indexPath.row];
-    
     id cell = [tableView dequeueReusableCellWithIdentifier:messageModel.cellIdendtifier forIndexPath:indexPath];
     [cell setDelegate:self];
     [cell setIndexPath:indexPath];
@@ -862,7 +872,6 @@
         
     }];
 }
-
 
 /**
  对比两条消息，是否显示时间
@@ -1134,8 +1143,9 @@
             
         }];
         //        向服务端发消息
+        [KIMXMPPHelper sendMessage:model.content to:self.conversation.chatToJid];
+        
     });
-    
 }
 
 - (void)inputBoxCtrl:(IMInputBoxViewCtrl *)inputBoxCtrl didSelectedMoreView:(IMInputBoxMoreStatus)inputBoxMoreStatus

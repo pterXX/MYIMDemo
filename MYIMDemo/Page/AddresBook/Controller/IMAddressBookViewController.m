@@ -1,45 +1,35 @@
-//
-//  IMAddFriendsViewController.m
-//  MYIMDemo
-//
-//  Created by admin on 2019/3/8.
-//  Copyright © 2019 徐世杰. All rights reserved.
-//
-
-#import "IMAddFriendsViewController.h"
+#import "IMAddressBookTableViewCell.h"
+#import "IMAddressBookViewController.h"
+#import "IMChatViewController.h"
+#import "IMConversationModel.h"
+#import "IMConversationModel.h"
+#import "IMEmojiGroup.h"
+#import "IMLoginViewController.h"
+#import "IMMessageModel.h"
 #import "IMSearchMessageViewController.h"
-#import "IMMessagesListTableViewCell.h"
+#import "UIViewController+IMCategory.h"
+#import <XMPPFramework/XMPPFramework.h>
 
-@interface IMAddFriendsViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchControllerDelegate>
-{
-    // 选择的NSIndexPath
-    NSIndexPath *selecteIndexPath;
+
+@interface IMAddressBookViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchControllerDelegate> {
     // searchBar高度
     CGFloat searchBarHeight;
 }
 
-@property (nonatomic, strong) UITableView        *tableView;
+@property (nonatomic, strong) UITableView                   *tableView;
 // 搜索视图
-@property (nonatomic, strong) UIView             *headerView;
-@property (nonatomic, strong) UISearchController *searchViewCtrl;
+@property (nonatomic, strong) UIView                        *headerView;
+@property (nonatomic, strong) UISearchController            *searchViewCtrl;
 @property (nonatomic, strong) IMSearchMessageViewController *searchCtrl;
-@property (nonatomic, strong) UIView             *titleView;
-@property (nonatomic, strong) UIView             *bottomLine;
-// 收到的json消息
-@property (nonatomic, strong) NSString           *receiveJson;
-// 记录正在聊天的会话
-@property (nonatomic, strong) NSString           *conversationId;
+@property (nonatomic, strong) UIView                        *titleView;
+@property (nonatomic, strong) UIView                        *bottomLine;
 // 数据源
-@property (nonatomic, strong) NSMutableArray     *dataSource;
-// 分段控制器数据源
-@property (nonatomic, strong) NSMutableArray     *segmentDataSource;
-// 分段控制器数据源menu
-@property (nonatomic, strong) NSMutableArray     *menuDataSource;
+@property (nonatomic, strong) NSMutableArray<XMPPUserMemoryStorageObject *>     *dataSource;
 @end
 
-@implementation IMAddFriendsViewController
+@implementation IMAddressBookViewController
 
-- (NSMutableArray *)dataSource {
+- (NSMutableArray<XMPPUserMemoryStorageObject *> *)dataSource {
     if (!_dataSource) {
         _dataSource = [NSMutableArray array];
     }
@@ -47,6 +37,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    
     [super viewWillAppear:animated];
 }
 
@@ -56,15 +47,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self addNotification];
 }
 
 - (void)im_layoutNavigation{
-    self.title = @"添加好友";
+    
+}
+
+- (void)im_getNewData{
+    //  获得用户数据
+    [self requestUserStoreage];
 }
 
 - (void)im_addSubViews{
+    //  添加所有数据
     self.isExtendLayout = NO;
+    
     CGFloat systemVersion = [UIDevice currentSystemVersion].doubleValue;
     // iOS 11以前搜索框的高度是44 iOS 11及以后的高度是56
     searchBarHeight = systemVersion < 11.0 ? 44 : 56;
@@ -93,7 +91,7 @@
     _searchViewCtrl.searchResultsUpdater             = _searchCtrl;
     _searchViewCtrl.delegate                         = self;
     _searchViewCtrl.searchBar.delegate               = _searchCtrl;
-    _searchViewCtrl.searchBar.placeholder            = @"请输入账号";
+    _searchViewCtrl.searchBar.placeholder            = @"搜索";
     _searchViewCtrl.searchBar.searchBarStyle         = UISearchBarStyleDefault;
     // 包着搜索框外层的颜色
     _searchViewCtrl.searchBar.tintColor              = [UIColor darkGrayColor];
@@ -107,36 +105,36 @@
     _searchCtrl.searchBar                            = _searchViewCtrl.searchBar;
     [_headerView addSubview:_searchCtrl.searchBar];
     self.tableView.tableHeaderView = _headerView;
-    // 搜索按钮点击
-    kWeakSelf;
-    [_searchCtrl setKeyboardRuturnBtnClick:^(NSString * _Nonnull str) {
-        //  添加好友
-        [weakSelf addFriend:str];
-    }];
     
+    // 设置自己的头像
+    [[IMAppDefaultUtil sharedInstance] setUserAvatar:@"http://cname-yunke.shovesoft.com/group1/M00/00/1A/CgAHEVuMyv6AKj6uAABukEJ7t3I575.png"];
     
 }
 
-//  添加好友
-- (void)addFriend:(NSString *)uesrID{
-    if ([uesrID isEmptyString] && KIMXMPPHelper.userHelper.isLogin) return;
-    __block NSString * uesrIDstr = uesrID;
-    NSString *str = IMStirngFormat(@"是否添加好友\"%@\"",uesrID);
-    kWeakSelf;
-    [self alertWithTitle:str message:@"此功能只做简单的添加好友功能。具体实现可以根据产品需求改变" cancel:^(BOOL ok) {
-        if (ok) {
-            IMUser *user =  [[IMUser alloc] init];
-            //  userID和userName 设置为同一个是方便调试，后期可以根据需求改变相应的参数 ·
-            user.userID = uesrIDstr;
-            user.username = uesrIDstr;
-            user.avatarURL = kDebugAvatarURL;
-            [KIMXMPPHelper addFriend:user];
-            [SVProgressHUD showInfoWithStatus:IMStirngFormat(@"等待\"%@\"接受请求",uesrIDstr)];
-            [SVProgressHUD dismissWithDelay:2];
-            //  返回上个页面
-            [weakSelf im_backHandle];
-        }
+//  添加通知
+- (void)addNotification{
+    [IMNotificationCenter addObserver:self selector:@selector(rosterChangeNotification) name:kXmppRosterChangeNot object:nil];
+}
+
+//  请求好友列表
+- (void)requestUserStoreage{
+    XMPPRosterMemoryStorage *storage = KIMXMPPHelper.xmppRosterMemoryStorage;
+    self.dataSource = [storage sortedUsersByName].mutableCopy;
+    /*
+    NSArray *array = [storage sortedUsersByName];
+    [array enumerateObjectsUsingBlock:^(XMPPUserMemoryStorageObject * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSLog(@"obj.displayName == %@",obj.displayName);
+        NSLog(@"obj.ask == %@",obj.ask);
+        NSLog(@"obj.subscription == %@",obj.subscription);
+        NSLog(@"obj.nickname == %@",obj.nickname);
     }];
+     */
+}
+
+//  好友列表改变
+-(void)rosterChangeNotification{
+    [self requestUserStoreage];
+    [self.tableView reloadData];
 }
 
 #pragma mark - UITableViewDelegate
@@ -146,23 +144,20 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *cellIdentifier = @"IMMessagesListTableViewCell";
-    IMMessagesListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    NSString *cellIdentifier = @"IMAddressBookTableViewCell";
+    IMAddressBookTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
-        cell = [[IMMessagesListTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[IMAddressBookTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    
-    if (self.dataSource.count) {
-        IMConversationModel *model = self.dataSource[indexPath.row];
-        [cell setConversation:model];
-    }
-    
+    XMPPUserMemoryStorageObject *object = self.dataSource[indexPath.row];
+    cell.titleLabel.text = object.nickname?object.nickname:object.jid.user;
+    cell.avaterImageView.image = object.photo? object.photo:[UIImage imageDefaultHeadPortrait];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 70;
+    return [IMAddressBookTableViewCell cellLayoutHeight];
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -170,11 +165,23 @@
     [cell setSeparatorInset:UIEdgeInsetsMake(69, 12, 0, 0)];
 }
 
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    selecteIndexPath                    = indexPath;
+    XMPPUserMemoryStorageObject *object = self.dataSource[indexPath.row];
+    IMConversationModel *conversation   = [[IMConversationModel alloc] init];
+    conversation.chatToJid              = object.jid;
+    conversation.conversationName       = object.jid.user;
+    conversation.chatType               = IMMessageChatTypeSingle;
+//    conversation.headImage              = object.photo? object.photo:[UIImage imageDefaultHeadPortrait];
+    
+    IMChatViewController *chatCtrl      = [IMChatViewController new];
+    chatCtrl.title                      = conversation.conversationName;
+    chatCtrl.hidesBottomBarWhenPushed   = YES;
+    chatCtrl.conversation               = conversation;
+    chatCtrl.isConversationInto         = NO;
+    
+    [self.navigationController pushViewController:chatCtrl animated:YES];
 }
 
 #pragma mark - UISearchControllerDelegate代理
@@ -190,4 +197,12 @@
     _searchCtrl.searchBar.backgroundColor = [IMColorTools colorWithHexString:@"0xffffff"];
 }
 
+@end
+
+
+@implementation IMAddressBookViewController(Class)
++ (IMBaseNavigationController *)navAddressBookVc;{
+    IMBaseNavigationController *navC = [[IMBaseNavigationController alloc] initWithRootViewController:[[[self class] alloc] init]];
+    return navC;
+}
 @end

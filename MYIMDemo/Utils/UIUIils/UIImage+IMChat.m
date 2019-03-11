@@ -10,7 +10,7 @@
 
 @implementation UIImage (IMChat)
 + (UIImage *)imageDefaultHeadPortrait{
-    return  [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"WechatIMG5" ofType:@"png"]];
+    return  [UIImage imageNamed:@"WechatIMG5.jpeg"];
 }
 
 + (UIImage *)imageLoginBackground{
@@ -124,4 +124,23 @@
     return [UIImage imageNamed:@"icon_menu_add_friends"];
 }
 
++ (UIImage *)imageTabbarMessagesNomal{
+    return [UIImage imageNamed:@"icon_tabbar_messages"];
+}
+
++ (UIImage *)imageTabbarMessagesSelected{
+    return [UIImage imageNamed:@"icon_tabbar_messages_sel"] ;
+}
+
++ (UIImage *)imageTabbarAddressBookNomal;{
+    return [UIImage imageNamed:@"icon_tabbar_addressbook"];
+}
+
++ (UIImage *)imageTabbarAddressBookSelected{
+    return [UIImage imageNamed:@"icon_tabbar_addressbook_sel"];
+}
+
++ (UIImage *)imageNavBack{
+    return [UIImage imageNamed:@"icon_nav_back"];
+}
 @end

@@ -16,6 +16,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface IMConversationModel : IMBaseModel
+
+@property (nonatomic ,strong) XMPPJID             *chatToJid;
+
 // 会话名
 @property (nonatomic, strong) NSString            *conversationName;
 // 会话id
@@ -28,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) IMMessageModel       *message;
 // 未读消息
 @property (nonatomic, assign) int                 badgeNumber;
-// 犀牛id
+// 当前聊天的id
 @property (nonatomic, strong) NSString            *toUserId;
 // 员工id
 @property (nonatomic, strong) NSString            *toEmployeeId;

@@ -70,6 +70,4 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 #import "IMCategory.h"
 
-
-
 #endif /* PrefixHeader_pch */

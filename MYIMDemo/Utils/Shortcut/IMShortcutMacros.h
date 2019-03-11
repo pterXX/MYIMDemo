@@ -51,6 +51,7 @@ edgeInsets;  \
 /// 方法名
 #define     IMStirngFormSelector(s)     [[NSString alloc] initWithUTF8String:sel_getName(s)]
 #define     IMStirngFormat(fmt,...)     [NSString stringWithFormat:(fmt), ##__VA_ARGS__]
+#define     IMStirngReplace(str,replaceStr, withStr)     [str stringByReplacingOccurrencesOfString:replaceStr withString:withStr]
 
 /// 颜色
 #define     RGBColor(r, g, b)           [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1.0]

@@ -32,3 +32,13 @@ void initTabBarItem(UITabBarItem *tabBarItem, NSString *tilte, NSString *image, 
     [tabBarItem setImage:[UIImage imageNamed:image]];
     [tabBarItem setSelectedImage:[UIImage imageNamed:imageHL]];
 }
+
+
+//  绘制圆角
+void layoutRoundCorner(UIView *view, CGRect rect,CGFloat cornerRadii){
+    // 贝塞尔曲线绘制圆角
+    UIBezierPath *maskPath  = [UIBezierPath bezierPathWithRoundedRect:rect  byRoundingCorners:UIRectCornerAllCorners  cornerRadii:CGSizeMake(cornerRadii, cornerRadii)];
+    CAShapeLayer *maskLayer = [CAShapeLayer layer];
+    maskLayer.path          = maskPath.CGPath;
+    view.layer.mask         = maskLayer;
+}

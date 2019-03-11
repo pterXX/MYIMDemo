@@ -27,9 +27,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+#define KIMXMPPHelper [IMXMPPHelper sharedHelper]
 
 typedef void(^IMXMPPSuccessBlock)(void);
 typedef void(^IMXMPPFailBlock)(NSError *error);
+typedef void(^IMXMPPMessageBlock)(XMPPMessage *message);
 
 typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
     IMXMPPErrorCodeConnect = 1001, //  连接错误
@@ -39,7 +41,7 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
 };
 
 @interface IMXMPPHelper : NSObject
-@property (nonatomic ,copy) IMUserHelper                        *userHelper;
+@property (nonatomic ,copy  ) IMUserHelper                        *userHelper;
 
 //表示是否手动验证TLS/SSL
 @property (nonatomic ,assign) BOOL                                customCertEvaluation;
@@ -53,14 +55,25 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
 @property (nonatomic ,strong) XMPPStreamManagementMemoryStorage   *storage;
 @property (nonatomic ,strong) XMPPStreamManagement                *xmppStreamManagement;
 //接入好友模块，可以获取好友列表
-@property (nonatomic ,strong) XMPPRosterMemoryStorage           *xmppMemoryStorage ;
+@property (nonatomic ,strong) XMPPRosterMemoryStorage             *xmppRosterMemoryStorage                                     ;
 @property (nonatomic ,strong) XMPPRoster                          *xmppRoster;
 //接入消息模块，将消息存储到本地
 @property (nonatomic ,strong) XMPPMessageArchivingCoreDataStorage *xmppMessageArchivingCoreDataStorage;
 @property (nonatomic ,strong) XMPPMessageArchiving                *xmppMessageArchiving;
+
 //  文件接收
 @property (nonatomic, strong) XMPPIncomingFileTransfer            *xmppIncomingFileTransfer;
 
+//添加vCard模块
+@property (nonatomic ,strong) XMPPvCardCoreDataStorage            *vCardStorage;
+@property (nonatomic ,strong) XMPPvCardTempModule                 *vCardModule;
+@property (nonatomic ,strong) XMPPvCardAvatarModule               *vCardAvatorModule;
+
+
+@property (nonatomic ,copy  ) IMXMPPMessageBlock                  messageSendBlock;//  消息发送
+@property (nonatomic ,copy  ) IMXMPPMessageBlock                  messageSendFailBlock;//  消息发送失败
+@property (nonatomic ,copy  ) IMXMPPMessageBlock                  messageReceiveBlock;//  消息接收
+@property (nonatomic ,copy  ) IMXMPPSuccessBlock                  changeAvatarPhoto;//  修改头像
 
 + (IMXMPPHelper *)sharedHelper;
 
@@ -115,6 +128,21 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
  */
 - (void)sendMessage:(NSString *)message to:(XMPPJID *)jid;
 
+/**
+ s发送图片
+
+ @param img 图片
+ @param jid  发送对方的ID
+ */
+- (void)sendImage:(UIImage *)img to:(XMPPJID *)jid;
+
+/**
+ 发送语音
+ 
+ @param voice 图片
+ @param jid  发送对方的ID
+ */
+- (void)sendVoice:(UIImage *)voice to:(XMPPJID *)jid;
 
 /**
  * 添加好友

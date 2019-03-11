@@ -242,7 +242,7 @@
         if ([self checkTextFieldForValue]) {
             NSString *username = self.userField.text;
             NSString *password = self.passwordField.text;//123456
-            [[IMXMPPHelper sharedHelper] registerWithName:username andPassword:password success:^{
+            [KIMXMPPHelper registerWithName:username andPassword:password success:^{
                 [SVProgressHUD showSuccessWithStatus:@"注册成功,请登录"];
                 [SVProgressHUD dismissWithDelay:2];
                 [weakSelf loginSuccess];

@@ -19,6 +19,21 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.hidesBottomBarWhenPushed = self.tabBarController && [self isVisibleFirstViewController];
+}
+
+
+/**
+ 当前显示的viewController 是否是栈顶ViewController
+ */
+- (BOOL)isVisibleFirstViewController{
+    if (self.topViewController == self.visibleViewController) {
+        return YES;
+    }
+    return NO;
+}
 /*
 #pragma mark - Navigation
 

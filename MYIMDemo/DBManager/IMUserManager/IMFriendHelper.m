@@ -46,7 +46,7 @@ static IMFriendHelper *friendHelper = nil;
         self.groupsData = [self.groupStore groupsDataByUid:[IMUserHelper sharedHelper].userID];
         // 初始化标签数据
         self.tagsData = [[NSMutableArray alloc] init];
-        [self p_initTestData];
+//        [self p_initTestData];
     }
     return self;
 }
@@ -184,40 +184,40 @@ static IMFriendHelper *friendHelper = nil;
     }
 }
 
-- (void)p_initTestData
-{
-    // 好友数据
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"FriendList" ofType:@"json"];
-    NSData *jsonData = [NSData dataWithContentsOfFile:path];
-    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
-    NSArray *arr = [IMUser mj_objectArrayWithKeyValuesArray:jsonArray];
-    [self.friendsData removeAllObjects];
-    [self.friendsData addObjectsFromArray:arr];
-    // 更新好友数据到数据库
-    BOOL ok = [self.friendStore updateFriendsData:self.friendsData forUid:[IMUserHelper sharedHelper].userID];
-    if (!ok) {
-        DDLogError(@"保存好友数据到数据库失败!");
-    }
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        [self p_resetFriendData];
-    });
-    
-    // 群数据
-    path = [[NSBundle mainBundle] pathForResource:@"FriendGroupList" ofType:@"json"];
-    jsonData = [NSData dataWithContentsOfFile:path];
-    jsonArray = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
-    arr = [IMGroup mj_objectArrayWithKeyValuesArray:jsonArray];
-    [self.groupsData removeAllObjects];
-    [self.groupsData addObjectsFromArray:arr];
-    ok = [self.groupStore updateGroupsData:self.groupsData forUid:[IMUserHelper sharedHelper].userID];
-    if (!ok) {
-        DDLogError(@"保存群数据到数据库失败!");
-    }
-    // 生成Group Icon
-    for (IMGroup *group in self.groupsData) {
-        [group createGroupAvatarWithCompleteAction:nil];
-    }
-}
+//- (void)p_initTestData
+//{
+//    // 好友数据
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"FriendList" ofType:@"json"];
+//    NSData *jsonData = [NSData dataWithContentsOfFile:path];
+//    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
+//    NSArray *arr = [IMUser mj_objectArrayWithKeyValuesArray:jsonArray];
+//    [self.friendsData removeAllObjects];
+//    [self.friendsData addObjectsFromArray:arr];
+//    // 更新好友数据到数据库
+//    BOOL ok = [self.friendStore updateFriendsData:self.friendsData forUid:[IMUserHelper sharedHelper].userID];
+//    if (!ok) {
+//        DDLogError(@"保存好友数据到数据库失败!");
+//    }
+//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+//        [self p_resetFriendData];
+//    });
+//
+//    // 群数据
+//    path = [[NSBundle mainBundle] pathForResource:@"FriendGroupList" ofType:@"json"];
+//    jsonData = [NSData dataWithContentsOfFile:path];
+//    jsonArray = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
+//    arr = [IMGroup mj_objectArrayWithKeyValuesArray:jsonArray];
+//    [self.groupsData removeAllObjects];
+//    [self.groupsData addObjectsFromArray:arr];
+//    ok = [self.groupStore updateGroupsData:self.groupsData forUid:[IMUserHelper sharedHelper].userID];
+//    if (!ok) {
+//        DDLogError(@"保存群数据到数据库失败!");
+//    }
+//    // 生成Group Icon
+//    for (IMGroup *group in self.groupsData) {
+//        [group createGroupAvatarWithCompleteAction:nil];
+//    }
+//}
 
 #pragma mark - Getter
 - (NSInteger)friendCount

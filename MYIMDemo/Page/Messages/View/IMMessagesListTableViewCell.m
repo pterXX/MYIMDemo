@@ -32,12 +32,9 @@
     
     _avaterImageView                   = [UIImageView new];
     CGRect rect                        = CGRectMake(0, 0, 50, 50);
-    // 贝塞尔曲线绘制圆角
-    UIBezierPath *maskPath             = [UIBezierPath bezierPathWithRoundedRect:rect  byRoundingCorners:UIRectCornerAllCorners  cornerRadii:CGSizeMake(5, 5)];
-    CAShapeLayer *maskLayer            = [CAShapeLayer layer];
-    maskLayer.path                     = maskPath.CGPath;
-    _avaterImageView.layer.mask        = maskLayer;
     [self addSubview:_avaterImageView];
+    //  绘制圆角
+    layoutRoundCorner(_avaterImageView, rect, 5);
 
     _avaterImageView.sd_layout.topSpaceToView(self, 10).leftSpaceToView(self, 10).widthIs(50).heightEqualToWidth();
 
@@ -165,5 +162,6 @@
 
     // Configure the view for the selected state
 }
+
 
 @end

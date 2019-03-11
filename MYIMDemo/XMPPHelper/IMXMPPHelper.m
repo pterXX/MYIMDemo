@@ -76,8 +76,8 @@ static IMXMPPHelper *helper;
         [_xmppStreamManagement activate:self.xmppStream];
         
         //接入好友模块，可以获取好友列表
-        _xmppMemoryStorage  = [[XMPPRosterMemoryStorage  alloc] init];
-        _xmppRoster = [[XMPPRoster alloc] initWithRosterStorage:_xmppMemoryStorage ];
+        _xmppRosterMemoryStorage  = [[XMPPRosterMemoryStorage  alloc] init];
+        _xmppRoster = [[XMPPRoster alloc] initWithRosterStorage:_xmppRosterMemoryStorage ];
         [_xmppRoster activate:self.xmppStream];
         [_xmppRoster addDelegate:self delegateQueue:dispatch_get_main_queue()];
         //设置好友同步策略,XMPP一旦连接成功，同步好友到本地
@@ -85,11 +85,17 @@ static IMXMPPHelper *helper;
         //关掉自动接收好友请求，默认开启自动同意
         [_xmppRoster setAutoAcceptKnownPresenceSubscriptionRequests:NO];
 
-        
         //接入消息模块，将消息存储到本地
         _xmppMessageArchivingCoreDataStorage = [XMPPMessageArchivingCoreDataStorage sharedInstance];
         _xmppMessageArchiving = [[XMPPMessageArchiving alloc] initWithMessageArchivingStorage:_xmppMessageArchivingCoreDataStorage dispatchQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 9)];
         [_xmppMessageArchiving activate:self.xmppStream];
+        
+        //添加vCard模块
+        _vCardStorage = [XMPPvCardCoreDataStorage sharedInstance];
+        _vCardModule = [[XMPPvCardTempModule alloc] initWithvCardStorage: self.vCardStorage];
+        [self.vCardModule activate:_xmppStream];
+        _vCardAvatorModule = [[XMPPvCardAvatarModule alloc] initWithvCardTempModule:self.vCardModule];
+        [self.vCardAvatorModule activate:_xmppStream];
     }
 }
 
@@ -160,12 +166,42 @@ static IMXMPPHelper *helper;
     [_xmppStream sendElement:newMessage];
 }
 
+//  发送图片
+- (void)sendImage:(UIImage *)img to:(XMPPJID *)jid{
+    [img compressedWithImageKilobyte:1024 imageBlock:^(NSData *imageData) {
+         [self sendMessageWithData:imageData bodyName:@"name" chatType:@"img" to:jid];
+    }];
+}
+
+//  发送图片
+- (void)sendVoice:(UIImage *)img to:(XMPPJID *)jid{
+    [img compressedWithImageKilobyte:1024 imageBlock:^(NSData *imageData) {
+        [self sendMessageWithData:imageData bodyName:@"name" chatType:@"img" to:jid];
+    }];
+}
+
+// 发送二进制文件
+- (void)sendMessageWithData:(NSData *)data bodyName:(NSString *)name chatType:(NSString *)chatType to:(XMPPJID *)jid {
+    XMPPMessage *message = [XMPPMessage messageWithType:@"chat" to:jid];
+    [message addBody:name];
+    // 转换成base64的编码
+    NSString *base64str = [data base64EncodedStringWithOptions:0];
+    // 设置节点内容
+    XMPPElement *attachment = [XMPPElement elementWithName:@"attachment" stringValue:base64str];
+    XMPPElement *type = [XMPPElement elementWithName:@"chatType" stringValue:chatType]; //  这里的chatType是自定义类型，img是暂定内容，后期可以添加其他类型
+    // 包含子节点
+    [message addChild:attachment];
+    [message addChild:type];
+    // 发送消息
+    [_xmppStream sendElement:message];
+}
+
 //  添加请求
 - (void)addFriend:(IMUser *)user{
     if (!user) return;
     XMPPJID *jid = [XMPPJID jidWithUser:user.userID domain:IM_XMPP_DOMAIN resource:nil];
     //这里的nickname是我对它的备注，并非他得个人资料中得nickname
-    [[IMXMPPHelper sharedHelper].xmppRoster addUser:jid withNickname:user.remarkName];
+    [KIMXMPPHelper.xmppRoster addUser:jid withNickname:user.remarkName];
 }
 
 //  同意订阅请求用户，执行被添加好友的操作
@@ -263,21 +299,30 @@ static IMXMPPHelper *helper;
 #pragma mark -- XMPPMessage Delegate
 - (void)xmppStream:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message{
     NSLog(@"接收消息--%@",message);
+    if (self.messageReceiveBlock) {
+        self.messageReceiveBlock(message);
+    }
 }
 
 - (void)xmppStream:(XMPPStream *)sender didSendMessage:(XMPPMessage *)message{
     NSLog(@"发送消息成功--%@", message);
+    if (self.messageSendBlock) {
+        self.messageSendBlock(message);
+    }
 }
 
 - (void)xmppStream:(XMPPStream *)sender didFailToSendMessage:(XMPPMessage *)message error:(NSError *)error{
     NSLog(@"发送消息失败--%@", message);
+    if (self.messageSendFailBlock) {
+        self.messageSendFailBlock(message);
+    }
 }
 
 #pragma mark -- Roster
 //  好友改变
 - (void)xmppRosterDidChange:(XMPPRosterMemoryStorage *)sender{
     NSLog(@"好友列表改变");
-    [IMNotificationCenter postNotificationName:kXmppRosterChangeNot object:nil];
+//    [IMNotificationCenter postNotificationName:kXmppRosterChangeNot object:nil];
 }
 
 //  收到好友列表IQ会进入的方法，并且已经存入我的存储器
@@ -306,6 +351,24 @@ static IMXMPPHelper *helper;
     if ([presence.type isEqualToString:kUnsubscribe]) {
         //从我的本地通讯录中将他移除
         [self.xmppRoster removeUser:presence.from];
+    }
+}
+
+#pragma mark =====头像修改 =======
+/**
+ 只要对方的头像发生更改, 或者自己上传了新都头像, 就会调用上述的两个代理方法, 那么, 我们在这两个代理方法中
+ */
+/**接收到头像更改*/
+- (void)xmppvCardAvatarModule:(XMPPvCardAvatarModule *)vCardTempModule didReceivePhoto:(UIImage *)photo forJID:(XMPPJID *)jid {
+    if (self.changeAvatarPhoto) {
+        self.changeAvatarPhoto();
+    }
+}
+
+/** 上传头像成功*/
+- (void)xmppvCardTempModuleDidUpdateMyvCard:(XMPPvCardTempModule *)vCardTempModule {
+    if (self.changeAvatarPhoto) {
+        self.changeAvatarPhoto();
     }
 }
 
@@ -377,7 +440,7 @@ static IMXMPPHelper *helper;
 }
 
 /**
- *  进入前台后的操作
+ *  获得焦点
  */
 - (void)applicationDidBecomeActive{
     //  如果已经登录的话就直接返回
@@ -396,7 +459,7 @@ static IMXMPPHelper *helper;
  *  失去焦点
  */
 - (void)applicationWillResignActiveNotification{
-    
+    [self goOffline];
 }
 
 

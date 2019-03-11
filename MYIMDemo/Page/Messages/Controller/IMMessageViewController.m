@@ -193,8 +193,6 @@
 - (void)addNotification{
     //  消息对话通知
     [IMNotificationCenter addObserver:self selector:@selector(conversationCommonNotification:) name:kConversationCommonNot object:nil];
-    // 订阅通知
-    [IMNotificationCenter addObserver:self selector:@selector(subscriptionRequetNotification:) name:kXmppSubscriptionRequestNot object:nil];
 }
 
 - (void)addAllDataSource{
@@ -214,7 +212,7 @@
         [SVProgressHUD dismissWithDelay:2];
     }];
     YCMenuAction *action3 = [YCMenuAction actionWithTitle:@"退出" image:[UIImage imageMenuExit] handler:^(YCMenuAction *action) {
-        [[IMXMPPHelper sharedHelper] logOut];
+        [KIMXMPPHelper logOut];
         //  重置根视图
         [self restoreRootViewController:[[IMLoginViewController alloc] init]];
     }];
@@ -247,21 +245,6 @@
         default:
             break;
     }
-}
-
-- (void)subscriptionRequetNotification:(NSNotification *)notification{
-    XMPPPresence *presence = notification.object;
-    if(!presence) return;
-    NSString *str = IMStirngFormat(@"是否添加\"%@\"为你的好友",presence.from.user);
-    [self alertWithTitle:str message:@"此功能只做简单的添加好友操作,可根据产品需求改变" cancel:^(BOOL ok) {
-        if (ok) {
-            //  同意请求
-            [[IMXMPPHelper sharedHelper] acceptPresenceSubscriptionRequest];
-        }else{
-            //  拒绝请求
-            [[IMXMPPHelper sharedHelper] rejectPresenceSubscriptionRequest];
-        }
-    }];
 }
 
 - (void)updateSelecteRowBadgeNumber:(NSString *)conversationId
@@ -573,7 +556,8 @@
 
 
 @implementation IMMessageViewController(Class)
-+ (UINavigationController *)navMessagesVc {
-    return addNavigationController([[[self class] alloc] init]);
++ (IMBaseNavigationController *)navMessagesVc {
+    IMBaseNavigationController *navC = [[IMBaseNavigationController alloc] initWithRootViewController:[[[self class] alloc] init]];
+    return navC;
 }
 @end

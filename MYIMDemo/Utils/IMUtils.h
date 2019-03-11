@@ -81,7 +81,7 @@ typedef NS_OPTIONS(NSInteger, IMConversationCommonNotification) {
  消息类型
  */
 typedef NS_OPTIONS(NSInteger, IMMessageType) {
-    IMMessageTypeNone = -1,   // 头部云邮 或 其他
+    IMMessageTypeNone = -1,   // 头部 其他
     IMMessageTypeText = 0,    // 文字消息  包含表情
     IMMessageTypeVoice,       // 语音消息
     IMMessageTypeImage,       // 图片消息
