@@ -61,6 +61,8 @@ typedef NS_OPTIONS(NSUInteger, IMInputBoxRecordStatus) {
 };
 
 #pragma mark - 消息部分常量定义
+//  消息列表 elementWithName
+static NSString *const kMessageElementDataBodyName  = @"dataBody";
 static NSString *const kConversationCommonNot = @"conversationCommonNot";
 //  好友列表改变是会执行相应的通知
 static NSString *const kXmppRosterChangeNot = @"kXmppRosterChange";

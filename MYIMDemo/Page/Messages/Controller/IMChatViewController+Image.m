@@ -81,7 +81,7 @@
                 NSString *timeInterval = [NSDate getCurrentTimestamp];
                 
                 messageModel.msgType           = IMMessageTypeImage;
-                messageModel.messageChatType   = IMMessageChatTypeSingle;
+                messageModel.messageChatType   = self.conversation.chatType;
                 messageModel.direction         = IMMessageSenderTypeSender;
                 messageModel.messageReadStatus = IMMessageReadStatusRead;
                 messageModel.sendTime          = timeInterval;
@@ -89,7 +89,7 @@
                 messageModel.lastMessage       = [self lastMessage];
                 messageModel.messageId         = timeInterval;
                 messageModel.fileData          = originalImageData;
-                messageModel.fromUserId        = KXINIUID;
+                messageModel.fromUserId        = self.conversation.chatToJid;
                 messageModel.messageSendStatus = IMMessageSendStatusSending;
                 
                 BOOL isShowTime                = [self isShowTimeWithNewMessageModel:messageModel previousMessage:[self lastMessage]];
@@ -139,7 +139,8 @@
             NSData *originalImageData = UIImagePNGRepresentation(selectImage);
             
             NSString *fileName = [NSString stringWithFormat:@"%@.png", [NSDate getCurrentTimestamp]];
-            NSString *imagePath = [KAttachmentTempPath stringByAppendingPathComponent:fileName];
+            
+            NSString *imagePath = [NSFileManager pathTempSettingImage:fileName];
             [imagePaths addObject:imagePath];
             
             BOOL isWriteSuccess = [originalImageData writeToFile:imagePath atomically:YES];
@@ -152,9 +153,9 @@
             NSString *timeInterval = [NSDate getCurrentTimestamp];
             
             messageModel.msgType           = IMMessageTypeImage;
-            messageModel.fromUserId        = KXINIUID;
+            messageModel.fromUserId        = self.conversation.chatToJid;
             messageModel.toUserName        = self.conversation.conversationName;
-            messageModel.messageChatType   = IMMessageChatTypeSingle;
+            messageModel.messageChatType   = self.conversation.chatType;
             messageModel.messageSendStatus = IMMessageSendStatusSending;
             messageModel.direction         = IMMessageSenderTypeSender;
             messageModel.sendTime          = timeInterval;
@@ -188,7 +189,6 @@
         }
         
         for (int i = 0; i < photos.count; i ++) {
-            
             IMMessageModel *messageModel = messageModels[i];
             messageModel.fileUrl   = imagePaths[i];
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[indexPaths[i] integerValue] inSection:0];
@@ -214,7 +214,9 @@
                                 cellHeight:(CGFloat)cellHeight
                                selectImage:(UIImage *)selectImage
 {
-
+    
+    [KIMXMPPHelper sendMessageModel:messageModel to:self.conversation.chatToJid];
+    [self updateMessageSendStatus:IMMessageSendStatusSendSuccess indexPath:indexPath localMessageId:messageModel.messageId serversMsgId:messageModel.messageId];
 }
 
 @end

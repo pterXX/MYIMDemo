@@ -9,5 +9,4 @@
 #import "IMPhotoPreviewModel.h"
 
 @implementation IMPhotoPreviewModel
-
 @end

@@ -61,7 +61,7 @@ typedef void (^FinishedRowHeightCalculate)(CGFloat rowHeight, CGSize messageSize
 @property (nonatomic, copy) NSString *toUserId;
 // 消息接发送方
 @property (nonatomic, copy) NSString *fromUserName;
-// 消息接收方id
+// 消息发送方id
 @property (nonatomic, copy) NSString *fromUserId;
 // 消息id
 @property (nonatomic, copy) NSString *messageId;
@@ -140,7 +140,12 @@ typedef void (^FinishedRowHeightCalculate)(CGFloat rowHeight, CGSize messageSize
 @property (nonatomic, assign) BOOL isDelayShowSendStatus;
 // 消息已经发送失败
 @property (nonatomic, assign) BOOL isFailed;
+// 消息类型，用于列表显示消息类型
+@property (nonatomic, strong, readonly) NSString *messageBody;
 
+
+//  model 转json
+- (NSString  *)modelConverJson;
 
 /**
  消息处理
@@ -161,13 +166,16 @@ typedef void (^FinishedRowHeightCalculate)(CGFloat rowHeight, CGSize messageSize
 
 
 /**
- Dictionary  转换为model
+ CoreDataObject  转换为model
  
  @param obj 当前需要转换的字典
  @param complete 其他操作回调
- @return 返回一个由dictionary 转换为 Model 的MessgaeModel
+ @return 返回一个由CoreDataObject 转换为 Model 的MessgaeModel
  */
-+ (IMMessageModel *)modelWithDictionary:(NSDictionary *)obj complete:(IMMessageModel * _Nonnull (^)(IMMessageModel *objModel,NSDictionary *objDict))complete;
++ (IMMessageModel *)modelWithCoreDataObject:(XMPPMessageArchiving_Message_CoreDataObject *)obj
+                                   complete:(IMMessageModel * _Nonnull (^)(IMMessageModel *objModel,XMPPMessageArchiving_Message_CoreDataObject *obj))complete;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -27,7 +27,7 @@
 // 消息数据
 @property (nonatomic, strong) IMMessageModel *messageModel;
 // 所属会话
-@property (nonatomic, strong) KConversationModel *conversation;
+@property (nonatomic, strong) IMConversationModel *conversation;
 
 @property (nonatomic, strong) NSIndexPath   *indexPath;
 // jsonStr消息未发送成功，需要读取此值

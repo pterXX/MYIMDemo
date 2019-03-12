@@ -189,10 +189,6 @@ static const CGFloat EMOJI_SPACE = 2;
 
 #define KXINIUID                [[IMAppDefaultUtil sharedInstance] getXiniuID]
 
-// 临时附件路径
-#define KAttachmentTempPath     [kTmpDir stringByAppendingPathComponent:@"tempAttach"]
-
-
 // 是否刷新消息列表
 #define KIsRefreshMessageView   [[NSUserDefaults standardUserDefaults] boolForKey:@"isRefreshMessageView"]
 

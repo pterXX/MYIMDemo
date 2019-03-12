@@ -119,7 +119,7 @@
 //  请求好友列表
 - (void)requestUserStoreage{
     XMPPRosterMemoryStorage *storage = KIMXMPPHelper.xmppRosterMemoryStorage;
-    self.dataSource = [storage sortedUsersByName].mutableCopy;
+    self.dataSource = [storage sortedUsersByAvailabilityName].mutableCopy;
     /*
     NSArray *array = [storage sortedUsersByName];
     [array enumerateObjectsUsingBlock:^(XMPPUserMemoryStorageObject * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {

@@ -97,7 +97,7 @@
     }
 
     _titleLabel.text = conversation.conversationName;
-    if ((!conversation.conversationName || conversation.conversationName.length == 0) && [conversation.toUserId isEqualToString:KXINIUID]) {
+    if ((!conversation.conversationName || conversation.conversationName.length == 0) && [conversation.chatToJid.user isEqualToString:[IMXMPPHelper sharedHelper].myJID.user]) {
         _titleLabel.text = [[IMAppDefaultUtil sharedInstance] getUserName];
     }
     

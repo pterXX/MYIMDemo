@@ -51,6 +51,16 @@
     return [self pathForDirectory:NSCachesDirectory];
 }
 
++ (NSURL *)tempURL
+{
+    return [NSURL fileURLWithPath:NSTemporaryDirectory()];
+}
+
++ (NSString *)tempPath
+{
+    return NSTemporaryDirectory();
+}
+
 + (BOOL)addSkipBackupAttributeToFile:(NSString *)path
 {
     return [[NSURL.alloc initFileURLWithPath:path] setResourceValue:@(YES) forKey:NSURLIsExcludedFromBackupKey error:nil];
@@ -63,6 +73,44 @@
     return [attributes[NSFileSystemFreeSize] unsignedLongLongValue] / (double)0x100000;
 }
 
++ (NSString *)pathTempSettingImage:(NSString *)imageName
+{
+    NSString *path = [NSString stringWithFormat:@"%@/User/%@/Setting/Images/", [NSFileManager tempPath], [IMUserHelper sharedHelper].userID];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        NSError *error;
+        [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
+        if (error) {
+            DDLogError(@"File Create Failed: %@", path);
+        }
+    }
+    return [path stringByAppendingString:imageName];
+}
+
++ (NSString *)pathTempSettingVideo:(NSString *)video
+{
+    NSString *path = [NSString stringWithFormat:@"%@/User/%@/Setting/Videos/", [NSFileManager tempPath], [IMUserHelper sharedHelper].userID];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        NSError *error;
+        [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
+        if (error) {
+            DDLogError(@"File Create Failed: %@", path);
+        }
+    }
+    return [path stringByAppendingString:video];
+}
+
++ (NSString *)pathTempSettingVoice:(NSString *)voice
+{
+    NSString *path = [NSString stringWithFormat:@"%@/User/%@/Setting/Voice/", [NSFileManager tempPath], [IMUserHelper sharedHelper].userID];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        NSError *error;
+        [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
+        if (error) {
+            DDLogError(@"File Create Failed: %@", path);
+        }
+    }
+    return [path stringByAppendingString:voice];
+}
 
 + (NSString *)pathUserSettingImage:(NSString *)imageName
 {

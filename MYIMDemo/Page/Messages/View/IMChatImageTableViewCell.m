@@ -74,6 +74,10 @@
                     NSString *imagePath = [NSString stringWithFormat:@"%@/%@", kDocDir, filePath];
                     UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
                     self.messageImageView.image = image;
+                }else{
+                    NSData *imageData = [[NSData alloc] initWithBase64EncodedString:messageModel.content options:NSDataBase64DecodingIgnoreUnknownCharacters];
+                    UIImage *image = [UIImage imageWithData:imageData];
+                    self.messageImageView.image = image;
                 }
             }
         }

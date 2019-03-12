@@ -246,7 +246,7 @@ static char *recordIndexPathRowKey = "recordIndexPathRow";
         NSString *recorderTime = [NSDate getCurrentTimestamp];
         NSString *foldName = [NSString stringWithFormat:@"%@.aac", recorderTime];
         
-        weakSelf.audioUrl = [KAttachmentTempPath stringByAppendingPathComponent:foldName];
+        weakSelf.audioUrl = [NSFileManager pathTempSettingVoice:foldName];
         
         NSError *error = nil;
         weakSelf.audioRecorder = [[AVAudioRecorder alloc] initWithURL:[NSURL fileURLWithPath:weakSelf.audioUrl] settings:weakSelf.recordSetting error:&error];

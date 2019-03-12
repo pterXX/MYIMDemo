@@ -52,7 +52,7 @@
                   moduleName = "MYIMDemo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/admin/Documents/GitHub/MYIMDemo/MYIMDemo/Page/Messages/View/IMMessagesListTableViewCell.h"
-                  timestampString = "573988256.715956"
+                  timestampString = "574075934.32801"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
@@ -67,7 +67,7 @@
                   moduleName = "MYIMDemo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/admin/Documents/GitHub/MYIMDemo/MYIMDemo/Page/Messages/View/IMMessagesListTableViewCell.h"
-                  timestampString = "573988256.717757"
+                  timestampString = "574075934.329685"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
@@ -99,14 +99,30 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MYIMDemo/XMPPHelper/IMXMPPHelper.m"
-            timestampString = "573990171.581813"
+            filePath = "Pods/XMPPFramework/Extensions/XEP-0335/NSXMLElement+XEP_0335.m"
+            timestampString = "574065001.42237"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
-            landmarkName = "IMXMPPHelper"
-            landmarkType = "3">
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "-JSONContainerData"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MYIMDemo/XMPPHelper/IMXMPPHelper.m"
+            timestampString = "574075934.148113"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "268"
+            endingLineNumber = "268"
+            landmarkName = "-xmppStream:didNotAuthenticate:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

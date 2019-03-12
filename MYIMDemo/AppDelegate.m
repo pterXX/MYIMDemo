@@ -26,6 +26,8 @@
     
     //  初始化xmpp,默认打开手动验证证书
     KIMXMPPHelper.customCertEvaluation = YES;
+    //  是否以base64的方式传文件
+    KIMXMPPHelper.fileUploadIsBase64 = YES;
     
 
     return YES;

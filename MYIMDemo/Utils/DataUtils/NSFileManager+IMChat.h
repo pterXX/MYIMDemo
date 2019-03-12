@@ -21,6 +21,8 @@
 + (NSURL *)cachesURL;
 + (NSString *)cachesPath;
 
++ (NSURL *)tempURL;
++ (NSString *)tempPath;
 
 + (BOOL)addSkipBackupAttributeToFile:(NSString *)path;
 
@@ -30,6 +32,21 @@
  *  图片 — 设置
  */
 + (NSString *)pathUserSettingImage:(NSString *)imageName;
+
+/**
+ *  图片临时文件地址
+ */
++ (NSString *)pathTempSettingImage:(NSString *)imageName;
+
+/**
+ *  视频临时文件地址
+ */
++ (NSString *)pathTempSettingVideo:(NSString *)video;
+
+/**
+ *  语音临时文件地址
+ */
++ (NSString *)pathTempSettingVoice:(NSString *)voice;
 
 /**
  *  图片 — 聊天

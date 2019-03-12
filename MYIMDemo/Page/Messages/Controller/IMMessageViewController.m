@@ -205,7 +205,9 @@
         [SVProgressHUD dismissWithDelay:2];
     }];
     YCMenuAction *action1 = [YCMenuAction actionWithTitle:@"添加朋友" image:[UIImage imageMenuAddFriends] handler:^(YCMenuAction *action) {
-        [weakSelf.navigationController pushViewController:[[IMAddFriendsViewController alloc] init] animated:YES];
+        IMAddFriendsViewController *vc = [[IMAddFriendsViewController alloc] init];
+        vc.hidesBottomBarWhenPushed = YES;
+        [weakSelf.navigationController pushViewController:vc animated:YES];
     }];
     YCMenuAction *action2 = [YCMenuAction actionWithTitle:@"扫一扫" image:[UIImage imageMenuScan] handler:^(YCMenuAction *action) {
         [SVProgressHUD showInfoWithStatus:@"功能尚未实现"];
@@ -448,7 +450,7 @@
             model.conversationName    = obj[conversation_name_key];
             model.badgeNumber         = [obj[unreead_num_key] intValue];
             model.headImage           = obj[head_img_key];
-            model.toUserId            = obj[to_user_id_key];
+            model.chatToJid           = nil;
             
             NSDictionary *msgdic      = obj[msg_key];
             

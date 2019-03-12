@@ -177,6 +177,11 @@
     return timeString;
 }
 
++(NSString *)getNowTimestamp:(NSDate *)date{
+    //时间转时间戳的方法:
+    return [[NSNumber numberWithDouble:[date timeIntervalSince1970]] stringValue];
+}
+
 /**
  消息模块部分
  根据不同格式，格式化时间戳

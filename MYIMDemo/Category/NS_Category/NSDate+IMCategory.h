@@ -58,6 +58,8 @@
 
 // 获取当前时间戳
 + (NSString *)getCurrentTimestamp;
+//  获取指定时间的时间戳
++(NSString *)getNowTimestamp:(NSDate *)date;
 
 /**
  消息模块部分

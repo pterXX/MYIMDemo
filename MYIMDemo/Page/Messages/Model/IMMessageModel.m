@@ -7,6 +7,7 @@
 //
 
 #import "IMMessageModel.h"
+#import "NSDictionary+Json.h"
 
 @implementation IMMessageModel
 - (instancetype)init {
@@ -45,6 +46,17 @@
         _messageSize = CGSizeMake(_messageSize.width, _messageSize.height + 40);
         _cellHeight = _cellHeight + 40;
     }
+}
+
+- (NSData *)fileData{
+    if (_fileData == nil && (self.msgType == IMMessageTypeImage || self.msgType == IMMessageTypeVideo)) {
+        if ([_content isKindOfClass:[NSData class]]) {
+            _fileData = _content;
+        }else{
+             _fileData = [[NSData alloc] initWithBase64EncodedString:self.content options:NSDataBase64DecodingIgnoreUnknownCharacters];
+        }
+    }
+    return _fileData;
 }
 
 - (NSString *)contentSynopsis {
@@ -90,6 +102,54 @@
     }
 }
 
+- (NSString *)messageBody{
+    switch (_msgType) {
+        case IMMessageTypeNone:   // 头部 其他
+            return @"[未知消息]";
+            break;
+        case IMMessageTypeText :    // 文字消息  包含表情
+            return self.content;
+            break;
+        case IMMessageTypeVoice:       // 语音消息
+            return @"[语音]";
+            break;
+        case IMMessageTypeImage:       // 图片消息
+            return @"[图片]";
+            break;
+        case IMMessageTypeMail:        // 邮件消息
+            return @"[邮件]";
+            break;
+        case IMMessageTypeVideo:       // 视频消息
+            return @"[视频]";
+            break;
+        case IMMessageTypeFile:       // 文件消息
+            return @"[文件]";
+            break;
+        case IMMessageTypeLocation:    // 位置消息
+            return @"[位置]";
+            break;
+        case IMMessageTypeCard:         // 名片消息
+            return @"[名片]";
+            break;
+        default:
+            break;
+    }
+}
+
+
+- (NSString *)modelConverJson{
+    //  如果包含文件
+    NSMutableDictionary *dict = @{
+                       msg_id_key:IMNoNilString(self.messageId),
+                       msg_type_key:IMStirngFormat(@"%ld",(long)self.msgType),
+                       msg_content_key:self.content,
+                       chat_type_key:IMStirngFormat(@"%ld",(long)self.messageChatType),
+                       send_time_key:IMNoNilString(self.sendTime),
+                       voice_time_key:IMNoNilString(self.voiceTime),
+                       picture_type_key:IMStirngFormat(@"%ld",(long)self.pictureType),
+                       }.mutableCopy;
+    return [dict dictionaryTurnJson];
+}
 
 /**
  消息处理
@@ -165,12 +225,11 @@
                         }
                         else {
                             if ([path containsString:@"http://"] || [path containsString:@"https://"]) {
-                                
-                                //                                [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:_content] options:0 progress:nil completed:^(UIImage *image1, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-                                //                                    if (!error) {
-                                //                                        [weakSelf photoHeightWithImageWidth:image1.size.width imageHeight:image1.size.height complete:finishedCalculate];
-                                //                                    }
-                                //                                }];
+                                [[SDWebImageManager sharedManager] loadImageWithURL:[NSURL URLWithString:_content] options:0 progress:nil completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
+                                    if (!error) {
+                                        [weakSelf photoHeightWithImageWidth:image.size.width imageHeight:image.size.height complete:finishedCalculate];
+                                    }
+                                }];
                                 return;
                             }
                         }
@@ -361,39 +420,38 @@
 }
 
 
+
+
 /**
- Dictionary  转换为model
+ CoreDataObject  转换为model
  
  @param obj 当前需要转换的字典
  @param complete 其他操作回调
- @return 返回一个由dictionary 转换为 Model 的MessgaeModel
+ @return 返回一个由CoreDataObject 转换为 Model 的MessgaeModel
  */
-+ (IMMessageModel *)modelWithDictionary:(NSDictionary *)obj complete:(IMMessageModel * _Nonnull (^)(IMMessageModel *objModel,NSDictionary *objDict))complete{
-    IMMessageModel *model  = [IMMessageModel new];
-    model.messageId       = obj[msg_id_key];
-    model.msgType         = [obj[msg_type_key]intValue];
-    model.cellHeight      = [obj[cell_height_key] floatValue];
-    model.messageSize     = CGSizeMake([obj[msg_width_key] floatValue], [obj[msg_height_key] floatValue]);
-    model.messageChatType = [obj[chat_type_key] intValue];
-    model.content         = obj[msg_content_key];
-    model.fromUserId      = obj[from_user_id_key];
-    model.toUserId        = obj[to_user_id_key];
-    model.pictureType     = [obj[picture_type_key] intValue];
-    model.recvTime        = obj[recv_time_key];
-    model.toUserAvatar    = obj[head_img_key];
-    model.sendTime        = obj[send_time_key];
-    model.duringTime      = [obj[voice_time_key] intValue];
-    model.direction       = ![obj[from_user_id_key]isEqualToString:@"143701"];
-    model.uid             = obj[uid_key];
-    model.emailId         = obj[email_id_key];
-    model.subject         = obj[subject_key] ? obj[subject_key] : obj[msg_content_key];
-    model.attach          = [obj[attach_key] integerValue];
-    //            NSString *contentSynopsis = obj[@"contentSynopsis"];
-    //            contentSynopsis       = [contentSynopsis flattenHTML];
-    //            model.contentSynopsis = [contentSynopsis filterLineBreaks];
-    model.messageSendStatus = [obj[send_status_key] integerValue];
-    model.aotoResend      = model.messageSendStatus == IMMessageSendStatusSending;
++ (IMMessageModel *)modelWithCoreDataObject:(XMPPMessageArchiving_Message_CoreDataObject *)obj complete:(IMMessageModel * _Nonnull (^)(IMMessageModel *objModel,XMPPMessageArchiving_Message_CoreDataObject *obj))complete{
     
+    XMPPMessage *message = obj.message;
+    NSString *str = [[message elementForName:kMessageElementDataBodyName] stringValue];
+    NSDictionary *objDict = [NSDictionary dictionaryWithJsonString:str];
+    IMMessageModel *model  = [IMMessageModel new];
+    if (objDict.count > 0) {
+        model.messageId       = objDict[msg_id_key];
+        model.msgType         = [objDict[msg_type_key] intValue];
+        model.messageChatType = [objDict[chat_type_key] intValue];
+        model.content         = objDict[msg_content_key];
+        model.recvTime        = objDict[send_time_key];
+    }
+    if (model.content == nil) {
+        model.content = obj.message.body;
+    }
+    
+    if (model.recvTime.length == 0) {
+        model.recvTime = [NSDate getNowTimestamp:obj.timestamp];
+    }
+    
+    model.direction = obj.isOutgoing?IMMessageSenderTypeSender:IMMessageSenderTypeReceiver;
+    model.aotoResend = model.messageSendStatus == IMMessageSendStatusSending;
     if (model.msgType == IMMessageTypeText) {
         CGSize messageSize = [model.messageAtt boundingRectWithSize:CGSizeMake(ceil(MESSAGE_MAX_WIDTH)-10, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
         messageSize = CGSizeMake(ceil(messageSize.width) + 10, ceil(messageSize.height) + 16);
@@ -412,6 +470,4 @@
     
     return model;
 }
-
-
 @end

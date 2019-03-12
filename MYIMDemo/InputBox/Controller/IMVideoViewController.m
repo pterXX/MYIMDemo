@@ -325,8 +325,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
             connection.videoOrientation = [self.previewLayer connection].videoOrientation;
             
             NSString *fileName = [NSString stringWithFormat:@"%@.mov", [NSDate getCurrentTimestamp]];
-            
-            _outputFielPath = [KAttachmentTempPath stringByAppendingPathComponent:fileName];
+            _outputFielPath =  [NSFileManager pathTempSettingVideo:fileName];
             NSLog(@"save path is :%@",_outputFielPath);
             NSURL *fileUrl = [NSURL fileURLWithPath:_outputFielPath];
 //            NSLog(@"fileUrl:%@",fileUrl);
@@ -397,7 +396,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
             UIImageWriteToSavedPhotosAlbum(self.takeImage, self, nil, nil);
             NSString *fileName = [NSString stringWithFormat:@"%@.png", [NSDate getCurrentTimestamp]];
             // 保存文件的名称
-            self.imagePath = [KAttachmentTempPath stringByAppendingPathComponent:fileName];
+            self.imagePath = [NSFileManager pathTempSettingImage:fileName];
             // 保存成功会返回YES
             BOOL result = [UIImagePNGRepresentation(self.takeImage) writeToFile:self.imagePath atomically:YES];
             if (!result) {

@@ -11,7 +11,7 @@
 
 @class IMMessageModel;
 @class IMChatTableViewCell;
-@class KConversationModel;
+@class IMConversationModel;
 @class IMChatMailTableViewCell;
 @class IMChatVoiceTableViewCell;
 
@@ -40,7 +40,7 @@
  @param conversationModel 会话信息
  @param messageModel 消息
  */
-- (void)chatTableViewCell:(IMChatTableViewCell *)tableViewCell clickResendMessageWithConversationModel:(KConversationModel *)conversationModel messageModel:(IMMessageModel *)messageModel;
+- (void)chatTableViewCell:(IMChatTableViewCell *)tableViewCell clickResendMessageWithConversationModel:(IMConversationModel *)conversationModel messageModel:(IMMessageModel *)messageModel;
 
 /**
  点击回复邮件

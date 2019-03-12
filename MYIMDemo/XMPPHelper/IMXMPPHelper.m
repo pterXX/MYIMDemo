@@ -113,7 +113,7 @@ static IMXMPPHelper *helper;
     [_xmppStream disconnect];
     [_xmppStream connectWithTimeout:XMPPStreamTimeoutNone error:&error];
     if (error) {
-        NSLog(@"%@",error);
+        DDLogInfo(@"%@",error);
         [self failCompleteCode:IMXMPPErrorCodeConnect description:@"连接失败,请检查服务器地址"];
     }
 }
@@ -140,7 +140,7 @@ static IMXMPPHelper *helper;
         //  用户登录，发送身份验证请求
         [[self xmppStream] authenticateWithPassword:self.userHelper.password error:&error];
     }
-    if (error) NSLog(@"%@",error);
+    if (error) DDLogInfo(@"%@",error);
 }
 
 -(void)logOut{
@@ -160,25 +160,36 @@ static IMXMPPHelper *helper;
 }
 
 // 发送消息
-- (void)sendMessage:(NSString *)message to:(XMPPJID *)jid{
+- (void)sendMessageModel:(IMMessageModel *)message to:(XMPPJID *)jid{
     XMPPMessage* newMessage = [[XMPPMessage alloc] initWithType:@"chat" to:jid];
-    [newMessage addBody:message]; //消息内容
+    if (message.messageId.isEmptyString) {
+        message.messageId = [NSDate getCurrentTimestamp];
+    }
+    if (message.fileData && self.fileUploadIsBase64) {
+       message.content = [message.fileData base64EncodedStringWithOptions:0];
+    }
+    [newMessage addOriginId:message.messageId];
+    [newMessage addBody:message.messageBody]; //消息内容
+    XMPPElement *dataBody = [XMPPElement elementWithName:kMessageElementDataBodyName stringValue:[message modelConverJson]];
+    [newMessage addChild:dataBody];
     [_xmppStream sendElement:newMessage];
 }
 
+/*
 //  发送图片
 - (void)sendImage:(UIImage *)img to:(XMPPJID *)jid{
     [img compressedWithImageKilobyte:1024 imageBlock:^(NSData *imageData) {
-         [self sendMessageWithData:imageData bodyName:@"name" chatType:@"img" to:jid];
+         [self sendMessageWithData:imageData bodyName:@"[图片]" chatType:@"img" to:jid];
     }];
 }
 
-//  发送图片
+//  发送语音
 - (void)sendVoice:(UIImage *)img to:(XMPPJID *)jid{
     [img compressedWithImageKilobyte:1024 imageBlock:^(NSData *imageData) {
-        [self sendMessageWithData:imageData bodyName:@"name" chatType:@"img" to:jid];
+        [self sendMessageWithData:imageData bodyName:@"[语音]" chatType:@"voice" to:jid];
     }];
 }
+
 
 // 发送二进制文件
 - (void)sendMessageWithData:(NSData *)data bodyName:(NSString *)name chatType:(NSString *)chatType to:(XMPPJID *)jid {
@@ -195,6 +206,7 @@ static IMXMPPHelper *helper;
     // 发送消息
     [_xmppStream sendElement:message];
 }
+*/
 
 //  添加请求
 - (void)addFriend:(IMUser *)user{
@@ -222,13 +234,12 @@ static IMXMPPHelper *helper;
 #pragma mark ------ 连接
 //将要连接
 - (void)xmppStreamWillConnect:(XMPPStream *)sender{
-    NSLog(@"将要连接服务器");
+    DDLogInfo(@"将要连接服务器");
 }
 
 //已经连接
 - (void)xmppStreamDidConnect:(XMPPStream *)sender{
-    NSLog(@"已经连接服务器");
-    NSError *error = nil;
+    DDLogInfo(@"已经连接服务器");
     //  用户授权
     [self userAuth];
 }
@@ -242,7 +253,7 @@ static IMXMPPHelper *helper;
 #pragma mark ------ 授权
 //已经授权
 - (void)xmppStreamDidAuthenticate:(XMPPStream *)sender{
-    NSLog(@"登录成功");
+    DDLogInfo(@"登录成功");
     [self goOnline];
     //  登录成功后的回调
     [self successComplete];
@@ -253,7 +264,7 @@ static IMXMPPHelper *helper;
 
 // 授权失败
 - (void)xmppStream:(XMPPStream *)sender didNotAuthenticate:(NSXMLElement *)error{
-    NSLog(@"登录授权失败 %@",error);
+    DDLogError(@"登录授权失败 %@",error);
     [self failCompleteCode:IMXMPPErrorCodeLogin description:@"登录失败,请检查登录账户和密码"];
 }
 
@@ -266,7 +277,7 @@ static IMXMPPHelper *helper;
 }
 
 - (void)xmppStream:(XMPPStream *)sender didNotRegister:(NSXMLElement *)error{
-    NSLog(@"注册授权失败 %@",error);
+    DDLogError(@"注册授权失败 %@",error);
     NSString *str = [self analysisForDDXMLElement:error elementsName:@"error" nodeName:@"code"];
     if (str && [str isEqualToString:@"409"]) {
         [self failCompleteCode:IMXMPPErrorCodeDidRegister description:@"注册失败,请检查登录账户和密码"];
@@ -298,21 +309,21 @@ static IMXMPPHelper *helper;
 
 #pragma mark -- XMPPMessage Delegate
 - (void)xmppStream:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message{
-    NSLog(@"接收消息--%@",message);
+    DDLogInfo(@"接收消息--%@",message);
     if (self.messageReceiveBlock) {
         self.messageReceiveBlock(message);
     }
 }
 
 - (void)xmppStream:(XMPPStream *)sender didSendMessage:(XMPPMessage *)message{
-    NSLog(@"发送消息成功--%@", message);
+    DDLogInfo(@"发送消息成功--%@", message);
     if (self.messageSendBlock) {
         self.messageSendBlock(message);
     }
 }
 
 - (void)xmppStream:(XMPPStream *)sender didFailToSendMessage:(XMPPMessage *)message error:(NSError *)error{
-    NSLog(@"发送消息失败--%@", message);
+    DDLogError(@"发送消息失败--%@", message);
     if (self.messageSendFailBlock) {
         self.messageSendFailBlock(message);
     }
@@ -321,20 +332,20 @@ static IMXMPPHelper *helper;
 #pragma mark -- Roster
 //  好友改变
 - (void)xmppRosterDidChange:(XMPPRosterMemoryStorage *)sender{
-    NSLog(@"好友列表改变");
+    DDLogInfo(@"好友列表改变");
 //    [IMNotificationCenter postNotificationName:kXmppRosterChangeNot object:nil];
 }
 
 //  收到好友列表IQ会进入的方法，并且已经存入我的存储器
 - (void)xmppRosterDidEndPopulating:(XMPPRoster *)sender{
-    NSLog(@"好友列表改变");
+    DDLogInfo(@"好友列表改变");
     [IMNotificationCenter postNotificationName:kXmppRosterChangeNot object:nil];
 }
 
 /** 收到出席订阅请求（代表对方想添加自己为好友) */
 - (void)xmppRoster:(XMPPRoster *)sender didReceivePresenceSubscriptionRequest:(XMPPPresence *)presence
 {
-    NSLog(@"订阅请求 %@",presence);
+    DDLogInfo(@"订阅请求 %@",presence);
     //添加好友一定会订阅对方，但是接受订阅不一定要添加对方为好友
     [IMNotificationCenter postNotificationName:kXmppSubscriptionRequestNot object:presence];
     
@@ -346,7 +357,7 @@ static IMXMPPHelper *helper;
 
 - (void)xmppStream:(XMPPStream *)sender didReceivePresence:(XMPPPresence *)presence
 {
-    NSLog(@"%s",__FUNCTION__);
+    DDLogInfo(@"%@",presence);
     //收到对方取消定阅我得消息
     if ([presence.type isEqualToString:kUnsubscribe]) {
         //从我的本地通讯录中将他移除
@@ -376,7 +387,7 @@ static IMXMPPHelper *helper;
 
 //是否同意对方发文件
 - (void)xmppIncomingFileTransfer:(XMPPIncomingFileTransfer *)sender didReceiveSIOffer:(XMPPIQ *)offer{
-    NSLog(@"%s",__FUNCTION__);
+    DDLogInfo(@"%s",__FUNCTION__);
     [self.xmppIncomingFileTransfer acceptSIOffer:offer];
 }
 

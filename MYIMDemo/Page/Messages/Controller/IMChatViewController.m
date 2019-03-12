@@ -217,7 +217,6 @@
 }
 
 - (void)initData {
-    
     isAuthorized          = NO;
     _isEnterSend          = YES;
     indexPathRow          = -1;
@@ -239,6 +238,18 @@
     
     // 获取会话消息
     [self getMessagesDataWithMessageId:@"0"];
+    
+    [KIMXMPPHelper setMessageSendBlock:^(XMPPMessage * _Nonnull message) {
+        
+    }];
+    
+    [KIMXMPPHelper setMessageSendFailBlock:^(XMPPMessage * _Nonnull message) {
+        
+    }];
+    
+    [KIMXMPPHelper setMessageReceiveBlock:^(XMPPMessage * _Nonnull message) {
+        
+    }];
 }
 
 // 有未读消息时通知服务器，这些消息已被标记为已读
@@ -298,6 +309,7 @@
                                                                    ascending:YES];
     [fetchRequest setSortDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
     
+    kWeakSelf;
     NSError *error = nil;
     NSArray *fetchedObjects = [storage.mainThreadManagedObjectContext executeFetchRequest:fetchRequest error:&error];
     if (fetchedObjects != nil ) {
@@ -305,69 +317,53 @@
         __block IMMessageModel *previousMessage = nil;
         __block NSInteger num = 0;
         NSArray *array = [fetchedObjects zh_enumerateObjectsUsingBlock:^id(XMPPMessageArchiving_Message_CoreDataObject * obj) {
-            IMMessageModel *model = [[IMMessageModel alloc] init];
-            model.content = obj.message.body;
-            model.msgType = obj.message.isChatMessage?IMMessageTypeText:IMMessageTypeImage;
-            model.direction = obj.isOutgoing?IMMessageSenderTypeSender:IMMessageSenderTypeReceiver;
-            if (model.msgType == IMMessageTypeText) {
-                CGSize messageSize = [model.messageAtt boundingRectWithSize:CGSizeMake(ceil(MESSAGE_MAX_WIDTH)-10, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
-                messageSize = CGSizeMake(ceil(messageSize.width) + 10, ceil(messageSize.height) + 16);
-                if (model.messageSize.width != messageSize.width || model.messageSize.height != messageSize.height) {
-                    model.cellHeight = -1;
-                    model.messageSize = CGSizeMake(-1, -1);
+            return  [IMMessageModel modelWithCoreDataObject:obj complete:^IMMessageModel * _Nonnull(IMMessageModel * _Nonnull objModel, XMPPMessageArchiving_Message_CoreDataObject * _Nonnull coreDataobj) {
+                objModel.lastMessage     = previousMessage;
+                NSTimeInterval prevTime = 0;
+                NSTimeInterval lastTime = 0;
+                if (objModel.direction == IMMessageSenderTypeSender) {
+                    lastTime = [objModel.sendTime integerValue];
                 }
-            }
-            
-            model.lastMessage     = previousMessage;
-            NSTimeInterval prevTime = 0;
-            NSTimeInterval lastTime = 0;
-            if (model.direction == IMMessageSenderTypeSender) {
-                lastTime = [model.sendTime integerValue];
-            }
-            else {
-                lastTime = [model.recvTime integerValue];
-            }
-            
-            if (previousMessage.direction == IMMessageSenderTypeSender) {
-                prevTime = [previousMessage.sendTime integerValue];
-            }
-            else {
-                prevTime = [previousMessage.recvTime integerValue];
-            }
-            
-            BOOL isShowTime       = [NSDate showTimeWithPreviousTime:prevTime lastTime:lastTime];
-            
-            model.showMessageTime = isShowTime;
-            previousMessage       = model;
-            
-            if (model.msgType == IMMessageTypeImage && model.cellHeight == -1) {
-                CGFloat showTimeHeight = isShowTime ? SHOW_MESSAGE_TIME_HEIGHT : 0;
-                [model messageProcessingWithFinishedCalculate:^(CGFloat rowHeight, CGSize messageSize, BOOL complete) { }];
-                model.estimateHeight = 200 + showTimeHeight;
-                model.estimateSize   = CGSizeMake(102, model.estimateHeight - showTimeHeight - 20);
-            }
-            else {
-                [model messageProcessingWithFinishedCalculate:^(CGFloat rowHeight, CGSize messageSize, BOOL complete) { }];
-            }
-            
-            if ([obj[@"msg_type"] intValue] == IMMessageTypeImage)
-            {
-                IMPhotoPreviewModel *model = [IMPhotoPreviewModel new];
-                model.messageId    = obj[@"msg_id"];
-                model.content      = obj[@"content"];
+                else {
+                    lastTime = [objModel.recvTime integerValue];
+                }
                 
-                if (isFirstLoad)
-                {
-                    [weakSelf.allImageDatas addObject:model];
+                if (previousMessage.direction == IMMessageSenderTypeSender) {
+                    prevTime = [previousMessage.sendTime integerValue];
                 }
-                else
-                {
-                    [weakSelf.allImageDatas insertObject:model atIndex:num];
-                    num ++;
+                else {
+                    prevTime = [previousMessage.recvTime integerValue];
                 }
-            }
-            
-            return model;
+                
+                BOOL isShowTime       = [NSDate showTimeWithPreviousTime:prevTime lastTime:lastTime];
+                
+                objModel.showMessageTime = isShowTime;
+                previousMessage       = objModel;
+                
+                if (objModel.msgType == IMMessageTypeImage && objModel.cellHeight == -1) {
+                    CGFloat showTimeHeight = isShowTime ? SHOW_MESSAGE_TIME_HEIGHT : 0;
+                    [objModel messageProcessingWithFinishedCalculate:^(CGFloat rowHeight, CGSize messageSize, BOOL complete) { }];
+                    objModel.estimateHeight = 200 + showTimeHeight;
+                    objModel.estimateSize   = CGSizeMake(102, objModel.estimateHeight - showTimeHeight - 20);
+                }
+                else {
+                    [objModel messageProcessingWithFinishedCalculate:^(CGFloat rowHeight, CGSize messageSize, BOOL complete) { }];
+                }
+                
+                if (objModel.msgType == IMMessageTypeImage){
+                    IMPhotoPreviewModel *model = [IMPhotoPreviewModel new];
+                    model.messageId    = objModel.messageId;
+                    model.content      = objModel.fileData;
+                    if (isFirstLoad){
+                        [weakSelf.allImageDatas addObject:model];
+                    }
+                    else{
+                        [weakSelf.allImageDatas insertObject:model atIndex:num];
+                        num ++;
+                    }
+                }
+                return objModel;
+            }];
         }];
         [self.dataSource addObjectsFromArray:array];
     }
@@ -547,7 +543,7 @@
     {
         IMPhotoPreviewModel *photoModel = [IMPhotoPreviewModel new];
         photoModel.content   =  model.fileData ? model.fileData : model.content;
-        photoModel.videoUrl  = [model.content absoluteString];
+        photoModel.videoUrl  = model.content;
         photoModel.messageId = model.messageId;
         [self.allImageDatas addObject:photoModel];
     }
@@ -938,7 +934,7 @@
         NSMutableDictionary *messageDic       = [NSMutableDictionary dictionary];
         messageDic[msg_id_key]                 = @0;
         messageDic[to_user_name_key]           = model.conversationName;
-        messageDic[to_user_id_key]             = model.toUserId;
+        messageDic[to_user_id_key]             = model.chatToJid.user;
         messageDic[from_user_name_key]        = fromUserName;
         messageDic[from_user_id_key]          = KXINIUID;
         messageDic[from_employee_id_key]      = @"-1";
@@ -1030,7 +1026,7 @@
             }
             model.tapImageView        = videoCell.videoImageView;
             model.messageId           = msgModel.messageId;
-            model.videoUrl = [videoCell.messageModel.content absoluteString];
+            model.videoUrl = videoCell.messageModel.content;
             
             [visiblePhotoPreviews addObject:model];
         }
@@ -1043,7 +1039,6 @@
         crrentTapPhoto              = [IMPhotoPreviewModel new];
         crrentTapPhoto.messageId    = msgModel.messageId;
         crrentTapPhoto.tapImageView = imageCell.messageImageView;
-        
         crrentTapPhoto.content      = msgModel.fileData;
     }
     else if ([chatTableViewCell isKindOfClass:[IMChatVideoTableViewCell class]])
@@ -1057,13 +1052,12 @@
         if (messageModel.content) {
             crrentTapPhoto.content  = messageModel.content;
         }
-        crrentTapPhoto.videoUrl     = [messageModel.content absoluteString];
+        crrentTapPhoto.videoUrl     = messageModel.content;
     }
     
     self.imageDatas = [NSArray arrayWithArray:self.allImageDatas];
     __block NSInteger index = 0;
     [self.imageDatas enumerateObjectsUsingBlock:^(IMPhotoPreviewModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        
         if ([obj.messageId isEqualToString:self->crrentTapPhoto.messageId]) {
             index = idx;
         }
@@ -1120,7 +1114,6 @@
     model.sendTime          = currentTimeInterval;
     model.recvTime          = currentTimeInterval;
     model.toUserName        = _conversation.conversationName;
-    model.fromUserId        = KXINIUID;
     model.messageSendStatus = IMMessageSendStatusSendSuccess;
     model.lastMessage       = [self lastMessage];
     model.messageId         = currentTimeInterval;
@@ -1142,9 +1135,8 @@
             [self->sendMessage unlock];
             
         }];
-        //        向服务端发消息
-        [KIMXMPPHelper sendMessage:model.content to:self.conversation.chatToJid];
-        
+        //     向服务端发消息
+        [KIMXMPPHelper sendMessageModel:model to:self.conversation.chatToJid];
     });
 }
 
@@ -1274,6 +1266,9 @@
     [self.inputBoxCtrl.inputBox removeObserver:self forKeyPath:@"recordState" context:nil];
     [self.recordView removeFromSuperview];
     self.recordView = nil;
+    KIMXMPPHelper.messageSendBlock = nil;
+    KIMXMPPHelper.messageSendFailBlock = nil;
+    KIMXMPPHelper.messageReceiveBlock = nil;
 }
 
 @end
