@@ -14,14 +14,20 @@
 @property (nonatomic, strong) IMUser *user;
 
 @property (nonatomic ,strong) NSString  *userAccount;
+
 @property (nonatomic ,strong) NSString  *password;
 
 @property (nonatomic, strong, readonly) NSString *userID;
 
 @property (nonatomic, assign, readonly) BOOL isLogin;
 
-+ (IMUserHelper *)sharedHelper;
+//  好友列表
+@property (nonatomic, strong) NSMutableArray *friendArray;
+//  添加好友数据
+@property (nonatomic, strong) NSMutableArray *addFriendArray;
 
+
++ (IMUserHelper *)sharedHelper;
 
 /**
  测试账号

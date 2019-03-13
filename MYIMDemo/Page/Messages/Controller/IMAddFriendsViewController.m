@@ -130,9 +130,14 @@
             user.userID = uesrIDstr;
             user.username = uesrIDstr;
             user.avatarURL = kDebugAvatarURL;
-            [KIMXMPPHelper addFriend:user];
-            [SVProgressHUD showInfoWithStatus:IMStirngFormat(@"等待\"%@\"接受请求",uesrIDstr)];
-            [SVProgressHUD dismissWithDelay:2];
+            [KIMXMPPHelper addFriend:user success:^{
+                [SVProgressHUD showInfoWithStatus:IMStirngFormat(@"等待\"%@\"接受请求",uesrIDstr)];
+                [SVProgressHUD dismissWithDelay:2];
+            } fail:^(NSError * _Nonnull error) {
+                [SVProgressHUD showInfoWithStatus:@"好友已存在"];
+                [SVProgressHUD dismissWithDelay:2];
+            }];
+           
             //  返回上个页面
             [weakSelf im_backHandle];
         }

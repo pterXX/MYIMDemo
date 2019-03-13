@@ -15,13 +15,15 @@ static NSString * const kSubscribe     = @"subscribe";//  订阅
 static NSString * const kUnavailable   = @"unavailable";//  下线
 static NSString * const kUnsubscribe   = @"unsubscribe";//  取消订阅
 
-@interface IMXMPPHelper()<XMPPStreamDelegate,XMPPRosterMemoryStorageDelegate,XMPPRosterStorage>
+
+static NSString * const kRoster_both   = @"roster_both";
+
+@interface IMXMPPHelper()<XMPPStreamDelegate,XMPPRosterMemoryStorageDelegate,NSFetchedResultsControllerDelegate>
 
 @property (nonatomic ,assign) BOOL               xmppNeedRegister;// 是否是注册
 @property (nonatomic ,copy  ) IMXMPPFailBlock    fail;//  失败
 @property (nonatomic ,copy  ) IMXMPPSuccessBlock success;//  成功
-@property (nonatomic ,copy  ) XMPPPresence       *presence;// 代表用户在线状态
-
+@property (nonatomic ,copy  ) IMXMPPFriendsListBlock friendsListBlock; //  好友列表
 @end
 
 @implementation IMXMPPHelper
@@ -64,39 +66,61 @@ static IMXMPPHelper *helper;
         _xmppStream.enableBackgroundingOnSocket = YES;
         [_xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
         
-        _xmppReconnect = [[XMPPReconnect alloc] init];
-        [_xmppReconnect setAutoReconnect:YES];  //   是否自动重连
-        [_xmppReconnect activate:_xmppStream];
-        
-        //接入流管理模块，用于流恢复跟消息确认，在移动端很重要
-        _storage = [XMPPStreamManagementMemoryStorage new];
-        _xmppStreamManagement = [[XMPPStreamManagement alloc] initWithStorage:_storage];
-        _xmppStreamManagement.autoResume = YES;
-        [_xmppStreamManagement addDelegate:self delegateQueue:dispatch_get_main_queue()];
-        [_xmppStreamManagement activate:self.xmppStream];
-        
-        //接入好友模块，可以获取好友列表
-        _xmppRosterMemoryStorage  = [[XMPPRosterMemoryStorage  alloc] init];
-        _xmppRoster = [[XMPPRoster alloc] initWithRosterStorage:_xmppRosterMemoryStorage ];
-        [_xmppRoster activate:self.xmppStream];
-        [_xmppRoster addDelegate:self delegateQueue:dispatch_get_main_queue()];
-        //设置好友同步策略,XMPP一旦连接成功，同步好友到本地
-        [_xmppRoster setAutoFetchRoster:YES]; //自动同步，从服务器取出好友
-        //关掉自动接收好友请求，默认开启自动同意
-        [_xmppRoster setAutoAcceptKnownPresenceSubscriptionRequests:NO];
-
-        //接入消息模块，将消息存储到本地
-        _xmppMessageArchivingCoreDataStorage = [XMPPMessageArchivingCoreDataStorage sharedInstance];
-        _xmppMessageArchiving = [[XMPPMessageArchiving alloc] initWithMessageArchivingStorage:_xmppMessageArchivingCoreDataStorage dispatchQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 9)];
-        [_xmppMessageArchiving activate:self.xmppStream];
-        
-        //添加vCard模块
-        _vCardStorage = [XMPPvCardCoreDataStorage sharedInstance];
-        _vCardModule = [[XMPPvCardTempModule alloc] initWithvCardStorage: self.vCardStorage];
-        [self.vCardModule activate:_xmppStream];
-        _vCardAvatorModule = [[XMPPvCardAvatarModule alloc] initWithvCardTempModule:self.vCardModule];
-        [self.vCardAvatorModule activate:_xmppStream];
+        [self setupReconnect];
+        [self setupManagement];
+        [self setupRoster];
+        [self setupMessage];
+        [self setupVCard];
     }
+}
+
+//  重连模块
+- (void)setupReconnect{
+    _xmppReconnect = [[XMPPReconnect alloc] init];
+    [_xmppReconnect setAutoReconnect:YES];  //   是否自动重连
+    [_xmppReconnect activate:_xmppStream];
+}
+
+- (void)setupManagement{
+    //接入流管理模块，用于流恢复跟消息确认，在移动端很重要
+    _storage = [XMPPStreamManagementMemoryStorage new];
+    _xmppStreamManagement = [[XMPPStreamManagement alloc] initWithStorage:_storage];
+    _xmppStreamManagement.autoResume = YES;
+    [_xmppStreamManagement addDelegate:self delegateQueue:dispatch_get_main_queue()];
+    [_xmppStreamManagement activate:self.xmppStream];
+}
+
+//  好友模块
+- (void)setupRoster{
+    //接入好友模块，可以获取好友列表
+    _xmppRosterCoreDataStorage  = [XMPPRosterCoreDataStorage sharedInstance];
+    _xmppRoster = [[XMPPRoster alloc] initWithRosterStorage:_xmppRosterCoreDataStorage ];
+    [_xmppRoster activate:self.xmppStream];
+    [_xmppRoster addDelegate:self delegateQueue:dispatch_get_main_queue()];
+    //设置好友同步策略,XMPP一旦连接成功，同步好友到本地
+    [_xmppRoster setAutoFetchRoster:YES]; //自动同步，从服务器取出好友
+    //关掉自动接收好友请求，默认开启自动同意
+    [_xmppRoster setAutoAcceptKnownPresenceSubscriptionRequests:NO];
+    //  查询好友
+    [_xmppRoster fetchRoster];
+}
+
+//  消息模块
+- (void)setupMessage{
+    //接入消息模块，将消息存储到本地
+    _xmppMessageArchivingCoreDataStorage = [XMPPMessageArchivingCoreDataStorage sharedInstance];
+    _xmppMessageArchiving = [[XMPPMessageArchiving alloc] initWithMessageArchivingStorage:_xmppMessageArchivingCoreDataStorage dispatchQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 9)];
+    [_xmppMessageArchiving activate:self.xmppStream];
+}
+
+// 名片模块
+- (void)setupVCard{
+    //添加vCard模块
+    _vCardStorage = [XMPPvCardCoreDataStorage sharedInstance];
+    _vCardModule = [[XMPPvCardTempModule alloc] initWithvCardStorage: self.vCardStorage];
+    [self.vCardModule activate:_xmppStream];
+    _vCardAvatorModule = [[XMPPvCardAvatarModule alloc] initWithvCardTempModule:self.vCardModule];
+    [self.vCardAvatorModule activate:_xmppStream];
 }
 
 #pragma mark -- go onlie, offline
@@ -106,16 +130,20 @@ static IMXMPPHelper *helper;
     self.userHelper.password = password;
     self.success         = success;
     self.fail            = fail;
-    [self.xmppStream setMyJID:_myJID];
-    
-    NSError *error = nil;
-    // 如果以前连接过服务，要断开
-    [_xmppStream disconnect];
-    [_xmppStream connectWithTimeout:XMPPStreamTimeoutNone error:&error];
-    if (error) {
-        DDLogInfo(@"%@",error);
+    if (![self connect:_myJID]) {
         [self failCompleteCode:IMXMPPErrorCodeConnect description:@"连接失败,请检查服务器地址"];
     }
+}
+
+#pragma mark - 连接
+- (BOOL)connect:(XMPPJID *)jid {
+    //开连接
+    _xmppStream.myJID = jid;
+    // 如果以前连接过服务，要断开
+    [_xmppStream disconnect];
+    //开始连接服务器,返回连接状态
+    // XMPPStreamTimeoutNone永不超时
+    return [_xmppStream connectWithTimeout:XMPPStreamTimeoutNone error:nil];
 }
 
 //  登录
@@ -140,7 +168,7 @@ static IMXMPPHelper *helper;
         //  用户登录，发送身份验证请求
         [[self xmppStream] authenticateWithPassword:self.userHelper.password error:&error];
     }
-    if (error) DDLogInfo(@"%@",error);
+    if (error) DDLogError(@"%@",error);
 }
 
 -(void)logOut{
@@ -150,13 +178,15 @@ static IMXMPPHelper *helper;
 }
 
 - (void)goOnline{
-    XMPPPresence *presence = [XMPPPresence presence]; // type="available" is implicit
+    XMPPPresence *presence = [XMPPPresence presenceWithType:@"available"]; // type="available" is implicit
     [[self xmppStream] sendElement:presence];
 }
 
 - (void)goOffline{
-    XMPPPresence *presence = [XMPPPresence presenceWithType:@"unavailable"];
+    XMPPPresence *presence = [XMPPPresence presenceWithType:kUnavailable to:self.myJID];
+    //    presence.priority = 1; //  设置这个后才能接收离线消息
     [[self xmppStream] sendElement:presence];
+    
 }
 
 // 发送消息
@@ -166,7 +196,7 @@ static IMXMPPHelper *helper;
         message.messageId = [NSDate getCurrentTimestamp];
     }
     if (message.fileData && self.fileUploadIsBase64) {
-       message.content = [message.fileData base64EncodedStringWithOptions:0];
+        message.content = [message.fileData base64EncodedStringWithOptions:0];
     }
     [newMessage addOriginId:message.messageId];
     [newMessage addBody:message.messageBody]; //消息内容
@@ -175,71 +205,93 @@ static IMXMPPHelper *helper;
     [_xmppStream sendElement:newMessage];
 }
 
-/*
-//  发送图片
-- (void)sendImage:(UIImage *)img to:(XMPPJID *)jid{
-    [img compressedWithImageKilobyte:1024 imageBlock:^(NSData *imageData) {
-         [self sendMessageWithData:imageData bodyName:@"[图片]" chatType:@"img" to:jid];
-    }];
-}
-
-//  发送语音
-- (void)sendVoice:(UIImage *)img to:(XMPPJID *)jid{
-    [img compressedWithImageKilobyte:1024 imageBlock:^(NSData *imageData) {
-        [self sendMessageWithData:imageData bodyName:@"[语音]" chatType:@"voice" to:jid];
-    }];
-}
-
-
-// 发送二进制文件
-- (void)sendMessageWithData:(NSData *)data bodyName:(NSString *)name chatType:(NSString *)chatType to:(XMPPJID *)jid {
-    XMPPMessage *message = [XMPPMessage messageWithType:@"chat" to:jid];
-    [message addBody:name];
-    // 转换成base64的编码
-    NSString *base64str = [data base64EncodedStringWithOptions:0];
-    // 设置节点内容
-    XMPPElement *attachment = [XMPPElement elementWithName:@"attachment" stringValue:base64str];
-    XMPPElement *type = [XMPPElement elementWithName:@"chatType" stringValue:chatType]; //  这里的chatType是自定义类型，img是暂定内容，后期可以添加其他类型
-    // 包含子节点
-    [message addChild:attachment];
-    [message addChild:type];
-    // 发送消息
-    [_xmppStream sendElement:message];
-}
-*/
-
 //  添加请求
-- (void)addFriend:(IMUser *)user{
+- (void)addFriend:(IMUser *)user
+          success:(IMXMPPSuccessBlock)success
+             fail:(IMXMPPFailBlock)fail{
     if (!user) return;
     XMPPJID *jid = [XMPPJID jidWithUser:user.userID domain:IM_XMPP_DOMAIN resource:nil];
     //这里的nickname是我对它的备注，并非他得个人资料中得nickname
-    [KIMXMPPHelper.xmppRoster addUser:jid withNickname:user.remarkName];
+    BOOL isExist = NO;
+    //判断是否重复请求
+    for (XMPPJID *objJID in self.userHelper.addFriendArray) {
+        if ([jid.user isEqualToString:objJID.user] && [jid.domain isEqualToString:objJID.domain]) {
+            isExist = YES;
+        }
+    }
+    
+    if (!isExist) {
+        [self.xmppRoster subscribePresenceToUser:jid];
+        if (success) {
+            success();
+        }
+    }else{
+        if (fail) {
+            NSError *error = [NSError errorWithDomain:NSURLErrorDomain code:IMXMPPErrorCodeDidUserExists userInfo:@{NSLocalizedDescriptionKey:@"好友已经存在了"}];
+            fail(error);
+        }
+    }
 }
 
 //  同意订阅请求用户，执行被添加好友的操作
--(void)acceptPresenceSubscriptionRequest{
-    if (self.presence == nil) return;
-    [self.xmppRoster acceptPresenceSubscriptionRequestFrom:self.presence.from andAddToRoster:YES];
-    self.presence = nil;
+-(void)acceptPresenceSubscriptionRequestFrom:(XMPPJID *)fromJid{
+    [self.xmppRoster acceptPresenceSubscriptionRequestFrom:fromJid andAddToRoster:YES];
 }
 
 //  拒接订阅请求，用户拒绝被添加好友的操作
--(void)rejectPresenceSubscriptionRequest{
-    if (self.presence == nil) return;
-    [self.xmppRoster rejectPresenceSubscriptionRequestFrom:self.presence.from];
-    self.presence = nil;
+-(void)rejectPresenceSubscriptionRequestFrom:(XMPPJID *)fromJid{
+    [self.xmppRoster rejectPresenceSubscriptionRequestFrom:fromJid];
 }
+
+// 好友列表改变
+- (void)addRosterChangeNotificationObserver:(id)observer usingBlock:(void(^)(NSArray *array))usingBlock{
+    [IMNotificationCenter addObserver:observer forName:kXmppRosterChangeNot object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note, id  _Nonnull observer) {
+//        XMPPRosterCoreDataStorage *storage = KIMXMPPHelper.xmppRosterCoreDataStorage;
+//        self.userHelper.friendArray = [storage sortedUsersByName].mutableCopy;
+//        if (usingBlock) {
+//            usingBlock(self.userHelper.friendArray);
+//        }
+    }];
+}
+
+// 订阅请求
+- (void)addSubscriptionRequestNotificationObserver:(id)observer usingBlock:(void(^)(XMPPPresence *presence))usingBlock{
+    [IMNotificationCenter addObserver:observer forName:kXmppSubscriptionRequestNot object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note, id  _Nonnull observer) {
+        XMPPPresence *presence = note.object;
+        if (usingBlock && presence) {
+            usingBlock(presence);
+        }
+    }];
+}
+
+- (void)setFriendsListBlock:(IMXMPPFriendsListBlock)block {
+    
+    //保存block
+    _friendsListBlock = [block copy];
+    //创建IQ请求
+    XMPPIQ *iq = [XMPPIQ iq];
+    //设置iq请求的三个属性
+    XMPPJID *jid = _xmppStream.myJID;
+    [iq addAttributeWithName:@"from" stringValue:jid.description];
+    [iq addAttributeWithName:@"type" stringValue:@"get"];
+    [iq addAttributeWithName:@"id" stringValue:kRoster_both];
+    //设置iq请求的子元素
+    XMPPElement *query = [XMPPElement elementWithName:@"query"];
+    [query addAttributeWithName:@"xmlns" stringValue:@"jabber:iq:roster"];
+    [iq addChild:query];
+    //发送查询请求
+    [_xmppStream sendElement:iq];
+}
+
 
 #pragma mark - XMPPStreamDelegate
 #pragma mark ------ 连接
 //将要连接
 - (void)xmppStreamWillConnect:(XMPPStream *)sender{
-    DDLogInfo(@"将要连接服务器");
 }
 
 //已经连接
 - (void)xmppStreamDidConnect:(XMPPStream *)sender{
-    DDLogInfo(@"已经连接服务器");
     //  用户授权
     [self userAuth];
 }
@@ -253,7 +305,6 @@ static IMXMPPHelper *helper;
 #pragma mark ------ 授权
 //已经授权
 - (void)xmppStreamDidAuthenticate:(XMPPStream *)sender{
-    DDLogInfo(@"登录成功");
     [self goOnline];
     //  登录成功后的回调
     [self successComplete];
@@ -262,9 +313,8 @@ static IMXMPPHelper *helper;
     
 }
 
-// 授权失败
+// 授权失败DDLog
 - (void)xmppStream:(XMPPStream *)sender didNotAuthenticate:(NSXMLElement *)error{
-    DDLogError(@"登录授权失败 %@",error);
     [self failCompleteCode:IMXMPPErrorCodeLogin description:@"登录失败,请检查登录账户和密码"];
 }
 
@@ -309,21 +359,18 @@ static IMXMPPHelper *helper;
 
 #pragma mark -- XMPPMessage Delegate
 - (void)xmppStream:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message{
-    DDLogInfo(@"接收消息--%@",message);
     if (self.messageReceiveBlock) {
         self.messageReceiveBlock(message);
     }
 }
 
 - (void)xmppStream:(XMPPStream *)sender didSendMessage:(XMPPMessage *)message{
-    DDLogInfo(@"发送消息成功--%@", message);
     if (self.messageSendBlock) {
         self.messageSendBlock(message);
     }
 }
 
 - (void)xmppStream:(XMPPStream *)sender didFailToSendMessage:(XMPPMessage *)message error:(NSError *)error{
-    DDLogError(@"发送消息失败--%@", message);
     if (self.messageSendFailBlock) {
         self.messageSendFailBlock(message);
     }
@@ -332,22 +379,71 @@ static IMXMPPHelper *helper;
 #pragma mark -- Roster
 //  好友改变
 - (void)xmppRosterDidChange:(XMPPRosterMemoryStorage *)sender{
-    DDLogInfo(@"好友列表改变");
-//    [IMNotificationCenter postNotificationName:kXmppRosterChangeNot object:nil];
-}
-
-//  收到好友列表IQ会进入的方法，并且已经存入我的存储器
-- (void)xmppRosterDidEndPopulating:(XMPPRoster *)sender{
-    DDLogInfo(@"好友列表改变");
     [IMNotificationCenter postNotificationName:kXmppRosterChangeNot object:nil];
 }
 
+- (BOOL)xmppStream:(XMPPStream *)sender didReceiveIQ:(XMPPIQ *)iq {
+    NSLog(@"IQ = %@",iq);
+    //判断iq的元素ID是否为传入的元素ID
+    if ([iq.elementID isEqualToString:kRoster_both]) {
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+        //获取query结点
+        NSXMLElement *query = [iq elementForName:@"query"];
+        for (NSXMLElement *item in query.children) {
+            IMUser *user = [[IMUser alloc] init];
+            user.userID = [item attributeStringValueForName:@"jid"];
+            user.username = [item attributeStringValueForName:@"name"];
+            for (NSXMLElement *group in item.children) {
+                //获取组名
+                NSString *groupName = [group stringValue];
+                //获取好友分组
+                NSMutableArray *groupArray = dic[groupName];
+                if (groupArray == nil) {
+                    //若没有该好友分组,则创建
+                    groupArray = [[NSMutableArray alloc] init];
+                    [dic setObject:groupArray forKey:groupName];
+                }
+                //好友分组添加用户
+                [groupArray addObject:user];
+            
+            
+//            User *user = [[User alloc] init];
+//            //设置好友的JID名字和自定义名
+//            user.jid = [item attributeStringValueForName:@"jid"];
+//            user.username = [item attributeStringValueForName:@"name"];
+//
+
+//            }
+        }
+        //每一次for循环都把好友分组情况通过block传递出去
+        if (_friendsListBlock) {
+            _friendsListBlock([dic copy]);
+        }
+    }
+    return YES;
+}
+
+
+//  收到好友列表IQ会进入的方法，并且已经存入我的存储器
+- (void)xmppRosterDidEndPopulating:(XMPPRoster *)sender{
+    //    [IMNotificationCenter postNotificationName:kXmppRosterChangeNot object:nil];
+}
+
 /** 收到出席订阅请求（代表对方想添加自己为好友) */
-- (void)xmppRoster:(XMPPRoster *)sender didReceivePresenceSubscriptionRequest:(XMPPPresence *)presence
-{
-    DDLogInfo(@"订阅请求 %@",presence);
-    //添加好友一定会订阅对方，但是接受订阅不一定要添加对方为好友
-    [IMNotificationCenter postNotificationName:kXmppSubscriptionRequestNot object:presence];
+- (void)xmppRoster:(XMPPRoster *)sender didReceivePresenceSubscriptionRequest:(XMPPPresence *)presence{
+    BOOL isExist = NO;
+    //判断是否重复请求
+    for (XMPPJID *objJID in self.userHelper.addFriendArray) {
+        if ([presence.from.user isEqualToString:objJID.user] &&[presence.from.domain isEqualToString:objJID.domain]) {
+            isExist = YES;
+        }
+    }
+    
+    if (!isExist) {
+        [self.userHelper.addFriendArray addObject:presence.from];
+        //添加好友一定会订阅对方，但是接受订阅不一定要添加对方为好友
+        [IMNotificationCenter postNotificationName:kXmppSubscriptionRequestNot object:presence];
+    }
     
     //同意并添加对方为好友
     //    [self.xmppRoster acceptPresenceSubscriptionRequestFrom:presence.from andAddToRoster:YES];
@@ -355,15 +451,18 @@ static IMXMPPHelper *helper;
     //    [self.xmppRoster rejectPresenceSubscriptionRequestFrom:presence.from];
 }
 
-- (void)xmppStream:(XMPPStream *)sender didReceivePresence:(XMPPPresence *)presence
-{
-    DDLogInfo(@"%@",presence);
-    //收到对方取消定阅我得消息
-    if ([presence.type isEqualToString:kUnsubscribe]) {
-        //从我的本地通讯录中将他移除
-        [self.xmppRoster removeUser:presence.from];
-    }
+- (void)xmppStream:(XMPPStream *)sender didReceivePresence:(XMPPPresence *)presence{
+    //取得好友状态
+    NSString *presenceType = [NSString stringWithFormat:@"%@", [presence type]]; //online/offline
+    
+    //当前用户
+    //    NSString *userId = [NSString stringWithFormat:@"%@", [[sender myJID] user]];
+    //在线用户
+    NSString *presenceFromUser =[NSString stringWithFormat:@"%@", [[presence from] user]];
+    NSLog(@"presenceType:%@",presenceType);
+    NSLog(@"用户:%@",presenceFromUser);
 }
+
 
 #pragma mark =====头像修改 =======
 /**
@@ -384,10 +483,8 @@ static IMXMPPHelper *helper;
 }
 
 #pragma mark ===== 文件接收=======
-
 //是否同意对方发文件
 - (void)xmppIncomingFileTransfer:(XMPPIncomingFileTransfer *)sender didReceiveSIOffer:(XMPPIQ *)offer{
-    DDLogInfo(@"%s",__FUNCTION__);
     [self.xmppIncomingFileTransfer acceptSIOffer:offer];
 }
 
@@ -461,7 +558,7 @@ static IMXMPPHelper *helper;
     }
     // 如果连接已经关闭
     if (self.xmppStream.isDisconnected ) {
-       
+        
     }
 }
 

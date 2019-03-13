@@ -33,12 +33,14 @@ NS_ASSUME_NONNULL_BEGIN
 typedef void(^IMXMPPSuccessBlock)(void);
 typedef void(^IMXMPPFailBlock)(NSError *error);
 typedef void(^IMXMPPMessageBlock)(XMPPMessage *message);
+typedef void(^IMXMPPFriendsListBlock)(id result);
 
 typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
     IMXMPPErrorCodeConnect = 1001, //  连接错误
     IMXMPPErrorCodeLogin,          //  登录错误
     IMXMPPErrorCodeRegister,       //  注册错误
-    IMXMPPErrorCodeDidRegister     //  已经注册，表示已存在用户
+    IMXMPPErrorCodeDidRegister,    //  已经注册，表示已存在用户
+    IMXMPPErrorCodeDidUserExists   //  表示已存在好友
 };
 
 @interface IMXMPPHelper : NSObject
@@ -58,7 +60,7 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
 @property (nonatomic ,strong) XMPPStreamManagementMemoryStorage   *storage;
 @property (nonatomic ,strong) XMPPStreamManagement                *xmppStreamManagement;
 //接入好友模块，可以获取好友列表
-@property (nonatomic ,strong) XMPPRosterMemoryStorage             *xmppRosterMemoryStorage                                     ;
+@property (nonatomic ,strong) XMPPRosterCoreDataStorage             *xmppRosterCoreDataStorage;
 @property (nonatomic ,strong) XMPPRoster                          *xmppRoster;
 //接入消息模块，将消息存储到本地
 @property (nonatomic ,strong) XMPPMessageArchivingCoreDataStorage *xmppMessageArchivingCoreDataStorage;
@@ -135,17 +137,39 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
  * 添加好友
  * @param user 该好友的个人信息
  */
-- (void)addFriend:(IMUser *)user;
+- (void)addFriend:(IMUser *)user
+          success:(IMXMPPSuccessBlock)success
+             fail:(IMXMPPFailBlock)fail;
 
 /**
  * 同意订阅请求用户，执行被添加好友的操作
  */
--(void)acceptPresenceSubscriptionRequest;
+-(void)acceptPresenceSubscriptionRequestFrom:(XMPPJID *)fromJid;
 
 /**
  * 拒接订阅请求，用户拒绝被添加好友的操作
  */
--(void)rejectPresenceSubscriptionRequest;
+-(void)rejectPresenceSubscriptionRequestFrom:(XMPPJID *)fromJid;
+
+/**
+ 好友改变的回调
+
+ @param observer 监听对象
+ @param usingBlock 回调
+ */
+- (void)addRosterChangeNotificationObserver:(id)observer usingBlock:(void(^)(NSArray *array))usingBlock;
+
+/**
+ 好友订阅回调
+ 
+ @param observer 监听对象
+ @param usingBlock 回调
+ */
+- (void)addSubscriptionRequestNotificationObserver:(id)observer usingBlock:(void(^)(XMPPPresence *presence))usingBlock;
+
+
+//设置好友列表
+- (void)setFriendsListBlock:(IMXMPPFriendsListBlock)block;
 
 @end
 

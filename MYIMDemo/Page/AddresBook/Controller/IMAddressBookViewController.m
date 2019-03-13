@@ -9,6 +9,7 @@
 #import "IMSearchMessageViewController.h"
 #import "UIViewController+IMCategory.h"
 #import <XMPPFramework/XMPPFramework.h>
+#import "IMNewContactViewController.h"
 
 
 @interface IMAddressBookViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchControllerDelegate> {
@@ -24,6 +25,8 @@
 @property (nonatomic, strong) UIView                        *titleView;
 @property (nonatomic, strong) UIView                        *bottomLine;
 // 数据源
+@property (nonatomic, strong) NSMutableArray     *fisrtSectionDataSource;
+// 数据源
 @property (nonatomic, strong) NSMutableArray<XMPPUserMemoryStorageObject *>     *dataSource;
 @end
 
@@ -34,6 +37,12 @@
         _dataSource = [NSMutableArray array];
     }
     return _dataSource;
+}
+- (NSMutableArray *)fisrtSectionDataSource{
+    if (!_fisrtSectionDataSource) {
+        _fisrtSectionDataSource = [NSMutableArray arrayWithObjects:@"新的朋友", nil];
+    }
+    return _fisrtSectionDataSource;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -105,54 +114,54 @@
     _searchCtrl.searchBar                            = _searchViewCtrl.searchBar;
     [_headerView addSubview:_searchCtrl.searchBar];
     self.tableView.tableHeaderView = _headerView;
-    
-    // 设置自己的头像
-    [[IMAppDefaultUtil sharedInstance] setUserAvatar:@"http://cname-yunke.shovesoft.com/group1/M00/00/1A/CgAHEVuMyv6AKj6uAABukEJ7t3I575.png"];
-    
 }
 
 //  添加通知
 - (void)addNotification{
-    [IMNotificationCenter addObserver:self selector:@selector(rosterChangeNotification) name:kXmppRosterChangeNot object:nil];
+    [KIMXMPPHelper addRosterChangeNotificationObserver:self usingBlock:^(NSArray * _Nonnull array) {
+        self.dataSource = array.mutableCopy;
+    }];
 }
 
 //  请求好友列表
 - (void)requestUserStoreage{
-    XMPPRosterMemoryStorage *storage = KIMXMPPHelper.xmppRosterMemoryStorage;
-    self.dataSource = [storage sortedUsersByAvailabilityName].mutableCopy;
-    /*
-    NSArray *array = [storage sortedUsersByName];
-    [array enumerateObjectsUsingBlock:^(XMPPUserMemoryStorageObject * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSLog(@"obj.displayName == %@",obj.displayName);
-        NSLog(@"obj.ask == %@",obj.ask);
-        NSLog(@"obj.subscription == %@",obj.subscription);
-        NSLog(@"obj.nickname == %@",obj.nickname);
-    }];
-     */
-}
-
-//  好友列表改变
--(void)rosterChangeNotification{
-    [self requestUserStoreage];
+    self.dataSource = KIMXMPPHelper.userHelper.friendArray.mutableCopy;
     [self.tableView reloadData];
+    
+    [KIMXMPPHelper setFriendsListBlock:^(id  _Nonnull result) {
+        
+    }];
 }
 
 #pragma mark - UITableViewDelegate
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 2;
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.dataSource.count;
+    return section == 0 ? self.fisrtSectionDataSource.count:self.dataSource.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *cellIdentifier = @"IMAddressBookTableViewCell";
-    IMAddressBookTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (!cell) {
-        cell = [[IMAddressBookTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    if (indexPath.section == 0) {
+        NSString *cellIdentifier = @"TableViewCell";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        }
+        cell.textLabel.text = self.fisrtSectionDataSource[indexPath.row];
+        return cell;
+    }else{
+        NSString *cellIdentifier = @"IMAddressBookTableViewCell";
+        IMAddressBookTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        if (!cell) {
+            cell = [[IMAddressBookTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        }
+        XMPPUserMemoryStorageObject *object = self.dataSource[indexPath.row];
+        cell.titleLabel.text = object.nickname?object.nickname:object.jid.user;
+        cell.avaterImageView.image = object.photo? object.photo:[UIImage imageDefaultHeadPortrait];
+        return cell;
     }
-    XMPPUserMemoryStorageObject *object = self.dataSource[indexPath.row];
-    cell.titleLabel.text = object.nickname?object.nickname:object.jid.user;
-    cell.avaterImageView.image = object.photo? object.photo:[UIImage imageDefaultHeadPortrait];
-    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -168,20 +177,26 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    XMPPUserMemoryStorageObject *object = self.dataSource[indexPath.row];
-    IMConversationModel *conversation   = [[IMConversationModel alloc] init];
-    conversation.chatToJid              = object.jid;
-    conversation.conversationName       = object.jid.user;
-    conversation.chatType               = IMMessageChatTypeSingle;
-//    conversation.headImage              = object.photo? object.photo:[UIImage imageDefaultHeadPortrait];
-    
-    IMChatViewController *chatCtrl      = [IMChatViewController new];
-    chatCtrl.title                      = conversation.conversationName;
-    chatCtrl.hidesBottomBarWhenPushed   = YES;
-    chatCtrl.conversation               = conversation;
-    chatCtrl.isConversationInto         = NO;
-    
-    [self.navigationController pushViewController:chatCtrl animated:YES];
+    if (indexPath.section == 0) {
+        IMNewContactViewController *chatCtrl = [IMNewContactViewController new];
+        chatCtrl.hidesBottomBarWhenPushed   = YES;
+        [self.navigationController pushViewController:chatCtrl animated:YES];
+    }else{
+        XMPPUserMemoryStorageObject *object = self.dataSource[indexPath.row];
+        IMConversationModel *conversation   = [[IMConversationModel alloc] init];
+        conversation.chatToJid              = object.jid;
+        conversation.conversationName       = object.jid.user;
+        conversation.chatType               = IMMessageChatTypeSingle;
+        //    conversation.headImage              = object.photo? object.photo:[UIImage imageDefaultHeadPortrait];
+        
+        IMChatViewController *chatCtrl      = [IMChatViewController new];
+        chatCtrl.title                      = conversation.conversationName;
+        chatCtrl.hidesBottomBarWhenPushed   = YES;
+        chatCtrl.conversation               = conversation;
+        chatCtrl.isConversationInto         = NO;
+        
+        [self.navigationController pushViewController:chatCtrl animated:YES];
+    }
 }
 
 #pragma mark - UISearchControllerDelegate代理

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		841D27002238D4470004D0FE /* IMNewContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 841D26FF2238D4470004D0FE /* IMNewContactViewController.m */; };
+		841D27032238D8E40004D0FE /* IMNewContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 841D27022238D8E40004D0FE /* IMNewContactTableViewCell.m */; };
 		842510F2222E240A004C3954 /* bg_login.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 842510F1222E240A004C3954 /* bg_login.jpeg */; };
 		842510F5222E24A7004C3954 /* IMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842510F4222E24A7004C3954 /* IMLoginViewController.m */; };
 		842510F7222E24E0004C3954 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842510F6222E24E0004C3954 /* Launch Screen.storyboard */; };
@@ -517,6 +519,10 @@
 		39DF2069CEA9F7E953DC83F1 /* Pods-MYIMDemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MYIMDemoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MYIMDemoUITests/Pods-MYIMDemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		76326C6BA8BD9170028D7055 /* Pods-MYIMDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MYIMDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MYIMDemo/Pods-MYIMDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		7C3F4F19E5365490C5CF6230 /* Pods-MYIMDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MYIMDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-MYIMDemo/Pods-MYIMDemo.release.xcconfig"; sourceTree = "<group>"; };
+		841D26FE2238D4470004D0FE /* IMNewContactViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMNewContactViewController.h; sourceTree = "<group>"; };
+		841D26FF2238D4470004D0FE /* IMNewContactViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMNewContactViewController.m; sourceTree = "<group>"; };
+		841D27012238D8E40004D0FE /* IMNewContactTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMNewContactTableViewCell.h; sourceTree = "<group>"; };
+		841D27022238D8E40004D0FE /* IMNewContactTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMNewContactTableViewCell.m; sourceTree = "<group>"; };
 		84220377222E0ECD00D4B479 /* icon_inputBox_recorder_prompt3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_inputBox_recorder_prompt3.png; sourceTree = "<group>"; };
 		84220378222E0ECD00D4B479 /* icon_message_attachments@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_message_attachments@3x.png"; sourceTree = "<group>"; };
 		84220379222E0ECD00D4B479 /* icon_message_voice_send_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_message_voice_send_1@2x.png"; sourceTree = "<group>"; };
@@ -1418,6 +1424,8 @@
 			children = (
 				8428F4842235F5DB0064DA35 /* IMAddressBookViewController.h */,
 				8428F4852235F5DB0064DA35 /* IMAddressBookViewController.m */,
+				841D26FE2238D4470004D0FE /* IMNewContactViewController.h */,
+				841D26FF2238D4470004D0FE /* IMNewContactViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1427,6 +1435,8 @@
 			children = (
 				8428F48B223623F60064DA35 /* IMAddressBookTableViewCell.h */,
 				8428F48C223623F60064DA35 /* IMAddressBookTableViewCell.m */,
+				841D27012238D8E40004D0FE /* IMNewContactTableViewCell.h */,
+				841D27022238D8E40004D0FE /* IMNewContactTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2939,6 +2949,7 @@
 				842511AE222E609A004C3954 /* IMUserGroup.m in Sources */,
 				EE7FE45D222CC42500073210 /* FSActionSheet.m in Sources */,
 				8428F45222320EE70064DA35 /* IMAddFriendsViewController.m in Sources */,
+				841D27002238D4470004D0FE /* IMNewContactViewController.m in Sources */,
 				842511AC222E609A004C3954 /* IMUserDetail.m in Sources */,
 				EE8936CA2227DC57004F1F6E /* UIButton+IMExtra.m in Sources */,
 				EE7FE461222CC42500073210 /* IMPhotoBrowser.m in Sources */,
@@ -2963,6 +2974,7 @@
 				EE8936862227D997004F1F6E /* AppDelegate.m in Sources */,
 				842511BF222E60D0004C3954 /* IMUserHelper.m in Sources */,
 				EE8939CA22290419004F1F6E /* IMFileCache.m in Sources */,
+				841D27032238D8E40004D0FE /* IMNewContactTableViewCell.m in Sources */,
 				8428F48D223623F60064DA35 /* IMAddressBookTableViewCell.m in Sources */,
 				EE7FE45B222CC42500073210 /* IMZoomingScrollView.m in Sources */,
 				EE7FE464222CC42500073210 /* TAAnimatedDotView.m in Sources */,

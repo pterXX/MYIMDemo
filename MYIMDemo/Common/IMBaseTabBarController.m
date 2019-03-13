@@ -18,27 +18,11 @@
     [super viewDidLoad];
     self.delegate = self;
     // Do any additional setup after loading the view.
+    [self addNotification];
 }
 
 - (void)addNotification{
-    // 订阅通知
-    [IMNotificationCenter addObserver:self selector:@selector(subscriptionRequestNotification:) name:kXmppSubscriptionRequestNot object:nil];
-}
-
-//  订阅通知
-- (void)subscriptionRequestNotification:(NSNotification *)note{
-    XMPPPresence *presence = note.object;
-    if(!presence) return;
-    NSString *str = IMStirngFormat(@"是否添加\"%@\"为你的好友",presence.from.user);
-    [self alertWithTitle:str message:@"此功能只做简单的添加好友操作,可根据产品需求改变" cancel:^(BOOL ok) {
-        if (ok) {
-            //  同意请求
-            [KIMXMPPHelper acceptPresenceSubscriptionRequest];
-        }else{
-            //  拒绝请求
-            [KIMXMPPHelper rejectPresenceSubscriptionRequest];
-        }
-    }];
+   
 }
 
 - (NSMutableArray *)subVcActionDataSource{

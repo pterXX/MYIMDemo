@@ -107,11 +107,13 @@
     defaultQueue   = dispatch_queue_create("defaultQueue", NULL);
     receiveQueue   = dispatch_queue_create("receiveQueue", NULL);
     
+    
     [self addNotification];
 }
 
 - (void)im_layoutNavigation{
-    self.title = @"消息";
+    self.title = KIMXMPPHelper.userHelper.user.username;
+    self.navigationController.tabBarItem.title = @"消息";
     kWeakSelf
     UIBarButtonItem *barItem = [UIBarButtonItem barImage:[UIImage imageMenuAdd]
                                                 callBack:^(UIBarButtonItem * _Nonnull barItem) {

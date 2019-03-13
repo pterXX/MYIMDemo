@@ -25,6 +25,8 @@
     return helper;
 }
 
+
+
 - (void)loginTestAccount
 {
     IMUser *user = [[IMUser alloc] init];
@@ -105,4 +107,18 @@
     return ok;
 }
 
+
+- (NSMutableArray *)addFriendArray{
+    if (!_addFriendArray) {
+        _addFriendArray = [NSMutableArray array];
+    }
+    return _addFriendArray;
+}
+
+- (NSMutableArray *)friendArray{
+    if (!_friendArray) {
+        _friendArray = [NSMutableArray array];
+    }
+    return _friendArray;
+}
 @end

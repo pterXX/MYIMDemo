@@ -23,7 +23,7 @@
     _avaterImageView                   = [UIImageView new];
     _avaterImageView.backgroundColor   = [UIColor groupTableViewBackgroundColor];
     CGFloat cellLayoutHeight           = [[self class] cellLayoutHeight];
-    CGRect rect                        = CGRectMake(0, 0, 40, 40);
+    CGRect rect                        = CGRectMake(0, 0, cellLayoutHeight - 10, cellLayoutHeight - 10);
     [self addSubview:_avaterImageView];
     //  绘制圆角
     layoutRoundCorner(_avaterImageView, rect, 5);
