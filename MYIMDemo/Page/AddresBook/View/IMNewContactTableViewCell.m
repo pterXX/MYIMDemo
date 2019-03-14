@@ -71,6 +71,10 @@
             self.agreeBut.hidden = YES;
             self.rejectBut.hidden = YES;
         }
+    }else{
+        self.statusBut.hidden = YES;
+        self.agreeBut.hidden = YES;
+        self.rejectBut.hidden = YES;
     }
 }
 

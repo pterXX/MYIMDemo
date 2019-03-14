@@ -119,7 +119,7 @@
 
 //  添加好友
 - (void)addFriend:(NSString *)uesrID{
-    if ([uesrID isEmptyString] && KIMXMPPHelper.userHelper.isLogin) return;
+    if ([uesrID isEmptyString] && !KIMXMPPHelper.userHelper.isLogin) return;
     __block NSString * uesrIDstr = uesrID;
     NSString *str = IMStirngFormat(@"是否添加好友\"%@\"",uesrID);
     kWeakSelf;
@@ -127,9 +127,8 @@
         if (ok) {
             IMUser *user =  [[IMUser alloc] init];
             //  userID和userName 设置为同一个是方便调试，后期可以根据需求改变相应的参数 ·
+            user.userJid = [IMXMPPHelper jid:uesrIDstr];
             user.userID = uesrIDstr;
-            user.username = uesrIDstr;
-            user.avatarURL = kDebugAvatarURL;
             [KIMXMPPHelper addFriend:user success:^{
                 [SVProgressHUD showInfoWithStatus:IMStirngFormat(@"等待\"%@\"接受请求",uesrIDstr)];
                 [SVProgressHUD dismissWithDelay:2];

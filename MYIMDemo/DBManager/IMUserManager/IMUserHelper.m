@@ -107,13 +107,6 @@
     return ok;
 }
 
-- (NSMutableArray *)addFriendArray{
-    if (!_addFriendArray) {
-        _addFriendArray = [NSMutableArray array];
-    }
-    return _addFriendArray;
-}
-
 - (NSMutableArray *)addFriendJidArray{
     if (!_addFriendJidArray) {
         _addFriendJidArray = [NSMutableArray array];

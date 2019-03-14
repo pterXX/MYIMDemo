@@ -39,7 +39,7 @@
 
 -(void)setUser:(IMUser *)user{
     _user = user;
-    self.titleLabel.text = user.showName?user.showName:user.remarkName;
+    self.titleLabel.text = user.showName;
     if (user.avatar) {
         [self.avaterImageView setImage:user.avatar];
     }else{

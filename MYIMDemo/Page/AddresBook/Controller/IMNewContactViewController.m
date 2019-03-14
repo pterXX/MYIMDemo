@@ -81,11 +81,18 @@
 //  添加通知
 - (void)addNotification{
     // 订阅通知
+    kWeakSelf;
+    [KIMXMPPHelper addSubscriptionRequestNotificationObserver:self usingBlock:^(XMPPPresence * _Nonnull presence) {
+        [weakSelf requestUserStoreage];
+    }];
 }
 
 //  请求好友列表
 - (void)requestUserStoreage{
-    self.dataSource = [KIMXMPPHelper userHelper].addFriendArray;
+    NSArray *array = [KIMXMPPHelper userHelper].addFriendJidArray;
+    self.dataSource = [array zh_enumerateObjectsUsingBlock:^id _Nonnull(XMPPJID * _Nonnull obj) {
+        return [IMUser user:obj];
+    }];
     [self.tableView reloadData];
 }
 

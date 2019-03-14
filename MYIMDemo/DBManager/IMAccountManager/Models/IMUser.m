@@ -11,6 +11,12 @@
 
 @implementation IMUser
 
++ (IMUser *)user:(XMPPJID *)jid{
+    IMUser *user = [[IMUser alloc] init];
+    user.userJid = jid;
+    return user;
+}
+
 - (id)init
 {
     if (self = [super init]) {
@@ -63,7 +69,7 @@
 #pragma mark - Getter
 - (NSString *)showName
 {
-    NSString *str = self.remarkName.length > 0 ? self.remarkName : (self.nikeName.length > 0 ? self.nikeName : self.username);
+    NSString *str = self.remarkName.length > 0 ? self.remarkName : (self.nikeName.length > 0 ? self.nikeName : (self.username?self.username:self.userJid.user));
 //    return IMStirngReplace(str, IMStirngFormat(@"@%@"), IM_XMPP_DOMAIN);
     return str;
 }
@@ -81,5 +87,19 @@
         _userJid = [IMXMPPHelper jid:self.userID];
     }
     return _userJid;
+}
+
+- (NSString *)subscription{
+    if (_subscription == nil) {
+        _subscription = @"none";
+    }
+    return _subscription;
+}
+
+- (NSString *)ask{
+    if (_ask == nil) {
+        _ask = @"unsubscribe";
+    }
+    return _ask;
 }
 @end

@@ -63,4 +63,6 @@
 
 @property (nonatomic, strong) NSString *pinyinInitial;
 
++ (IMUser *)user:(XMPPJID *)jid;
+
 @end

@@ -255,16 +255,11 @@ static IMXMPPHelper *helper;
     NSArray *array = [storage sortedUsersByName];
     if (array.count > 0) {
         [self.userHelper.friendArray removeAllObjects];
-        [self.userHelper.addFriendArray removeAllObjects];
-        [self.userHelper.addFriendJidArray removeAllObjects];
     }
     [array enumerateObjectsUsingBlock:^(XMPPUserMemoryStorageObject * _Nonnull item, NSUInteger idx, BOOL * _Nonnull stop) {
         IMUser *user = [[self class] storageObjectConverUser:item];
         if ([user.subscription isEqualToString:@"both"]) {
             [self.userHelper.friendArray addObject:user];
-        }else{
-            [self.userHelper.addFriendArray addObject:user];
-            [self.userHelper.addFriendJidArray addObject:user.userJid];
         }
     }];
 }
@@ -397,19 +392,18 @@ static IMXMPPHelper *helper;
     }
     
     if (!isExist) {
-        XMPPUserMemoryStorageObject *object = [self.xmppRosterStorage userForJID:presence.from];
+        [self.userHelper.addFriendJidArray insertObject:presence.from atIndex:0];
+        /*
         if (object) {
             IMUser *user = [[self class] storageObjectConverUser:object];
             [self.userHelper.addFriendArray addObject:user];
-            [self.userHelper.addFriendJidArray addObject:presence.from];
+            
             // 在正向排序
             [self.userHelper.addFriendArray zh_SortObjectsUsingBlock:^BOOL(IMUser *  _Nonnull obj1, IMUser *  _Nonnull obj2) {
                 return [obj1.userID compare:obj2.userID];
             }];
-            [self.userHelper.addFriendJidArray zh_SortObjectsUsingBlock:^BOOL(XMPPJID * _Nonnull obj1, XMPPJID *  _Nonnull obj2) {
-                return [obj1.user compare:obj2.user];
-            }];
         }
+         */
         //添加好友一定会订阅对方，但是接受订阅不一定要添加对方为好友
         [IMNotificationCenter postNotificationName:kXmppSubscriptionRequestNot object:presence];
     }

@@ -22,10 +22,9 @@
 @property (nonatomic, assign, readonly) BOOL isLogin;
 
 //  好友列表
-@property (nonatomic, strong) NSMutableArray *friendArray;
+@property (nonatomic, strong) NSMutableArray<IMUser *>  *friendArray;
 //  添加好友数据
-@property (nonatomic, strong) NSMutableArray *addFriendArray;
-@property (nonatomic, strong) NSMutableArray *addFriendJidArray;
+@property (nonatomic, strong) NSMutableArray<XMPPJID *> *addFriendJidArray;
 
 + (IMUserHelper *)sharedHelper;
 
