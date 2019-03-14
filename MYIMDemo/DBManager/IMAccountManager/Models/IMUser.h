@@ -45,6 +45,9 @@
 
 @property (nonatomic, strong) NSString *ask;
 
+/// 活跃状态
+@property (nonatomic, assign) BOOL isAvailable;
+
 #pragma mark - 其他
 @property (nonatomic, strong) IMUserDetail *detailInfo;
 

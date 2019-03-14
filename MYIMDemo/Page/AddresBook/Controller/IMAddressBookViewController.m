@@ -135,6 +135,7 @@
     }];
     
     [KIMXMPPHelper addSubscriptionRequestNotificationObserver:self usingBlock:^(XMPPPresence * _Nonnull presence) {
+    
     }];
 }
 

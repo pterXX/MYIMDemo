@@ -12,6 +12,7 @@
 #import "IMUserHelper.h"
 #import "IMMessageModel.h"
 
+
 #ifdef DEBUG
 
 #define IM_XMMP_HOST_NAME @"xmpp.maiyuantek.com"
@@ -82,10 +83,19 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
 
 + (IMXMPPHelper *)sharedHelper;
 
+@end
 
+
+@interface IMXMPPHelper(Class)
++ (XMPPJID *)jid:(NSString *)userName;
++ (IMUser *)storageObjectConverUser:(XMPPUserMemoryStorageObject *)item;
+@end
+
+
+@interface IMXMPPHelper (Auth)
 /**
  登录
-
+ 
  @param userName 用户名
  @param password 密码
  @param success c登录成功后的回调
@@ -97,9 +107,10 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
                 fail:(IMXMPPFailBlock)fail;
 
 
+
 /**
  注册
-
+ 
  @param userName 用户名
  @param password 密码
  @param success c登录成功后的回调
@@ -124,15 +135,10 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
  *  下线
  */
 - (void)goOffline;
+@end
 
-/**
- *  发送消息
- *
- *  @param message 消息内容
- *  @param jid     发送对方的ID
- */
-- (void)sendMessageModel:(IMMessageModel *)message to:(XMPPJID *)jid;
 
+@interface IMXMPPHelper(Roster)
 /**
  * 添加好友
  * @param user 该好友的个人信息
@@ -141,19 +147,23 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
           success:(IMXMPPSuccessBlock)success
              fail:(IMXMPPFailBlock)fail;
 
+- (void)removeUser:(IMUser *)user;
+
 /**
  * 同意订阅请求用户，执行被添加好友的操作
  */
 -(void)acceptPresenceSubscriptionRequestFrom:(XMPPJID *)fromJid;
+-(void)acceptPresenceSubscriptionRequestFrom:(XMPPJID *)fromJid block:(void(^_Nullable)(void))block;
 
 /**
  * 拒接订阅请求，用户拒绝被添加好友的操作
  */
 -(void)rejectPresenceSubscriptionRequestFrom:(XMPPJID *)fromJid;
+-(void)rejectPresenceSubscriptionRequestFrom:(XMPPJID *)fromJid block:(void(^ _Nullable )(void))block;
 
 /**
  好友改变的回调
-
+ 
  @param observer 监听对象
  @param usingBlock 回调
  */
@@ -167,13 +177,15 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
  */
 - (void)addSubscriptionRequestNotificationObserver:(id)observer usingBlock:(void(^)(XMPPPresence *presence))usingBlock;
 
-
-
 @end
 
-
-@interface IMXMPPHelper(Class)
-+ (XMPPJID *)jid:(NSString *)userName;
-+ (IMUser *)storageObjectConverUser:(XMPPUserMemoryStorageObject *)item;
+@interface IMXMPPHelper (message)
+/**
+ *  发送消息
+ *
+ *  @param message 消息内容
+ *  @param jid     发送对方的ID
+ */
+- (void)sendMessageModel:(IMMessageModel *)message to:(XMPPJID *)jid;
 @end
 NS_ASSUME_NONNULL_END

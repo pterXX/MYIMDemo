@@ -52,7 +52,7 @@
                   moduleName = "MYIMDemo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/admin/Documents/GitHub/MYIMDemo/MYIMDemo/Page/Messages/View/IMMessagesListTableViewCell.h"
-                  timestampString = "574241576.5625581"
+                  timestampString = "574249241.106961"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
@@ -67,7 +67,7 @@
                   moduleName = "MYIMDemo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/admin/Documents/GitHub/MYIMDemo/MYIMDemo/Page/Messages/View/IMMessagesListTableViewCell.h"
-                  timestampString = "574241576.5642051"
+                  timestampString = "574249241.1086071"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
@@ -106,6 +106,22 @@
             startingLineNumber = "49"
             endingLineNumber = "49"
             landmarkName = "-JSONContainerData"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MYIMDemo/Page/AddresBook/Controller/IMAddressBookViewController.m"
+            timestampString = "574249240.9412481"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "-addNotification"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

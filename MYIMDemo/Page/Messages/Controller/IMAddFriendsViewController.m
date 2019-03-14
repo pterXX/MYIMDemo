@@ -120,26 +120,46 @@
 //  添加好友
 - (void)addFriend:(NSString *)uesrID{
     if ([uesrID isEmptyString] && !KIMXMPPHelper.userHelper.isLogin) return;
-    __block NSString * uesrIDstr = uesrID;
-    NSString *str = IMStirngFormat(@"是否添加好友\"%@\"",uesrID);
-    kWeakSelf;
-    [self alertWithTitle:str message:@"此功能只做简单的添加好友功能。具体实现可以根据产品需求改变" cancel:^(BOOL ok) {
-        if (ok) {
-            IMUser *user =  [[IMUser alloc] init];
-            //  userID和userName 设置为同一个是方便调试，后期可以根据需求改变相应的参数 ·
-            user.userJid = [IMXMPPHelper jid:uesrIDstr];
-            user.userID = uesrIDstr;
-            [KIMXMPPHelper addFriend:user success:^{
-                [SVProgressHUD showInfoWithStatus:IMStirngFormat(@"等待\"%@\"接受请求",uesrIDstr)];
-                [SVProgressHUD dismissWithDelay:2];
-            } fail:^(NSError * _Nonnull error) {
-                [SVProgressHUD showInfoWithStatus:@"已添加过好友"];
-                [SVProgressHUD dismissWithDelay:2];
-            }];
-           
-            //  返回上个页面
-            [weakSelf im_backHandle];
+    //判断当前请求用户是否是已经发来好友请求.
+    XMPPJID *addJID = [IMXMPPHelper jid:uesrID];
+    for (XMPPJID *itemJid in KIMXMPPHelper.userHelper.addFriendJidArray) {
+        if ([itemJid.user isEqualToString:addJID.user]
+            && [itemJid.domain isEqualToString:addJID.user]) {
+            [SVProgressHUD showInfoWithStatus:@"添加用户已经在你的请求列表中!"];
+            [SVProgressHUD dismissWithDelay:2];
+            return;
         }
+    }
+    
+    //判断添加的好友是否已经存在于好友列表中.
+    for (IMUser *user in KIMXMPPHelper.userHelper.addFriendJidArray)  {
+        if ([user.userJid.user isEqualToString:addJID.user]
+           && [user.userJid.domain isEqualToString:addJID.user]) {
+            [SVProgressHUD showInfoWithStatus:@"用户已经是你的好友!"];
+            [SVProgressHUD dismissWithDelay:2];
+            return;
+        }
+    }
+    
+    //判断添加的好友是否是自己本身
+    if ([KIMXMPPHelper.myJID.user isEqualToString:addJID.user]) {
+        [SVProgressHUD showInfoWithStatus:@"不能添加自己为好友!"];
+        [SVProgressHUD dismissWithDelay:2];
+        return;
+    }
+    
+    IMUser *user =  [[IMUser alloc] init];
+    user.userJid = addJID;
+    user.userID = addJID.user;
+    kWeakSelf;
+    [KIMXMPPHelper addFriend:user success:^{
+        [SVProgressHUD showInfoWithStatus:IMStirngFormat(@"等待\"%@\"接受请求",addJID.user)];
+        [SVProgressHUD dismissWithDelay:2];
+        //  返回上个页面
+        [weakSelf im_backHandle];
+    } fail:^(NSError * _Nonnull error) {
+        [SVProgressHUD showInfoWithStatus:@"已添加过好友"];
+        [SVProgressHUD dismissWithDelay:2];
     }];
 }
 

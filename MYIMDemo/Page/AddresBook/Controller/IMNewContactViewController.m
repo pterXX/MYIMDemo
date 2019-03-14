@@ -128,12 +128,22 @@
 #pragma mark - IMNewContactTableViewCellDelegate
 - (void)newContactTableViewCell:(nonnull IMNewContactTableViewCell *)cell agreeButDidTouchUp:(nonnull IMUser *)user {
     //  同意请求
-    [KIMXMPPHelper acceptPresenceSubscriptionRequestFrom:user.userJid];
+    kWeakSelf;
+    [KIMXMPPHelper acceptPresenceSubscriptionRequestFrom:user.userJid block:^{
+        [SVProgressHUD showInfoWithStatus:IMStirngFormat(@"成功添加:%@成为了好友",user.userJid.user)];
+        [SVProgressHUD dismissWithDelay:1.5];
+        [weakSelf requestUserStoreage];
+    }];
 }
 
 - (void)newContactTableViewCell:(nonnull IMNewContactTableViewCell *)cell rejectButDidTouchUp:(nonnull IMUser *)user {
     //  拒绝请求
-    [KIMXMPPHelper rejectPresenceSubscriptionRequestFrom:user.userJid];
+    kWeakSelf;
+    [KIMXMPPHelper rejectPresenceSubscriptionRequestFrom:user.userJid block:^{
+        [SVProgressHUD showInfoWithStatus:IMStirngFormat(@"你已拒绝了:%@的好友请求",user.userJid.user)];
+        [SVProgressHUD dismissWithDelay:1.5];
+        [weakSelf requestUserStoreage];
+    }];
 }
 
 

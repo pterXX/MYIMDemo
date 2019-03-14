@@ -21,7 +21,9 @@
 
 @property (nonatomic, assign, readonly) BOOL isLogin;
 
+
 //  好友列表
+@property (nonatomic, strong) NSMutableArray<IMUser *>  *allFriendArray;
 @property (nonatomic, strong) NSMutableArray<IMUser *>  *bothFriendArray; // both
 @property (nonatomic, strong) NSMutableArray<IMUser *>  *noneFriendArray; // None
 @property (nonatomic, strong) NSMutableArray<IMUser *>  *toFriendArray;  // to

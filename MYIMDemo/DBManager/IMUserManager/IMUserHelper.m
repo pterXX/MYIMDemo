@@ -114,6 +114,13 @@
     return _addFriendJidArray;
 }
 
+- (NSMutableArray<IMUser *> *)allFriendArray{
+    if (!_allFriendArray) {
+        _allFriendArray = [NSMutableArray array];
+    }
+    return _allFriendArray;
+}
+
 - (NSMutableArray<IMUser *> *)bothFriendArray{
     if (!_bothFriendArray) {
         _bothFriendArray = [NSMutableArray array];
