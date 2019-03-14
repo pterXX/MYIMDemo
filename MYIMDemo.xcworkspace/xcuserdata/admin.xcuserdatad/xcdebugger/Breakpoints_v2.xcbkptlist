@@ -115,22 +115,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MYIMDemo/Page/AddresBook/View/IMNewContactTableViewCell.m"
-            timestampString = "574233932.536195"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "-setUser:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "MYIMDemo/XMPPHelper/IMXMPPHelper.m"
             timestampString = "574234107.5336699"
             startingColumnNumber = "9223372036854775807"
@@ -148,12 +132,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MYIMDemo/XMPPHelper/IMXMPPHelper.m"
-            timestampString = "574234133.382268"
+            timestampString = "574234966.1648901"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "245"
-            endingLineNumber = "245"
-            landmarkName = "-addRosterChangeNotificationObserver:usingBlock:"
+            startingLineNumber = "404"
+            endingLineNumber = "404"
+            landmarkName = "-xmppRoster:didReceivePresenceSubscriptionRequest:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -133,6 +133,9 @@
         weakSelf.dataSource = KIMXMPPHelper.userHelper.friendArray.mutableCopy;
         [weakSelf.tableView reloadData];
     }];
+    
+    [KIMXMPPHelper addSubscriptionRequestNotificationObserver:self usingBlock:^(XMPPPresence * _Nonnull presence) {
+    }];
 }
 
 #pragma mark - UITableViewDelegate

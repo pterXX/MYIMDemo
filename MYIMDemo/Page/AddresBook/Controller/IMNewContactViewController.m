@@ -81,11 +81,6 @@
 //  添加通知
 - (void)addNotification{
     // 订阅通知
-    kWeakSelf;
-    [KIMXMPPHelper addSubscriptionRequestNotificationObserver:self usingBlock:^(XMPPPresence * _Nonnull presence) {
-        if(!presence) return;
-        [weakSelf requestUserStoreage];
-    }];
 }
 
 //  请求好友列表
