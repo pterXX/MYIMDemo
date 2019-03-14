@@ -25,7 +25,7 @@
 @property (nonatomic, strong) NSMutableArray *friendArray;
 //  添加好友数据
 @property (nonatomic, strong) NSMutableArray *addFriendArray;
-
+@property (nonatomic, strong) NSMutableArray *addFriendJidArray;
 
 + (IMUserHelper *)sharedHelper;
 

@@ -27,12 +27,22 @@
 // 数据源
 @property (nonatomic, strong) NSMutableArray     *fisrtSectionDataSource;
 // 数据源
-@property (nonatomic, strong) NSMutableArray<XMPPUserMemoryStorageObject *>     *dataSource;
+@property (nonatomic, strong) NSMutableArray<IMUser *>     *dataSource;
 @end
 
 @implementation IMAddressBookViewController
 
-- (NSMutableArray<XMPPUserMemoryStorageObject *> *)dataSource {
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        //  这个通知必须放在init
+         [self addNotification];
+    }
+    return self;
+}
+
+- (NSMutableArray<IMUser *> *)dataSource {
     if (!_dataSource) {
         _dataSource = [NSMutableArray array];
     }
@@ -56,7 +66,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self addNotification];
 }
 
 - (void)im_layoutNavigation{
@@ -65,7 +74,8 @@
 
 - (void)im_getNewData{
     //  获得用户数据
-    [self requestUserStoreage];
+    self.dataSource = KIMXMPPHelper.userHelper.friendArray.mutableCopy;
+    [self.tableView reloadData];
 }
 
 - (void)im_addSubViews{
@@ -82,7 +92,7 @@
     _bottomLine.backgroundColor = kSegmentItemColor;
     [_titleView addSubview:_bottomLine];
     
-    _tableView                 = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+    _tableView                 = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     _tableView.delegate        = self;
     _tableView.dataSource      = self;
     _tableView.backgroundColor = KBGColor1;
@@ -118,18 +128,10 @@
 
 //  添加通知
 - (void)addNotification{
-    [KIMXMPPHelper addRosterChangeNotificationObserver:self usingBlock:^(NSArray * _Nonnull array) {
-        self.dataSource = array.mutableCopy;
-    }];
-}
-
-//  请求好友列表
-- (void)requestUserStoreage{
-    self.dataSource = KIMXMPPHelper.userHelper.friendArray.mutableCopy;
-    [self.tableView reloadData];
-    
-    [KIMXMPPHelper setFriendsListBlock:^(id  _Nonnull result) {
-        
+    kWeakSelf;
+    [KIMXMPPHelper addRosterChangeNotificationObserver:self usingBlock:^{
+        weakSelf.dataSource = KIMXMPPHelper.userHelper.friendArray.mutableCopy;
+        [weakSelf.tableView reloadData];
     }];
 }
 
@@ -157,20 +159,18 @@
         if (!cell) {
             cell = [[IMAddressBookTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         }
-        XMPPUserMemoryStorageObject *object = self.dataSource[indexPath.row];
-        cell.titleLabel.text = object.nickname?object.nickname:object.jid.user;
-        cell.avaterImageView.image = object.photo? object.photo:[UIImage imageDefaultHeadPortrait];
+        IMUser *object = (IMUser *)self.dataSource[indexPath.row];
+        [cell setUser:object];
+        
         return cell;
     }
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return [IMAddressBookTableViewCell cellLayoutHeight];
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     [cell setSeparatorInset:UIEdgeInsetsMake(69, 12, 0, 0)];
 }
 
@@ -182,10 +182,10 @@
         chatCtrl.hidesBottomBarWhenPushed   = YES;
         [self.navigationController pushViewController:chatCtrl animated:YES];
     }else{
-        XMPPUserMemoryStorageObject *object = self.dataSource[indexPath.row];
+        IMUser *object = self.dataSource[indexPath.row];
         IMConversationModel *conversation   = [[IMConversationModel alloc] init];
-        conversation.chatToJid              = object.jid;
-        conversation.conversationName       = object.jid.user;
+        conversation.chatToJid              = object.userJid;
+        conversation.conversationName       = object.showName;
         conversation.chatType               = IMMessageChatTypeSingle;
         //    conversation.headImage              = object.photo? object.photo:[UIImage imageDefaultHeadPortrait];
         

@@ -16,14 +16,11 @@ static NSString * const kUnavailable   = @"unavailable";//  下线
 static NSString * const kUnsubscribe   = @"unsubscribe";//  取消订阅
 
 
-static NSString * const kRoster_both   = @"roster_both";
-
-@interface IMXMPPHelper()<XMPPStreamDelegate,XMPPRosterMemoryStorageDelegate,NSFetchedResultsControllerDelegate>
+@interface IMXMPPHelper()<XMPPStreamDelegate,XMPPRosterMemoryStorageDelegate,XMPPRosterDelegate>
 
 @property (nonatomic ,assign) BOOL               xmppNeedRegister;// 是否是注册
 @property (nonatomic ,copy  ) IMXMPPFailBlock    fail;//  失败
 @property (nonatomic ,copy  ) IMXMPPSuccessBlock success;//  成功
-@property (nonatomic ,copy  ) IMXMPPFriendsListBlock friendsListBlock; //  好友列表
 @end
 
 @implementation IMXMPPHelper
@@ -93,16 +90,14 @@ static IMXMPPHelper *helper;
 //  好友模块
 - (void)setupRoster{
     //接入好友模块，可以获取好友列表
-    _xmppRosterCoreDataStorage  = [XMPPRosterCoreDataStorage sharedInstance];
-    _xmppRoster = [[XMPPRoster alloc] initWithRosterStorage:_xmppRosterCoreDataStorage ];
+    _xmppRosterStorage = [[XMPPRosterMemoryStorage alloc] init];
+    _xmppRoster = [[XMPPRoster alloc] initWithRosterStorage:_xmppRosterStorage];
     [_xmppRoster activate:self.xmppStream];
     [_xmppRoster addDelegate:self delegateQueue:dispatch_get_main_queue()];
     //设置好友同步策略,XMPP一旦连接成功，同步好友到本地
     [_xmppRoster setAutoFetchRoster:YES]; //自动同步，从服务器取出好友
     //关掉自动接收好友请求，默认开启自动同意
     [_xmppRoster setAutoAcceptKnownPresenceSubscriptionRequests:NO];
-    //  查询好友
-    [_xmppRoster fetchRoster];
 }
 
 //  消息模块
@@ -125,7 +120,7 @@ static IMXMPPHelper *helper;
 
 #pragma mark -- go onlie, offline
 - (void)initUser:(IMXMPPFailBlock _Nonnull)fail password:(NSString * _Nonnull)password success:(IMXMPPSuccessBlock _Nonnull)success userName:(NSString * _Nonnull)userName {
-    _myJID = [XMPPJID jidWithUser:userName domain:IM_XMPP_DOMAIN resource:nil];
+    _myJID = [[self class] jid:userName];
     self.userHelper.userAccount = userName;
     self.userHelper.password = password;
     self.success         = success;
@@ -210,11 +205,11 @@ static IMXMPPHelper *helper;
           success:(IMXMPPSuccessBlock)success
              fail:(IMXMPPFailBlock)fail{
     if (!user) return;
-    XMPPJID *jid = [XMPPJID jidWithUser:user.userID domain:IM_XMPP_DOMAIN resource:nil];
+    XMPPJID *jid = user.userJid;
     //这里的nickname是我对它的备注，并非他得个人资料中得nickname
     BOOL isExist = NO;
     //判断是否重复请求
-    for (XMPPJID *objJID in self.userHelper.addFriendArray) {
+    for (XMPPJID *objJID in self.userHelper.addFriendJidArray) {
         if ([jid.user isEqualToString:objJID.user] && [jid.domain isEqualToString:objJID.domain]) {
             isExist = YES;
         }
@@ -244,13 +239,45 @@ static IMXMPPHelper *helper;
 }
 
 // 好友列表改变
-- (void)addRosterChangeNotificationObserver:(id)observer usingBlock:(void(^)(NSArray *array))usingBlock{
+- (void)addRosterChangeNotificationObserver:(id)observer usingBlock:(void(^)(void))usingBlock{
+    kWeakSelf;
     [IMNotificationCenter addObserver:observer forName:kXmppRosterChangeNot object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note, id  _Nonnull observer) {
-//        XMPPRosterCoreDataStorage *storage = KIMXMPPHelper.xmppRosterCoreDataStorage;
-//        self.userHelper.friendArray = [storage sortedUsersByName].mutableCopy;
-//        if (usingBlock) {
-//            usingBlock(self.userHelper.friendArray);
-//        }
+        [weakSelf rosterStorage];
+        if (usingBlock) {
+            usingBlock();
+        }
+    }];
+}
+
+//  好友列表
+- (void )rosterStorage{
+    XMPPRosterMemoryStorage *storage = KIMXMPPHelper.xmppRosterStorage;
+    NSArray *array = [storage sortedUsersByName];
+    if (array.count > 0) {
+        [self.userHelper.friendArray removeAllObjects];
+        [self.userHelper.addFriendArray removeAllObjects];
+        [self.userHelper.addFriendJidArray removeAllObjects];
+    }
+    [array enumerateObjectsUsingBlock:^(XMPPUserMemoryStorageObject * _Nonnull item, NSUInteger idx, BOOL * _Nonnull stop) {
+        // 我们这里只获取双向好友
+        NSString *subscription = [item subscription];
+        // 获取好友的jid
+        NSString *friendJidString = [item jid].user;
+        IMUser *user = [[IMUser alloc] init];
+        user.userJid = item.jid;
+        user.userID = friendJidString;
+        user.nikeName = item.nickname;
+        user.username = friendJidString;
+        user.remarkName = IMStirngReplace(item.displayName, IMStirngFormat(@"@%@",item.jid.domain), @"");
+        user.ask = item.ask;
+        user.avatar = item.photo;
+        user.subscription = subscription;
+        if ([subscription isEqualToString:@"both"]) {
+            [self.userHelper.friendArray addObject:user];
+        }else{
+            [self.userHelper.addFriendArray addObject:user];
+            [self.userHelper.addFriendJidArray addObject:user.userJid];
+        }
     }];
 }
 
@@ -263,26 +290,6 @@ static IMXMPPHelper *helper;
         }
     }];
 }
-
-- (void)setFriendsListBlock:(IMXMPPFriendsListBlock)block {
-    
-    //保存block
-    _friendsListBlock = [block copy];
-    //创建IQ请求
-    XMPPIQ *iq = [XMPPIQ iq];
-    //设置iq请求的三个属性
-    XMPPJID *jid = _xmppStream.myJID;
-    [iq addAttributeWithName:@"from" stringValue:jid.description];
-    [iq addAttributeWithName:@"type" stringValue:@"get"];
-    [iq addAttributeWithName:@"id" stringValue:kRoster_both];
-    //设置iq请求的子元素
-    XMPPElement *query = [XMPPElement elementWithName:@"query"];
-    [query addAttributeWithName:@"xmlns" stringValue:@"jabber:iq:roster"];
-    [iq addChild:query];
-    //发送查询请求
-    [_xmppStream sendElement:iq];
-}
-
 
 #pragma mark - XMPPStreamDelegate
 #pragma mark ------ 连接
@@ -382,65 +389,25 @@ static IMXMPPHelper *helper;
     [IMNotificationCenter postNotificationName:kXmppRosterChangeNot object:nil];
 }
 
-- (BOOL)xmppStream:(XMPPStream *)sender didReceiveIQ:(XMPPIQ *)iq {
-    NSLog(@"IQ = %@",iq);
-    //判断iq的元素ID是否为传入的元素ID
-    if ([iq.elementID isEqualToString:kRoster_both]) {
-        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-        //获取query结点
-        NSXMLElement *query = [iq elementForName:@"query"];
-        for (NSXMLElement *item in query.children) {
-            IMUser *user = [[IMUser alloc] init];
-            user.userID = [item attributeStringValueForName:@"jid"];
-            user.username = [item attributeStringValueForName:@"name"];
-            for (NSXMLElement *group in item.children) {
-                //获取组名
-                NSString *groupName = [group stringValue];
-                //获取好友分组
-                NSMutableArray *groupArray = dic[groupName];
-                if (groupArray == nil) {
-                    //若没有该好友分组,则创建
-                    groupArray = [[NSMutableArray alloc] init];
-                    [dic setObject:groupArray forKey:groupName];
-                }
-                //好友分组添加用户
-                [groupArray addObject:user];
-            
-            
-//            User *user = [[User alloc] init];
-//            //设置好友的JID名字和自定义名
-//            user.jid = [item attributeStringValueForName:@"jid"];
-//            user.username = [item attributeStringValueForName:@"name"];
-//
-
-//            }
-        }
-        //每一次for循环都把好友分组情况通过block传递出去
-        if (_friendsListBlock) {
-            _friendsListBlock([dic copy]);
-        }
-    }
-    return YES;
-}
-
-
 //  收到好友列表IQ会进入的方法，并且已经存入我的存储器
 - (void)xmppRosterDidEndPopulating:(XMPPRoster *)sender{
-    //    [IMNotificationCenter postNotificationName:kXmppRosterChangeNot object:nil];
+    [IMNotificationCenter postNotificationName:kXmppRosterChangeNot object:nil];
+    NSLog(@"===========>获取好友列表结束");
+
 }
 
 /** 收到出席订阅请求（代表对方想添加自己为好友) */
 - (void)xmppRoster:(XMPPRoster *)sender didReceivePresenceSubscriptionRequest:(XMPPPresence *)presence{
     BOOL isExist = NO;
     //判断是否重复请求
-    for (XMPPJID *objJID in self.userHelper.addFriendArray) {
+    for (XMPPJID *objJID in self.userHelper.addFriendJidArray) {
         if ([presence.from.user isEqualToString:objJID.user] &&[presence.from.domain isEqualToString:objJID.domain]) {
             isExist = YES;
         }
     }
     
     if (!isExist) {
-        [self.userHelper.addFriendArray addObject:presence.from];
+        [self.userHelper.addFriendJidArray addObject:presence.from];
         //添加好友一定会订阅对方，但是接受订阅不一定要添加对方为好友
         [IMNotificationCenter postNotificationName:kXmppSubscriptionRequestNot object:presence];
     }
@@ -628,4 +595,12 @@ static IMXMPPHelper *helper;
     return nil;
 }
 
+@end
+
+
+
+@implementation IMXMPPHelper(Class)
++ (XMPPJID *)jid:(NSString *)userName{
+    return [XMPPJID jidWithUser:userName domain:IM_XMPP_DOMAIN resource:nil];
+}
 @end

@@ -51,7 +51,9 @@
     NSMutableArray *array = [NSMutableArray array];
     [self enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         id model = block(obj);
-        [array addObject:model];
+        if (model) {
+            [array addObject:model];
+        }
     }];
     return array;
 }

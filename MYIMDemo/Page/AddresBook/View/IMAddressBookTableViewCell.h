@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UILabel       *titleLabel;        /**< 标题 */
 @property (nonatomic, strong) UIImageView   *avaterImageView;   /**< 用户头像 */
 
+@property (nonatomic, strong) IMUser     *user;
+
 + (CGFloat)cellLayoutHeight;
 @end
 

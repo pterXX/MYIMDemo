@@ -60,7 +60,7 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
 @property (nonatomic ,strong) XMPPStreamManagementMemoryStorage   *storage;
 @property (nonatomic ,strong) XMPPStreamManagement                *xmppStreamManagement;
 //接入好友模块，可以获取好友列表
-@property (nonatomic ,strong) XMPPRosterCoreDataStorage             *xmppRosterCoreDataStorage;
+@property (nonatomic ,strong) XMPPRosterMemoryStorage             *xmppRosterStorage;
 @property (nonatomic ,strong) XMPPRoster                          *xmppRoster;
 //接入消息模块，将消息存储到本地
 @property (nonatomic ,strong) XMPPMessageArchivingCoreDataStorage *xmppMessageArchivingCoreDataStorage;
@@ -157,7 +157,7 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
  @param observer 监听对象
  @param usingBlock 回调
  */
-- (void)addRosterChangeNotificationObserver:(id)observer usingBlock:(void(^)(NSArray *array))usingBlock;
+- (void)addRosterChangeNotificationObserver:(id)observer usingBlock:(void(^)(void))usingBlock;
 
 /**
  好友订阅回调
@@ -168,9 +168,11 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
 - (void)addSubscriptionRequestNotificationObserver:(id)observer usingBlock:(void(^)(XMPPPresence *presence))usingBlock;
 
 
-//设置好友列表
-- (void)setFriendsListBlock:(IMXMPPFriendsListBlock)block;
 
 @end
 
+
+@interface IMXMPPHelper(Class)
++ (XMPPJID *)jid:(NSString *)userName;
+@end
 NS_ASSUME_NONNULL_END

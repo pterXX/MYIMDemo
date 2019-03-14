@@ -37,6 +37,15 @@
     _titleLabel.sd_layout.leftSpaceToView(_avaterImageView, 10).rightSpaceToView(self,10).topEqualToView(_avaterImageView).heightIs(rect.size.height);
 }
 
+-(void)setUser:(IMUser *)user{
+    _user = user;
+    self.titleLabel.text = user.showName?user.showName:user.remarkName;
+    if (user.avatar) {
+        [self.avaterImageView setImage:user.avatar];
+    }else{
+        [self.avaterImageView sd_setImageWithURL:[NSURL URLWithString:user.avatarURL] placeholderImage:[UIImage imageDefaultHeadPortrait]];
+    }
+}
 
 - (void)awakeFromNib {
     [super awakeFromNib];

@@ -20,15 +20,15 @@
 #import <XMPPFramework/XMPPFramework.h>
 
 
-@interface IMNewContactViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface IMNewContactViewController ()<UITableViewDelegate, UITableViewDataSource,IMNewContactTableViewCellDelegate>
 @property (nonatomic, strong) UITableView                   *tableView;
 // 数据源
-@property (nonatomic, strong) NSMutableArray<XMPPUserMemoryStorageObject *>     *dataSource;
+@property (nonatomic, strong) NSMutableArray<IMUser *>     *dataSource;
 @end
 
 @implementation IMNewContactViewController
 
-- (NSMutableArray<XMPPUserMemoryStorageObject *> *)dataSource {
+- (NSMutableArray<IMUser *> *)dataSource {
     if (!_dataSource) {
         _dataSource = [NSMutableArray array];
     }
@@ -106,42 +106,32 @@
     if (!cell) {
         cell = [[IMNewContactTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    XMPPUserMemoryStorageObject *object = self.dataSource[indexPath.row];
-    cell.titleLabel.text = object.nickname?object.nickname:object.jid.user;
-    cell.avaterImageView.image = object.photo? object.photo:[UIImage imageDefaultHeadPortrait];
-    cell.statusBut.hidden = YES;
-    cell.agreeBut.hidden = YES;
-    cell.rejectBut.hidden = YES;
+    [cell setDelegate:self];
+    [cell setUser:self.dataSource[indexPath.row]];
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return [IMNewContactTableViewCell cellLayoutHeight];
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     [cell setSeparatorInset:UIEdgeInsetsMake(69, 12, 0, 0)];
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    XMPPUserMemoryStorageObject *object = self.dataSource[indexPath.row];
-    IMConversationModel *conversation   = [[IMConversationModel alloc] init];
-    conversation.chatToJid              = object.jid;
-    conversation.conversationName       = object.jid.user;
-    conversation.chatType               = IMMessageChatTypeSingle;
-    //    conversation.headImage              = object.photo? object.photo:[UIImage imageDefaultHeadPortrait];
-    
-    IMChatViewController *chatCtrl      = [IMChatViewController new];
-    chatCtrl.title                      = conversation.conversationName;
-    chatCtrl.hidesBottomBarWhenPushed   = YES;
-    chatCtrl.conversation               = conversation;
-    chatCtrl.isConversationInto         = NO;
-    
-    [self.navigationController pushViewController:chatCtrl animated:YES];
+}
+
+#pragma mark - IMNewContactTableViewCellDelegate
+- (void)newContactTableViewCell:(nonnull IMNewContactTableViewCell *)cell agreeButDidTouchUp:(nonnull IMUser *)user {
+    //  同意请求
+    [KIMXMPPHelper acceptPresenceSubscriptionRequestFrom:user.userJid];
+}
+
+- (void)newContactTableViewCell:(nonnull IMNewContactTableViewCell *)cell rejectButDidTouchUp:(nonnull IMUser *)user {
+    //  拒绝请求
+    [KIMXMPPHelper rejectPresenceSubscriptionRequestFrom:user.userJid];
 }
 
 

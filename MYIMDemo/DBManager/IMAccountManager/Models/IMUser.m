@@ -63,7 +63,9 @@
 #pragma mark - Getter
 - (NSString *)showName
 {
-    return self.remarkName.length > 0 ? self.remarkName : (self.nikeName.length > 0 ? self.nikeName : self.username);
+    NSString *str = self.remarkName.length > 0 ? self.remarkName : (self.nikeName.length > 0 ? self.nikeName : self.username);
+//    return IMStirngReplace(str, IMStirngFormat(@"@%@"), IM_XMPP_DOMAIN);
+    return str;
 }
 
 - (IMUserDetail *)detailInfo
@@ -74,4 +76,10 @@
     return _detailInfo;
 }
 
+- (XMPPJID *)userJid{
+    if (_userJid == nil) {
+        _userJid = [IMXMPPHelper jid:self.userID];
+    }
+    return _userJid;
+}
 @end

@@ -14,6 +14,9 @@
 @interface IMUser : NSObject
 
 /// 用户ID
+@property (nonatomic, strong) XMPPJID *userJid;
+
+/// 用户ID
 @property (nonatomic, strong) NSString *userID;
 
 /// 用户名
@@ -21,6 +24,9 @@
 
 /// 昵称
 @property (nonatomic, strong) NSString *nikeName;
+
+/// 头像URL
+@property (nonatomic, strong) UIImage *avatar;
 
 /// 头像URL
 @property (nonatomic, strong) NSString *avatarURL;
@@ -34,6 +40,10 @@
 /// 界面显示名称
 @property (nonatomic, strong, readonly) NSString *showName;
 
+/// 订阅状态
+@property (nonatomic, strong) NSString *subscription;
+
+@property (nonatomic, strong) NSString *ask;
 
 #pragma mark - 其他
 @property (nonatomic, strong) IMUserDetail *detailInfo;
