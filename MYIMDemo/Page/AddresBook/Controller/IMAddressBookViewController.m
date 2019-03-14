@@ -74,7 +74,7 @@
 
 - (void)im_getNewData{
     //  获得用户数据
-    self.dataSource = KIMXMPPHelper.userHelper.friendArray.mutableCopy;
+    self.dataSource = KIMXMPPHelper.userHelper.bothFriendArray.mutableCopy;
     [self.tableView reloadData];
 }
 
@@ -130,7 +130,7 @@
 - (void)addNotification{
     kWeakSelf;
     [KIMXMPPHelper addRosterChangeNotificationObserver:self usingBlock:^{
-        weakSelf.dataSource = KIMXMPPHelper.userHelper.friendArray.mutableCopy;
+        weakSelf.dataSource = KIMXMPPHelper.userHelper.bothFriendArray.mutableCopy;
         [weakSelf.tableView reloadData];
     }];
     

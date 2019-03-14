@@ -114,10 +114,38 @@
     return _addFriendJidArray;
 }
 
-- (NSMutableArray *)friendArray{
-    if (!_friendArray) {
-        _friendArray = [NSMutableArray array];
+- (NSMutableArray<IMUser *> *)bothFriendArray{
+    if (!_bothFriendArray) {
+        _bothFriendArray = [NSMutableArray array];
     }
-    return _friendArray;
+    return _bothFriendArray;
+}
+
+- (NSMutableArray<IMUser *> *)toFriendArray{
+    if (!_toFriendArray) {
+        _toFriendArray = [NSMutableArray array];
+    }
+    return _toFriendArray;
+}
+
+- (NSMutableArray<IMUser *> *)fromFriendArray{
+    if (!_fromFriendArray) {
+        _fromFriendArray = [NSMutableArray array];
+    }
+    return _fromFriendArray;
+}
+
+- (NSMutableArray<IMUser *> *)removeFriendArray{
+    if (!_removeFriendArray) {
+        _removeFriendArray = [NSMutableArray array];
+    }
+    return _removeFriendArray;
+}
+
+- (NSMutableArray<IMUser *> *)noneFriendArray{
+    if (!_noneFriendArray) {
+        _noneFriendArray = [NSMutableArray array];
+    }
+    return _noneFriendArray;
 }
 @end
