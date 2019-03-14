@@ -222,7 +222,7 @@ static IMXMPPHelper *helper;
         }
     }else{
         if (fail) {
-            NSError *error = [NSError errorWithDomain:NSURLErrorDomain code:IMXMPPErrorCodeDidUserExists userInfo:@{NSLocalizedDescriptionKey:@"好友已经存在了"}];
+            NSError *error = [NSError errorWithDomain:NSURLErrorDomain code:IMXMPPErrorCodeDidUserExists userInfo:@{NSLocalizedDescriptionKey:@"好友已经存在了或者是已添加过好友"}];
             fail(error);
         }
     }
