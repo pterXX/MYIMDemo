@@ -23,6 +23,7 @@
         self.rejectBut = [self button:@"拒绝" textColor:[UIColor colorRedForButton]];
         [self.rejectBut addTarget:self action:@selector(rejectButAction:) forControlEvents:UIControlEventTouchUpInside];
         self.statusBut = [self button:@"已添加" textColor:[UIColor colorTextlightGrayColor]];
+        self.statusBut.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
         [stackView addArrangedSubview:self.agreeBut];
         [stackView addArrangedSubview:self.rejectBut];
         [stackView addArrangedSubview:self.statusBut];
@@ -55,9 +56,10 @@
             self.agreeBut.hidden = YES;
             self.rejectBut.hidden = YES;
         } else if ([user.subscription isEqualToString:@"none"]){
-            self.statusBut.hidden = YES;
-            self.agreeBut.hidden = NO;
-            self.rejectBut.hidden = NO;
+            [self.statusBut setTitle:@"已请求" forState:UIControlStateNormal];
+            self.statusBut.hidden = NO;
+            self.agreeBut.hidden = YES;
+            self.rejectBut.hidden = YES;
         }
         else if ([user.subscription isEqualToString:@"to"]){
             [self.statusBut setTitle:@"已接受" forState:UIControlStateNormal];

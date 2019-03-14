@@ -58,6 +58,13 @@
     return array;
 }
 
+- (NSArray *)zh_SortObjectsUsingBlock:(BOOL(^)(id obj1,id obj2))block{
+    NSArray *result = [self sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        return block(obj1,obj2);
+    }];
+    return result;
+}
+
 ///  这个方法可以获取到html中的所有图片
 + (NSArray *)zh_getAllImgOfHtml:(NSString *)webString{
     if (webString.length==0) {

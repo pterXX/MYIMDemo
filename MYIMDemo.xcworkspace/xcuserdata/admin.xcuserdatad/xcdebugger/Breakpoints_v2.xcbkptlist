@@ -52,7 +52,7 @@
                   moduleName = "MYIMDemo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/admin/Documents/GitHub/MYIMDemo/MYIMDemo/Page/Messages/View/IMMessagesListTableViewCell.h"
-                  timestampString = "574233901.443276"
+                  timestampString = "574238273.728899"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
@@ -67,7 +67,7 @@
                   moduleName = "MYIMDemo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/admin/Documents/GitHub/MYIMDemo/MYIMDemo/Page/Messages/View/IMMessagesListTableViewCell.h"
-                  timestampString = "574233901.444991"
+                  timestampString = "574238273.730634"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
@@ -106,38 +106,6 @@
             startingLineNumber = "49"
             endingLineNumber = "49"
             landmarkName = "-JSONContainerData"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MYIMDemo/XMPPHelper/IMXMPPHelper.m"
-            timestampString = "574234107.5336699"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "410"
-            endingLineNumber = "410"
-            landmarkName = "-xmppRoster:didReceivePresenceSubscriptionRequest:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MYIMDemo/XMPPHelper/IMXMPPHelper.m"
-            timestampString = "574234966.1648901"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "404"
-            endingLineNumber = "404"
-            landmarkName = "-xmppRoster:didReceivePresenceSubscriptionRequest:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+NS_ASSUME_NONNULL_BEGIN
 @interface NSArray (zh_SafeAccess)
 
 - (NSUInteger)zh_indexOfObject:(id _Nullable )anObject;
@@ -21,9 +21,13 @@
 ///  遍历数组并且返回一个处理后的新数组
 - (NSArray *)zh_enumerateObjectsUsingBlock:(id(^)(id obj))block;
 
+///  排序
+- (NSArray *)zh_SortObjectsUsingBlock:(BOOL(^)(id obj1,id obj2))block;
+
 ///  这个方法可以获取到html中的所有图片
 + (NSArray *)zh_getAllImgOfHtml:(NSString *)webString;
 
 ///  用指定字符串连接
 - (id)zh_Join:(NSString *)joinStr;
 @end
+NS_ASSUME_NONNULL_END

@@ -259,20 +259,8 @@ static IMXMPPHelper *helper;
         [self.userHelper.addFriendJidArray removeAllObjects];
     }
     [array enumerateObjectsUsingBlock:^(XMPPUserMemoryStorageObject * _Nonnull item, NSUInteger idx, BOOL * _Nonnull stop) {
-        // 我们这里只获取双向好友
-        NSString *subscription = [item subscription];
-        // 获取好友的jid
-        NSString *friendJidString = [item jid].user;
-        IMUser *user = [[IMUser alloc] init];
-        user.userJid = item.jid;
-        user.userID = friendJidString;
-        user.nikeName = item.nickname;
-        user.username = friendJidString;
-        user.remarkName = IMStirngReplace(item.displayName, IMStirngFormat(@"@%@",item.jid.domain), @"");
-        user.ask = item.ask;
-        user.avatar = item.photo;
-        user.subscription = subscription;
-        if ([subscription isEqualToString:@"both"]) {
+        IMUser *user = [[self class] storageObjectConverUser:item];
+        if ([user.subscription isEqualToString:@"both"]) {
             [self.userHelper.friendArray addObject:user];
         }else{
             [self.userHelper.addFriendArray addObject:user];
@@ -280,6 +268,8 @@ static IMXMPPHelper *helper;
         }
     }];
 }
+
+
 
 // 订阅请求
 - (void)addSubscriptionRequestNotificationObserver:(id)observer usingBlock:(void(^)(XMPPPresence *presence))usingBlock{
@@ -407,7 +397,19 @@ static IMXMPPHelper *helper;
     }
     
     if (!isExist) {
-        [self.userHelper.addFriendJidArray addObject:presence.from];
+        XMPPUserMemoryStorageObject *object = [self.xmppRosterStorage userForJID:presence.from];
+        if (object) {
+            IMUser *user = [[self class] storageObjectConverUser:object];
+            [self.userHelper.addFriendArray addObject:user];
+            [self.userHelper.addFriendJidArray addObject:presence.from];
+            // 在正向排序
+            [self.userHelper.addFriendArray zh_SortObjectsUsingBlock:^BOOL(IMUser *  _Nonnull obj1, IMUser *  _Nonnull obj2) {
+                return [obj1.userID compare:obj2.userID];
+            }];
+            [self.userHelper.addFriendJidArray zh_SortObjectsUsingBlock:^BOOL(XMPPJID * _Nonnull obj1, XMPPJID *  _Nonnull obj2) {
+                return [obj1.user compare:obj2.user];
+            }];
+        }
         //添加好友一定会订阅对方，但是接受订阅不一定要添加对方为好友
         [IMNotificationCenter postNotificationName:kXmppSubscriptionRequestNot object:presence];
     }
@@ -602,5 +604,22 @@ static IMXMPPHelper *helper;
 @implementation IMXMPPHelper(Class)
 + (XMPPJID *)jid:(NSString *)userName{
     return [XMPPJID jidWithUser:userName domain:IM_XMPP_DOMAIN resource:nil];
+}
+
++ (IMUser *)storageObjectConverUser:(XMPPUserMemoryStorageObject *)item{
+    // 我们这里只获取双向好友
+    NSString *subscription = [item subscription];
+    // 获取好友的jid
+    NSString *friendJidString = [item jid].user;
+    IMUser *user = [[IMUser alloc] init];
+    user.userJid = item.jid;
+    user.userID = friendJidString;
+    user.nikeName = item.nickname;
+    user.username = friendJidString;
+    user.remarkName = IMStirngReplace(item.displayName, IMStirngFormat(@"@%@",item.jid.domain), @"");
+    user.ask = item.ask;
+    user.avatar = item.photo;
+    user.subscription = subscription;
+    return user;
 }
 @end

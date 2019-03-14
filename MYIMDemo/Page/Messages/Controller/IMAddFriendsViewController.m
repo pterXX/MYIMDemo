@@ -134,7 +134,7 @@
                 [SVProgressHUD showInfoWithStatus:IMStirngFormat(@"等待\"%@\"接受请求",uesrIDstr)];
                 [SVProgressHUD dismissWithDelay:2];
             } fail:^(NSError * _Nonnull error) {
-                [SVProgressHUD showInfoWithStatus:@"好友已存在"];
+                [SVProgressHUD showInfoWithStatus:@"已添加过好友"];
                 [SVProgressHUD dismissWithDelay:2];
             }];
            

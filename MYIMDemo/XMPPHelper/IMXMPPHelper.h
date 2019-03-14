@@ -174,5 +174,6 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
 
 @interface IMXMPPHelper(Class)
 + (XMPPJID *)jid:(NSString *)userName;
++ (IMUser *)storageObjectConverUser:(XMPPUserMemoryStorageObject *)item;
 @end
 NS_ASSUME_NONNULL_END
