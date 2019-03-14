@@ -49,33 +49,9 @@
 
 - (void)setUser:(IMUser *)user{
     [super setUser:user];
-    if ([user.ask isEqualToString:@"subscribe"]) {
-        if ([user.subscription isEqualToString:@"both"] || [user.subscription isEqualToString:@"from"]) {
-            [self.statusBut setTitle:@"已添加" forState:UIControlStateNormal];
-            self.statusBut.hidden = NO;
-            self.agreeBut.hidden = YES;
-            self.rejectBut.hidden = YES;
-        } else if ([user.subscription isEqualToString:@"none"]){
-            [self.statusBut setTitle:@"已请求" forState:UIControlStateNormal];
-            self.statusBut.hidden = NO;
-            self.agreeBut.hidden = YES;
-            self.rejectBut.hidden = YES;
-        }
-        else if ([user.subscription isEqualToString:@"to"]){
-            [self.statusBut setTitle:@"已接受" forState:UIControlStateNormal];
-            self.statusBut.hidden = NO;
-            self.agreeBut.hidden = YES;
-            self.rejectBut.hidden = YES;
-        }else{
-            self.statusBut.hidden = YES;
-            self.agreeBut.hidden = YES;
-            self.rejectBut.hidden = YES;
-        }
-    }else{
-        self.statusBut.hidden = YES;
-        self.agreeBut.hidden = YES;
-        self.rejectBut.hidden = YES;
-    }
+    self.statusBut.hidden = YES;
+    self.agreeBut.hidden = NO;
+    self.rejectBut.hidden = NO;
 }
 
 //  同意按钮
