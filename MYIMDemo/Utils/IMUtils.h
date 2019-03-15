@@ -19,6 +19,7 @@
 #import "UIColor+IMChat.h"    // 颜色
 #import "UIFont+IMChat.h"     // 字体
 #import "UIImage+IMChat.h"    // 图片
+#import "IMFlexAngel.h"
 
 
 #pragma mark - 输入框枚举

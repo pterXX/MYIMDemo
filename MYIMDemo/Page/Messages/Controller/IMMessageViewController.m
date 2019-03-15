@@ -70,6 +70,14 @@
 @end
 
 @implementation IMMessageViewController
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        initTabBarItem(self.tabBarItem, @"消息", @"tabbar_mainframe", @"tabbar_mainframeHL");
+    }
+    return self;
+}
 
 - (NSMutableArray *)dataSource {
     if (!_dataSource) {
@@ -115,14 +123,10 @@
     self.title = KIMXMPPHelper.userHelper.user.username;
     self.navigationController.tabBarItem.title = @"消息";
     kWeakSelf
-    UIBarButtonItem *barItem = [UIBarButtonItem barImage:[UIImage imageMenuAdd]
-                                                callBack:^(UIBarButtonItem * _Nonnull barItem) {
-                                                    //  按钮点击
-                                                    [weakSelf barItemAction:barItem];
-                                }];
-    barItem.tintColor = [UIColor darkGrayColor];
-    [barItem setTitleTextAttributes:@{NSFontAttributeName:[UIFont fontNavBarTitle]} forState:UIControlStateNormal];
-    self.navigationItem.rightBarButtonItem = barItem;
+    [self addRightBarButtonWithImage:[UIImage imageMenuAdd] actionBlick:^{
+        //  按钮点击
+        [weakSelf barItemAction];
+    }];
 }
 
 - (void)im_addSubViews{
@@ -321,10 +325,10 @@
     
 }
 
-- (void)barItemAction:(UIBarButtonItem *)barItem{
+- (void)barItemAction{
    
     //  创建YCMenuView(根据关联点或者关联视图)
-    YCMenuView *view = [YCMenuView menuWithActions:self.menuDataSource width:140 relyonView:barItem];
+    YCMenuView *view = [YCMenuView menuWithActions:self.menuDataSource width:140 relyonView:self.navigationItem.rightBarButtonItem];
     view.menuColor = [UIColor colorBlackBG];
     view.separatorColor = [UIColor colorGrayLine];
     view.maxDisplayCount = 5;

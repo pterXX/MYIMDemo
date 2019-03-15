@@ -73,19 +73,12 @@
 @implementation IMBaseTabBarController(Class)
 + (IMBaseTabBarController *)tabbarVc{
     IMBaseTabBarController *tabbar = [[IMBaseTabBarController alloc] init];
-    UIColor *color = [IMColorTools colorWithHexString:@"0x2c2c2c"];
     IMBaseNavigationController *messages = [IMMessageViewController navMessagesVc];
-    [tabbar controller:messages Title:@"消息"
-       tabBarItemImage:[UIImage imageTabbarMessagesNomal]
-tabBarItemSelectedImage:[UIImage imageTabbarMessagesSelected] textColor:color];
     [tabbar addSubController:messages action:^(UITabBarItem * _Nonnull item, UITabBarController * _Nonnull tabbarVc) {
         
     }];
     
     IMBaseNavigationController *addresBooks = [IMAddressBookViewController navAddressBookVc];
-    [tabbar controller:addresBooks Title:@"通讯录"
-       tabBarItemImage:[UIImage imageTabbarAddressBookNomal]
-tabBarItemSelectedImage:[UIImage imageTabbarAddressBookSelected] textColor:color];
     [tabbar addSubController:addresBooks action:^(UITabBarItem * _Nonnull item, UITabBarController * _Nonnull tabbarVc) {
         
     }];

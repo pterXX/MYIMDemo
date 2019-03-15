@@ -93,6 +93,9 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
 
 
 @interface IMXMPPHelper (Auth)
+//  用户授权
+-(void)userAuth;
+
 /**
  登录
  

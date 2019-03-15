@@ -9,54 +9,54 @@
 #import "UIBarButtonItem+Category.h"
 #import <objc/runtime.h>
 
-@interface UIBarButtonItem (IMAddCallBackBlock)
-
-- (void)setIMCallBack:(IMBarButtonItemActionCallBack)callBack;
-- (IMBarButtonItemActionCallBack)getIMCallBack;
-
-@end
-
-
-@implementation UIBarButtonItem (IMAddCallBackBlock)
-
-static IMBarButtonItemActionCallBack _callBack;
-
-- (void)setIMCallBack:(IMBarButtonItemActionCallBack)callBack {
-    objc_setAssociatedObject(self, &_callBack, callBack, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-- (IMBarButtonItemActionCallBack)getIMCallBack {
-    return (IMBarButtonItemActionCallBack)objc_getAssociatedObject(self, &_callBack);
-}
-
-@end;
+char * const UIBarButtonItemActionBlock = "UIBarButtonItemActionBlock";
 
 @implementation UIBarButtonItem (Category)
-+ (UIBarButtonItem *)barTitle:(NSString *)barTitle
-                     callBack:(IMBarButtonItemActionCallBack)callBack{
-    UIBarButtonItem *barItem = [[UIBarButtonItem alloc] init];
-    barItem.title = barTitle;
-    barItem.target = barItem;
-    barItem.action = @selector(barAction:);
-    [barItem setIMCallBack:callBack];
-    return barItem;
+
++ (id)fixItemSpace:(CGFloat)space
+{
+    UIBarButtonItem *fix = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    fix.width = space;
+    return fix;
 }
 
-+ (UIBarButtonItem *)barImage:(UIImage *)barImage
-                     callBack:(IMBarButtonItemActionCallBack)callBack{
-    UIBarButtonItem *barItem = [[UIBarButtonItem alloc] init];
-    barItem.image = barImage;
-    barItem.target = barItem;
-    barItem.action = @selector(barAction:);
-    [barItem setIMCallBack:callBack];
-    return barItem;
+- (id)initWithTitle:(NSString *)title style:(UIBarButtonItemStyle)style actionBlick:(IMBarButtonItemActionCallBack)actionBlock
+{
+    if (self = [self initWithTitle:title style:style target:nil action:nil]) {
+        [self setActionBlock:actionBlock];
+    }
+    return self;
 }
 
+- (id)initWithImage:(UIImage *)image style:(UIBarButtonItemStyle)style actionBlick:(IMBarButtonItemActionCallBack)actionBlock
+{
+    if (self = [self initWithImage:image style:style target:nil action:nil]) {
+        [self setActionBlock:actionBlock];
+    }
+    return self;
+}
 
-- (void)barAction:(UIBarButtonItem *)barItem {
-    if (self.getIMCallBack) {
-        self.getIMCallBack(barItem);
+- (void)performActionBlock {
+    dispatch_block_t block = self.actionBlock;
+    
+    if (block)
+        block();
+}
+
+- (IMBarButtonItemActionCallBack)actionBlock {
+    return objc_getAssociatedObject(self, UIBarButtonItemActionBlock);
+}
+
+- (void)setActionBlock:(IMBarButtonItemActionCallBack)actionBlock {
+    if (actionBlock != self.actionBlock) {
+        [self willChangeValueForKey:@"actionBlock"];
+        
+        objc_setAssociatedObject(self, UIBarButtonItemActionBlock, actionBlock, OBJC_ASSOCIATION_COPY);
+        
+        [self setTarget:self];
+        [self setAction:@selector(performActionBlock)];
+        
+        [self didChangeValueForKey:@"actionBlock"];
     }
 }
-
 @end

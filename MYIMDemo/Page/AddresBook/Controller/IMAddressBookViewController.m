@@ -1,23 +1,34 @@
 #import "IMAddressBookTableViewCell.h"
 #import "IMAddressBookViewController.h"
 #import "IMChatViewController.h"
+#import "IMContactItemCell.h"
 #import "IMConversationModel.h"
 #import "IMConversationModel.h"
 #import "IMEmojiGroup.h"
 #import "IMLoginViewController.h"
 #import "IMMessageModel.h"
+#import "IMNewContactViewController.h"
 #import "IMSearchMessageViewController.h"
 #import "UIViewController+IMCategory.h"
 #import <XMPPFramework/XMPPFramework.h>
-#import "IMNewContactViewController.h"
-
+#import "IMContactsAngel.h"
 
 @interface IMAddressBookViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchControllerDelegate> {
     // searchBar高度
     CGFloat searchBarHeight;
 }
+/// 列表
+@property (nonatomic, strong) UITableView *tableView;
 
-@property (nonatomic, strong) UITableView                   *tableView;
+/// 列表数据及控制中心
+@property (nonatomic, strong) IMContactsItem *listAngel;
+
+/// 总好友数
+@property (nonatomic, strong) UILabel *footerLabel;
+
+
+
+
 // 搜索视图
 @property (nonatomic, strong) UIView                        *headerView;
 @property (nonatomic, strong) UISearchController            *searchViewCtrl;
@@ -36,6 +47,7 @@
 {
     self = [super init];
     if (self) {
+        initTabBarItem(self.tabBarItem, @"通讯录1", @"tabbar_contacts", @"tabbar_contactsHL");
         //  这个通知必须放在init
          [self addNotification];
     }
@@ -50,7 +62,8 @@
 }
 - (NSMutableArray *)fisrtSectionDataSource{
     if (!_fisrtSectionDataSource) {
-        _fisrtSectionDataSource = [NSMutableArray arrayWithObjects:@"新的朋友", nil];
+//        createContactsItemModel(, <#NSString * _Nonnull url#>, <#NSString * _Nonnull title#>, <#NSString * _Nonnull subTitle#>, <#id  _Nonnull userInfo#>, <#^(IMContactsItem * _Nonnull item)action#>)
+//        _fisrtSectionDataSource = ;
     }
     return _fisrtSectionDataSource;
 }

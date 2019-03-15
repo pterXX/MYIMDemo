@@ -31,7 +31,7 @@
     _avaterImageView.sd_layout.topSpaceToView(self, 5).leftSpaceToView(self, 10).widthIs(rect.size.height).heightEqualToWidth();
     
     _titleLabel                        = [UILabel new];
-    _titleLabel.font                   = [UIFont systemFontOfSize:16];
+    _titleLabel.font                   = [UIFont fontContactItemName];
     _titleLabel.textColor              = [UIColor blackColor];
     [self addSubview:_titleLabel];
     _titleLabel.sd_layout.leftSpaceToView(_avaterImageView, 10).rightSpaceToView(self,10).topEqualToView(_avaterImageView).heightIs(rect.size.height);

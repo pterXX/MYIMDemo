@@ -40,12 +40,14 @@ edgeInsets;  \
 #define     IMNotificationCenter        [NSNotificationCenter defaultCenter]
 /// 用户自定义数据
 #define     IMUserDefaults              [NSUserDefaults standardUserDefaults]
+
 /// URL
 #define     IMURL(urlString)            [NSURL URLWithString:urlString]
 /// 图片
 #define     IMImage(imageName)          (imageName ? [UIImage imageNamed:imageName] : nil)
 #define     IMPNG(X)                    [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:X ofType:@"png"]]
 #define     IMJPG(X)                    [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:X ofType:@"jpg"]]
+
 /// 字符串
 #define     IMNoNilString(str)          (str.length > 0 ? str : @"")
 /// 方法名

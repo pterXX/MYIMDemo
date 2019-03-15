@@ -16,13 +16,11 @@ static NSString * const kUnavailable   = @"unavailable";//  下线
 static NSString * const kUnsubscribe   = @"unsubscribe";//  取消订阅
 
 
-@interface IMXMPPHelper()<XMPPStreamDelegate,XMPPRosterMemoryStorageDelegate,XMPPRosterDelegate>
+@interface IMXMPPHelper()<XMPPStreamDelegate,XMPPRosterMemoryStorageDelegate,XMPPRosterDelegate,XMPPReconnectDelegate>
 @property (nonatomic ,copy  ) IMXMPPFailBlock    fail;//  失败
 @property (nonatomic ,copy  ) IMXMPPSuccessBlock success;//  成功
 @property (nonatomic ,assign) BOOL               xmppNeedRegister;// 是否是注册
 
-//  用户授权
--(void)userAuth;
 @end
 
 @implementation IMXMPPHelper
@@ -386,8 +384,8 @@ static IMXMPPHelper *helper;
 }
 
 - (void)goOnline{
-    XMPPPresence *presence = [XMPPPresence presenceWithType:@"available"]; // type="available" is implicit
-    [[self xmppStream] sendElement:presence];
+    XMPPPresence *presence = [XMPPPresence presence];
+    [self.xmppStream sendElement:presence]; 
 }
 
 - (void)goOffline{
@@ -594,7 +592,7 @@ static IMXMPPHelper *helper;
             isExist = YES;
         }
     }
-    
+
     if (!isExist) {
         [self.userHelper.addFriendJidArray insertObject:presence.from atIndex:0];
         //添加好友一定会订阅对方，但是接受订阅不一定要添加对方为好友
@@ -634,6 +632,18 @@ static IMXMPPHelper *helper;
     }
 }
 
+
+- (void)xmppRoster:(XMPPRosterMemoryStorage *)sender didAddUser:(XMPPUserMemoryStorageObject *)user{
+    NSLog(@"=================> 添加好友");
+}
+
+- (void)xmppRoster:(XMPPRosterMemoryStorage *)sender didRemoveUser:(XMPPUserMemoryStorageObject *)user{
+    NSLog(@"=================> 删除好友");
+}
+
+- (void)xmppRoster:(XMPPRosterMemoryStorage *)sender didUpdateUser:(XMPPUserMemoryStorageObject *)user{
+    NSLog(@"=================> 更新好友");
+}
 @end
 
 

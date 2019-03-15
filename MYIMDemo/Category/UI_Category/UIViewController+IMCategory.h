@@ -32,4 +32,21 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)restoreRootViewController:(UIViewController *)rootViewController;
 @end
 
+
+@interface UIViewController (NavBar)
+
+/// 添加消失BarButton（左侧)
+- (void)addDismissBarButtonWithTitle:(NSString *)title;
+
+/// 左侧文字BarButton
+- (void)addLeftBarButtonWithTitle:(NSString *)title actionBlick:(IMBarButtonItemActionCallBack)actionBlock;
+/// 左侧图片BarButton
+- (void)addLeftBarButtonWithImage:(UIImage *)image actionBlick:(IMBarButtonItemActionCallBack)actionBlock;
+
+/// 右侧文字BarButton
+- (void)addRightBarButtonWithTitle:(NSString *)title actionBlick:(IMBarButtonItemActionCallBack)actionBlock;
+/// 右侧图片BarButton
+- (void)addRightBarButtonWithImage:(UIImage *)image actionBlick:(IMBarButtonItemActionCallBack)actionBlock;
+
+@end
 NS_ASSUME_NONNULL_END

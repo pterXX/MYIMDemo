@@ -52,7 +52,7 @@
 - (void)im_layoutNavigation{
     self.title = @"新的朋友";
     kWeakSelf;
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem barTitle:@"添加朋友" callBack:^(UIBarButtonItem * _Nonnull barItem) {
+    [self addRightBarButtonWithTitle:@"添加朋友" actionBlick:^{
         IMAddFriendsViewController *vc = [[IMAddFriendsViewController alloc] init];
         vc.hidesBottomBarWhenPushed = YES;
         [weakSelf.navigationController pushViewController:vc animated:YES];
