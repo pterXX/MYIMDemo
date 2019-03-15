@@ -10,11 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface IMAddressBookViewController : IMBaseViewController
+@interface IMContactsViewController : IMBaseViewController
 
 @end
 
-@interface IMAddressBookViewController(Class)
+@interface IMContactsViewController(Class)
 + (IMBaseNavigationController *)navAddressBookVc;
 @end
 NS_ASSUME_NONNULL_END

@@ -78,7 +78,7 @@
         
     }];
     
-    IMBaseNavigationController *addresBooks = [IMAddressBookViewController navAddressBookVc];
+    IMBaseNavigationController *addresBooks = [IMContactsViewController navAddressBookVc];
     [tabbar addSubController:addresBooks action:^(UITabBarItem * _Nonnull item, UITabBarController * _Nonnull tabbarVc) {
         
     }];
