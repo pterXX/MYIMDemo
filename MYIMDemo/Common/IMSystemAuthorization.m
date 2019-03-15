@@ -9,7 +9,7 @@
 #import "IMSystemAuthorization.h"
 #import <Photos/Photos.h>
 #import <AVFoundation/AVFoundation.h>
-#import "UIViewController+IMCategory.h"
+#import "UIViewController+Category.h"
 
 @implementation IMSystemAuthorization
 static IMSystemAuthorization *systemAuth = nil;

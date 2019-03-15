@@ -14,7 +14,7 @@
 #import "IMTextView.h"
 #import "IMEmojiModel.h"
 #import "IMInputBoxView.h"
-#import "NSDate+IMCategory.h"
+#import "NSDate+Category.h"
 #import "IMInputBoxMoreView.h"
 #import "IMInputBoxEmojiView.h"
 #import "NSTextAttachment+Emoji.h"

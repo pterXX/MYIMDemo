@@ -9,8 +9,8 @@
 #import "IMChatViewController+Image.h"
 
 #import <Photos/Photos.h>
-#import "UIImage+IMVideo.h"
-#import "NSDate+IMCategory.h"
+#import "UIImage+Video.h"
+#import "NSDate+Category.h"
 #import "NSDictionary+Json.h"
 #import "UIImage+Compression.h"
 

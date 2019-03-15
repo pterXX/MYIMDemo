@@ -44,7 +44,7 @@ edgeInsets;  \
 /// URL
 #define     IMURL(urlString)            [NSURL URLWithString:urlString]
 /// 图片
-#define     IMImage(imageName)          (imageName ? [UIImage imageNamed:imageName] : nil)
+#define     IMImage(imageName)          (imageName ? [UIImage imageNamed:imageName] : [UIImage imageNamed:@""])
 #define     IMPNG(X)                    [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:X ofType:@"png"]]
 #define     IMJPG(X)                    [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:X ofType:@"jpg"]]
 
@@ -60,6 +60,72 @@ edgeInsets;  \
 #define     RGBAColor(r, g, b, a)       [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:a]
 #define     HexColor(color)             [UIColor colorWithRed:((float)((color & 0xFF0000) >> 16))/255.0 green:((float)((color & 0xFF00) >> 8))/255.0 blue:((float)(color & 0xFF))/255.0 alpha:1.0]
 #define     HexAColor(color, a)         [UIColor colorWithRed:((float)((color & 0xFF0000) >> 16))/255.0 green:((float)((color & 0xFF00) >> 8))/255.0 blue:((float)(color & 0xFF))/255.0 alpha:a]
+
+#pragma mark - # 快捷方法
+/// PushVC
+#define     IMPushVC(vc)             {\
+[vc setHidesBottomBarWhenPushed:YES];\
+[self.navigationController pushViewController:vc animated:YES];\
+}
+
+/// 方法交换
+#define     IMExchangeMethod(oldSEL, newSEL) {\
+Method oldMethod = class_getInstanceMethod(self, oldSEL);\
+Method newMethod = class_getInstanceMethod(self, newSEL);\
+method_exchangeImplementations(oldMethod, newMethod);\
+}\
+
+#pragma mark - # 多线程
+#define     IMBackThread(block)         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), block)
+#define     IMMainThread(block)         dispatch_async(dispatch_get_main_queue(), block)
+#define     IMMainBarrier(block)        dispatch_barrier_async(dispatch_get_main_queue(), block)
+#define     IMMainAfter(x, block)       dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(x * NSEC_PER_SEC)), dispatch_get_main_queue(), block);
+
+#pragma mark - # 循环引用消除
+#ifndef weakify
+#if DEBUG
+#if __has_feature(objc_arc)
+#define weakify(object) autoreleasepool{} __weak __typeof__(object) weak##_##object = object;
+#else
+#define weakify(object) autoreleasepool{} __block __typeof__(object) block##_##object = object;
+#endif
+#else
+#if __has_feature(objc_arc)
+#define weakify(object) try{} @finally{} {} __weak __typeof__(object) weak##_##object = object;
+#else
+#define weakify(object) try{} @finally{} {} __block __typeof__(object) block##_##object = object;
+#endif
+#endif
+#endif
+
+#ifndef strongify
+#if DEBUG
+#if __has_feature(objc_arc)
+#define strongify(object) autoreleasepool{} __typeof__(object) object = weak##_##object;
+#else
+#define strongify(object) autoreleasepool{} __typeof__(object) object = block##_##object;
+#endif
+#else
+#if __has_feature(objc_arc)
+#define strongify(object) try{} @finally{} __typeof__(object) object = weak##_##object;
+#else
+#define strongify(object) try{} @finally{} __typeof__(object) object = block##_##object;
+#endif
+#endif
+#endif
+
+#pragma mark - # XCode
+#define     XCODE_VERSION_8_LATER       __has_include(<UserNotifications/UserNotifications.h>)
+
+#pragma mark - # 系统版本
+#define     SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define     SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define     SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define     SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define     SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
+
+
+
 
 #pragma mark - 消息输入框
 // 输入框字体颜色
@@ -175,10 +241,6 @@ static const CGFloat EMOJI_SPACE = 2;
 #define IMAGE_MAX_HEIGHT             (IMSCREEN_HEIGHT - IMSTATUSBAR_NAVBAR_HEIGHT - IMTABBAR_HEIGHT - 100)
 // 最大的语音长度
 #define MAX_VOICE_LENGTH             60 * 1000.f
-
-
-
-
 
 // 对于block的弱引用
 #define kWeakSelf           __weak __typeof(self)weakSelf = self;

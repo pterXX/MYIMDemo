@@ -1,5 +1,5 @@
 //
-//  KVideoViewController.m
+//  VideoViewController.m
 //  KXiniuCloud
 //
 //  Created by eims on 2018/5/15.
@@ -12,7 +12,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <Photos/Photos.h>
 
-#import "NSDate+IMCategory.h"
+#import "NSDate+Category.h"
 
 #import "IMPlayer.h"
 #import "IMFileManagement.h"

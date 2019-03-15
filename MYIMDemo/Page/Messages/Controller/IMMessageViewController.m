@@ -10,11 +10,11 @@
 
 #import "NSArray+Json.h"
 #import "UIImage+Color.h"
-#import "NSDate+IMCategory.h"
+#import "NSDate+Category.h"
 #import "NSDictionary+Json.h"
-#import "UIViewController+IMCategory.h"
+#import "UIViewController+Category.h"
 
-#import "IMAddFriendsViewController.h"
+#import "IMAddContactsViewController.h"
 #import "IMChatViewController.h"
 #import "IMConversationModel.h"
 #import "IMEmojiGroup.h"
@@ -211,7 +211,7 @@
         [SVProgressHUD dismissWithDelay:2];
     }];
     YCMenuAction *action1 = [YCMenuAction actionWithTitle:@"添加朋友" image:[UIImage imageMenuAddFriends] handler:^(YCMenuAction *action) {
-        IMAddFriendsViewController *vc = [[IMAddFriendsViewController alloc] init];
+        IMAddContactsViewController *vc = [[IMAddContactsViewController alloc] init];
         vc.hidesBottomBarWhenPushed = YES;
         [weakSelf.navigationController pushViewController:vc animated:YES];
     }];

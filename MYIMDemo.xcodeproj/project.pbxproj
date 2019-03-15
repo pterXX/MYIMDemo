@@ -33,7 +33,16 @@
 		8423C324223B72E900E999F5 /* Contacts.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8423C323223B72E900E999F5 /* Contacts.xcassets */; };
 		8423C327223B745700E999F5 /* Conversation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8423C326223B745700E999F5 /* Conversation.xcassets */; };
 		8423C32A223B773500E999F5 /* Login.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8423C329223B773500E999F5 /* Login.xcassets */; };
-		842510F2222E240A004C3954 /* bg_login.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 842510F1222E240A004C3954 /* bg_login.jpeg */; };
+		8423C335223B800700E999F5 /* IMContactsSearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8423C333223B800600E999F5 /* IMContactsSearchResultViewController.m */; };
+		8423C33B223B80BE00E999F5 /* IMSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8423C339223B80BD00E999F5 /* IMSearchController.m */; };
+		8423C33E223B823200E999F5 /* Common.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8423C33D223B823100E999F5 /* Common.xcassets */; };
+		8423C341223B839000E999F5 /* UIView+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8423C340223B839000E999F5 /* UIView+Extensions.m */; };
+		8423C357223B97C200E999F5 /* IMNewFriendFuncationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8423C356223B97C200E999F5 /* IMNewFriendFuncationCell.m */; };
+		8423C35B223B98F400E999F5 /* IMMobileContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8423C35A223B98F400E999F5 /* IMMobileContactsViewController.m */; };
+		8423C35F223B9C0E00E999F5 /* IMFriendFindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8423C35E223B9C0E00E999F5 /* IMFriendFindViewController.m */; };
+		8423C364223B9D6500E999F5 /* NewFriends.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8423C363223B9D6500E999F5 /* NewFriends.xcassets */; };
+		8423C367223B9F1400E999F5 /* IMNewFriendViewUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8423C366223B9F1400E999F5 /* IMNewFriendViewUserCell.m */; };
+		8423C36C223BAD1800E999F5 /* IMNewFriendAngel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8423C369223BA99A00E999F5 /* IMNewFriendAngel.m */; };
 		842510F5222E24A7004C3954 /* IMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842510F4222E24A7004C3954 /* IMLoginViewController.m */; };
 		842510F7222E24E0004C3954 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842510F6222E24E0004C3954 /* Launch Screen.storyboard */; };
 		84251175222E5E28004C3954 /* IMAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84251122222E5E27004C3954 /* IMAccountManager.m */; };
@@ -52,9 +61,8 @@
 		842511BE222E60D0004C3954 /* IMFriendHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 842511BB222E60D0004C3954 /* IMFriendHelper.m */; };
 		842511BF222E60D0004C3954 /* IMUserHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 842511BD222E60D0004C3954 /* IMUserHelper.m */; };
 		842511C3222E6539004C3954 /* NSFileManager+IMChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 842511C2222E6538004C3954 /* NSFileManager+IMChat.m */; };
-		8428F45222320EE70064DA35 /* IMAddFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8428F45122320EE70064DA35 /* IMAddFriendsViewController.m */; };
+		8428F45222320EE70064DA35 /* IMAddContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8428F45122320EE70064DA35 /* IMAddContactsViewController.m */; };
 		8428F4582232481F0064DA35 /* IMNotificationObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 8428F4572232481F0064DA35 /* IMNotificationObserver.m */; };
-		8428F46022326A5D0064DA35 /* IMFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8428F45F22326A5D0064DA35 /* IMFriendsViewController.m */; };
 		8428F46622326AD00064DA35 /* IMBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8428F46522326AD00064DA35 /* IMBaseNavigationController.m */; };
 		8428F46922326B060064DA35 /* IMBaseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8428F46822326B060064DA35 /* IMBaseTabBarController.m */; };
 		8428F4862235F5DB0064DA35 /* IMContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8428F4852235F5DB0064DA35 /* IMContactsViewController.m */; };
@@ -99,8 +107,8 @@
 		EE8936C32227DA4F004F1F6E /* IMMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8936BA2227DA4E004F1F6E /* IMMessageViewController.m */; };
 		EE8936C42227DA4F004F1F6E /* IMColorTools.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8936C22227DA4F004F1F6E /* IMColorTools.m */; };
 		EE8936C72227DBA2004F1F6E /* IMBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8936C62227DBA2004F1F6E /* IMBaseViewController.m */; };
-		EE8936CA2227DC57004F1F6E /* UIButton+IMExtra.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8936C82227DC56004F1F6E /* UIButton+IMExtra.m */; };
-		EE8936CE2227DF37004F1F6E /* UIDevice+IMCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8936CD2227DF37004F1F6E /* UIDevice+IMCategory.m */; };
+		EE8936CA2227DC57004F1F6E /* UIButton+Extra.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8936C82227DC56004F1F6E /* UIButton+Extra.m */; };
+		EE8936CE2227DF37004F1F6E /* UIDevice+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8936CD2227DF37004F1F6E /* UIDevice+Category.m */; };
 		EE8936D42227E3AF004F1F6E /* IMSearchMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8936D32227E3AF004F1F6E /* IMSearchMessageViewController.m */; };
 		EE8936DD2228BE68004F1F6E /* IMShortcutMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8936DC2228BE68004F1F6E /* IMShortcutMethod.m */; };
 		EE8936E32228C331004F1F6E /* IMChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8936E22228C331004F1F6E /* IMChatViewController.m */; };
@@ -112,12 +120,12 @@
 		EE8936F92228D0E5004F1F6E /* UIFont+IMChat.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8936F82228D0E5004F1F6E /* UIFont+IMChat.m */; };
 		EE8936FC2228D33B004F1F6E /* UIColor+IMChat.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8936FB2228D33B004F1F6E /* UIColor+IMChat.m */; };
 		EE8936FD2228D55F004F1F6E /* IMSystemAuthorization.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8936F42228CC5D004F1F6E /* IMSystemAuthorization.m */; };
-		EE8937012228D6B8004F1F6E /* UIViewController+IMCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8937002228D6B8004F1F6E /* UIViewController+IMCategory.m */; };
+		EE8937012228D6B8004F1F6E /* UIViewController+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8937002228D6B8004F1F6E /* UIViewController+Category.m */; };
 		EE8937042228D82B004F1F6E /* IMBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8937032228D82B004F1F6E /* IMBaseTableViewCell.m */; };
 		EE8937082228DDF3004F1F6E /* UIImage+IMChat.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8937072228DDF3004F1F6E /* UIImage+IMChat.m */; };
 		EE89370D2228F5C7004F1F6E /* IMAppDefaultUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = EE89370C2228F5C7004F1F6E /* IMAppDefaultUtil.m */; };
-		EE8937142228F811004F1F6E /* NSDate+IMCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8937122228F811004F1F6E /* NSDate+IMCategory.m */; };
-		EE8937172228F91A004F1F6E /* UILabel+IMAutoLabelHeightAndWidth.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8937152228F91A004F1F6E /* UILabel+IMAutoLabelHeightAndWidth.m */; };
+		EE8937142228F811004F1F6E /* NSDate+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8937122228F811004F1F6E /* NSDate+Category.m */; };
+		EE8937172228F91A004F1F6E /* UILabel+AutoLabelHeightAndWidth.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8937152228F91A004F1F6E /* UILabel+AutoLabelHeightAndWidth.m */; };
 		EE89371A2228FE6A004F1F6E /* IMNetworkDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8937192228FE6A004F1F6E /* IMNetworkDetection.m */; };
 		EE89371D2228FFEB004F1F6E /* NSDictionary+Json.m in Sources */ = {isa = PBXBuildFile; fileRef = EE89371B2228FFEB004F1F6E /* NSDictionary+Json.m */; };
 		EE893720222900BE004F1F6E /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = EE89371F222900BE004F1F6E /* UIView+Frame.m */; };
@@ -450,7 +458,7 @@
 		EE893A0322290901004F1F6E /* NSArray+Json.m in Sources */ = {isa = PBXBuildFile; fileRef = EE893A0222290901004F1F6E /* NSArray+Json.m */; };
 		EE893A0A22290A55004F1F6E /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = EE893A0422290A53004F1F6E /* UIImage+Color.m */; };
 		EE893A0B22290A55004F1F6E /* UIImage+Compression.m in Sources */ = {isa = PBXBuildFile; fileRef = EE893A0522290A53004F1F6E /* UIImage+Compression.m */; };
-		EE893A0C22290A55004F1F6E /* UIImage+IMVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = EE893A0722290A54004F1F6E /* UIImage+IMVideo.m */; };
+		EE893A0C22290A55004F1F6E /* UIImage+Video.m in Sources */ = {isa = PBXBuildFile; fileRef = EE893A0722290A54004F1F6E /* UIImage+Video.m */; };
 		EE893A1422290C13004F1F6E /* NSString+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = EE893A1122290C11004F1F6E /* NSString+Category.m */; };
 		EE893A1522290C13004F1F6E /* NSString+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = EE893A1322290C13004F1F6E /* NSString+Size.m */; };
 		EE893A17222915DD004F1F6E /* messageList101824_143701 in Resources */ = {isa = PBXBuildFile; fileRef = EE893A16222915DD004F1F6E /* messageList101824_143701 */; };
@@ -542,7 +550,27 @@
 		8423C323223B72E900E999F5 /* Contacts.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Contacts.xcassets; sourceTree = "<group>"; };
 		8423C326223B745700E999F5 /* Conversation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Conversation.xcassets; sourceTree = "<group>"; };
 		8423C329223B773500E999F5 /* Login.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Login.xcassets; sourceTree = "<group>"; };
-		842510F1222E240A004C3954 /* bg_login.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg_login.jpeg; sourceTree = "<group>"; };
+		8423C333223B800600E999F5 /* IMContactsSearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMContactsSearchResultViewController.m; sourceTree = "<group>"; };
+		8423C334223B800700E999F5 /* IMContactsSearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMContactsSearchResultViewController.h; sourceTree = "<group>"; };
+		8423C338223B80BD00E999F5 /* IMSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMSearchController.h; sourceTree = "<group>"; };
+		8423C339223B80BD00E999F5 /* IMSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMSearchController.m; sourceTree = "<group>"; };
+		8423C33C223B811500E999F5 /* IMSearchResultControllerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IMSearchResultControllerProtocol.h; path = ../../../../../../../Downloads/IMSearchResultControllerProtocol.h; sourceTree = "<group>"; };
+		8423C33D223B823100E999F5 /* Common.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Common.xcassets; sourceTree = "<group>"; };
+		8423C33F223B839000E999F5 /* UIView+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extensions.h"; sourceTree = "<group>"; };
+		8423C340223B839000E999F5 /* UIView+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extensions.m"; sourceTree = "<group>"; };
+		8423C350223B862F00E999F5 /* Foundation+Category.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Foundation+Category.h"; sourceTree = "<group>"; };
+		8423C351223B866C00E999F5 /* UIKit+Category.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIKit+Category.h"; sourceTree = "<group>"; };
+		8423C355223B97C200E999F5 /* IMNewFriendFuncationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMNewFriendFuncationCell.h; sourceTree = "<group>"; };
+		8423C356223B97C200E999F5 /* IMNewFriendFuncationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMNewFriendFuncationCell.m; sourceTree = "<group>"; };
+		8423C359223B98F400E999F5 /* IMMobileContactsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMMobileContactsViewController.h; sourceTree = "<group>"; };
+		8423C35A223B98F400E999F5 /* IMMobileContactsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMMobileContactsViewController.m; sourceTree = "<group>"; };
+		8423C35D223B9C0E00E999F5 /* IMFriendFindViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMFriendFindViewController.h; sourceTree = "<group>"; };
+		8423C35E223B9C0E00E999F5 /* IMFriendFindViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMFriendFindViewController.m; sourceTree = "<group>"; };
+		8423C363223B9D6500E999F5 /* NewFriends.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = NewFriends.xcassets; sourceTree = "<group>"; };
+		8423C365223B9F1400E999F5 /* IMNewFriendViewUserCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMNewFriendViewUserCell.h; sourceTree = "<group>"; };
+		8423C366223B9F1400E999F5 /* IMNewFriendViewUserCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMNewFriendViewUserCell.m; sourceTree = "<group>"; };
+		8423C368223BA99900E999F5 /* IMNewFriendAngel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMNewFriendAngel.h; sourceTree = "<group>"; };
+		8423C369223BA99A00E999F5 /* IMNewFriendAngel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMNewFriendAngel.m; sourceTree = "<group>"; };
 		842510F3222E24A7004C3954 /* IMLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMLoginViewController.h; sourceTree = "<group>"; };
 		842510F4222E24A7004C3954 /* IMLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMLoginViewController.m; sourceTree = "<group>"; };
 		842510F6222E24E0004C3954 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -581,12 +609,10 @@
 		842511BD222E60D0004C3954 /* IMUserHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMUserHelper.m; sourceTree = "<group>"; };
 		842511C1222E6538004C3954 /* NSFileManager+IMChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+IMChat.h"; sourceTree = "<group>"; };
 		842511C2222E6538004C3954 /* NSFileManager+IMChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+IMChat.m"; sourceTree = "<group>"; };
-		8428F45022320EE70064DA35 /* IMAddFriendsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMAddFriendsViewController.h; sourceTree = "<group>"; };
-		8428F45122320EE70064DA35 /* IMAddFriendsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMAddFriendsViewController.m; sourceTree = "<group>"; };
+		8428F45022320EE70064DA35 /* IMAddContactsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMAddContactsViewController.h; sourceTree = "<group>"; };
+		8428F45122320EE70064DA35 /* IMAddContactsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMAddContactsViewController.m; sourceTree = "<group>"; };
 		8428F4562232481E0064DA35 /* IMNotificationObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMNotificationObserver.h; sourceTree = "<group>"; };
 		8428F4572232481F0064DA35 /* IMNotificationObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMNotificationObserver.m; sourceTree = "<group>"; };
-		8428F45E22326A5D0064DA35 /* IMFriendsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMFriendsViewController.h; sourceTree = "<group>"; };
-		8428F45F22326A5D0064DA35 /* IMFriendsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMFriendsViewController.m; sourceTree = "<group>"; };
 		8428F46422326AD00064DA35 /* IMBaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMBaseNavigationController.h; sourceTree = "<group>"; };
 		8428F46522326AD00064DA35 /* IMBaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMBaseNavigationController.m; sourceTree = "<group>"; };
 		8428F46722326B060064DA35 /* IMBaseTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMBaseTabBarController.h; sourceTree = "<group>"; };
@@ -668,10 +694,10 @@
 		EE8936C22227DA4F004F1F6E /* IMColorTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMColorTools.m; sourceTree = "<group>"; };
 		EE8936C52227DBA2004F1F6E /* IMBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMBaseViewController.h; sourceTree = "<group>"; };
 		EE8936C62227DBA2004F1F6E /* IMBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMBaseViewController.m; sourceTree = "<group>"; };
-		EE8936C82227DC56004F1F6E /* UIButton+IMExtra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+IMExtra.m"; sourceTree = "<group>"; };
-		EE8936C92227DC57004F1F6E /* UIButton+IMExtra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+IMExtra.h"; sourceTree = "<group>"; };
-		EE8936CC2227DF37004F1F6E /* UIDevice+IMCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+IMCategory.h"; sourceTree = "<group>"; };
-		EE8936CD2227DF37004F1F6E /* UIDevice+IMCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+IMCategory.m"; sourceTree = "<group>"; };
+		EE8936C82227DC56004F1F6E /* UIButton+Extra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Extra.m"; sourceTree = "<group>"; };
+		EE8936C92227DC57004F1F6E /* UIButton+Extra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Extra.h"; sourceTree = "<group>"; };
+		EE8936CC2227DF37004F1F6E /* UIDevice+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Category.h"; sourceTree = "<group>"; };
+		EE8936CD2227DF37004F1F6E /* UIDevice+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Category.m"; sourceTree = "<group>"; };
 		EE8936D22227E3AF004F1F6E /* IMSearchMessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMSearchMessageViewController.h; sourceTree = "<group>"; };
 		EE8936D32227E3AF004F1F6E /* IMSearchMessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMSearchMessageViewController.m; sourceTree = "<group>"; };
 		EE8936D82228BCC0004F1F6E /* IMShortcutMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMShortcutMacros.h; sourceTree = "<group>"; };
@@ -696,8 +722,8 @@
 		EE8936F82228D0E5004F1F6E /* UIFont+IMChat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIFont+IMChat.m"; sourceTree = "<group>"; };
 		EE8936FA2228D33B004F1F6E /* UIColor+IMChat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+IMChat.h"; sourceTree = "<group>"; };
 		EE8936FB2228D33B004F1F6E /* UIColor+IMChat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+IMChat.m"; sourceTree = "<group>"; };
-		EE8936FF2228D6B8004F1F6E /* UIViewController+IMCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+IMCategory.h"; sourceTree = "<group>"; };
-		EE8937002228D6B8004F1F6E /* UIViewController+IMCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+IMCategory.m"; sourceTree = "<group>"; };
+		EE8936FF2228D6B8004F1F6E /* UIViewController+Category.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Category.h"; sourceTree = "<group>"; };
+		EE8937002228D6B8004F1F6E /* UIViewController+Category.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Category.m"; sourceTree = "<group>"; };
 		EE8937022228D82B004F1F6E /* IMBaseTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMBaseTableViewCell.h; sourceTree = "<group>"; };
 		EE8937032228D82B004F1F6E /* IMBaseTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMBaseTableViewCell.m; sourceTree = "<group>"; };
 		EE8937062228DDF3004F1F6E /* UIImage+IMChat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+IMChat.h"; sourceTree = "<group>"; };
@@ -705,10 +731,10 @@
 		EE89370B2228F5C6004F1F6E /* IMAppDefaultUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMAppDefaultUtil.h; sourceTree = "<group>"; };
 		EE89370C2228F5C7004F1F6E /* IMAppDefaultUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMAppDefaultUtil.m; sourceTree = "<group>"; };
 		EE89370F2228F77A004F1F6E /* IMMailAccountInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMailAccountInfoModel.h; sourceTree = "<group>"; };
-		EE8937122228F811004F1F6E /* NSDate+IMCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+IMCategory.m"; sourceTree = "<group>"; };
-		EE8937132228F811004F1F6E /* NSDate+IMCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+IMCategory.h"; sourceTree = "<group>"; };
-		EE8937152228F91A004F1F6E /* UILabel+IMAutoLabelHeightAndWidth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+IMAutoLabelHeightAndWidth.m"; sourceTree = "<group>"; };
-		EE8937162228F91A004F1F6E /* UILabel+IMAutoLabelHeightAndWidth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+IMAutoLabelHeightAndWidth.h"; sourceTree = "<group>"; };
+		EE8937122228F811004F1F6E /* NSDate+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Category.m"; sourceTree = "<group>"; };
+		EE8937132228F811004F1F6E /* NSDate+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Category.h"; sourceTree = "<group>"; };
+		EE8937152228F91A004F1F6E /* UILabel+AutoLabelHeightAndWidth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+AutoLabelHeightAndWidth.m"; sourceTree = "<group>"; };
+		EE8937162228F91A004F1F6E /* UILabel+AutoLabelHeightAndWidth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+AutoLabelHeightAndWidth.h"; sourceTree = "<group>"; };
 		EE8937182228FE69004F1F6E /* IMNetworkDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMNetworkDetection.h; sourceTree = "<group>"; };
 		EE8937192228FE6A004F1F6E /* IMNetworkDetection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMNetworkDetection.m; sourceTree = "<group>"; };
 		EE89371B2228FFEB004F1F6E /* NSDictionary+Json.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Json.m"; sourceTree = "<group>"; };
@@ -1070,8 +1096,8 @@
 		EE893A0222290901004F1F6E /* NSArray+Json.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Json.m"; sourceTree = "<group>"; };
 		EE893A0422290A53004F1F6E /* UIImage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
 		EE893A0522290A53004F1F6E /* UIImage+Compression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Compression.m"; sourceTree = "<group>"; };
-		EE893A0622290A54004F1F6E /* UIImage+IMVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+IMVideo.h"; sourceTree = "<group>"; };
-		EE893A0722290A54004F1F6E /* UIImage+IMVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+IMVideo.m"; sourceTree = "<group>"; };
+		EE893A0622290A54004F1F6E /* UIImage+Video.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Video.h"; sourceTree = "<group>"; };
+		EE893A0722290A54004F1F6E /* UIImage+Video.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Video.m"; sourceTree = "<group>"; };
 		EE893A0822290A55004F1F6E /* UIImage+Compression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Compression.h"; sourceTree = "<group>"; };
 		EE893A0922290A55004F1F6E /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
 		EE893A0F22290B34004F1F6E /* IMCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMCategory.h; sourceTree = "<group>"; };
@@ -1269,9 +1295,327 @@
 			isa = PBXGroup;
 			children = (
 				8423C329223B773500E999F5 /* Login.xcassets */,
-				842510F1222E240A004C3954 /* bg_login.jpeg */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		8423C32B223B7F5C00E999F5 /* IMContactsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8423C352223B8E7500E999F5 /* Views */,
+				8428F4842235F5DB0064DA35 /* IMContactsViewController.h */,
+				8428F4852235F5DB0064DA35 /* IMContactsViewController.m */,
+			);
+			path = IMContactsViewController;
+			sourceTree = "<group>";
+		};
+		8423C32C223B7F6500E999F5 /* IMNewContactViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8423C353223B8E9800E999F5 /* Views */,
+				841D26FE2238D4470004D0FE /* IMNewContactViewController.h */,
+				841D26FF2238D4470004D0FE /* IMNewContactViewController.m */,
+			);
+			path = IMNewContactViewController;
+			sourceTree = "<group>";
+		};
+		8423C32D223B7F6C00E999F5 /* IMNewFriendViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8423C354223B979500E999F5 /* Views */,
+				8423C313223B6BCB00E999F5 /* IMNewFriendViewController.h */,
+				8423C314223B6BCB00E999F5 /* IMNewFriendViewController.m */,
+			);
+			path = IMNewFriendViewController;
+			sourceTree = "<group>";
+		};
+		8423C32E223B7F7C00E999F5 /* IMGroupViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8423C316223B6BEA00E999F5 /* IMGroupViewController.h */,
+				8423C317223B6BEA00E999F5 /* IMGroupViewController.m */,
+			);
+			path = IMGroupViewController;
+			sourceTree = "<group>";
+		};
+		8423C32F223B7F8700E999F5 /* IMOfficialAccountViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8423C319223B6C0100E999F5 /* IMOfficialAccountViewController.h */,
+				8423C31A223B6C0100E999F5 /* IMOfficialAccountViewController.m */,
+			);
+			path = IMOfficialAccountViewController;
+			sourceTree = "<group>";
+		};
+		8423C330223B7F9000E999F5 /* IMTagsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8423C31C223B6C1A00E999F5 /* IMTagsViewController.h */,
+				8423C31D223B6C1A00E999F5 /* IMTagsViewController.m */,
+			);
+			path = IMTagsViewController;
+			sourceTree = "<group>";
+		};
+		8423C331223B7F9F00E999F5 /* IMUserDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8423C31F223B6D4B00E999F5 /* IMUserDetailViewController.h */,
+				8423C320223B6D4B00E999F5 /* IMUserDetailViewController.m */,
+			);
+			path = IMUserDetailViewController;
+			sourceTree = "<group>";
+		};
+		8423C332223B7FC100E999F5 /* IMContactsSearchResultViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8423C334223B800700E999F5 /* IMContactsSearchResultViewController.h */,
+				8423C333223B800600E999F5 /* IMContactsSearchResultViewController.m */,
+			);
+			path = IMContactsSearchResultViewController;
+			sourceTree = "<group>";
+		};
+		8423C336223B806500E999F5 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				8423C337223B80A400E999F5 /* IMSearchController */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		8423C337223B80A400E999F5 /* IMSearchController */ = {
+			isa = PBXGroup;
+			children = (
+				8423C338223B80BD00E999F5 /* IMSearchController.h */,
+				8423C339223B80BD00E999F5 /* IMSearchController.m */,
+				8423C33C223B811500E999F5 /* IMSearchResultControllerProtocol.h */,
+			);
+			path = IMSearchController;
+			sourceTree = "<group>";
+		};
+		8423C342223B83C900E999F5 /* UIKit+Category */ = {
+			isa = PBXGroup;
+			children = (
+				8423C34A223B852600E999F5 /* UIBarButtonItem */,
+				8423C349223B851700E999F5 /* UIButton */,
+				8423C344223B84B200E999F5 /* UIDevice */,
+				8423C343223B849C00E999F5 /* UIImage */,
+				8423C345223B84BC00E999F5 /* UILabel */,
+				8423C346223B84D500E999F5 /* UIScrollView */,
+				8423C347223B84E100E999F5 /* UIView */,
+				8423C348223B84FF00E999F5 /* UIViewController */,
+				8423C351223B866C00E999F5 /* UIKit+Category.h */,
+			);
+			path = "UIKit+Category";
+			sourceTree = "<group>";
+		};
+		8423C343223B849C00E999F5 /* UIImage */ = {
+			isa = PBXGroup;
+			children = (
+				EE893A0922290A55004F1F6E /* UIImage+Color.h */,
+				EE893A0422290A53004F1F6E /* UIImage+Color.m */,
+				EE893A0822290A55004F1F6E /* UIImage+Compression.h */,
+				EE893A0522290A53004F1F6E /* UIImage+Compression.m */,
+				EE893A0622290A54004F1F6E /* UIImage+Video.h */,
+				EE893A0722290A54004F1F6E /* UIImage+Video.m */,
+			);
+			path = UIImage;
+			sourceTree = "<group>";
+		};
+		8423C344223B84B200E999F5 /* UIDevice */ = {
+			isa = PBXGroup;
+			children = (
+				EE8936CC2227DF37004F1F6E /* UIDevice+Category.h */,
+				EE8936CD2227DF37004F1F6E /* UIDevice+Category.m */,
+			);
+			path = UIDevice;
+			sourceTree = "<group>";
+		};
+		8423C345223B84BC00E999F5 /* UILabel */ = {
+			isa = PBXGroup;
+			children = (
+				EE8937162228F91A004F1F6E /* UILabel+AutoLabelHeightAndWidth.h */,
+				EE8937152228F91A004F1F6E /* UILabel+AutoLabelHeightAndWidth.m */,
+			);
+			path = UILabel;
+			sourceTree = "<group>";
+		};
+		8423C346223B84D500E999F5 /* UIScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				EE8939BF22290364004F1F6E /* UIScrollView+Addition.h */,
+				EE8939C022290365004F1F6E /* UIScrollView+Addition.m */,
+			);
+			path = UIScrollView;
+			sourceTree = "<group>";
+		};
+		8423C347223B84E100E999F5 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				8423C33F223B839000E999F5 /* UIView+Extensions.h */,
+				8423C340223B839000E999F5 /* UIView+Extensions.m */,
+				EE89371E222900BE004F1F6E /* UIView+Frame.h */,
+				EE89371F222900BE004F1F6E /* UIView+Frame.m */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		8423C348223B84FF00E999F5 /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EE8936FF2228D6B8004F1F6E /* UIViewController+Category.h */,
+				EE8937002228D6B8004F1F6E /* UIViewController+Category.m */,
+			);
+			path = UIViewController;
+			sourceTree = "<group>";
+		};
+		8423C349223B851700E999F5 /* UIButton */ = {
+			isa = PBXGroup;
+			children = (
+				EE8936C92227DC57004F1F6E /* UIButton+Extra.h */,
+				EE8936C82227DC56004F1F6E /* UIButton+Extra.m */,
+			);
+			path = UIButton;
+			sourceTree = "<group>";
+		};
+		8423C34A223B852600E999F5 /* UIBarButtonItem */ = {
+			isa = PBXGroup;
+			children = (
+				84681F722230CA500056372A /* UIBarButtonItem+Category.h */,
+				84681F732230CA500056372A /* UIBarButtonItem+Category.m */,
+			);
+			path = UIBarButtonItem;
+			sourceTree = "<group>";
+		};
+		8423C34B223B856600E999F5 /* NSArray */ = {
+			isa = PBXGroup;
+			children = (
+				EE7234D5222CCEB200A6F7E2 /* NSArray+zh_SafeAccess.h */,
+				EE7234D6222CCEB200A6F7E2 /* NSArray+zh_SafeAccess.m */,
+				EE893A0122290900004F1F6E /* NSArray+Json.h */,
+				EE893A0222290901004F1F6E /* NSArray+Json.m */,
+			);
+			path = NSArray;
+			sourceTree = "<group>";
+		};
+		8423C34C223B858A00E999F5 /* NSAttributedString */ = {
+			isa = PBXGroup;
+			children = (
+				EE8939C22229037F004F1F6E /* NSAttributedString+Addition.h */,
+				EE8939C322290380004F1F6E /* NSAttributedString+Addition.m */,
+			);
+			path = NSAttributedString;
+			sourceTree = "<group>";
+		};
+		8423C34D223B85A100E999F5 /* NSDate */ = {
+			isa = PBXGroup;
+			children = (
+				EE8937132228F811004F1F6E /* NSDate+Category.h */,
+				EE8937122228F811004F1F6E /* NSDate+Category.m */,
+			);
+			path = NSDate;
+			sourceTree = "<group>";
+		};
+		8423C34E223B85B100E999F5 /* NSDictionary */ = {
+			isa = PBXGroup;
+			children = (
+				EE89371C2228FFEB004F1F6E /* NSDictionary+Json.h */,
+				EE89371B2228FFEB004F1F6E /* NSDictionary+Json.m */,
+			);
+			path = NSDictionary;
+			sourceTree = "<group>";
+		};
+		8423C34F223B85C100E999F5 /* NSString */ = {
+			isa = PBXGroup;
+			children = (
+				EE893A1022290C11004F1F6E /* NSString+Category.h */,
+				EE893A1122290C11004F1F6E /* NSString+Category.m */,
+				EE893A1222290C12004F1F6E /* NSString+Size.h */,
+				EE893A1322290C13004F1F6E /* NSString+Size.m */,
+			);
+			path = NSString;
+			sourceTree = "<group>";
+		};
+		8423C352223B8E7500E999F5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8423C311223B561300E999F5 /* IMContactsHeaderView.h */,
+				8423C310223B561200E999F5 /* IMContactsHeaderView.m */,
+				8423C2C6223B410B00E999F5 /* IMContactItemCell.h */,
+				8423C2C7223B410B00E999F5 /* IMContactItemCell.m */,
+				8423C30D223B52F600E999F5 /* IMContactsAngel.h */,
+				8423C30E223B52F600E999F5 /* IMContactsAngel.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8423C353223B8E9800E999F5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8428F48B223623F60064DA35 /* IMAddressBookTableViewCell.h */,
+				8428F48C223623F60064DA35 /* IMAddressBookTableViewCell.m */,
+				841D27012238D8E40004D0FE /* IMNewContactTableViewCell.h */,
+				841D27022238D8E40004D0FE /* IMNewContactTableViewCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8423C354223B979500E999F5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8423C368223BA99900E999F5 /* IMNewFriendAngel.h */,
+				8423C369223BA99A00E999F5 /* IMNewFriendAngel.m */,
+				8423C355223B97C200E999F5 /* IMNewFriendFuncationCell.h */,
+				8423C356223B97C200E999F5 /* IMNewFriendFuncationCell.m */,
+				8423C365223B9F1400E999F5 /* IMNewFriendViewUserCell.h */,
+				8423C366223B9F1400E999F5 /* IMNewFriendViewUserCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8423C358223B98D500E999F5 /* IMMobileContactsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8423C359223B98F400E999F5 /* IMMobileContactsViewController.h */,
+				8423C35A223B98F400E999F5 /* IMMobileContactsViewController.m */,
+			);
+			path = IMMobileContactsViewController;
+			sourceTree = "<group>";
+		};
+		8423C35C223B9BFF00E999F5 /* IMFriendFindViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8423C35D223B9C0E00E999F5 /* IMFriendFindViewController.h */,
+				8423C35E223B9C0E00E999F5 /* IMFriendFindViewController.m */,
+			);
+			path = IMFriendFindViewController;
+			sourceTree = "<group>";
+		};
+		8423C360223B9CC600E999F5 /* NewFriends */ = {
+			isa = PBXGroup;
+			children = (
+				8423C362223B9D6500E999F5 /* Resources */,
+				8423C361223B9D3D00E999F5 /* IMAddContactsViewController */,
+				8423C35C223B9BFF00E999F5 /* IMFriendFindViewController */,
+				8423C358223B98D500E999F5 /* IMMobileContactsViewController */,
+			);
+			path = NewFriends;
+			sourceTree = "<group>";
+		};
+		8423C361223B9D3D00E999F5 /* IMAddContactsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8428F45022320EE70064DA35 /* IMAddContactsViewController.h */,
+				8428F45122320EE70064DA35 /* IMAddContactsViewController.m */,
+			);
+			path = IMAddContactsViewController;
+			sourceTree = "<group>";
+		};
+		8423C362223B9D6500E999F5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8423C363223B9D6500E999F5 /* NewFriends.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		842510E9222E2255004C3954 /* Messages */ = {
@@ -1420,50 +1764,20 @@
 		842511C0222E64EE004C3954 /* DataUtils */ = {
 			isa = PBXGroup;
 			children = (
+				EE8939BC222902EE004F1F6E /* NSTextAttachment+Emoji.h */,
+				EE8939BD222902EF004F1F6E /* NSTextAttachment+Emoji.m */,
 				842511C1222E6538004C3954 /* NSFileManager+IMChat.h */,
 				842511C2222E6538004C3954 /* NSFileManager+IMChat.m */,
 			);
 			path = DataUtils;
 			sourceTree = "<group>";
 		};
-		8428F45922326A020064DA35 /* Friends */ = {
-			isa = PBXGroup;
-			children = (
-				8428F45C22326A270064DA35 /* Controller */,
-				8428F45B22326A210064DA35 /* Model */,
-				8428F45A22326A170064DA35 /* View */,
-			);
-			path = Friends;
-			sourceTree = "<group>";
-		};
-		8428F45A22326A170064DA35 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		8428F45B22326A210064DA35 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		8428F45C22326A270064DA35 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				8428F45E22326A5D0064DA35 /* IMFriendsViewController.h */,
-				8428F45F22326A5D0064DA35 /* IMFriendsViewController.m */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
 		8428F45D22326A300064DA35 /* Page */ = {
 			isa = PBXGroup;
 			children = (
+				8423C360223B9CC600E999F5 /* NewFriends */,
+				8423C336223B806500E999F5 /* Search */,
 				8428F4872235F6120064DA35 /* AddresBook */,
-				8428F45922326A020064DA35 /* Friends */,
 				842510EA222E2276004C3954 /* Login */,
 				842510E9222E2255004C3954 /* Messages */,
 			);
@@ -1473,57 +1787,17 @@
 		8428F4872235F6120064DA35 /* AddresBook */ = {
 			isa = PBXGroup;
 			children = (
+				8423C332223B7FC100E999F5 /* IMContactsSearchResultViewController */,
+				8423C32B223B7F5C00E999F5 /* IMContactsViewController */,
+				8423C32C223B7F6500E999F5 /* IMNewContactViewController */,
+				8423C32D223B7F6C00E999F5 /* IMNewFriendViewController */,
+				8423C32E223B7F7C00E999F5 /* IMGroupViewController */,
+				8423C32F223B7F8700E999F5 /* IMOfficialAccountViewController */,
+				8423C330223B7F9000E999F5 /* IMTagsViewController */,
+				8423C331223B7F9F00E999F5 /* IMUserDetailViewController */,
 				8423C322223B72CD00E999F5 /* Resource */,
-				8428F48A2235F6340064DA35 /* Model */,
-				8428F4892235F62B0064DA35 /* View */,
-				8428F4882235F6240064DA35 /* Controller */,
 			);
 			path = AddresBook;
-			sourceTree = "<group>";
-		};
-		8428F4882235F6240064DA35 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				8428F4842235F5DB0064DA35 /* IMContactsViewController.h */,
-				8428F4852235F5DB0064DA35 /* IMContactsViewController.m */,
-				841D26FE2238D4470004D0FE /* IMNewContactViewController.h */,
-				841D26FF2238D4470004D0FE /* IMNewContactViewController.m */,
-				8423C313223B6BCB00E999F5 /* IMNewFriendViewController.h */,
-				8423C314223B6BCB00E999F5 /* IMNewFriendViewController.m */,
-				8423C316223B6BEA00E999F5 /* IMGroupViewController.h */,
-				8423C317223B6BEA00E999F5 /* IMGroupViewController.m */,
-				8423C319223B6C0100E999F5 /* IMOfficialAccountViewController.h */,
-				8423C31A223B6C0100E999F5 /* IMOfficialAccountViewController.m */,
-				8423C31C223B6C1A00E999F5 /* IMTagsViewController.h */,
-				8423C31D223B6C1A00E999F5 /* IMTagsViewController.m */,
-				8423C31F223B6D4B00E999F5 /* IMUserDetailViewController.h */,
-				8423C320223B6D4B00E999F5 /* IMUserDetailViewController.m */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		8428F4892235F62B0064DA35 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				8428F48B223623F60064DA35 /* IMAddressBookTableViewCell.h */,
-				8428F48C223623F60064DA35 /* IMAddressBookTableViewCell.m */,
-				8423C2C6223B410B00E999F5 /* IMContactItemCell.h */,
-				8423C2C7223B410B00E999F5 /* IMContactItemCell.m */,
-				8423C30D223B52F600E999F5 /* IMContactsAngel.h */,
-				8423C30E223B52F600E999F5 /* IMContactsAngel.m */,
-				8423C311223B561300E999F5 /* IMContactsHeaderView.h */,
-				8423C310223B561200E999F5 /* IMContactsHeaderView.m */,
-				841D27012238D8E40004D0FE /* IMNewContactTableViewCell.h */,
-				841D27022238D8E40004D0FE /* IMNewContactTableViewCell.m */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		8428F48A2235F6340064DA35 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		8428F4902236447C0064DA35 /* nav */ = {
@@ -1739,8 +2013,6 @@
 				EE8936D32227E3AF004F1F6E /* IMSearchMessageViewController.m */,
 				EE8936E12228C331004F1F6E /* IMChatViewController.h */,
 				EE8936E22228C331004F1F6E /* IMChatViewController.m */,
-				8428F45022320EE70064DA35 /* IMAddFriendsViewController.h */,
-				8428F45122320EE70064DA35 /* IMAddFriendsViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1776,8 +2048,8 @@
 		EE8936BD2227DA4E004F1F6E /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				EE893A0E22290AEE004F1F6E /* NS_Category */,
-				EE893A0D22290A8E004F1F6E /* UI_Category */,
+				8423C342223B83C900E999F5 /* UIKit+Category */,
+				EE893A0E22290AEE004F1F6E /* Foundation+Category */,
 				EE893A0F22290B34004F1F6E /* IMCategory.h */,
 			);
 			path = Category;
@@ -1841,6 +2113,7 @@
 		EE8936F62228D0A4004F1F6E /* UIUIils */ = {
 			isa = PBXGroup;
 			children = (
+				8423C33D223B823100E999F5 /* Common.xcassets */,
 				8423C2DC223B506A00E999F5 /* IMFLEXAngel */,
 				8423C30A223B51FA00E999F5 /* UIFont */,
 				8423C30B223B521900E999F5 /* UIColor */,
@@ -2239,54 +2512,17 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		EE893A0D22290A8E004F1F6E /* UI_Category */ = {
+		EE893A0E22290AEE004F1F6E /* Foundation+Category */ = {
 			isa = PBXGroup;
 			children = (
-				EE893A0922290A55004F1F6E /* UIImage+Color.h */,
-				EE893A0422290A53004F1F6E /* UIImage+Color.m */,
-				EE893A0822290A55004F1F6E /* UIImage+Compression.h */,
-				EE893A0522290A53004F1F6E /* UIImage+Compression.m */,
-				EE893A0622290A54004F1F6E /* UIImage+IMVideo.h */,
-				EE893A0722290A54004F1F6E /* UIImage+IMVideo.m */,
-				EE8936C92227DC57004F1F6E /* UIButton+IMExtra.h */,
-				EE8936C82227DC56004F1F6E /* UIButton+IMExtra.m */,
-				EE8936CC2227DF37004F1F6E /* UIDevice+IMCategory.h */,
-				EE8936CD2227DF37004F1F6E /* UIDevice+IMCategory.m */,
-				EE8937162228F91A004F1F6E /* UILabel+IMAutoLabelHeightAndWidth.h */,
-				EE8937152228F91A004F1F6E /* UILabel+IMAutoLabelHeightAndWidth.m */,
-				EE8939BF22290364004F1F6E /* UIScrollView+Addition.h */,
-				EE8939C022290365004F1F6E /* UIScrollView+Addition.m */,
-				EE89371E222900BE004F1F6E /* UIView+Frame.h */,
-				EE89371F222900BE004F1F6E /* UIView+Frame.m */,
-				EE8936FF2228D6B8004F1F6E /* UIViewController+IMCategory.h */,
-				EE8937002228D6B8004F1F6E /* UIViewController+IMCategory.m */,
-				84681F722230CA500056372A /* UIBarButtonItem+Category.h */,
-				84681F732230CA500056372A /* UIBarButtonItem+Category.m */,
+				8423C34B223B856600E999F5 /* NSArray */,
+				8423C34C223B858A00E999F5 /* NSAttributedString */,
+				8423C34D223B85A100E999F5 /* NSDate */,
+				8423C34E223B85B100E999F5 /* NSDictionary */,
+				8423C34F223B85C100E999F5 /* NSString */,
+				8423C350223B862F00E999F5 /* Foundation+Category.h */,
 			);
-			path = UI_Category;
-			sourceTree = "<group>";
-		};
-		EE893A0E22290AEE004F1F6E /* NS_Category */ = {
-			isa = PBXGroup;
-			children = (
-				EE7234D5222CCEB200A6F7E2 /* NSArray+zh_SafeAccess.h */,
-				EE7234D6222CCEB200A6F7E2 /* NSArray+zh_SafeAccess.m */,
-				EE893A0122290900004F1F6E /* NSArray+Json.h */,
-				EE893A0222290901004F1F6E /* NSArray+Json.m */,
-				EE8939C22229037F004F1F6E /* NSAttributedString+Addition.h */,
-				EE8939C322290380004F1F6E /* NSAttributedString+Addition.m */,
-				EE8937132228F811004F1F6E /* NSDate+IMCategory.h */,
-				EE8937122228F811004F1F6E /* NSDate+IMCategory.m */,
-				EE89371C2228FFEB004F1F6E /* NSDictionary+Json.h */,
-				EE89371B2228FFEB004F1F6E /* NSDictionary+Json.m */,
-				EE893A1022290C11004F1F6E /* NSString+Category.h */,
-				EE893A1122290C11004F1F6E /* NSString+Category.m */,
-				EE893A1222290C12004F1F6E /* NSString+Size.h */,
-				EE893A1322290C13004F1F6E /* NSString+Size.m */,
-				EE8939BC222902EE004F1F6E /* NSTextAttachment+Emoji.h */,
-				EE8939BD222902EF004F1F6E /* NSTextAttachment+Emoji.m */,
-			);
-			path = NS_Category;
+			path = "Foundation+Category";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2580,6 +2816,7 @@
 				EE893982222902C3004F1F6E /* emotion_xiamian.png in Resources */,
 				EE893958222902C3004F1F6E /* emotion_fan_gif.gif in Resources */,
 				EE8939A1222902C3004F1F6E /* icon_message_voiceBtn@3x.png in Resources */,
+				8423C364223B9D6500E999F5 /* NewFriends.xcassets in Resources */,
 				EE8938C6222902C3004F1F6E /* emotion_fakuang_gif.gif in Resources */,
 				EE89398F222902C3004F1F6E /* emotion_henai_gif.gif in Resources */,
 				EE893989222902C3004F1F6E /* emotion_diaoxie.png in Resources */,
@@ -2590,7 +2827,6 @@
 				EE893917222902C3004F1F6E /* emotion_guzhang.png in Resources */,
 				EE89396E222902C3004F1F6E /* emotion_aini_gif.gif in Resources */,
 				EE893970222902C3004F1F6E /* emotion_tiaosheng_gif.gif in Resources */,
-				842510F2222E240A004C3954 /* bg_login.jpeg in Resources */,
 				EE89392B222902C3004F1F6E /* emotion_denglong.png in Resources */,
 				EE89397B222902C3004F1F6E /* emotion_nanguo_gif.gif in Resources */,
 				EE893992222902C3004F1F6E /* emotion_ok.png in Resources */,
@@ -2690,6 +2926,7 @@
 				EE89391E222902C3004F1F6E /* emotion_yun_gif.gif in Resources */,
 				EE8938B7222902C3004F1F6E /* emotion_pachong.png in Resources */,
 				EE893980222902C3004F1F6E /* emotion_hecai_gif.gif in Resources */,
+				8423C33E223B823200E999F5 /* Common.xcassets in Resources */,
 				EE893972222902C3004F1F6E /* emotion_daku_gif.gif in Resources */,
 				EE89396D222902C3004F1F6E /* emotion_fakuang.png in Resources */,
 				EE8938DE222902C3004F1F6E /* emotion_kulou.png in Resources */,
@@ -2851,7 +3088,7 @@
 				8428F46922326B060064DA35 /* IMBaseTabBarController.m in Sources */,
 				842511A0222E6032004C3954 /* IMGroup+CreateAvatar.m in Sources */,
 				8423C308223B506A00E999F5 /* IMFlexAngel+UITableView.temp_caseinsensitive_rename.m in Sources */,
-				EE8937012228D6B8004F1F6E /* UIViewController+IMCategory.m in Sources */,
+				EE8937012228D6B8004F1F6E /* UIViewController+Category.m in Sources */,
 				842511B8222E60BF004C3954 /* IMDBBaseStore.m in Sources */,
 				EE8939BB222902C3004F1F6E /* IMInputBoxEmojiView.m in Sources */,
 				842511BE222E60D0004C3954 /* IMFriendHelper.m in Sources */,
@@ -2864,7 +3101,7 @@
 				8423C31E223B6C1A00E999F5 /* IMTagsViewController.m in Sources */,
 				EE7FE462222CC42500073210 /* TADotView.m in Sources */,
 				EE8939B4222902C3004F1F6E /* IMInputBoxEmojiMenuView.m in Sources */,
-				EE8936CE2227DF37004F1F6E /* UIDevice+IMCategory.m in Sources */,
+				EE8936CE2227DF37004F1F6E /* UIDevice+Category.m in Sources */,
 				EE893A3A22291B18004F1F6E /* IMChatImageTableViewCell.m in Sources */,
 				8438D543222F60BF001FD530 /* IMXMPPHelper.m in Sources */,
 				EE7FE45F222CC42500073210 /* FSActionSheetItem.m in Sources */,
@@ -2878,15 +3115,16 @@
 				842511AD222E609A004C3954 /* IMUser.m in Sources */,
 				EE7FE3F92229224A00073210 /* IMPhotoPreviewModel.m in Sources */,
 				EE7FE460222CC42500073210 /* BAProgressView.m in Sources */,
-				EE893A0C22290A55004F1F6E /* UIImage+IMVideo.m in Sources */,
-				EE8937172228F91A004F1F6E /* UILabel+IMAutoLabelHeightAndWidth.m in Sources */,
+				EE893A0C22290A55004F1F6E /* UIImage+Video.m in Sources */,
+				EE8937172228F91A004F1F6E /* UILabel+AutoLabelHeightAndWidth.m in Sources */,
 				8423C304223B506A00E999F5 /* IMFlexChainViewModel.m in Sources */,
 				EE8936942227D997004F1F6E /* main.m in Sources */,
 				8423C2FF223B506A00E999F5 /* IMFlexibleLayoutSeperatorCell.m in Sources */,
+				8423C35F223B9C0E00E999F5 /* IMFriendFindViewController.m in Sources */,
 				EE8936D42227E3AF004F1F6E /* IMSearchMessageViewController.m in Sources */,
 				84681F742230CA500056372A /* UIBarButtonItem+Category.m in Sources */,
 				EE8939C122290365004F1F6E /* UIScrollView+Addition.m in Sources */,
-				EE8937142228F811004F1F6E /* NSDate+IMCategory.m in Sources */,
+				EE8937142228F811004F1F6E /* NSDate+Category.m in Sources */,
 				EE8939B9222902C3004F1F6E /* IMInputBoxRecorderView.m in Sources */,
 				EE8939B7222902C3004F1F6E /* IMInputBoxViewCtrl.m in Sources */,
 				8428F46622326AD00064DA35 /* IMBaseNavigationController.m in Sources */,
@@ -2911,21 +3149,24 @@
 				EE7FE466222CC42500073210 /* IMVideoPlayView.m in Sources */,
 				EE893A3B22291B18004F1F6E /* IMChatVoiceTableViewCell.m in Sources */,
 				842511B9222E60BF004C3954 /* IMDBManager.m in Sources */,
+				8423C367223B9F1400E999F5 /* IMNewFriendViewUserCell.m in Sources */,
 				EE8937042228D82B004F1F6E /* IMBaseTableViewCell.m in Sources */,
 				842511AF222E609A004C3954 /* IMUserSetting.m in Sources */,
 				842510F5222E24A7004C3954 /* IMLoginViewController.m in Sources */,
 				84251175222E5E28004C3954 /* IMAccountManager.m in Sources */,
 				EE89387C222902C3004F1F6E /* IMEmojiModel.m in Sources */,
 				EE8936F22228CB2C004F1F6E /* IMChatBaseViewController.m in Sources */,
+				8423C33B223B80BE00E999F5 /* IMSearchController.m in Sources */,
 				EE7FE465222CC42500073210 /* TAAbstractDotView.m in Sources */,
 				EE89387D222902C3004F1F6E /* IMTextBackedString.m in Sources */,
 				EE89371D2228FFEB004F1F6E /* NSDictionary+Json.m in Sources */,
 				EE893A3D22291B18004F1F6E /* IMChatVideoTableViewCell.m in Sources */,
+				8423C357223B97C200E999F5 /* IMNewFriendFuncationCell.m in Sources */,
 				EE7FE433222CB29200073210 /* IMMailAccountInfoModel.m in Sources */,
-				8428F46022326A5D0064DA35 /* IMFriendsViewController.m in Sources */,
 				EE8936E92228C506004F1F6E /* IMConversationModel.m in Sources */,
 				EE8936EC2228C687004F1F6E /* IMMessageModel.m in Sources */,
 				EE7234D7222CCEB200A6F7E2 /* NSArray+zh_SafeAccess.m in Sources */,
+				8423C335223B800700E999F5 /* IMContactsSearchResultViewController.m in Sources */,
 				EE8939B2222902C3004F1F6E /* IMEmojiCollectionViewCell.m in Sources */,
 				EE89370D2228F5C7004F1F6E /* IMAppDefaultUtil.m in Sources */,
 				EE8939C722290408004F1F6E /* IMFileManagement.m in Sources */,
@@ -2937,11 +3178,11 @@
 				EE8939AE222902C3004F1F6E /* IMInputBoxMoreView.m in Sources */,
 				842511AE222E609A004C3954 /* IMUserGroup.m in Sources */,
 				EE7FE45D222CC42500073210 /* FSActionSheet.m in Sources */,
-				8428F45222320EE70064DA35 /* IMAddFriendsViewController.m in Sources */,
+				8428F45222320EE70064DA35 /* IMAddContactsViewController.m in Sources */,
 				841D27002238D4470004D0FE /* IMNewContactViewController.m in Sources */,
 				842511AC222E609A004C3954 /* IMUserDetail.m in Sources */,
 				8423C307223B506A00E999F5 /* IMFlexAngel+Private.m in Sources */,
-				EE8936CA2227DC57004F1F6E /* UIButton+IMExtra.m in Sources */,
+				EE8936CA2227DC57004F1F6E /* UIButton+Extra.m in Sources */,
 				8423C2FE223B506A00E999F5 /* IMFlexibleLayoutSectionModel.m in Sources */,
 				EE7FE461222CC42500073210 /* IMPhotoBrowser.m in Sources */,
 				EE893A0A22290A55004F1F6E /* UIImage+Color.m in Sources */,
@@ -2954,8 +3195,10 @@
 				EE89387E222902C3004F1F6E /* IMInputBoxMoreModel.m in Sources */,
 				EE8937082228DDF3004F1F6E /* UIImage+IMChat.m in Sources */,
 				84681F772230EF000056372A /* IMSignUpViewController.m in Sources */,
+				8423C36C223BAD1800E999F5 /* IMNewFriendAngel.m in Sources */,
 				EE8939B0222902C3004F1F6E /* IMHorizontalPageFlowlayout.m in Sources */,
 				EE89371A2228FE6A004F1F6E /* IMNetworkDetection.m in Sources */,
+				8423C341223B839000E999F5 /* UIView+Extensions.m in Sources */,
 				8423C302223B506A00E999F5 /* IMFlexChainSectionModel.m in Sources */,
 				EE8936C72227DBA2004F1F6E /* IMBaseViewController.m in Sources */,
 				EE8936DD2228BE68004F1F6E /* IMShortcutMethod.m in Sources */,
@@ -2972,6 +3215,7 @@
 				EE8939CA22290419004F1F6E /* IMFileCache.m in Sources */,
 				841D27032238D8E40004D0FE /* IMNewContactTableViewCell.m in Sources */,
 				8428F48D223623F60064DA35 /* IMAddressBookTableViewCell.m in Sources */,
+				8423C35B223B98F400E999F5 /* IMMobileContactsViewController.m in Sources */,
 				EE7FE45B222CC42500073210 /* IMZoomingScrollView.m in Sources */,
 				EE7FE464222CC42500073210 /* TAAnimatedDotView.m in Sources */,
 				EE8939B3222902C3004F1F6E /* IMRecordView.m in Sources */,

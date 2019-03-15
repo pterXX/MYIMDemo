@@ -10,9 +10,9 @@
 
 
 #import "IMMessageModel.h"
-#import "NSDate+IMCategory.h"
+#import "NSDate+Category.h"
 #import "IMConversationModel.h"
-#import "UILabel+IMAutoLabelHeightAndWidth.h"
+#import "UILabel+AutoLabelHeightAndWidth.h"
 
 @interface IMMessagesListTableViewCell ()
 

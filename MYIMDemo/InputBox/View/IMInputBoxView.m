@@ -12,14 +12,14 @@
 #import <UIKit/UIKitDefines.h>
 
 //#import "UITextView+KCategory.h"
-#import "UIViewController+IMCategory.h"
+#import "UIViewController+Category.h"
 //#import "NSAttributedString+Addition.h"
 
 
 #import "IMRecordView.h"
 #import "UIImage+Color.h"
 #import "IMFileManagement.h"
-#import "NSDate+IMCategory.h"
+#import "NSDate+Category.h"
 #import "IMChatMessageHelper.h"
 #import "IMSystemAuthorization.h"
 #import "IMInputBoxRecorderView.h"

@@ -1,5 +1,5 @@
 //
-//  KVideoViewController.h
+//  VideoViewController.h
 //  KXiniuCloud
 //
 //  Created by eims on 2018/5/15.

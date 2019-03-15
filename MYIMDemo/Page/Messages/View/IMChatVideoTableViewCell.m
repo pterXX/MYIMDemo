@@ -9,7 +9,7 @@
 #import "IMChatVideoTableViewCell.h"
 
 #import "IMMessageModel.h"
-#import "UIImage+IMVideo.h"
+#import "UIImage+Video.h"
 
 @implementation IMChatVideoTableViewCell
 

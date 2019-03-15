@@ -8,7 +8,7 @@
 
 #import "IMChatTableViewCell.h"
 
-#import "NSDate+IMCategory.h"
+#import "NSDate+Category.h"
 #import "NSDictionary+Json.h"
 #import "UIImage+Compression.h"
 

@@ -13,7 +13,7 @@
 #import "IMInputBoxView.h"
 #import "IMMessageModel.h"
 #import "IMFileManagement.h"
-#import "NSDate+IMCategory.h"
+#import "NSDate+Category.h"
 #import "NSDictionary+Json.h"
 #import "IMInputBoxViewCtrl.h"
 #import "IMInputBoxRecorderView.h"

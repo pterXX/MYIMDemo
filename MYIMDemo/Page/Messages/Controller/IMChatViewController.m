@@ -13,7 +13,7 @@
 #import <AudioToolbox/AudioToolbox.h>
 
 #import "NSArray+Json.h"
-#import "NSDate+IMCategory.h"
+#import "NSDate+Category.h"
 #import "NSDictionary+Json.h"
 #import "NSString+Category.h"
 #import "NSTextAttachment+Emoji.h"

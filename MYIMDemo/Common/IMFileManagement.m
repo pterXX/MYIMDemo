@@ -9,7 +9,7 @@
 #import "IMFileManagement.h"
 
 //#import <MailCore/MCOAbstractPart.h>
-#import "NSDate+IMCategory.h"
+#import "NSDate+Category.h"
 
 @implementation IMFileManagement
 
