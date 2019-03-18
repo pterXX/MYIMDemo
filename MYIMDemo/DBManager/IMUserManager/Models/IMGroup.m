@@ -21,6 +21,13 @@
     return self;
 }
 
+- (NSMutableArray *)users{
+    if (_users == nil) {
+        _users = [NSMutableArray array];
+    }
+    return _users;
+}
+
 - (NSInteger)count
 {
     return self.users.count;

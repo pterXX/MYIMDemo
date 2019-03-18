@@ -7,12 +7,24 @@
 //
 
 #import "IMUserDetailViewController.h"
+#import "IMUserSettingViewController.h"
+#import "IMChatViewController.h"
+#import "IMConversationModel.h"
+
+typedef NS_ENUM(NSInteger, IMUserDetailVCSectionType) {
+    IMUserDetailVCSectionTypeBaseInfo,
+    IMUserDetailVCSectionTypeCustom,
+    IMUserDetailVCSectionTypeDetailInfo,
+    IMUserDetailVCSectionTypeFunction,
+};
 
 @interface IMUserDetailViewController ()
+
 /// 用户id
 @property (nonatomic, strong, readonly) NSString *userId;
 /// 用户数据模型
 @property (nonatomic, strong) IMUser *userModel;
+
 @end
 
 @implementation IMUserDetailViewController
@@ -34,19 +46,88 @@
     return self;
 }
 
-- (void)viewDidLoad {
+- (void)loadView
+{
+    [super loadView];
+    [self setTitle:@"详细资料"];
+    [self.collectionView setBackgroundColor:[UIColor colorGrayBG]];
+    [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(0);
+    }];
+    
+    @weakify(self);
+    [self addRightBarButtonWithImage:IMImage(@"nav_more") actionBlick:^{
+        @strongify(self);
+        IMUserSettingViewController *detailSetiingVC = [[IMUserSettingViewController alloc] initWithUserModel:self.userModel];
+        IMPushVC(detailSetiingVC);
+    }];
+}
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [self requestUserDataWithUserId:self.userId];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - # Request
+- (void)requestUserDataWithUserId:(NSString *)userId
+{
+    if (self.userModel) {
+        [self loadUIWithUserModel:self.userModel];
+    }
+    
+    // 请求完整的数据模型
+//    _userModel = [[IMFriendHelper sharedFriendHelper] getFriendInfoByUserID:userId];
+    [self loadUIWithUserModel:self.userModel];
 }
-*/
+
+#pragma mark - # UI
+- (void)loadUIWithUserModel:(IMUser *)userModel
+{
+    @weakify(self);
+    
+    self.clear();
+    
+    // 基本信息
+    self.addSection(IMUserDetailVCSectionTypeBaseInfo).sectionInsets(UIEdgeInsetsMake(15, 0, 0, 0));
+    self.addCell(@"IMUserDetailBaseInfoCell").toSection(IMUserDetailVCSectionTypeBaseInfo).withDataModel(userModel).eventAction(^ id(NSInteger eventType, id data) {
+        @strongify(self);
+        IMUser *userModel = data;
+        NSURL *url = IMURL(userModel.avatarURL);
+//        MWPhoto *photo = [MWPhoto photoWithURL:url];
+//        MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithPhotos:@[photo]];
+//        UINavigationController *broserNavC = [[UINavigationController alloc] initWithRootViewController:browser];
+//        [self presentViewController:broserNavC animated:NO completion:nil];
+        return nil;
+    });
+    
+    // 功能
+    self.addSection(IMUserDetailVCSectionTypeFunction).sectionInsets(UIEdgeInsetsMake(20, 0, 40, 0));
+    // 发消息
+    self.addCell(@"IMUserDetailChatButtonCell").toSection(IMUserDetailVCSectionTypeFunction).withDataModel(@"发消息").eventAction(^ id(NSInteger eventType, id data) {
+        @strongify(self);
+        IMChatViewController *chatVC = [[IMChatViewController alloc] init];
+        IMConversationModel *conversation   = [[IMConversationModel alloc] init];
+        conversation.chatToJid              = self.userModel.userJid;
+        conversation.conversationName       = self.userModel.showName;
+        conversation.chatType               = IMMessageChatTypeSingle;
+        conversation.headImage              = self.userModel.avatar? self.userModel.avatar:[UIImage imageDefaultHeadPortrait];
+        chatVC.title                      = conversation.conversationName;
+        chatVC.hidesBottomBarWhenPushed   = YES;
+        if ([IMLaunchManager sharedInstance].tabBarController.selectedIndex != 0) {
+            [self.navigationController popToRootViewControllerAnimated:NO];
+            UINavigationController *navC = [IMLaunchManager sharedInstance].tabBarController.childViewControllers[0];
+            [[IMLaunchManager sharedInstance].tabBarController setSelectedIndex:0];
+            [chatVC setHidesBottomBarWhenPushed:YES];
+            [navC pushViewController:chatVC animated:YES];
+        }
+        else {
+            IMPushVC(chatVC);
+        }
+        return nil;
+    });    
+    [self reloadView];
+}
 
 @end

@@ -263,7 +263,9 @@
     //  判断是否登录
     if (KIMXMPPHelper.userHelper.isLogin) {
         //  切换根视图
-        [self restoreRootViewController:[IMBaseTabBarController tabbarVc]];
+        if (self.loginSuccess) {
+            self.loginSuccess();
+        }
     }
 }
 @end

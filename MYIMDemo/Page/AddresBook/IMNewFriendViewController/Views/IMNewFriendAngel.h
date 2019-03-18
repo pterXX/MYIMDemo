@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface IMNewFriendAngel : IMFlexAngel
 /// pushAction
 @property (nonatomic, copy) void (^pushAction)(__kindof UIViewController *vc);
-
+@property (nonatomic, copy) void (^btnAction)(void);
 
 - (void)resetListWithContactsData:(NSArray *)contactsData;
 

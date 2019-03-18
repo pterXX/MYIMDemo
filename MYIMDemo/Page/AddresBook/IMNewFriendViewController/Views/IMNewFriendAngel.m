@@ -20,6 +20,11 @@ typedef NS_ENUM(NSInteger, IMNewFriendVCSectionType) {
     IMNewFriendVCSectionTypeUser
 };
 
+
+@interface IMNewFriendAngel ()<IMNewFriendCellDelegate>
+
+@end
+
 @implementation IMNewFriendAngel
 
 - (instancetype)initWithHostView:(__kindof UIScrollView *)hostView pushAction:(void (^)(__kindof UIViewController *vc))pushAction
@@ -65,9 +70,7 @@ typedef NS_ENUM(NSInteger, IMNewFriendVCSectionType) {
             IMNewFriendItem *newModel = createNewFriendItemModelWithUserModel(user);
             [data addObject:newModel];
         }
-        self.addCells(NSStringFromClass([IMNewFriendViewUserCell class])).toSection(sectionTag).withDataModelArray(data).selectedAction(^ (IMNewFriendItem *data) {
-            IMUser *user = data.userInfo;
-        });
+        self.addCells(NSStringFromClass([IMNewFriendViewUserCell class])).toSection(sectionTag).withDataModelArray(data).delegate(self);
     }
 }
 
@@ -76,6 +79,34 @@ typedef NS_ENUM(NSInteger, IMNewFriendVCSectionType) {
     if (self.pushAction) {
         self.pushAction(vc);
     }
+}
+
+- (void)tryBtnAction
+{
+    if (self.btnAction) {
+        self.btnAction();
+    }
+}
+
+
+- (void)newFriendCell:(nonnull IMNewFriendViewUserCell *)cell agreeButDidTouchUp:(nonnull IMUser *)user {
+    @weakify(self);
+    [KIMXMPPHelper acceptPresenceSubscriptionRequestFrom:user.userJid block:^{
+        @strongify(self);
+        [SVProgressHUD showInfoWithStatus:IMStirngFormat(@"成功添加:%@成为了好友",user.userJid.user)];
+        [SVProgressHUD dismissWithDelay:1.5];
+        [self tryBtnAction];
+    }];
+}
+
+- (void)newFriendCell:(nonnull IMNewFriendViewUserCell *)cell rejectButDidTouchUp:(nonnull IMUser *)user {
+    @weakify(self);
+    [KIMXMPPHelper rejectPresenceSubscriptionRequestFrom:user.userJid block:^{
+        @strongify(self);
+        [SVProgressHUD showInfoWithStatus:IMStirngFormat(@"你已拒绝了:%@的好友请求",user.userJid.user)];
+        [SVProgressHUD dismissWithDelay:1.5];
+        [self tryBtnAction];
+    }];
 }
 
 @end

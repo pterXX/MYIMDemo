@@ -2,8 +2,8 @@
 //  IMFlexibleLayoutViewModel.h
 //  IMFlexibleLayoutFrameworkDemo
 //
-//  Created by 李伯坤 on 2016/12/27.
-//  Copyright © 2016年 李伯坤. All rights reserved.
+//  Created by 徐世杰 on 2016/12/27.
+//  Copyright © 2016年 徐世杰. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -36,7 +36,7 @@
 @property (nonatomic, copy) id (^eventAction)(NSInteger actionType, id data);
 
 /// 业务方指定的代理，默认nil
-@property (nonatomic, copy) id delegate;
+@property (nonatomic, weak) id delegate;
 
 /// cell选中事件
 @property (nonatomic, copy) void (^selectedAction)(id data);

@@ -537,11 +537,8 @@ static IMXMPPHelper *helper;
     XMPPRosterMemoryStorage *storage = KIMXMPPHelper.xmppRosterStorage;
     NSArray *array = [storage sortedUsersByName];
     if (array.count > 0) {
-        [self.userHelper.bothFriendArray removeAllObjects];
-        [self.userHelper.removeFriendArray removeAllObjects];
-        [self.userHelper.noneFriendArray removeAllObjects];
-        [self.userHelper.toFriendArray removeAllObjects];
-        [self.userHelper.fromFriendArray removeAllObjects];
+        //  清空所有好友信息
+        [self.userHelper clearFriendArray];
     }
     [array enumerateObjectsUsingBlock:^(XMPPUserMemoryStorageObject * _Nonnull item, NSUInteger idx, BOOL * _Nonnull stop) {
         IMUser *user = [[self class] storageObjectConverUser:item];

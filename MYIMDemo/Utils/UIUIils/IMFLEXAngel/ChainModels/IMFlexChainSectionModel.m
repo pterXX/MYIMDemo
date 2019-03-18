@@ -2,7 +2,7 @@
 //  IMFlexChainSectionModel.m
 //  zhuanzhuan
 //
-//  Created by 李伯坤 on 2017/8/15.
+//  Created by 徐世杰 on 2017/8/15.
 //  Copyright © 2017年 转转. All rights reserved.
 //
 
@@ -126,7 +126,7 @@
         self.listData = nil;
         return YES;
     }
-    IMFlexLog(@"!!!!! section插入失败");
+    NSLog(@"!!!!! section插入失败");
     return NO;
 }
 

@@ -67,10 +67,19 @@
 		8428F46922326B060064DA35 /* IMBaseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8428F46822326B060064DA35 /* IMBaseTabBarController.m */; };
 		8428F4862235F5DB0064DA35 /* IMContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8428F4852235F5DB0064DA35 /* IMContactsViewController.m */; };
 		8428F48D223623F60064DA35 /* IMAddressBookTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8428F48C223623F60064DA35 /* IMAddressBookTableViewCell.m */; };
-		8428F48F223639D10064DA35 /* WechatIMG5.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 8428F48E223639D00064DA35 /* WechatIMG5.jpeg */; };
 		8428F494223644860064DA35 /* icon_nav_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 8428F491223644860064DA35 /* icon_nav_back.png */; };
 		8428F495223644860064DA35 /* icon_nav_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8428F492223644860064DA35 /* icon_nav_back@2x.png */; };
 		8428F496223644860064DA35 /* icon_nav_back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8428F493223644860064DA35 /* icon_nav_back@3x.png */; };
+		8432591C223F2A96003A33F2 /* default_headPortrait.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 8432591B223F2A96003A33F2 /* default_headPortrait.jpeg */; };
+		84325920223F5ECD003A33F2 /* IMUserDetailBaseInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8432591E223F5ECD003A33F2 /* IMUserDetailBaseInfoCell.m */; };
+		84325924223F618E003A33F2 /* UIView+Separator.m in Sources */ = {isa = PBXBuildFile; fileRef = 84325923223F618E003A33F2 /* UIView+Separator.m */; };
+		84325929223F62BE003A33F2 /* IMUserSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84325928223F62BE003A33F2 /* IMUserSettingViewController.m */; };
+		8432592C223F646E003A33F2 /* IMFlexibleLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8432592B223F646E003A33F2 /* IMFlexibleLayoutViewController.m */; };
+		8432592F223F6985003A33F2 /* IMFlexibleLayoutFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8432592E223F6985003A33F2 /* IMFlexibleLayoutFlowLayout.m */; };
+		84325932223F6B1D003A33F2 /* IMFlexibleLayoutViewController+Kernel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84325931223F6B1C003A33F2 /* IMFlexibleLayoutViewController+Kernel.m */; };
+		84325939223F6DA0003A33F2 /* IMFlexibleLayoutViewController+OldAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 84325937223F6DA0003A33F2 /* IMFlexibleLayoutViewController+OldAPI.m */; };
+		8432593C223F7094003A33F2 /* IMUserDetailChatButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8432593B223F7094003A33F2 /* IMUserDetailChatButtonCell.m */; };
+		84325940223F7386003A33F2 /* IMLaunchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8432593F223F7385003A33F2 /* IMLaunchManager.m */; };
 		8438D543222F60BF001FD530 /* IMXMPPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8438D542222F60BF001FD530 /* IMXMPPHelper.m */; };
 		84681F742230CA500056372A /* UIBarButtonItem+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 84681F732230CA500056372A /* UIBarButtonItem+Category.m */; };
 		84681F772230EF000056372A /* IMSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84681F762230EF000056372A /* IMSignUpViewController.m */; };
@@ -621,10 +630,28 @@
 		8428F4852235F5DB0064DA35 /* IMContactsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMContactsViewController.m; sourceTree = "<group>"; };
 		8428F48B223623F60064DA35 /* IMAddressBookTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMAddressBookTableViewCell.h; sourceTree = "<group>"; };
 		8428F48C223623F60064DA35 /* IMAddressBookTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMAddressBookTableViewCell.m; sourceTree = "<group>"; };
-		8428F48E223639D00064DA35 /* WechatIMG5.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = WechatIMG5.jpeg; sourceTree = "<group>"; };
 		8428F491223644860064DA35 /* icon_nav_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_nav_back.png; sourceTree = "<group>"; };
 		8428F492223644860064DA35 /* icon_nav_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_nav_back@2x.png"; sourceTree = "<group>"; };
 		8428F493223644860064DA35 /* icon_nav_back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_nav_back@3x.png"; sourceTree = "<group>"; };
+		8432591B223F2A96003A33F2 /* default_headPortrait.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default_headPortrait.jpeg; sourceTree = "<group>"; };
+		8432591E223F5ECD003A33F2 /* IMUserDetailBaseInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMUserDetailBaseInfoCell.m; sourceTree = "<group>"; };
+		8432591F223F5ECD003A33F2 /* IMUserDetailBaseInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMUserDetailBaseInfoCell.h; sourceTree = "<group>"; };
+		84325922223F618E003A33F2 /* UIView+Separator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Separator.h"; sourceTree = "<group>"; };
+		84325923223F618E003A33F2 /* UIView+Separator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Separator.m"; sourceTree = "<group>"; };
+		84325927223F62BE003A33F2 /* IMUserSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMUserSettingViewController.h; sourceTree = "<group>"; };
+		84325928223F62BE003A33F2 /* IMUserSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMUserSettingViewController.m; sourceTree = "<group>"; };
+		8432592A223F646E003A33F2 /* IMFlexibleLayoutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMFlexibleLayoutViewController.h; sourceTree = "<group>"; };
+		8432592B223F646E003A33F2 /* IMFlexibleLayoutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMFlexibleLayoutViewController.m; sourceTree = "<group>"; };
+		8432592D223F6985003A33F2 /* IMFlexibleLayoutFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMFlexibleLayoutFlowLayout.h; sourceTree = "<group>"; };
+		8432592E223F6985003A33F2 /* IMFlexibleLayoutFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMFlexibleLayoutFlowLayout.m; sourceTree = "<group>"; };
+		84325930223F6B1C003A33F2 /* IMFlexibleLayoutViewController+Kernel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IMFlexibleLayoutViewController+Kernel.h"; sourceTree = "<group>"; };
+		84325931223F6B1C003A33F2 /* IMFlexibleLayoutViewController+Kernel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IMFlexibleLayoutViewController+Kernel.m"; sourceTree = "<group>"; };
+		84325937223F6DA0003A33F2 /* IMFlexibleLayoutViewController+OldAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IMFlexibleLayoutViewController+OldAPI.m"; sourceTree = "<group>"; };
+		84325938223F6DA0003A33F2 /* IMFlexibleLayoutViewController+OldAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IMFlexibleLayoutViewController+OldAPI.h"; sourceTree = "<group>"; };
+		8432593A223F7093003A33F2 /* IMUserDetailChatButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMUserDetailChatButtonCell.h; sourceTree = "<group>"; };
+		8432593B223F7094003A33F2 /* IMUserDetailChatButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMUserDetailChatButtonCell.m; sourceTree = "<group>"; };
+		8432593E223F7385003A33F2 /* IMLaunchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMLaunchManager.h; sourceTree = "<group>"; };
+		8432593F223F7385003A33F2 /* IMLaunchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMLaunchManager.m; sourceTree = "<group>"; };
 		8438D541222F60BF001FD530 /* IMXMPPHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMXMPPHelper.h; sourceTree = "<group>"; };
 		8438D542222F60BF001FD530 /* IMXMPPHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMXMPPHelper.m; sourceTree = "<group>"; };
 		84681F722230CA500056372A /* UIBarButtonItem+Category.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Category.h"; sourceTree = "<group>"; };
@@ -1198,6 +1225,8 @@
 		8423C2DD223B506A00E999F5 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				84325938223F6DA0003A33F2 /* IMFlexibleLayoutViewController+OldAPI.h */,
+				84325937223F6DA0003A33F2 /* IMFlexibleLayoutViewController+OldAPI.m */,
 				8423C2DE223B506A00E999F5 /* IMFlexibleLayoutViewModel.m */,
 				8423C2DF223B506A00E999F5 /* IMFlexibleLayoutSectionModel.m */,
 				8423C2E0223B506A00E999F5 /* IMFlexibleLayoutViewModel.h */,
@@ -1359,6 +1388,7 @@
 		8423C331223B7F9F00E999F5 /* IMUserDetailViewController */ = {
 			isa = PBXGroup;
 			children = (
+				8432591D223F5E9D003A33F2 /* Views */,
 				8423C31F223B6D4B00E999F5 /* IMUserDetailViewController.h */,
 				8423C320223B6D4B00E999F5 /* IMUserDetailViewController.m */,
 			);
@@ -1455,6 +1485,8 @@
 				8423C340223B839000E999F5 /* UIView+Extensions.m */,
 				EE89371E222900BE004F1F6E /* UIView+Frame.h */,
 				EE89371F222900BE004F1F6E /* UIView+Frame.m */,
+				84325922223F618E003A33F2 /* UIView+Separator.h */,
+				84325923223F618E003A33F2 /* UIView+Separator.m */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -1775,6 +1807,8 @@
 		8428F45D22326A300064DA35 /* Page */ = {
 			isa = PBXGroup;
 			children = (
+				8432593D223F7374003A33F2 /* LaunchManager */,
+				84325925223F628F003A33F2 /* Setting */,
 				8423C360223B9CC600E999F5 /* NewFriends */,
 				8423C336223B806500E999F5 /* Search */,
 				8428F4872235F6120064DA35 /* AddresBook */,
@@ -1808,6 +1842,56 @@
 				8428F493223644860064DA35 /* icon_nav_back@3x.png */,
 			);
 			path = nav;
+			sourceTree = "<group>";
+		};
+		8432591D223F5E9D003A33F2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8432593A223F7093003A33F2 /* IMUserDetailChatButtonCell.h */,
+				8432593B223F7094003A33F2 /* IMUserDetailChatButtonCell.m */,
+				8432591F223F5ECD003A33F2 /* IMUserDetailBaseInfoCell.h */,
+				8432591E223F5ECD003A33F2 /* IMUserDetailBaseInfoCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		84325925223F628F003A33F2 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				84325926223F629C003A33F2 /* IMUserSettingViewController */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		84325926223F629C003A33F2 /* IMUserSettingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				84325927223F62BE003A33F2 /* IMUserSettingViewController.h */,
+				84325928223F62BE003A33F2 /* IMUserSettingViewController.m */,
+			);
+			path = IMUserSettingViewController;
+			sourceTree = "<group>";
+		};
+		84325933223F6B98003A33F2 /* IMFlexibleLayoutViewController */ = {
+			isa = PBXGroup;
+			children = (
+				84325931223F6B1C003A33F2 /* IMFlexibleLayoutViewController+Kernel.m */,
+				84325930223F6B1C003A33F2 /* IMFlexibleLayoutViewController+Kernel.h */,
+				8432592D223F6985003A33F2 /* IMFlexibleLayoutFlowLayout.h */,
+				8432592E223F6985003A33F2 /* IMFlexibleLayoutFlowLayout.m */,
+				8432592A223F646E003A33F2 /* IMFlexibleLayoutViewController.h */,
+				8432592B223F646E003A33F2 /* IMFlexibleLayoutViewController.m */,
+			);
+			path = IMFlexibleLayoutViewController;
+			sourceTree = "<group>";
+		};
+		8432593D223F7374003A33F2 /* LaunchManager */ = {
+			isa = PBXGroup;
+			children = (
+				8432593E223F7385003A33F2 /* IMLaunchManager.h */,
+				8432593F223F7385003A33F2 /* IMLaunchManager.m */,
+			);
+			path = LaunchManager;
 			sourceTree = "<group>";
 		};
 		8438D53D222F6069001FD530 /* XMPPHelper */ = {
@@ -1988,8 +2072,8 @@
 		EE8936B72227DA4E004F1F6E /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				8432591B223F2A96003A33F2 /* default_headPortrait.jpeg */,
 				8428F4902236447C0064DA35 /* nav */,
-				8428F48E223639D00064DA35 /* WechatIMG5.jpeg */,
 				EE893A1A222915F4004F1F6E /* conversationList */,
 				EE893A1B222915F4004F1F6E /* reviewVideo.mp4 */,
 				EE893A18222915E4004F1F6E /* previewPicture.jpeg */,
@@ -2058,22 +2142,23 @@
 		EE8936BE2227DA4E004F1F6E /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				EE8939C922290419004F1F6E /* IMFileCache.h */,
-				EE8939C822290419004F1F6E /* IMFileCache.m */,
-				EE8939C622290408004F1F6E /* IMFileManagement.h */,
-				EE8939C522290408004F1F6E /* IMFileManagement.m */,
 				EE8936E42228C4B6004F1F6E /* IMBaseModel.h */,
 				EE8936E52228C4B6004F1F6E /* IMBaseModel.m */,
-				EE8937022228D82B004F1F6E /* IMBaseTableViewCell.h */,
-				EE8937032228D82B004F1F6E /* IMBaseTableViewCell.m */,
-				EE8936C52227DBA2004F1F6E /* IMBaseViewController.h */,
-				EE8936C62227DBA2004F1F6E /* IMBaseViewController.m */,
-				EE8936F32228CC5D004F1F6E /* IMSystemAuthorization.h */,
-				EE8936F42228CC5D004F1F6E /* IMSystemAuthorization.m */,
 				8428F46422326AD00064DA35 /* IMBaseNavigationController.h */,
 				8428F46522326AD00064DA35 /* IMBaseNavigationController.m */,
 				8428F46722326B060064DA35 /* IMBaseTabBarController.h */,
 				8428F46822326B060064DA35 /* IMBaseTabBarController.m */,
+				EE8937022228D82B004F1F6E /* IMBaseTableViewCell.h */,
+				EE8937032228D82B004F1F6E /* IMBaseTableViewCell.m */,
+				EE8936C52227DBA2004F1F6E /* IMBaseViewController.h */,
+				EE8936C62227DBA2004F1F6E /* IMBaseViewController.m */,
+				EE8939C922290419004F1F6E /* IMFileCache.h */,
+				EE8939C822290419004F1F6E /* IMFileCache.m */,
+				EE8939C622290408004F1F6E /* IMFileManagement.h */,
+				EE8939C522290408004F1F6E /* IMFileManagement.m */,
+				84325933223F6B98003A33F2 /* IMFlexibleLayoutViewController */,
+				EE8936F32228CC5D004F1F6E /* IMSystemAuthorization.h */,
+				EE8936F42228CC5D004F1F6E /* IMSystemAuthorization.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -2685,6 +2770,7 @@
 				EE89392C222902C3004F1F6E /* emotion_kelian.png in Resources */,
 				EE893933222902C3004F1F6E /* emotion_aixin_gif.gif in Resources */,
 				EE8938B4222902C3004F1F6E /* emotion_ciya_gif.gif in Resources */,
+				8432591C223F2A96003A33F2 /* default_headPortrait.jpeg in Resources */,
 				EE893885222902C3004F1F6E /* emotion_chaopiao_gif.gif in Resources */,
 				EE893883222902C3004F1F6E /* emotion_kelian_gif.gif in Resources */,
 				EE893963222902C3004F1F6E /* emotion_zhuanjie.png in Resources */,
@@ -2831,7 +2917,6 @@
 				EE89397B222902C3004F1F6E /* emotion_nanguo_gif.gif in Resources */,
 				EE893992222902C3004F1F6E /* emotion_ok.png in Resources */,
 				EE893882222902C3004F1F6E /* emotion_xiangjiao.png in Resources */,
-				8428F48F223639D10064DA35 /* WechatIMG5.jpeg in Resources */,
 				EE893981222902C3004F1F6E /* emotion_baobao.png in Resources */,
 				EE89397F222902C3004F1F6E /* emotion_tiaotiao.png in Resources */,
 				EE89398D222902C3004F1F6E /* emotion_haixiu_gif.gif in Resources */,
@@ -3102,6 +3187,7 @@
 				EE7FE462222CC42500073210 /* TADotView.m in Sources */,
 				EE8939B4222902C3004F1F6E /* IMInputBoxEmojiMenuView.m in Sources */,
 				EE8936CE2227DF37004F1F6E /* UIDevice+Category.m in Sources */,
+				84325939223F6DA0003A33F2 /* IMFlexibleLayoutViewController+OldAPI.m in Sources */,
 				EE893A3A22291B18004F1F6E /* IMChatImageTableViewCell.m in Sources */,
 				8438D543222F60BF001FD530 /* IMXMPPHelper.m in Sources */,
 				EE7FE45F222CC42500073210 /* FSActionSheetItem.m in Sources */,
@@ -3117,6 +3203,7 @@
 				EE7FE460222CC42500073210 /* BAProgressView.m in Sources */,
 				EE893A0C22290A55004F1F6E /* UIImage+Video.m in Sources */,
 				EE8937172228F91A004F1F6E /* UILabel+AutoLabelHeightAndWidth.m in Sources */,
+				84325924223F618E003A33F2 /* UIView+Separator.m in Sources */,
 				8423C304223B506A00E999F5 /* IMFlexChainViewModel.m in Sources */,
 				EE8936942227D997004F1F6E /* main.m in Sources */,
 				8423C2FF223B506A00E999F5 /* IMFlexibleLayoutSeperatorCell.m in Sources */,
@@ -3127,6 +3214,7 @@
 				EE8937142228F811004F1F6E /* NSDate+Category.m in Sources */,
 				EE8939B9222902C3004F1F6E /* IMInputBoxRecorderView.m in Sources */,
 				EE8939B7222902C3004F1F6E /* IMInputBoxViewCtrl.m in Sources */,
+				8432592C223F646E003A33F2 /* IMFlexibleLayoutViewController.m in Sources */,
 				8428F46622326AD00064DA35 /* IMBaseNavigationController.m in Sources */,
 				EE8936C42227DA4F004F1F6E /* IMColorTools.m in Sources */,
 				EE8939B6222902C3004F1F6E /* IMVideoProgressView.m in Sources */,
@@ -3167,6 +3255,7 @@
 				EE8936EC2228C687004F1F6E /* IMMessageModel.m in Sources */,
 				EE7234D7222CCEB200A6F7E2 /* NSArray+zh_SafeAccess.m in Sources */,
 				8423C335223B800700E999F5 /* IMContactsSearchResultViewController.m in Sources */,
+				84325932223F6B1D003A33F2 /* IMFlexibleLayoutViewController+Kernel.m in Sources */,
 				EE8939B2222902C3004F1F6E /* IMEmojiCollectionViewCell.m in Sources */,
 				EE89370D2228F5C7004F1F6E /* IMAppDefaultUtil.m in Sources */,
 				EE8939C722290408004F1F6E /* IMFileManagement.m in Sources */,
@@ -3177,6 +3266,7 @@
 				EE893A24222918AE004F1F6E /* IMChatViewController+Voice.m in Sources */,
 				EE8939AE222902C3004F1F6E /* IMInputBoxMoreView.m in Sources */,
 				842511AE222E609A004C3954 /* IMUserGroup.m in Sources */,
+				8432593C223F7094003A33F2 /* IMUserDetailChatButtonCell.m in Sources */,
 				EE7FE45D222CC42500073210 /* FSActionSheet.m in Sources */,
 				8428F45222320EE70064DA35 /* IMAddContactsViewController.m in Sources */,
 				841D27002238D4470004D0FE /* IMNewContactViewController.m in Sources */,
@@ -3203,16 +3293,20 @@
 				EE8936C72227DBA2004F1F6E /* IMBaseViewController.m in Sources */,
 				EE8936DD2228BE68004F1F6E /* IMShortcutMethod.m in Sources */,
 				EE8939AF222902C3004F1F6E /* IMInputBoxView.m in Sources */,
+				8432592F223F6985003A33F2 /* IMFlexibleLayoutFlowLayout.m in Sources */,
 				EE893720222900BE004F1F6E /* UIView+Frame.m in Sources */,
 				EE8939B1222902C3004F1F6E /* IMPlayer.m in Sources */,
 				8423C2C8223B410B00E999F5 /* IMContactItemCell.m in Sources */,
 				EE8936E32228C331004F1F6E /* IMChatViewController.m in Sources */,
 				EE7FE463222CC42500073210 /* TAPageControl.m in Sources */,
 				EE89387B222902C3004F1F6E /* IMEmojiGroup.m in Sources */,
+				84325920223F5ECD003A33F2 /* IMUserDetailBaseInfoCell.m in Sources */,
 				EE8936862227D997004F1F6E /* AppDelegate.m in Sources */,
 				842511BF222E60D0004C3954 /* IMUserHelper.m in Sources */,
 				8423C300223B506A00E999F5 /* IMFlexTableViewEmptyCell.m in Sources */,
 				EE8939CA22290419004F1F6E /* IMFileCache.m in Sources */,
+				84325929223F62BE003A33F2 /* IMUserSettingViewController.m in Sources */,
+				84325940223F7386003A33F2 /* IMLaunchManager.m in Sources */,
 				841D27032238D8E40004D0FE /* IMNewContactTableViewCell.m in Sources */,
 				8428F48D223623F60064DA35 /* IMAddressBookTableViewCell.m in Sources */,
 				8423C35B223B98F400E999F5 /* IMMobileContactsViewController.m in Sources */,

@@ -71,17 +71,5 @@
 @end
 
 @implementation IMBaseTabBarController(Class)
-+ (IMBaseTabBarController *)tabbarVc{
-    IMBaseTabBarController *tabbar = [[IMBaseTabBarController alloc] init];
-    IMBaseNavigationController *messages = [IMMessageViewController navMessagesVc];
-    [tabbar addSubController:messages action:^(UITabBarItem * _Nonnull item, UITabBarController * _Nonnull tabbarVc) {
-        
-    }];
-    
-    IMBaseNavigationController *addresBooks = [IMContactsViewController navAddressBookVc];
-    [tabbar addSubController:addresBooks action:^(UITabBarItem * _Nonnull item, UITabBarController * _Nonnull tabbarVc) {
-        
-    }];
-    return tabbar;
-}
+
 @end

@@ -2,8 +2,8 @@
 //  IMContactsSearchResultViewController.m
 //  IMChat
 //
-//  Created by 李伯坤 on 16/1/25.
-//  Copyright © 2016年 李伯坤. All rights reserved.
+//  Created by 徐世杰 on 16/1/25.
+//  Copyright © 2016年 徐世杰. All rights reserved.
 //
 
 #import "IMContactsSearchResultViewController.h"
@@ -44,7 +44,7 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    self.friendsData = KIMXMPPHelper.userHelper.bothFriendArray;
+    self.friendsData = KIMXMPPHelper.userHelper.allFriendArray;
 }
 
 //MARK: UISearchResultsUpdating

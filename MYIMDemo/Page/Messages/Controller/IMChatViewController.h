@@ -9,10 +9,12 @@
 #import "IMChatBaseViewController.h"
 #import <AVFoundation/AVFoundation.h>
 
+
 NS_ASSUME_NONNULL_BEGIN
 @class IMConversationModel;
 @class IMMessageModel;
 @interface IMChatViewController : IMChatBaseViewController<AVAudioPlayerDelegate>
+
 // 进入聊天页面需要发送正处于发送状态的消息
 @property (nonatomic, assign) BOOL               isEnterSend;
 @property (nonatomic, assign) BOOL               canceled;
@@ -28,6 +30,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL               isConversationInto;
 // 最后播放的语音URL的Index
 @property (nonatomic, assign) NSInteger          lastPlayVoiceIndex;
+
+
 
 // 重新刷新数据
 - (void)reloadData;

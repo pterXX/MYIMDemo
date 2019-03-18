@@ -19,6 +19,7 @@
 #import "UIScrollView+Addition.h"
 #import "UIView+Extensions.h"
 #import "UIView+Frame.h"
+#import "UIView+Separator.h"
 #import "UIViewController+Category.h"
 
 

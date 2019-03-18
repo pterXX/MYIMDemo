@@ -10,7 +10,7 @@
 
 @implementation UIImage (IMChat)
 + (UIImage *)imageDefaultHeadPortrait{
-    return  [UIImage imageNamed:@"WechatIMG5.jpeg"];
+    return  [UIImage imageNamed:@"default_headPortrait.jpeg"];
 }
 
 + (UIImage *)imageLoginBackground{

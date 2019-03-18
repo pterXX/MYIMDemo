@@ -2,8 +2,8 @@
 //  IMFlexibleLayoutViewProtocol.h
 //  IMFlexibleLayoutFrameworkDemo
 //
-//  Created by 李伯坤 on 2016/12/27.
-//  Copyright © 2016年 李伯坤. All rights reserved.
+//  Created by 徐世杰 on 2016/12/27.
+//  Copyright © 2016年 徐世杰. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

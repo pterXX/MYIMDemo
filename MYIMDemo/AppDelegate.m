@@ -21,26 +21,22 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-   
-    [self setRootViewCtr];
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+    // 初始化UI
+    [[IMLaunchManager sharedInstance] launchInWindow:self.window];
     
     //  初始化xmpp,默认打开手动验证证书
     KIMXMPPHelper.customCertEvaluation = YES;
     //  是否以base64的方式传文件
     KIMXMPPHelper.fileUploadIsBase64 = YES;
     
+    
 
     return YES;
 }
 
-- (void)setRootViewCtr{
-    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
-    //  判断是否登录并返回不同的视图控制器
-    id rootVc = [IMUserHelper sharedHelper].isLogin?[IMBaseTabBarController tabbarVc]:[[IMLoginViewController alloc] init];
-    self.window.rootViewController = rootVc;
-}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

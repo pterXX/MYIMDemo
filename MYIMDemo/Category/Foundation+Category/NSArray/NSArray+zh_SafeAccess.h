@@ -11,12 +11,15 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSArray (zh_SafeAccess)
 
 - (NSUInteger)zh_indexOfObject:(id _Nullable )anObject;
+///  获取指定条件的值
+- (id)zh_objectOfBlock:(id(^)(id value))block;
+- (NSArray *)zh_objectsArrayOfBlock:(id(^)(id value))block;
 
 ///  删除指定条件object
 - (id _Nullable )zh_removeOfObject:(BOOL(^_Nonnull)(id _Nonnull value))block;
 
 ///  替换指定条件Object
-- (id)zh_replaceOfObject:(id(^)(id value))block;
+- (NSArray *)zh_replaceOfObject:(id(^)(id value))block;
 
 ///  遍历数组并且返回一个处理后的新数组
 - (NSArray *)zh_enumerateObjectsUsingBlock:(id(^)(id obj))block;

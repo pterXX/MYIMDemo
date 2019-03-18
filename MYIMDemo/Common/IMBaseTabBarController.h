@@ -39,6 +39,5 @@ tabBarItemSelectedImage:(UIImage *)selectedImage
 
 
 @interface IMBaseTabBarController(Class)
-+ (IMBaseTabBarController *)tabbarVc;
 @end
 NS_ASSUME_NONNULL_END

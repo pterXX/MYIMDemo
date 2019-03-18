@@ -25,7 +25,7 @@
 /// 昵称
 @property (nonatomic, strong) NSString *nikeName;
 
-/// 头像URL
+/// 头像
 @property (nonatomic, strong) UIImage *avatar;
 
 /// 头像URL

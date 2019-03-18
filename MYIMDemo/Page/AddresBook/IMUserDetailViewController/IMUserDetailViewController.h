@@ -6,11 +6,11 @@
 //  Copyright © 2019 徐世杰. All rights reserved.
 //
 
-#import "IMBaseViewController.h"
+#import "IMFlexibleLayoutViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface IMUserDetailViewController : IMBaseViewController
+@interface IMUserDetailViewController : IMFlexibleLayoutViewController
 - (instancetype)initWithUserId:(NSString *)userId;
 - (instancetype)initWithUserModel:(IMUser *)userModel;
 - (instancetype)init  __attribute__((unavailable("请使用 initWithUserId: 或 initWithUserModel:")));

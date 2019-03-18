@@ -54,14 +54,18 @@ IMNewFriendItem *createNewFriendItemModelWithTag(NSInteger tag, NSString *path, 
     [self setModel:dataModel];
 }
 
+- (void)setViewDelegate:(id)delegate{
+    [self setDelegate:delegate];
+}
+
 - (void)viewIndexPath:(NSIndexPath *)indexPath sectionItemCount:(NSInteger)count
 {
-    //    if (indexPath.row == count - 1) {
-    //        self.removeSeparator(ZZSeparatorPositionBottom);
-    //    }
-    //    else {
-    //        self.addSeparator(ZZSeparatorPositionBottom).beginAt(10);
-    //    }
+    if (indexPath.row == count - 1) {
+        self.removeSeparator(SeparatorPositionBottom);
+    }
+    else {
+        self.addSeparator(SeparatorPositionBottom).beginAt(10);
+    }
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -83,6 +87,11 @@ IMNewFriendItem *createNewFriendItemModelWithTag(NSInteger tag, NSString *path, 
     }
     else if (model.imagePath) {
         [self.avatarView setImage:IMImage(model.imagePath)];
+    }else if ([model.userInfo isKindOfClass:[IMUser class]]) {
+        IMUser *user = model.userInfo;
+        self.avatarView.image = user.avatar?:[UIImage imageDefaultHeadPortrait];
+    }else{
+        self.avatarView.image = [UIImage imageDefaultHeadPortrait];
     }
     
     [self.nameLabel setText:model.title];
@@ -146,6 +155,7 @@ IMNewFriendItem *createNewFriendItemModelWithTag(NSInteger tag, NSString *path, 
     //  状态按钮
     self.statusBut = [self button:@"已添加" textColor:[UIColor colorTextlightGrayColor]];
     self.statusBut.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    self.statusBut.hidden = YES;
     
     UIStackView *stackView = [[UIStackView alloc] init];
     stackView.distribution = UIStackViewDistributionFillEqually;
@@ -156,7 +166,12 @@ IMNewFriendItem *createNewFriendItemModelWithTag(NSInteger tag, NSString *path, 
     [stackView addArrangedSubview:self.statusBut];
     
     [self.contentView addSubview:stackView];
-    stackView.sd_layout.widthIs(120).heightIs(44).centerYEqualToView(self.contentView).rightSpaceToView(self.contentView, 10);
+    [stackView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(120);
+        make.height.mas_equalTo(44);
+        make.centerY.mas_equalTo(self.contentView.mas_centerY);
+        make.right.mas_equalTo(self.contentView).mas_offset(-10);
+    }];
 }
 
 - (UIButton *)button:(NSString *)title textColor:(UIColor *)color{

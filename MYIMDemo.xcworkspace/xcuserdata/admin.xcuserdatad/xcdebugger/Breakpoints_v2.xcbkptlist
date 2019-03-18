@@ -52,7 +52,7 @@
                   moduleName = "MYIMDemo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/admin/Documents/GitHub/MYIMDemo/MYIMDemo/Page/Messages/View/IMMessagesListTableViewCell.h"
-                  timestampString = "574334477.787524"
+                  timestampString = "574585889.9789619"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
@@ -67,7 +67,7 @@
                   moduleName = "MYIMDemo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/admin/Documents/GitHub/MYIMDemo/MYIMDemo/Page/Messages/View/IMMessagesListTableViewCell.h"
-                  timestampString = "574334477.78956"
+                  timestampString = "574585889.982496"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
@@ -116,7 +116,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MYIMDemo/XMPPHelper/IMXMPPHelper.m"
-            timestampString = "574328020.200518"
+            timestampString = "574585889.830281"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "475"
@@ -132,7 +132,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MYIMDemo/XMPPHelper/IMXMPPHelper.m"
-            timestampString = "574328020.2006"
+            timestampString = "574585889.83042"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "480"
@@ -148,60 +148,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MYIMDemo/XMPPHelper/IMXMPPHelper.m"
-            timestampString = "574328020.20065"
+            timestampString = "574585889.830514"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "631"
-            endingLineNumber = "631"
+            startingLineNumber = "628"
+            endingLineNumber = "628"
             landmarkName = "-xmppStream:didReceivePresence:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MYIMDemo/XMPPHelper/IMXMPPHelper.m"
-            timestampString = "574328020.200696"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "493"
-            endingLineNumber = "493"
-            landmarkName = "-acceptPresenceSubscriptionRequestFrom:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MYIMDemo/XMPPHelper/IMXMPPHelper.m"
-            timestampString = "574328020.200754"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "497"
-            endingLineNumber = "497"
-            landmarkName = "-acceptPresenceSubscriptionRequestFrom:block:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MYIMDemo/XMPPHelper/IMXMPPHelper.m"
-            timestampString = "574328020.200796"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "504"
-            endingLineNumber = "504"
-            landmarkName = "-rejectPresenceSubscriptionRequestFrom:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -218,6 +170,38 @@
             startingLineNumber = "70"
             endingLineNumber = "70"
             landmarkName = "-resetListWithContactsData:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MYIMDemo/Page/AddresBook/IMUserDetailViewController/IMUserDetailViewController.m"
+            timestampString = "574585889.8306741"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "-loadUIWithUserModel:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MYIMDemo/Page/AddresBook/IMUserDetailViewController/IMUserDetailViewController.m"
+            timestampString = "574585889.831287"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "-loadUIWithUserModel:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

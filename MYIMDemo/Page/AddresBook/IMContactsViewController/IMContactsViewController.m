@@ -105,7 +105,7 @@
 }
 
 - (void)p_resterStorage{
-    [self.listAngel resetListWithContactsData:KIMXMPPHelper.userHelper.bothFriendArray];
+    [self.listAngel resetListWithContactsData:KIMXMPPHelper.userHelper.sortGroupArray sectionHeaders:KIMXMPPHelper.userHelper.pinyinInitialArray];
     [self.footerLabel setText:IMStirngFormat(@"%ld位联系人",KIMXMPPHelper.userHelper.bothFriendArray.count)];
     [self.tableView reloadData];
 }

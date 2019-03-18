@@ -2,14 +2,14 @@
 //  IMFlexMacros.h
 //  IMFlexDemo
 //
-//  Created by 李伯坤 on 2017/11/27.
-//  Copyright © 2017年 李伯坤. All rights reserved.
+//  Created by 徐世杰 on 2017/11/27.
+//  Copyright © 2017年 徐世杰. All rights reserved.
 //
 
 #ifndef IMFlexMacros_h
 #define IMFlexMacros_h
 
-#define     IMFlexLog(fmt, ...)     NSLog((@"【IMFlex】" fmt), ##__VA_ARGS__)
+#define     NSLog(fmt, ...)     NSLog((@"【IMFlex】" fmt), ##__VA_ARGS__)
 
 #define     BORDER_WIDTH_1PX        ([[UIScreen mainScreen] scale] > 0.0 ? 1.0 / [[UIScreen mainScreen] scale] : 1.0)
 

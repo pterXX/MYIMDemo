@@ -51,12 +51,12 @@ IMContactsItem *createContactsItemModelWithTag(NSInteger tag, NSString *path, NS
 
 - (void)viewIndexPath:(NSIndexPath *)indexPath sectionItemCount:(NSInteger)count
 {
-//    if (indexPath.row == count - 1) {
-//        self.removeSeparator(ZZSeparatorPositionBottom);
-//    }
-//    else {
-//        self.addSeparator(ZZSeparatorPositionBottom).beginAt(10);
-//    }
+    if (indexPath.row == count - 1) {
+        self.removeSeparator(SeparatorPositionBottom);
+    }
+    else {
+        self.addSeparator(SeparatorPositionBottom).beginAt(10);
+    }
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -67,8 +67,7 @@ IMContactsItem *createContactsItemModelWithTag(NSInteger tag, NSString *path, NS
     return self;
 }
 
-- (void)setModel:(IMContactsItem *)model
-{
+- (void)setModel:(IMContactsItem *)model{
     _model = model;
     
     UIImage *localImage = (model.imagePath.length > 0 ? IMImage(model.imagePath) : nil);
@@ -78,6 +77,11 @@ IMContactsItem *createContactsItemModelWithTag(NSInteger tag, NSString *path, NS
     }
     else if (model.imagePath) {
         [self.avatarView setImage:IMImage(model.imagePath)];
+    }else if ([model.userInfo isKindOfClass:[IMUser class]]) {
+        IMUser *user = model.userInfo;
+        self.avatarView.image = user.avatar?:[UIImage imageDefaultHeadPortrait];
+    }else{
+        self.avatarView.image = [UIImage imageDefaultHeadPortrait];
     }
     
     [self.nameLabel setText:model.title];

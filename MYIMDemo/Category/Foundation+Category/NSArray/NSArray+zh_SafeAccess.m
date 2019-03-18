@@ -9,7 +9,6 @@
 #import "NSArray+zh_SafeAccess.h"
 
 @implementation NSArray (zh_SafeAccess)
-
 - (NSUInteger)zh_indexOfObject:(id)anObject {
     NSParameterAssert(self.count);
     if ([self containsObject:anObject]) {
@@ -18,12 +17,35 @@
     return 0;
 }
 
+- (id)zh_objectOfBlock:(id(^)(id value))block {
+    for (id sub in self) {
+        if (block) {
+            id returnValue = block(sub);
+            if (returnValue) return returnValue;
+        }
+    }
+    return nil;
+}
+
+- (NSArray *)zh_objectsArrayOfBlock:(id(^)(id value))block{
+    NSParameterAssert(self.count);
+    NSMutableArray *array = [NSMutableArray array];
+    for (id sub in self) {
+        if (block) {
+            id returnValue = block(sub);
+            if (returnValue) [array addObject:returnValue];
+        }
+    }
+    return array;
+}
+
 ///  删除指定条件object
 - (id)zh_removeOfObject:(BOOL(^)(id value))block
 {
+    NSParameterAssert(self.count);
     NSMutableArray *arr = [NSMutableArray array];
     for (id obj  in self) {
-       BOOL  isremove = block(obj);
+        BOOL  isremove = block(obj);
         if (isremove == NO) {
             [arr addObject:obj];
         }
@@ -32,8 +54,9 @@
 }
 
 ///  替换指定条件Object
-- (id)zh_replaceOfObject:(id(^)(id value))block
+- (NSArray *)zh_replaceOfObject:(id(^)(id value))block
 {
+    NSParameterAssert(self.count);
     NSMutableArray *arr = [NSMutableArray array];
     for (id obj  in self) {
         id isreplace = block(obj);
@@ -104,7 +127,7 @@
 ///  用指定字符串连接
 - (id)zh_Join:(NSString *)joinStr{
     NSParameterAssert(joinStr);
-   return [self componentsJoinedByString:joinStr];
+    return [self componentsJoinedByString:joinStr];
 }
 
 @end

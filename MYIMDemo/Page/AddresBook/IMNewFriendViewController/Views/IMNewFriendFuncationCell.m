@@ -50,7 +50,7 @@ IMNewFriendFuncationModel *createNewFriendFuncationModel(NSString *icon, NSStrin
 {
     [super drawRect:rect];
     
-//    self.addSeparator(ZZSeparatorPositionBottom).borderWidth(1);
+    self.addSeparator(SeparatorPositionBottom).borderWidth(1);
 }
 
 - (void)setModel:(IMNewFriendFuncationModel *)model

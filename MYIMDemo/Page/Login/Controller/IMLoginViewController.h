@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface IMLoginViewController : IMBaseViewController
-
+@property (nonatomic ,copy) void(^loginSuccess)(void);
 @end
 
 NS_ASSUME_NONNULL_END

@@ -67,6 +67,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 #import "IMXMPPHelper.h"
 #import "IMUserHelper.h"
 #import "IMChatMessageHelper.h"
+#import "IMLaunchManager.h"
 
 #import "IMCategory.h"
 

@@ -26,11 +26,11 @@
 {
     [super viewDidLoad];
     
-    [self loadListUIWithData:KIMXMPPHelper.userHelper.addFriendJidArray];
+    [self loadListUIWithData];
 }
 
-- (void)loadListUIWithData:(NSArray *)array{
-//    [self.tableViewAngel r]
+- (void)loadListUIWithData{
+    [self.tableViewAngel resetListWithContactsData:KIMXMPPHelper.userHelper.addFriendJidArray];
     [self.tableView reloadData];
 }
 
@@ -65,6 +65,10 @@
     self.tableViewAngel = [[IMNewFriendAngel alloc] initWithHostView:self.tableView pushAction:^(__kindof UIViewController * _Nonnull vc) {
         @strongify(self);
         IMPushVC(vc);
+    }];
+    [self.tableViewAngel setBtnAction:^{
+        @strongify(self);
+        [self loadListUIWithData];
     }];
 }
 

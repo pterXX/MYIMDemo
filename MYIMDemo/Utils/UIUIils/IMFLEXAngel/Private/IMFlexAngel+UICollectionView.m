@@ -2,8 +2,8 @@
 //  IMFlexAngel+UICollectionView.m
 //  IMFlexDemo
 //
-//  Created by 李伯坤 on 2017/12/14.
-//  Copyright © 2017年 李伯坤. All rights reserved.
+//  Created by 徐世杰 on 2017/12/14.
+//  Copyright © 2017年 徐世杰. All rights reserved.
 //
 
 #import "IMFlexAngel+UICollectionView.h"
@@ -33,7 +33,7 @@
     
     UICollectionViewCell<IMFlexibleLayoutViewProtocol> *cell;
     if (!model || !model.viewClass) {
-        IMFlexLog(@"!!!!! CollectionViewCell不存在，将使用空白Cell：%@", model.className);
+        NSLog(@"!!!!! CollectionViewCell不存在，将使用空白Cell：%@", model.className);
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([IMFlexibleLayoutSeperatorCell class]) forIndexPath:indexPath];
         [cell setTag:model.viewTag];
         return cell;

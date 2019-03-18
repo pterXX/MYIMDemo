@@ -30,11 +30,12 @@
     return self;
 }
 
-- (void)resetListWithContactsData:(NSArray *)contactsData
+- (void)resetListWithContactsData:(NSArray *)contactsData sectionHeaders:(NSArray *)sectionHeaders
 {
-    kWeakSelf
+    self.sectionHeaders = sectionHeaders;
     self.clear();
     
+    @weakify(self);
     /// 功能
     self.addSection(IMContactsVCSectionTypeFuncation);
     {
@@ -44,26 +45,27 @@
         IMContactsItem *publicModel = createContactsItemModelWithTag(IMContactsVCCellTypePublic, @"add_friend_icon_offical", nil, @"公众号", nil, nil);
         NSArray *funcationData = @[newModel, groupModel, tagModel, publicModel];
         self.addCells(NSStringFromClass([IMContactItemCell class])).toSection(IMContactsVCSectionTypeFuncation).withDataModelArray(funcationData).selectedAction(^ (IMContactsItem *model) {
+            @strongify(self);
             if (model.tag == IMContactsVCCellTypeNew) {
                 IMNewFriendViewController *newFriendVC = [[IMNewFriendViewController alloc] init];
-                [weakSelf tryPushVC:newFriendVC];
+                [self tryPushVC:newFriendVC];
             }
             else if (model.tag == IMContactsVCCellTypeGroup) {
                 IMGroupViewController *groupVC = [[IMGroupViewController alloc] init];
-                [weakSelf tryPushVC:groupVC];
+                [self tryPushVC:groupVC];
             }
             else if (model.tag == IMContactsVCCellTypeTag) {
                 IMTagsViewController *tagsVC = [[IMTagsViewController alloc] init];
-                [weakSelf tryPushVC:tagsVC];
+                [self tryPushVC:tagsVC];
             }
             else if (model.tag == IMContactsVCCellTypePublic) {
                 IMOfficialAccountViewController *publicServerVC = [[IMOfficialAccountViewController alloc] init];
-                [weakSelf tryPushVC:publicServerVC];
+                [self tryPushVC:publicServerVC];
             }
         });
     }
     // 企业
-    self.addSection(IMContactsVCSectionTypeEnterprise);
+//    self.addSection(IMContactsVCSectionTypeEnterprise);
     
     // 好友
     IMContactsItem *(^createContactsItemModelWithUserModel)(IMUser *userModel) = ^IMContactsItem *(IMUser *userModel){
@@ -81,9 +83,10 @@
             [data addObject:newModel];
         }
         self.addCells(NSStringFromClass([IMContactItemCell class])).toSection(sectionTag).withDataModelArray(data).selectedAction(^ (IMContactsItem *data) {
+            @strongify(self);
             IMUser *user = data.userInfo;
             IMUserDetailViewController *detailVC = [[IMUserDetailViewController alloc] initWithUserModel:user];
-            [weakSelf tryPushVC:detailVC];
+            [self tryPushVC:detailVC];
         });
     }
 }

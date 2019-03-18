@@ -26,7 +26,7 @@ typedef NS_ENUM(NSInteger, IMContactsVCCellType) {
 /// pushAction
 @property (nonatomic, copy) void (^pushAction)(__kindof UIViewController *vc);
 
-- (void)resetListWithContactsData:(NSArray *)contactsData;
+- (void)resetListWithContactsData:(NSArray *)contactsData sectionHeaders:(NSArray *)sectionHeaders;
 
 - (instancetype)initWithHostView:(__kindof UIScrollView *)hostView pushAction:(void (^)(__kindof UIViewController *vc))pushAction;
 

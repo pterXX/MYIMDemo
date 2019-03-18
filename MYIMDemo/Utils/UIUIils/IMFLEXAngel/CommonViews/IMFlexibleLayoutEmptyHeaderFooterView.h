@@ -2,7 +2,7 @@
 //  IMFlexibleLayoutEmptyHeaderFooterView.h
 //  zhuanzhuan
 //
-//  Created by 李伯坤 on 2017/7/25.
+//  Created by 徐世杰 on 2017/7/25.
 //  Copyright © 2017年 转转. All rights reserved.
 //
 
