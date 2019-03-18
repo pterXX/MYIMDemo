@@ -67,6 +67,8 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
 @property (nonatomic ,strong) XMPPMessageArchivingCoreDataStorage *xmppMessageArchivingCoreDataStorage;
 @property (nonatomic ,strong) XMPPMessageArchiving                *xmppMessageArchiving;
 
+//  文件发送
+@property (nonatomic, strong) XMPPOutgoingFileTransfer            *xmppOutgoingFileTransfer;
 //  文件接收
 @property (nonatomic, strong) XMPPIncomingFileTransfer            *xmppIncomingFileTransfer;
 
@@ -190,5 +192,9 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
  *  @param jid     发送对方的ID
  */
 - (void)sendMessageModel:(IMMessageModel *)message to:(XMPPJID *)jid;
+@end
+
+
+@interface IMXMPPHelper(File)
 @end
 NS_ASSUME_NONNULL_END

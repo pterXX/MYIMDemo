@@ -214,8 +214,7 @@
                                 cellHeight:(CGFloat)cellHeight
                                selectImage:(UIImage *)selectImage
 {
-    
-    [KIMXMPPHelper sendMessageModel:messageModel to:self.conversation.chatToJid];
+    [KIMXMPPHelper.xmppOutgoingFileTransfer sendData:messageModel.content toRecipient:self.conversation.chatToJid];
     [self updateMessageSendStatus:IMMessageSendStatusSendSuccess indexPath:indexPath localMessageId:messageModel.messageId serversMsgId:messageModel.messageId];
 }
 

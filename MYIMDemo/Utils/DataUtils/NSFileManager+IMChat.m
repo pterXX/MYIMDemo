@@ -190,6 +190,18 @@
     return [path stringByAppendingString:voiceName];
 }
 
++ (NSString *)pathUserChatVideo:(NSString *)videoName
+{
+    NSString *path = [NSString stringWithFormat:@"%@/User/%@/Chat/Video/", [NSFileManager documentsPath], [IMUserHelper sharedHelper].userID];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        NSError *error;
+        [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
+        if (error) {
+            DDLogError(@"File Create Failed: %@", path);
+        }
+    }
+    return [path stringByAppendingString:videoName];
+}
 
 + (NSString *)pathExpressionForGroupID:(NSString *)groupID
 {

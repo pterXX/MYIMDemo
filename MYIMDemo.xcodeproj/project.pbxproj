@@ -80,6 +80,8 @@
 		84325939223F6DA0003A33F2 /* IMFlexibleLayoutViewController+OldAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 84325937223F6DA0003A33F2 /* IMFlexibleLayoutViewController+OldAPI.m */; };
 		8432593C223F7094003A33F2 /* IMUserDetailChatButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8432593B223F7094003A33F2 /* IMUserDetailChatButtonCell.m */; };
 		84325940223F7386003A33F2 /* IMLaunchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8432593F223F7385003A33F2 /* IMLaunchManager.m */; };
+		84325947223F9DF4003A33F2 /* IMConversationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84325946223F9DF4003A33F2 /* IMConversationManager.m */; };
+		8432594C223F9EFB003A33F2 /* IMConverstionStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 8432594B223F9EFB003A33F2 /* IMConverstionStore.m */; };
 		8438D543222F60BF001FD530 /* IMXMPPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8438D542222F60BF001FD530 /* IMXMPPHelper.m */; };
 		84681F742230CA500056372A /* UIBarButtonItem+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 84681F732230CA500056372A /* UIBarButtonItem+Category.m */; };
 		84681F772230EF000056372A /* IMSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84681F762230EF000056372A /* IMSignUpViewController.m */; };
@@ -652,6 +654,11 @@
 		8432593E223F7385003A33F2 /* IMLaunchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMLaunchManager.h; sourceTree = "<group>"; };
 		8432593F223F7385003A33F2 /* IMLaunchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMLaunchManager.m; sourceTree = "<group>"; };
 		84325941223F7D52003A33F2 /* IMSearchResultControllerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMSearchResultControllerProtocol.h; sourceTree = "<group>"; };
+		84325945223F9DF4003A33F2 /* IMConversationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMConversationManager.h; sourceTree = "<group>"; };
+		84325946223F9DF4003A33F2 /* IMConversationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMConversationManager.m; sourceTree = "<group>"; };
+		8432594A223F9EFB003A33F2 /* IMConverstionStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMConverstionStore.h; sourceTree = "<group>"; };
+		8432594B223F9EFB003A33F2 /* IMConverstionStore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMConverstionStore.m; sourceTree = "<group>"; };
+		8432594D223F9F52003A33F2 /* IMConverstionStoreSQL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMConverstionStoreSQL.h; sourceTree = "<group>"; };
 		8438D541222F60BF001FD530 /* IMXMPPHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMXMPPHelper.h; sourceTree = "<group>"; };
 		8438D542222F60BF001FD530 /* IMXMPPHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMXMPPHelper.m; sourceTree = "<group>"; };
 		84681F722230CA500056372A /* UIBarButtonItem+Category.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Category.h"; sourceTree = "<group>"; };
@@ -1654,7 +1661,6 @@
 			isa = PBXGroup;
 			children = (
 				8423C325223B743700E999F5 /* Resource */,
-				EE8936BC2227DA4E004F1F6E /* Model */,
 				EE8936B62227DA4E004F1F6E /* View */,
 				EE8936B82227DA4E004F1F6E /* Controller */,
 			);
@@ -1693,6 +1699,7 @@
 		84251117222E5D09004C3954 /* DBManager */ = {
 			isa = PBXGroup;
 			children = (
+				84325944223F9D73003A33F2 /* IMConversationManager */,
 				84251121222E5E27004C3954 /* IMAccountManager */,
 				84251133222E5E27004C3954 /* IMDBManager */,
 				84251164222E5E28004C3954 /* IMUserManager */,
@@ -1807,6 +1814,7 @@
 		8428F45D22326A300064DA35 /* Page */ = {
 			isa = PBXGroup;
 			children = (
+				84325942223F8849003A33F2 /* Chat */,
 				8432593D223F7374003A33F2 /* LaunchManager */,
 				84325925223F628F003A33F2 /* Setting */,
 				8423C360223B9CC600E999F5 /* NewFriends */,
@@ -1892,6 +1900,68 @@
 				8432593F223F7385003A33F2 /* IMLaunchManager.m */,
 			);
 			path = LaunchManager;
+			sourceTree = "<group>";
+		};
+		84325942223F8849003A33F2 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				84325943223F8892003A33F2 /* Views */,
+				EE8936E12228C331004F1F6E /* IMChatViewController.h */,
+				EE8936E22228C331004F1F6E /* IMChatViewController.m */,
+				EE893A22222918AE004F1F6E /* IMChatViewController+Image.h */,
+				EE893A1F222918AD004F1F6E /* IMChatViewController+Image.m */,
+				EE893A21222918AE004F1F6E /* IMChatViewController+Voice.h */,
+				EE893A20222918AE004F1F6E /* IMChatViewController+Voice.m */,
+				EE8936F02228CB2C004F1F6E /* IMChatBaseViewController.h */,
+				EE8936F12228CB2C004F1F6E /* IMChatBaseViewController.m */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		84325943223F8892003A33F2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EE8936BB2227DA4E004F1F6E /* InputBox */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		84325944223F9D73003A33F2 /* IMConversationManager */ = {
+			isa = PBXGroup;
+			children = (
+				84325949223F9EAE003A33F2 /* Store */,
+				84325948223F9E50003A33F2 /* Models */,
+				84325945223F9DF4003A33F2 /* IMConversationManager.h */,
+				84325946223F9DF4003A33F2 /* IMConversationManager.m */,
+			);
+			path = IMConversationManager;
+			sourceTree = "<group>";
+		};
+		84325948223F9E50003A33F2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EE7FE432222CB29200073210 /* IMMailAccountInfoModel.m */,
+				EE7FE3F72229224900073210 /* IMPhotoPreviewModel.h */,
+				EE7FE3F82229224900073210 /* IMPhotoPreviewModel.m */,
+				EE89370F2228F77A004F1F6E /* IMMailAccountInfoModel.h */,
+				EE8936ED2228C81F004F1F6E /* IMChatMessageHelper.h */,
+				EE8936EE2228C81F004F1F6E /* IMChatMessageHelper.m */,
+				EE8936E72228C506004F1F6E /* IMConversationModel.h */,
+				EE8936E82228C506004F1F6E /* IMConversationModel.m */,
+				EE8936EA2228C687004F1F6E /* IMMessageModel.h */,
+				EE8936EB2228C687004F1F6E /* IMMessageModel.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		84325949223F9EAE003A33F2 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				8432594A223F9EFB003A33F2 /* IMConverstionStore.h */,
+				8432594B223F9EFB003A33F2 /* IMConverstionStore.m */,
+				8432594D223F9F52003A33F2 /* IMConverstionStoreSQL.h */,
+			);
+			path = Store;
 			sourceTree = "<group>";
 		};
 		8438D53D222F6069001FD530 /* XMPPHelper */ = {
@@ -2013,7 +2083,6 @@
 				EE7FE434222CC42500073210 /* BAPhotoBrowser */,
 				EE8936BD2227DA4E004F1F6E /* Category */,
 				EE8936BE2227DA4E004F1F6E /* Common */,
-				EE8936BB2227DA4E004F1F6E /* InputBox */,
 				EE8936BF2227DA4F004F1F6E /* PrefixHeader.pch */,
 				EE8936B72227DA4E004F1F6E /* Resource */,
 				EE8936C02227DA4F004F1F6E /* Utils */,
@@ -2085,18 +2154,10 @@
 		EE8936B82227DA4E004F1F6E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				EE893A22222918AE004F1F6E /* IMChatViewController+Image.h */,
-				EE893A1F222918AD004F1F6E /* IMChatViewController+Image.m */,
-				EE893A21222918AE004F1F6E /* IMChatViewController+Voice.h */,
-				EE893A20222918AE004F1F6E /* IMChatViewController+Voice.m */,
-				EE8936F02228CB2C004F1F6E /* IMChatBaseViewController.h */,
-				EE8936F12228CB2C004F1F6E /* IMChatBaseViewController.m */,
 				EE8936B92227DA4E004F1F6E /* IMMessageViewController.h */,
 				EE8936BA2227DA4E004F1F6E /* IMMessageViewController.m */,
 				EE8936D22227E3AF004F1F6E /* IMSearchMessageViewController.h */,
 				EE8936D32227E3AF004F1F6E /* IMSearchMessageViewController.m */,
-				EE8936E12228C331004F1F6E /* IMChatViewController.h */,
-				EE8936E22228C331004F1F6E /* IMChatViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2110,23 +2171,6 @@
 				EE89385D222902C3004F1F6E /* View */,
 			);
 			path = InputBox;
-			sourceTree = "<group>";
-		};
-		EE8936BC2227DA4E004F1F6E /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				EE7FE432222CB29200073210 /* IMMailAccountInfoModel.m */,
-				EE7FE3F72229224900073210 /* IMPhotoPreviewModel.h */,
-				EE7FE3F82229224900073210 /* IMPhotoPreviewModel.m */,
-				EE89370F2228F77A004F1F6E /* IMMailAccountInfoModel.h */,
-				EE8936E72228C506004F1F6E /* IMConversationModel.h */,
-				EE8936E82228C506004F1F6E /* IMConversationModel.m */,
-				EE8936EA2228C687004F1F6E /* IMMessageModel.h */,
-				EE8936EB2228C687004F1F6E /* IMMessageModel.m */,
-				EE8936ED2228C81F004F1F6E /* IMChatMessageHelper.h */,
-				EE8936EE2228C81F004F1F6E /* IMChatMessageHelper.m */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		EE8936BD2227DA4E004F1F6E /* Category */ = {
@@ -3197,6 +3241,7 @@
 				8423C2FD223B506A00E999F5 /* IMFlexibleLayoutViewModel.m in Sources */,
 				8423C309223B506A00E999F5 /* IMFlexAngel.m in Sources */,
 				842511B3222E60B3004C3954 /* IMDBUserStore.m in Sources */,
+				84325947223F9DF4003A33F2 /* IMConversationManager.m in Sources */,
 				EE893A0B22290A55004F1F6E /* UIImage+Compression.m in Sources */,
 				842511AD222E609A004C3954 /* IMUser.m in Sources */,
 				EE7FE3F92229224A00073210 /* IMPhotoPreviewModel.m in Sources */,
@@ -3207,6 +3252,7 @@
 				8423C304223B506A00E999F5 /* IMFlexChainViewModel.m in Sources */,
 				EE8936942227D997004F1F6E /* main.m in Sources */,
 				8423C2FF223B506A00E999F5 /* IMFlexibleLayoutSeperatorCell.m in Sources */,
+				8432594C223F9EFB003A33F2 /* IMConverstionStore.m in Sources */,
 				8423C35F223B9C0E00E999F5 /* IMFriendFindViewController.m in Sources */,
 				EE8936D42227E3AF004F1F6E /* IMSearchMessageViewController.m in Sources */,
 				84681F742230CA500056372A /* UIBarButtonItem+Category.m in Sources */,

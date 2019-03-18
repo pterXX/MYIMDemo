@@ -68,6 +68,7 @@ static IMXMPPHelper *helper;
         [self setupRoster];
         [self setupMessage];
         [self setupVCard];
+        [self setupFile];
     }
 }
 
@@ -118,6 +119,18 @@ static IMXMPPHelper *helper;
     [self.vCardAvatorModule activate:_xmppStream];
 }
 
+//  文件处理
+-(void)setupFile{
+    _xmppOutgoingFileTransfer = [[XMPPOutgoingFileTransfer alloc] initWithDispatchQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)];
+    [_xmppOutgoingFileTransfer activate:self.xmppStream];
+    [_xmppOutgoingFileTransfer addDelegate:self delegateQueue:dispatch_get_main_queue()];
+    
+    _xmppIncomingFileTransfer = [[XMPPIncomingFileTransfer alloc] initWithDispatchQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)];
+    [_xmppIncomingFileTransfer activate:self.xmppStream];
+    [_xmppIncomingFileTransfer addDelegate:self delegateQueue:dispatch_get_main_queue()];
+    //设置为自动接收文件，当然也可以在代理方法中弹出一个alertView来让用户选择是否接收
+    [_xmppIncomingFileTransfer setAutoAcceptFileTransfers:YES];
+}
 
 #pragma mark - 连接
 - (BOOL)connect:(XMPPJID *)jid {
@@ -164,35 +177,6 @@ static IMXMPPHelper *helper;
     if (self.changeAvatarPhoto) {
         self.changeAvatarPhoto();
     }
-}
-
-#pragma mark ===== 文件接收=======
-//是否同意对方发文件
-- (void)xmppIncomingFileTransfer:(XMPPIncomingFileTransfer *)sender didReceiveSIOffer:(XMPPIQ *)offer{
-    [self.xmppIncomingFileTransfer acceptSIOffer:offer];
-}
-
-//存储文件 音频为amr格式  图片为jpg格式
-- (void)xmppIncomingFileTransfer:(XMPPIncomingFileTransfer *)sender didSucceedWithData:(NSData *)data named:(NSString *)name{
-    XMPPJID *jid = [sender.xmppStream.myJID copy];
-    NSString *subject;
-    NSString *extension = [name pathExtension];
-    if ([@"amr" isEqualToString:extension]) {
-        subject = @"voice";
-    }else if([@"jpg" isEqualToString:extension]){
-        subject = @"picture";
-    }
-    
-    XMPPMessage *message = [XMPPMessage messageWithType:@"chat" to:jid];
-    [message addAttributeWithName:@"from" stringValue:sender.xmppStream.myJID.bare];
-    [message addSubject:subject];
-    
-    NSString *path =  [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    path = [path stringByAppendingPathComponent:[XMPPStream generateUUID]];
-    path = [path stringByAppendingPathExtension:extension];
-    [data writeToFile:path atomically:YES];
-    [message addBody:path.lastPathComponent];
-    [self.xmppMessageArchivingCoreDataStorage archiveMessage:message outgoing:NO xmppStream:self.xmppStream];
 }
 
 #pragma mark -- Application life cycle
@@ -542,6 +526,7 @@ static IMXMPPHelper *helper;
     }
     [array enumerateObjectsUsingBlock:^(XMPPUserMemoryStorageObject * _Nonnull item, NSUInteger idx, BOOL * _Nonnull stop) {
         IMUser *user = [[self class] storageObjectConverUser:item];
+        user.avatar = [UIImage imageWithData:[self.vCardAvatorModule photoDataForJID:user.userJid]];
         if ([user.subscription isEqualToString:@"both"]) {
             [self.userHelper.bothFriendArray addObject:user];
         }else if ([user.subscription isEqualToString:@"remove"]) {
@@ -577,7 +562,6 @@ static IMXMPPHelper *helper;
 - (void)xmppRosterDidEndPopulating:(XMPPRoster *)sender{
     [IMNotificationCenter postNotificationName:kXmppRosterChangeNot object:nil];
     NSLog(@"===========>获取好友列表结束");
-    
 }
 
 /** 收到出席订阅请求（代表对方想添加自己为好友) */
@@ -681,5 +665,75 @@ static IMXMPPHelper *helper;
     }
 }
 
+@end
+
+@implementation IMXMPPHelper(File)
+#pragma mark ===== 文件发送=======
+- (void)xmppOutgoingFileTransferDidSucceed:(XMPPOutgoingFileTransfer *)sender
+{
+    NSLog(@"===============> 文件发送");
+    
+    XMPPJID *jid = [sender.xmppStream.myJID copy];
+    NSString *subject;
+    NSString *extension = [sender outgoingFileName];
+    if ([@"amr" isEqualToString:extension]) {
+        subject = @"voice";
+    }else if([@"jpg" isEqualToString:extension] || [@"png" isEqualToString:extension]){
+        subject = @"picture";
+    }else if ([@"wav" isEqualToString:extension]){
+        subject = @"video";
+    }
+
+    XMPPMessage *message = [XMPPMessage messageWithType:@"chat" to:jid];
+    [message addAttributeWithName:@"from" stringValue:sender.xmppStream.myJID.bare];
+    [message addSubject:subject];
+    NSString *path = [NSFileManager pathUserChatImage:extension];
+    if ([subject isEqualToString:@"picture"]) {
+        path = [NSFileManager pathUserChatImage:extension];
+    }else if ([subject isEqualToString:@"voice"]) {
+        path = [NSFileManager pathUserChatVoice:extension];
+    }else{
+        path = [NSFileManager pathUserChatVideo:extension];
+    }
+    [sender.outgoingData writeToFile:path atomically:YES];
+    [message addBody:path.lastPathComponent];
+    [self.xmppMessageArchivingCoreDataStorage archiveMessage:message outgoing:NO xmppStream:self.xmppStream];
+}
+
+#pragma mark ===== 文件接收=======
+//是否同意对方发文件
+- (void)xmppIncomingFileTransfer:(XMPPIncomingFileTransfer *)sender didReceiveSIOffer:(XMPPIQ *)offer{
+    NSLog(@"===============> 文件接收");
+//    [self.xmppIncomingFileTransfer acceptSIOffer:offer];
+}
+
+//存储文件 音频为amr格式  图片为jpg格式
+- (void)xmppIncomingFileTransfer:(XMPPIncomingFileTransfer *)sender didSucceedWithData:(NSData *)data named:(NSString *)name{
+    XMPPJID *jid = [sender.xmppStream.myJID copy];
+    NSString *subject;
+    NSString *extension = [name pathExtension];
+    if ([@"amr" isEqualToString:extension]) {
+        subject = @"voice";
+    }else if([@"jpg" isEqualToString:extension] || [@"png" isEqualToString:extension]){
+        subject = @"picture";
+    }else if ([@"wav" isEqualToString:extension]){
+         subject = @"video";
+    }
+    
+    XMPPMessage *message = [XMPPMessage messageWithType:@"chat" to:jid];
+    [message addAttributeWithName:@"from" stringValue:sender.xmppStream.myJID.bare];
+    [message addSubject:subject];
+    NSString *path = [NSFileManager pathUserChatImage:extension];
+    if ([subject isEqualToString:@"picture"]) {
+        path = [NSFileManager pathUserChatImage:extension];
+    }else if ([subject isEqualToString:@"voice"]) {
+        path = [NSFileManager pathUserChatVoice:extension];
+    }else{
+        path = [NSFileManager pathUserChatVideo:extension];
+    }
+    [data writeToFile:path atomically:YES];
+    [message addBody:path.lastPathComponent];
+    [self.xmppMessageArchivingCoreDataStorage archiveMessage:message outgoing:NO xmppStream:self.xmppStream];
+}
 
 @end

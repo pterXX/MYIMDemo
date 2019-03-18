@@ -79,6 +79,11 @@
 + (NSString *)pathUserChatVoice:(NSString *)voiceName;
 
 /**
+ *  视频
+ */
++ (NSString *)pathUserChatVideo:(NSString *)videoName;
+
+/**
  *  表情
  */
 + (NSString *)pathExpressionForGroupID:(NSString *)groupID;

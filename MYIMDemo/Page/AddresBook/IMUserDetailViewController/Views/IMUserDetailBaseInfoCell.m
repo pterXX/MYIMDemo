@@ -71,8 +71,12 @@
     if (userModel.avatarPath) {
         [self.avatarBtn setImage:[UIImage imageNamed:userModel.avatarPath] forState:UIControlStateNormal];
     }
-    else{
+    else if(userModel.avatarURL){
         [self.avatarBtn sd_setBackgroundImageWithURL:IMURL(userModel.avatarURL) forState:UIControlStateNormal placeholderImage:[UIImage imageDefaultHeadPortrait]];
+    }else if (userModel.avatar){
+        [self.avatarBtn setImage:userModel.avatar forState:UIControlStateNormal];
+    }else{
+         [self.avatarBtn setImage:[UIImage imageDefaultHeadPortrait] forState:UIControlStateNormal];
     }
     [self.shownameLabel setText:userModel.showName];
     if (userModel.username.length > 0) {
