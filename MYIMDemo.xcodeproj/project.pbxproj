@@ -563,7 +563,6 @@
 		8423C334223B800700E999F5 /* IMContactsSearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMContactsSearchResultViewController.h; sourceTree = "<group>"; };
 		8423C338223B80BD00E999F5 /* IMSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMSearchController.h; sourceTree = "<group>"; };
 		8423C339223B80BD00E999F5 /* IMSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMSearchController.m; sourceTree = "<group>"; };
-		8423C33C223B811500E999F5 /* IMSearchResultControllerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IMSearchResultControllerProtocol.h; path = ../../../../../../../Downloads/IMSearchResultControllerProtocol.h; sourceTree = "<group>"; };
 		8423C33D223B823100E999F5 /* Common.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Common.xcassets; sourceTree = "<group>"; };
 		8423C33F223B839000E999F5 /* UIView+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extensions.h"; sourceTree = "<group>"; };
 		8423C340223B839000E999F5 /* UIView+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extensions.m"; sourceTree = "<group>"; };
@@ -652,6 +651,7 @@
 		8432593B223F7094003A33F2 /* IMUserDetailChatButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMUserDetailChatButtonCell.m; sourceTree = "<group>"; };
 		8432593E223F7385003A33F2 /* IMLaunchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMLaunchManager.h; sourceTree = "<group>"; };
 		8432593F223F7385003A33F2 /* IMLaunchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMLaunchManager.m; sourceTree = "<group>"; };
+		84325941223F7D52003A33F2 /* IMSearchResultControllerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMSearchResultControllerProtocol.h; sourceTree = "<group>"; };
 		8438D541222F60BF001FD530 /* IMXMPPHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMXMPPHelper.h; sourceTree = "<group>"; };
 		8438D542222F60BF001FD530 /* IMXMPPHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMXMPPHelper.m; sourceTree = "<group>"; };
 		84681F722230CA500056372A /* UIBarButtonItem+Category.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Category.h"; sourceTree = "<group>"; };
@@ -1415,9 +1415,9 @@
 		8423C337223B80A400E999F5 /* IMSearchController */ = {
 			isa = PBXGroup;
 			children = (
+				84325941223F7D52003A33F2 /* IMSearchResultControllerProtocol.h */,
 				8423C338223B80BD00E999F5 /* IMSearchController.h */,
 				8423C339223B80BD00E999F5 /* IMSearchController.m */,
-				8423C33C223B811500E999F5 /* IMSearchResultControllerProtocol.h */,
 			);
 			path = IMSearchController;
 			sourceTree = "<group>";

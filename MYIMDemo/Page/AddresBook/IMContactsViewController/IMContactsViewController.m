@@ -106,73 +106,10 @@
 
 - (void)p_resterStorage{
     [self.listAngel resetListWithContactsData:KIMXMPPHelper.userHelper.sortGroupArray sectionHeaders:KIMXMPPHelper.userHelper.pinyinInitialArray];
-    [self.footerLabel setText:IMStirngFormat(@"%ld位联系人",KIMXMPPHelper.userHelper.bothFriendArray.count)];
+    [self.footerLabel setText:IMStirngFormat(@"%ld位联系人",KIMXMPPHelper.userHelper.sortGroupArray.count)];
     [self.tableView reloadData];
 }
 
-#pragma mark - UITableViewDelegate
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-//    return 2;
-//}
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    return section == 0 ? self.fisrtSectionDataSource.count:self.dataSource.count;
-//}
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    if (indexPath.section == 0) {
-//        NSString *cellIdentifier = @"TableViewCell";
-//        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-//        if (!cell) {
-//            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-//        }
-//        cell.textLabel.text = self.fisrtSectionDataSource[indexPath.row];
-//        return cell;
-//    }else{
-//        NSString *cellIdentifier = @"IMAddressBookTableViewCell";
-//        IMAddressBookTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-//        if (!cell) {
-//            cell = [[IMAddressBookTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-//        }
-//        IMUser *object = (IMUser *)self.dataSource[indexPath.row];
-//        [cell setUser:object];
-//
-//        return cell;
-//    }
-//}
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    return [IMAddressBookTableViewCell cellLayoutHeight];
-//}
-//
-//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-//    [cell setSeparatorInset:UIEdgeInsetsMake(69, 12, 0, 0)];
-//}
-//
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    if (indexPath.section == 0) {
-//        IMNewContactViewController *chatCtrl = [IMNewContactViewController new];
-//        chatCtrl.hidesBottomBarWhenPushed   = YES;
-//        [self.navigationController pushViewController:chatCtrl animated:YES];
-//    }else{
-//        IMUser *object = self.dataSource[indexPath.row];
-//        IMConversationModel *conversation   = [[IMConversationModel alloc] init];
-//        conversation.chatToJid              = object.userJid;
-//        conversation.conversationName       = object.showName;
-//        conversation.chatType               = IMMessageChatTypeSingle;
-//        //    conversation.headImage              = object.photo? object.photo:[UIImage imageDefaultHeadPortrait];
-//
-//        IMChatViewController *chatCtrl      = [IMChatViewController new];
-//        chatCtrl.title                      = conversation.conversationName;
-//        chatCtrl.hidesBottomBarWhenPushed   = YES;
-//        chatCtrl.conversation               = conversation;
-//        chatCtrl.isConversationInto         = NO;
-//
-//        [self.navigationController pushViewController:chatCtrl animated:YES];
-//    }
-//}
 
 #pragma mark - # Getters
 - (IMSearchController *)searchController
