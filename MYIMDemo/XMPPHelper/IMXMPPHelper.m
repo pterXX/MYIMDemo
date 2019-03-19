@@ -52,6 +52,13 @@ static IMXMPPHelper *helper;
     return _userHelper;
 }
 
+- (IMConversationHelper *)conversationHelper{
+    if (!_conversationHelper) {
+        _conversationHelper = [IMConversationHelper sharedConversationHelper];
+    }
+    return _conversationHelper;
+}
+
 - (void)setupStream{
     if (!_xmppStream) {
         _xmppStream = [[XMPPStream alloc] init];
@@ -113,9 +120,10 @@ static IMXMPPHelper *helper;
 - (void)setupVCard{
     //添加vCard模块
     _vCardStorage = [XMPPvCardCoreDataStorage sharedInstance];
-    _vCardModule = [[XMPPvCardTempModule alloc] initWithvCardStorage: self.vCardStorage];
+    _vCardModule = [[XMPPvCardTempModule alloc] initWithvCardStorage: self.vCardStorage dispatchQueue:dispatch_get_main_queue()];
     [self.vCardModule activate:_xmppStream];
     _vCardAvatorModule = [[XMPPvCardAvatarModule alloc] initWithvCardTempModule:self.vCardModule];
+    [_vCardAvatorModule addDelegate:self delegateQueue:dispatch_get_main_queue()];
     [self.vCardAvatorModule activate:_xmppStream];
 }
 
@@ -158,24 +166,6 @@ static IMXMPPHelper *helper;
 - (void)xmppStreamDidDisconnect:(XMPPStream *)sender withError:(NSError *)error{
     if (error) {
         [self failCompleteCode:IMXMPPErrorCodeConnect description:@"连接失败,请检查服务器地址"];
-    }
-}
-
-#pragma mark =====头像修改 =======
-/**
- 只要对方的头像发生更改, 或者自己上传了新都头像, 就会调用上述的两个代理方法, 那么, 我们在这两个代理方法中
- */
-/**接收到头像更改*/
-- (void)xmppvCardAvatarModule:(XMPPvCardAvatarModule *)vCardTempModule didReceivePhoto:(UIImage *)photo forJID:(XMPPJID *)jid {
-    if (self.changeAvatarPhoto) {
-        self.changeAvatarPhoto();
-    }
-}
-
-/** 上传头像成功*/
-- (void)xmppvCardTempModuleDidUpdateMyvCard:(XMPPvCardTempModule *)vCardTempModule {
-    if (self.changeAvatarPhoto) {
-        self.changeAvatarPhoto();
     }
 }
 
@@ -735,5 +725,55 @@ static IMXMPPHelper *helper;
     [message addBody:path.lastPathComponent];
     [self.xmppMessageArchivingCoreDataStorage archiveMessage:message outgoing:NO xmppStream:self.xmppStream];
 }
+
+@end
+
+
+@implementation IMXMPPHelper(VCard)
+
+- (UIImage *)myAvatar{
+    NSData *data = [self.vCardModule myvCardTemp].photo;
+    if (data) {
+        return [UIImage imageWithData:data];
+    }
+    return [UIImage imageDefaultHeadPortrait];
+}
+
+- (void)updateMyAvatar:(UIImage *)image{
+    if (image == nil) return;
+    XMPPvCardTemp *temp = [self.vCardModule myvCardTemp];
+    NSData *avatarData = UIImageJPEGRepresentation(image, 0.7);
+    temp.photo = avatarData;
+    [self.vCardModule updateMyvCardTemp:temp];
+}
+
+- (UIImage *)userAvatarForJid:(XMPPJID *)jid{
+    if (jid == nil) return [UIImage imageDefaultHeadPortrait];
+    NSData *data = [self.vCardAvatorModule photoDataForJID:jid];
+    if (data) {
+        return [UIImage imageWithData:data];
+    }else{
+        return [UIImage imageDefaultHeadPortrait];
+    }
+}
+     
+#pragma mark =====头像修改 =======
+/**
+ 只要对方的头像发生更改, 或者自己上传了新都头像, 就会调用上述的两个代理方法, 那么, 我们在这两个代理方法中
+ */
+/**接收到头像更改*/
+- (void)xmppvCardAvatarModule:(XMPPvCardAvatarModule *)vCardTempModule didReceivePhoto:(UIImage *)photo forJID:(XMPPJID *)jid {
+    if (self.changeAvatarPhoto) {
+        self.changeAvatarPhoto();
+    }
+}
+
+/** 上传头像成功*/
+- (void)xmppvCardTempModuleDidUpdateMyvCard:(XMPPvCardTempModule *)vCardTempModule {
+    if (self.changeAvatarPhoto) {
+        self.changeAvatarPhoto();
+    }
+}
+
 
 @end

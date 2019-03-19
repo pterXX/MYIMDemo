@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSArray (zh_SafeAccess)
 
 - (NSUInteger)zh_indexOfObject:(id _Nullable )anObject;
+- (id)zh_objectOfIndex:(NSInteger)index;
+
 ///  获取指定条件的值
 - (id)zh_objectOfBlock:(id(^)(id value))block;
 - (NSArray *)zh_objectsArrayOfBlock:(id(^)(id value))block;

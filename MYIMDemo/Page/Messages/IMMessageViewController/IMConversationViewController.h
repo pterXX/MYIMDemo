@@ -8,13 +8,13 @@
 
 #import "IMBaseViewController.h"
 
-@interface IMMessageViewController : IMBaseViewController
+@interface IMConversationViewController : IMBaseViewController
 
 
 @end
 
 
-@interface IMMessageViewController(Class)
+@interface IMConversationViewController(Class)
 + (IMBaseNavigationController *)navMessagesVc;
 @end
 

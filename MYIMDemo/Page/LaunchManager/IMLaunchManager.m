@@ -8,7 +8,7 @@
 
 #import "IMLaunchManager.h"
 #import "IMLoginViewController.h"
-#import "IMMessageViewController.h"
+#import "IMConversationViewController.h"
 #import "IMContactsViewController.h"
 
 @interface IMLaunchManager ()
@@ -67,7 +67,7 @@
 #pragma mark - # Private Methods
 - (void)p_createTabBarChildViewController
 {
-    IMBaseNavigationController *messages = [IMMessageViewController navMessagesVc];
+    IMBaseNavigationController *messages = [IMConversationViewController navMessagesVc];
     [self.tabBarController addSubController:messages action:^(UITabBarItem * _Nonnull item, UITabBarController * _Nonnull tabbarVc) {
         
     }];

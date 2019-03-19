@@ -6,11 +6,11 @@
 //  Copyright © 2018年 EIMS. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "IMBaseTableViewCell.h"
 
 @class IMConversationModel;
 
-@interface IMMessagesListTableViewCell : UITableViewCell
+@interface IMConversationListTableViewCell : IMBaseTableViewCell <IMFlexibleLayoutViewProtocol>
 @property (nonatomic, strong) UILabel       *titleLabel;        /**< 标题 */
 @property (nonatomic, strong) UILabel       *messageLabel;      /**< 部分信息内容 */
 @property (nonatomic, strong) UILabel       *updateTime;        /**< 消息更新时间 */

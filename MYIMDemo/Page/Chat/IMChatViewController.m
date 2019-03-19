@@ -126,7 +126,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
     if (isBack) {
         [self updateViewFrame];
     }
@@ -140,7 +139,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self initData];
 }
 
@@ -238,8 +236,12 @@
     // 获取会话消息
     [self getMessagesDataWithMessageId:@"0"];
     
+    @weakify(self);
     [KIMXMPPHelper setMessageSendBlock:^(XMPPMessage * _Nonnull message) {
-        
+        self.conversation.message = [self lastMessage];
+        //  只有发送了消息才会记录列表
+        BOOL ok = [[IMConversationHelper sharedConversationHelper] addConversation:self.conversation];
+        if (!ok) NSLog(@"================>  插入会话数据失败");
     }];
     
     [KIMXMPPHelper setMessageSendFailBlock:^(XMPPMessage * _Nonnull message) {

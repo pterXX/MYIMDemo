@@ -10,6 +10,7 @@
 #import <XMPP.h>
 #import <XMPPFramework/XMPPFramework.h>
 #import "IMUserHelper.h"
+#import "IMConversationHelper.h"
 #import "IMMessageModel.h"
 
 
@@ -46,6 +47,8 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
 
 @interface IMXMPPHelper : NSObject
 @property (nonatomic ,copy  ) IMUserHelper                        *userHelper;
+
+@property (nonatomic ,copy  ) IMConversationHelper                *conversationHelper;
 // 图片上传是否采用base64
 @property (nonatomic ,assign) BOOL                                fileUploadIsBase64;
 
@@ -196,5 +199,23 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
 
 
 @interface IMXMPPHelper(File)
+@end
+
+@interface IMXMPPHelper(VCard)
+/**
+ 我的头像
+ */
+- (UIImage *)myAvatar;
+
+/**
+ 修改我的头像
+ */
+- (void)updateMyAvatar:(UIImage *)image;
+
+/**
+ 根据jid获取头像
+ */
+- (UIImage *)userAvatarForJid:(XMPPJID *)jid;
+
 @end
 NS_ASSUME_NONNULL_END

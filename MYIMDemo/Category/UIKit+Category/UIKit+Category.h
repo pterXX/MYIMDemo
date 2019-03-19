@@ -15,6 +15,7 @@
 #import "UIImage+Color.h"
 #import "UIImage+Compression.h"
 #import "UIImage+Video.h"
+#import "UIImage+round.h"
 #import "UILabel+AutoLabelHeightAndWidth.h"
 #import "UIScrollView+Addition.h"
 #import "UIView+Extensions.h"

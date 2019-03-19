@@ -71,6 +71,8 @@ static NSString *const kXmppRosterChangeNot = @"kXmppRosterChange";
 static NSString *const kXmppSubscriptionRequestNot = @"kXmppSubscriptionRequest";
 //  上线通知
 static NSString *const kXmppContactIsAvailableNot = @"kXmppContactIsAvailable";
+//  会话列表改变
+static NSString *const kConversationDataChangedNot = @"kConversationDataChangedNot";
 
 #pragma mark - 消息枚举
 typedef NS_OPTIONS(NSInteger, IMConversationCommonNotification) {

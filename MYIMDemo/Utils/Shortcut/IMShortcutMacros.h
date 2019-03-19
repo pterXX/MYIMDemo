@@ -50,6 +50,7 @@ edgeInsets;  \
 
 /// 字符串
 #define     IMNoNilString(str)          (str.length > 0 ? str : @"")
+#define     IMIntegerConverStr(Int)     [NSNumber numberWithInteger:Int].stringValue
 /// 方法名
 #define     IMStirngFormSelector(s)     [[NSString alloc] initWithUTF8String:sel_getName(s)]
 #define     IMStirngFormat(fmt,...)     [NSString stringWithFormat:(fmt), ##__VA_ARGS__]

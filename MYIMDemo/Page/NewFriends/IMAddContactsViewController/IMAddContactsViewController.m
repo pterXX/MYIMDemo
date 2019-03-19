@@ -8,7 +8,7 @@
 
 #import "IMAddContactsViewController.h"
 #import "IMSearchMessageViewController.h"
-#import "IMMessagesListTableViewCell.h"
+#import "IMConversationListTableViewCell.h"
 
 @interface IMAddContactsViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchControllerDelegate>
 {
@@ -171,9 +171,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *cellIdentifier = @"IMMessagesListTableViewCell";
-    IMMessagesListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    IMConversationListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
-        cell = [[IMMessagesListTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[IMConversationListTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
     if (self.dataSource.count) {

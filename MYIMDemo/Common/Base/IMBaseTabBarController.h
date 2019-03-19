@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "IMMessageViewController.h"
+#import "IMConversationViewController.h"
 #import "IMContactsViewController.h"
 NS_ASSUME_NONNULL_BEGIN
 typedef void(^IMBaseTabBarCtrSubVcAction)(UITabBarItem *item,UITabBarController *tabbarVc);

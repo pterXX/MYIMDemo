@@ -10,7 +10,7 @@
 #import "IMBaseNavigationController.h"
 #import "IMBaseTabBarController.h"
 #import "IMLoginViewController.h"
-#import "IMMessageViewController.h"
+#import "IMConversationViewController.h"
 
 @interface AppDelegate ()
 

@@ -17,6 +17,13 @@
     return 0;
 }
 
+- (id)zh_objectOfIndex:(NSInteger)index{
+    if (index < 0 || index >= self.count) {
+        return nil;
+    }
+    return [self objectAtIndex:index];
+}
+
 - (id)zh_objectOfBlock:(id(^)(id value))block {
     for (id sub in self) {
         if (block) {

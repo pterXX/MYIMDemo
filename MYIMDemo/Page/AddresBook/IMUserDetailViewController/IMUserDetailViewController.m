@@ -112,9 +112,10 @@ typedef NS_ENUM(NSInteger, IMUserDetailVCSectionType) {
         conversation.chatToJid              = self.userModel.userJid;
         conversation.conversationName       = self.userModel.showName;
         conversation.chatType               = IMMessageChatTypeSingle;
-        conversation.headImage              = self.userModel.avatar? self.userModel.avatar:[UIImage imageDefaultHeadPortrait];
+//        conversation.headImage              = self.userModel.avatar;
         chatVC.title                      = conversation.conversationName;
         chatVC.hidesBottomBarWhenPushed   = YES;
+        chatVC.conversation               = conversation;
         if ([IMLaunchManager sharedInstance].tabBarController.selectedIndex != 0) {
             [self.navigationController popToRootViewControllerAnimated:NO];
             UINavigationController *navC = [IMLaunchManager sharedInstance].tabBarController.childViewControllers[0];

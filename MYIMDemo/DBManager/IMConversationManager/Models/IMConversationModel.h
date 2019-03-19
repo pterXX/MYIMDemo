@@ -31,8 +31,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) IMMessageModel       *message;
 // 未读消息
 @property (nonatomic, assign) int                 badgeNumber;
-// 员工id
-@property (nonatomic, strong) NSString            *toEmployeeId;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -6,7 +6,7 @@
 //  Copyright © 2018年 EIMS. All rights reserved.
 //
 
-#import "IMMessagesListTableViewCell.h"
+#import "IMConversationListTableViewCell.h"
 
 
 #import "IMMessageModel.h"
@@ -14,11 +14,28 @@
 #import "IMConversationModel.h"
 #import "UILabel+AutoLabelHeightAndWidth.h"
 
-@interface IMMessagesListTableViewCell ()
+@interface IMConversationListTableViewCell ()
 
 @end
 
-@implementation IMMessagesListTableViewCell
+@implementation IMConversationListTableViewCell
+#pragma mark - # Cell
++ (CGFloat)viewHeightByDataModel:(id)dataModel{
+    return 70.0f;
+}
+
+- (void)setViewDataModel:(id)dataModel{
+    [self setConversation:dataModel];
+}
+
+- (void)viewIndexPath:(NSIndexPath *)indexPath sectionItemCount:(NSInteger)count{
+    if (indexPath.row == count - 1) {
+        self.removeSeparator(SeparatorPositionBottom);
+    }
+    else {
+        self.addSeparator(SeparatorPositionBottom).beginAt(10);
+    }
+}
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -35,23 +52,33 @@
     [self addSubview:_avaterImageView];
     //  绘制圆角
     layoutRoundCorner(_avaterImageView, rect, 5);
-
-    _avaterImageView.sd_layout.topSpaceToView(self, 10).leftSpaceToView(self, 10).widthIs(50).heightEqualToWidth();
+    [_avaterImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_offset(10);
+        make.left.mas_offset(10);
+        make.size.mas_equalTo(rect.size);
+    }];
 
     _updateTime                        = [UILabel new];
     _updateTime.textColor              = [UIColor lightGrayColor];
     _updateTime.font                   = [UIFont systemFontOfSize:12];
     _updateTime.textAlignment          = NSTextAlignmentRight;
     [self addSubview:_updateTime];
-
-    _updateTime.sd_layout.topSpaceToView(self, 17).rightSpaceToView(self, 10).heightIs(14).widthIs(0);
+    [_updateTime mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_offset(17);
+        make.right.mas_offset(-10);
+        make.size.mas_equalTo(CGSizeMake(0, 14));
+    }];
 
     _titleLabel                        = [UILabel new];
     _titleLabel.font                   = [UIFont systemFontOfSize:16];
     _titleLabel.textColor              = [UIColor blackColor];
     [self addSubview:_titleLabel];
-
-    _titleLabel.sd_layout.topSpaceToView(self, 14).leftSpaceToView(_avaterImageView, 10).rightSpaceToView(_updateTime, 10).heightIs(20);
+    [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_offset(14);
+        make.left.equalTo(_avaterImageView.mas_right).offset(10);
+        make.right.equalTo(_updateTime.mas_left).offset(-10);
+        make.height.mas_equalTo(20);
+    }];
 
     _badgeNumber                       = [UILabel new];
     _badgeNumber.layer.cornerRadius    = 9;
@@ -61,39 +88,37 @@
     _badgeNumber.textAlignment         = NSTextAlignmentCenter;
     _badgeNumber.font                  = [UIFont systemFontOfSize:12];
     [self addSubview:_badgeNumber];
-
-    _badgeNumber.sd_layout.topSpaceToView(_titleLabel, 6).rightSpaceToView(self, 10).heightIs(18).widthIs(0);
+    [_badgeNumber mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_avaterImageView.mas_top).mas_offset(-9);
+        make.right.equalTo(_avaterImageView.mas_right).offset(-9);
+        make.height.mas_equalTo(18);
+        make.width.mas_equalTo(0);
+    }];
 
     _messageLabel                      = [UILabel new];
     _messageLabel.font                 = [UIFont systemFontOfSize:14];
     _messageLabel.textColor            = [UIColor lightGrayColor];
     [self addSubview:_messageLabel];
-
-    _messageLabel.sd_layout.topSpaceToView(_titleLabel, 6).leftSpaceToView(_avaterImageView, 10).rightSpaceToView(_badgeNumber, 20).heightIs(18);
-    
+    [_messageLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_titleLabel.mas_bottom).mas_offset(6);
+        make.left.equalTo(_titleLabel);
+        make.right.mas_equalTo(-10);
+        make.height.mas_equalTo(18);
+    }];
 }
 
-- (void)setConversation:(IMConversationModel *)conversation
-{
-    
-    if (conversation.chatType == IMMessageChatTypeFTP)
+- (void)setConversation:(IMConversationModel *)conversation{
+    if (!conversation.headImage || conversation.headImage.length == 0)
     {
-        _avaterImageView.image = [UIImage imageNamed:@"helper"];
+       [_avaterImageView setImage:[KIMXMPPHelper userAvatarForJid:conversation.chatToJid]];
     }
-    else
+    else if ([conversation.headImage containsString:@"storage/headImage"]) {
+        NSString *imagePath = [kDocDir stringByAppendingPathComponent:conversation.headImage];
+        _avaterImageView.image = [UIImage imageWithContentsOfFile:imagePath];
+    }
+    else if ([conversation.headImage containsString:@"http://"] || [conversation.headImage containsString:@"https://"])
     {
-        if (!conversation.headImage || conversation.headImage.length == 0)
-        {
-            _avaterImageView.image = [UIImage imageDefaultHeadPortrait];
-        }
-        else if ([conversation.headImage containsString:@"storage/headImage"]) {
-            NSString *imagePath = [kDocDir stringByAppendingPathComponent:conversation.headImage];
-            _avaterImageView.image = [UIImage imageWithContentsOfFile:imagePath];
-        }
-        else if ([conversation.headImage containsString:@"http://"] || [conversation.headImage containsString:@"https://"])
-        {
-            [_avaterImageView sd_setImageWithURL:[NSURL URLWithString:conversation.headImage]];
-        }
+        [_avaterImageView sd_setImageWithURL:[NSURL URLWithString:conversation.headImage]];
     }
 
     _titleLabel.text = conversation.conversationName;
@@ -105,7 +130,6 @@
     if (conversation.message.messageSendStatus == IMMessageSendStatusSendFailure && conversation.message.recvTime.length) {
         _messageLabel.text = @"";
         NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] init];
-        
         NSTextAttachment *textAttach = [[NSTextAttachment alloc] init];
         textAttach.image = [UIImage imageMessageSendFailure];
         textAttach.bounds = CGRectMake(0, -2, 16, 16);
@@ -117,7 +141,6 @@
         _messageLabel.attributedText = attributedString;
     }
     
-    
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSInteger timeInterval = [conversation.message.recvTime integerValue];
@@ -125,15 +148,17 @@
     
     CGFloat timeWidth  = [UILabel getWidthWithTitle:_updateTime.text
                                                font:_updateTime.font];
-    _updateTime.sd_layout.widthIs(timeWidth);
+    [_updateTime mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(timeWidth);
+    }];
     
-    if (conversation.badgeNumber == 0)
-    {
+    if (conversation.badgeNumber == 0){
         _badgeNumber.text = @"";
-        _badgeNumber.sd_layout.widthIs(0);
+        [_badgeNumber mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(0);
+        }];
     }
-    else
-    {
+    else{
         NSString *unreadNum = @"";
         if (conversation.badgeNumber <= 99)
         {
@@ -146,10 +171,10 @@
         _badgeNumber.text  = unreadNum;
         CGFloat badgeWidth = [UILabel getWidthWithTitle:_badgeNumber.text font:_badgeNumber.font];
         badgeWidth = badgeWidth > 18 ? badgeWidth : 18;
-        _badgeNumber.sd_layout.widthIs(badgeWidth);
+        [_badgeNumber mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(badgeWidth);
+        }];
     }
-    [_badgeNumber updateLayout];
-
 }
 
 - (void)awakeFromNib {

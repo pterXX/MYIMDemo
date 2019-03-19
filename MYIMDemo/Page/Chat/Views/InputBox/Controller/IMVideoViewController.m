@@ -112,7 +112,9 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     self.bgView = [UIImageView new];
     self.bgView.userInteractionEnabled = YES;
     [self.view addSubview:self.bgView];
-    self.bgView.sd_layout.topSpaceToView(self.view, topSpace).leftEqualToView(self.view).bottomSpaceToView(self.view, bottomSpace).rightEqualToView(self.view);
+    [self.bgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(UIEdgeInsetsMake(topSpace, 0, bottomSpace, 0));
+    }];
     
     [self addGenstureRecognizer];
     
@@ -125,9 +127,13 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     self.progressView.backgroundColor = [IMColorTools colorWithHexString:@"0xd8d4d0"];
     [self.progressView setHidden:YES];
     [self.view addSubview:self.progressView];
-    self.progressView.sd_layout.centerXEqualToView(self.bgView).bottomSpaceToView(self.view, 90 + IMSAFEAREA_INSETS_BOTTOM).widthIs(120).heightIs(120);
+    [self.progressView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.bgView);
+        make.bottom.equalTo(self.view).offset(- (90 + IMSAFEAREA_INSETS_BOTTOM));
+        make.size.mas_equalTo(CGSizeMake(120, 120));
+    }];
     
-    self.progressView.layer.cornerRadius  = self.progressView.frame.size.width/2;
+    self.progressView.layer.cornerRadius  = 60;
     self.progressView.layer.masksToBounds = YES;
     
     self.labelTipTitle = [UILabel new];
@@ -136,21 +142,34 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     self.labelTipTitle.text = @"轻触拍照，按住摄像";
     self.labelTipTitle.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:self.labelTipTitle];
-    self.labelTipTitle.sd_layout.bottomSpaceToView(self.progressView, 5).centerXEqualToView(self.view).widthIs(140).heightIs(20);
+    [self.labelTipTitle mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.progressView.mas_top).offset(5);
+        make.centerX.equalTo(self.view);
+        make.size.mas_equalTo(CGSizeMake(150, 20));
+    }];
+    
     
     // 返回按钮
     self.btnBack = [UIButton new];
     [self.btnBack setImage:[UIImage imageInputboxMoreTakevideoBack] forState:UIControlStateNormal];
     [self.btnBack addTarget:self action:@selector(onCancelAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.btnBack];
-    self.btnBack.sd_layout.centerXIs((IMSCREEN_WIDTH/2. - 67/2.)/2.).centerYEqualToView(self.progressView).widthIs(40).heightIs(40);
+    [self.btnBack mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo((IMSCREEN_WIDTH/2. - 67/2.)/2.);
+        make.centerY.mas_equalTo(self.progressView);
+        make.size.mas_equalTo(CGSizeMake(40, 40));
+    }];
     
     // 录制按钮
     self.imgRecord = [UIImageView new];
     self.imgRecord.userInteractionEnabled = YES;
     self.imgRecord.image = [UIImage imageInputboxMoreTakevideoPhotograph];
     [self.view addSubview:self.imgRecord];
-    self.imgRecord.sd_layout.centerYEqualToView(self.progressView).centerXEqualToView(self.progressView).widthIs(74).heightIs(74);
+    [self.imgRecord mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.progressView);
+        make.centerY.mas_equalTo(self.progressView);
+        make.size.mas_equalTo(CGSizeMake(74, 74));
+    }];
     
     // 取消，重拍
     self.btnAfresh = [UIButton new];
@@ -158,7 +177,11 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     [self.btnAfresh setHidden:YES];
     [self.btnAfresh addTarget:self action:@selector(onAfreshAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.btnAfresh];
-    self.btnAfresh.sd_layout.centerXIs(spacingBetweenButton).centerYEqualToView(self.progressView).widthIs(74).heightIs(74);
+    [self.btnAfresh mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(spacingBetweenButton);
+        make.centerY.mas_equalTo(self.progressView);
+        make.size.mas_equalTo(CGSizeMake(74, 74));
+    }];
     
     // 选择图片按钮
     self.btnEnsure = [UIButton new];
@@ -166,7 +189,11 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     [self.btnEnsure setHidden:YES];
     [self.btnEnsure addTarget:self action:@selector(onEnsureAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.btnEnsure];
-    self.btnEnsure.sd_layout.centerXIs(spacingBetweenButton * 3).centerYEqualToView(self.progressView).widthIs(74).heightIs(74);
+    [self.btnEnsure mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(spacingBetweenButton * 3);
+        make.centerY.mas_equalTo(self.progressView);
+        make.size.mas_equalTo(CGSizeMake(74, 74));
+    }];
     
     // 切换镜头
     self.btnCamera = [UIButton new];
@@ -175,8 +202,11 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     [self.view addSubview:self.btnCamera];
     
     CGFloat topMargin = [UIDevice isPhoneXLater] ? 88 - 20 : 0;
-    self.btnCamera.sd_layout.topSpaceToView(self.view, 25 + topMargin).rightSpaceToView(self.view, 20).widthIs(30).heightIs(30);
-    
+    [self.btnCamera mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view.mas_top).offset(25 + topMargin);
+        make.right.equalTo(self.view.mas_right).offset(-20);
+        make.size.mas_equalTo(CGSizeMake(30, 30));
+    }];
 }
 
 - (void)hiddenTipsLabel {

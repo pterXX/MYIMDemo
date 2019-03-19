@@ -7,7 +7,7 @@
 //
 
 #import "IMSignUpViewController.h"
-#import "IMMessageViewController.h"
+#import "IMConversationViewController.h"
 
 @interface IMSignUpViewController ()<UITextFieldDelegate>
 @property (nonatomic, strong) UIButton    *signUpBtn;// 注册按钮

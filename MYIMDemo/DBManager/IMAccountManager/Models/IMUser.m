@@ -102,4 +102,11 @@
     }
     return _ask;
 }
+
+- (UIImage *)avatar{
+    if (_avatar == nil) {
+        _avatar = [UIImage imageDefaultHeadPortrait];
+    }
+    return _avatar;
+}
 @end

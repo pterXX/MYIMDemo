@@ -6,28 +6,30 @@
 //  Copyright © 2018年 EIMS. All rights reserved.
 //
 
-#import "IMMessageViewController.h"
 
-#import "NSArray+Json.h"
-#import "UIImage+Color.h"
-#import "NSDate+Category.h"
-#import "NSDictionary+Json.h"
-#import "UIViewController+Category.h"
+
 
 #import "IMAddContactsViewController.h"
 #import "IMChatViewController.h"
+#import "IMConversationAngel.h"
+#import "IMConversationListTableViewCell.h"
 #import "IMConversationModel.h"
+#import "IMConversationViewController.h"
 #import "IMEmojiGroup.h"
+#import "IMImagePicker.h"
 #import "IMLoginViewController.h"
 #import "IMMessageModel.h"
-#import "IMMessagesListTableViewCell.h"
 #import "IMNetworkDetection.h"
 #import "IMSearchMessageViewController.h"
+#import "NSArray+Json.h"
+#import "NSDate+Category.h"
+#import "NSDictionary+Json.h"
+#import "UIImage+Color.h"
+#import "UIViewController+Category.h"
 #import <AVFoundation/AVFoundation.h>
 #import <YCMenuView.h>
 
-
-@interface IMMessageViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchControllerDelegate> {
+@interface IMConversationViewController ()<UISearchControllerDelegate> {
     // V2.0版本 仅显示消息
     BOOL isOnlyMessage;
     // 是否在当前页面
@@ -53,25 +55,22 @@
 @property (nonatomic, strong) UIImageView        *tipsImageView;
 @property (nonatomic, strong) UISearchController *searchViewCtrl;
 @property (nonatomic, strong) IMSearchMessageViewController *searchCtrl;
-@property (nonatomic, strong) UIView             *titleView;
-@property (nonatomic, strong) UIView             *bottomLine;
+
 // 收到的json消息
 @property (nonatomic, strong) NSString           *receiveJson;
 // 记录正在聊天的会话
 @property (nonatomic, strong) NSString           *conversationId;
 // 未读消息
 @property (nonatomic, assign) NSInteger          badgeNumber;
-// 数据源
-@property (nonatomic, strong) NSMutableArray     *dataSource;
-// 分段控制器数据源
-@property (nonatomic, strong) NSMutableArray     *segmentDataSource;
 // 分段控制器数据源menu
 @property (nonatomic, strong) NSMutableArray     *menuDataSource;
+/// 列表数据及控制中心
+@property (nonatomic, strong) IMConversationAngel *listAngel;
 @end
 
-@implementation IMMessageViewController
-- (instancetype)init
-{
+@implementation IMConversationViewController
+
+- (instancetype)init{
     self = [super init];
     if (self) {
         initTabBarItem(self.tabBarItem, @"消息", @"tabbar_mainframe", @"tabbar_mainframeHL");
@@ -79,25 +78,14 @@
     return self;
 }
 
-- (NSMutableArray *)dataSource {
-    if (!_dataSource) {
-        _dataSource = [NSMutableArray array];
-    }
-    return _dataSource;
-}
-
 - (void)viewWillAppear:(BOOL)animated {
-    
     [super viewWillAppear:animated];
-    
     [self networkConnectionDetection];
-    
     if (KIsRefreshMessageView) {
         _badgeNumber = 0;
         [self getConversationListWithConversationId:@"-1"];
         [IMUserDefaults setBool:NO forKey:@"isRefreshMessageView"];
     }
-    
     isCurrentPage = YES;
 }
 
@@ -109,23 +97,47 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     isOnlyMessage  = YES;
     receiverLock   = [NSLock new];
     defaultQueue   = dispatch_queue_create("defaultQueue", NULL);
     receiveQueue   = dispatch_queue_create("receiveQueue", NULL);
-    
-    
     [self addNotification];
+    [self addNavItem];
+    
+    @weakify(self);
+    [KIMXMPPHelper setChangeAvatarPhoto:^{
+        @strongify(self);
+        [self addNavItem];
+    }];
 }
 
 - (void)im_layoutNavigation{
     self.title = KIMXMPPHelper.userHelper.user.username;
     self.navigationController.tabBarItem.title = @"消息";
-    kWeakSelf
+}
+
+- (void)im_getNewData{
+    [self getConversationListWithConversationId:@"-1"];
+}
+
+- (void)addNavItem{
+    @weakify(self);
+    [[IMUserHelper sharedHelper].user setAvatar:[KIMXMPPHelper myAvatar]];
+    UIImage *img = [IMUserHelper sharedHelper].user.avatar;
+    img = [[UIImage imageWithClipImage:img] drawWithNewImageSize:CGSizeMake(35, 35)];
+    img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    [self addLeftBarButtonWithImage:img actionBlick:^{
+        //  修改头像
+        [[[IMImagePicker alloc] init] selectPhotoMaxImagesCount:1 action:^(NSArray<UIImage *> * _Nonnull photos, NSArray * _Nonnull assets, BOOL isSelectOriginalPhoto) {
+            if (photos.count > 0) {
+                [KIMXMPPHelper updateMyAvatar:photos.firstObject];
+            }
+        }];
+    }];
     [self addRightBarButtonWithImage:[UIImage imageMenuAdd] actionBlick:^{
+        @strongify(self);
         //  按钮点击
-        [weakSelf barItemAction];
+        [self barItemAction];
     }];
 }
 
@@ -133,29 +145,12 @@
     //  添加所有数据
     [self addAllDataSource];
     self.isExtendLayout = NO;
-    
     CGFloat systemVersion = [UIDevice currentSystemVersion].doubleValue;
     // iOS 11以前搜索框的高度是44 iOS 11及以后的高度是56
     searchBarHeight = systemVersion < 11.0 ? 44 : 56;
-   
-    _titleView  = [[UIView alloc] initWithFrame:CGRectMake(0, 0, IMSCREEN_WIDTH, 44)];
-    _bottomLine = [[UIView alloc] initWithFrame:CGRectMake(IMSCREEN_WIDTH/4., 42, 40, 2)];
-    _bottomLine.center = CGPointMake(IMSCREEN_WIDTH/4., 42);
-    _bottomLine.backgroundColor = kSegmentItemColor;
-    [_titleView addSubview:_bottomLine];
-    
-    _tableView                 = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-    _tableView.delegate        = self;
-    _tableView.dataSource      = self;
-    _tableView.backgroundColor = KBGColor1;
-    _tableView.tableFooterView = [UIView new];
-    [self.view addSubview:_tableView];
-    
-    _tableView.sd_layout.bottomEqualToView(self.view).topSpaceToView(self.view, 0).leftEqualToView(self.view).rightEqualToView(self.view);
     
     // 提示网络不可用或无网络连接
     _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, IMSCREEN_WIDTH, searchBarHeight)];
-    
     // 搜索框
     _searchCtrl = [[IMSearchMessageViewController alloc] init];
     _searchViewCtrl = [[UISearchController alloc] initWithSearchResultsController:_searchCtrl];
@@ -175,6 +170,9 @@
     _searchCtrl.navigationBarCtrl                    = self.navigationController;
     _searchCtrl.searchBar                            = _searchViewCtrl.searchBar;
     [_headerView addSubview:_searchCtrl.searchBar];
+    [_searchCtrl.searchBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(0);
+    }];
     
     _networkTips = [[UIView alloc] initWithFrame:CGRectZero];
     _networkTips.backgroundColor = [UIColor colorWithRed:254/255. green:214/255. blue:216/255. alpha:1];
@@ -188,22 +186,46 @@
     _titleLabel.font         = [UIFont systemFontOfSize:14];
     [_networkTips addSubview:_titleLabel];
     
-    self.tableView.tableHeaderView = _headerView;
-    
-    // 设置自己的头像
-    [[IMAppDefaultUtil sharedInstance] setUserAvatar:@"http://cname-yunke.shovesoft.com/group1/M00/00/1A/CgAHEVuMyv6AKj6uAABukEJ7t3I575.png"];
-    [self getConversationListWithConversationId:@"-1"];
+    self.tableView                              = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+    self.tableView.backgroundColor              = [UIColor colorGrayBG];
+    self.tableView.separatorStyle               = UITableViewCellSeparatorStyleNone;
+    self.tableView.estimatedRowHeight           = 0;
+    self.tableView.estimatedSectionFooterHeight = 0;
+    self.tableView.estimatedSectionHeaderHeight = 0;
+    self.tableView.tableHeaderView               = _headerView;
+    self.tableView.tableFooterView              = [UIView new];
+    [self.tableView setSectionIndexColor:[UIColor colorBlackForNavBar]];
+    [self.tableView setSectionIndexBackgroundColor:[UIColor clearColor]];
+    [self.view addSubview:self.tableView];
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(0);
+    }];
+    @weakify(self);
+    self.listAngel = [[IMConversationAngel alloc] initWithHostView:self.tableView pushAction:^(__kindof UIViewController * _Nonnull vc) {
+        @strongify(self);
+        IMPushVC(vc);
+    }];
+    [self.listAngel setDeleteAction:^(__kindof NSIndexPath * _Nonnull indexPath) {
+        IMConversationHelper *helper = [IMConversationHelper sharedConversationHelper];
+        IMConversationModel *model = [[helper conversationData] zh_objectOfIndex:indexPath.row];
+        //  删除指定的会话数据
+        [[IMConversationHelper sharedConversationHelper] deleteConversationByConversationId:model.conversationId];
+    }];
 }
 
 //  添加通知
 - (void)addNotification{
     //  消息对话通知
     [IMNotificationCenter addObserver:self selector:@selector(conversationCommonNotification:) name:kConversationCommonNot object:nil];
+    @weakify(self);
+    [[IMConversationHelper sharedConversationHelper] addDataChangedNotificationObserver:self usingBlock:^(NSArray * _Nonnull conversationData, NSInteger conversationCount) {
+        @strongify(self);
+        [self.listAngel resetListWithContactsData:conversationData];
+        [self.tableView reloadData];
+    }];
 }
 
 - (void)addAllDataSource{
-     _segmentDataSource = [NSMutableArray arrayWithObjects:@"消息", @"访客", nil];
-    
     // 创建YCMenuAction
     kWeakSelf;
     YCMenuAction *action = [YCMenuAction actionWithTitle:@"发起群聊" image:[UIImage imageMenuQunLiao] handler:^(YCMenuAction *action) {
@@ -219,6 +241,7 @@
         [SVProgressHUD showInfoWithStatus:@"功能尚未实现"];
         [SVProgressHUD dismissWithDelay:2];
     }];
+    
     YCMenuAction *action3 = [YCMenuAction actionWithTitle:@"退出" image:[UIImage imageMenuExit] handler:^(YCMenuAction *action) {
         [KIMXMPPHelper logOut];
         //  重置根视图
@@ -227,13 +250,12 @@
     self.menuDataSource = @[action,action1,action2,action3].mutableCopy;
 }
 
-- (void)conversationCommonNotification:(NSNotification *)notification
-{
+- (void)conversationCommonNotification:(NSNotification *)notification{
     NSDictionary *notInfo = notification.userInfo;
     IMConversationCommonNotification notType = [notInfo[@"notType"] integerValue];
     switch (notType) {
         case IMConversationCommonNotificationMail:
-            [self receiveMailMessageDictionary:notInfo];
+//            [self receiveMailMessageDictionary:notInfo];
             break;
         case IMConversationCommonNotificationUpdateBedgeNumber:
             [self updateSelecteRowBadgeNumber:notInfo[@"conversationId"]];
@@ -255,8 +277,10 @@
     }
 }
 
+//  更新红点
 - (void)updateSelecteRowBadgeNumber:(NSString *)conversationId
 {
+    /*
     if (_dataSource.count > 1)
     {
         kWeakSelf;
@@ -273,27 +297,24 @@
             }
         }];
     }
+     */
 }
 
 // 网络连接检测
-- (void)networkConnectionDetection
-{
+- (void)networkConnectionDetection{
     BOOL available = [[IMNetworkDetection shareInstance] checkNetCanUse];
-    if (!available)
-    {
+    if (!available){
         _headerView.frame    = CGRectMake(0, 0, IMSCREEN_WIDTH, searchBarHeight+44);
         _networkTips.frame   = CGRectMake(0, _searchCtrl.searchBar.height, IMSCREEN_HEIGHT, 44);
         _titleLabel.text     = @"请检查你的网络，当前网络不可用";
         _tipsImageView.image = [UIImage imageMessageSendFailure];
     }
-    else
-    {
+    else{
         _headerView.frame    = CGRectMake(0, 0, IMSCREEN_WIDTH, searchBarHeight);
         _networkTips.frame   = CGRectZero;
         _titleLabel.text     = @"";
         _tipsImageView.image = nil;
     }
-    
     _tableView.tableHeaderView = _headerView;
 }
 
@@ -304,10 +325,10 @@
     _networkTips.frame         = CGRectMake(0, _searchCtrl.searchBar.height, IMSCREEN_HEIGHT, 44);
     _titleLabel.text           = @"请检查你的网络，无网络连接";
     _tipsImageView.image       = [UIImage imageMessageSendFailure];
-    
     _tableView.tableHeaderView = _headerView;
 }
 
+//  更新标题
 - (void)updateTitle {
     // 更新未读数量
     if (_badgeNumber){
@@ -325,6 +346,7 @@
     
 }
 
+//  导航栏按钮点击
 - (void)barItemAction{
    
     //  创建YCMenuView(根据关联点或者关联视图)
@@ -340,40 +362,6 @@
     view.dismissOnTouchOutside = YES;
     // 显示
     [view show];
-
-}
-
-#pragma mark 收到邮件消息
-- (void)receiveMailMessageDictionary:(NSDictionary *)dictionary{
-    NSString *covId = dictionary[@"converId"];
-    NSString *msgId = dictionary[@"messageId"];
-    BOOL isCompany  = [dictionary[@"isCompany"] boolValue];
-    
-    // 非发送邮箱消息，设置铃声及震动（-1:发送邮件  -2:删除邮件   -3:接收邮件）
-    if (![msgId isEqualToString:@"-1"] &&
-        ![msgId isEqualToString:@"-2"] && isCompany) {
-        // 提示音
-        AudioServicesPlaySystemSound(1007);
-        // 震动
-        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-    }
-    
-    if ([msgId isEqualToString:@"-2"] || [msgId isEqualToString:@"-3"]) {
-        msgId = @"-1";
-    }
-    
-    if (isCurrentPage) {
-        [self getConversationListWithConversationId:covId];
-    }else {
-        // 先刷新未读标记
-        kWeakSelf
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [weakSelf updateTitle];
-        });
-        // 把消息推到聊天页面上显示出来
-        NSDictionary *messageNot = @{@"conversationId":covId, @"messageId":msgId};
-        [IMNotificationCenter postNotificationName:@"newMessage" object:nil userInfo:messageNot];
-    }
 }
 
 #pragma mark - 收到IM消息
@@ -440,116 +428,15 @@
     
 }
 
-- (void)getConversationListWithConversationId:(NSString *)conversationId
-{
-    kWeakSelf;
-    [self.dataSource removeAllObjects];
-    NSError *error = nil;
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"conversationList" ofType:nil];
-    NSString *jsonStr = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
-    if (!error) {
-        NSArray *messageList = [NSArray arrayWithJsonStr:jsonStr];
-        [messageList enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            
-            IMConversationModel *model = [IMConversationModel new];
-            model.conversationId      = obj[conversation_id_key];
-            model.conversationName    = obj[conversation_name_key];
-            model.badgeNumber         = [obj[unreead_num_key] intValue];
-            model.headImage           = obj[head_img_key];
-            model.chatToJid           = nil;
-            
-            NSDictionary *msgdic      = obj[msg_key];
-            
-            IMMessageModel *message    = [IMMessageModel new];
-            message.recvTime          = msgdic[send_time_key];
-            message.content           = msgdic[msg_content_key];
-            message.msgType           = [msgdic[msg_type_key]integerValue];
-            message.messageSendStatus = [msgdic[send_status_key] integerValue];
-            model.message             = message;
-            [weakSelf.dataSource addObject:model];
-        }];
-    }
-    
-    [self updateTitle];
+- (void)getConversationListWithConversationId:(NSString *)conversationId{
+    [self.listAngel resetListWithContactsData:[IMConversationHelper sharedConversationHelper].conversationData];
     [self.tableView reloadData];
-}
-
-#pragma mark - UITableViewDelegate
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.dataSource.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSString *cellIdentifier = @"IMMessagesListTableViewCell";
-    IMMessagesListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (!cell) {
-        cell = [[IMMessagesListTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-    }
-    
-    if (self.dataSource.count) {
-        IMConversationModel *model = self.dataSource[indexPath.row];
-        [cell setConversation:model];
-    }
-    
-    return cell;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 70;
-}
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [cell setSeparatorInset:UIEdgeInsetsMake(69, 12, 0, 0)];
-}
-
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return YES;
-}
-
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return UITableViewCellEditingStyleDelete;
-}
-
-- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewRowAction *action = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"删除" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
-        
-        action.backgroundColor = [UIColor redColor];
-        
-    }];
-    
-    return @[action];
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    selecteIndexPath                    = indexPath;
-    
-    IMConversationModel *conversation    = self.dataSource[indexPath.row];
-    _conversationId                     = conversation.conversationId;
-    
-    IMChatViewController *chatCtrl       = [IMChatViewController new];
-    chatCtrl.title                      = conversation.conversationName;
-    chatCtrl.hidesBottomBarWhenPushed   = YES;
-    chatCtrl.conversation               = conversation;
-    
-    chatCtrl.isConversationInto         = YES;
-    
-    [self.navigationController pushViewController:chatCtrl animated:YES];
 }
 
 #pragma mark - UISearchControllerDelegate代理
 - (void)willPresentSearchController:(UISearchController *)searchController
 {
     self.tabBarController.tabBar.hidden   = YES;
-    
     _searchCtrl.searchBar.backgroundColor = [IMColorTools colorWithHexString:@"0xf0eff5"];
 }
 
@@ -563,7 +450,7 @@
 @end
 
 
-@implementation IMMessageViewController(Class)
+@implementation IMConversationViewController(Class)
 + (IMBaseNavigationController *)navMessagesVc {
     IMBaseNavigationController *navC = [[IMBaseNavigationController alloc] initWithRootViewController:[[[self class] alloc] init]];
     return navC;
