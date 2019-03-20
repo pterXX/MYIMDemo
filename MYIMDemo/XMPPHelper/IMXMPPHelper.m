@@ -620,6 +620,41 @@ static IMXMPPHelper *helper;
 
 @implementation IMXMPPHelper (message)
 
+- (void)addChatDidReceiveMessageNotificationObserver:(id)observer usingBlock:(void(^)(void))usingBlock{
+    [IMNotificationCenter addObserver:observer forName:kChatDidReceiveMessageNot object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note, id  _Nonnull observer) {
+        if (usingBlock) {
+            usingBlock();
+        }
+    }];
+}
+
+- (void)addChatUserDidReceiveMessageNotificationObserver:(id)observer usingBlock:(void(^)(void))usingBlock{
+    [IMNotificationCenter addObserver:observer forName:kChatUserDidReceiveMessageNot object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note, id  _Nonnull observer) {
+        if (usingBlock) {
+            usingBlock();
+        }
+    }];
+}
+
+
+- (void)addChatDidSendMessageNotificationObserver:(id)observer usingBlock:(void(^)(void))usingBlock{
+    [IMNotificationCenter addObserver:observer forName:kChatDidSendMessageNot object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note, id  _Nonnull observer) {
+        if (usingBlock) {
+            usingBlock();
+        }
+    }];
+}
+
+
+- (void)addChatDidFailToSendMessageNotificationObserver:(id)observer usingBlock:(void(^)(void))usingBlock{
+    [IMNotificationCenter addObserver:observer forName:kChatDidFailToSendMessageNot object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note, id  _Nonnull observer) {
+        if (usingBlock) {
+            usingBlock();
+        }
+    }];
+}
+
+
 // 发送消息
 - (void)sendMessageModel:(IMMessageModel *)message to:(XMPPJID *)jid{
     XMPPMessage* newMessage = [[XMPPMessage alloc] initWithType:@"chat" to:jid];
@@ -638,31 +673,26 @@ static IMXMPPHelper *helper;
 
 #pragma mark -- XMPPMessage Delegate
 - (void)xmppStream:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message{
-    if (self.messageReceiveBlock) {
-        self.messageReceiveBlock(message);
-    }
+    //  通知消息列表
+    [IMNotificationCenter postNotificationName:kChatDidReceiveMessageNot object:message];
+    //  通知当前正在聊天的对话
+    [IMNotificationCenter postNotificationName:kChatUserDidReceiveMessageNot object:message];
 }
 
 - (void)xmppStream:(XMPPStream *)sender didSendMessage:(XMPPMessage *)message{
-    if (self.messageSendBlock) {
-        self.messageSendBlock(message);
-    }
+    [IMNotificationCenter postNotificationName:kChatDidSendMessageNot object:message];
 }
 
 - (void)xmppStream:(XMPPStream *)sender didFailToSendMessage:(XMPPMessage *)message error:(NSError *)error{
-    if (self.messageSendFailBlock) {
-        self.messageSendFailBlock(message);
-    }
+    [IMNotificationCenter postNotificationName:kChatDidFailToSendMessageNot object:message];
 }
 
 @end
 
 @implementation IMXMPPHelper(File)
 #pragma mark ===== 文件发送=======
-- (void)xmppOutgoingFileTransferDidSucceed:(XMPPOutgoingFileTransfer *)sender
-{
+- (void)xmppOutgoingFileTransferDidSucceed:(XMPPOutgoingFileTransfer *)sender{
     NSLog(@"===============> 文件发送");
-    
     XMPPJID *jid = [sender.xmppStream.myJID copy];
     NSString *subject;
     NSString *extension = [sender outgoingFileName];

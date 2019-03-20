@@ -79,11 +79,6 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
 @property (nonatomic ,strong) XMPPvCardCoreDataStorage            *vCardStorage;
 @property (nonatomic ,strong) XMPPvCardTempModule                 *vCardModule;
 @property (nonatomic ,strong) XMPPvCardAvatarModule               *vCardAvatorModule;
-
-
-@property (nonatomic ,copy  ) IMXMPPMessageBlock                  messageSendBlock;//  消息发送
-@property (nonatomic ,copy  ) IMXMPPMessageBlock                  messageSendFailBlock;//  消息发送失败
-@property (nonatomic ,copy  ) IMXMPPMessageBlock                  messageReceiveBlock;//  消息接收
 @property (nonatomic ,copy  ) IMXMPPSuccessBlock                  changeAvatarPhoto;//  修改头像
 
 + (IMXMPPHelper *)sharedHelper;

@@ -74,6 +74,16 @@ static NSString *const kXmppContactIsAvailableNot = @"kXmppContactIsAvailable";
 //  会话列表改变
 static NSString *const kConversationDataChangedNot = @"kConversationDataChangedNot";
 
+//  全部消息接收是发出通知
+static NSString *const kChatDidReceiveMessageNot = @"kChatDidReceiveMessageNot";
+//  当前聊天用户接收到消息发布通知
+static NSString *const kChatUserDidReceiveMessageNot = @"kChatUserDidReceiveMessageNot";
+//  消息发送成功
+static NSString *const kChatDidSendMessageNot = @"kChatDidSendMessageNot";
+//  消息发送失败
+static NSString *const kChatDidFailToSendMessageNot = @"kChatDidFailToSendMessageNot";
+
+
 #pragma mark - 消息枚举
 typedef NS_OPTIONS(NSInteger, IMConversationCommonNotification) {
     IMConversationCommonNotificationMail,              // 接收到邮件
