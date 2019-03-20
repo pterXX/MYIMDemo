@@ -86,7 +86,7 @@
  */
 + (UIImage *)getImageFile:(NSString *)imageString {
     
-    NSString *path      = [kDocDir stringByAppendingPathComponent:imageString];
+    NSString *path      = [NSFileManager pathUserChatImage:imageString];
     
     if([[NSFileManager defaultManager] fileExistsAtPath:path]) {
         NSData *picData = [NSData dataWithContentsOfFile:path];

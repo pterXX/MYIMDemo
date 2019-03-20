@@ -63,6 +63,7 @@
 		842511BE222E60D0004C3954 /* IMFriendHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 842511BB222E60D0004C3954 /* IMFriendHelper.m */; };
 		842511BF222E60D0004C3954 /* IMUserHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 842511BD222E60D0004C3954 /* IMUserHelper.m */; };
 		842511C3222E6539004C3954 /* NSFileManager+IMChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 842511C2222E6538004C3954 /* NSFileManager+IMChat.m */; };
+		8425CEB72241E5C800E1A12E /* UIImageView+IMChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 8425CEB62241E5C800E1A12E /* UIImageView+IMChat.m */; };
 		8428F45222320EE70064DA35 /* IMAddContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8428F45122320EE70064DA35 /* IMAddContactsViewController.m */; };
 		8428F4582232481F0064DA35 /* IMNotificationObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 8428F4572232481F0064DA35 /* IMNotificationObserver.m */; };
 		8428F46622326AD00064DA35 /* IMBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8428F46522326AD00064DA35 /* IMBaseNavigationController.m */; };
@@ -626,6 +627,8 @@
 		842511BD222E60D0004C3954 /* IMUserHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMUserHelper.m; sourceTree = "<group>"; };
 		842511C1222E6538004C3954 /* NSFileManager+IMChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+IMChat.h"; sourceTree = "<group>"; };
 		842511C2222E6538004C3954 /* NSFileManager+IMChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+IMChat.m"; sourceTree = "<group>"; };
+		8425CEB52241E5C800E1A12E /* UIImageView+IMChat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+IMChat.h"; sourceTree = "<group>"; };
+		8425CEB62241E5C800E1A12E /* UIImageView+IMChat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+IMChat.m"; sourceTree = "<group>"; };
 		8428F45022320EE70064DA35 /* IMAddContactsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMAddContactsViewController.h; sourceTree = "<group>"; };
 		8428F45122320EE70064DA35 /* IMAddContactsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMAddContactsViewController.m; sourceTree = "<group>"; };
 		8428F4562232481E0064DA35 /* IMNotificationObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMNotificationObserver.h; sourceTree = "<group>"; };
@@ -1868,6 +1871,15 @@
 			path = DataUtils;
 			sourceTree = "<group>";
 		};
+		8425CEB42241E59200E1A12E /* UIImageView */ = {
+			isa = PBXGroup;
+			children = (
+				8425CEB52241E5C800E1A12E /* UIImageView+IMChat.h */,
+				8425CEB62241E5C800E1A12E /* UIImageView+IMChat.m */,
+			);
+			path = UIImageView;
+			sourceTree = "<group>";
+		};
 		8428F45D22326A300064DA35 /* Page */ = {
 			isa = PBXGroup;
 			children = (
@@ -2297,6 +2309,7 @@
 		EE8936F62228D0A4004F1F6E /* UIUIils */ = {
 			isa = PBXGroup;
 			children = (
+				8425CEB42241E59200E1A12E /* UIImageView */,
 				8423C33D223B823100E999F5 /* Common.xcassets */,
 				8423C2DC223B506A00E999F5 /* IMFLEXAngel */,
 				8423C30A223B51FA00E999F5 /* UIFont */,
@@ -3377,6 +3390,7 @@
 				8423C307223B506A00E999F5 /* IMFlexAngel+Private.m in Sources */,
 				EE8936CA2227DC57004F1F6E /* UIButton+Extra.m in Sources */,
 				8423C2FE223B506A00E999F5 /* IMFlexibleLayoutSectionModel.m in Sources */,
+				8425CEB72241E5C800E1A12E /* UIImageView+IMChat.m in Sources */,
 				EE7FE461222CC42500073210 /* IMPhotoBrowser.m in Sources */,
 				EE893A0A22290A55004F1F6E /* UIImage+Color.m in Sources */,
 				8423C31B223B6C0100E999F5 /* IMOfficialAccountViewController.m in Sources */,

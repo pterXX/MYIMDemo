@@ -140,6 +140,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initData];
+    [self addObserver];
 }
 
 /**
@@ -275,29 +276,15 @@
 /**
  根据 消息ID 分页加载数据
  */
-- (void)getMessagesDataWithMessageId:(NSString *)messageId
-{
-    XMPPMessageArchivingCoreDataStorage *storage = KIMXMPPHelper.xmppMessageArchivingCoreDataStorage;
-    //查询的时候要给上下文
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:storage.messageEntityName inManagedObjectContext:storage.mainThreadManagedObjectContext];
-    [fetchRequest setEntity:entity];
-    //查询条件
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"bareJidStr = %@", self.conversation.chatToJid.bare];
-    [fetchRequest setPredicate:predicate];
-    //排序方式
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timestamp"
-                                                                   ascending:YES];
-    [fetchRequest setSortDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
-    
-    kWeakSelf;
-    NSError *error = nil;
-    NSArray *fetchedObjects = [storage.mainThreadManagedObjectContext executeFetchRequest:fetchRequest error:&error];
+- (void)getMessagesDataWithMessageId:(NSString *)messageId{
+    NSArray *fetchedObjects = [KIMXMPPHelper fetchedMessagesOfJid:self.conversation.chatToJid];
     if (fetchedObjects != nil ) {
         [self.dataSource removeAllObjects];
         __block IMMessageModel *previousMessage = nil;
         __block NSInteger num = 0;
+        @weakify(self);
         NSArray *array = [fetchedObjects zh_enumerateObjectsUsingBlock:^id(XMPPMessageArchiving_Message_CoreDataObject * obj) {
+            @strongify(self);
             return  [IMMessageModel modelWithCoreDataObject:obj complete:^IMMessageModel * _Nonnull(IMMessageModel * _Nonnull objModel, XMPPMessageArchiving_Message_CoreDataObject * _Nonnull coreDataobj) {
                 objModel.lastMessage     = previousMessage;
                 NSTimeInterval prevTime = 0;
@@ -336,10 +323,10 @@
                     model.messageId    = objModel.messageId;
                     model.content      = objModel.fileData;
                     if (isFirstLoad){
-                        [weakSelf.allImageDatas addObject:model];
+                        [self.allImageDatas addObject:model];
                     }
                     else{
-                        [weakSelf.allImageDatas insertObject:model atIndex:num];
+                        [self.allImageDatas insertObject:model atIndex:num];
                         num ++;
                     }
                 }
@@ -352,14 +339,14 @@
     [self scrollTableViewBottom];
 }
 
-- (void)addNot{
+/**
+ 监控消息接收
+ */
+- (void)addObserver{
     @weakify(self);
     [KIMXMPPHelper addChatDidSendMessageNotificationObserver:self usingBlock:^{
         @strongify(self);
-        self.conversation.message = [self lastMessage];
-        //  只有发送了消息才会记录列表
-        BOOL ok = [[IMConversationHelper sharedConversationHelper] addConversation:self.conversation];
-        if (!ok) NSLog(@"================>  插入会话数据失败");
+        [self addConversation];
     }];
     
     [KIMXMPPHelper addChatDidFailToSendMessageNotificationObserver:self usingBlock:^{
@@ -367,8 +354,20 @@
     }];
     
     [KIMXMPPHelper addChatUserDidReceiveMessageNotificationObserver:self userJid:self.conversation.chatToJid usingBlock:^{
+        @strongify(self);
         [self getMessagesDataWithMessageId:@"0"];
+        [self addConversation];
     }];
+}
+
+/**
+ 添加到会话列表
+ */
+- (void)addConversation{
+    self.conversation.message = [self lastMessage];
+    //  只有发送了消息才会记录列表
+    BOOL ok = [[IMConversationHelper sharedConversationHelper] addConversation:self.conversation];
+    if (!ok) NSLog(@"================>  插入会话数据失败");
 }
 
 /**
@@ -926,7 +925,6 @@
         messageDic[to_user_name_key]           = model.conversationName;
         messageDic[to_user_id_key]             = model.chatToJid.user;
         messageDic[from_user_name_key]        = fromUserName;
-        messageDic[from_user_id_key]          = KXINIUID;
         messageDic[from_employee_id_key]      = @"-1";
         messageDic[msg_type_key]              = @(messageModel.msgType);
         if (![messageModel.content isKindOfClass:[NSData class]]) {
@@ -954,7 +952,7 @@
                 fileData = messageModel.fileData;
             }
             else {
-                fileData = [[NSData alloc] initWithContentsOfFile:[kDocDir stringByAppendingPathComponent:messageModel.content]];
+                fileData = [[NSData alloc] initWithContentsOfFile:[NSFileManager pathUserSettingImage:messageModel.content]];
             }
             
             //            NSString *type = messageModel.msgType == IMMessageTypeImage ? @"png" : @"aac";
@@ -1185,7 +1183,7 @@
             }];
         }
         else if ([path containsString:@"storage/msgs/"]) {
-            NSString *imagePath = [NSString stringWithFormat:@"%@/%@", kDocDir, path];
+            NSString *imagePath = [NSFileManager pathUserSettingImage:path];
             image = [UIImage imageWithContentsOfFile:imagePath];
         }
         photo.imageUrl = path;

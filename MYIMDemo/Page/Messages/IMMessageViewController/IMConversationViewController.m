@@ -81,11 +81,6 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self networkConnectionDetection];
-    if (KIsRefreshMessageView) {
-        _badgeNumber = 0;
-        [self getConversationListWithConversationId:@"-1"];
-        [IMUserDefaults setBool:NO forKey:@"isRefreshMessageView"];
-    }
     isCurrentPage = YES;
 }
 

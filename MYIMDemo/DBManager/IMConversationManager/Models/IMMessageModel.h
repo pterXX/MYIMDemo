@@ -45,6 +45,8 @@ NS_ASSUME_NONNULL_BEGIN
 typedef void (^FinishedRowHeightCalculate)(CGFloat rowHeight, CGSize messageSize, BOOL complete);
 
 @interface IMMessageModel : IMBaseModel
+// 消息来源的jid
+@property (nonatomic, assign) XMPPJID       *msgJid;
 // 消息类型
 @property (nonatomic, assign) IMMessageType       msgType;
 // 聊天类型
@@ -65,8 +67,11 @@ typedef void (^FinishedRowHeightCalculate)(CGFloat rowHeight, CGSize messageSize
 @property (nonatomic, copy) NSString *fromUserId;
 // 消息id
 @property (nonatomic, copy) NSString *messageId;
+// 发送者的头像
+@property (nonatomic, copy) NSString *fromUserAvatar;
 // 对方头像
 @property (nonatomic, copy) NSString *toUserAvatar;
+
 // 消息内容, 可能是文本、图片、视频、语音、邮件
 @property (nonatomic, strong) id content;
 // 发送时间

@@ -185,6 +185,15 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
 
 
 @interface IMXMPPHelper (message)
+
+/**
+ 根据jid 查找消息俩表
+
+ @param jid  要查询的jid
+ @return XMPPMessageArchiving_Message_CoreDataObject 数组
+ */
+- (NSArray<XMPPMessageArchiving_Message_CoreDataObject *> *)fetchedMessagesOfJid:(XMPPJID *)jid;
+
 /**
  *  发送消息
  *

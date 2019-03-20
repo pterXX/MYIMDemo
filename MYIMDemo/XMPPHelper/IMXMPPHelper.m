@@ -669,7 +669,25 @@ static IMXMPPHelper *helper;
     }];
 }
 
-
+//  根据Jid查找消息
+- (NSArray<XMPPMessageArchiving_Message_CoreDataObject *> *)fetchedMessagesOfJid:(XMPPJID *)jid{
+    if (jid == nil) return @[];
+    XMPPMessageArchivingCoreDataStorage *storage = self.xmppMessageArchivingCoreDataStorage;
+    //查询的时候要给上下文
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:storage.messageEntityName inManagedObjectContext:storage.mainThreadManagedObjectContext];
+    [fetchRequest setEntity:entity];
+    //查询条件
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"streamBareJidStr == %@ AND bareJidStr == %@", self.myJID,jid.bare];
+    [fetchRequest setPredicate:predicate];
+    //排序方式
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timestamp"
+                                                                   ascending:YES];
+    [fetchRequest setSortDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
+    NSError *error = nil;
+    NSArray *fetchedObjects = [storage.mainThreadManagedObjectContext executeFetchRequest:fetchRequest error:&error];
+    return fetchedObjects;
+}
 
 // 发送消息
 - (void)sendMessageModel:(IMMessageModel *)message to:(XMPPJID *)jid{
@@ -682,8 +700,11 @@ static IMXMPPHelper *helper;
     }
     [newMessage addOriginId:message.messageId];
     [newMessage addBody:message.messageBody]; //消息内容
-    XMPPElement *dataBody = [XMPPElement elementWithName:kMessageElementDataBodyName stringValue:[message modelConverJson]];
-    [newMessage addChild:dataBody];
+    NSDictionary *dict = [self mj_keyValuesWithKeys:@[@"messageId",@"msgType",@"messageChatType",@"content",@"recvTime",@"voiceTime",@"pictureType",@"sendTime"]];
+    NSArray *arr = [dict allKeys];
+    for (NSString *key in arr) {
+        [newMessage addChild:[XMPPElement elementWithName:key stringValue:[dict objectForKey:key]]];
+    }
     [_xmppStream sendElement:newMessage];
 }
 

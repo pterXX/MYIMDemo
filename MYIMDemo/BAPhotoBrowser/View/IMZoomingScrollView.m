@@ -289,7 +289,7 @@
     self.imageURL = url;
     
     if ([photo.imageUrl containsString:@"/storage/msgs"]) {
-        NSString *imagePath = [kDocDir stringByAppendingPathComponent:photo.imageUrl];
+        NSString *imagePath = [NSFileManager pathUserChatImage:photo.imageUrl];
         UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
         [self.progressView removeFromSuperview];
         [self.stateLabel removeFromSuperview];

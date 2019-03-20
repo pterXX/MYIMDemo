@@ -350,7 +350,7 @@ static char *recordIndexPathRowKey = "recordIndexPathRow";
         
         NSString *voicePath = messageModel.content;
         if ([voicePath containsString:@"/storage/msgs/"]) {
-            NSString *voicePath1 = [kDocDir stringByAppendingPathComponent:voicePath];
+            NSString *voicePath1 = [NSFileManager pathUserSettingImage:voicePath];
             NSData *audioData = [[NSData alloc] initWithContentsOfFile:voicePath1];
             self.audioPlayer = [[AVAudioPlayer alloc] initWithData:audioData error:nil];
             [self audioPlayerSetting];
@@ -405,7 +405,7 @@ static char *recordIndexPathRowKey = "recordIndexPathRow";
         audioMessage.duringTime        = 0;
         audioMessage.sendTime          = [NSDate getCurrentTimestamp];
         audioMessage.recvTime          = [NSDate getCurrentTimestamp];
-        audioMessage.fromUserId        = KXINIUID;
+//        audioMessage.fromUserId        = KXINIUID;
         
         weakSelf.prevMessage               = [weakSelf lastMessage];
         BOOL isShowTime = [weakSelf isShowTimeWithNewMessageModel:audioMessage previousMessage:weakSelf.prevMessage];
@@ -451,7 +451,7 @@ static char *recordIndexPathRowKey = "recordIndexPathRow";
             audioMessage.sendTime          = timestamp;
             audioMessage.recvTime          = timestamp;
             audioMessage.messageId         = timestamp;
-            audioMessage.fromUserId        = KXINIUID;
+//            audioMessage.fromUserId        = KXINIUID;
             
             __block CGSize msgSize;
             [audioMessage messageProcessingWithFinishedCalculate:^(CGFloat rowHeight, CGSize messageSize, BOOL complete) {

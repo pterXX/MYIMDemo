@@ -113,7 +113,7 @@
        [_avaterImageView setImage:[KIMXMPPHelper userAvatarForJid:conversation.chatToJid]];
     }
     else if ([conversation.headImage containsString:@"storage/headImage"]) {
-        NSString *imagePath = [kDocDir stringByAppendingPathComponent:conversation.headImage];
+        NSString *imagePath = [NSFileManager pathUserSettingImage:conversation.headImage];
         _avaterImageView.image = [UIImage imageWithContentsOfFile:imagePath];
     }
     else if ([conversation.headImage containsString:@"http://"] || [conversation.headImage containsString:@"https://"])

@@ -125,7 +125,6 @@
 {
     _messageModel           = messageModel;
     if (messageModel.isDelayShowSendStatus) {
-    
         if (messageModel.messageSendStatus == IMMessageSendStatusSending) {
 
             kWeakSelf
@@ -157,18 +156,7 @@
         case IMMessageSenderTypeSender:
         {
             [self.avatarImageView setHidden:NO];
-            
-            NSString *userAvatar = [[IMAppDefaultUtil sharedInstance] getUserAvatar];
-            if ([userAvatar containsString:@"http://"] ||
-                [userAvatar containsString:@"https://"])
-            {
-                [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:userAvatar] placeholderImage:[UIImage imageDefaultHeadPortrait]];
-            }
-            else if (userAvatar.length == 0)
-            {
-                self.avatarImageView.image = [UIImage imageDefaultHeadPortrait];
-            }
-            
+            [self.avatarImageView setImage:[KIMXMPPHelper myAvatar]];
             [self.messageBackgroundImageView setHidden:NO];
             // 聊天背景拉伸
             // UIImageResizingModeStretch：拉伸模式，通过拉伸UIEdgeInsets指定的矩形区域来填充图片
@@ -180,21 +168,8 @@
         {
             [self.avatarImageView setHidden:NO];
             self.messageSendStatusImageView.image = nil;
-            
-            if ([messageModel.toUserAvatar containsString:@"storage/headImage"]) {
-                NSString *imagePath = [kDocDir stringByAppendingPathComponent:messageModel.toUserAvatar];
-                self.avatarImageView.image = [UIImage imageWithContentsOfFile:imagePath];
-                
-            }
-            else if ([messageModel.toUserAvatar containsString:@"http://"] || [messageModel.toUserAvatar containsString:@"https://"]) {
-                [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:messageModel.toUserAvatar]];
-            }
-            else {
-                if (!messageModel.toUserAvatar.length) {
-                    
-                    self.avatarImageView.image = [UIImage imageDefaultHeadPortrait];
-                }
-            }
+            NSLog(@"jid -> %@, bare ->%@",messageModel.msgJid,messageModel.msgJid.bare);
+            [self.avatarImageView im_setAvatar:messageModel.toUserAvatar jid:messageModel.msgJid];
             
             [self.messageBackgroundImageView setHidden:NO];
             // 聊天背景拉伸

@@ -19,6 +19,10 @@
     
 }
 
+- (void)setMsgJid:(XMPPJID *)msgJid{
+    _msgJid = msgJid;
+}
+
 - (void)setMessageAtt:(NSAttributedString *)messageAtt {
     _messageAtt = [IMChatMessageHelper formatMessageAtt:messageAtt];
 }
@@ -30,7 +34,7 @@
     }
 }
 
-- (void)setmsgType:(IMMessageType)msgType
+- (void)setMsgType:(IMMessageType)msgType
 {
     _msgType = msgType;
     if (msgType == IMMessageTypeVoice && self.recvTime == 0) {
@@ -217,7 +221,7 @@
                         }
                         NSString *path = self->_content;
                         if ([path containsString:@"storage/msgs"]) {
-                            NSString *imagePath = [kDocDir stringByAppendingPathComponent:path];
+                            NSString *imagePath = [NSFileManager pathUserChatImage:path];
                             image               = [UIImage imageWithContentsOfFile:imagePath];
                             weakSelf.fileData   = UIImagePNGRepresentation(image);
                             [weakSelf photoHeightWithImageWidth:image.size.width imageHeight:image.size.height complete:finishedCalculate];
@@ -436,6 +440,7 @@
     NSDictionary *objDict = [NSDictionary dictionaryWithJsonString:str];
     IMMessageModel *model  = [IMMessageModel new];
     if (objDict.count > 0) {
+        model.msgJid          = message.from;
         model.messageId       = objDict[msg_id_key];
         model.msgType         = [objDict[msg_type_key] intValue];
         model.messageChatType = [objDict[chat_type_key] intValue];

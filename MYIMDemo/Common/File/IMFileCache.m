@@ -12,7 +12,7 @@
 
 static IMFileCache *fileCache = nil;
 
-#define fileCachePath [kDocDir stringByAppendingPathComponent:@"FileCache"]
+#define fileCachePath [NSFileManager cacheForFile:@"FileCache"]
 
 @implementation IMFileCache
 

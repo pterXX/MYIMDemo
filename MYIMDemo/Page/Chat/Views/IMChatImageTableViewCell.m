@@ -71,7 +71,7 @@
             {
                 if ([filePath rangeOfString:@"storage/msgs/"].location != NSNotFound)
                 {
-                    NSString *imagePath = [NSString stringWithFormat:@"%@/%@", kDocDir, filePath];
+                    NSString *imagePath = [NSFileManager pathUserChatImage: filePath];
                     UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
                     self.messageImageView.image = image;
                 }else{

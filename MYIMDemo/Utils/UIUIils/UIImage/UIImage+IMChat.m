@@ -9,6 +9,7 @@
 #import "UIImage+IMChat.h"
 
 @implementation UIImage (IMChat)
+
 + (UIImage *)imageDefaultHeadPortrait{
     return  [UIImage imageNamed:@"default_headPortrait.jpeg"];
 }

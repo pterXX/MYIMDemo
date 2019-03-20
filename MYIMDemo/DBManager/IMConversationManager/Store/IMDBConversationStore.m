@@ -105,6 +105,7 @@
             model.badgeNumber = [[retSet stringForColumn:@"badgeNumber"] intValue];
             
             IMMessageModel *message = [[IMMessageModel alloc] init];
+            message.msgJid            = [XMPPJID jidWithUser:[retSet stringForColumn:@"user"] domain:[retSet stringForColumn:@"domain"] resource:resource];
             message.messageId         = [retSet stringForColumn:@"msgid"];
             message.msgType           = [[retSet stringForColumn:@"msgType"] intValue];
             message.messageChatType   = [[retSet stringForColumn:@"messageChatType"] intValue];
