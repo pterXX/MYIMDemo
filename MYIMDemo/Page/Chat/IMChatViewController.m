@@ -410,6 +410,44 @@
     }
 }
 
+- (void)sendMessageWithContent:(id)content indexPath:(NSIndexPath *)indexPath{
+    if (content == nil) return;
+    
+    // 不考虑是否显示时间时的行高
+    __block CGFloat cellHeight      = -1;
+    __block IMMessageModel *model    = [[IMMessageModel alloc] init];
+    NSString *currentTimeInterval = [NSDate getCurrentTimestamp];
+    model.messageChatType = self.conversation.chatType;
+    model.direction = IMMessageSenderTypeSender;
+    model.messageReadStatus = IMMessageReadStatusRead;
+    model.sendTime          = currentTimeInterval;
+    model.recvTime          = currentTimeInterval;
+    model.toUserName        = _conversation.conversationName;
+    model.messageSendStatus = IMMessageSendStatusSendSuccess;
+    model.lastMessage       = [self lastMessage];
+    model.messageId         = currentTimeInterval;
+    BOOL isShowTime         = [self isShowTimeWithNewMessageModel:model previousMessage:[self lastMessage]];
+    model.showMessageTime   = isShowTime;
+    
+    if ([content isKindOfClass:[NSString class]]) {
+        model.msgType = IMMessageTypeText;
+        model.content = content;
+    }
+    
+    @weakify(self);
+    dispatch_sync(defaultQueue, ^{
+        [model messageProcessingWithFinishedCalculate:^(CGFloat rowHeight, CGSize messageSize, BOOL complete) {
+            @strongify(self);
+            cellHeight = rowHeight;
+            [self->sendMessage lock];
+            [self addMessage:model];
+            [self->sendMessage unlock];
+        }];
+        //     向服务端发消息
+        [KIMXMPPHelper sendMessageModel:model to:self.conversation.chatToJid];
+    });
+}
+
 /**
  更新本地消息发送状态
  
@@ -1089,44 +1127,8 @@
         return;
     }
     
-    // 不考虑是否显示时间时的行高
-    __block CGFloat cellHeight      = -1;
-    __block IMMessageModel *model    = [[IMMessageModel alloc] init];
-    
-    NSString *currentTimeInterval = [NSDate getCurrentTimestamp];
-    
-    model.msgType           = IMMessageTypeText;
-    model.messageChatType   = IMMessageChatTypeSingle;
-    model.direction         = IMMessageSenderTypeSender;
-    model.messageReadStatus = IMMessageReadStatusRead;
-    model.content           = textMessage;
-    model.sendTime          = currentTimeInterval;
-    model.recvTime          = currentTimeInterval;
-    model.toUserName        = _conversation.conversationName;
-    model.messageSendStatus = IMMessageSendStatusSendSuccess;
-    model.lastMessage       = [self lastMessage];
-    model.messageId         = currentTimeInterval;
-    
-    BOOL isShowTime         = [self isShowTimeWithNewMessageModel:model previousMessage:[self lastMessage]];
-    model.showMessageTime   = isShowTime;
-    
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.dataSource.count inSection:0];
-    
-    kWeakSelf;
-    dispatch_async(defaultQueue, ^{
-        
-        [model messageProcessingWithFinishedCalculate:^(CGFloat rowHeight, CGSize messageSize, BOOL complete) {
-            
-            cellHeight = rowHeight;
-            
-            [self->sendMessage lock];
-            [weakSelf addMessage:model];
-            [self->sendMessage unlock];
-            
-        }];
-        //     向服务端发消息
-        [KIMXMPPHelper sendMessageModel:model to:self.conversation.chatToJid];
-    });
+    [self sendMessageWithContent:textMessage indexPath:indexPath];
 }
 
 - (void)inputBoxCtrl:(IMInputBoxViewCtrl *)inputBoxCtrl didSelectedMoreView:(IMInputBoxMoreStatus)inputBoxMoreStatus

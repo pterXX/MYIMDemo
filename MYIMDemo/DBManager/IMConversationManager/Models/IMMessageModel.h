@@ -46,7 +46,7 @@ typedef void (^FinishedRowHeightCalculate)(CGFloat rowHeight, CGSize messageSize
 
 @interface IMMessageModel : IMBaseModel
 // 消息来源的jid
-@property (nonatomic, assign) XMPPJID       *msgJid;
+@property (nonatomic, strong) XMPPJID       *msgJid;
 // 消息类型
 @property (nonatomic, assign) IMMessageType       msgType;
 // 聊天类型

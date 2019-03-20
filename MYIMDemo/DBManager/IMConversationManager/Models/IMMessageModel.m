@@ -19,11 +19,6 @@
     
 }
 
-- (void)setMsgJid:(XMPPJID *)msgJid{
-    _msgJid = msgJid;
-    NSLog(@"msgJid ==> %@",msgJid);
-}
-
 - (void)setMessageAtt:(NSAttributedString *)messageAtt {
     _messageAtt = [IMChatMessageHelper formatMessageAtt:messageAtt];
 }
