@@ -126,6 +126,7 @@
 
 - (NSArray <IMUser *> *)sortArray{
     NSArray *array = self.allFriendArray;
+    _totalCount = array.count;
     return  [array zh_SortObjectsUsingBlock:^BOOL(IMUser *  _Nonnull obj1, IMUser *  _Nonnull obj2) {
         return [obj1.pinyin compare:obj2.pinyin];
     }];

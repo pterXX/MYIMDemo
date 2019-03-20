@@ -105,8 +105,9 @@
 }
 
 - (void)p_resterStorage{
-    [self.listAngel resetListWithContactsData:KIMXMPPHelper.userHelper.sortGroupArray sectionHeaders:KIMXMPPHelper.userHelper.pinyinInitialArray];
-    [self.footerLabel setText:IMStirngFormat(@"%ld位联系人",KIMXMPPHelper.userHelper.sortGroupArray.count)];
+    NSArray *arr = KIMXMPPHelper.userHelper.sortGroupArray;
+    [self.listAngel resetListWithContactsData:arr sectionHeaders:KIMXMPPHelper.userHelper.pinyinInitialArray];
+    [self.footerLabel setText:IMStirngFormat(@"%ld位联系人",KIMXMPPHelper.userHelper.totalCount)];
     [self.tableView reloadData];
 }
 

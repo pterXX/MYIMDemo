@@ -31,6 +31,8 @@
 @property (nonatomic, strong) NSMutableArray<IMUser *>  *fromFriendArray; // from
 @property (nonatomic, strong) NSMutableArray<IMUser *>  *removeFriendArray; // Remove
 
+
+@property (nonatomic, assign ,readonly) NSInteger totalCount;
 //  根据allFriendArray 排序后的数组
 @property (nonatomic, strong ,readonly) NSArray<IMUser *> *sortArray;
 @property (nonatomic, strong ,readonly) NSArray <IMUserGroup *> *sortGroupArray;
