@@ -283,9 +283,9 @@
         __block IMMessageModel *previousMessage = nil;
         __block NSInteger num = 0;
         @weakify(self);
-        NSArray *array = [fetchedObjects zh_enumerateObjectsUsingBlock:^id(XMPPMessageArchiving_Message_CoreDataObject * obj) {
-            @strongify(self);
-            return  [IMMessageModel modelWithCoreDataObject:obj complete:^IMMessageModel * _Nonnull(IMMessageModel * _Nonnull objModel, XMPPMessageArchiving_Message_CoreDataObject * _Nonnull coreDataobj) {
+        for (XMPPMessageArchiving_Message_CoreDataObject * obj in fetchedObjects) {
+           IMMessageModel *model = [IMMessageModel modelWithCoreDataObject:obj complete:^IMMessageModel * _Nonnull(IMMessageModel * _Nonnull objModel, XMPPMessageArchiving_Message_CoreDataObject * _Nonnull coreDataobj) {
+               @strongify(self);
                 objModel.lastMessage     = previousMessage;
                 NSTimeInterval prevTime = 0;
                 NSTimeInterval lastTime = 0;
@@ -332,8 +332,9 @@
                 }
                 return objModel;
             }];
-        }];
-        [self.dataSource addObjectsFromArray:array];
+            [self.dataSource addObject:model];
+        }
+        
     }
     [self.listView reloadData];
     [self scrollTableViewBottom];
