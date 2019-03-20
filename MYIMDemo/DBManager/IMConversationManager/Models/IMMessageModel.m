@@ -21,6 +21,7 @@
 
 - (void)setMsgJid:(XMPPJID *)msgJid{
     _msgJid = msgJid;
+    NSLog(@"msgJid ==> %@",msgJid);
 }
 
 - (void)setMessageAtt:(NSAttributedString *)messageAtt {
@@ -435,18 +436,27 @@
  */
 + (IMMessageModel *)modelWithCoreDataObject:(XMPPMessageArchiving_Message_CoreDataObject *)obj complete:(IMMessageModel * _Nonnull (^)(IMMessageModel *objModel,XMPPMessageArchiving_Message_CoreDataObject *obj))complete{
     
-    XMPPMessage *message = obj.message;
-    NSString *str = [[message elementForName:kMessageElementDataBodyName] stringValue];
-    NSDictionary *objDict = [NSDictionary dictionaryWithJsonString:str];
+    NSInteger(^integerValue)(NSString *) = ^NSInteger(NSString *name){
+         XMPPMessage *message = obj.message;
+        return [[[message elementForName:name] stringValue] integerValue];
+    };
+    
+    NSString *(^stringValue)(NSString *) = ^NSString *(NSString *name){
+        XMPPMessage *message = obj.message;
+        return [[message elementForName:name] stringValue];
+    };
+   
     IMMessageModel *model  = [IMMessageModel new];
-    if (objDict.count > 0) {
-        model.msgJid          = message.from;
-        model.messageId       = objDict[msg_id_key];
-        model.msgType         = [objDict[msg_type_key] intValue];
-        model.messageChatType = [objDict[chat_type_key] intValue];
-        model.content         = objDict[msg_content_key];
-        model.recvTime        = objDict[send_time_key];
-    }
+    model.msgJid = obj.bareJid;
+    model.messageId = stringValue(@"messageId");
+    model.msgType   = integerValue(@"msgType");
+    model.messageChatType = integerValue(@"messageChatType");
+    model.content = stringValue(@"content");
+    model.recvTime = stringValue(@"recvTime");
+    model.voiceTime = stringValue(@"voiceTime");
+    model.pictureType = integerValue(@"pictureType");
+    model.sendTime = stringValue(@"sendTime");
+    
     if (model.content == nil) {
         model.content = obj.message.body;
     }

@@ -168,7 +168,7 @@
         {
             [self.avatarImageView setHidden:NO];
             self.messageSendStatusImageView.image = nil;
-            NSLog(@"jid -> %@, bare ->%@",messageModel.msgJid,messageModel.msgJid.bare);
+            NSLog(@"jid -> %@",messageModel.msgJid);
             [self.avatarImageView im_setAvatar:messageModel.toUserAvatar jid:messageModel.msgJid];
             
             [self.messageBackgroundImageView setHidden:NO];
