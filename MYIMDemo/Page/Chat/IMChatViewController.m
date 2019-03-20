@@ -158,12 +158,10 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backBut];
 }
 
-
 /**
  添加子视图
  */
 - (void)im_addSubViews{
-    [IMNotificationCenter addObserver:self selector:@selector(receivedNewMessage:) name:@"newMessage" object:nil];
     [IMNotificationCenter addObserver:self selector:@selector(updateRowHeight:) name:@"updateRowHeight" object:nil];
     [IMNotificationCenter postNotificationName:kConversationCommonNot object:nil userInfo:@{@"notType":@(IMConversationCommonNotificationUpdateBedgeNumber), @"conversationId":IMNoNilString(_conversation.chatToJid.user)}];
     
@@ -235,27 +233,10 @@
     
     // 获取会话消息
     [self getMessagesDataWithMessageId:@"0"];
-    
-    @weakify(self);
-    [KIMXMPPHelper setMessageSendBlock:^(XMPPMessage * _Nonnull message) {
-        self.conversation.message = [self lastMessage];
-        //  只有发送了消息才会记录列表
-        BOOL ok = [[IMConversationHelper sharedConversationHelper] addConversation:self.conversation];
-        if (!ok) NSLog(@"================>  插入会话数据失败");
-    }];
-    
-    [KIMXMPPHelper setMessageSendFailBlock:^(XMPPMessage * _Nonnull message) {
-        
-    }];
-    
-    [KIMXMPPHelper setMessageReceiveBlock:^(XMPPMessage * _Nonnull message) {
-        
-    }];
 }
 
 // 有未读消息时通知服务器，这些消息已被标记为已读
 - (void)UpdateConversationState {
-    
     // 有未读消息时通知服务器，这些消息已被标记为已读
     kWeakSelf
     dispatch_async(defaultQueue, ^{
@@ -265,7 +246,6 @@
             [weakSelf updateMessageReadState];
         }
     });
-    
 }
 
 /**
@@ -372,6 +352,25 @@
     [self scrollTableViewBottom];
 }
 
+- (void)addNot{
+    @weakify(self);
+    [KIMXMPPHelper addChatDidSendMessageNotificationObserver:self usingBlock:^{
+        @strongify(self);
+        self.conversation.message = [self lastMessage];
+        //  只有发送了消息才会记录列表
+        BOOL ok = [[IMConversationHelper sharedConversationHelper] addConversation:self.conversation];
+        if (!ok) NSLog(@"================>  插入会话数据失败");
+    }];
+    
+    [KIMXMPPHelper addChatDidFailToSendMessageNotificationObserver:self usingBlock:^{
+        
+    }];
+    
+    [KIMXMPPHelper addChatUserDidReceiveMessageNotificationObserver:self userJid:self.conversation.chatToJid usingBlock:^{
+        [self getMessagesDataWithMessageId:@"0"];
+    }];
+}
+
 /**
  发送消息
  
@@ -421,14 +420,6 @@
 - (void)updateDatabaseMessageWithSrcId:(NSString *)srcId
                                 destId:(NSString *)destId
                              sendState:(int)sendState
-{
-    
-}
-
-/**
- 收到最新的消息通知
- */
-- (void)receivedNewMessage:(NSNotification *)notification
 {
     
 }
@@ -833,9 +824,7 @@
 }
 
 - (void)chatTableViewCell:(IMChatVoiceTableViewCell *)tableViewCell clickVoiceMessageMessageModel:(IMMessageModel *)messageModel {
-    
     [self updateViewFrame];
-    
 }
 
 /**
@@ -1180,8 +1169,7 @@
     [self updateViewFrame];
 }
 
-- (IMPhoto *)photoBrowser:(IMPhotoBrowser *)browser placeholderImageForIndex:(NSInteger)index
-{
+- (IMPhoto *)photoBrowser:(IMPhotoBrowser *)browser placeholderImageForIndex:(NSInteger)index{
     IMPhotoPreviewModel *currentModel = self.imageDatas[index];
     IMPhoto *photo = [IMPhoto new];
     __block UIImage *image;
@@ -1190,8 +1178,7 @@
     }
     else {
         NSString *path = currentModel.content;
-        if ([path containsString:@"http://"] || [path containsString:@"https://"])
-        {
+        if ([path containsString:@"http://"] || [path containsString:@"https://"]){
             UIImageView *imageView = [UIImageView new];
             [imageView sd_setImageWithURL:[NSURL URLWithString:currentModel.content] completed:^(UIImage *images, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
                 image = images;
@@ -1213,26 +1200,19 @@
     return photo;
 }
 
-- (UIView *)photoBrowser:(IMPhotoBrowser *)browser sourceImageViewForIndex:(NSInteger)index
-{
+- (UIView *)photoBrowser:(IMPhotoBrowser *)browser sourceImageViewForIndex:(NSInteger)index{
     IMPhotoPreviewModel *currentModel = self.imageDatas[index];
-    if (visiblePhotoPreviews.count > 1)
-    {
+    if (visiblePhotoPreviews.count > 1){
         UIImageView *imageView = nil;
-        for (IMPhotoPreviewModel *model in visiblePhotoPreviews)
-        {
-            if (model.messageId == currentModel.messageId)
-            {
+        for (IMPhotoPreviewModel *model in visiblePhotoPreviews){
+            if (model.messageId == currentModel.messageId){
                 imageView = model.tapImageView;
             }
         }
-        
-        if (imageView)
-        {
+        if (imageView){
             return imageView;
         }
     }
-    
     return crrentTapPhoto.tapImageView;
 }
 
@@ -1267,9 +1247,6 @@
     [self.inputBoxCtrl.inputBox removeObserver:self forKeyPath:@"recordState" context:nil];
     [self.recordView removeFromSuperview];
     self.recordView = nil;
-    KIMXMPPHelper.messageSendBlock = nil;
-    KIMXMPPHelper.messageSendFailBlock = nil;
-    KIMXMPPHelper.messageReceiveBlock = nil;
 }
 
 @end

@@ -497,6 +497,7 @@ static IMXMPPHelper *helper;
 
 // 好友列表改变
 - (void)addRosterChangeNotificationObserver:(id)observer usingBlock:(void(^)(void))usingBlock{
+    if (observer == nil) return;
     kWeakSelf;
     [IMNotificationCenter addObserver:observer forName:kXmppRosterChangeNot object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note, id  _Nonnull observer) {
         [weakSelf p_rosterStorage];
@@ -533,6 +534,7 @@ static IMXMPPHelper *helper;
 
 // 订阅请求
 - (void)addSubscriptionRequestNotificationObserver:(id)observer usingBlock:(void(^)(XMPPPresence *presence))usingBlock{
+    if (observer == nil) return;
     [IMNotificationCenter addObserver:observer forName:kXmppSubscriptionRequestNot object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note, id  _Nonnull observer) {
         XMPPPresence *presence = note.object;
         if (usingBlock && presence) {
@@ -621,6 +623,7 @@ static IMXMPPHelper *helper;
 @implementation IMXMPPHelper (message)
 
 - (void)addChatDidReceiveMessageNotificationObserver:(id)observer usingBlock:(void(^)(void))usingBlock{
+    if (observer == nil) return;
     [IMNotificationCenter addObserver:observer forName:kChatDidReceiveMessageNot object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note, id  _Nonnull observer) {
         if (usingBlock) {
             usingBlock();
@@ -628,16 +631,18 @@ static IMXMPPHelper *helper;
     }];
 }
 
-- (void)addChatUserDidReceiveMessageNotificationObserver:(id)observer usingBlock:(void(^)(void))usingBlock{
+- (void)addChatUserDidReceiveMessageNotificationObserver:(id)observer userJid:(XMPPJID *)jid usingBlock:(void(^)(void))usingBlock{
+    if (observer == nil || jid == nil) return;
     [IMNotificationCenter addObserver:observer forName:kChatUserDidReceiveMessageNot object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note, id  _Nonnull observer) {
-        if (usingBlock) {
+        XMPPMessage *message = [note object];
+        if (usingBlock && [message.from isEqualToJID:jid]) {
             usingBlock();
         }
     }];
 }
 
-
 - (void)addChatDidSendMessageNotificationObserver:(id)observer usingBlock:(void(^)(void))usingBlock{
+    if (observer == nil) return;
     [IMNotificationCenter addObserver:observer forName:kChatDidSendMessageNot object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note, id  _Nonnull observer) {
         if (usingBlock) {
             usingBlock();
@@ -645,14 +650,25 @@ static IMXMPPHelper *helper;
     }];
 }
 
-
 - (void)addChatDidFailToSendMessageNotificationObserver:(id)observer usingBlock:(void(^)(void))usingBlock{
+    if (observer == nil) return;
     [IMNotificationCenter addObserver:observer forName:kChatDidFailToSendMessageNot object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note, id  _Nonnull observer) {
         if (usingBlock) {
             usingBlock();
         }
     }];
 }
+
+- (void)addhatUserDidFailToSendMessageNotificationObserver:(id)observer userJid:(XMPPJID *)jid usingBlock:(void(^)(void))usingBlock{
+    if (jid == nil || observer == nil) return;
+    [IMNotificationCenter addObserver:observer forName:kChatUserDidFailToSendMessageNot object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note, id  _Nonnull observer) {
+        XMPPMessage *message = [note object];
+        if (usingBlock && [message.from isEqualToJID:jid]) {
+            usingBlock();
+        }
+    }];
+}
+
 
 
 // 发送消息
@@ -685,6 +701,7 @@ static IMXMPPHelper *helper;
 
 - (void)xmppStream:(XMPPStream *)sender didFailToSendMessage:(XMPPMessage *)message error:(NSError *)error{
     [IMNotificationCenter postNotificationName:kChatDidFailToSendMessageNot object:message];
+    [IMNotificationCenter postNotificationName:kChatUserDidFailToSendMessageNot object:message];
 }
 
 @end

@@ -79,6 +79,7 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
 @property (nonatomic ,strong) XMPPvCardCoreDataStorage            *vCardStorage;
 @property (nonatomic ,strong) XMPPvCardTempModule                 *vCardModule;
 @property (nonatomic ,strong) XMPPvCardAvatarModule               *vCardAvatorModule;
+
 @property (nonatomic ,copy  ) IMXMPPSuccessBlock                  changeAvatarPhoto;//  修改头像
 
 + (IMXMPPHelper *)sharedHelper;
@@ -182,6 +183,7 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
 
 @end
 
+
 @interface IMXMPPHelper (message)
 /**
  *  发送消息
@@ -190,6 +192,31 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
  *  @param jid     发送对方的ID
  */
 - (void)sendMessageModel:(IMMessageModel *)message to:(XMPPJID *)jid;
+
+/**
+ 监听已经接收到的消息
+ */
+- (void)addChatDidReceiveMessageNotificationObserver:(id)observer usingBlock:(void(^)(void))usingBlock;
+
+/**
+ 监听当前聊天窗口接收到的消息
+ */
+- (void)addChatUserDidReceiveMessageNotificationObserver:(id)observer userJid:(XMPPJID *)jid usingBlock:(void(^)(void))usingBlock;
+
+/**
+ 监听发送成功的消息
+ */
+- (void)addChatDidSendMessageNotificationObserver:(id)observer usingBlock:(void(^)(void))usingBlock;
+
+/**
+ 监听发送失败的消息
+ */
+- (void)addChatDidFailToSendMessageNotificationObserver:(id)observer usingBlock:(void(^)(void))usingBlock;
+
+/**
+ 监听当前聊天用户发送失败的消息
+ */
+- (void)addhatUserDidFailToSendMessageNotificationObserver:(id)observer userJid:(XMPPJID *)jid usingBlock:(void(^)(void))usingBlock;
 @end
 
 
