@@ -43,7 +43,7 @@
     else {  // 未登录
         IMLoginViewController *accountVC = [[IMLoginViewController alloc] init];
         @weakify(self);
-        [accountVC setLoginSuccess:^{
+        [accountVC setLoginSuccessBlock:^{
             @strongify(self);
             [self launchInWindow:window];
         }];

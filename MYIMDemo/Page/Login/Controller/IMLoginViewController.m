@@ -263,8 +263,8 @@
     //  判断是否登录
     if (KIMXMPPHelper.userHelper.isLogin) {
         //  切换根视图
-        if (self.loginSuccess) {
-            self.loginSuccess();
+        if (self.loginSuccessBlock) {
+            self.loginSuccessBlock();
         }
     }
 }
