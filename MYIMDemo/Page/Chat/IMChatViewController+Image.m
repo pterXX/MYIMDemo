@@ -133,13 +133,9 @@
     
     dispatch_group_t group        =  dispatch_group_create();
     dispatch_group_async(group, drawQueue, ^{
-        
         for (UIImage *selectImage in photos) {
-        
             NSData *originalImageData = UIImagePNGRepresentation(selectImage);
-            
             NSString *fileName = [NSString stringWithFormat:@"%@.png", [NSDate getCurrentTimestamp]];
-            
             NSString *imagePath = [NSFileManager pathTempSettingImage:fileName];
             [imagePaths addObject:imagePath];
             
@@ -152,22 +148,18 @@
             __block IMMessageModel *messageModel    = [[IMMessageModel alloc] init];
             NSString *timeInterval = [NSDate getCurrentTimestamp];
             
-            messageModel.msgType           = IMMessageTypeImage;
-            messageModel.fromUserId        = self.conversation.chatToJid;
-            messageModel.toUserName        = self.conversation.conversationName;
             messageModel.messageChatType   = self.conversation.chatType;
             messageModel.messageSendStatus = IMMessageSendStatusSending;
-            messageModel.direction         = IMMessageSenderTypeSender;
             messageModel.sendTime          = timeInterval;
+            messageModel.recvTime          = timeInterval;
+            messageModel.toUserName        = self.conversation.conversationName;
+            messageModel.msgType           = IMMessageTypeImage;
+            messageModel.direction         = IMMessageSenderTypeSender;
             messageModel.lastMessage       = [self lastMessage];
             messageModel.messageId         = timeInterval;
-            messageModel.recvTime          = timeInterval;
             messageModel.fileData          = originalImageData;
-            
             BOOL isShowTime                = [self isShowTimeWithNewMessageModel:messageModel previousMessage:[self lastMessage]];
-            
             messageModel.showMessageTime   = isShowTime;
-            
             [messageModels addObject:messageModel];
             
             kWeakSelf;
@@ -175,7 +167,6 @@
                 cellHeight = rowHeight;
                 [indexPaths  addObject:@(self.dataSource.count)];
                 [cellHeights addObject:@(cellHeight)];
-                
                 [weakSelf addMessage:messageModel];
             }];
         }
@@ -214,7 +205,12 @@
                                 cellHeight:(CGFloat)cellHeight
                                selectImage:(UIImage *)selectImage
 {
-    [KIMXMPPHelper.xmppOutgoingFileTransfer sendData:messageModel.content toRecipient:self.conversation.chatToJid];
+   BOOL ok = [KIMXMPPHelper.xmppOutgoingFileTransfer sendData:<#(NSData *)#> named:<#(NSString *)#> toRecipient:<#(XMPPJID *)#> description:<#(NSString *)#> error:<#(NSError *__autoreleasing *)#> sendData:messageModel.fileData toRecipient:self.conversation.chatToJid];
+    if (ok)
+        NSLog(@"文件发送成功");
+    else
+        NSLog(@"文件发送失败");
+    
     [self updateMessageSendStatus:IMMessageSendStatusSendSuccess indexPath:indexPath localMessageId:messageModel.messageId serversMsgId:messageModel.messageId];
 }
 

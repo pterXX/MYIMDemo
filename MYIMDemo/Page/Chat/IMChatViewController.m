@@ -435,7 +435,7 @@
     }
     
     @weakify(self);
-    dispatch_sync(defaultQueue, ^{
+    dispatch_async(defaultQueue, ^{
         [model messageProcessingWithFinishedCalculate:^(CGFloat rowHeight, CGSize messageSize, BOOL complete) {
             @strongify(self);
             cellHeight = rowHeight;
