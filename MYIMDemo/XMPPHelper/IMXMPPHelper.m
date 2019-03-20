@@ -120,7 +120,7 @@ static IMXMPPHelper *helper;
 - (void)setupVCard{
     //添加vCard模块
     _vCardStorage = [XMPPvCardCoreDataStorage sharedInstance];
-    _vCardModule = [[XMPPvCardTempModule alloc] initWithvCardStorage: self.vCardStorage dispatchQueue:dispatch_get_main_queue()];
+    _vCardModule = [[XMPPvCardTempModule alloc] initWithvCardStorage: self.vCardStorage];
     [self.vCardModule activate:_xmppStream];
     _vCardAvatorModule = [[XMPPvCardAvatarModule alloc] initWithvCardTempModule:self.vCardModule];
     [_vCardAvatorModule addDelegate:self delegateQueue:dispatch_get_main_queue()];
