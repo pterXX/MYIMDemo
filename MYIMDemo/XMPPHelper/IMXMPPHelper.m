@@ -635,7 +635,7 @@ static IMXMPPHelper *helper;
     if (observer == nil || jid == nil) return;
     [IMNotificationCenter addObserver:observer forName:kChatUserDidReceiveMessageNot object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note, id  _Nonnull observer) {
         XMPPMessage *message = [note object];
-        if (usingBlock && [message.from isEqualToJID:jid]) {
+        if (usingBlock && [message.from.bareJID isEqualToJID:jid]) {
             usingBlock();
         }
     }];
@@ -663,7 +663,7 @@ static IMXMPPHelper *helper;
     if (jid == nil || observer == nil) return;
     [IMNotificationCenter addObserver:observer forName:kChatUserDidFailToSendMessageNot object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note, id  _Nonnull observer) {
         XMPPMessage *message = [note object];
-        if (usingBlock && [message.from isEqualToJID:jid]) {
+        if (usingBlock && [message.from.bareJID isEqualToJID:jid]) {
             usingBlock();
         }
     }];
@@ -700,10 +700,11 @@ static IMXMPPHelper *helper;
     }
     [newMessage addOriginId:message.messageId];
     [newMessage addBody:message.messageBody]; //消息内容
-    NSDictionary *dict = [self mj_keyValuesWithKeys:@[@"messageId",@"msgType",@"messageChatType",@"content",@"recvTime",@"voiceTime",@"pictureType",@"sendTime"]];
+    NSDictionary *dict = [message mj_keyValuesWithKeys:@[@"messageId",@"msgType",@"messageChatType",@"content",@"recvTime",@"voiceTime",@"pictureType",@"sendTime"]];
     NSArray *arr = [dict allKeys];
     for (NSString *key in arr) {
-        [newMessage addChild:[XMPPElement elementWithName:key stringValue:[dict objectForKey:key]]];
+        NSString *str = IMStirngFormat(@"%@",[dict objectForKey:key]);
+        [newMessage addChild:[XMPPElement elementWithName:key stringValue:str]];
     }
     [_xmppStream sendElement:newMessage];
 }
