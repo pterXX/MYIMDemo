@@ -6,7 +6,7 @@
 //  Copyright © 2017年 徐世杰. All rights reserved.
 //
 
-#import "IMFLEXChainViewEditModel.h"
+#import "IMFlexChainViewEditModel.h"
 #import "IMFlexibleLayoutSectionModel.h"
 
 #pragma mark - ## IMFlexChainViewEditModel (单个)

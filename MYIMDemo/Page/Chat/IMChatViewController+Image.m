@@ -205,7 +205,7 @@
                                 cellHeight:(CGFloat)cellHeight
                                selectImage:(UIImage *)selectImage
 {
-   BOOL ok = [KIMXMPPHelper.xmppOutgoingFileTransfer sendData:<#(NSData *)#> named:<#(NSString *)#> toRecipient:<#(XMPPJID *)#> description:<#(NSString *)#> error:<#(NSError *__autoreleasing *)#> sendData:messageModel.fileData toRecipient:self.conversation.chatToJid];
+   BOOL ok = [KIMXMPPHelper.xmppOutgoingFileTransfer sendData:messageModel.fileData toRecipient:self.conversation.chatToJid];
     if (ok)
         NSLog(@"文件发送成功");
     else
