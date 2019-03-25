@@ -19,6 +19,8 @@ target 'MYIMDemo' do
   pod 'XMPPFramework'             #xmmp协议框架
   pod 'YCMenuView'                #弹出式menuView框架
 
+  pod 'IMFlexAngel',:path => "../IMFlexAngel"     #私有库, 方便便捷加载tableView 或者 collectionView的数据
+
 
   target 'MYIMDemoTests' do
     inherit! :search_paths

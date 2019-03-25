@@ -21,6 +21,7 @@ PODS:
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
+  - IMFlexAngel (1)
   - KissXML (5.2.3)
   - libidn (1.35)
   - Masonry (1.1.0)
@@ -45,6 +46,7 @@ DEPENDENCIES:
   - AFNetworking
   - CocoaLumberjack
   - FMDB
+  - IMFlexAngel (from `../IMFlexAngel`)
   - Masonry
   - MJExtension
   - MJRefresh
@@ -73,11 +75,16 @@ SPEC REPOS:
     - XMPPFramework
     - YCMenuView
 
+EXTERNAL SOURCES:
+  IMFlexAngel:
+    :path: "../IMFlexAngel"
+
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
   CocoaLumberjack: 2101f8a5508197a305e737d16c5c2e9e2157628c
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
+  IMFlexAngel: d8f76a74a5e6a9c5968b6764efeb76e5d6ea240e
   KissXML: 09f88ff8161fd058d67b70740b8b516687b52823
   libidn: e4576a956b797c584c77aaedfc6e3dd639b61bdc
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
@@ -90,6 +97,6 @@ SPEC CHECKSUMS:
   XMPPFramework: 5d31ff9f73dce031b24bc49bcf88093627a3a86e
   YCMenuView: 1514dd2600e8a541bc1bf0f415e6a58a36ba562d
 
-PODFILE CHECKSUM: 8527ca180c46dd0ab71a4adf32d68863402b0a41
+PODFILE CHECKSUM: 47c6d43212f8c2ed846a06b3b30a011423ec1b2f
 
 COCOAPODS: 1.6.1
