@@ -38,7 +38,7 @@ Updated and maintained by Deusty LLC and the Apple development community.
 
 BSD 3-Clause License
 
-Copyright (c) 2010-2018, Deusty, LLC
+Copyright (c) 2010-2019, Deusty, LLC
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -84,6 +84,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 ## IMFlexAngel
+
+MIT
+
+
+## IMShortcut
 
 MIT
 
@@ -166,6 +171,11 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+
+## PrivateKit
+
+MIT
+
 
 ## SDAutoLayout
 

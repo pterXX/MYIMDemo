@@ -21,7 +21,8 @@ target 'MYIMDemo' do
   pod 'YCMenuView'                #弹出式menuView框架
 
   pod 'IMFlexAngel'  #私有库, 方便便捷加载tableView 或者 collectionView的数据
-
+  pod 'PrivateKit'   #私有库, 常用分类
+  pod 'IMShortcut'   #私有库, 常用便捷方法
 
   target 'MYIMDemoTests' do
     inherit! :search_paths

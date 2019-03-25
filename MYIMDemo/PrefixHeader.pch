@@ -43,6 +43,56 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 #define kDebugAvatarURLA @""
 #endif
 
+#pragma mark - 输入框枚举
+typedef NS_OPTIONS(NSUInteger, IMInputStatus) {
+    IMInputStatusNone = 0,          // 无状态
+    IMInputStatusEmoji,             // 表情
+    IMInputStatusText,              // 文字
+};
+
+typedef NS_OPTIONS(NSUInteger, IMInputBoxStatus) {
+    IMInputBoxStatusNone = 0,        // 无状态
+    IMInputBoxStatusShowVoice,       // 语音
+    IMInputBoxStatusShowEmoji,       // 表情
+    IMInputBoxStatusShowMore,        // 更多
+    IMInputBoxStatusShowKeyboard,    // 键盘
+};
+
+typedef NS_OPTIONS(NSUInteger, IMEmojiType) {
+    IMEmojiTypeNomarl = 0,   // 正常表情
+    IMEmojiTypeGIF           // 动画
+};
+
+typedef NS_OPTIONS(NSUInteger, IMGlideDirectionTpye) {
+    // 没有滑动，用于第一次显示表情组
+    IMGlideDirectionTpyeNone = 0,
+    // 从左往右滑，目的页面是左页
+    IMGlideDirectionTpyeLeft,
+    // 从右往左滑，目的页面是右页
+    IMGlideDirectionTpyeRight
+};
+
+typedef NS_OPTIONS(NSUInteger, IMInputBoxRecordStatus) {
+    IMInputBoxRecordStatusNone = 0,           // 初始状态
+    IMInputBoxRecordStatusRecording,          // 正在录音
+    IMInputBoxRecordStatusMoveOutside,        // 移出
+    IMInputBoxRecordStatusMoveInside,         // 移进
+    IMInputBoxRecordStatusCancel,             // 上滑取消录音
+    IMInputBoxRecordStatusEnd,                // 录音结束
+    IMInputBoxRecordStatusTooShort            // 录音太短
+};
+
+typedef NS_OPTIONS(NSUInteger, IMInputBoxMoreStatus) {
+    IMInputBoxMoreStatusNone = 0,   // 无
+    IMInputBoxMoreStatusPhoto,      // 相册选择照片
+    IMInputBoxMoreStatusTakePhoto,  // 拍摄
+    IMInputBoxMoreStatusMail,       // 云邮
+    IMInputBoxMoreStatusCallPhone,  // 拨打电话
+    IMInputBoxMoreStatusVideo,      // 视频通话
+    IMInputBoxMoreStatusCard,       // 个人名片
+    IMInputBoxMoreStatusLocation,   // 位置
+    IMInputBoxMoreStatusFile        // 文件
+};
 
 
 #import "MJRefresh.h"
@@ -54,7 +104,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 #import <MJExtension/MJExtension.h>
 #import <Masonry/Masonry.h>
 #import <SDWebImage/UIImageView+WebCache.h>
-#import <IMFlexAngel/IMFlexAngel.h>
+#import <IMFlexAngel/IMFlexAngel.h>  //  #私有库, 方便便捷加载tableView 或者 collectionView的数据
+#import <PrivateKit/IMCategory.h>   //  私有库, 常用分类
+#import <IMShortcut/IMShortcutMacros.h> // 私有库, 常用便捷方法
 
 #import "IMBaseModel.h" // 基础model
 #import "IMBaseNavigationController.h"
@@ -62,14 +114,22 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 #import "IMBaseTableViewCell.h" //  基础cell
 #import "IMBaseViewController.h" //  基础视图控制器
 
-
 #import "IMUtils.h" //  工具类
-
 #import "IMXMPPHelper.h"
 #import "IMUserHelper.h"
 #import "IMChatMessageHelper.h"
 #import "IMLaunchManager.h"
 
-#import "IMCategory.h"
+#import "IMNotificationHeader.h" // 通知头文件
+#import "IMStyleHeader.h"  //  样式头文件
+#import "IMOptionsHeader.h"  //  枚举类型头文件
+
+// 对于block的弱引用
+#define kWeakSelf           __weak __typeof(self)weakSelf = self;
+
+
+
+
+
 
 #endif /* PrefixHeader_pch */

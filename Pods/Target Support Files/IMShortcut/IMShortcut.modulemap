@@ -1,0 +1,6 @@
+framework module IMShortcut {
+  umbrella header "IMShortcut-umbrella.h"
+
+  export *
+  module * { export * }
+}

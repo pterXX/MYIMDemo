@@ -7,6 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <XMPPFramework/XMPPFramework.h>
+#import <MJExtension/MJExtension.h>
+#import <PrivateKit/IMCategory.h>   //  私有库, 常用分类
+
 #import "IMUserDetail.h"
 #import "IMUserSetting.h"
 #import "IMUserChatSetting.h"

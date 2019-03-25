@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "IMBaseModel.h"
 #import "IMPhotoPreviewModel.h"
 
 
@@ -44,7 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef void (^FinishedRowHeightCalculate)(CGFloat rowHeight, CGSize messageSize, BOOL complete);
 
-@interface IMMessageModel : IMBaseModel
+@interface IMMessageModel : NSObject
 // 消息来源的jid
 @property (nonatomic, strong) XMPPJID       *msgJid;
 // 消息类型
