@@ -6,7 +6,6 @@
 //  Copyright © 2019 徐世杰. All rights reserved.
 //
 
-#import "IMBaseViewController.h"
 #import "IMFlexChainSectionModel.h"
 #import "IMFlexChainViewModel.h"
 #import "IMFlexChainViewBatchModel.h"
@@ -37,7 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - ## IMFlexibleLayoutViewController
 @class IMFlexibleLayoutSectionModel;
-@interface IMFlexibleLayoutViewController : IMBaseViewController<
+@interface IMFlexibleLayoutViewController : UIViewController<
 IMFlexibleLayoutViewControllerProtocol
 >
 

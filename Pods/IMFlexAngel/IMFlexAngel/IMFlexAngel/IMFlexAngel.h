@@ -13,6 +13,7 @@
 #import "IMFlexChainViewBatchModel.h"
 #import "IMFlexChainViewEditModel.h"
 #import "IMFlexibleLayoutViewProtocol.h"
+#import "IMFlexMacros.h"
 
 #define     IMFLEX_CHAINAPI_TYPE            @property (nonatomic, copy, readonly)
 

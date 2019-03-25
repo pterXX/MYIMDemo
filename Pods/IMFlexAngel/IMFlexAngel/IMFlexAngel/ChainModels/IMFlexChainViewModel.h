@@ -11,7 +11,7 @@
  */
 
 #import <Foundation/Foundation.h>
-
+#import "IMFlexMacros.h"
 #pragma mark - ## IMFlexChainViewBaseModel (单个，基类)
 typedef NS_ENUM(NSInteger, IMFlexChainViewType) {
     IMFlexChainViewTypeCell,

@@ -11,7 +11,7 @@
  */
 
 #import <UIKit/UIKit.h>
-
+#import "IMFlexMacros.h"
 @class IMFlexibleLayoutSectionModel;
 
 #pragma mark - ## IMFlexChainSectionBaseModel (基类)

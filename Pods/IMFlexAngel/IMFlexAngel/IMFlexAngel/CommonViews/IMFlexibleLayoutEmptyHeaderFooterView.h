@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "IMFlexMacros.h"
 @interface IMFlexibleLayoutEmptyHeaderFooterView : UICollectionReusableView
 
 @end

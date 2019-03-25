@@ -11,7 +11,7 @@
  */
 
 #import <Foundation/Foundation.h>
-
+#import "IMFlexMacros.h"
 typedef NS_ENUM(NSInteger, IMFlexChainViewEditType) {
     IMFlexChainViewEditTypeDelete,
     IMFlexChainViewEditTypeUpdate,

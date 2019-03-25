@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "IMFlexibleLayoutViewProtocol.h"
-
+#import "IMFlexMacros.h"
 #pragma mark - # IMFlexibleLayoutSeperatorModel
 @interface IMFlexibleLayoutSeperatorModel : NSObject
 

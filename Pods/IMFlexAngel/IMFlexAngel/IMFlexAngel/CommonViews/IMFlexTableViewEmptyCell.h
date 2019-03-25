@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "IMFlexibleLayoutSeperatorCell.h"
-
+#import "IMFlexMacros.h"
 @interface IMFlexTableViewEmptyCell : UITableViewCell <IMFlexibleLayoutViewProtocol>
 
 @end

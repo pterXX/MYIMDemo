@@ -1,6 +1,7 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
-
+source 'https://github.com/pterXX/PrivatePod.git'
+source 'https://github.com/CocoaPods/Specs.git'
 target 'MYIMDemo' do
   # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
   use_frameworks!
@@ -19,7 +20,7 @@ target 'MYIMDemo' do
   pod 'XMPPFramework'             #xmmp协议框架
   pod 'YCMenuView'                #弹出式menuView框架
 
-  pod 'IMFlexAngel',:path => "../IMFlexAngel"     #私有库, 方便便捷加载tableView 或者 collectionView的数据
+  pod 'IMFlexAngel'  #私有库, 方便便捷加载tableView 或者 collectionView的数据
 
 
   target 'MYIMDemoTests' do

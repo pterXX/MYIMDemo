@@ -12,19 +12,6 @@
 		841D27002238D4470004D0FE /* IMNewContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 841D26FF2238D4470004D0FE /* IMNewContactViewController.m */; };
 		841D27032238D8E40004D0FE /* IMNewContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 841D27022238D8E40004D0FE /* IMNewContactTableViewCell.m */; };
 		8423C2C8223B410B00E999F5 /* IMContactItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8423C2C7223B410B00E999F5 /* IMContactItemCell.m */; };
-		8423C2FD223B506A00E999F5 /* IMFlexibleLayoutViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8423C2DE223B506A00E999F5 /* IMFlexibleLayoutViewModel.m */; };
-		8423C2FE223B506A00E999F5 /* IMFlexibleLayoutSectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8423C2DF223B506A00E999F5 /* IMFlexibleLayoutSectionModel.m */; };
-		8423C2FF223B506A00E999F5 /* IMFlexibleLayoutSeperatorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8423C2E4223B506A00E999F5 /* IMFlexibleLayoutSeperatorCell.m */; };
-		8423C300223B506A00E999F5 /* IMFlexTableViewEmptyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8423C2E8223B506A00E999F5 /* IMFlexTableViewEmptyCell.m */; };
-		8423C301223B506A00E999F5 /* IMFlexibleLayoutEmptyHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8423C2E9223B506A00E999F5 /* IMFlexibleLayoutEmptyHeaderFooterView.m */; };
-		8423C302223B506A00E999F5 /* IMFlexChainSectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8423C2EB223B506A00E999F5 /* IMFlexChainSectionModel.m */; };
-		8423C303223B506A00E999F5 /* IIMFlexChainViewEditModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8423C2EC223B506A00E999F5 /* IIMFlexChainViewEditModel.m */; };
-		8423C304223B506A00E999F5 /* IMFlexChainViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8423C2ED223B506A00E999F5 /* IMFlexChainViewModel.m */; };
-		8423C305223B506A00E999F5 /* IMFlexChainViewBatchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8423C2F1223B506A00E999F5 /* IMFlexChainViewBatchModel.m */; };
-		8423C306223B506A00E999F5 /* IMFlexAngel+UICollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8423C2F8223B506A00E999F5 /* IMFlexAngel+UICollectionView.m */; };
-		8423C307223B506A00E999F5 /* IMFlexAngel+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 8423C2F9223B506A00E999F5 /* IMFlexAngel+Private.m */; };
-		8423C308223B506A00E999F5 /* IMFlexAngel+UITableView.temp_caseinsensitive_rename.m in Sources */ = {isa = PBXBuildFile; fileRef = 8423C2FA223B506A00E999F5 /* IMFlexAngel+UITableView.temp_caseinsensitive_rename.m */; };
-		8423C309223B506A00E999F5 /* IMFlexAngel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8423C2FC223B506A00E999F5 /* IMFlexAngel.m */; };
 		8423C30F223B52F600E999F5 /* IMContactsAngel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8423C30E223B52F600E999F5 /* IMContactsAngel.m */; };
 		8423C312223B561300E999F5 /* IMContactsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8423C310223B561200E999F5 /* IMContactsHeaderView.m */; };
 		8423C315223B6BCB00E999F5 /* IMNewFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8423C314223B6BCB00E999F5 /* IMNewFriendViewController.m */; };
@@ -77,10 +64,6 @@
 		84325920223F5ECD003A33F2 /* IMUserDetailBaseInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8432591E223F5ECD003A33F2 /* IMUserDetailBaseInfoCell.m */; };
 		84325924223F618E003A33F2 /* UIView+Separator.m in Sources */ = {isa = PBXBuildFile; fileRef = 84325923223F618E003A33F2 /* UIView+Separator.m */; };
 		84325929223F62BE003A33F2 /* IMUserSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84325928223F62BE003A33F2 /* IMUserSettingViewController.m */; };
-		8432592C223F646E003A33F2 /* IMFlexibleLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8432592B223F646E003A33F2 /* IMFlexibleLayoutViewController.m */; };
-		8432592F223F6985003A33F2 /* IMFlexibleLayoutFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8432592E223F6985003A33F2 /* IMFlexibleLayoutFlowLayout.m */; };
-		84325932223F6B1D003A33F2 /* IMFlexibleLayoutViewController+Kernel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84325931223F6B1C003A33F2 /* IMFlexibleLayoutViewController+Kernel.m */; };
-		84325939223F6DA0003A33F2 /* IMFlexibleLayoutViewController+OldAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 84325937223F6DA0003A33F2 /* IMFlexibleLayoutViewController+OldAPI.m */; };
 		8432593C223F7094003A33F2 /* IMUserDetailChatButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8432593B223F7094003A33F2 /* IMUserDetailChatButtonCell.m */; };
 		84325940223F7386003A33F2 /* IMLaunchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8432593F223F7385003A33F2 /* IMLaunchManager.m */; };
 		8438D543222F60BF001FD530 /* IMXMPPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8438D542222F60BF001FD530 /* IMXMPPHelper.m */; };
@@ -524,34 +507,6 @@
 		841D27022238D8E40004D0FE /* IMNewContactTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMNewContactTableViewCell.m; sourceTree = "<group>"; };
 		8423C2C6223B410B00E999F5 /* IMContactItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMContactItemCell.h; sourceTree = "<group>"; };
 		8423C2C7223B410B00E999F5 /* IMContactItemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMContactItemCell.m; sourceTree = "<group>"; };
-		8423C2DE223B506A00E999F5 /* IMFlexibleLayoutViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMFlexibleLayoutViewModel.m; sourceTree = "<group>"; };
-		8423C2DF223B506A00E999F5 /* IMFlexibleLayoutSectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMFlexibleLayoutSectionModel.m; sourceTree = "<group>"; };
-		8423C2E0223B506A00E999F5 /* IMFlexibleLayoutViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMFlexibleLayoutViewModel.h; sourceTree = "<group>"; };
-		8423C2E1223B506A00E999F5 /* IMFlexibleLayoutSectionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMFlexibleLayoutSectionModel.h; sourceTree = "<group>"; };
-		8423C2E2223B506A00E999F5 /* IMFlexAngel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMFlexAngel.h; sourceTree = "<group>"; };
-		8423C2E4223B506A00E999F5 /* IMFlexibleLayoutSeperatorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMFlexibleLayoutSeperatorCell.m; sourceTree = "<group>"; };
-		8423C2E5223B506A00E999F5 /* IMFlexibleLayoutEmptyHeaderFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMFlexibleLayoutEmptyHeaderFooterView.h; sourceTree = "<group>"; };
-		8423C2E6223B506A00E999F5 /* IMFlexTableViewEmptyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMFlexTableViewEmptyCell.h; sourceTree = "<group>"; };
-		8423C2E7223B506A00E999F5 /* IMFlexibleLayoutSeperatorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMFlexibleLayoutSeperatorCell.h; sourceTree = "<group>"; };
-		8423C2E8223B506A00E999F5 /* IMFlexTableViewEmptyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMFlexTableViewEmptyCell.m; sourceTree = "<group>"; };
-		8423C2E9223B506A00E999F5 /* IMFlexibleLayoutEmptyHeaderFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMFlexibleLayoutEmptyHeaderFooterView.m; sourceTree = "<group>"; };
-		8423C2EB223B506A00E999F5 /* IMFlexChainSectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMFlexChainSectionModel.m; sourceTree = "<group>"; };
-		8423C2EC223B506A00E999F5 /* IIMFlexChainViewEditModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIMFlexChainViewEditModel.m; sourceTree = "<group>"; };
-		8423C2ED223B506A00E999F5 /* IMFlexChainViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMFlexChainViewModel.m; sourceTree = "<group>"; };
-		8423C2EE223B506A00E999F5 /* IMFlexChainViewBatchModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMFlexChainViewBatchModel.h; sourceTree = "<group>"; };
-		8423C2EF223B506A00E999F5 /* IMFlexChainViewEditModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMFlexChainViewEditModel.h; sourceTree = "<group>"; };
-		8423C2F0223B506A00E999F5 /* IMFlexChainSectionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMFlexChainSectionModel.h; sourceTree = "<group>"; };
-		8423C2F1223B506A00E999F5 /* IMFlexChainViewBatchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMFlexChainViewBatchModel.m; sourceTree = "<group>"; };
-		8423C2F2223B506A00E999F5 /* IMFlexChainViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMFlexChainViewModel.h; sourceTree = "<group>"; };
-		8423C2F4223B506A00E999F5 /* IMFlexMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMFlexMacros.h; sourceTree = "<group>"; };
-		8423C2F5223B506A00E999F5 /* IMFlexAngel+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IMFlexAngel+Private.h"; sourceTree = "<group>"; };
-		8423C2F6223B506A00E999F5 /* IMFlexAngel+UICollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IMFlexAngel+UICollectionView.h"; sourceTree = "<group>"; };
-		8423C2F7223B506A00E999F5 /* IMFlexAngel+UITableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IMFlexAngel+UITableView.h"; sourceTree = "<group>"; };
-		8423C2F8223B506A00E999F5 /* IMFlexAngel+UICollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IMFlexAngel+UICollectionView.m"; sourceTree = "<group>"; };
-		8423C2F9223B506A00E999F5 /* IMFlexAngel+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IMFlexAngel+Private.m"; sourceTree = "<group>"; };
-		8423C2FA223B506A00E999F5 /* IMFlexAngel+UITableView.temp_caseinsensitive_rename.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IMFlexAngel+UITableView.temp_caseinsensitive_rename.m"; sourceTree = "<group>"; };
-		8423C2FB223B506A00E999F5 /* IMFlexibleLayoutViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMFlexibleLayoutViewProtocol.h; sourceTree = "<group>"; };
-		8423C2FC223B506A00E999F5 /* IMFlexAngel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMFlexAngel.m; sourceTree = "<group>"; };
 		8423C30D223B52F600E999F5 /* IMContactsAngel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMContactsAngel.h; sourceTree = "<group>"; };
 		8423C30E223B52F600E999F5 /* IMContactsAngel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMContactsAngel.m; sourceTree = "<group>"; };
 		8423C310223B561200E999F5 /* IMContactsHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMContactsHeaderView.m; sourceTree = "<group>"; };
@@ -651,14 +606,6 @@
 		84325923223F618E003A33F2 /* UIView+Separator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Separator.m"; sourceTree = "<group>"; };
 		84325927223F62BE003A33F2 /* IMUserSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMUserSettingViewController.h; sourceTree = "<group>"; };
 		84325928223F62BE003A33F2 /* IMUserSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMUserSettingViewController.m; sourceTree = "<group>"; };
-		8432592A223F646E003A33F2 /* IMFlexibleLayoutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMFlexibleLayoutViewController.h; sourceTree = "<group>"; };
-		8432592B223F646E003A33F2 /* IMFlexibleLayoutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMFlexibleLayoutViewController.m; sourceTree = "<group>"; };
-		8432592D223F6985003A33F2 /* IMFlexibleLayoutFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMFlexibleLayoutFlowLayout.h; sourceTree = "<group>"; };
-		8432592E223F6985003A33F2 /* IMFlexibleLayoutFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMFlexibleLayoutFlowLayout.m; sourceTree = "<group>"; };
-		84325930223F6B1C003A33F2 /* IMFlexibleLayoutViewController+Kernel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IMFlexibleLayoutViewController+Kernel.h"; sourceTree = "<group>"; };
-		84325931223F6B1C003A33F2 /* IMFlexibleLayoutViewController+Kernel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IMFlexibleLayoutViewController+Kernel.m"; sourceTree = "<group>"; };
-		84325937223F6DA0003A33F2 /* IMFlexibleLayoutViewController+OldAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IMFlexibleLayoutViewController+OldAPI.m"; sourceTree = "<group>"; };
-		84325938223F6DA0003A33F2 /* IMFlexibleLayoutViewController+OldAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IMFlexibleLayoutViewController+OldAPI.h"; sourceTree = "<group>"; };
 		8432593A223F7093003A33F2 /* IMUserDetailChatButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMUserDetailChatButtonCell.h; sourceTree = "<group>"; };
 		8432593B223F7094003A33F2 /* IMUserDetailChatButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMUserDetailChatButtonCell.m; sourceTree = "<group>"; };
 		8432593E223F7385003A33F2 /* IMLaunchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMLaunchManager.h; sourceTree = "<group>"; };
@@ -1273,75 +1220,6 @@
 			path = ImagePicker;
 			sourceTree = "<group>";
 		};
-		8423C2DC223B506A00E999F5 /* IMFLEXAngel */ = {
-			isa = PBXGroup;
-			children = (
-				8423C2DD223B506A00E999F5 /* ViewModels */,
-				8423C2E2223B506A00E999F5 /* IMFlexAngel.h */,
-				8423C2E3223B506A00E999F5 /* CommonViews */,
-				8423C2EA223B506A00E999F5 /* ChainModels */,
-				8423C2F3223B506A00E999F5 /* Private */,
-				8423C2FB223B506A00E999F5 /* IMFlexibleLayoutViewProtocol.h */,
-				8423C2FC223B506A00E999F5 /* IMFlexAngel.m */,
-			);
-			path = IMFLEXAngel;
-			sourceTree = "<group>";
-		};
-		8423C2DD223B506A00E999F5 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				84325938223F6DA0003A33F2 /* IMFlexibleLayoutViewController+OldAPI.h */,
-				84325937223F6DA0003A33F2 /* IMFlexibleLayoutViewController+OldAPI.m */,
-				8423C2DE223B506A00E999F5 /* IMFlexibleLayoutViewModel.m */,
-				8423C2DF223B506A00E999F5 /* IMFlexibleLayoutSectionModel.m */,
-				8423C2E0223B506A00E999F5 /* IMFlexibleLayoutViewModel.h */,
-				8423C2E1223B506A00E999F5 /* IMFlexibleLayoutSectionModel.h */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		8423C2E3223B506A00E999F5 /* CommonViews */ = {
-			isa = PBXGroup;
-			children = (
-				8423C2E4223B506A00E999F5 /* IMFlexibleLayoutSeperatorCell.m */,
-				8423C2E5223B506A00E999F5 /* IMFlexibleLayoutEmptyHeaderFooterView.h */,
-				8423C2E6223B506A00E999F5 /* IMFlexTableViewEmptyCell.h */,
-				8423C2E7223B506A00E999F5 /* IMFlexibleLayoutSeperatorCell.h */,
-				8423C2E8223B506A00E999F5 /* IMFlexTableViewEmptyCell.m */,
-				8423C2E9223B506A00E999F5 /* IMFlexibleLayoutEmptyHeaderFooterView.m */,
-			);
-			path = CommonViews;
-			sourceTree = "<group>";
-		};
-		8423C2EA223B506A00E999F5 /* ChainModels */ = {
-			isa = PBXGroup;
-			children = (
-				8423C2EB223B506A00E999F5 /* IMFlexChainSectionModel.m */,
-				8423C2EC223B506A00E999F5 /* IIMFlexChainViewEditModel.m */,
-				8423C2ED223B506A00E999F5 /* IMFlexChainViewModel.m */,
-				8423C2EE223B506A00E999F5 /* IMFlexChainViewBatchModel.h */,
-				8423C2EF223B506A00E999F5 /* IMFlexChainViewEditModel.h */,
-				8423C2F0223B506A00E999F5 /* IMFlexChainSectionModel.h */,
-				8423C2F1223B506A00E999F5 /* IMFlexChainViewBatchModel.m */,
-				8423C2F2223B506A00E999F5 /* IMFlexChainViewModel.h */,
-			);
-			path = ChainModels;
-			sourceTree = "<group>";
-		};
-		8423C2F3223B506A00E999F5 /* Private */ = {
-			isa = PBXGroup;
-			children = (
-				8423C2F4223B506A00E999F5 /* IMFlexMacros.h */,
-				8423C2F5223B506A00E999F5 /* IMFlexAngel+Private.h */,
-				8423C2F6223B506A00E999F5 /* IMFlexAngel+UICollectionView.h */,
-				8423C2F7223B506A00E999F5 /* IMFlexAngel+UITableView.h */,
-				8423C2F8223B506A00E999F5 /* IMFlexAngel+UICollectionView.m */,
-				8423C2F9223B506A00E999F5 /* IMFlexAngel+Private.m */,
-				8423C2FA223B506A00E999F5 /* IMFlexAngel+UITableView.temp_caseinsensitive_rename.m */,
-			);
-			path = Private;
-			sourceTree = "<group>";
-		};
 		8423C30A223B51FA00E999F5 /* UIFont */ = {
 			isa = PBXGroup;
 			children = (
@@ -1949,19 +1827,6 @@
 			path = IMUserSettingViewController;
 			sourceTree = "<group>";
 		};
-		84325933223F6B98003A33F2 /* IMFlexibleLayoutViewController */ = {
-			isa = PBXGroup;
-			children = (
-				84325931223F6B1C003A33F2 /* IMFlexibleLayoutViewController+Kernel.m */,
-				84325930223F6B1C003A33F2 /* IMFlexibleLayoutViewController+Kernel.h */,
-				8432592D223F6985003A33F2 /* IMFlexibleLayoutFlowLayout.h */,
-				8432592E223F6985003A33F2 /* IMFlexibleLayoutFlowLayout.m */,
-				8432592A223F646E003A33F2 /* IMFlexibleLayoutViewController.h */,
-				8432592B223F646E003A33F2 /* IMFlexibleLayoutViewController.m */,
-			);
-			path = IMFlexibleLayoutViewController;
-			sourceTree = "<group>";
-		};
 		8432593D223F7374003A33F2 /* LaunchManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -2268,7 +2133,6 @@
 				840AD5152240C8F10025DAB3 /* ImagePicker */,
 				840AD5122240C8B80025DAB3 /* Base */,
 				840AD5132240C8CE0025DAB3 /* File */,
-				84325933223F6B98003A33F2 /* IMFlexibleLayoutViewController */,
 				840AD5142240C8D80025DAB3 /* SystemAuth */,
 			);
 			path = Common;
@@ -2311,7 +2175,6 @@
 			children = (
 				8425CEB42241E59200E1A12E /* UIImageView */,
 				8423C33D223B823100E999F5 /* Common.xcassets */,
-				8423C2DC223B506A00E999F5 /* IMFLEXAngel */,
 				8423C30A223B51FA00E999F5 /* UIFont */,
 				8423C30B223B521900E999F5 /* UIColor */,
 				8423C30C223B522400E999F5 /* UIImage */,
@@ -3202,6 +3065,7 @@
 				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
+				"${BUILT_PRODUCTS_DIR}/IMFlexAngel/IMFlexAngel.framework",
 				"${BUILT_PRODUCTS_DIR}/KissXML/KissXML.framework",
 				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
@@ -3220,6 +3084,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IMFlexAngel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KissXML.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
@@ -3284,7 +3149,6 @@
 				EE893A3722291B18004F1F6E /* IMChatTableViewCell.m in Sources */,
 				8428F46922326B060064DA35 /* IMBaseTabBarController.m in Sources */,
 				842511A0222E6032004C3954 /* IMGroup+CreateAvatar.m in Sources */,
-				8423C308223B506A00E999F5 /* IMFlexAngel+UITableView.temp_caseinsensitive_rename.m in Sources */,
 				EE8937012228D6B8004F1F6E /* UIViewController+Category.m in Sources */,
 				842511B8222E60BF004C3954 /* IMDBBaseStore.m in Sources */,
 				EE8939BB222902C3004F1F6E /* IMInputBoxEmojiView.m in Sources */,
@@ -3300,7 +3164,6 @@
 				EE7FE462222CC42500073210 /* TADotView.m in Sources */,
 				EE8939B4222902C3004F1F6E /* IMInputBoxEmojiMenuView.m in Sources */,
 				EE8936CE2227DF37004F1F6E /* UIDevice+Category.m in Sources */,
-				84325939223F6DA0003A33F2 /* IMFlexibleLayoutViewController+OldAPI.m in Sources */,
 				EE893A3A22291B18004F1F6E /* IMChatImageTableViewCell.m in Sources */,
 				8438D543222F60BF001FD530 /* IMXMPPHelper.m in Sources */,
 				8493E970224085A400175E53 /* IMConversationHelper.m in Sources */,
@@ -3308,8 +3171,6 @@
 				8423C30F223B52F600E999F5 /* IMContactsAngel.m in Sources */,
 				EE8939B8222902C3004F1F6E /* IMInputBoxMoreItemView.m in Sources */,
 				EE8936FC2228D33B004F1F6E /* UIColor+IMChat.m in Sources */,
-				8423C2FD223B506A00E999F5 /* IMFlexibleLayoutViewModel.m in Sources */,
-				8423C309223B506A00E999F5 /* IMFlexAngel.m in Sources */,
 				842511B3222E60B3004C3954 /* IMDBUserStore.m in Sources */,
 				EE893A0B22290A55004F1F6E /* UIImage+Compression.m in Sources */,
 				842511AD222E609A004C3954 /* IMUser.m in Sources */,
@@ -3318,9 +3179,7 @@
 				EE893A0C22290A55004F1F6E /* UIImage+Video.m in Sources */,
 				EE8937172228F91A004F1F6E /* UILabel+AutoLabelHeightAndWidth.m in Sources */,
 				84325924223F618E003A33F2 /* UIView+Separator.m in Sources */,
-				8423C304223B506A00E999F5 /* IMFlexChainViewModel.m in Sources */,
 				EE8936942227D997004F1F6E /* main.m in Sources */,
-				8423C2FF223B506A00E999F5 /* IMFlexibleLayoutSeperatorCell.m in Sources */,
 				8423C35F223B9C0E00E999F5 /* IMFriendFindViewController.m in Sources */,
 				EE8936D42227E3AF004F1F6E /* IMSearchMessageViewController.m in Sources */,
 				84681F742230CA500056372A /* UIBarButtonItem+Category.m in Sources */,
@@ -3329,7 +3188,6 @@
 				EE8939B9222902C3004F1F6E /* IMInputBoxRecorderView.m in Sources */,
 				840AD5182240C91A0025DAB3 /* IMImagePicker.m in Sources */,
 				EE8939B7222902C3004F1F6E /* IMInputBoxViewCtrl.m in Sources */,
-				8432592C223F646E003A33F2 /* IMFlexibleLayoutViewController.m in Sources */,
 				8428F46622326AD00064DA35 /* IMBaseNavigationController.m in Sources */,
 				EE8936C42227DA4F004F1F6E /* IMColorTools.m in Sources */,
 				EE8939B6222902C3004F1F6E /* IMVideoProgressView.m in Sources */,
@@ -3337,7 +3195,6 @@
 				842511C3222E6539004C3954 /* NSFileManager+IMChat.m in Sources */,
 				EE8939BA222902C3004F1F6E /* IMTextView.m in Sources */,
 				EE8936EF2228C81F004F1F6E /* IMChatMessageHelper.m in Sources */,
-				8423C305223B506A00E999F5 /* IMFlexChainViewBatchModel.m in Sources */,
 				EE893A3822291B18004F1F6E /* IMConversationListTableViewCell.m in Sources */,
 				EE8936F92228D0E5004F1F6E /* UIFont+IMChat.m in Sources */,
 				8425119A222E600E004C3954 /* IMDBGroupStore.m in Sources */,
@@ -3347,7 +3204,6 @@
 				EE893A3C22291B18004F1F6E /* IMChatTextTableViewCell.m in Sources */,
 				8423C321223B6D4B00E999F5 /* IMUserDetailViewController.m in Sources */,
 				EE8939C422290380004F1F6E /* NSAttributedString+Addition.m in Sources */,
-				8423C303223B506A00E999F5 /* IIMFlexChainViewEditModel.m in Sources */,
 				8428F4582232481F0064DA35 /* IMNotificationObserver.m in Sources */,
 				EE7FE466222CC42500073210 /* IMVideoPlayView.m in Sources */,
 				842511B9222E60BF004C3954 /* IMDBManager.m in Sources */,
@@ -3370,7 +3226,6 @@
 				EE8936EC2228C687004F1F6E /* IMMessageModel.m in Sources */,
 				EE7234D7222CCEB200A6F7E2 /* NSArray+zh_SafeAccess.m in Sources */,
 				8423C335223B800700E999F5 /* IMContactsSearchResultViewController.m in Sources */,
-				84325932223F6B1D003A33F2 /* IMFlexibleLayoutViewController+Kernel.m in Sources */,
 				EE8939B2222902C3004F1F6E /* IMEmojiCollectionViewCell.m in Sources */,
 				EE89370D2228F5C7004F1F6E /* IMAppDefaultUtil.m in Sources */,
 				EE8939C722290408004F1F6E /* IMFileManagement.m in Sources */,
@@ -3387,14 +3242,11 @@
 				841D27002238D4470004D0FE /* IMNewContactViewController.m in Sources */,
 				842511AC222E609A004C3954 /* IMUserDetail.m in Sources */,
 				8493E96D22407FB700175E53 /* IMChatVoiceTableViewCell.m in Sources */,
-				8423C307223B506A00E999F5 /* IMFlexAngel+Private.m in Sources */,
 				EE8936CA2227DC57004F1F6E /* UIButton+Extra.m in Sources */,
-				8423C2FE223B506A00E999F5 /* IMFlexibleLayoutSectionModel.m in Sources */,
 				8425CEB72241E5C800E1A12E /* UIImageView+IMChat.m in Sources */,
 				EE7FE461222CC42500073210 /* IMPhotoBrowser.m in Sources */,
 				EE893A0A22290A55004F1F6E /* UIImage+Color.m in Sources */,
 				8423C31B223B6C0100E999F5 /* IMOfficialAccountViewController.m in Sources */,
-				8423C301223B506A00E999F5 /* IMFlexibleLayoutEmptyHeaderFooterView.m in Sources */,
 				EE893A23222918AE004F1F6E /* IMChatViewController+Image.m in Sources */,
 				EE8939AD222902C3004F1F6E /* IMVideoViewController.m in Sources */,
 				8428F4862235F5DB0064DA35 /* IMContactsViewController.m in Sources */,
@@ -3406,11 +3258,9 @@
 				EE8939B0222902C3004F1F6E /* IMHorizontalPageFlowlayout.m in Sources */,
 				EE89371A2228FE6A004F1F6E /* IMNetworkDetection.m in Sources */,
 				8423C341223B839000E999F5 /* UIView+Extensions.m in Sources */,
-				8423C302223B506A00E999F5 /* IMFlexChainSectionModel.m in Sources */,
 				EE8936C72227DBA2004F1F6E /* IMBaseViewController.m in Sources */,
 				EE8936DD2228BE68004F1F6E /* IMShortcutMethod.m in Sources */,
 				EE8939AF222902C3004F1F6E /* IMInputBoxView.m in Sources */,
-				8432592F223F6985003A33F2 /* IMFlexibleLayoutFlowLayout.m in Sources */,
 				EE893720222900BE004F1F6E /* UIView+Frame.m in Sources */,
 				EE8939B1222902C3004F1F6E /* IMPlayer.m in Sources */,
 				8423C2C8223B410B00E999F5 /* IMContactItemCell.m in Sources */,
@@ -3420,7 +3270,6 @@
 				84325920223F5ECD003A33F2 /* IMUserDetailBaseInfoCell.m in Sources */,
 				EE8936862227D997004F1F6E /* AppDelegate.m in Sources */,
 				842511BF222E60D0004C3954 /* IMUserHelper.m in Sources */,
-				8423C300223B506A00E999F5 /* IMFlexTableViewEmptyCell.m in Sources */,
 				EE8939CA22290419004F1F6E /* IMFileCache.m in Sources */,
 				84325929223F62BE003A33F2 /* IMUserSettingViewController.m in Sources */,
 				84325940223F7386003A33F2 /* IMLaunchManager.m in Sources */,
@@ -3433,7 +3282,6 @@
 				EE8939B3222902C3004F1F6E /* IMRecordView.m in Sources */,
 				EE8936E62228C4B6004F1F6E /* IMBaseModel.m in Sources */,
 				8423C312223B561300E999F5 /* IMContactsHeaderView.m in Sources */,
-				8423C306223B506A00E999F5 /* IMFlexAngel+UICollectionView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

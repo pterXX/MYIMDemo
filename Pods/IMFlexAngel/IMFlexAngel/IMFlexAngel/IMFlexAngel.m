@@ -13,7 +13,6 @@
 #import "IMFlexAngel+UICollectionView.h"
 #import "IMFlexibleLayoutSeperatorCell.h"
 #import "IMFlexTableViewEmptyCell.h"
-#import "IMFlexMacros.h"
 
 /*
  *  注册cells 到 hostView

@@ -19,7 +19,6 @@
 #import "UIColor+IMChat.h"    // 颜色
 #import "UIFont+IMChat.h"     // 字体
 #import "UIImage+IMChat.h"    // 图片
-#import "IMFlexAngel.h"
 #import "UIImageView+IMChat.h"
 
 

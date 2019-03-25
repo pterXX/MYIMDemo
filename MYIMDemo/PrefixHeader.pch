@@ -54,6 +54,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 #import <MJExtension/MJExtension.h>
 #import <Masonry/Masonry.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <IMFlexAngel/IMFlexAngel.h>
 
 #import "IMBaseModel.h" // 基础model
 #import "IMBaseNavigationController.h"

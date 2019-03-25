@@ -11,7 +11,7 @@
  */
 
 #import <Foundation/Foundation.h>
-
+#import "IMFlexMacros.h"
 #pragma mark - ## IMFlexChainViewBatchBaseModel (批量，基类)
 @interface IMFlexChainViewBatchBaseModel<IMFlexReturnType> : NSObject
 

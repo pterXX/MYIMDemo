@@ -1,6 +1,6 @@
 {
   "name": "IMFlexAngel",
-  "version": "1",
+  "version": "6",
   "summary": "IMFlexAngel.",
   "description": "this is IMFlexAngel",
   "homepage": "https://github.com/pterXX/IMFlexAngel",
@@ -16,7 +16,7 @@
   },
   "source": {
     "git": "https://github.com/pterXX/IMFlexAngel.git",
-    "tag": "1"
+    "tag": "6"
   },
   "source_files": "IMFlexAngel/IMFlexAngel/**/*.{h,m,swift}",
   "requires_arc": true
