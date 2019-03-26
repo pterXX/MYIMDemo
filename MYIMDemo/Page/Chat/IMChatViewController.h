@@ -57,6 +57,9 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (BOOL)isShowTimeWithNewMessageModel:(IMMessageModel *)messageModel previousMessage:(IMMessageModel *)previousMessage;
 
+
+- (void)sendMessageWithContent:(id)content indexPath:(NSIndexPath *)indexPath;
+
 /**
  发送消息
  

@@ -286,6 +286,7 @@
         for (XMPPMessageArchiving_Message_CoreDataObject * obj in fetchedObjects) {
            IMMessageModel *model = [IMMessageModel modelWithCoreDataObject:obj complete:^IMMessageModel * _Nonnull(IMMessageModel * _Nonnull objModel, XMPPMessageArchiving_Message_CoreDataObject * _Nonnull coreDataobj) {
                @strongify(self);
+               NSLog(@"%@",coreDataobj);
                 objModel.lastMessage     = previousMessage;
                 NSTimeInterval prevTime = 0;
                 NSTimeInterval lastTime = 0;
@@ -347,6 +348,7 @@
     @weakify(self);
     [KIMXMPPHelper addChatDidSendMessageNotificationObserver:self usingBlock:^{
         @strongify(self);
+        [self getMessagesDataWithMessageId:@"0"];
         [self addConversation];
     }];
     
@@ -354,7 +356,7 @@
         
     }];
     
-    [KIMXMPPHelper addChatUserDidReceiveMessageNotificationObserver:self userJid:self.conversation.chatToJid usingBlock:^{
+    [KIMXMPPHelper addChatDidReceiveMessageNotificationObserver:self usingBlock:^{
         @strongify(self);
         [self getMessagesDataWithMessageId:@"0"];
         [self addConversation];
@@ -959,13 +961,12 @@
                          serversMsgId:@""];
         
         __block NSString *jsonStr;
-        NSString *fromUserName = [[IMAppDefaultUtil sharedInstance] getUserName];
-        
+
         NSMutableDictionary *messageDic       = [NSMutableDictionary dictionary];
         messageDic[msg_id_key]                 = @0;
         messageDic[to_user_name_key]           = model.conversationName;
         messageDic[to_user_id_key]             = model.chatToJid.user;
-        messageDic[from_user_name_key]        = fromUserName;
+        messageDic[from_user_name_key]        =  KIMXMPPHelper.userHelper.user.username;;
         messageDic[from_employee_id_key]      = @"-1";
         messageDic[msg_type_key]              = @(messageModel.msgType);
         if (![messageModel.content isKindOfClass:[NSData class]]) {
@@ -1146,8 +1147,8 @@
     }
     else if (inputBoxMoreStatus == IMInputBoxMoreStatusMail)
     {
-        IMMailAccountInfoModel *mailAccountInfoModel = [[IMAppDefaultUtil sharedInstance] getMailInfo];
-        if (mailAccountInfoModel.emailAccount == nil)
+//        IMMailAccountInfoModel *mailAccountInfoModel = [[IMAppDefaultUtil sharedInstance] getMailInfo];
+//        if (mailAccountInfoModel.emailAccount == nil)
         {
             [SVProgressHUD showImage:[UIImage imageNamed:@""] status:@"请先设置邮箱账号"];
             return;

@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
+  - AVOSCloud (11.5.2)
   - CocoaAsyncSocket (7.6.3)
   - CocoaLumberjack (3.5.2):
     - CocoaLumberjack/Core (= 3.5.2)
@@ -46,6 +47,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - AVOSCloud
   - CocoaLumberjack
   - FMDB
   - IMFlexAngel
@@ -64,6 +66,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
+    - AVOSCloud
     - CocoaAsyncSocket
     - CocoaLumberjack
     - FMDB
@@ -85,6 +88,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  AVOSCloud: b3cb1ed20d46c0d55083363522cb2ea593d51ac7
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
   CocoaLumberjack: 118bf4a820efc641f79fa487b75ed928dccfae23
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
@@ -103,6 +107,6 @@ SPEC CHECKSUMS:
   XMPPFramework: 5d31ff9f73dce031b24bc49bcf88093627a3a86e
   YCMenuView: 1514dd2600e8a541bc1bf0f415e6a58a36ba562d
 
-PODFILE CHECKSUM: 81bdddd17efa6d1dfdf5d7b880f9d26edb2dac40
+PODFILE CHECKSUM: 32c1627c44490766c0362f28b4ce4bd7336078c0
 
 COCOAPODS: 1.6.1

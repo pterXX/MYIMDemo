@@ -9,7 +9,7 @@
 #import "IMXMPPHelper.h"
 
 
-#define XMPPErrorLog(errorCode) NSLog(@"%@",[self errorMessageWithErrorCode:errorCode]);
+#define XMPPErrorLog(errorCode) NSLog(@"%@----->%@",NSStringFromSelector(_cmd),[self errorMessageWithErrorCode:errorCode]);
 static NSString * const kAvailable     = @"available";//  上线
 static NSString * const kAway          = @"away";//  离开
 static NSString * const kDotNotDisturb = @"do not disturb";//  忙碌
@@ -764,7 +764,8 @@ static IMXMPPHelper *helper;
     [fetchRequest setSortDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
     NSError *error = nil;
     NSArray *fetchedObjects = [storage.mainThreadManagedObjectContext executeFetchRequest:fetchRequest error:&error];
-    XMPPErrorLog(error.code);
+    if (error) XMPPErrorLog(error.code);
+    
     return fetchedObjects;
 }
 
@@ -776,6 +777,8 @@ static IMXMPPHelper *helper;
     }
     if (message.fileData && self.fileUploadIsBase64) {
         message.content = [message.fileData base64EncodedStringWithOptions:0];
+    }else{
+        
     }
     [newMessage addOriginId:message.messageId];
     [newMessage addBody:message.messageBody]; //消息内容
@@ -801,7 +804,7 @@ static IMXMPPHelper *helper;
 }
 
 - (void)xmppStream:(XMPPStream *)sender didFailToSendMessage:(XMPPMessage *)message error:(NSError *)error{
-    XMPPErrorLog(error.code);
+    if (error) XMPPErrorLog(error.code);
     [IMNotificationCenter postNotificationName:kChatDidFailToSendMessageNot object:message];
     [IMNotificationCenter postNotificationName:kChatUserDidFailToSendMessageNot object:message];
 }

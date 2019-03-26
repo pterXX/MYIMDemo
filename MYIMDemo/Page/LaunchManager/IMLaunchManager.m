@@ -11,6 +11,10 @@
 #import "IMConversationViewController.h"
 #import "IMContactsViewController.h"
 
+#if __has_include(<AVOSCloud/AVOSCloud.h>)
+#import <AVOSCloud/AVOSCloud.h>
+#endif
+
 @interface IMLaunchManager ()
 
 @property (nonatomic, weak) UIWindow *window;
@@ -35,6 +39,9 @@
     self.window = window;
     if ([IMUserHelper sharedHelper].isLogin) {      // 已登录
         [self p_createTabBarChildViewController];
+#if __has_include(<AVOSCloud/AVOSCloud.h>)
+        [self p_initAVOSCloud];
+#endif
         [self setCurRootVC:self.tabBarController];
         
         // 初始化用户信息
@@ -77,6 +84,13 @@
         
     }];
 }
+
+#if __has_include(<AVOSCloud/AVOSCloud.h>)
+- (void)p_initAVOSCloud{
+    
+    [AVOSCloud setApplicationId:@"AcK0Rp92CbGATVRmdzO7r6jV-gzGzoHsz" clientKey:@"iiuWcKQVjsz4rtnyBO0HuoPU"];
+}
+#endif
 
 
 #pragma mark - # Getters

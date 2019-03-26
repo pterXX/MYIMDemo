@@ -12,6 +12,9 @@
 #import "IMLoginViewController.h"
 #import "IMConversationViewController.h"
 
+#if __has_include(<AVOSCloud/AVOSCloud.h>)
+#import <AVOSCloud/AVOSCloud.h>
+#endif
 @interface AppDelegate ()
 
 @end
@@ -30,10 +33,23 @@
     //  初始化xmpp,默认打开手动验证证书
     KIMXMPPHelper.customCertEvaluation = YES;
     //  是否以base64的方式传文件
-    KIMXMPPHelper.fileUploadIsBase64 = YES;
+//    KIMXMPPHelper.fileUploadIsBase64 = YES;
+    //  文件上传的方法
+    [KIMXMPPHelper setImageUploadBlock:^(NSData * _Nonnull imgData, void (^ _Nonnull handleBlock)(NSString * _Nonnull)) {
+        @autoreleasepool {
+            AVFile *file = [AVFile fileWithData:imgData];
+            [file uploadWithCompletionHandler:^(BOOL succeeded, NSError * _Nullable error) {
+                NSLog(@"成功  %@", file.url);//返回一个唯一的 Url 地址
+                if (succeeded) {
+                    handleBlock(file.url);
+                    NSLog(@"图片上传成功");
+                }else{
+                    NSLog(@"上传失败");
+                }
+            }];
+        }
+    }];
     
-    
-
     return YES;
 }
 

@@ -205,13 +205,16 @@
                                 cellHeight:(CGFloat)cellHeight
                                selectImage:(UIImage *)selectImage
 {
-    BOOL ok = [KIMXMPPHelper.xmppOutgoingFileTransfer sendData:messageModel.fileData toRecipient:self.conversation.chatToJid];
-    if (ok)
-        NSLog(@"文件发送成功");
-    else
-        NSLog(@"文件发送失败");
     
-    [self updateMessageSendStatus:IMMessageSendStatusSendSuccess indexPath:indexPath localMessageId:messageModel.messageId serversMsgId:messageModel.messageId];
+    void(^block)(NSString *) = ^(NSString *fileUrl){
+        messageModel.content = fileUrl;
+        [KIMXMPPHelper sendMessageModel:messageModel to:messageModel.msgJid];
+        [self updateMessageSendStatus:IMMessageSendStatusSendSuccess indexPath:indexPath localMessageId:messageModel.messageId serversMsgId:messageModel.messageId];
+    };
+    //  获得图片上传后的连接
+    if (KIMXMPPHelper.imageUploadBlock) {
+        KIMXMPPHelper.imageUploadBlock(messageModel.fileData,block);
+    }
 }
 
 @end

@@ -123,7 +123,7 @@
 
     _titleLabel.text = conversation.conversationName;
     if ((!conversation.conversationName || conversation.conversationName.length == 0) && [conversation.chatToJid.user isEqualToString:[IMXMPPHelper sharedHelper].myJID.user]) {
-        _titleLabel.text = [[IMAppDefaultUtil sharedInstance] getUserName];
+        _titleLabel.text = KIMXMPPHelper.userHelper.user.username;
     }
     
     _messageLabel.text = conversation.message.content;

@@ -19,13 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MYIMDemo/Page/Chat/IMChatViewController+Image.m"
-            timestampString = "575187911.650521"
+            filePath = "MYIMDemo/XMPPHelper/IMXMPPHelper.m"
+            timestampString = "575281434.107965"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "210"
-            endingLineNumber = "210"
-            landmarkName = "-saveAndSendMessageWithMessageModel:filePath:indexPath:cellHeight:selectImage:"
+            startingLineNumber = "808"
+            endingLineNumber = "808"
+            landmarkName = "-xmppStream:didFailToSendMessage:error:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -35,13 +35,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MYIMDemo/Page/Chat/IMChatViewController+Image.m"
-            timestampString = "575187911.650612"
+            filePath = "MYIMDemo/XMPPHelper/IMXMPPHelper.m"
+            timestampString = "575281434.108277"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "212"
-            endingLineNumber = "212"
-            landmarkName = "-saveAndSendMessageWithMessageModel:filePath:indexPath:cellHeight:selectImage:"
+            startingLineNumber = "803"
+            endingLineNumber = "803"
+            landmarkName = "-xmppStream:didSendMessage:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -51,13 +51,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MYIMDemo/Page/Chat/IMChatViewController+Image.m"
-            timestampString = "575270775.09018"
+            filePath = "MYIMDemo/XMPPHelper/IMXMPPHelper.m"
+            timestampString = "575281434.108331"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
-            landmarkName = "-saveAndSendMessageWithMessageModel:filePath:indexPath:cellHeight:selectImage:"
+            startingLineNumber = "797"
+            endingLineNumber = "797"
+            landmarkName = "-xmppStream:didReceiveMessage:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

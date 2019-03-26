@@ -62,6 +62,7 @@
 		8432593C223F7094003A33F2 /* IMUserDetailChatButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8432593B223F7094003A33F2 /* IMUserDetailChatButtonCell.m */; };
 		84325940223F7386003A33F2 /* IMLaunchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8432593F223F7385003A33F2 /* IMLaunchManager.m */; };
 		8438D543222F60BF001FD530 /* IMXMPPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8438D542222F60BF001FD530 /* IMXMPPHelper.m */; };
+		84477C712249FE6C002890F7 /* IMNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 84477C702249FE6C002890F7 /* IMNetworking.m */; };
 		84681F772230EF000056372A /* IMSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84681F762230EF000056372A /* IMSignUpViewController.m */; };
 		8493E96D22407FB700175E53 /* IMChatVoiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE893A3222291B17004F1F6E /* IMChatVoiceTableViewCell.m */; };
 		8493E970224085A400175E53 /* IMConversationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8493E96F224085A400175E53 /* IMConversationHelper.m */; };
@@ -111,7 +112,6 @@
 		EE8936FD2228D55F004F1F6E /* IMSystemAuthorization.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8936F42228CC5D004F1F6E /* IMSystemAuthorization.m */; };
 		EE8937042228D82B004F1F6E /* IMBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8937032228D82B004F1F6E /* IMBaseTableViewCell.m */; };
 		EE8937082228DDF3004F1F6E /* UIImage+IMChat.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8937072228DDF3004F1F6E /* UIImage+IMChat.m */; };
-		EE89370D2228F5C7004F1F6E /* IMAppDefaultUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = EE89370C2228F5C7004F1F6E /* IMAppDefaultUtil.m */; };
 		EE89371A2228FE6A004F1F6E /* IMNetworkDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8937192228FE6A004F1F6E /* IMNetworkDetection.m */; };
 		EE89387B222902C3004F1F6E /* IMEmojiGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = EE893723222902BF004F1F6E /* IMEmojiGroup.m */; };
 		EE89387C222902C3004F1F6E /* IMEmojiModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EE893724222902BF004F1F6E /* IMEmojiModel.m */; };
@@ -575,6 +575,8 @@
 		84325941223F7D52003A33F2 /* IMSearchResultControllerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMSearchResultControllerProtocol.h; sourceTree = "<group>"; };
 		8438D541222F60BF001FD530 /* IMXMPPHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMXMPPHelper.h; sourceTree = "<group>"; };
 		8438D542222F60BF001FD530 /* IMXMPPHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMXMPPHelper.m; sourceTree = "<group>"; };
+		84477C6F2249FE6C002890F7 /* IMNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMNetworking.h; sourceTree = "<group>"; };
+		84477C702249FE6C002890F7 /* IMNetworking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMNetworking.m; sourceTree = "<group>"; };
 		84681F752230EF000056372A /* IMSignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMSignUpViewController.h; sourceTree = "<group>"; };
 		84681F762230EF000056372A /* IMSignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMSignUpViewController.m; sourceTree = "<group>"; };
 		8493E96A22407C8500175E53 /* IMConversationAngel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMConversationAngel.h; sourceTree = "<group>"; };
@@ -675,8 +677,6 @@
 		EE8937032228D82B004F1F6E /* IMBaseTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMBaseTableViewCell.m; sourceTree = "<group>"; };
 		EE8937062228DDF3004F1F6E /* UIImage+IMChat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+IMChat.h"; sourceTree = "<group>"; };
 		EE8937072228DDF3004F1F6E /* UIImage+IMChat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+IMChat.m"; sourceTree = "<group>"; };
-		EE89370B2228F5C6004F1F6E /* IMAppDefaultUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMAppDefaultUtil.h; sourceTree = "<group>"; };
-		EE89370C2228F5C7004F1F6E /* IMAppDefaultUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMAppDefaultUtil.m; sourceTree = "<group>"; };
 		EE89370F2228F77A004F1F6E /* IMMailAccountInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMailAccountInfoModel.h; sourceTree = "<group>"; };
 		EE8937182228FE69004F1F6E /* IMNetworkDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMNetworkDetection.h; sourceTree = "<group>"; };
 		EE8937192228FE6A004F1F6E /* IMNetworkDetection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMNetworkDetection.m; sourceTree = "<group>"; };
@@ -1682,6 +1682,15 @@
 			path = XMPPHelper;
 			sourceTree = "<group>";
 		};
+		84477C6E2249FDF8002890F7 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				84477C6F2249FE6C002890F7 /* IMNetworking.h */,
+				84477C702249FE6C002890F7 /* IMNetworking.m */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		8493E96822407BC600175E53 /* IMMessageViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1805,6 +1814,7 @@
 		EE8936832227D997004F1F6E /* MYIMDemo */ = {
 			isa = PBXGroup;
 			children = (
+				84477C6E2249FDF8002890F7 /* Networking */,
 				8428F45D22326A300064DA35 /* Page */,
 				8438D53D222F6069001FD530 /* XMPPHelper */,
 				84251117222E5D09004C3954 /* DBManager */,
@@ -1926,8 +1936,6 @@
 			children = (
 				EE8937182228FE69004F1F6E /* IMNetworkDetection.h */,
 				EE8937192228FE6A004F1F6E /* IMNetworkDetection.m */,
-				EE89370B2228F5C6004F1F6E /* IMAppDefaultUtil.h */,
-				EE89370C2228F5C7004F1F6E /* IMAppDefaultUtil.m */,
 			);
 			path = APPUtils;
 			sourceTree = "<group>";
@@ -2782,6 +2790,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MYIMDemo/Pods-MYIMDemo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/AVOSCloud/AVOSCloud.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
@@ -2803,6 +2812,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AVOSCloud.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
@@ -2880,6 +2890,7 @@
 				EE7FE45A222CC42500073210 /* IMPhoto.m in Sources */,
 				EE8936FD2228D55F004F1F6E /* IMSystemAuthorization.m in Sources */,
 				8423C315223B6BCB00E999F5 /* IMNewFriendViewController.m in Sources */,
+				84477C712249FE6C002890F7 /* IMNetworking.m in Sources */,
 				8423C31E223B6C1A00E999F5 /* IMTagsViewController.m in Sources */,
 				EE7FE462222CC42500073210 /* TADotView.m in Sources */,
 				EE8939B4222902C3004F1F6E /* IMInputBoxEmojiMenuView.m in Sources */,
@@ -2934,7 +2945,6 @@
 				EE8936EC2228C687004F1F6E /* IMMessageModel.m in Sources */,
 				8423C335223B800700E999F5 /* IMContactsSearchResultViewController.m in Sources */,
 				EE8939B2222902C3004F1F6E /* IMEmojiCollectionViewCell.m in Sources */,
-				EE89370D2228F5C7004F1F6E /* IMAppDefaultUtil.m in Sources */,
 				EE8939C722290408004F1F6E /* IMFileManagement.m in Sources */,
 				842511AB222E609A004C3954 /* IMUserChatSetting.m in Sources */,
 				8423C318223B6BEA00E999F5 /* IMGroupViewController.m in Sources */,

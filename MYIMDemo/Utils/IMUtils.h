@@ -9,7 +9,6 @@
 #ifndef IMUtils_h
 #define IMUtils_h
 
-#import "IMAppDefaultUtil.h"  //  app 默认设置
 #import "IMColorTools.h"      // 颜色工具类
 #import "IMNetworkDetection.h" // 网络状态
 #import "NSFileManager+IMChat.h"
