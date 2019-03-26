@@ -1387,18 +1387,9 @@
 			isa = PBXGroup;
 			children = (
 				8423C328223B771500E999F5 /* Resource */,
-				84251118222E5D18004C3954 /* View */,
 				842510ED222E229D004C3954 /* Controller */,
-				842510EB222E2290004C3954 /* Model */,
 			);
 			path = Login;
-			sourceTree = "<group>";
-		};
-		842510EB222E2290004C3954 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		842510ED222E229D004C3954 /* Controller */ = {
@@ -1421,13 +1412,6 @@
 				84251164222E5E28004C3954 /* IMUserManager */,
 			);
 			path = DBManager;
-			sourceTree = "<group>";
-		};
-		84251118222E5D18004C3954 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		84251121222E5E27004C3954 /* IMAccountManager */ = {
@@ -1825,7 +1809,6 @@
 				8438D53D222F6069001FD530 /* XMPPHelper */,
 				84251117222E5D09004C3954 /* DBManager */,
 				EE7FE434222CC42500073210 /* BAPhotoBrowser */,
-				EE8936BD2227DA4E004F1F6E /* Category */,
 				EE8936BE2227DA4E004F1F6E /* Common */,
 				EE8936BF2227DA4F004F1F6E /* PrefixHeader.pch */,
 				EE8936B72227DA4E004F1F6E /* Resource */,
@@ -1892,13 +1875,6 @@
 				EE89385D222902C3004F1F6E /* View */,
 			);
 			path = InputBox;
-			sourceTree = "<group>";
-		};
-		EE8936BD2227DA4E004F1F6E /* Category */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Category;
 			sourceTree = "<group>";
 		};
 		EE8936BE2227DA4E004F1F6E /* Common */ = {

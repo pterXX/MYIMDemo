@@ -70,6 +70,10 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
 @property (nonatomic ,strong) XMPPMessageArchivingCoreDataStorage *xmppMessageArchivingCoreDataStorage;
 @property (nonatomic ,strong) XMPPMessageArchiving                *xmppMessageArchiving;
 
+// 性能相关
+@property (nonatomic, strong) XMPPCapabilities                    * xmppCapabilities;
+@property (nonatomic, strong) XMPPCapabilitiesCoreDataStorage     * xmppCapailitiesStorage;
+
 //  文件发送
 @property (nonatomic, strong) XMPPOutgoingFileTransfer            *xmppOutgoingFileTransfer;
 //  文件接收

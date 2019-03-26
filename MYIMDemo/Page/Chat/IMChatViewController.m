@@ -474,16 +474,18 @@
     dataArray = [[dataArray reverseObjectEnumerator] allObjects];
     
     [dataArray enumerateObjectsUsingBlock:^(IMMessageModel *messageModel, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([messageId isEqualToString:messageModel.messageId]) {
-            messageModel.updatedRowHeight = YES;
-            messageModel.cellHeight  = cellHeight;
-            messageModel.messageSize = messageSize;
-            messageModel.isDelayShowSendStatus = NO;
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [weakSelf.dataSource replaceObjectAtIndex:maxCount - idx withObject:messageModel];
-                [weakSelf.listView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:maxCount - idx inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
-                [weakSelf scrollTableViewBottom];
-            });
+        @autoreleasepool {
+            if ([messageId isEqualToString:messageModel.messageId]) {
+                messageModel.updatedRowHeight = YES;
+                messageModel.cellHeight  = cellHeight;
+                messageModel.messageSize = messageSize;
+                messageModel.isDelayShowSendStatus = NO;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [weakSelf.dataSource replaceObjectAtIndex:maxCount - idx withObject:messageModel];
+                    [weakSelf.listView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:maxCount - idx inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+                    [weakSelf scrollTableViewBottom];
+                });
+            }
         }
         *stop = YES;
     }];
