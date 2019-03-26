@@ -775,11 +775,6 @@ static IMXMPPHelper *helper;
     if (message.messageId.isEmptyString) {
         message.messageId = [NSDate getCurrentTimestamp];
     }
-    if (message.fileData && self.fileUploadIsBase64) {
-        message.content = [message.fileData base64EncodedStringWithOptions:0];
-    }else{
-        
-    }
     [newMessage addOriginId:message.messageId];
     [newMessage addBody:message.messageBody]; //消息内容
     NSDictionary *dict = [message mj_keyValuesWithKeys:@[@"messageId",@"msgType",@"messageChatType",@"content",@"recvTime",@"voiceTime",@"pictureType",@"sendTime"]];

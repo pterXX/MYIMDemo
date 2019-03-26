@@ -40,25 +40,12 @@
 #import "IMChatVideoTableViewCell.h"
 #import "TZImagePickerController.h"
 
-@interface IMChatViewController () <IMInputBoxViewCtrlDelegate, TZImagePickerControllerDelegate, IMPhotoBrowserDelegate, IMPhotoBrowserDatasource, UITableViewDelegate, UITableViewDataSource>
+@interface IMChatViewController () <IMInputBoxViewCtrlDelegate, TZImagePickerControllerDelegate, IMPhotoBrowserDelegate, IMPhotoBrowserDatasource, UITableViewDelegate, UITableViewDataSource,XMPPStreamDelegate>
 {
     // 点击的图片
     IMPhotoPreviewModel *crrentTapPhoto;
     // 可以看见的图片预览视图模型
     NSMutableArray     *visiblePhotoPreviews;
-    // 默认串行队列
-    dispatch_queue_t   defaultQueue;
-    // 更新消息发送状态队列
-    dispatch_queue_t   updateStatusQueue;
-    // 收到消息串行队列
-    dispatch_queue_t   receiveMessageQueue;
-    // 发送消息锁
-    NSLock             *sendMessage;
-    // 未读消息数
-    NSInteger          unreadMsgCount;
-    // 收到消息锁
-    NSLock             *reveiceMessageLock;
-    
     UIWindow           *window;
     // 是从其他页面返回
     BOOL               isBack;
@@ -114,7 +101,6 @@
 
 - (void)setConversation:(IMConversationModel *)conversation {
     _conversation  = conversation;
-    unreadMsgCount = conversation.badgeNumber;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -140,7 +126,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initData];
-    [self addObserver];
+//    [self addObserver];
+    
+//    [KIMXMPPHelper.xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
 }
 
 /**
@@ -217,12 +205,7 @@
     _isEnterSend          = YES;
     indexPathRow          = -1;
     _lastPlayVoiceIndex   = -1;
-    sendMessage           = [NSLock new];
-    reveiceMessageLock    = [NSLock new];
     visiblePhotoPreviews  = [NSMutableArray array];
-    defaultQueue          = dispatch_queue_create("defaultQueue", NULL);
-    updateStatusQueue     = dispatch_queue_create("updateStatus", NULL);
-    receiveMessageQueue   = dispatch_queue_create("receiveMessageQueue", NULL);
     
     isFirstLoad     = YES;
     _dataSource     = [NSMutableArray array];
@@ -232,21 +215,13 @@
     
     [self initVoiceData];
     
-    // 获取会话消息
+//     获取会话消息
     [self getMessagesDataWithMessageId:@"0"];
 }
 
 // 有未读消息时通知服务器，这些消息已被标记为已读
 - (void)UpdateConversationState {
-    // 有未读消息时通知服务器，这些消息已被标记为已读
-    kWeakSelf
-    dispatch_async(defaultQueue, ^{
-        
-        if (self->unreadMsgCount)
-        {
-            [weakSelf updateMessageReadState];
-        }
-    });
+    [self updateMessageReadState];
 }
 
 /**
@@ -280,40 +255,16 @@
     NSArray *fetchedObjects = [KIMXMPPHelper fetchedMessagesOfJid:self.conversation.chatToJid];
     if (fetchedObjects != nil ) {
         [self.dataSource removeAllObjects];
-        __block IMMessageModel *previousMessage = nil;
         __block NSInteger num = 0;
         @weakify(self);
         for (XMPPMessageArchiving_Message_CoreDataObject * obj in fetchedObjects) {
            IMMessageModel *model = [IMMessageModel modelWithCoreDataObject:obj complete:^IMMessageModel * _Nonnull(IMMessageModel * _Nonnull objModel, XMPPMessageArchiving_Message_CoreDataObject * _Nonnull coreDataobj) {
                @strongify(self);
-               NSLog(@"%@",coreDataobj);
-                objModel.lastMessage     = previousMessage;
-                NSTimeInterval prevTime = 0;
-                NSTimeInterval lastTime = 0;
-                if (objModel.direction == IMMessageSenderTypeSender) {
-                    lastTime = [objModel.sendTime integerValue];
-                }
-                else {
-                    lastTime = [objModel.recvTime integerValue];
-                }
-                
-                if (previousMessage.direction == IMMessageSenderTypeSender) {
-                    prevTime = [previousMessage.sendTime integerValue];
-                }
-                else {
-                    prevTime = [previousMessage.recvTime integerValue];
-                }
-                
-                BOOL isShowTime       = [NSDate showTimeWithPreviousTime:prevTime lastTime:lastTime];
-                
-                objModel.showMessageTime = isShowTime;
-                previousMessage       = objModel;
-                
                 if (objModel.msgType == IMMessageTypeImage && objModel.cellHeight == -1) {
-                    CGFloat showTimeHeight = isShowTime ? SHOW_MESSAGE_TIME_HEIGHT : 0;
-                    [objModel messageProcessingWithFinishedCalculate:^(CGFloat rowHeight, CGSize messageSize, BOOL complete) { }];
-                    objModel.estimateHeight = 200 + showTimeHeight;
-                    objModel.estimateSize   = CGSizeMake(102, objModel.estimateHeight - showTimeHeight - 20);
+////                    CGFloat showTimeHeight = isShowTime ? SHOW_MESSAGE_TIME_HEIGHT : 0;
+//                    [objModel messageProcessingWithFinishedCalculate:^(CGFloat rowHeight, CGSize messageSize, BOOL complete) { }];
+//                    objModel.estimateHeight = 200 + showTimeHeight;
+//                    objModel.estimateSize   = CGSizeMake(102, objModel.estimateHeight - showTimeHeight - 20);
                 }
                 else {
                     [objModel messageProcessingWithFinishedCalculate:^(CGFloat rowHeight, CGSize messageSize, BOOL complete) { }];
@@ -373,44 +324,6 @@
     if (!ok) NSLog(@"================>  插入会话数据失败");
 }
 
-/**
- 发送消息
- 
- @param content 消息内容 文本消息content为文字，图片、语音content为NSData转成的字符串
- @param cellHeight 行高
- @param messageSize 消息控件大小
- @param messageType 消息类型
- @param filePath 图片、视频、音频路径,其他消息传nil
- @param messageModel 当前的消息model
- @param saveResult 保存消息回调
- */
-- (void)saveMessageWithContent:(NSString *)content
-                    cellHeight:(CGFloat)cellHeight
-                   messageSize:(CGSize)messageSize
-                   messageType:(IMMessageType)messageType
-                      filePath:(NSString *)filePath
-                  messageModel:(IMMessageModel *)messageModel
-                     indexPath:(NSIndexPath *)indexPath
-                    saveResult:(void(^)(BOOL isSuccess, NSDictionary *jsonDic, NSString *localMsgId))saveResult
-{
-    
-}
-
-/**
- 发送消息
- 
- @param jsonStr 消息json字符串
- @param localMessageId 本地消息id
- @param indexPath 当条消息所在行数据
- */
-- (void)sendMessageWithJsonStr:(NSString *)jsonStr
-                localMessageId:(NSString *)localMessageId
-                     indexPath:(NSIndexPath *)indexPath
-{
-    if (jsonStr) {
-        
-    }
-}
 
 - (void)sendMessageWithContent:(id)content indexPath:(NSIndexPath *)indexPath{
     if (content == nil) return;
@@ -426,7 +339,6 @@
     model.recvTime          = currentTimeInterval;
     model.toUserName        = _conversation.conversationName;
     model.messageSendStatus = IMMessageSendStatusSendSuccess;
-    model.lastMessage       = [self lastMessage];
     model.messageId         = currentTimeInterval;
     BOOL isShowTime         = [self isShowTimeWithNewMessageModel:model previousMessage:[self lastMessage]];
     model.showMessageTime   = isShowTime;
@@ -436,32 +348,10 @@
         model.content = content;
     }
     
-    @weakify(self);
-    dispatch_async(defaultQueue, ^{
-        [model messageProcessingWithFinishedCalculate:^(CGFloat rowHeight, CGSize messageSize, BOOL complete) {
-            @strongify(self);
-            cellHeight = rowHeight;
-            [self->sendMessage lock];
-            [self addMessage:model];
-            [self->sendMessage unlock];
-        }];
-        //     向服务端发消息
-        [KIMXMPPHelper sendMessageModel:model to:self.conversation.chatToJid];
-    });
-}
-
-/**
- 更新本地消息发送状态
- 
- @param srcId 本地消息id
- @param destId 服务器返回消息id
- @param sendState 消息状态，0：失败，1：成功 2:发送中
- */
-- (void)updateDatabaseMessageWithSrcId:(NSString *)srcId
-                                destId:(NSString *)destId
-                             sendState:(int)sendState
-{
+    [self addMessage:model];
     
+    //    向服务端发消息
+    [KIMXMPPHelper sendMessageModel:model to:self.conversation.chatToJid];
 }
 
 - (void)updateRowHeight:(NSNotification *)notification {
@@ -745,19 +635,6 @@
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
         UIAlertAction *resendAction = [UIAlertAction actionWithTitle:@"重发" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
                                        {
-                                           [weakSelf jsonStrWithConversationModel:conversationModel
-                                                                     messageModel:messageModel
-                                                                        indexPath:[tableViewCell indexPath]
-                                                                transformComplete:^(NSString *jsonStr)
-                                            {
-                                                [tableViewCell updateMessageSendState:IMMessageSendStatusSending
-                                                                              jsonStr:jsonStr
-                                                                       localMessageId:messageModel.messageId];
-                                                
-                                                [weakSelf sendMessageWithJsonStr:jsonStr
-                                                                  localMessageId:messageModel.messageId
-                                                                       indexPath:tableViewCell.indexPath];
-                                            }];
                                        }];
         [alertController addAction:cancelAction];
         [alertController addAction:resendAction];
@@ -767,16 +644,6 @@
     else {
         // 进入页面时需要发送处于正在发送的消息
         if (_isEnterSend) {
-            
-            [self jsonStrWithConversationModel:conversationModel
-                                  messageModel:messageModel
-                                     indexPath:[tableViewCell indexPath]
-                             transformComplete:^(NSString *jsonStr)
-             {
-                 [weakSelf sendMessageWithJsonStr:jsonStr
-                                   localMessageId:messageModel.messageId
-                                        indexPath:tableViewCell.indexPath];
-             }];
         }
     }
 }
@@ -936,91 +803,6 @@
     return [NSDate showTimeWithPreviousTime:prevTime lastTime:lastTime];
 }
 
-/**
- 根据会话和消息返回json字符串
- 
- @param model 会话模型
- @param messageModel 消息模型
- @param transformComplete json转换完成回调
- */
-- (void)jsonStrWithConversationModel:(IMConversationModel *)model
-                        messageModel:(IMMessageModel *)messageModel
-                           indexPath:(NSIndexPath *)indexPath
-                   transformComplete:(void(^)(NSString *jsonStr))transformComplete
-{
-    if (indexPathRow == indexPath.row) {
-        return;
-    }
-    
-    dispatch_async(defaultQueue, ^{
-        
-        self->indexPathRow = indexPath.row;
-        [self updateMessageSendStatus:IMMessageSendStatusSending
-                            indexPath:indexPath
-                       localMessageId:messageModel.messageId
-                         serversMsgId:@""];
-        
-        __block NSString *jsonStr;
-
-        NSMutableDictionary *messageDic       = [NSMutableDictionary dictionary];
-        messageDic[msg_id_key]                 = @0;
-        messageDic[to_user_name_key]           = model.conversationName;
-        messageDic[to_user_id_key]             = model.chatToJid.user;
-        messageDic[from_user_name_key]        =  KIMXMPPHelper.userHelper.user.username;;
-        messageDic[from_employee_id_key]      = @"-1";
-        messageDic[msg_type_key]              = @(messageModel.msgType);
-        if (![messageModel.content isKindOfClass:[NSData class]]) {
-            messageDic[msg_content_key]           = messageModel.content;
-        }
-        if (messageModel.fileUrl && messageModel.fileUrl.length == 0) {
-            messageDic[msg_content_key]           = messageModel.fileUrl;
-        }
-        
-        messageDic[send_time_key]             = [NSString stringWithFormat:@"%ld",(long)messageModel.sendTime];
-        messageDic[recv_time_key]              = @"";
-        messageDic[voice_time_key]             = [NSString stringWithFormat:@"%d", messageModel.duringTime];
-        messageDic[picture_type_key]           = @0;
-        
-        NSMutableDictionary *conversationDic  = [NSMutableDictionary dictionary];
-        conversationDic[conversation_name_key] = model.conversationName;
-        conversationDic[conversation_id_key]   = model.conversationId;
-        conversationDic[chat_type_key]         = @0;
-        conversationDic[head_img_key]          = @"";
-        conversationDic[msg_key]               = messageDic;
-        
-        if (messageModel.msgType == IMMessageTypeImage || messageModel.msgType == IMMessageTypeVoice) {
-            NSData *fileData;
-            if (messageModel.fileData) {
-                fileData = messageModel.fileData;
-            }
-            else {
-                fileData = [[NSData alloc] initWithContentsOfFile:[NSFileManager pathUserSettingImage:messageModel.content]];
-            }
-            
-            //            NSString *type = messageModel.msgType == IMMessageTypeImage ? @"png" : @"aac";
-            //            [IMInteractionWrapper uploadFileToFileServerWithData:fileData fileName:type block:^(NSString *url, int errorCode, NSString *errorMsg) {
-            //
-            //                if (!errorCode)
-            //                {
-            //                    messageDic[MSG_CONTENT_KEY]       = url;
-            //                    conversationDic[kMSG_KEY]       = messageDic;
-            //                    jsonStr = [conversationDic dictionaryTurnJson];
-            //
-            //                    if (transformComplete) {
-            //                        transformComplete(jsonStr);
-            //                    }
-            //                }
-            //            }];
-        }
-        else {
-            
-            jsonStr = [conversationDic dictionaryTurnJson];
-            if (transformComplete) {
-                transformComplete(jsonStr);
-            }
-        }
-    });
-}
 
 #pragma mark -图片视频浏览器
 - (void)photoBrowserWithChatTableViewCell:(id)chatTableViewCell messageModel:(IMMessageModel *)messageModel {
@@ -1234,6 +1016,19 @@
             break;
     }
 }
+
+- (void)xmppStream:(XMPPStream *)sender didSendMessage:(XMPPMessage *)message{
+    [self getMessagesDataWithMessageId:@"0"];
+}
+
+- (void)xmppStream:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message{
+    
+}
+
+-(void)xmppStream:(XMPPStream *)sender didFailToSendMessage:(XMPPMessage *)message error:(NSError *)error{
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

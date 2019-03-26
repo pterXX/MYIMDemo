@@ -86,7 +86,6 @@
                 messageModel.messageReadStatus = IMMessageReadStatusRead;
                 messageModel.sendTime          = timeInterval;
                 messageModel.recvTime          = timeInterval;
-                messageModel.lastMessage       = [self lastMessage];
                 messageModel.messageId         = timeInterval;
                 messageModel.fileData          = originalImageData;
                 messageModel.fromUserId        = self.conversation.chatToJid;
@@ -155,7 +154,6 @@
             messageModel.toUserName        = self.conversation.conversationName;
             messageModel.msgType           = IMMessageTypeImage;
             messageModel.direction         = IMMessageSenderTypeSender;
-            messageModel.lastMessage       = [self lastMessage];
             messageModel.messageId         = timeInterval;
             messageModel.fileData          = originalImageData;
             BOOL isShowTime                = [self isShowTimeWithNewMessageModel:messageModel previousMessage:[self lastMessage]];

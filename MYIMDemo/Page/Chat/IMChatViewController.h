@@ -60,35 +60,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)sendMessageWithContent:(id)content indexPath:(NSIndexPath *)indexPath;
 
-/**
- 发送消息
- 
- @param content 消息内容 文本消息content为文字，图片、语音content为NSData转成的字符串
- @param cellHeight 行高
- @param messageSize 消息控件大小
- @param messageType 消息类型
- @param filePath 图片、视频、音频路径,其他消息传nil
- @param messageModel 当前的消息model
- @param saveResult 保存消息回调
- */
-- (void)saveMessageWithContent:(NSString *)content
-                    cellHeight:(CGFloat)cellHeight
-                   messageSize:(CGSize)messageSize
-                   messageType:(IMMessageType)messageType
-                      filePath:(NSString *)filePath
-                  messageModel:(IMMessageModel *)messageModel
-                     indexPath:(NSIndexPath *)indexPath
-                    saveResult:(void(^)(BOOL isSuccess, NSDictionary *jsonDic, NSString *localMsgId))saveResult;
-/**
- 发送消息
- 
- @param jsonStr 消息json字符串
- @param localMessageId 本地消息id
- @param indexPath 当条消息所在行数据
- */
-- (void)sendMessageWithJsonStr:(NSString *)jsonStr
-                localMessageId:(NSString *)localMessageId
-                     indexPath:(NSIndexPath *)indexPath;
 
 /**
  更新Cell视图消息发送状态
@@ -104,16 +75,7 @@ NS_ASSUME_NONNULL_BEGIN
                    serversMsgId:(NSString *)serversMsgId;
 
 
-/**
- 更新本地消息发送状态
- 
- @param srcId 本地消息id
- @param destId 服务器返回消息id
- @param sendState 消息状态，0：失败，1：成功 2:发送中
- */
-- (void)updateDatabaseMessageWithSrcId:(NSString *)srcId
-                                destId:(NSString *)destId
-                             sendState:(int)sendState;
+
 @end
 
 NS_ASSUME_NONNULL_END

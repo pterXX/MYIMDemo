@@ -50,9 +50,6 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
 
 @property (nonatomic ,copy  ) IMConversationHelper                *conversationHelper;
 
-// 图片上传是否采用base64
-@property (nonatomic ,assign) BOOL                                fileUploadIsBase64;
-
 @property (nonatomic ,copy) void(^imageUploadBlock)(NSData *imgData,void(^handleBlock)(NSString *fileUrl));
 
 //表示是否手动验证TLS/SSL

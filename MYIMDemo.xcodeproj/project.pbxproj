@@ -62,7 +62,6 @@
 		8432593C223F7094003A33F2 /* IMUserDetailChatButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8432593B223F7094003A33F2 /* IMUserDetailChatButtonCell.m */; };
 		84325940223F7386003A33F2 /* IMLaunchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8432593F223F7385003A33F2 /* IMLaunchManager.m */; };
 		8438D543222F60BF001FD530 /* IMXMPPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8438D542222F60BF001FD530 /* IMXMPPHelper.m */; };
-		84477C712249FE6C002890F7 /* IMNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 84477C702249FE6C002890F7 /* IMNetworking.m */; };
 		84681F772230EF000056372A /* IMSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84681F762230EF000056372A /* IMSignUpViewController.m */; };
 		8493E96D22407FB700175E53 /* IMChatVoiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE893A3222291B17004F1F6E /* IMChatVoiceTableViewCell.m */; };
 		8493E970224085A400175E53 /* IMConversationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8493E96F224085A400175E53 /* IMConversationHelper.m */; };
@@ -575,8 +574,6 @@
 		84325941223F7D52003A33F2 /* IMSearchResultControllerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMSearchResultControllerProtocol.h; sourceTree = "<group>"; };
 		8438D541222F60BF001FD530 /* IMXMPPHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMXMPPHelper.h; sourceTree = "<group>"; };
 		8438D542222F60BF001FD530 /* IMXMPPHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMXMPPHelper.m; sourceTree = "<group>"; };
-		84477C6F2249FE6C002890F7 /* IMNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMNetworking.h; sourceTree = "<group>"; };
-		84477C702249FE6C002890F7 /* IMNetworking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMNetworking.m; sourceTree = "<group>"; };
 		84681F752230EF000056372A /* IMSignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMSignUpViewController.h; sourceTree = "<group>"; };
 		84681F762230EF000056372A /* IMSignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMSignUpViewController.m; sourceTree = "<group>"; };
 		8493E96A22407C8500175E53 /* IMConversationAngel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMConversationAngel.h; sourceTree = "<group>"; };
@@ -1682,15 +1679,6 @@
 			path = XMPPHelper;
 			sourceTree = "<group>";
 		};
-		84477C6E2249FDF8002890F7 /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-				84477C6F2249FE6C002890F7 /* IMNetworking.h */,
-				84477C702249FE6C002890F7 /* IMNetworking.m */,
-			);
-			path = Networking;
-			sourceTree = "<group>";
-		};
 		8493E96822407BC600175E53 /* IMMessageViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1814,7 +1802,6 @@
 		EE8936832227D997004F1F6E /* MYIMDemo */ = {
 			isa = PBXGroup;
 			children = (
-				84477C6E2249FDF8002890F7 /* Networking */,
 				8428F45D22326A300064DA35 /* Page */,
 				8438D53D222F6069001FD530 /* XMPPHelper */,
 				84251117222E5D09004C3954 /* DBManager */,
@@ -2890,7 +2877,6 @@
 				EE7FE45A222CC42500073210 /* IMPhoto.m in Sources */,
 				EE8936FD2228D55F004F1F6E /* IMSystemAuthorization.m in Sources */,
 				8423C315223B6BCB00E999F5 /* IMNewFriendViewController.m in Sources */,
-				84477C712249FE6C002890F7 /* IMNetworking.m in Sources */,
 				8423C31E223B6C1A00E999F5 /* IMTagsViewController.m in Sources */,
 				EE7FE462222CC42500073210 /* TADotView.m in Sources */,
 				EE8939B4222902C3004F1F6E /* IMInputBoxEmojiMenuView.m in Sources */,

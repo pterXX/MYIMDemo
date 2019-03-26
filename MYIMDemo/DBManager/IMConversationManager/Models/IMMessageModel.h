@@ -106,9 +106,6 @@ typedef void (^FinishedRowHeightCalculate)(CGFloat rowHeight, CGSize messageSize
  是否显示小时的时间
  */
 @property (nonatomic, assign) BOOL showMessageTime;
-
-@property (nonatomic, strong) IMMessageModel *lastMessage;
-
 @property (nonatomic, assign) CGFloat estimateHeight;      /**估计高度*/
 
 @property (nonatomic, assign) CGSize estimateSize;      /**预估Size*/
