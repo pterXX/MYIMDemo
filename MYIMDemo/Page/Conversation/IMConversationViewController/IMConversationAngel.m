@@ -7,8 +7,7 @@
 //
 
 #import "IMConversationAngel.h"
-#import <ZZFLEX/ZZFLEXAngel+Private.h>
-#import <ZZFLEX/ZZFlexibleLayoutSectionModel.h>
+#import <IMFlexAngel/IMFLEXAngel+Private.h>
 #import "IMConversation.h"
 #import "IMMessageManager+ConversationRecord.h"
 #import "IMConversationCell.h"
@@ -44,7 +43,7 @@
 #pragma mark - # Delegate
 - (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ZZFlexibleLayoutSectionModel *sectionModel = [self sectionModelAtIndex:indexPath.section];
+    IMFlexibleLayoutSectionModel *sectionModel = [self sectionModelAtIndex:indexPath.section];
     if (sectionModel.sectionTag == IMConversationSectionTagTopConversation
         || sectionModel.sectionTag == IMConversationSectionTagConv) {
         @weakify(self);
@@ -73,19 +72,19 @@
 #pragma mark - # Private Methods
 - (void)p_tableView:(UITableView *)tableView deleteItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    ZZFlexibleLayoutSectionModel *sectionModel = [self sectionModelAtIndex:indexPath.section];
-    ZZFlexibleLayoutViewModel *viewModel = [sectionModel objectAtIndex:indexPath.row];
+    IMFlexibleLayoutSectionModel *sectionModel = [self sectionModelAtIndex:indexPath.section];
+    IMFlexibleLayoutViewModel *viewModel = [sectionModel objectAtIndex:indexPath.row];
     IMConversation *conversation = viewModel.dataModel;
     
     if (!conversation) {
-        [TLUIUtility showErrorHint:@"获取会话信息时出现异常"];
+        [IMUIUtility showErrorHint:@"获取会话信息时出现异常"];
         return;
     }
     
     // 从数据库中删除
     BOOL ok = [[IMMessageManager sharedInstance] deleteConversationByPartnerID:conversation.partnerID];
     if (!ok) {
-        [TLUIUtility showAlertWithTitle:@"错误" message:@"从数据库中删除会话信息失败"];
+        [IMUIUtility showAlertWithTitle:@"错误" message:@"从数据库中删除会话信息失败"];
         return;
     }
     

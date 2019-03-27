@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IMConversationNoNetCell : UITableViewCell <ZZFlexibleLayoutViewProtocol>
+@interface IMConversationNoNetCell : UITableViewCell <IMFlexibleLayoutViewProtocol>
 
 @end

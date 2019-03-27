@@ -1396,14 +1396,14 @@
 		849D691C224B06360074AE1F /* EmojiCells */ = {
 			isa = PBXGroup;
 			children = (
-				849D7AE1224B61A10074AE1F /* IMEmojiImageTitleItemCell.m */,
+				849D691F224B06360074AE1F /* IMEmojiBaseCell.h */,
+				849D6922224B06360074AE1F /* IMEmojiBaseCell.m */,
+				849D6921224B06360074AE1F /* IMEmojiFaceItemCell.h */,
 				849D691D224B06360074AE1F /* IMEmojiFaceItemCell.m */,
 				849D691E224B06360074AE1F /* IMEmojiImageItemCell.h */,
-				849D691F224B06360074AE1F /* IMEmojiBaseCell.h */,
-				849D6921224B06360074AE1F /* IMEmojiFaceItemCell.h */,
-				849D6922224B06360074AE1F /* IMEmojiBaseCell.m */,
 				849D6923224B06360074AE1F /* IMEmojiImageItemCell.m */,
 				849D6924224B06360074AE1F /* IMEmojiImageTitleItemCell.h */,
+				849D7AE1224B61A10074AE1F /* IMEmojiImageTitleItemCell.m */,
 			);
 			path = EmojiCells;
 			sourceTree = "<group>";

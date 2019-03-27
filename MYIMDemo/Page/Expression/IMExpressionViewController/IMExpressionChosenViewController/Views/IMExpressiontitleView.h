@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IMExpressiontitleView : UITableViewHeaderFooterView <ZZFlexibleLayoutViewProtocol>
+@interface IMExpressiontitleView : UITableViewHeaderFooterView <IMFlexibleLayoutViewProtocol>
 
 @end

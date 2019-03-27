@@ -6,7 +6,7 @@
 //  Copyright © 2017年 李伯坤. All rights reserved.
 //
 
-#import <ZZFLEX/ZZFlexibleLayoutFramework.h>
+#import <IMFlexAngel/IMFlexibleLayoutFramework.h>
 
 typedef NS_ENUM(NSInteger, IMConversationSectionTag) {
     IMConversationSectionTagAlert,
@@ -21,7 +21,7 @@ typedef NS_ENUM(NSInteger, IMConversationCellTag) {
 };
 
 
-@interface IMConversationAngel : ZZFLEXAngel <
+@interface IMConversationAngel : IMFLEXAngel <
     UITableViewDelegate
 >
 

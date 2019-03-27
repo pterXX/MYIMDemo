@@ -43,7 +43,7 @@
 - (id)init
 {
     if (self = [super init]) {
-        initTabBarItem(self.tabBarItem, LOCSTR(@"微信"), @"tabbar_mainframe", @"tabbar_mainframeHL");
+        initTabBarItem(self.tabBarItem, @"微信", @"tabbar_mainframe", @"tabbar_mainframeHL");
     }
     return self;
 }
@@ -170,7 +170,7 @@
         [conversation setUnreadCount:0];
         [self.listAngel reloadBadge];
         IMChatViewController *chatVC = [[IMChatViewController alloc] initWithConversation:conversation];
-        PushVC(chatVC);
+        IMPushVC(chatVC);
     });
 
     [self.tableView reloadData];
@@ -186,7 +186,7 @@
         @strongify(self);
         self.listAngel.sectionForTag(IMConversationSectionTagAlert).clear();
         if (status == IMNetworkStatusNone) {
-            [self.navigationItem setTitle:LOCSTR(@"未连接")];
+            [self.navigationItem setTitle:@"未连接"];
             self.listAngel.addCell(@"IMConversationNoNetCell").toSection(IMConversationSectionTagAlert).viewTag(IMConversationCellTagNoNet);
         }
         else {
@@ -198,9 +198,9 @@
 
 - (void)p_setNavtitleWithStatusString:(NSString *)statusString
 {
-    NSString *title = LOCSTR(@"微信");
+    NSString *title = @"微信";
     title = statusString.length > 0 ? [title stringByAppendingFormat:@"(%@)", statusString] : title;
-    [self.navigationItem setTitle:LOCSTR(title)];
+    [self.navigationItem setTitle:title];
 }
 
 #pragma mark - # Getter
@@ -213,7 +213,7 @@
             @strongify(self);
             [self.searchController setActive:NO];
             IMUserDetailViewController *detailVC = [[IMUserDetailViewController alloc] initWithUserModel:userModel];
-            PushVC(detailVC);
+            IMPushVC(detailVC);
         }];
         _searchController = [IMSearchController createWithResultsContrller:searchVC];
         [_searchController setEnableVoiceInput:YES];
@@ -230,7 +230,7 @@
             @strongify(self);
             if (item.className.length > 0) {
                 id vc = [[NSClassFromString(item.className) alloc] init];
-                PushVC(vc);
+                IMPushVC(vc);
             }
             else {
                 [IMUIUtility showAlertWithTitle:item.title message:@"功能暂未实现"];

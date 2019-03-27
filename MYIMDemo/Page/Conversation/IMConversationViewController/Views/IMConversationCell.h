@@ -15,7 +15,7 @@ typedef NS_ENUM(NSInteger, IMConversationCellSeperatorStyle) {
     IMConversationCellSeperatorStyleFill,
 };
 
-@interface IMConversationCell : UITableViewCell <ZZFlexibleLayoutViewProtocol>
+@interface IMConversationCell : UITableViewCell <IMFlexibleLayoutViewProtocol>
 
 /// 会话Model
 @property (nonatomic, strong) IMConversation *conversation;

@@ -64,10 +64,10 @@
     [super drawRect:rect];
     
     if (self.bottomSeperatorStyle == IMConversationCellSeperatorStyleDefault) {
-        self.addSeparator(ZZSeparatorPositionBottom).beginAt(15);
+        self.addSeparator(IMSeparatorPositionBottom).beginAt(15);
     }
     else {
-        self.addSeparator(ZZSeparatorPositionBottom);
+        self.addSeparator(IMSeparatorPositionBottom);
     }
 }
 
@@ -87,7 +87,7 @@
         [self.avatarView setImage:[UIImage imageNamed:path]];
     }
     else {
-        [self.avatarView tt_setImageWithURL:TLURL(conversation.avatarURL) placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
+        [self.avatarView tt_setImageWithURL:IMURL(conversation.avatarURL) placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
     }
     [self.nameLabel setText:conversation.partnerName];
     [self.detailLabel setText:conversation.content];
