@@ -119,7 +119,7 @@
     
     // 顶部logo
     self.tableView.addImageView(1001)
-    .image(TLImage(@"conv_wechat_icon"))
+    .image(IMImage(@"conv_wechat_icon"))
     .masonry(^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.tableView);
         make.bottom.mas_equalTo(self.tableView.mas_top).mas_offset(-35);
@@ -127,7 +127,7 @@
     
     // 右侧按钮
     @weakify(self);
-    [self addRightBarButtonWithImage:TLImage(@"nav_add") actionBlick:^{
+    [self addRightBarButtonWithImage:IMImage(@"nav_add") actionBlick:^{
         @strongify(self);
         if (self.addMenuView.isShow) {
             [self.addMenuView dismiss];
@@ -233,7 +233,7 @@
                 PushVC(vc);
             }
             else {
-                [TLUIUtility showAlertWithTitle:item.title message:@"功能暂未实现"];
+                [IMUIUtility showAlertWithTitle:item.title message:@"功能暂未实现"];
             }
         }];
     }

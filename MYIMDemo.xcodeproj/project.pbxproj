@@ -699,7 +699,7 @@
 		849D7B9D224B83E00074AE1F /* IMAddMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMAddMenuItem.h; sourceTree = "<group>"; };
 		849D7B9E224B83E00074AE1F /* IMAddMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMAddMenuView.h; sourceTree = "<group>"; };
 		849D7BA9224B843F0074AE1F /* IMActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMActionSheet.m; sourceTree = "<group>"; };
-		849D7BAA224B843F0074AE1F /* IMLActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMLActionSheet.h; sourceTree = "<group>"; };
+		849D7BAA224B843F0074AE1F /* IMActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMActionSheet.h; sourceTree = "<group>"; };
 		849D7BAC224B845E0074AE1F /* IMUIUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMUIUtility.m; sourceTree = "<group>"; };
 		849D7BAD224B845F0074AE1F /* IMUIUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMUIUtility.h; sourceTree = "<group>"; };
 		84E97AC62248B64300DF8842 /* NSAttributedString+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+Addition.m"; sourceTree = "<group>"; };
@@ -1936,7 +1936,7 @@
 			children = (
 				849D7BAD224B845F0074AE1F /* IMUIUtility.h */,
 				849D7BAC224B845E0074AE1F /* IMUIUtility.m */,
-				849D7BAA224B843F0074AE1F /* IMLActionSheet.h */,
+				849D7BAA224B843F0074AE1F /* IMActionSheet.h */,
 				849D7BA9224B843F0074AE1F /* IMActionSheet.m */,
 				EE8936C12227DA4F004F1F6E /* IMColorTools.h */,
 				EE8936C22227DA4F004F1F6E /* IMColorTools.m */,
