@@ -23,7 +23,7 @@ PODS:
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
-  - IMFlexAngel (7)
+  - IMFlexAngel (8)
   - KissXML (5.2.3)
   - libidn (1.35)
   - Masonry (1.1.0)
@@ -106,7 +106,7 @@ SPEC CHECKSUMS:
   CocoaLumberjack: 118bf4a820efc641f79fa487b75ed928dccfae23
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
-  IMFlexAngel: 3c8e2f490592a094d7760303a1def100a3f8e328
+  IMFlexAngel: 3b1162274f04b8cd55f1d4d8f2eed48a25449277
   KissXML: 09f88ff8161fd058d67b70740b8b516687b52823
   libidn: e4576a956b797c584c77aaedfc6e3dd639b61bdc
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
