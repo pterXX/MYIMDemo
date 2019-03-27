@@ -95,6 +95,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)im_showHUD;
 - (void)im_hideHUD;
 
+
+- (void)setStatusBarStyle:(UIStatusBarStyle)statusBarStyle;
 @end
 
 

@@ -1,17 +1,35 @@
 //
 //  IMFlexibleLayoutViewController.h
-//  MYIMDemo
+//  zhuanzhuan
 //
-//  Created by admin on 2019/3/18.
-//  Copyright © 2019 徐世杰. All rights reserved.
+//  Created by 李伯坤 on 2016/10/10.
+//  Copyright © 2016年 wuba. All rights reserved.
 //
 
-#import "IMFlexChainSectionModel.h"
-#import "IMFlexChainViewModel.h"
-#import "IMFlexChainViewBatchModel.h"
-#import "IMFlexChainViewEditModel.h"
+#import <UIKit/UIKit.h>
+#import "IMFLEXChainSectionModel.h"
+#import "IMFLEXChainViewModel.h"
+#import "IMFLEXChainViewBatchModel.h"
+#import "IMFLEXChainViewEditModel.h"
 
-NS_ASSUME_NONNULL_BEGIN
+/**
+ *  动态布局页面框架类 3.0
+ *
+ *  对UICollectionView的二次封装
+ *
+ *  注意：
+ *  1、sectionTag是Section的表示，建议设置（如果涉及UI的刷新则必须设置），同时建议SectionTag唯一
+ *  2、cellTag为cell的表示，需要时设置，能够结合SectionTag取到DataModel，可以不唯一
+ *
+ *  2.0更新：
+ *  1、优化框架代码结构，此类只保留核心代码，将API、OldAPI拆分到分类中；
+ *  2、主要API改为链式，使用更加灵活，原API已经移动到OldAPI分类中
+ *  3、Cell模块化支持，使用eventAction代替delegate
+ *
+ *  3.0更新：
+ *  1、加入UIView+IMFLEX模块
+ *  2、IMFLEX主要API优化
+ */
 
 #define     TAG_CELL_NONE                   0                                               // 默认cell Tag，在未指定时使用
 #define     TAG_CELL_SEPERATOR              -1                                              // 空白分割cell Tag
@@ -36,7 +54,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - ## IMFlexibleLayoutViewController
 @class IMFlexibleLayoutSectionModel;
-@interface IMFlexibleLayoutViewController : UIViewController<
+@interface IMFlexibleLayoutViewController : UIViewController <
 IMFlexibleLayoutViewControllerProtocol
 >
 
@@ -81,13 +99,13 @@ IMFLEX_CHAINAPI_TYPE BOOL (^upadteAllCells)(void);
 
 #pragma mark - # Section操作
 /// 添加section
-IMFLEX_CHAINAPI_TYPE IMFlexChainSectionModel *(^addSection)(NSInteger tag);
+IMFLEX_CHAINAPI_TYPE IMFLEXChainSectionModel *(^addSection)(NSInteger tag);
 
 /// 插入section
-IMFLEX_CHAINAPI_TYPE IMFlexChainSectionInsertModel *(^insertSection)(NSInteger tag);
+IMFLEX_CHAINAPI_TYPE IMFLEXChainSectionInsertModel *(^insertSection)(NSInteger tag);
 
 /// 获取/编辑section
-IMFLEX_CHAINAPI_TYPE IMFlexChainSectionEditModel *(^sectionForTag)(NSInteger tag);
+IMFLEX_CHAINAPI_TYPE IMFLEXChainSectionEditModel *(^sectionForTag)(NSInteger tag);
 
 /// 删除section
 IMFLEX_CHAINAPI_TYPE BOOL (^deleteSection)(NSInteger tag);
@@ -110,48 +128,48 @@ IMFLEX_CHAINAPI_TYPE BOOL (^hasSection)(NSInteger tag);
 
 #pragma mark - # Section HeaderFooter 操作
 /// 为section添加headerView，传入nil将删除header
-IMFLEX_CHAINAPI_TYPE IMFlexChainViewModel *(^setHeader)(NSString *className);
+IMFLEX_CHAINAPI_TYPE IMFLEXChainViewModel *(^setHeader)(NSString *className);
 
 /// 为section添加footerView，传入nil将删除footer
-IMFLEX_CHAINAPI_TYPE IMFlexChainViewModel *(^setFooter)(NSString *className);
+IMFLEX_CHAINAPI_TYPE IMFLEXChainViewModel *(^setFooter)(NSString *className);
 
 
 #pragma mark - # Section Cell 操作
 /// 添加cell
-IMFLEX_CHAINAPI_TYPE IMFlexChainViewModel *(^ addCell)(NSString *className);
+IMFLEX_CHAINAPI_TYPE IMFLEXChainViewModel *(^ addCell)(NSString *className);
 
 /// 批量添加cell
-IMFLEX_CHAINAPI_TYPE IMFlexChainViewBatchModel *(^ addCells)(NSString *className);
+IMFLEX_CHAINAPI_TYPE IMFLEXChainViewBatchModel *(^ addCells)(NSString *className);
 
 /// 插入cell
-IMFLEX_CHAINAPI_TYPE IMFlexChainViewInsertModel *(^ insertCell)(NSString *className);
+IMFLEX_CHAINAPI_TYPE IMFLEXChainViewInsertModel *(^ insertCell)(NSString *className);
 
 /// 批量插入cell
-IMFLEX_CHAINAPI_TYPE IMFlexChainViewBatchInsertModel *(^ insertCells)(NSString *className);
+IMFLEX_CHAINAPI_TYPE IMFLEXChainViewBatchInsertModel *(^ insertCells)(NSString *className);
 
 /// 添加空白cell
-IMFLEX_CHAINAPI_TYPE IMFlexChainViewModel *(^ addSeperatorCell)(CGSize size, UIColor *color);
+IMFLEX_CHAINAPI_TYPE IMFLEXChainViewModel *(^ addSeperatorCell)(CGSize size, UIColor *color);
 
 /// 删除第一个符合条件的cell
-IMFLEX_CHAINAPI_TYPE IMFlexChainViewEditModel *deleteCell;
+IMFLEX_CHAINAPI_TYPE IMFLEXChainViewEditModel *deleteCell;
 
 /// 删除所有符合条件的cell
-IMFLEX_CHAINAPI_TYPE IMFlexChainViewBatchEditModel *deleteCells;
+IMFLEX_CHAINAPI_TYPE IMFLEXChainViewBatchEditModel *deleteCells;
 
 /// 更新第一个符合条件的cell高度
-IMFLEX_CHAINAPI_TYPE IMFlexChainViewEditModel *updateCell;
+IMFLEX_CHAINAPI_TYPE IMFLEXChainViewEditModel *updateCell;
 
 /// 更新所有符合条件的cell高度
-IMFLEX_CHAINAPI_TYPE IMFlexChainViewBatchEditModel *updateCells;
+IMFLEX_CHAINAPI_TYPE IMFLEXChainViewBatchEditModel *updateCells;
 
 /// 是否包含cell
-IMFLEX_CHAINAPI_TYPE IMFlexChainViewEditModel *hasCell;
+IMFLEX_CHAINAPI_TYPE IMFLEXChainViewEditModel *hasCell;
 
 #pragma mark - # DataModel 数据源获取
 /// 数据源获取
-IMFLEX_CHAINAPI_TYPE IMFlexChainViewEditModel *dataModel;
+IMFLEX_CHAINAPI_TYPE IMFLEXChainViewEditModel *dataModel;
 /// 批量数据源获取(注意，dataModel为nil的元素，在数组中以NSNull存在)
-IMFLEX_CHAINAPI_TYPE IMFlexChainViewBatchEditModel *dataModelArray;
+IMFLEX_CHAINAPI_TYPE IMFLEXChainViewBatchEditModel *dataModelArray;
 
 @end
 
@@ -168,5 +186,3 @@ IMFLEX_CHAINAPI_TYPE IMFlexChainViewBatchEditModel *dataModelArray;
 
 @end
 
-
-NS_ASSUME_NONNULL_END

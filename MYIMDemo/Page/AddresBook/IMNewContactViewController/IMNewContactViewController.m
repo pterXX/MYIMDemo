@@ -8,14 +8,8 @@
 
 #import "IMNewContactViewController.h"
 #import "IMNewContactTableViewCell.h"
-#import "IMAddContactsViewController.h"
 #import "IMChatViewController.h"
-#import "IMConversationModel.h"
-#import "IMConversationModel.h"
-#import "IMEmojiGroup.h"
 #import "IMLoginViewController.h"
-#import "IMMessageModel.h"
-#import "IMSearchMessageViewController.h"
 #import "UIViewController+Category.h"
 #import <XMPPFramework/XMPPFramework.h>
 
@@ -53,9 +47,9 @@
     self.title = @"新的朋友";
     kWeakSelf;
     [self addRightBarButtonWithTitle:@"添加朋友" actionBlick:^{
-        IMAddContactsViewController *vc = [[IMAddContactsViewController alloc] init];
-        vc.hidesBottomBarWhenPushed = YES;
-        [weakSelf.navigationController pushViewController:vc animated:YES];
+//        IMAddContactsViewController *vc = [[IMAddContactsViewController alloc] init];
+//        vc.hidesBottomBarWhenPushed = YES;
+//        [weakSelf.navigationController pushViewController:vc animated:YES];
     }];
 }
 

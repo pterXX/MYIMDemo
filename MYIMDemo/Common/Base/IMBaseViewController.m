@@ -35,6 +35,10 @@
 }
 
 #pragma mark - private
+- (void)setStatusBarStyle:(UIStatusBarStyle)statusBarStyle{
+    _statusBarStyle = statusBarStyle;
+}
+
 /**
  *  去除nav 上的line
  */

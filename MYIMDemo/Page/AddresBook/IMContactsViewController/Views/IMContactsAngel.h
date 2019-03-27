@@ -22,7 +22,7 @@ typedef NS_ENUM(NSInteger, IMContactsVCCellType) {
 };
 
 
-@interface IMContactsAngel : IMFlexAngel
+@interface IMContactsAngel : IMFLEXAngel
 /// pushAction
 @property (nonatomic, copy) void (^pushAction)(__kindof UIViewController *vc);
 

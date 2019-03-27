@@ -7,7 +7,6 @@
 //
 
 #import "IMNewFriendViewController.h"
-#import "IMAddContactsViewController.h"
 #import "IMSearchController.h"
 #import "IMNewFriendAngel.h"
 #import "IMFriendFindViewController.h"
@@ -43,8 +42,8 @@
     @weakify(self);
     [self addRightBarButtonWithTitle:@"添加朋友" actionBlick:^{
         @strongify(self);
-        IMAddContactsViewController *addFriendVC = [[IMAddContactsViewController alloc] init];
-        IMPushVC(addFriendVC);
+//        IMAddContactsViewController *addFriendVC = [[IMAddContactsViewController alloc] init];
+//        IMPushVC(addFriendVC);
     }];
     
     self.tableView                              = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];

@@ -8,7 +8,6 @@
 
 #import "IMNewFriendAngel.h"
 #import "IMMobileContactsViewController.h"
-#import "IMAddContactsViewController.h"
 #import "IMNewFriendFuncationCell.h"
 #import "IMNewFriendViewUserCell.h"
 #import "IMFriendFindViewController.h"
