@@ -52,10 +52,10 @@ IMContactsItem *createContactsItemModelWithTag(NSInteger tag, NSString *path, NS
 - (void)viewIndexPath:(NSIndexPath *)indexPath sectionItemCount:(NSInteger)count
 {
     if (indexPath.row == count - 1) {
-        self.removeSeparator(SeparatorPositionBottom);
+        self.removeSeparator(IMSeparatorPositionBottom);
     }
     else {
-        self.addSeparator(SeparatorPositionBottom).beginAt(10);
+        self.addSeparator(IMSeparatorPositionBottom).beginAt(10);
     }
 }
 

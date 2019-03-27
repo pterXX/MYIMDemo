@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "17309FFD49062F7602C85BEC25365933"
+               BlueprintIdentifier = "B1D3ABCEAF2731678D3BCBA469056289"
                BuildableName = "IMFlexAngel.framework"
                BlueprintName = "IMFlexAngel"
                ReferencedContainer = "container:Pods.xcodeproj">

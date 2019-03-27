@@ -13,7 +13,7 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 
-@property (nonatomic, strong) IMFlexAngel *tableViewAngel;
+@property (nonatomic, strong) IMFLEXAngel *tableViewAngel;
 
 @property (nonatomic, strong) NSMutableArray *friendsData;
 
@@ -39,7 +39,7 @@
         make.edges.mas_equalTo(0);
     }];
     
-    self.tableViewAngel = [[IMFlexAngel alloc] initWithHostView:self.tableView];
+    self.tableViewAngel = [[IMFLEXAngel alloc] initWithHostView:self.tableView];
 }
 
 - (void)viewDidLoad{

@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface IMNewFriendAngel : IMFlexAngel
+@interface IMNewFriendAngel : IMFLEXAngel
 /// pushAction
 @property (nonatomic, copy) void (^pushAction)(__kindof UIViewController *vc);
 @property (nonatomic, copy) void (^btnAction)(void);

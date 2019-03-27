@@ -31,19 +31,6 @@
 		8423C36C223BAD1800E999F5 /* IMNewFriendAngel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8423C369223BA99A00E999F5 /* IMNewFriendAngel.m */; };
 		842510F5222E24A7004C3954 /* IMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842510F4222E24A7004C3954 /* IMLoginViewController.m */; };
 		842510F7222E24E0004C3954 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842510F6222E24E0004C3954 /* Launch Screen.storyboard */; };
-		84251175222E5E28004C3954 /* IMAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84251122222E5E27004C3954 /* IMAccountManager.m */; };
-		84251199222E600E004C3954 /* IMDBFriendStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 84251194222E600D004C3954 /* IMDBFriendStore.m */; };
-		8425119A222E600E004C3954 /* IMDBGroupStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 84251197222E600E004C3954 /* IMDBGroupStore.m */; };
-		8425119F222E6032004C3954 /* IMGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 8425119B222E6031004C3954 /* IMGroup.m */; };
-		842511AB222E609A004C3954 /* IMUserChatSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 842511A1222E6099004C3954 /* IMUserChatSetting.m */; };
-		842511AC222E609A004C3954 /* IMUserDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 842511A2222E6099004C3954 /* IMUserDetail.m */; };
-		842511AD222E609A004C3954 /* IMUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 842511A3222E6099004C3954 /* IMUser.m */; };
-		842511AE222E609A004C3954 /* IMUserGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 842511A4222E6099004C3954 /* IMUserGroup.m */; };
-		842511AF222E609A004C3954 /* IMUserSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 842511A6222E609A004C3954 /* IMUserSetting.m */; };
-		842511B3222E60B3004C3954 /* IMDBUserStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 842511B0222E60B3004C3954 /* IMDBUserStore.m */; };
-		842511B8222E60BF004C3954 /* IMDBBaseStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 842511B4222E60BE004C3954 /* IMDBBaseStore.m */; };
-		842511B9222E60BF004C3954 /* IMDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 842511B7222E60BF004C3954 /* IMDBManager.m */; };
-		842511BF222E60D0004C3954 /* IMUserHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 842511BD222E60D0004C3954 /* IMUserHelper.m */; };
 		842511C3222E6539004C3954 /* NSFileManager+IMChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 842511C2222E6538004C3954 /* NSFileManager+IMChat.m */; };
 		8425CEB72241E5C800E1A12E /* UIImageView+IMChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 8425CEB62241E5C800E1A12E /* UIImageView+IMChat.m */; };
 		8428F46622326AD00064DA35 /* IMBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8428F46522326AD00064DA35 /* IMBaseNavigationController.m */; };
@@ -113,22 +100,6 @@
 		849D69B0224B09340074AE1F /* IMMessageImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D69A5224B09340074AE1F /* IMMessageImageView.m */; };
 		849D69B1224B09340074AE1F /* IMImageMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D69A6224B09340074AE1F /* IMImageMessageCell.m */; };
 		849D69B2224B09340074AE1F /* IMChatMessageDisplayView+Delegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D69A9224B09340074AE1F /* IMChatMessageDisplayView+Delegate.m */; };
-		849D6A1A224B09FA0074AE1F /* IMConversation+IMUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D69F2224B09FA0074AE1F /* IMConversation+IMUser.m */; };
-		849D6A1B224B09FA0074AE1F /* IMConversation.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D69F3224B09FA0074AE1F /* IMConversation.m */; };
-		849D6A1C224B09FA0074AE1F /* IMDBMessageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D69F8224B09FA0074AE1F /* IMDBMessageStore.m */; };
-		849D6A1D224B09FA0074AE1F /* IMDBConversationStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D69FA224B09FA0074AE1F /* IMDBConversationStore.m */; };
-		849D6A1E224B09FA0074AE1F /* IMMoreKBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D69FC224B09FA0074AE1F /* IMMoreKBHelper.m */; };
-		849D6A1F224B09FA0074AE1F /* IMEmojiKBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D69FD224B09FA0074AE1F /* IMEmojiKBHelper.m */; };
-		849D6A20224B09FA0074AE1F /* IMMessageManager+MessageRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D6A02224B09FA0074AE1F /* IMMessageManager+MessageRecord.m */; };
-		849D6A21224B09FA0074AE1F /* IMMessageManager+ConversationRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D6A05224B09FA0074AE1F /* IMMessageManager+ConversationRecord.m */; };
-		849D6A22224B09FA0074AE1F /* IMMessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D6A08224B09FA0074AE1F /* IMMessageManager.m */; };
-		849D6A23224B09FA0074AE1F /* IMExpressionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D6A0A224B09FA0074AE1F /* IMExpressionMessage.m */; };
-		849D6A24224B09FA0074AE1F /* IMMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D6A0B224B09FA0074AE1F /* IMMessage.m */; };
-		849D6A25224B09FA0074AE1F /* IMMessageFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D6A0D224B09FA0074AE1F /* IMMessageFrame.m */; };
-		849D6A26224B09FA0074AE1F /* IMTextMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D6A0F224B09FA0074AE1F /* IMTextMessage.m */; };
-		849D6A27224B09FA0074AE1F /* IMVideoMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D6A11224B09FA0074AE1F /* IMVideoMessage.m */; };
-		849D6A28224B09FA0074AE1F /* IMImageMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D6A17224B09FA0074AE1F /* IMImageMessage.m */; };
-		849D6A29224B09FA0074AE1F /* IMVoiceMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D6A19224B09FA0074AE1F /* IMVoiceMessage.m */; };
 		849D6AD8224B0EE40074AE1F /* IMExpressionChosenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D6A91224B0EE30074AE1F /* IMExpressionChosenViewController.m */; };
 		849D6AD9224B0EE40074AE1F /* IMExpressionGroupModel+ChosenRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D6A94224B0EE30074AE1F /* IMExpressionGroupModel+ChosenRequest.m */; };
 		849D6ADA224B0EE40074AE1F /* IMExpressionChosenAngel.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D6A95224B0EE30074AE1F /* IMExpressionChosenAngel.m */; };
@@ -197,10 +168,8 @@
 		849D78F6224B26E60074AE1F /* UIViewController+PopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D78C5224B26E50074AE1F /* UIViewController+PopGesture.m */; };
 		849D78F7224B26E60074AE1F /* IMPictureCarouselViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D78C8224B26E50074AE1F /* IMPictureCarouselViewCell.m */; };
 		849D78F8224B26E60074AE1F /* IMPictureCarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D78C9224B26E50074AE1F /* IMPictureCarouselView.m */; };
-		849D78F9224B3EAF0074AE1F /* IMGroup+CreateAvatar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8425119C222E6031004C3954 /* IMGroup+CreateAvatar.m */; };
 		849D7A02224B49FE0074AE1F /* IMUIUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7A00224B49FD0074AE1F /* IMUIUtility.m */; };
 		849D7A0D224B4C180074AE1F /* IMActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7A0B224B4C170074AE1F /* IMActionSheet.m */; };
-		849D7ADD224B5ED90074AE1F /* IMFriendHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7ADB224B5ED80074AE1F /* IMFriendHelper.m */; };
 		849D7AE2224B61A10074AE1F /* IMEmojiImageTitleItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7AE1224B61A10074AE1F /* IMEmojiImageTitleItemCell.m */; };
 		849D7AF5224B65D80074AE1F /* IMConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7AE5224B65D80074AE1F /* IMConversationViewController.m */; };
 		849D7AF6224B65D80074AE1F /* IMConversationAngel.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7AE6224B65D80074AE1F /* IMConversationAngel.m */; };
@@ -211,7 +180,38 @@
 		849D7AFB224B65D80074AE1F /* AddMenu.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 849D7AF0224B65D80074AE1F /* AddMenu.xcassets */; };
 		849D7AFC224B65D80074AE1F /* IMAddMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7AF1224B65D80074AE1F /* IMAddMenuView.m */; };
 		849D7B00224B67700074AE1F /* IMChatViewController+Conversation.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7AFE224B67700074AE1F /* IMChatViewController+Conversation.m */; };
-		849D7B0A224B6EFA0074AE1F /* IMAppConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B08224B6EF90074AE1F /* IMAppConfig.m */; };
+		849D7B67224B7FE60074AE1F /* IMDBBaseStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B13224B7FE50074AE1F /* IMDBBaseStore.m */; };
+		849D7B68224B7FE60074AE1F /* IMDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B14224B7FE50074AE1F /* IMDBManager.m */; };
+		849D7B69224B7FE60074AE1F /* IMMoreKBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B17224B7FE50074AE1F /* IMMoreKBHelper.m */; };
+		849D7B6A224B7FE60074AE1F /* IMEmojiKBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B18224B7FE50074AE1F /* IMEmojiKBHelper.m */; };
+		849D7B6B224B7FE60074AE1F /* IMMessageManager+MessageRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B1D224B7FE50074AE1F /* IMMessageManager+MessageRecord.m */; };
+		849D7B6C224B7FE60074AE1F /* IMMessageManager+ConversationRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B20224B7FE50074AE1F /* IMMessageManager+ConversationRecord.m */; };
+		849D7B6D224B7FE60074AE1F /* IMMessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B23224B7FE50074AE1F /* IMMessageManager.m */; };
+		849D7B6E224B7FE60074AE1F /* IMExpressionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B25224B7FE50074AE1F /* IMExpressionMessage.m */; };
+		849D7B6F224B7FE60074AE1F /* IMMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B26224B7FE50074AE1F /* IMMessage.m */; };
+		849D7B70224B7FE60074AE1F /* IMMessageFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B28224B7FE50074AE1F /* IMMessageFrame.m */; };
+		849D7B71224B7FE60074AE1F /* IMTextMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B2A224B7FE50074AE1F /* IMTextMessage.m */; };
+		849D7B72224B7FE60074AE1F /* IMVideoMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B2C224B7FE50074AE1F /* IMVideoMessage.m */; };
+		849D7B73224B7FE60074AE1F /* IMImageMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B32224B7FE50074AE1F /* IMImageMessage.m */; };
+		849D7B74224B7FE60074AE1F /* IMVoiceMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B34224B7FE50074AE1F /* IMVoiceMessage.m */; };
+		849D7B75224B7FE60074AE1F /* IMConversation+IMUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B38224B7FE50074AE1F /* IMConversation+IMUser.m */; };
+		849D7B76224B7FE60074AE1F /* IMConversation.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B39224B7FE50074AE1F /* IMConversation.m */; };
+		849D7B77224B7FE60074AE1F /* IMDBMessageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B3E224B7FE50074AE1F /* IMDBMessageStore.m */; };
+		849D7B78224B7FE60074AE1F /* IMDBConversationStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B40224B7FE50074AE1F /* IMDBConversationStore.m */; };
+		849D7B79224B7FE60074AE1F /* IMAppConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B42224B7FE50074AE1F /* IMAppConfig.m */; };
+		849D7B7A224B7FE60074AE1F /* IMUserHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B45224B7FE50074AE1F /* IMUserHelper.m */; };
+		849D7B7B224B7FE60074AE1F /* IMGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B48224B7FE50074AE1F /* IMGroup.m */; };
+		849D7B7C224B7FE60074AE1F /* IMGroup+CreateAvatar.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B49224B7FE50074AE1F /* IMGroup+CreateAvatar.m */; };
+		849D7B7D224B7FE60074AE1F /* IMDBGroupStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B4F224B7FE50074AE1F /* IMDBGroupStore.m */; };
+		849D7B7E224B7FE60074AE1F /* IMDBFriendStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B50224B7FE50074AE1F /* IMDBFriendStore.m */; };
+		849D7B7F224B7FE60074AE1F /* IMFriendHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B54224B7FE50074AE1F /* IMFriendHelper.m */; };
+		849D7B80224B7FE60074AE1F /* IMUserChatSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B58224B7FE50074AE1F /* IMUserChatSetting.m */; };
+		849D7B81224B7FE60074AE1F /* IMUserDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B59224B7FE50074AE1F /* IMUserDetail.m */; };
+		849D7B82224B7FE60074AE1F /* IMUserGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B5C224B7FE50074AE1F /* IMUserGroup.m */; };
+		849D7B83224B7FE60074AE1F /* IMUserSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B5F224B7FE50074AE1F /* IMUserSetting.m */; };
+		849D7B84224B7FE60074AE1F /* IMUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B60224B7FE50074AE1F /* IMUser.m */; };
+		849D7B85224B7FE60074AE1F /* IMAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B62224B7FE50074AE1F /* IMAccountManager.m */; };
+		849D7B86224B7FE60074AE1F /* IMDBUserStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B66224B7FE50074AE1F /* IMDBUserStore.m */; };
 		84E97AC82248B64400DF8842 /* NSAttributedString+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E97AC62248B64300DF8842 /* NSAttributedString+Addition.m */; };
 		9330B5BB72954608CB742A23 /* Pods_MYIMDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECA892BB53FE8E5F6A5CBF5D /* Pods_MYIMDemoTests.framework */; };
 		AE6AE5E7E160C14E5371D105 /* Pods_MYIMDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2189E704B4F186789328318 /* Pods_MYIMDemo.framework */; };
@@ -320,37 +320,6 @@
 		842510F3222E24A7004C3954 /* IMLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMLoginViewController.h; sourceTree = "<group>"; };
 		842510F4222E24A7004C3954 /* IMLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMLoginViewController.m; sourceTree = "<group>"; };
 		842510F6222E24E0004C3954 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		84251122222E5E27004C3954 /* IMAccountManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMAccountManager.m; sourceTree = "<group>"; };
-		8425112E222E5E27004C3954 /* IMAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMAccountManager.h; sourceTree = "<group>"; };
-		84251174222E5E28004C3954 /* IMDBFriendStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDBFriendStore.h; sourceTree = "<group>"; };
-		84251194222E600D004C3954 /* IMDBFriendStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMDBFriendStore.m; sourceTree = "<group>"; };
-		84251195222E600E004C3954 /* IMDBGroupStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDBGroupStore.h; sourceTree = "<group>"; };
-		84251196222E600E004C3954 /* IMDBGroupSQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDBGroupSQL.h; sourceTree = "<group>"; };
-		84251197222E600E004C3954 /* IMDBGroupStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMDBGroupStore.m; sourceTree = "<group>"; };
-		84251198222E600E004C3954 /* IMDBFriendSQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDBFriendSQL.h; sourceTree = "<group>"; };
-		8425119B222E6031004C3954 /* IMGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMGroup.m; sourceTree = "<group>"; };
-		8425119C222E6031004C3954 /* IMGroup+CreateAvatar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IMGroup+CreateAvatar.m"; sourceTree = "<group>"; };
-		8425119D222E6031004C3954 /* IMGroup+CreateAvatar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IMGroup+CreateAvatar.h"; sourceTree = "<group>"; };
-		8425119E222E6031004C3954 /* IMGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMGroup.h; sourceTree = "<group>"; };
-		842511A1222E6099004C3954 /* IMUserChatSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMUserChatSetting.m; sourceTree = "<group>"; };
-		842511A2222E6099004C3954 /* IMUserDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMUserDetail.m; sourceTree = "<group>"; };
-		842511A3222E6099004C3954 /* IMUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMUser.m; sourceTree = "<group>"; };
-		842511A4222E6099004C3954 /* IMUserGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMUserGroup.m; sourceTree = "<group>"; };
-		842511A5222E609A004C3954 /* IMUserSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMUserSetting.h; sourceTree = "<group>"; };
-		842511A6222E609A004C3954 /* IMUserSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMUserSetting.m; sourceTree = "<group>"; };
-		842511A7222E609A004C3954 /* IMUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMUser.h; sourceTree = "<group>"; };
-		842511A8222E609A004C3954 /* IMUserChatSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMUserChatSetting.h; sourceTree = "<group>"; };
-		842511A9222E609A004C3954 /* IMUserDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMUserDetail.h; sourceTree = "<group>"; };
-		842511AA222E609A004C3954 /* IMUserGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMUserGroup.h; sourceTree = "<group>"; };
-		842511B0222E60B3004C3954 /* IMDBUserStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMDBUserStore.m; sourceTree = "<group>"; };
-		842511B1222E60B3004C3954 /* IMDBUserStoreSQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDBUserStoreSQL.h; sourceTree = "<group>"; };
-		842511B2222E60B3004C3954 /* IMDBUserStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDBUserStore.h; sourceTree = "<group>"; };
-		842511B4222E60BE004C3954 /* IMDBBaseStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMDBBaseStore.m; sourceTree = "<group>"; };
-		842511B5222E60BE004C3954 /* IMDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDBManager.h; sourceTree = "<group>"; };
-		842511B6222E60BF004C3954 /* IMDBBaseStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDBBaseStore.h; sourceTree = "<group>"; };
-		842511B7222E60BF004C3954 /* IMDBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMDBManager.m; sourceTree = "<group>"; };
-		842511BA222E60D0004C3954 /* IMUserHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMUserHelper.h; sourceTree = "<group>"; };
-		842511BD222E60D0004C3954 /* IMUserHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMUserHelper.m; sourceTree = "<group>"; };
 		842511C1222E6538004C3954 /* NSFileManager+IMChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSFileManager+IMChat.h"; path = "../../../Utils/DataUtils/NSFileManager+IMChat.h"; sourceTree = "<group>"; };
 		842511C2222E6538004C3954 /* NSFileManager+IMChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSFileManager+IMChat.m"; path = "../../../Utils/DataUtils/NSFileManager+IMChat.m"; sourceTree = "<group>"; };
 		8425CEB52241E5C800E1A12E /* UIImageView+IMChat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+IMChat.h"; sourceTree = "<group>"; };
@@ -497,44 +466,6 @@
 		849D69A7224B09340074AE1F /* IMChatMessageDisplayView+Delegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IMChatMessageDisplayView+Delegate.h"; sourceTree = "<group>"; };
 		849D69A8224B09340074AE1F /* IMChatMessageDisplayViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMChatMessageDisplayViewDelegate.h; sourceTree = "<group>"; };
 		849D69A9224B09340074AE1F /* IMChatMessageDisplayView+Delegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IMChatMessageDisplayView+Delegate.m"; sourceTree = "<group>"; };
-		849D69F0224B09FA0074AE1F /* IMConversation+IMUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IMConversation+IMUser.h"; sourceTree = "<group>"; };
-		849D69F1224B09FA0074AE1F /* IMConversation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMConversation.h; sourceTree = "<group>"; };
-		849D69F2224B09FA0074AE1F /* IMConversation+IMUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IMConversation+IMUser.m"; sourceTree = "<group>"; };
-		849D69F3224B09FA0074AE1F /* IMConversation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMConversation.m; sourceTree = "<group>"; };
-		849D69F5224B09FA0074AE1F /* IMDBMessageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDBMessageStore.h; sourceTree = "<group>"; };
-		849D69F6224B09FA0074AE1F /* IMDBConversationSQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDBConversationSQL.h; sourceTree = "<group>"; };
-		849D69F7224B09FA0074AE1F /* IMDBConversationStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDBConversationStore.h; sourceTree = "<group>"; };
-		849D69F8224B09FA0074AE1F /* IMDBMessageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMDBMessageStore.m; sourceTree = "<group>"; };
-		849D69F9224B09FA0074AE1F /* IMDBMessageStoreSQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDBMessageStoreSQL.h; sourceTree = "<group>"; };
-		849D69FA224B09FA0074AE1F /* IMDBConversationStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMDBConversationStore.m; sourceTree = "<group>"; };
-		849D69FC224B09FA0074AE1F /* IMMoreKBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMMoreKBHelper.m; sourceTree = "<group>"; };
-		849D69FD224B09FA0074AE1F /* IMEmojiKBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMEmojiKBHelper.m; sourceTree = "<group>"; };
-		849D69FE224B09FA0074AE1F /* IMMoreKBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMoreKBHelper.h; sourceTree = "<group>"; };
-		849D69FF224B09FA0074AE1F /* IMEmojiKBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMEmojiKBHelper.h; sourceTree = "<group>"; };
-		849D6A01224B09FA0074AE1F /* IMMessageManagerChatVCDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMessageManagerChatVCDelegate.h; sourceTree = "<group>"; };
-		849D6A02224B09FA0074AE1F /* IMMessageManager+MessageRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IMMessageManager+MessageRecord.m"; sourceTree = "<group>"; };
-		849D6A03224B09FA0074AE1F /* IMMessageManagerConvVCDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMessageManagerConvVCDelegate.h; sourceTree = "<group>"; };
-		849D6A04224B09FA0074AE1F /* IMMessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMessageManager.h; sourceTree = "<group>"; };
-		849D6A05224B09FA0074AE1F /* IMMessageManager+ConversationRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IMMessageManager+ConversationRecord.m"; sourceTree = "<group>"; };
-		849D6A06224B09FA0074AE1F /* IMMessageManager+MessageRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IMMessageManager+MessageRecord.h"; sourceTree = "<group>"; };
-		849D6A07224B09FA0074AE1F /* IMMessageManager+ConversationRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IMMessageManager+ConversationRecord.h"; sourceTree = "<group>"; };
-		849D6A08224B09FA0074AE1F /* IMMessageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMMessageManager.m; sourceTree = "<group>"; };
-		849D6A0A224B09FA0074AE1F /* IMExpressionMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMExpressionMessage.m; sourceTree = "<group>"; };
-		849D6A0B224B09FA0074AE1F /* IMMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMMessage.m; sourceTree = "<group>"; };
-		849D6A0C224B09FA0074AE1F /* IMVideoMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMVideoMessage.h; sourceTree = "<group>"; };
-		849D6A0D224B09FA0074AE1F /* IMMessageFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMMessageFrame.m; sourceTree = "<group>"; };
-		849D6A0E224B09FA0074AE1F /* IMImageMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMImageMessage.h; sourceTree = "<group>"; };
-		849D6A0F224B09FA0074AE1F /* IMTextMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMTextMessage.m; sourceTree = "<group>"; };
-		849D6A10224B09FA0074AE1F /* IMVoiceMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMVoiceMessage.h; sourceTree = "<group>"; };
-		849D6A11224B09FA0074AE1F /* IMVideoMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMVideoMessage.m; sourceTree = "<group>"; };
-		849D6A12224B09FA0074AE1F /* IMMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMessage.h; sourceTree = "<group>"; };
-		849D6A13224B09FA0074AE1F /* IMMessageProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMessageProtocol.h; sourceTree = "<group>"; };
-		849D6A14224B09FA0074AE1F /* IMExpressionMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMExpressionMessage.h; sourceTree = "<group>"; };
-		849D6A15224B09FA0074AE1F /* IMMessageConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMessageConstants.h; sourceTree = "<group>"; };
-		849D6A16224B09FA0074AE1F /* IMMessageFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMessageFrame.h; sourceTree = "<group>"; };
-		849D6A17224B09FA0074AE1F /* IMImageMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMImageMessage.m; sourceTree = "<group>"; };
-		849D6A18224B09FA0074AE1F /* IMTextMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMTextMessage.h; sourceTree = "<group>"; };
-		849D6A19224B09FA0074AE1F /* IMVoiceMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMVoiceMessage.m; sourceTree = "<group>"; };
 		849D6A91224B0EE30074AE1F /* IMExpressionChosenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMExpressionChosenViewController.m; sourceTree = "<group>"; };
 		849D6A93224B0EE30074AE1F /* IMExpressionGroupModel+ChosenRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IMExpressionGroupModel+ChosenRequest.h"; sourceTree = "<group>"; };
 		849D6A94224B0EE30074AE1F /* IMExpressionGroupModel+ChosenRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IMExpressionGroupModel+ChosenRequest.m"; sourceTree = "<group>"; };
@@ -680,8 +611,6 @@
 		849D7A01224B49FE0074AE1F /* IMUIUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMUIUtility.h; sourceTree = "<group>"; };
 		849D7A0B224B4C170074AE1F /* IMActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMActionSheet.m; sourceTree = "<group>"; };
 		849D7A0C224B4C180074AE1F /* IMActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMActionSheet.h; sourceTree = "<group>"; };
-		849D7ADB224B5ED80074AE1F /* IMFriendHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMFriendHelper.m; sourceTree = "<group>"; };
-		849D7ADC224B5ED90074AE1F /* IMFriendHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMFriendHelper.h; sourceTree = "<group>"; };
 		849D7AE1224B61A10074AE1F /* IMEmojiImageTitleItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMEmojiImageTitleItemCell.m; sourceTree = "<group>"; };
 		849D7AE4224B65D80074AE1F /* IMConversationAngel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMConversationAngel.h; sourceTree = "<group>"; };
 		849D7AE5224B65D80074AE1F /* IMConversationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMConversationViewController.m; sourceTree = "<group>"; };
@@ -700,8 +629,79 @@
 		849D7AF4224B65D80074AE1F /* IMAddMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMAddMenuView.h; sourceTree = "<group>"; };
 		849D7AFE224B67700074AE1F /* IMChatViewController+Conversation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IMChatViewController+Conversation.m"; sourceTree = "<group>"; };
 		849D7AFF224B67700074AE1F /* IMChatViewController+Conversation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IMChatViewController+Conversation.h"; sourceTree = "<group>"; };
-		849D7B08224B6EF90074AE1F /* IMAppConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMAppConfig.m; sourceTree = "<group>"; };
-		849D7B09224B6EF90074AE1F /* IMAppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMAppConfig.h; sourceTree = "<group>"; };
+		849D7B11224B7FE50074AE1F /* IMDBBaseStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDBBaseStore.h; sourceTree = "<group>"; };
+		849D7B12224B7FE50074AE1F /* IMDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDBManager.h; sourceTree = "<group>"; };
+		849D7B13224B7FE50074AE1F /* IMDBBaseStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMDBBaseStore.m; sourceTree = "<group>"; };
+		849D7B14224B7FE50074AE1F /* IMDBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMDBManager.m; sourceTree = "<group>"; };
+		849D7B17224B7FE50074AE1F /* IMMoreKBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMMoreKBHelper.m; sourceTree = "<group>"; };
+		849D7B18224B7FE50074AE1F /* IMEmojiKBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMEmojiKBHelper.m; sourceTree = "<group>"; };
+		849D7B19224B7FE50074AE1F /* IMMoreKBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMoreKBHelper.h; sourceTree = "<group>"; };
+		849D7B1A224B7FE50074AE1F /* IMEmojiKBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMEmojiKBHelper.h; sourceTree = "<group>"; };
+		849D7B1C224B7FE50074AE1F /* IMMessageManagerChatVCDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMessageManagerChatVCDelegate.h; sourceTree = "<group>"; };
+		849D7B1D224B7FE50074AE1F /* IMMessageManager+MessageRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IMMessageManager+MessageRecord.m"; sourceTree = "<group>"; };
+		849D7B1E224B7FE50074AE1F /* IMMessageManagerConvVCDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMessageManagerConvVCDelegate.h; sourceTree = "<group>"; };
+		849D7B1F224B7FE50074AE1F /* IMMessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMessageManager.h; sourceTree = "<group>"; };
+		849D7B20224B7FE50074AE1F /* IMMessageManager+ConversationRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IMMessageManager+ConversationRecord.m"; sourceTree = "<group>"; };
+		849D7B21224B7FE50074AE1F /* IMMessageManager+MessageRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IMMessageManager+MessageRecord.h"; sourceTree = "<group>"; };
+		849D7B22224B7FE50074AE1F /* IMMessageManager+ConversationRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IMMessageManager+ConversationRecord.h"; sourceTree = "<group>"; };
+		849D7B23224B7FE50074AE1F /* IMMessageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMMessageManager.m; sourceTree = "<group>"; };
+		849D7B25224B7FE50074AE1F /* IMExpressionMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMExpressionMessage.m; sourceTree = "<group>"; };
+		849D7B26224B7FE50074AE1F /* IMMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMMessage.m; sourceTree = "<group>"; };
+		849D7B27224B7FE50074AE1F /* IMVideoMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMVideoMessage.h; sourceTree = "<group>"; };
+		849D7B28224B7FE50074AE1F /* IMMessageFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMMessageFrame.m; sourceTree = "<group>"; };
+		849D7B29224B7FE50074AE1F /* IMImageMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMImageMessage.h; sourceTree = "<group>"; };
+		849D7B2A224B7FE50074AE1F /* IMTextMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMTextMessage.m; sourceTree = "<group>"; };
+		849D7B2B224B7FE50074AE1F /* IMVoiceMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMVoiceMessage.h; sourceTree = "<group>"; };
+		849D7B2C224B7FE50074AE1F /* IMVideoMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMVideoMessage.m; sourceTree = "<group>"; };
+		849D7B2D224B7FE50074AE1F /* IMMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMessage.h; sourceTree = "<group>"; };
+		849D7B2E224B7FE50074AE1F /* IMMessageProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMessageProtocol.h; sourceTree = "<group>"; };
+		849D7B2F224B7FE50074AE1F /* IMExpressionMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMExpressionMessage.h; sourceTree = "<group>"; };
+		849D7B30224B7FE50074AE1F /* IMMessageConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMessageConstants.h; sourceTree = "<group>"; };
+		849D7B31224B7FE50074AE1F /* IMMessageFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMessageFrame.h; sourceTree = "<group>"; };
+		849D7B32224B7FE50074AE1F /* IMImageMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMImageMessage.m; sourceTree = "<group>"; };
+		849D7B33224B7FE50074AE1F /* IMTextMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMTextMessage.h; sourceTree = "<group>"; };
+		849D7B34224B7FE50074AE1F /* IMVoiceMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMVoiceMessage.m; sourceTree = "<group>"; };
+		849D7B36224B7FE50074AE1F /* IMConversation+IMUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IMConversation+IMUser.h"; sourceTree = "<group>"; };
+		849D7B37224B7FE50074AE1F /* IMConversation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMConversation.h; sourceTree = "<group>"; };
+		849D7B38224B7FE50074AE1F /* IMConversation+IMUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IMConversation+IMUser.m"; sourceTree = "<group>"; };
+		849D7B39224B7FE50074AE1F /* IMConversation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMConversation.m; sourceTree = "<group>"; };
+		849D7B3B224B7FE50074AE1F /* IMDBMessageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDBMessageStore.h; sourceTree = "<group>"; };
+		849D7B3C224B7FE50074AE1F /* IMDBConversationSQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDBConversationSQL.h; sourceTree = "<group>"; };
+		849D7B3D224B7FE50074AE1F /* IMDBConversationStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDBConversationStore.h; sourceTree = "<group>"; };
+		849D7B3E224B7FE50074AE1F /* IMDBMessageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMDBMessageStore.m; sourceTree = "<group>"; };
+		849D7B3F224B7FE50074AE1F /* IMDBMessageStoreSQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDBMessageStoreSQL.h; sourceTree = "<group>"; };
+		849D7B40224B7FE50074AE1F /* IMDBConversationStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMDBConversationStore.m; sourceTree = "<group>"; };
+		849D7B42224B7FE50074AE1F /* IMAppConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMAppConfig.m; sourceTree = "<group>"; };
+		849D7B43224B7FE50074AE1F /* IMAppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMAppConfig.h; sourceTree = "<group>"; };
+		849D7B45224B7FE50074AE1F /* IMUserHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMUserHelper.m; sourceTree = "<group>"; };
+		849D7B46224B7FE50074AE1F /* IMFriendHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMFriendHelper.h; sourceTree = "<group>"; };
+		849D7B48224B7FE50074AE1F /* IMGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMGroup.m; sourceTree = "<group>"; };
+		849D7B49224B7FE50074AE1F /* IMGroup+CreateAvatar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IMGroup+CreateAvatar.m"; sourceTree = "<group>"; };
+		849D7B4A224B7FE50074AE1F /* IMGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMGroup.h; sourceTree = "<group>"; };
+		849D7B4B224B7FE50074AE1F /* IMGroup+CreateAvatar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IMGroup+CreateAvatar.h"; sourceTree = "<group>"; };
+		849D7B4C224B7FE50074AE1F /* IMUserHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMUserHelper.h; sourceTree = "<group>"; };
+		849D7B4E224B7FE50074AE1F /* IMDBGroupSQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDBGroupSQL.h; sourceTree = "<group>"; };
+		849D7B4F224B7FE50074AE1F /* IMDBGroupStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMDBGroupStore.m; sourceTree = "<group>"; };
+		849D7B50224B7FE50074AE1F /* IMDBFriendStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMDBFriendStore.m; sourceTree = "<group>"; };
+		849D7B51224B7FE50074AE1F /* IMDBFriendSQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDBFriendSQL.h; sourceTree = "<group>"; };
+		849D7B52224B7FE50074AE1F /* IMDBFriendStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDBFriendStore.h; sourceTree = "<group>"; };
+		849D7B53224B7FE50074AE1F /* IMDBGroupStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDBGroupStore.h; sourceTree = "<group>"; };
+		849D7B54224B7FE50074AE1F /* IMFriendHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMFriendHelper.m; sourceTree = "<group>"; };
+		849D7B56224B7FE50074AE1F /* IMAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMAccountManager.h; sourceTree = "<group>"; };
+		849D7B58224B7FE50074AE1F /* IMUserChatSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMUserChatSetting.m; sourceTree = "<group>"; };
+		849D7B59224B7FE50074AE1F /* IMUserDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMUserDetail.m; sourceTree = "<group>"; };
+		849D7B5A224B7FE50074AE1F /* IMUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMUser.h; sourceTree = "<group>"; };
+		849D7B5B224B7FE50074AE1F /* IMUserSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMUserSetting.h; sourceTree = "<group>"; };
+		849D7B5C224B7FE50074AE1F /* IMUserGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMUserGroup.m; sourceTree = "<group>"; };
+		849D7B5D224B7FE50074AE1F /* IMUserDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMUserDetail.h; sourceTree = "<group>"; };
+		849D7B5E224B7FE50074AE1F /* IMUserChatSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMUserChatSetting.h; sourceTree = "<group>"; };
+		849D7B5F224B7FE50074AE1F /* IMUserSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMUserSetting.m; sourceTree = "<group>"; };
+		849D7B60224B7FE50074AE1F /* IMUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMUser.m; sourceTree = "<group>"; };
+		849D7B61224B7FE50074AE1F /* IMUserGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMUserGroup.h; sourceTree = "<group>"; };
+		849D7B62224B7FE50074AE1F /* IMAccountManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMAccountManager.m; sourceTree = "<group>"; };
+		849D7B64224B7FE50074AE1F /* IMDBUserStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDBUserStore.h; sourceTree = "<group>"; };
+		849D7B65224B7FE50074AE1F /* IMDBUserStoreSQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDBUserStoreSQL.h; sourceTree = "<group>"; };
+		849D7B66224B7FE50074AE1F /* IMDBUserStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMDBUserStore.m; sourceTree = "<group>"; };
 		84E97AC62248B64300DF8842 /* NSAttributedString+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+Addition.m"; sourceTree = "<group>"; };
 		84E97AC72248B64400DF8842 /* NSAttributedString+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+Addition.h"; sourceTree = "<group>"; };
 		84E97AC92248B99600DF8842 /* IMNotificationHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMNotificationHeader.h; sourceTree = "<group>"; };
@@ -1101,104 +1101,6 @@
 				84681F762230EF000056372A /* IMSignUpViewController.m */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		84251117222E5D09004C3954 /* AppControlCenter */ = {
-			isa = PBXGroup;
-			children = (
-				849D7B07224B6EF90074AE1F /* AppConfig */,
-				849D69B3224B099A0074AE1F /* IMMessageCenter */,
-				84251121222E5E27004C3954 /* IMAccountManager */,
-				84251133222E5E27004C3954 /* IMDBManager */,
-				84251164222E5E28004C3954 /* IMUserManager */,
-			);
-			path = AppControlCenter;
-			sourceTree = "<group>";
-		};
-		84251121222E5E27004C3954 /* IMAccountManager */ = {
-			isa = PBXGroup;
-			children = (
-				8425112E222E5E27004C3954 /* IMAccountManager.h */,
-				84251122222E5E27004C3954 /* IMAccountManager.m */,
-				84251123222E5E27004C3954 /* Models */,
-				8425112F222E5E27004C3954 /* Store */,
-			);
-			path = IMAccountManager;
-			sourceTree = "<group>";
-		};
-		84251123222E5E27004C3954 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				842511A7222E609A004C3954 /* IMUser.h */,
-				842511A3222E6099004C3954 /* IMUser.m */,
-				842511A8222E609A004C3954 /* IMUserChatSetting.h */,
-				842511A1222E6099004C3954 /* IMUserChatSetting.m */,
-				842511A9222E609A004C3954 /* IMUserDetail.h */,
-				842511A2222E6099004C3954 /* IMUserDetail.m */,
-				842511AA222E609A004C3954 /* IMUserGroup.h */,
-				842511A4222E6099004C3954 /* IMUserGroup.m */,
-				842511A5222E609A004C3954 /* IMUserSetting.h */,
-				842511A6222E609A004C3954 /* IMUserSetting.m */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		8425112F222E5E27004C3954 /* Store */ = {
-			isa = PBXGroup;
-			children = (
-				842511B2222E60B3004C3954 /* IMDBUserStore.h */,
-				842511B0222E60B3004C3954 /* IMDBUserStore.m */,
-				842511B1222E60B3004C3954 /* IMDBUserStoreSQL.h */,
-			);
-			path = Store;
-			sourceTree = "<group>";
-		};
-		84251133222E5E27004C3954 /* IMDBManager */ = {
-			isa = PBXGroup;
-			children = (
-				842511B6222E60BF004C3954 /* IMDBBaseStore.h */,
-				842511B4222E60BE004C3954 /* IMDBBaseStore.m */,
-				842511B5222E60BE004C3954 /* IMDBManager.h */,
-				842511B7222E60BF004C3954 /* IMDBManager.m */,
-			);
-			path = IMDBManager;
-			sourceTree = "<group>";
-		};
-		84251164222E5E28004C3954 /* IMUserManager */ = {
-			isa = PBXGroup;
-			children = (
-				849D7ADC224B5ED90074AE1F /* IMFriendHelper.h */,
-				849D7ADB224B5ED80074AE1F /* IMFriendHelper.m */,
-				842511BA222E60D0004C3954 /* IMUserHelper.h */,
-				842511BD222E60D0004C3954 /* IMUserHelper.m */,
-				84251167222E5E28004C3954 /* Models */,
-				8425116E222E5E28004C3954 /* Store */,
-			);
-			path = IMUserManager;
-			sourceTree = "<group>";
-		};
-		84251167222E5E28004C3954 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				8425119E222E6031004C3954 /* IMGroup.h */,
-				8425119B222E6031004C3954 /* IMGroup.m */,
-				8425119D222E6031004C3954 /* IMGroup+CreateAvatar.h */,
-				8425119C222E6031004C3954 /* IMGroup+CreateAvatar.m */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		8425116E222E5E28004C3954 /* Store */ = {
-			isa = PBXGroup;
-			children = (
-				84251198222E600E004C3954 /* IMDBFriendSQL.h */,
-				84251194222E600D004C3954 /* IMDBFriendStore.m */,
-				84251196222E600E004C3954 /* IMDBGroupSQL.h */,
-				84251195222E600E004C3954 /* IMDBGroupStore.h */,
-				84251197222E600E004C3954 /* IMDBGroupStore.m */,
-				84251174222E5E28004C3954 /* IMDBFriendStore.h */,
-			);
-			path = Store;
 			sourceTree = "<group>";
 		};
 		8428F45D22326A300064DA35 /* Page */ = {
@@ -1660,91 +1562,6 @@
 				849D69A6224B09340074AE1F /* IMImageMessageCell.m */,
 			);
 			path = ChatMessageCells;
-			sourceTree = "<group>";
-		};
-		849D69B3224B099A0074AE1F /* IMMessageCenter */ = {
-			isa = PBXGroup;
-			children = (
-				849D69FB224B09FA0074AE1F /* ChatKeyboardHelper */,
-				849D69EF224B09FA0074AE1F /* IMConversation */,
-				849D6A09224B09FA0074AE1F /* IMMessage */,
-				849D6A00224B09FA0074AE1F /* IMMessageManager */,
-				849D69F4224B09FA0074AE1F /* Store */,
-			);
-			path = IMMessageCenter;
-			sourceTree = "<group>";
-		};
-		849D69EF224B09FA0074AE1F /* IMConversation */ = {
-			isa = PBXGroup;
-			children = (
-				849D69F0224B09FA0074AE1F /* IMConversation+IMUser.h */,
-				849D69F1224B09FA0074AE1F /* IMConversation.h */,
-				849D69F2224B09FA0074AE1F /* IMConversation+IMUser.m */,
-				849D69F3224B09FA0074AE1F /* IMConversation.m */,
-			);
-			path = IMConversation;
-			sourceTree = "<group>";
-		};
-		849D69F4224B09FA0074AE1F /* Store */ = {
-			isa = PBXGroup;
-			children = (
-				849D69F5224B09FA0074AE1F /* IMDBMessageStore.h */,
-				849D69F6224B09FA0074AE1F /* IMDBConversationSQL.h */,
-				849D69F7224B09FA0074AE1F /* IMDBConversationStore.h */,
-				849D69F8224B09FA0074AE1F /* IMDBMessageStore.m */,
-				849D69F9224B09FA0074AE1F /* IMDBMessageStoreSQL.h */,
-				849D69FA224B09FA0074AE1F /* IMDBConversationStore.m */,
-			);
-			path = Store;
-			sourceTree = "<group>";
-		};
-		849D69FB224B09FA0074AE1F /* ChatKeyboardHelper */ = {
-			isa = PBXGroup;
-			children = (
-				849D69FC224B09FA0074AE1F /* IMMoreKBHelper.m */,
-				849D69FD224B09FA0074AE1F /* IMEmojiKBHelper.m */,
-				849D69FE224B09FA0074AE1F /* IMMoreKBHelper.h */,
-				849D69FF224B09FA0074AE1F /* IMEmojiKBHelper.h */,
-			);
-			path = ChatKeyboardHelper;
-			sourceTree = "<group>";
-		};
-		849D6A00224B09FA0074AE1F /* IMMessageManager */ = {
-			isa = PBXGroup;
-			children = (
-				849D6A01224B09FA0074AE1F /* IMMessageManagerChatVCDelegate.h */,
-				849D6A02224B09FA0074AE1F /* IMMessageManager+MessageRecord.m */,
-				849D6A03224B09FA0074AE1F /* IMMessageManagerConvVCDelegate.h */,
-				849D6A04224B09FA0074AE1F /* IMMessageManager.h */,
-				849D6A05224B09FA0074AE1F /* IMMessageManager+ConversationRecord.m */,
-				849D6A06224B09FA0074AE1F /* IMMessageManager+MessageRecord.h */,
-				849D6A07224B09FA0074AE1F /* IMMessageManager+ConversationRecord.h */,
-				849D6A08224B09FA0074AE1F /* IMMessageManager.m */,
-			);
-			path = IMMessageManager;
-			sourceTree = "<group>";
-		};
-		849D6A09224B09FA0074AE1F /* IMMessage */ = {
-			isa = PBXGroup;
-			children = (
-				849D6A0A224B09FA0074AE1F /* IMExpressionMessage.m */,
-				849D6A0B224B09FA0074AE1F /* IMMessage.m */,
-				849D6A0C224B09FA0074AE1F /* IMVideoMessage.h */,
-				849D6A0D224B09FA0074AE1F /* IMMessageFrame.m */,
-				849D6A0E224B09FA0074AE1F /* IMImageMessage.h */,
-				849D6A0F224B09FA0074AE1F /* IMTextMessage.m */,
-				849D6A10224B09FA0074AE1F /* IMVoiceMessage.h */,
-				849D6A11224B09FA0074AE1F /* IMVideoMessage.m */,
-				849D6A12224B09FA0074AE1F /* IMMessage.h */,
-				849D6A13224B09FA0074AE1F /* IMMessageProtocol.h */,
-				849D6A14224B09FA0074AE1F /* IMExpressionMessage.h */,
-				849D6A15224B09FA0074AE1F /* IMMessageConstants.h */,
-				849D6A16224B09FA0074AE1F /* IMMessageFrame.h */,
-				849D6A17224B09FA0074AE1F /* IMImageMessage.m */,
-				849D6A18224B09FA0074AE1F /* IMTextMessage.h */,
-				849D6A19224B09FA0074AE1F /* IMVoiceMessage.m */,
-			);
-			path = IMMessage;
 			sourceTree = "<group>";
 		};
 		849D6A2A224B0E6A0074AE1F /* Expression */ = {
@@ -2315,14 +2132,196 @@
 			path = "IMChatViewController+Conversation";
 			sourceTree = "<group>";
 		};
-		849D7B07224B6EF90074AE1F /* AppConfig */ = {
+		849D7B0F224B7FE50074AE1F /* AppControlCenter */ = {
 			isa = PBXGroup;
 			children = (
-				849D7B08224B6EF90074AE1F /* IMAppConfig.m */,
-				849D7B09224B6EF90074AE1F /* IMAppConfig.h */,
+				849D7B10224B7FE50074AE1F /* IMDBManager */,
+				849D7B15224B7FE50074AE1F /* IMMessageCenter */,
+				849D7B41224B7FE50074AE1F /* AppConfig */,
+				849D7B44224B7FE50074AE1F /* IMUserManager */,
+				849D7B55224B7FE50074AE1F /* IMAccountManager */,
 			);
-			name = AppConfig;
-			path = "../../../../../Downloads/TLChat-master/TLChat/AppControlCenter/AppConfig";
+			path = AppControlCenter;
+			sourceTree = "<group>";
+		};
+		849D7B10224B7FE50074AE1F /* IMDBManager */ = {
+			isa = PBXGroup;
+			children = (
+				849D7B11224B7FE50074AE1F /* IMDBBaseStore.h */,
+				849D7B12224B7FE50074AE1F /* IMDBManager.h */,
+				849D7B13224B7FE50074AE1F /* IMDBBaseStore.m */,
+				849D7B14224B7FE50074AE1F /* IMDBManager.m */,
+			);
+			path = IMDBManager;
+			sourceTree = "<group>";
+		};
+		849D7B15224B7FE50074AE1F /* IMMessageCenter */ = {
+			isa = PBXGroup;
+			children = (
+				849D7B16224B7FE50074AE1F /* ChatKeyboardHelper */,
+				849D7B1B224B7FE50074AE1F /* IMMessageManager */,
+				849D7B24224B7FE50074AE1F /* IMMessage */,
+				849D7B35224B7FE50074AE1F /* IMConversation */,
+				849D7B3A224B7FE50074AE1F /* Store */,
+			);
+			path = IMMessageCenter;
+			sourceTree = "<group>";
+		};
+		849D7B16224B7FE50074AE1F /* ChatKeyboardHelper */ = {
+			isa = PBXGroup;
+			children = (
+				849D7B17224B7FE50074AE1F /* IMMoreKBHelper.m */,
+				849D7B18224B7FE50074AE1F /* IMEmojiKBHelper.m */,
+				849D7B19224B7FE50074AE1F /* IMMoreKBHelper.h */,
+				849D7B1A224B7FE50074AE1F /* IMEmojiKBHelper.h */,
+			);
+			path = ChatKeyboardHelper;
+			sourceTree = "<group>";
+		};
+		849D7B1B224B7FE50074AE1F /* IMMessageManager */ = {
+			isa = PBXGroup;
+			children = (
+				849D7B1C224B7FE50074AE1F /* IMMessageManagerChatVCDelegate.h */,
+				849D7B1D224B7FE50074AE1F /* IMMessageManager+MessageRecord.m */,
+				849D7B1E224B7FE50074AE1F /* IMMessageManagerConvVCDelegate.h */,
+				849D7B1F224B7FE50074AE1F /* IMMessageManager.h */,
+				849D7B20224B7FE50074AE1F /* IMMessageManager+ConversationRecord.m */,
+				849D7B21224B7FE50074AE1F /* IMMessageManager+MessageRecord.h */,
+				849D7B22224B7FE50074AE1F /* IMMessageManager+ConversationRecord.h */,
+				849D7B23224B7FE50074AE1F /* IMMessageManager.m */,
+			);
+			path = IMMessageManager;
+			sourceTree = "<group>";
+		};
+		849D7B24224B7FE50074AE1F /* IMMessage */ = {
+			isa = PBXGroup;
+			children = (
+				849D7B25224B7FE50074AE1F /* IMExpressionMessage.m */,
+				849D7B26224B7FE50074AE1F /* IMMessage.m */,
+				849D7B27224B7FE50074AE1F /* IMVideoMessage.h */,
+				849D7B28224B7FE50074AE1F /* IMMessageFrame.m */,
+				849D7B29224B7FE50074AE1F /* IMImageMessage.h */,
+				849D7B2A224B7FE50074AE1F /* IMTextMessage.m */,
+				849D7B2B224B7FE50074AE1F /* IMVoiceMessage.h */,
+				849D7B2C224B7FE50074AE1F /* IMVideoMessage.m */,
+				849D7B2D224B7FE50074AE1F /* IMMessage.h */,
+				849D7B2E224B7FE50074AE1F /* IMMessageProtocol.h */,
+				849D7B2F224B7FE50074AE1F /* IMExpressionMessage.h */,
+				849D7B30224B7FE50074AE1F /* IMMessageConstants.h */,
+				849D7B31224B7FE50074AE1F /* IMMessageFrame.h */,
+				849D7B32224B7FE50074AE1F /* IMImageMessage.m */,
+				849D7B33224B7FE50074AE1F /* IMTextMessage.h */,
+				849D7B34224B7FE50074AE1F /* IMVoiceMessage.m */,
+			);
+			path = IMMessage;
+			sourceTree = "<group>";
+		};
+		849D7B35224B7FE50074AE1F /* IMConversation */ = {
+			isa = PBXGroup;
+			children = (
+				849D7B36224B7FE50074AE1F /* IMConversation+IMUser.h */,
+				849D7B37224B7FE50074AE1F /* IMConversation.h */,
+				849D7B38224B7FE50074AE1F /* IMConversation+IMUser.m */,
+				849D7B39224B7FE50074AE1F /* IMConversation.m */,
+			);
+			path = IMConversation;
+			sourceTree = "<group>";
+		};
+		849D7B3A224B7FE50074AE1F /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				849D7B3B224B7FE50074AE1F /* IMDBMessageStore.h */,
+				849D7B3C224B7FE50074AE1F /* IMDBConversationSQL.h */,
+				849D7B3D224B7FE50074AE1F /* IMDBConversationStore.h */,
+				849D7B3E224B7FE50074AE1F /* IMDBMessageStore.m */,
+				849D7B3F224B7FE50074AE1F /* IMDBMessageStoreSQL.h */,
+				849D7B40224B7FE50074AE1F /* IMDBConversationStore.m */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		849D7B41224B7FE50074AE1F /* AppConfig */ = {
+			isa = PBXGroup;
+			children = (
+				849D7B42224B7FE50074AE1F /* IMAppConfig.m */,
+				849D7B43224B7FE50074AE1F /* IMAppConfig.h */,
+			);
+			path = AppConfig;
+			sourceTree = "<group>";
+		};
+		849D7B44224B7FE50074AE1F /* IMUserManager */ = {
+			isa = PBXGroup;
+			children = (
+				849D7B45224B7FE50074AE1F /* IMUserHelper.m */,
+				849D7B46224B7FE50074AE1F /* IMFriendHelper.h */,
+				849D7B47224B7FE50074AE1F /* Models */,
+				849D7B4C224B7FE50074AE1F /* IMUserHelper.h */,
+				849D7B4D224B7FE50074AE1F /* Store */,
+				849D7B54224B7FE50074AE1F /* IMFriendHelper.m */,
+			);
+			path = IMUserManager;
+			sourceTree = "<group>";
+		};
+		849D7B47224B7FE50074AE1F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				849D7B48224B7FE50074AE1F /* IMGroup.m */,
+				849D7B49224B7FE50074AE1F /* IMGroup+CreateAvatar.m */,
+				849D7B4A224B7FE50074AE1F /* IMGroup.h */,
+				849D7B4B224B7FE50074AE1F /* IMGroup+CreateAvatar.h */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		849D7B4D224B7FE50074AE1F /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				849D7B4E224B7FE50074AE1F /* IMDBGroupSQL.h */,
+				849D7B4F224B7FE50074AE1F /* IMDBGroupStore.m */,
+				849D7B50224B7FE50074AE1F /* IMDBFriendStore.m */,
+				849D7B51224B7FE50074AE1F /* IMDBFriendSQL.h */,
+				849D7B52224B7FE50074AE1F /* IMDBFriendStore.h */,
+				849D7B53224B7FE50074AE1F /* IMDBGroupStore.h */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		849D7B55224B7FE50074AE1F /* IMAccountManager */ = {
+			isa = PBXGroup;
+			children = (
+				849D7B56224B7FE50074AE1F /* IMAccountManager.h */,
+				849D7B57224B7FE50074AE1F /* Models */,
+				849D7B62224B7FE50074AE1F /* IMAccountManager.m */,
+				849D7B63224B7FE50074AE1F /* Store */,
+			);
+			path = IMAccountManager;
+			sourceTree = "<group>";
+		};
+		849D7B57224B7FE50074AE1F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				849D7B58224B7FE50074AE1F /* IMUserChatSetting.m */,
+				849D7B59224B7FE50074AE1F /* IMUserDetail.m */,
+				849D7B5A224B7FE50074AE1F /* IMUser.h */,
+				849D7B5B224B7FE50074AE1F /* IMUserSetting.h */,
+				849D7B5C224B7FE50074AE1F /* IMUserGroup.m */,
+				849D7B5D224B7FE50074AE1F /* IMUserDetail.h */,
+				849D7B5E224B7FE50074AE1F /* IMUserChatSetting.h */,
+				849D7B5F224B7FE50074AE1F /* IMUserSetting.m */,
+				849D7B60224B7FE50074AE1F /* IMUser.m */,
+				849D7B61224B7FE50074AE1F /* IMUserGroup.h */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		849D7B63224B7FE50074AE1F /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				849D7B64224B7FE50074AE1F /* IMDBUserStore.h */,
+				849D7B65224B7FE50074AE1F /* IMDBUserStoreSQL.h */,
+				849D7B66224B7FE50074AE1F /* IMDBUserStore.m */,
+			);
+			path = Store;
 			sourceTree = "<group>";
 		};
 		EE7FE434222CC42500073210 /* BAPhotoBrowser */ = {
@@ -2429,10 +2428,10 @@
 		EE8936832227D997004F1F6E /* MYIMDemo */ = {
 			isa = PBXGroup;
 			children = (
+				849D7B0F224B7FE50074AE1F /* AppControlCenter */,
 				849D7856224B26E50074AE1F /* IMKitExtensions */,
 				8428F45D22326A300064DA35 /* Page */,
 				8438D53D222F6069001FD530 /* XMPPHelper */,
-				84251117222E5D09004C3954 /* AppControlCenter */,
 				EE7FE434222CC42500073210 /* BAPhotoBrowser */,
 				EE8936BE2227DA4E004F1F6E /* Common */,
 				EE8936BF2227DA4F004F1F6E /* PrefixHeader.pch */,
@@ -2664,53 +2663,13 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MYIMDemo/Pods-MYIMDemo-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
-				"${BUILT_PRODUCTS_DIR}/AVOSCloud/AVOSCloud.framework",
-				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
-				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
-				"${BUILT_PRODUCTS_DIR}/DACircularProgress/DACircularProgress.framework",
-				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
 				"${BUILT_PRODUCTS_DIR}/IMFlexAngel/IMFlexAngel.framework",
-				"${BUILT_PRODUCTS_DIR}/KissXML/KissXML.framework",
-				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
-				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
-				"${BUILT_PRODUCTS_DIR}/MWPhotoBrowser/MWPhotoBrowser.framework",
-				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/PrivateKit/PrivateKit.framework",
-				"${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework",
-				"${BUILT_PRODUCTS_DIR}/SDAutoLayout/SDAutoLayout.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
-				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/TLTabBarController/TLTabBarController.framework",
-				"${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework",
-				"${BUILT_PRODUCTS_DIR}/XMPPFramework/XMPPFramework.framework",
-				"${BUILT_PRODUCTS_DIR}/libidn/libidn.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AVOSCloud.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DACircularProgress.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IMFlexAngel.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KissXML.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MWPhotoBrowser.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PrivateKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveObjC.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDAutoLayout.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TLTabBarController.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TZImagePickerController.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XMPPFramework.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libidn.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2764,27 +2723,23 @@
 				849D69AA224B09340074AE1F /* IMChatMessageDisplayView.m in Sources */,
 				849D78D4224B26E60074AE1F /* IMResponse.m in Sources */,
 				849D6962224B06370074AE1F /* IMChatViewController+Delegate.m in Sources */,
-				849D6A29224B09FA0074AE1F /* IMVoiceMessage.m in Sources */,
-				842511B8222E60BF004C3954 /* IMDBBaseStore.m in Sources */,
 				849D6AE0224B0EE40074AE1F /* IMExpressionGroupModel+MoreRequest.m in Sources */,
-				849D6A1D224B09FA0074AE1F /* IMDBConversationStore.m in Sources */,
 				849D6961224B06370074AE1F /* IMEmojiKeyboard+EmojiGroupControl.m in Sources */,
-				8425119F222E6032004C3954 /* IMGroup.m in Sources */,
-				849D6A28224B09FA0074AE1F /* IMImageMessage.m in Sources */,
 				EE7FE45A222CC42500073210 /* IMPhoto.m in Sources */,
 				EE8936FD2228D55F004F1F6E /* IMSystemAuthorization.m in Sources */,
-				849D6A21224B09FA0074AE1F /* IMMessageManager+ConversationRecord.m in Sources */,
 				8423C315223B6BCB00E999F5 /* IMNewFriendViewController.m in Sources */,
 				8423C31E223B6C1A00E999F5 /* IMTagsViewController.m in Sources */,
 				849D697C224B065B0074AE1F /* IMUserGroupItemCell.m in Sources */,
 				849D6957224B06370074AE1F /* IMEmojiGroupDisplayView+Gesture.m in Sources */,
 				EE7FE462222CC42500073210 /* TADotView.m in Sources */,
+				849D7B7C224B7FE60074AE1F /* IMGroup+CreateAvatar.m in Sources */,
 				8438D543222F60BF001FD530 /* IMXMPPHelper.m in Sources */,
 				849D69AB224B09340074AE1F /* IMVoiceMessageCell.m in Sources */,
 				EE7FE45F222CC42500073210 /* FSActionSheetItem.m in Sources */,
 				849D78EE224B26E60074AE1F /* IMSettingSectionHeaderView.m in Sources */,
 				8423C30F223B52F600E999F5 /* IMContactsAngel.m in Sources */,
 				849D78F7224B26E60074AE1F /* IMPictureCarouselViewCell.m in Sources */,
+				849D7B6C224B7FE60074AE1F /* IMMessageManager+ConversationRecord.m in Sources */,
 				849D6958224B06370074AE1F /* IMEmojiFaceItemCell.m in Sources */,
 				849D6ADF224B0EE40074AE1F /* IMExpressionMoreViewController.m in Sources */,
 				849D78E8224B26E60074AE1F /* IMNetworking.m in Sources */,
@@ -2796,10 +2751,9 @@
 				849D78CE224B26E60074AE1F /* UIButton+IMWebImage.m in Sources */,
 				849D78DD224B26E60074AE1F /* IMNetworkUtility.m in Sources */,
 				849D78F3224B26E60074AE1F /* IMMenuItem.m in Sources */,
+				849D7B78224B7FE60074AE1F /* IMDBConversationStore.m in Sources */,
 				EE8936FC2228D33B004F1F6E /* UIColor+IMChat.m in Sources */,
-				842511B3222E60B3004C3954 /* IMDBUserStore.m in Sources */,
 				849D78EB224B26E60074AE1F /* NSDate+IMChat.m in Sources */,
-				842511AD222E609A004C3954 /* IMUser.m in Sources */,
 				849D78F0224B26E60074AE1F /* IMSettingItemNormalCell.m in Sources */,
 				849D6AE3224B0EE40074AE1F /* IMExpressionViewController.m in Sources */,
 				EE7FE460222CC42500073210 /* BAProgressView.m in Sources */,
@@ -2812,29 +2766,34 @@
 				8428F46622326AD00064DA35 /* IMBaseNavigationController.m in Sources */,
 				849D697E224B065B0074AE1F /* IMChatFileViewController.m in Sources */,
 				849D78DC224B26E60074AE1F /* IMNetworkStatusManager.m in Sources */,
+				849D7B74224B7FE60074AE1F /* IMVoiceMessage.m in Sources */,
 				EE8936C42227DA4F004F1F6E /* IMColorTools.m in Sources */,
 				EE7FE45C222CC42500073210 /* FSActionSheetConfig.m in Sources */,
 				849D78DF224B26E60074AE1F /* NSHTTPURLResponse+IMNetwork.m in Sources */,
+				849D7B7D224B7FE60074AE1F /* IMDBGroupStore.m in Sources */,
 				842511C3222E6539004C3954 /* NSFileManager+IMChat.m in Sources */,
 				849D78F1224B26E60074AE1F /* IMSettingSectionFooterView.m in Sources */,
+				849D7B68224B7FE60074AE1F /* IMDBManager.m in Sources */,
 				849D695B224B06370074AE1F /* IMEmojiImageItemCell.m in Sources */,
+				849D7B75224B7FE60074AE1F /* IMConversation+IMUser.m in Sources */,
 				EE8936F92228D0E5004F1F6E /* UIFont+IMChat.m in Sources */,
 				849D6AE4224B0EE40074AE1F /* IMExpressionModel.m in Sources */,
 				849D7855224B267A0074AE1F /* NSString+Message.m in Sources */,
 				849D695D224B06370074AE1F /* IMEmojiGroupDisplayModel.m in Sources */,
 				849D78E9224B26E60074AE1F /* NSString+Message.m in Sources */,
+				849D7B72224B7FE60074AE1F /* IMVideoMessage.m in Sources */,
 				849D697A224B065B0074AE1F /* IMChatDetailViewController.m in Sources */,
-				8425119A222E600E004C3954 /* IMDBGroupStore.m in Sources */,
-				849D6A22224B09FA0074AE1F /* IMMessageManager.m in Sources */,
-				84251199222E600E004C3954 /* IMDBFriendStore.m in Sources */,
+				849D7B84224B7FE60074AE1F /* IMUser.m in Sources */,
 				849D6AE8224B0EE40074AE1F /* IMDBExpressionStore.m in Sources */,
+				849D7B81224B7FE60074AE1F /* IMUserDetail.m in Sources */,
+				849D7B6E224B7FE60074AE1F /* IMExpressionMessage.m in Sources */,
 				EE8939BE222902EF004F1F6E /* NSTextAttachment+Emoji.m in Sources */,
+				849D7B79224B7FE60074AE1F /* IMAppConfig.m in Sources */,
 				849D6AFB224B0F0F0074AE1F /* IMExpressionDetailInfoCell.m in Sources */,
 				8423C321223B6D4B00E999F5 /* IMUserDetailViewController.m in Sources */,
 				849D695C224B06370074AE1F /* IMExpressionGroupModel+IMEmojiKB.m in Sources */,
 				EE7FE466222CC42500073210 /* IMVideoPlayView.m in Sources */,
 				849D694C224B06370074AE1F /* IMUser+ChatModel.m in Sources */,
-				842511B9222E60BF004C3954 /* IMDBManager.m in Sources */,
 				849D6953224B06370074AE1F /* IMBaseKeyboard.m in Sources */,
 				849D78D2224B26E60074AE1F /* UIScrollView+IMLoadMoreFooter.m in Sources */,
 				8423C367223B9F1400E999F5 /* IMNewFriendViewUserCell.m in Sources */,
@@ -2843,88 +2802,88 @@
 				849D6963224B06370074AE1F /* IMChatViewController.m in Sources */,
 				849D78E1224B26E60074AE1F /* NSURL+IMNetwork.m in Sources */,
 				EE8937042228D82B004F1F6E /* IMBaseTableViewCell.m in Sources */,
-				842511AF222E609A004C3954 /* IMUserSetting.m in Sources */,
 				842510F5222E24A7004C3954 /* IMLoginViewController.m in Sources */,
 				849D6ADB224B0EE40074AE1F /* IMExpressionDownloadButton.m in Sources */,
 				849D694D224B06370074AE1F /* IMChatBar.m in Sources */,
 				849D694F224B06370074AE1F /* IMMoreKeyboardItem.m in Sources */,
-				84251175222E5E28004C3954 /* IMAccountManager.m in Sources */,
 				849D6ADA224B0EE40074AE1F /* IMExpressionChosenAngel.m in Sources */,
 				849D6AE5224B0EE40074AE1F /* IMExpressionGroupModel.m in Sources */,
-				849D6A27224B09FA0074AE1F /* IMVideoMessage.m in Sources */,
 				849D695E224B06370074AE1F /* IMEmojiGroupControl.m in Sources */,
 				849D7AF9224B65D80074AE1F /* IMAddMenuItem.m in Sources */,
 				8423C33B223B80BE00E999F5 /* IMSearchController.m in Sources */,
+				849D7B80224B7FE60074AE1F /* IMUserChatSetting.m in Sources */,
 				849D69AC224B09340074AE1F /* IMMessageBaseCell.m in Sources */,
 				EE7FE465222CC42500073210 /* TAAbstractDotView.m in Sources */,
 				849D78ED224B26E60074AE1F /* IMSettingItemSwitchCell.m in Sources */,
-				849D6A1A224B09FA0074AE1F /* IMConversation+IMUser.m in Sources */,
 				849D7AFC224B65D80074AE1F /* IMAddMenuView.m in Sources */,
-				849D6A26224B09FA0074AE1F /* IMTextMessage.m in Sources */,
-				849D6A24224B09FA0074AE1F /* IMMessage.m in Sources */,
-				849D78F9224B3EAF0074AE1F /* IMGroup+CreateAvatar.m in Sources */,
 				8423C357223B97C200E999F5 /* IMNewFriendFuncationCell.m in Sources */,
 				849D693E224B06370074AE1F /* IMChatBaseViewController+MessageDisplayView.m in Sources */,
-				849D6A1E224B09FA0074AE1F /* IMMoreKBHelper.m in Sources */,
 				8423C335223B800700E999F5 /* IMContactsSearchResultViewController.m in Sources */,
 				EE8939C722290408004F1F6E /* IMFileManagement.m in Sources */,
 				849D6991224B08E30074AE1F /* IMChatCellMenuView.m in Sources */,
-				842511AB222E609A004C3954 /* IMUserChatSetting.m in Sources */,
 				849D78F5224B26E60074AE1F /* IMViewController.m in Sources */,
 				849D6952224B06370074AE1F /* IMMoreKeyboardCell.m in Sources */,
 				8423C318223B6BEA00E999F5 /* IMGroupViewController.m in Sources */,
 				EE7FE45E222CC42500073210 /* FSActionSheetCell.m in Sources */,
 				849D6ADE224B0EE40074AE1F /* IMExpressionItemCell.m in Sources */,
-				842511AE222E609A004C3954 /* IMUserGroup.m in Sources */,
 				8432593C223F7094003A33F2 /* IMUserDetailChatButtonCell.m in Sources */,
 				EE7FE45D222CC42500073210 /* FSActionSheet.m in Sources */,
+				849D7B6A224B7FE60074AE1F /* IMEmojiKBHelper.m in Sources */,
 				849D78D5224B26E60074AE1F /* IMNetworkAgent.m in Sources */,
 				849D693F224B06370074AE1F /* IMChatBaseViewController.m in Sources */,
 				841D27002238D4470004D0FE /* IMNewContactViewController.m in Sources */,
-				842511AC222E609A004C3954 /* IMUserDetail.m in Sources */,
+				849D7B7E224B7FE60074AE1F /* IMDBFriendStore.m in Sources */,
 				849D7B00224B67700074AE1F /* IMChatViewController+Conversation.m in Sources */,
+				849D7B69224B7FE60074AE1F /* IMMoreKBHelper.m in Sources */,
 				849D78D0224B26E60074AE1F /* UIImageView+IMWebImage.m in Sources */,
 				849D69B2224B09340074AE1F /* IMChatMessageDisplayView+Delegate.m in Sources */,
 				849D78D9224B26E60074AE1F /* IMDownloadRequest.m in Sources */,
 				849D78D7224B26E60074AE1F /* IMNetworkConfig.m in Sources */,
 				8425CEB72241E5C800E1A12E /* UIImageView+IMChat.m in Sources */,
+				849D7B6D224B7FE60074AE1F /* IMMessageManager.m in Sources */,
 				849D6AE2224B0EE40074AE1F /* IMExpressionMoreCell.m in Sources */,
+				849D7B71224B7FE60074AE1F /* IMTextMessage.m in Sources */,
+				849D7B7F224B7FE60074AE1F /* IMFriendHelper.m in Sources */,
 				EE7FE461222CC42500073210 /* IMPhotoBrowser.m in Sources */,
+				849D7B7B224B7FE60074AE1F /* IMGroup.m in Sources */,
 				849D6954224B06370074AE1F /* IMEmojiKeyboard+DisplayView.m in Sources */,
 				849D6AE1224B0EE40074AE1F /* IMExpressionMoreSearchCell.m in Sources */,
+				849D7B77224B7FE60074AE1F /* IMDBMessageStore.m in Sources */,
 				849D6951224B06370074AE1F /* IMMoreKeyboard+CollectionView.m in Sources */,
 				8423C31B223B6C0100E999F5 /* IMOfficialAccountViewController.m in Sources */,
 				8428F4862235F5DB0064DA35 /* IMContactsViewController.m in Sources */,
+				849D7B76224B7FE60074AE1F /* IMConversation.m in Sources */,
 				849D6AD8224B0EE40074AE1F /* IMExpressionChosenViewController.m in Sources */,
 				849D695F224B06370074AE1F /* IMEmojiGroupCell.m in Sources */,
 				849D7AF8224B65D80074AE1F /* IMConversationNoNetCell.m in Sources */,
+				849D7B6F224B7FE60074AE1F /* IMMessage.m in Sources */,
 				849D697D224B065B0074AE1F /* IMUserGroupCell.m in Sources */,
 				849D6990224B08E30074AE1F /* IMTextDisplayView.m in Sources */,
 				EE8937082228DDF3004F1F6E /* UIImage+IMChat.m in Sources */,
 				849D78F6224B26E60074AE1F /* UIViewController+PopGesture.m in Sources */,
+				849D7B70224B7FE60074AE1F /* IMMessageFrame.m in Sources */,
 				849D78E7224B26E60074AE1F /* IMAudioRecorder.m in Sources */,
 				849D6ADC224B0EE40074AE1F /* IMExpressionBannerCell.m in Sources */,
 				84681F772230EF000056372A /* IMSignUpViewController.m in Sources */,
-				849D7ADD224B5ED90074AE1F /* IMFriendHelper.m in Sources */,
 				849D6993224B08E30074AE1F /* IMRecorderIndicatorView.m in Sources */,
 				849D6AE7224B0EE40074AE1F /* IMExpressionGroupModel+Download.m in Sources */,
-				849D6A1C224B09FA0074AE1F /* IMDBMessageStore.m in Sources */,
-				849D6A20224B09FA0074AE1F /* IMMessageManager+MessageRecord.m in Sources */,
 				849D78DA224B26E60074AE1F /* IMBaseRequest.m in Sources */,
+				849D7B6B224B7FE60074AE1F /* IMMessageManager+MessageRecord.m in Sources */,
 				849D6AF1224B0EE40074AE1F /* IMMyExpressionViewController.m in Sources */,
-				849D6A23224B09FA0074AE1F /* IMExpressionMessage.m in Sources */,
 				849D6950224B06370074AE1F /* IMMoreKeyboard.m in Sources */,
 				849D6980224B065B0074AE1F /* IMChatFileHeaderView.m in Sources */,
 				849D6AFC224B0F0F0074AE1F /* IMExpressionDetailItemCell.m in Sources */,
 				8423C36C223BAD1800E999F5 /* IMNewFriendAngel.m in Sources */,
+				849D7B85224B7FE60074AE1F /* IMAccountManager.m in Sources */,
+				849D7B67224B7FE60074AE1F /* IMDBBaseStore.m in Sources */,
 				849D7A0D224B4C180074AE1F /* IMActionSheet.m in Sources */,
-				849D6A1F224B09FA0074AE1F /* IMEmojiKBHelper.m in Sources */,
 				EE89371A2228FE6A004F1F6E /* IMNetworkDetection.m in Sources */,
 				849D7AF6224B65D80074AE1F /* IMConversationAngel.m in Sources */,
 				EE8936C72227DBA2004F1F6E /* IMBaseViewController.m in Sources */,
 				8423C2C8223B410B00E999F5 /* IMContactItemCell.m in Sources */,
 				EE7FE463222CC42500073210 /* TAPageControl.m in Sources */,
 				849D78E6224B26E60074AE1F /* IMAudioPlayer.m in Sources */,
+				849D7B7A224B7FE60074AE1F /* IMUserHelper.m in Sources */,
 				849D697F224B065B0074AE1F /* IMChatFileCell.m in Sources */,
 				849D6960224B06370074AE1F /* IMEmojiKeyboard.m in Sources */,
 				849D78F4224B26E60074AE1F /* IMMenuItemCell.m in Sources */,
@@ -2938,19 +2897,18 @@
 				849D6940224B06370074AE1F /* IMChatBaseViewController+Proxy.m in Sources */,
 				849D6992224B08E30074AE1F /* IMImageExpressionDisplayView.m in Sources */,
 				EE8936862227D997004F1F6E /* AppDelegate.m in Sources */,
-				842511BF222E60D0004C3954 /* IMUserHelper.m in Sources */,
 				849D78F8224B26E60074AE1F /* IMPictureCarouselView.m in Sources */,
 				849D69AE224B09340074AE1F /* IMVoiceImageView.m in Sources */,
 				EE8939CA22290419004F1F6E /* IMFileCache.m in Sources */,
 				84325929223F62BE003A33F2 /* IMUserSettingViewController.m in Sources */,
 				849D7A02224B49FE0074AE1F /* IMUIUtility.m in Sources */,
+				849D7B83224B7FE60074AE1F /* IMUserSetting.m in Sources */,
 				849D695A224B06370074AE1F /* IMEmojiBaseCell.m in Sources */,
 				849D6AFE224B0F0F0074AE1F /* IMExpressionDetailBannerCell.m in Sources */,
 				849D78E3224B26E60074AE1F /* UINavigationController+IMChat.m in Sources */,
 				849D69B1224B09340074AE1F /* IMImageMessageCell.m in Sources */,
 				849D78D3224B26E60074AE1F /* UIView+IMEmpty.m in Sources */,
 				849D6AFD224B0F0F0074AE1F /* IMExpressionDetailSeperatorCell.m in Sources */,
-				849D6A1B224B09FA0074AE1F /* IMConversation.m in Sources */,
 				849D6AEC224B0EE40074AE1F /* IMExpressionDetailViewController.m in Sources */,
 				84325940223F7386003A33F2 /* IMLaunchManager.m in Sources */,
 				841D27032238D8E40004D0FE /* IMNewContactTableViewCell.m in Sources */,
@@ -2962,9 +2920,11 @@
 				849D7AFA224B65D80074AE1F /* IMAddMenuCell.m in Sources */,
 				849D78D1224B26E60074AE1F /* UIScrollView+IMRefreshHeader.m in Sources */,
 				849D78F2224B26E60074AE1F /* IMSettingItem.m in Sources */,
+				849D7B86224B7FE60074AE1F /* IMDBUserStore.m in Sources */,
 				849D6956224B06370074AE1F /* IMEmojiGroupDisplayView.m in Sources */,
-				849D6A25224B09FA0074AE1F /* IMMessageFrame.m in Sources */,
+				849D7B73224B7FE60074AE1F /* IMImageMessage.m in Sources */,
 				849D78D6224B26E60074AE1F /* IMNetworkSerializer.m in Sources */,
+				849D7B82224B7FE60074AE1F /* IMUserGroup.m in Sources */,
 				849D6AD9224B0EE40074AE1F /* IMExpressionGroupModel+ChosenRequest.m in Sources */,
 				849D6994224B08E30074AE1F /* IMEmojiDisplayView.m in Sources */,
 				849D78DB224B26E60074AE1F /* IMBaseRequest+Private.m in Sources */,
@@ -2977,7 +2937,6 @@
 				849D78EC224B26E60074AE1F /* IMSettingItemButtonCell.m in Sources */,
 				8423C312223B561300E999F5 /* IMContactsHeaderView.m in Sources */,
 				849D6AE6224B0EE40074AE1F /* IMExpressionHelper.m in Sources */,
-				849D7B0A224B6EFA0074AE1F /* IMAppConfig.m in Sources */,
 				849D78CF224B26E60074AE1F /* IMImageDownloader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

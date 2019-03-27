@@ -1,0 +1,23 @@
+{
+  "name": "PrivateKit",
+  "version": "13",
+  "summary": "PrivateKit.",
+  "description": "this is PrivateKit",
+  "homepage": "https://github.com/pterXX/PrivateKit",
+  "license": {
+    "type": "MIT",
+    "file": "FILE_LICENSE"
+  },
+  "authors": {
+    "CasaTaloyum": "casatwy@msn.com"
+  },
+  "platforms": {
+    "ios": "7.0"
+  },
+  "source": {
+    "git": "https://github.com/pterXX/PrivateKit.git",
+    "tag": "13"
+  },
+  "source_files": "PrivateKit/PrivateKit/**/*.{h,m,swift}",
+  "requires_arc": true
+}

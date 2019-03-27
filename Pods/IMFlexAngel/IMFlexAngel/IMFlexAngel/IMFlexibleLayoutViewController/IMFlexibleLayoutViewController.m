@@ -1,17 +1,18 @@
 //
 //  IMFlexibleLayoutViewController.m
-//  MYIMDemo
+//  zhuanzhuan
 //
-//  Created by admin on 2019/3/18.
-//  Copyright © 2019 徐世杰. All rights reserved.
+//  Created by 李伯坤 on 2016/10/10.
+//  Copyright © 2016年 wuba. All rights reserved.
 //
 
 #import "IMFlexibleLayoutViewController.h"
-#import "IMFlexibleLayoutFlowLayout.h"
 #import "IMFlexibleLayoutViewController+Kernel.h"
 #import "IMFlexibleLayoutViewController+OldAPI.h"
-#import "IMFlexibleLayoutViewModel.h"
+#import "IMFlexibleLayoutSectionModel.h"
+#import "IMFlexibleLayoutViewProtocol.h"
 #import "IMFlexibleLayoutSeperatorCell.h"
+#import "IMFLEXMacros.h"
 
 @implementation IMFlexibleLayoutViewController
 
@@ -44,7 +45,7 @@
 
 - (void)dealloc
 {
-    NSLog(@"Dealloc: %@", NSStringFromClass([self class]));
+    IMFLEXLog(@"Dealloc: %@", NSStringFromClass([self class]));
 }
 
 - (void)viewWillLayoutSubviews
@@ -132,43 +133,43 @@
 
 #pragma mark - # Section操作
 /// 添加section
-- (IMFlexChainSectionModel *(^)(NSInteger tag))addSection
+- (IMFLEXChainSectionModel *(^)(NSInteger tag))addSection
 {
     @weakify(self);
     return ^(NSInteger tag){
         @strongify(self);
         if (self.hasSection(tag)) {
-            NSLog(@"!!!!! 重复添加Section：%ld", (long)tag);
+            IMFLEXLog(@"!!!!! 重复添加Section：%ld", (long)tag);
         }
         
         IMFlexibleLayoutSectionModel *sectionModel = [[IMFlexibleLayoutSectionModel alloc] init];
         sectionModel.sectionTag = tag;
         
         [self.data addObject:sectionModel];
-        IMFlexChainSectionModel *chainSectionModel = [[IMFlexChainSectionModel alloc] initWithSectionModel:sectionModel];
+        IMFLEXChainSectionModel *chainSectionModel = [[IMFLEXChainSectionModel alloc] initWithSectionModel:sectionModel];
         return chainSectionModel;
     };
 }
 
-- (IMFlexChainSectionInsertModel *(^)(NSInteger tag))insertSection
+- (IMFLEXChainSectionInsertModel *(^)(NSInteger tag))insertSection
 {
     @weakify(self);
     return ^(NSInteger tag){
         @strongify(self);
         if (self.hasSection(tag)) {
-            NSLog(@"!!!!! 重复添加Section：%ld", (long)tag);
+            IMFLEXLog(@"!!!!! 重复添加Section：%ld", (long)tag);
         }
         
         IMFlexibleLayoutSectionModel *sectionModel = [[IMFlexibleLayoutSectionModel alloc] init];
         sectionModel.sectionTag = tag;
-        
-        IMFlexChainSectionInsertModel *chainSectionModel = [[IMFlexChainSectionInsertModel alloc] initWithSectionModel:sectionModel listData:self.data];
+
+        IMFLEXChainSectionInsertModel *chainSectionModel = [[IMFLEXChainSectionInsertModel alloc] initWithSectionModel:sectionModel listData:self.data];
         return chainSectionModel;
     };
 }
 
 /// 获取section
-- (IMFlexChainSectionEditModel *(^)(NSInteger tag))sectionForTag
+- (IMFLEXChainSectionEditModel *(^)(NSInteger tag))sectionForTag
 {
     @weakify(self);
     return ^(NSInteger tag){
@@ -176,11 +177,11 @@
         IMFlexibleLayoutSectionModel *sectionModel = nil;
         for (sectionModel in self.data) {
             if (sectionModel.sectionTag == tag) {
-                IMFlexChainSectionEditModel *chainSectionModel = [[IMFlexChainSectionEditModel alloc] initWithSectionModel:sectionModel];
+                IMFLEXChainSectionEditModel *chainSectionModel = [[IMFLEXChainSectionEditModel alloc] initWithSectionModel:sectionModel];
                 return chainSectionModel;
             }
         }
-        return [[IMFlexChainSectionEditModel alloc] initWithSectionModel:nil];
+        return [[IMFLEXChainSectionEditModel alloc] initWithSectionModel:nil];
     };
 }
 
@@ -244,7 +245,7 @@
 
 #pragma mark - # Section View 操作
 //MARK: Header
-- (IMFlexChainViewModel *(^)(NSString *className))setHeader
+- (IMFLEXChainViewModel *(^)(NSString *className))setHeader
 {
     @weakify(self);
     return ^(NSString *className) {
@@ -255,13 +256,13 @@
             viewModel.className = className;
         }
         RegisterCollectionViewReusableView(self.collectionView, UICollectionElementKindSectionHeader, className);
-        IMFlexChainViewModel *chainViewModel = [[IMFlexChainViewModel alloc] initWithListData:self.data viewModel:viewModel andType:IMFlexChainViewTypeHeader];
+        IMFLEXChainViewModel *chainViewModel = [[IMFLEXChainViewModel alloc] initWithListData:self.data viewModel:viewModel andType:IMFLEXChainViewTypeHeader];
         return chainViewModel;
     };
 }
 
 //MARK: Footer
-- (IMFlexChainViewModel *(^)(NSString *className))setFooter
+- (IMFLEXChainViewModel *(^)(NSString *className))setFooter
 {
     @weakify(self);
     return ^(NSString *className) {
@@ -272,14 +273,14 @@
             viewModel.className = className;
         }
         RegisterCollectionViewReusableView(self.collectionView, UICollectionElementKindSectionFooter, className);
-        IMFlexChainViewModel *chainViewModel = [[IMFlexChainViewModel alloc] initWithListData:self.data viewModel:viewModel andType:IMFlexChainViewTypeFooter];
+        IMFLEXChainViewModel *chainViewModel = [[IMFLEXChainViewModel alloc] initWithListData:self.data viewModel:viewModel andType:IMFLEXChainViewTypeFooter];
         return chainViewModel;
     };
 }
 
 #pragma mark - # Cell 操作
 /// 添加cell
-- (IMFlexChainViewModel *(^)(NSString *className))addCell
+- (IMFLEXChainViewModel *(^)(NSString *className))addCell
 {
     @weakify(self);
     return ^(NSString *className) {
@@ -287,25 +288,25 @@
         RegisterCollectionViewCell(self.collectionView, className);
         IMFlexibleLayoutViewModel *viewModel = [[IMFlexibleLayoutViewModel alloc] init];
         viewModel.className = className;
-        IMFlexChainViewModel *chainViewModel = [[IMFlexChainViewModel alloc] initWithListData:self.data viewModel:viewModel andType:IMFlexChainViewTypeCell];
+        IMFLEXChainViewModel *chainViewModel = [[IMFLEXChainViewModel alloc] initWithListData:self.data viewModel:viewModel andType:IMFLEXChainViewTypeCell];
         return chainViewModel;
     };
 }
 
 /// 批量添加cell
-- (IMFlexChainViewBatchModel *(^)(NSString *className))addCells
+- (IMFLEXChainViewBatchModel *(^)(NSString *className))addCells
 {
     @weakify(self);
     return ^(NSString *className) {
         @strongify(self);
         RegisterCollectionViewCell(self.collectionView, className);
-        IMFlexChainViewBatchModel *viewModel = [[IMFlexChainViewBatchModel alloc] initWithClassName:className listData:self.data];
+        IMFLEXChainViewBatchModel *viewModel = [[IMFLEXChainViewBatchModel alloc] initWithClassName:className listData:self.data];
         return viewModel;
     };
 }
 
 /// 添加空白cell
-- (IMFlexChainViewModel *(^)(CGSize size, UIColor *color))addSeperatorCell;
+- (IMFLEXChainViewModel *(^)(CGSize size, UIColor *color))addSeperatorCell;
 {
     @weakify(self);
     return ^(CGSize size, UIColor *color) {
@@ -313,13 +314,13 @@
         IMFlexibleLayoutViewModel *viewModel = [[IMFlexibleLayoutViewModel alloc] init];
         viewModel.className = CELL_SEPEARTOR;
         viewModel.dataModel = [[IMFlexibleLayoutSeperatorModel alloc] initWithSize:size andColor:color];
-        IMFlexChainViewModel *chainViewModel = [[IMFlexChainViewModel alloc] initWithListData:self.data viewModel:viewModel andType:IMFlexChainViewTypeCell];
+        IMFLEXChainViewModel *chainViewModel = [[IMFLEXChainViewModel alloc] initWithListData:self.data viewModel:viewModel andType:IMFLEXChainViewTypeCell];
         return chainViewModel;
     };
 }
 
 /// 插入cell
-- (IMFlexChainViewInsertModel *(^)(NSString *className))insertCell
+- (IMFLEXChainViewInsertModel *(^)(NSString *className))insertCell
 {
     @weakify(self);
     return ^(NSString *className) {
@@ -327,70 +328,70 @@
         RegisterCollectionViewCell(self.collectionView, className);
         IMFlexibleLayoutViewModel *viewModel = [[IMFlexibleLayoutViewModel alloc] init];
         viewModel.className = className;
-        IMFlexChainViewInsertModel *chainViewModel = [[IMFlexChainViewInsertModel alloc] initWithListData:self.data viewModel:viewModel andType:IMFlexChainViewTypeCell];
+        IMFLEXChainViewInsertModel *chainViewModel = [[IMFLEXChainViewInsertModel alloc] initWithListData:self.data viewModel:viewModel andType:IMFLEXChainViewTypeCell];
         return chainViewModel;
     };
 }
 
 /// 批量插入cells
-- (IMFlexChainViewBatchInsertModel *(^)(NSString *className))insertCells
+- (IMFLEXChainViewBatchInsertModel *(^)(NSString *className))insertCells
 {
     @weakify(self);
     return ^(NSString *className) {
         @strongify(self);
         RegisterCollectionViewCell(self.collectionView, className);
-        IMFlexChainViewBatchInsertModel *viewModel = [[IMFlexChainViewBatchInsertModel alloc] initWithClassName:className listData:self.data];
+        IMFLEXChainViewBatchInsertModel *viewModel = [[IMFLEXChainViewBatchInsertModel alloc] initWithClassName:className listData:self.data];
         return viewModel;
     };
 }
 
 /// 删除cell
-- (IMFlexChainViewEditModel *)deleteCell
+- (IMFLEXChainViewEditModel *)deleteCell
 {
-    IMFlexChainViewEditModel *deleteModel = [[IMFlexChainViewEditModel alloc] initWithType:IMFlexChainViewEditTypeDelete andListData:self.data];
+    IMFLEXChainViewEditModel *deleteModel = [[IMFLEXChainViewEditModel alloc] initWithType:IMFLEXChainViewEditTypeDelete andListData:self.data];
     return deleteModel;
 }
 
 /// 批量删除cell
-- (IMFlexChainViewBatchEditModel *)deleteCells
+- (IMFLEXChainViewBatchEditModel *)deleteCells
 {
-    IMFlexChainViewBatchEditModel *deleteModel = [[IMFlexChainViewBatchEditModel alloc] initWithType:IMFlexChainViewEditTypeDelete andListData:self.data];
+    IMFLEXChainViewBatchEditModel *deleteModel = [[IMFLEXChainViewBatchEditModel alloc] initWithType:IMFLEXChainViewEditTypeDelete andListData:self.data];
     return deleteModel;
 }
 
 /// 更新cell
-- (IMFlexChainViewEditModel *)updateCell
+- (IMFLEXChainViewEditModel *)updateCell
 {
-    IMFlexChainViewEditModel *deleteModel = [[IMFlexChainViewEditModel alloc] initWithType:IMFlexChainViewEditTypeUpdate andListData:self.data];
+    IMFLEXChainViewEditModel *deleteModel = [[IMFLEXChainViewEditModel alloc] initWithType:IMFLEXChainViewEditTypeUpdate andListData:self.data];
     return deleteModel;
 }
 
 /// 批量更新cell
-- (IMFlexChainViewBatchEditModel *)updateCells
+- (IMFLEXChainViewBatchEditModel *)updateCells
 {
-    IMFlexChainViewBatchEditModel *deleteModel = [[IMFlexChainViewBatchEditModel alloc] initWithType:IMFlexChainViewEditTypeUpdate andListData:self.data];
+    IMFLEXChainViewBatchEditModel *deleteModel = [[IMFLEXChainViewBatchEditModel alloc] initWithType:IMFLEXChainViewEditTypeUpdate andListData:self.data];
     return deleteModel;
 }
 
 /// 包含cell
-- (IMFlexChainViewEditModel *)hasCell
+- (IMFLEXChainViewEditModel *)hasCell
 {
-    IMFlexChainViewEditModel *deleteModel = [[IMFlexChainViewEditModel alloc] initWithType:IMFlexChainViewEditTypeHas andListData:self.data];
+    IMFLEXChainViewEditModel *deleteModel = [[IMFLEXChainViewEditModel alloc] initWithType:IMFLEXChainViewEditTypeHas andListData:self.data];
     return deleteModel;
 }
 
 #pragma mark - # DataModel 数据源获取
 /// 数据源获取
-- (IMFlexChainViewEditModel *)dataModel
+- (IMFLEXChainViewEditModel *)dataModel
 {
-    IMFlexChainViewEditModel *dataModel = [[IMFlexChainViewEditModel alloc] initWithType:IMFlexChainViewEditTypeDataModel andListData:self.data];
+    IMFLEXChainViewEditModel *dataModel = [[IMFLEXChainViewEditModel alloc] initWithType:IMFLEXChainViewEditTypeDataModel andListData:self.data];
     return dataModel;
 }
 
 /// 批量获取数据源
-- (IMFlexChainViewBatchEditModel *)dataModelArray
+- (IMFLEXChainViewBatchEditModel *)dataModelArray
 {
-    IMFlexChainViewBatchEditModel *dataModel = [[IMFlexChainViewBatchEditModel alloc] initWithType:IMFlexChainViewEditTypeDataModel andListData:self.data];
+    IMFLEXChainViewBatchEditModel *dataModel = [[IMFLEXChainViewBatchEditModel alloc] initWithType:IMFLEXChainViewEditTypeDataModel andListData:self.data];
     return dataModel;
 }
 

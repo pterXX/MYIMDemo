@@ -1,15 +1,11 @@
-#import "IMAddContactsViewController.h"
+
 #import "IMAddressBookTableViewCell.h"
 #import "IMChatViewController.h"
 #import "IMContactItemCell.h"
 #import "IMContactsAngel.h"
 #import "IMContactsSearchResultViewController.h"
 #import "IMContactsViewController.h"
-#import "IMConversationModel.h"
-#import "IMConversationModel.h"
-#import "IMEmojiGroup.h"
 #import "IMLoginViewController.h"
-#import "IMMessageModel.h"
 #import "IMNewContactViewController.h"
 #import "IMUserDetailViewController.h"
 #import "UIViewController+Category.h"
@@ -58,8 +54,8 @@
      @weakify(self);
     [self addRightBarButtonWithImage:[UIImage imageNamed:@"contacts_add_friend"] actionBlick:^{
         @strongify(self);
-        IMAddContactsViewController *add = [[IMAddContactsViewController alloc] init];
-        IMPushVC(add);
+//        IMAddContactsViewController *add = [[IMAddContactsViewController alloc] init];
+//        IMPushVC(add);
     }];
 }
 
@@ -144,7 +140,7 @@
 
 
 @implementation IMContactsViewController(Class)
-+ (IMBaseNavigationController *)navAddressBookVc;{
++ (IMBaseNavigationController *)navAddressBookVc{
     IMBaseNavigationController *navC = [[IMBaseNavigationController alloc] initWithRootViewController:[[[self class] alloc] init]];
     return navC;
 }
