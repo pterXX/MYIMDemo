@@ -104,7 +104,6 @@
 		849D6ADA224B0EE40074AE1F /* IMExpressionChosenAngel.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D6A95224B0EE30074AE1F /* IMExpressionChosenAngel.m */; };
 		849D6ADB224B0EE40074AE1F /* IMExpressionDownloadButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D6A97224B0EE30074AE1F /* IMExpressionDownloadButton.m */; };
 		849D6ADC224B0EE40074AE1F /* IMExpressionBannerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D6A99224B0EE30074AE1F /* IMExpressionBannerCell.m */; };
-		849D6ADD224B0EE40074AE1F /* IMExpressionTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D6A9B224B0EE30074AE1F /* IMExpressionTitleView.m */; };
 		849D6ADE224B0EE40074AE1F /* IMExpressionItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D6A9E224B0EE30074AE1F /* IMExpressionItemCell.m */; };
 		849D6ADF224B0EE40074AE1F /* IMExpressionMoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D6AA3224B0EE30074AE1F /* IMExpressionMoreViewController.m */; };
 		849D6AE0224B0EE40074AE1F /* IMExpressionGroupModel+MoreRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D6AA6224B0EE30074AE1F /* IMExpressionGroupModel+MoreRequest.m */; };
@@ -212,6 +211,8 @@
 		849D7BA8224B83E00074AE1F /* IMAddMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7B9B224B83E00074AE1F /* IMAddMenuView.m */; };
 		849D7BAB224B843F0074AE1F /* IMActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7BA9224B843F0074AE1F /* IMActionSheet.m */; };
 		849D7BAE224B84600074AE1F /* IMUIUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7BAC224B845E0074AE1F /* IMUIUtility.m */; };
+		849D7BB1224B87030074AE1F /* UIViewController+IMBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7BB0224B87030074AE1F /* UIViewController+IMBaseNavigationController.m */; };
+		849D7BB4224B88590074AE1F /* IMExpressiontitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7BB2224B88580074AE1F /* IMExpressiontitleView.m */; };
 		84E97AC82248B64400DF8842 /* NSAttributedString+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E97AC62248B64300DF8842 /* NSAttributedString+Addition.m */; };
 		9330B5BB72954608CB742A23 /* Pods_MYIMDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECA892BB53FE8E5F6A5CBF5D /* Pods_MYIMDemoTests.framework */; };
 		AE6AE5E7E160C14E5371D105 /* Pods_MYIMDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2189E704B4F186789328318 /* Pods_MYIMDemo.framework */; };
@@ -470,10 +471,8 @@
 		849D6A94224B0EE30074AE1F /* IMExpressionGroupModel+ChosenRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IMExpressionGroupModel+ChosenRequest.m"; sourceTree = "<group>"; };
 		849D6A95224B0EE30074AE1F /* IMExpressionChosenAngel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMExpressionChosenAngel.m; sourceTree = "<group>"; };
 		849D6A97224B0EE30074AE1F /* IMExpressionDownloadButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMExpressionDownloadButton.m; sourceTree = "<group>"; };
-		849D6A98224B0EE30074AE1F /* IMExpressionTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMExpressionTitleView.h; sourceTree = "<group>"; };
 		849D6A99224B0EE30074AE1F /* IMExpressionBannerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMExpressionBannerCell.m; sourceTree = "<group>"; };
 		849D6A9A224B0EE30074AE1F /* IMExpressionItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMExpressionItemCell.h; sourceTree = "<group>"; };
-		849D6A9B224B0EE30074AE1F /* IMExpressionTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMExpressionTitleView.m; sourceTree = "<group>"; };
 		849D6A9C224B0EE30074AE1F /* IMExpressionDownloadButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMExpressionDownloadButton.h; sourceTree = "<group>"; };
 		849D6A9D224B0EE30074AE1F /* IMExpressionBannerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMExpressionBannerCell.h; sourceTree = "<group>"; };
 		849D6A9E224B0EE30074AE1F /* IMExpressionItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMExpressionItemCell.m; sourceTree = "<group>"; };
@@ -702,6 +701,10 @@
 		849D7BAA224B843F0074AE1F /* IMActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMActionSheet.h; sourceTree = "<group>"; };
 		849D7BAC224B845E0074AE1F /* IMUIUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMUIUtility.m; sourceTree = "<group>"; };
 		849D7BAD224B845F0074AE1F /* IMUIUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMUIUtility.h; sourceTree = "<group>"; };
+		849D7BAF224B87030074AE1F /* UIViewController+IMBaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+IMBaseNavigationController.h"; sourceTree = "<group>"; };
+		849D7BB0224B87030074AE1F /* UIViewController+IMBaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+IMBaseNavigationController.m"; sourceTree = "<group>"; };
+		849D7BB2224B88580074AE1F /* IMExpressiontitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMExpressiontitleView.m; sourceTree = "<group>"; };
+		849D7BB3224B88590074AE1F /* IMExpressiontitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMExpressiontitleView.h; sourceTree = "<group>"; };
 		84E97AC62248B64300DF8842 /* NSAttributedString+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+Addition.m"; sourceTree = "<group>"; };
 		84E97AC72248B64400DF8842 /* NSAttributedString+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+Addition.h"; sourceTree = "<group>"; };
 		84E97AC92248B99600DF8842 /* IMNotificationHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMNotificationHeader.h; sourceTree = "<group>"; };
@@ -849,6 +852,8 @@
 				EE8937032228D82B004F1F6E /* IMBaseTableViewCell.m */,
 				EE8936C52227DBA2004F1F6E /* IMBaseViewController.h */,
 				EE8936C62227DBA2004F1F6E /* IMBaseViewController.m */,
+				849D7BAF224B87030074AE1F /* UIViewController+IMBaseNavigationController.h */,
+				849D7BB0224B87030074AE1F /* UIViewController+IMBaseNavigationController.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1595,14 +1600,14 @@
 		849D6A96224B0EE30074AE1F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				849D6A97224B0EE30074AE1F /* IMExpressionDownloadButton.m */,
-				849D6A98224B0EE30074AE1F /* IMExpressionTitleView.h */,
-				849D6A99224B0EE30074AE1F /* IMExpressionBannerCell.m */,
-				849D6A9A224B0EE30074AE1F /* IMExpressionItemCell.h */,
-				849D6A9B224B0EE30074AE1F /* IMExpressionTitleView.m */,
-				849D6A9C224B0EE30074AE1F /* IMExpressionDownloadButton.h */,
 				849D6A9D224B0EE30074AE1F /* IMExpressionBannerCell.h */,
+				849D6A99224B0EE30074AE1F /* IMExpressionBannerCell.m */,
+				849D6A9C224B0EE30074AE1F /* IMExpressionDownloadButton.h */,
+				849D6A97224B0EE30074AE1F /* IMExpressionDownloadButton.m */,
+				849D6A9A224B0EE30074AE1F /* IMExpressionItemCell.h */,
 				849D6A9E224B0EE30074AE1F /* IMExpressionItemCell.m */,
+				849D7BB3224B88590074AE1F /* IMExpressiontitleView.h */,
+				849D7BB2224B88580074AE1F /* IMExpressiontitleView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2824,6 +2829,7 @@
 				849D695D224B06370074AE1F /* IMEmojiGroupDisplayModel.m in Sources */,
 				849D78E9224B26E60074AE1F /* NSString+Message.m in Sources */,
 				849D7B9F224B83E00074AE1F /* IMChatViewController+Conversation.m in Sources */,
+				849D7BB1224B87030074AE1F /* UIViewController+IMBaseNavigationController.m in Sources */,
 				849D7B72224B7FE60074AE1F /* IMVideoMessage.m in Sources */,
 				849D697A224B065B0074AE1F /* IMChatDetailViewController.m in Sources */,
 				849D7B84224B7FE60074AE1F /* IMUser.m in Sources */,
@@ -2908,6 +2914,7 @@
 				849D78E7224B26E60074AE1F /* IMAudioRecorder.m in Sources */,
 				849D6ADC224B0EE40074AE1F /* IMExpressionBannerCell.m in Sources */,
 				84681F772230EF000056372A /* IMSignUpViewController.m in Sources */,
+				849D7BB4224B88590074AE1F /* IMExpressiontitleView.m in Sources */,
 				849D6993224B08E30074AE1F /* IMRecorderIndicatorView.m in Sources */,
 				849D6AE7224B0EE40074AE1F /* IMExpressionGroupModel+Download.m in Sources */,
 				849D78DA224B26E60074AE1F /* IMBaseRequest.m in Sources */,
@@ -2969,7 +2976,6 @@
 				849D6994224B08E30074AE1F /* IMEmojiDisplayView.m in Sources */,
 				849D78DB224B26E60074AE1F /* IMBaseRequest+Private.m in Sources */,
 				EE7FE45B222CC42500073210 /* IMZoomingScrollView.m in Sources */,
-				849D6ADD224B0EE40074AE1F /* IMExpressionTitleView.m in Sources */,
 				EE7FE464222CC42500073210 /* TAAnimatedDotView.m in Sources */,
 				849D694B224B06370074AE1F /* IMGroup+ChatModel.m in Sources */,
 				849D6AEB224B0EE40074AE1F /* IMExpressionGroupModel+DetailRequest.m in Sources */,

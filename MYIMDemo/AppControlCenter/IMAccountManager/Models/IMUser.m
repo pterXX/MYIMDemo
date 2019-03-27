@@ -3,18 +3,24 @@
 //  IMUser.m
 //  IMChat
 //
-//  Created by 李伯坤 on 16/1/23.
-//  Copyright © 2016年 李伯坤. All rights reserved.
+//  Created by 徐世杰 on 16/1/23.
+//  Copyright © 2016年 徐世杰. All rights reserved.
 //
 
 #import "IMUser.h"
-#import "NSString+PinYin.h"
 
 @implementation IMUser
+
++ (IMUser *)user:(XMPPJID *)jid{
+    IMUser *user = [[IMUser alloc] init];
+    user.userJid = jid;
+    return user;
+}
 
 - (id)init
 {
     if (self = [super init]) {
+        
         [IMUser mj_setupObjectClassInArray:^NSDictionary *{
             return @{ @"detailInfo" : @"IMUserDetail",
                       @"userSetting" : @"IMUserSetting",
@@ -63,7 +69,9 @@
 #pragma mark - Getter
 - (NSString *)showName
 {
-    return self.remarkName.length > 0 ? self.remarkName : (self.nikeName.length > 0 ? self.nikeName : self.username);
+    NSString *str = self.remarkName.length > 0 ? self.remarkName : (self.nikeName.length > 0 ? self.nikeName : (self.username?self.username:self.userJid.user));
+    //    return IMStirngReplace(str, IMStirngFormat(@"@%@"), IM_XMPP_DOMAIN);
+    return str;
 }
 
 - (IMUserDetail *)detailInfo
@@ -74,4 +82,33 @@
     return _detailInfo;
 }
 
+- (XMPPJID *)userJid{
+    if (_userJid == nil) {
+        _userJid = [IMXMPPHelper jid:self.userID];
+    }
+    return _userJid;
+}
+
+- (NSString *)subscription{
+    if (_subscription == nil) {
+        _subscription = @"none";
+    }
+    return _subscription;
+}
+
+- (NSString *)ask{
+    if (_ask == nil) {
+        _ask = @"unsubscribe";
+    }
+    return _ask;
+}
+
+- (UIImage *)avatar{
+    if (_avatar == nil) {
+        _avatar = [UIImage imageDefaultHeadPortrait];
+    }
+    return _avatar;
+}
 @end
+
+

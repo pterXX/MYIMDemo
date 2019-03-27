@@ -74,12 +74,12 @@
 #pragma mark - # Private Methods
 - (void)p_createTabBarChildViewController
 {
-    IMBaseNavigationController *messages = [IMConversationViewController navMessagesVc];
+    IMBaseNavigationController *messages = [IMConversationViewController navVc];
     [self.tabBarController addSubController:messages action:^(UITabBarItem * _Nonnull item, UITabBarController * _Nonnull tabbarVc) {
         
     }];
     
-    IMBaseNavigationController *addresBooks = [IMContactsViewController navAddressBookVc];
+    IMBaseNavigationController *addresBooks = [IMContactsViewController navVc];
     [self.tabBarController  addSubController:addresBooks action:^(UITabBarItem * _Nonnull item, UITabBarController * _Nonnull tabbarVc) {
         
     }];

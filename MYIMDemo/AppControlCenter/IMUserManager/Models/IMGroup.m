@@ -7,7 +7,6 @@
 //
 
 #import "IMGroup.h"
-#import "NSString+PinYin.h"
 #import "IMUserHelper.h"
 
 @implementation IMGroup
