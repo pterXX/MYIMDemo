@@ -51,7 +51,7 @@
                         message.messageID,
                         message.userID,
                         fid,
-                        TLNoNilString(subfid),
+                        IMNoNilString(subfid),
                         IMTimeStamp(message.date),
                         [NSNumber numberWithInteger:message.partnerType],
                         [NSNumber numberWithInteger:message.ownerTyper],

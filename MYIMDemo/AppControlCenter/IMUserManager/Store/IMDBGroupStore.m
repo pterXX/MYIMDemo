@@ -39,9 +39,9 @@
 {
     NSString *sqlString = [NSString stringWithFormat:SQL_UPDATE_GROUP, GROUPS_TABLE_NAME];
     NSArray *arrPara = [NSArray arrayWithObjects:
-                        TLNoNilString(uid),
-                        TLNoNilString(group.groupID),
-                        TLNoNilString(group.groupName),
+                        IMNoNilString(uid),
+                        IMNoNilString(group.groupID),
+                        IMNoNilString(group.groupName),
                         @"", @"", @"", @"", @"", nil];
     BOOL ok = [self excuteSQL:sqlString withArrParameter:arrPara];
     if (ok) {
@@ -118,13 +118,13 @@
 {
     NSString *sqlString = [NSString stringWithFormat:SQL_UPDATE_GROUP_MEMBER, GROUP_MEMBER_TABLE_NAMGE];
     NSArray *arrPara = [NSArray arrayWithObjects:
-                        TLNoNilString(uid),
-                        TLNoNilString(gid),
-                        TLNoNilString(user.userID),
-                        TLNoNilString(user.username),
-                        TLNoNilString(user.nikeName),
-                        TLNoNilString(user.avatarURL),
-                        TLNoNilString(user.remarkName),
+                        IMNoNilString(uid),
+                        IMNoNilString(gid),
+                        IMNoNilString(user.userID),
+                        IMNoNilString(user.username),
+                        IMNoNilString(user.nikeName),
+                        IMNoNilString(user.avatarURL),
+                        IMNoNilString(user.remarkName),
                         @"", @"", @"", @"", @"", nil];
     BOOL ok = [self excuteSQL:sqlString withArrParameter:arrPara];
     return ok;

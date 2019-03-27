@@ -35,12 +35,12 @@
 {
     NSString *sqlString = [NSString stringWithFormat:SQL_UPDATE_FRIEND, FRIENDS_TABLE_NAME];
     NSArray *arrPara = [NSArray arrayWithObjects:
-                        TLNoNilString(uid),
-                        TLNoNilString(user.userID),
-                        TLNoNilString(user.username),
-                        TLNoNilString(user.nikeName),
-                        TLNoNilString(user.avatarURL),
-                        TLNoNilString(user.remarkName),
+                        IMNoNilString(uid),
+                        IMNoNilString(user.userID),
+                        IMNoNilString(user.username),
+                        IMNoNilString(user.nikeName),
+                        IMNoNilString(user.avatarURL),
+                        IMNoNilString(user.remarkName),
                         @"", @"", @"", @"", @"", nil];
     BOOL ok = [self excuteSQL:sqlString withArrParameter:arrPara];
     return ok;
