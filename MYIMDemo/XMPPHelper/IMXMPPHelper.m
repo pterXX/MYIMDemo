@@ -57,12 +57,12 @@ static IMXMPPHelper *helper;
     return _userHelper;
 }
 
-- (IMConversationHelper *)conversationHelper{
-    if (!_conversationHelper) {
-        _conversationHelper = [IMConversationHelper sharedConversationHelper];
-    }
-    return _conversationHelper;
-}
+//- (IMConversationHelper *)conversationHelper{
+//    if (!_conversationHelper) {
+//        _conversationHelper = [IMConversationHelper sharedConversationHelper];
+//    }
+//    return _conversationHelper;
+//}
 
 - (void)setupStream{
     if (!_xmppStream) {
@@ -480,9 +480,9 @@ static IMXMPPHelper *helper;
     }
 }
 
-#pragma mark ------ SSL/TLS
+#pragma mark ------ SSL/IMS
 /**
- 此方法在流通过SSL/TLS得到保护之后调用。
+ 此方法在流通过SSL/IMS得到保护之后调用。
  如果服务器在打开过程中需要安全连接，则可以调用此方法，
  或者如果secureConnection:方法是手动调用的。
  */
@@ -769,22 +769,22 @@ static IMXMPPHelper *helper;
     return fetchedObjects;
 }
 
-// 发送消息
-- (void)sendMessageModel:(IMMessageModel *)message to:(XMPPJID *)jid{
-    XMPPMessage* newMessage = [[XMPPMessage alloc] initWithType:@"chat" to:jid];
-    if (message.messageId.isEmptyString) {
-        message.messageId = [NSDate getCurrentTimestamp];
-    }
-    [newMessage addOriginId:message.messageId];
-    [newMessage addBody:message.messageBody]; //消息内容
-    NSDictionary *dict = [message mj_keyValuesWithKeys:@[@"messageId",@"msgType",@"messageChatType",@"content",@"recvTime",@"voiceTime",@"pictureType",@"sendTime"]];
-    NSArray *arr = [dict allKeys];
-    for (NSString *key in arr) {
-        NSString *str = IMStirngFormat(@"%@",[dict objectForKey:key]);
-        [newMessage addChild:[XMPPElement elementWithName:key stringValue:str]];
-    }
-    [_xmppStream sendElement:newMessage];
-}
+//// 发送消息
+//- (void)sendMessageModel:(IMMessageModel *)message to:(XMPPJID *)jid{
+//    XMPPMessage* newMessage = [[XMPPMessage alloc] initWithType:@"chat" to:jid];
+//    if (message.messageId.isEmptyString) {
+//        message.messageId = [NSDate getCurrentTimestamp];
+//    }
+//    [newMessage addOriginId:message.messageId];
+//    [newMessage addBody:message.messageBody]; //消息内容
+//    NSDictionary *dict = [message mj_keyValuesWithKeys:@[@"messageId",@"msgType",@"messageChatType",@"content",@"recvTime",@"voiceTime",@"pictureType",@"sendTime"]];
+//    NSArray *arr = [dict allKeys];
+//    for (NSString *key in arr) {
+//        NSString *str = IMStirngFormat(@"%@",[dict objectForKey:key]);
+//        [newMessage addChild:[XMPPElement elementWithName:key stringValue:str]];
+//    }
+//    [_xmppStream sendElement:newMessage];
+//}
 
 #pragma mark -- XMPPMessage Delegate
 - (void)xmppStream:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message{

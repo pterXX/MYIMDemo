@@ -1,6 +1,6 @@
 //
-//  NSFileManager+TLChat.m
-//  TLChat
+//  NSFileManager+IMChat.m
+//  IMChat
 //
 //  Created by 徐世杰 on 16/3/3.
 //  Copyright © 2016年 徐世杰. All rights reserved.

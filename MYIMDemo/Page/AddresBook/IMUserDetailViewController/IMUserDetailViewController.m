@@ -9,7 +9,7 @@
 #import "IMUserDetailViewController.h"
 #import "IMUserSettingViewController.h"
 #import "IMChatViewController.h"
-#import "IMConversationModel.h"
+//#import "IMConversationModel.h"
 
 typedef NS_ENUM(NSInteger, IMUserDetailVCSectionType) {
     IMUserDetailVCSectionTypeBaseInfo,
@@ -107,15 +107,7 @@ typedef NS_ENUM(NSInteger, IMUserDetailVCSectionType) {
     // 发消息
     self.addCell(@"IMUserDetailChatButtonCell").toSection(IMUserDetailVCSectionTypeFunction).withDataModel(@"发消息").eventAction(^ id(NSInteger eventType, id data) {
         @strongify(self);
-        IMChatViewController *chatVC = [[IMChatViewController alloc] init];
-        IMConversationModel *conversation   = [[IMConversationModel alloc] init];
-        conversation.chatToJid              = self.userModel.userJid;
-        conversation.conversationName       = self.userModel.showName;
-        conversation.chatType               = IMMessageChatTypeSingle;
-//        conversation.headImage              = self.userModel.avatar;
-        chatVC.title                      = conversation.conversationName;
-        chatVC.hidesBottomBarWhenPushed   = YES;
-        chatVC.conversation               = conversation;
+        IMChatViewController *chatVC = [[IMChatViewController alloc] initWithUserId:self.userModel.userID];
         if ([IMLaunchManager sharedInstance].tabBarController.selectedIndex != 0) {
             [self.navigationController popToRootViewControllerAnimated:NO];
             UINavigationController *navC = [IMLaunchManager sharedInstance].tabBarController.childViewControllers[0];

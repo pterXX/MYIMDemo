@@ -10,8 +10,6 @@
 #import <XMPP.h>
 #import <XMPPFramework/XMPPFramework.h>
 #import "IMUserHelper.h"
-#import "IMConversationHelper.h"
-#import "IMMessageModel.h"
 
 
 #ifdef DEBUG
@@ -48,11 +46,10 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
 @interface IMXMPPHelper : NSObject
 @property (nonatomic ,copy  ) IMUserHelper                        *userHelper;
 
-@property (nonatomic ,copy  ) IMConversationHelper                *conversationHelper;
 
 @property (nonatomic ,copy) void(^imageUploadBlock)(NSData *imgData,void(^handleBlock)(NSString *fileUrl));
 
-//表示是否手动验证TLS/SSL
+//表示是否手动验证IMS/SSL
 @property (nonatomic ,assign) BOOL                                customCertEvaluation;
 //表示一个地址
 @property (nonatomic ,strong) XMPPJID                             *myJID;
@@ -204,7 +201,7 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
  *  @param message 消息内容
  *  @param jid     发送对方的ID
  */
-- (void)sendMessageModel:(IMMessageModel *)message to:(XMPPJID *)jid;
+//- (void)sendMessageModel:(IMMessageModel *)message to:(XMPPJID *)jid;
 
 /**
  监听已经接收到的消息

@@ -56,9 +56,14 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 #import <MJExtension/MJExtension.h>
 #import <Masonry/Masonry.h>
 #import <SDWebImage/UIImageView+WebCache.h>
-#import <IMFlexAngel/IMFlexAngel.h>  //  #私有库, 方便便捷加载tableView 或者 collectionView的数据
+#import <SDWebImage/UIButton+WebCache.h>
+#import <IMFlexAngel/IMFlexibleLayoutFramework.h>  //  #私有库, 方便便捷加载tableView 或者 collectionView的数据
+#import <IMFlexAngel/IMFlexibleLayoutViewProtocol.h>
+#import <IMFlexAngel/IMFLEXMacros.h>
+
 #import <PrivateKit/IMCategory.h>   //  私有库, 常用分类
-#import <IMShortcut/IMShortcutMacros.h> // 私有库, 常用便捷方法
+
+#import <ReactiveObjC/ReactiveObjC.h>
 
 #import "IMBaseModel.h" // 基础model
 #import "IMBaseNavigationController.h"
@@ -66,14 +71,15 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 #import "IMBaseTableViewCell.h" //  基础cell
 #import "IMBaseViewController.h" //  基础视图控制器
 
-#import "IMUtils.h" //  工具类
+#import "IMKitExtension.h"
 #import "IMXMPPHelper.h"
 #import "IMUserHelper.h"
-#import "IMChatMessageHelper.h"
+//#import "IMChatMessageHelper.h"
 #import "IMLaunchManager.h"
+#import "IMUIUtility.h"
 
 // 对于block的弱引用
-#define kWeakSelf           __weak __typeof(self)weakSelf = self;
+#define kWeakSelf           __weak __typeof(self) weakSelf = self;
 
 
 

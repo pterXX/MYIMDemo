@@ -12,5 +12,5 @@
 
 #import "Foundation+Category.h"
 #import "UIKit+Category.h"
-
+#import "IMShortcut.h"
 #endif /* Category_h */

@@ -1,6 +1,6 @@
 //
-//  TLContactsSearchResultViewController.h
-//  TLChat
+//  IMContactsSearchResultViewController.h
+//  IMChat
 //
 //  Created by 徐世杰 on 16/1/25.
 //  Copyright © 2016年 徐世杰. All rights reserved.

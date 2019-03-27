@@ -9,6 +9,8 @@
 #ifndef Foundation_Category_h
 #define Foundation_Category_h
 
+#import "NSObject+Dealloc.h"
+#import "NSObject+Association.h"
 #import "NSArray+Json.h"
 #import "NSArray+zh_SafeAccess.h"
 #import "NSDate+Category.h"

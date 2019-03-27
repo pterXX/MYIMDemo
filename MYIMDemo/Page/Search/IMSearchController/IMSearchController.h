@@ -1,6 +1,6 @@
 //
-//  TLSearchController.h
-//  TLChat
+//  IMSearchController.h
+//  IMChat
 //
 //  Created by 徐世杰 on 16/3/7.
 //  Copyright © 2016年 徐世杰. All rights reserved.

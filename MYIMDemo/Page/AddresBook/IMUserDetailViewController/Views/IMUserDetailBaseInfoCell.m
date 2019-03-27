@@ -1,6 +1,6 @@
 //
 //  IMUserDetailBaseInfoCell.m
-//  TLChat
+//  IMChat
 //
 //  Created by 徐世杰 on 16/2/29.
 //  Copyright © 2016年 徐世杰. All rights reserved.
@@ -44,14 +44,14 @@
 - (void)viewIndexPath:(NSIndexPath *)indexPath sectionItemCount:(NSInteger)count
 {
     if (indexPath.row == 0) {
-        self.addSeparator(SeparatorPositionTop);
+        self.addSeparator(IMSeparatorPositionTop);
     }
     
     if (indexPath.row == count - 1) {
-        self.addSeparator(SeparatorPositionBottom);
+        self.addSeparator(IMSeparatorPositionBottom);
     }
     else {
-        self.addSeparator(SeparatorPositionBottom).beginAt(15);
+        self.addSeparator(IMSeparatorPositionBottom).beginAt(15);
     }
 }
 

@@ -16,14 +16,16 @@ target 'MYIMDemo' do
   pod 'SDAutoLayout'              #自动约束布局
   pod 'SDWebImage'                #图片加载库
   pod 'SVProgressHUD'             #弹窗指示器
+  pod 'MWPhotoBrowser'
   pod 'TZImagePickerController'
   pod 'XMPPFramework'             #xmmp协议框架
-  pod 'YCMenuView'                #弹出式menuView框架
+#  pod 'YCMenuView'                #弹出式menuView框架
   pod 'AVOSCloud'                 #数据存储、短信、云引擎调用等基础服务模块,测试的时候保存图片使用，实际开发使用公司服务器保存图片
+  pod 'TLTabBarController'
+  pod 'ReactiveObjC'
 
   pod 'IMFlexAngel'  #私有库, 方便便捷加载tableView 或者 collectionView的数据
-  pod 'PrivateKit'   #私有库, 常用分类
-  pod 'IMShortcut'   #私有库, 常用便捷方法
+  pod 'PrivateKit', :path =>'../PrivateKit'   #私有库, 常用分类
 #  pod 'IMHTTPRequest' #私有库, 网络请求
 
   target 'MYIMDemoTests' do

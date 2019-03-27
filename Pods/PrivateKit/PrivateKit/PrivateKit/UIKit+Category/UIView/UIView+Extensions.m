@@ -1,6 +1,6 @@
 //
 //  UIView+Extensions.m
-//  TLKit
+//  IMKit
 //
 //  Created by 徐世杰 on 2017/8/27.
 //  Copyright © 2017年 libokun. All rights reserved.
