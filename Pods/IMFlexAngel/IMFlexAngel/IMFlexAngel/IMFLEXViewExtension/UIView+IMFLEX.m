@@ -35,6 +35,7 @@ IMFLEX_VE_API(addSwitch, IMSwitchChainModel, UISwitch);
 IMFLEX_VE_API(addScrollView, IMScrollViewChainModel, UIScrollView);
 IMFLEX_VE_API(addTextView, IMTextViewChainModel, UITextView);
 IMFLEX_VE_API(addTableView, IMTableViewChainModel, UITableView);
+
 - (IMCollectionViewChainModel * (^)(NSInteger tag))addCollectionView
 {
     return ^IMCollectionViewChainModel* (NSInteger tag) {

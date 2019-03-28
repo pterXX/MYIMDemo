@@ -1300,9 +1300,9 @@
 		849D68FB224B06360074AE1F /* ChatBar */ = {
 			isa = PBXGroup;
 			children = (
-				849D68FC224B06360074AE1F /* IMChatBar.m */,
 				849D68FD224B06360074AE1F /* ChatBarViews */,
 				849D6900224B06360074AE1F /* IMChatBar.h */,
+				849D68FC224B06360074AE1F /* IMChatBar.m */,
 				849D6901224B06360074AE1F /* IMChatBarDelegate.h */,
 			);
 			path = ChatBar;
@@ -2192,12 +2192,12 @@
 		849D7B44224B7FE50074AE1F /* IMUserManager */ = {
 			isa = PBXGroup;
 			children = (
-				849D7B45224B7FE50074AE1F /* IMUserHelper.m */,
 				849D7B46224B7FE50074AE1F /* IMFriendHelper.h */,
-				849D7B47224B7FE50074AE1F /* Models */,
-				849D7B4C224B7FE50074AE1F /* IMUserHelper.h */,
-				849D7B4D224B7FE50074AE1F /* Store */,
 				849D7B54224B7FE50074AE1F /* IMFriendHelper.m */,
+				849D7B4C224B7FE50074AE1F /* IMUserHelper.h */,
+				849D7B45224B7FE50074AE1F /* IMUserHelper.m */,
+				849D7B47224B7FE50074AE1F /* Models */,
+				849D7B4D224B7FE50074AE1F /* Store */,
 			);
 			path = IMUserManager;
 			sourceTree = "<group>";
@@ -2230,8 +2230,8 @@
 			isa = PBXGroup;
 			children = (
 				849D7B56224B7FE50074AE1F /* IMAccountManager.h */,
-				849D7B57224B7FE50074AE1F /* Models */,
 				849D7B62224B7FE50074AE1F /* IMAccountManager.m */,
+				849D7B57224B7FE50074AE1F /* Models */,
 				849D7B63224B7FE50074AE1F /* Store */,
 			);
 			path = IMAccountManager;
@@ -2240,16 +2240,16 @@
 		849D7B57224B7FE50074AE1F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				849D7B58224B7FE50074AE1F /* IMUserChatSetting.m */,
-				849D7B59224B7FE50074AE1F /* IMUserDetail.m */,
 				849D7B5A224B7FE50074AE1F /* IMUser.h */,
-				849D7B5B224B7FE50074AE1F /* IMUserSetting.h */,
-				849D7B5C224B7FE50074AE1F /* IMUserGroup.m */,
-				849D7B5D224B7FE50074AE1F /* IMUserDetail.h */,
-				849D7B5E224B7FE50074AE1F /* IMUserChatSetting.h */,
-				849D7B5F224B7FE50074AE1F /* IMUserSetting.m */,
 				849D7B60224B7FE50074AE1F /* IMUser.m */,
+				849D7B5E224B7FE50074AE1F /* IMUserChatSetting.h */,
+				849D7B58224B7FE50074AE1F /* IMUserChatSetting.m */,
+				849D7B5D224B7FE50074AE1F /* IMUserDetail.h */,
+				849D7B59224B7FE50074AE1F /* IMUserDetail.m */,
 				849D7B61224B7FE50074AE1F /* IMUserGroup.h */,
+				849D7B5C224B7FE50074AE1F /* IMUserGroup.m */,
+				849D7B5B224B7FE50074AE1F /* IMUserSetting.h */,
+				849D7B5F224B7FE50074AE1F /* IMUserSetting.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";

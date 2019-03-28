@@ -26,11 +26,11 @@ PRIMARY KEY(uid))"
 
 #define     SQL_UPDATE_USER                 @"REPLACE INTO %@ ( uid, username, nikename, avatar, remark, ext1, ext2, ext3, ext4, ext5) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
 
-#define     SQL_SELECT_USER_BY_ID           @"SELECT * FROM %@ WHERE uid = %@"
+#define     SQL_SELECT_USER_BY_ID           @"SELECT * FROM %@ WHERE uid = '%@'"
 
 #define     SQL_SELECT_USERS                @"SELECT * FROM %@"
 
-#define     SQL_DELETE_USER                 @"DELETE FROM %@ WHERE uid = %@"
+#define     SQL_DELETE_USER                 @"DELETE FROM %@ WHERE uid = '%@'"
 
 
 #endif /* IMDBUsetStoreKey_h */

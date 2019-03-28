@@ -71,17 +71,19 @@ IMContactsItem *createContactsItemModelWithTag(NSInteger tag, NSString *path, NS
     _model = model;
     
     UIImage *localImage = (model.imagePath.length > 0 ? IMImage(model.imagePath) : nil);
-    if (model.imageUrl) {
-        UIImage *placeholder = model.placeholderImage ? model.placeholderImage : (localImage ? localImage : [UIImage imageDefaultHeadPortrait]);
-        [self.avatarView sd_setImageWithURL:IMURL(model.imageUrl) placeholderImage:placeholder];
-    }
-    else if (model.imagePath) {
-        [self.avatarView setImage:IMImage(model.imagePath)];
-    }else if ([model.userInfo isKindOfClass:[IMUser class]]) {
+    if (![model.userInfo isKindOfClass:[IMUser class]]) {
+        if (model.imageUrl) {
+            UIImage *placeholder = model.placeholderImage ? model.placeholderImage : (localImage ? localImage : [UIImage imageDefaultHeadPortrait]);
+            [self.avatarView sd_setImageWithURL:IMURL(model.imageUrl) placeholderImage:placeholder];
+        }
+        else if (model.imagePath) {
+            [self.avatarView setImage:IMImage(model.imagePath)];
+        }else{
+            self.avatarView.image = [UIImage imageDefaultHeadPortrait];
+        }
+    }else{
         IMUser *user = model.userInfo;
         self.avatarView.image = user.avatar?:[UIImage imageDefaultHeadPortrait];
-    }else{
-        self.avatarView.image = [UIImage imageDefaultHeadPortrait];
     }
     
     [self.nameLabel setText:model.title];

@@ -23,25 +23,6 @@
 @property (nonatomic, assign, readonly) BOOL isLogin;
 
 
-//  好友列表
-@property (nonatomic, strong) NSMutableArray<IMUser *>  *allFriendArray;
-@property (nonatomic, strong) NSMutableArray<IMUser *>  *bothFriendArray; // both
-@property (nonatomic, strong) NSMutableArray<IMUser *>  *noneFriendArray; // None
-@property (nonatomic, strong) NSMutableArray<IMUser *>  *toFriendArray;  // to
-@property (nonatomic, strong) NSMutableArray<IMUser *>  *fromFriendArray; // from
-@property (nonatomic, strong) NSMutableArray<IMUser *>  *removeFriendArray; // Remove
-
-
-@property (nonatomic, assign ,readonly) NSInteger totalCount;
-//  根据allFriendArray 排序后的数组
-@property (nonatomic, strong ,readonly) NSArray<IMUser *> *sortArray;
-@property (nonatomic, strong ,readonly) NSArray <IMUserGroup *> *sortGroupArray;
-@property (nonatomic, strong ,readonly) NSArray <NSString *> *pinyinInitialArray;
-
-
-//  添加好友数据
-@property (nonatomic, strong) NSMutableArray<XMPPJID *> *addFriendJidArray;
-
 + (IMUserHelper *)sharedHelper;
 
 /**
@@ -56,8 +37,4 @@
  */
 - (BOOL)signOut;
 
-/**
- 清空所有好友
- */
-- (void)clearFriendArray;
 @end

@@ -137,7 +137,7 @@
     }];
     [self.chatBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.and.bottom.mas_equalTo(self.view);
-        make.height.mas_greaterThanOrEqualTo(IMTABBAR_HEIGHT);
+        make.height.mas_equalTo(IMTABBAR_HEIGHT);
     }];
     [self.view layoutIfNeeded];
 }

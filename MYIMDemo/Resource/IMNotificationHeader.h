@@ -33,4 +33,6 @@ static NSString *const kChatDidSendMessageNot = @"kChatDidSendMessageNot";
 static NSString *const kChatDidFailToSendMessageNot = @"kChatDidFailToSendMessageNot";
 static NSString *const kChatUserDidFailToSendMessageNot = @"kChatUserDidFailToSendMessageNot";
 
+//  消息记录改变
+static NSString *const kChatMessageChangedNot = @"kChatMessageChangedNot";
 #endif /* IMNotificationHeader_h */

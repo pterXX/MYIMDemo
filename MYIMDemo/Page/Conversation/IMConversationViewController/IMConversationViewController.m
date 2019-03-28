@@ -19,6 +19,8 @@
 #import "IMChatViewController+Conversation.h"
 #import "IMUserDetailViewController.h"
 
+#import <Masonry/Masonry.h>
+
 @interface IMConversationViewController () <IMMessageManagerConvVCDelegate>
 {
     IMNetworkStatusManager *networkStatusManger;
@@ -43,7 +45,7 @@
 - (id)init
 {
     if (self = [super init]) {
-        initTabBarItem(self.tabBarItem, @"微信", @"tabbar_mainframe", @"tabbar_mainframeHL");
+        initTabBarItem(self.tabBarItem, @"消息", @"tabbar_mainframe", @"tabbar_mainframeHL");
     }
     return self;
 }
@@ -57,7 +59,7 @@
     [self p_loadUI];
     
     // 初始化列表模块
-    [self p_iniIMistModule];
+    [self p_initListModule];
 }
 
 - (void)viewDidLoad {
@@ -112,10 +114,9 @@
     .tableHeaderView(self.searchController.searchBar)
     .tableFooterView([UIView new])
     .separatorStyle(UITableViewCellSeparatorStyleNone)
-    .masonry(^ (MASConstraintMaker *make) {
-        make.edges.mas_equalTo(0);
-    })
-    .view;
+    .masonry(^(MASConstraintMaker *make) {
+       make.edges.mas_equalTo(0);
+    }).view;
     
     // 顶部logo
     self.tableView.addImageView(1001)
@@ -138,7 +139,7 @@
     }];
 }
 
-- (void)p_iniIMistModule
+- (void)p_initListModule
 {
     @weakify(self);
     self.listAngel = [[IMConversationAngel alloc] initWithHostView:self.tableView badgeStatusChangeAction:^(NSString *badge) {
@@ -198,7 +199,7 @@
 
 - (void)p_setNavtitleWithStatusString:(NSString *)statusString
 {
-    NSString *title = @"微信";
+    NSString *title = @"消息";
     title = statusString.length > 0 ? [title stringByAppendingFormat:@"(%@)", statusString] : title;
     [self.navigationItem setTitle:title];
 }
@@ -230,7 +231,9 @@
             @strongify(self);
             if (item.className.length > 0) {
                 id vc = [[NSClassFromString(item.className) alloc] init];
-                IMPushVC(vc);
+                if (vc) {
+                   IMPushVC(vc);
+                }
             }
             else {
                 [IMUIUtility showAlertWithTitle:item.title message:@"功能暂未实现"];

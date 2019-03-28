@@ -50,15 +50,6 @@
     [super viewDidLoad];
 }
 
-- (void)im_layoutNavigation{
-     @weakify(self);
-    [self addRightBarButtonWithImage:[UIImage imageNamed:@"contacts_add_friend"] actionBlick:^{
-        @strongify(self);
-//        IMAddContactsViewController *add = [[IMAddContactsViewController alloc] init];
-//        IMPushVC(add);
-    }];
-}
-
 - (void)im_getNewData{
     [self p_resterStorage];
 }
@@ -86,12 +77,18 @@
         @strongify(self);
         IMPushVC(vc);
     }];
+    
+    [self addRightBarButtonWithImage:[UIImage imageNamed:@"contacts_add_friend"] actionBlick:^{
+        @strongify(self);
+        //        IMAddContactsViewController *add = [[IMAddContactsViewController alloc] init];
+        //        IMPushVC(add);
+    }];
 }
 
 //  添加通知
 - (void)p_addNotification{
     @weakify(self);
-    [KIMXMPPHelper addRosterChangeNotificationObserver:self usingBlock:^{
+    [[IMFriendHelper sharedFriendHelper] setDataChangedBlock:^(NSArray *friends, NSArray *headers, NSInteger friendCount) {
         @strongify(self);
         [self p_resterStorage];
     }];
@@ -101,9 +98,9 @@
 }
 
 - (void)p_resterStorage{
-    NSArray *arr = KIMXMPPHelper.userHelper.sortGroupArray;
-    [self.listAngel resetListWithContactsData:arr sectionHeaders:KIMXMPPHelper.userHelper.pinyinInitialArray];
-    [self.footerLabel setText:IMStirngFormat(@"%ld位联系人",KIMXMPPHelper.userHelper.totalCount)];
+    NSArray *arr = [IMFriendHelper sharedFriendHelper].sortGroupArray;
+    [self.listAngel resetListWithContactsData:arr sectionHeaders:[IMFriendHelper sharedFriendHelper].pinyinInitialArray];
+    [self.footerLabel setText:IMStirngFormat(@"%ld位联系人",[IMFriendHelper sharedFriendHelper].totalCount)];
     [self.tableView reloadData];
 }
 

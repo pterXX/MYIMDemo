@@ -48,22 +48,21 @@
 #pragma mark - Private Methods
 - (void)p_initUI
 {
-    self.iconView = self.contentView.addImageView(1)
-    .masonry(^(MASConstraintMaker *make) {
+    self.iconView = self.contentView.addImageView(1).view;
+    [self.iconView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self).mas_offset(15.0f);
         make.centerY.mas_equalTo(self);
         make.height.and.width.mas_equalTo(32);
-    })
-    .view;
+    }];
     
     self.titleLabel = self.contentView.addLabel(2)
     .font([UIFont systemFontOfSize:16.0f])
     .textColor([UIColor whiteColor])
-    .masonry(^(MASConstraintMaker *make) {
+    .view;
+    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.iconView.mas_right).mas_offset(10.0f);
         make.centerY.mas_equalTo(self.iconView);
-    })
-    .view;
+    }];
 }
 
 @end

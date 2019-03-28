@@ -40,13 +40,22 @@ static IMFriendHelper *friendHelper = nil;
     if (self = [super init]) {
         // 初始化好友数据
         _friendsData = [self.friendStore friendsDataByUid:[IMUserHelper sharedHelper].userID];
-        self.data = [[NSMutableArray alloc] init];
-        self.sectionHeaders = [[NSMutableArray alloc] initWithObjects:UITableViewIndexSearch, nil];
         // 初始化群数据
         self.groupsData = [self.groupStore groupsDataByUid:[IMUserHelper sharedHelper].userID];
         // 初始化标签数据
         self.tagsData = [[NSMutableArray alloc] init];
-        [self p_initTestData];
+        [self p_resetFriendData];
+        
+        // 好友改变
+        @weakify(self);
+        [KIMXMPPHelper addRosterChangeNotificationObserver:self usingBlock:^{
+            @strongify(self);
+            XMPPRosterMemoryStorage *storage = KIMXMPPHelper.xmppRosterStorage;
+            NSArray *array = [storage sortedUsersByName];
+            if (array.count > 0) {
+                [self updateFriendsByArray:[IMXMPPHelper storageArrayObjectConverUserArray:array] userID:[IMUserHelper sharedHelper].userID];
+            }
+        }];
     }
     return self;
 }
@@ -78,6 +87,20 @@ static IMFriendHelper *friendHelper = nil;
     return nil;
 }
 
+- (BOOL)updateFriendsByArray:(NSArray *)array userID:(NSString *)userID{
+    if (array == nil) return NO;
+    BOOL ok = [self.friendStore updateFriendsData:array forUid:userID];
+    if (!ok) {
+        DDLogError(@"保存好友数据到数据库失败!");
+    }else{
+        _friendsData = [self.friendStore friendsDataByUid:[IMUserHelper sharedHelper].userID];
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            [self p_resetFriendData];
+        });
+    }
+    return ok;
+}
+
 - (BOOL)deleteFriendByUserId:(NSString *)userID
 {
     BOOL ok = [[IMMessageManager sharedInstance] deleteMessagesByPartnerID:userID];
@@ -90,6 +113,8 @@ static IMFriendHelper *friendHelper = nil;
 #pragma mark - Private Methods -
 - (void)p_resetFriendData
 {
+    //  清空所有好友信息
+    [self p_clearFriendArray];
     // 1、排序
     NSArray *serializeArray = [self.friendsData sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
         int i;
@@ -115,115 +140,43 @@ static IMFriendHelper *friendHelper = nil;
     }];
     
     // 2、分组
-    NSMutableArray *ansData = [[NSMutableArray alloc] init];
-    NSMutableArray *ansSectionHeaders = [[NSMutableArray alloc] initWithObjects:UITableViewIndexSearch, nil];
-    NSMutableDictionary *tagsDic = [[NSMutableDictionary alloc] init];
-    char lastC = '1';
-    IMUserGroup *curGroup;
-    IMUserGroup *othGroup = [[IMUserGroup alloc] init];
-    [othGroup setGroupName:@"#"];
-    [othGroup setTag:27];
     for (IMUser *user in serializeArray) {
-        // 获取拼音失败
-        if (user.pinyin == nil || user.pinyin.length == 0) {
-            [othGroup addObject:user];
-            continue;
+        if ([user.subscription isEqualToString:@"both"]) {
+            [self.bothFriendArray addObject:user];
+        }else if ([user.subscription isEqualToString:@"remove"]) {
+            [self.removeFriendArray addObject:user];
+        }else if ([user.subscription isEqualToString:@"to"]) {
+            [self.toFriendArray addObject:user];
+        }else if ([user.subscription isEqualToString:@"from"]) {
+            [self.fromFriendArray addObject:user];
+        }else{
+            [self.noneFriendArray addObject:user];
         }
-        
-        char c = toupper([user.pinyin characterAtIndex:0]);
-        if (!isalpha(c)) {      // #组
-            [othGroup addObject:user];
-        }
-        else if (c != lastC){
-            if (curGroup && curGroup.count > 0) {
-                [ansData addObject:curGroup];
-                [ansSectionHeaders addObject:curGroup.groupName];
-            }
-            lastC = c;
-            curGroup = [[IMUserGroup alloc] init];
-            [curGroup setGroupName:[NSString stringWithFormat:@"%c", c]];
-            [curGroup addObject:user];
-            [curGroup setTag:(NSInteger)c];
-        }
-        else {
-            [curGroup addObject:user];
-        }
-        
-        // TAGs
-        if (user.detailInfo.tags.count > 0) {
-            for (NSString *tag in user.detailInfo.tags) {
-                IMUserGroup *group = [tagsDic objectForKey:tag];
-                if (group == nil) {
-                    group = [[IMUserGroup alloc] init];
-                    group.groupName = tag;
-                    [tagsDic setObject:group forKey:tag];
-                    [self.tagsData addObject:group];
-                }
-                [group.users addObject:user];
-            }
-        }
-    }
-    if (curGroup && curGroup.count > 0) {
-        [ansData addObject:curGroup];
-        [ansSectionHeaders addObject:curGroup.groupName];
-    }
-    if (othGroup.count > 0) {
-        [ansData addObject:othGroup];
-        [ansSectionHeaders addObject:othGroup.groupName];
     }
     
-    [self.data removeAllObjects];
-    [self.data addObjectsFromArray:ansData];
-    [self.sectionHeaders removeAllObjects];
-    [self.sectionHeaders addObjectsFromArray:ansSectionHeaders];
     if (self.dataChangedBlock) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.dataChangedBlock(self.data, self.sectionHeaders, self.friendCount);
+            self.dataChangedBlock(self.sortGroupArray, self.pinyinInitialArray, self.totalCount);
         });
     }
+    
+    /*
+     IMUser *user = [[self class] storageObjectConverUser:item];
+     user.avatar = [UIImage imageWithData:[self.vCardAvatorModule photoDataForJID:user.userJid]];
+    */
 }
 
-- (void)p_initTestData
-{
-    // 好友数据
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"FriendList" ofType:@"json"];
-    NSData *jsonData = [NSData dataWithContentsOfFile:path];
-    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
-    NSArray *arr = [IMUser mj_objectArrayWithKeyValuesArray:jsonArray];
-    [self.friendsData removeAllObjects];
-    [self.friendsData addObjectsFromArray:arr];
-    // 更新好友数据到数据库
-    BOOL ok = [self.friendStore updateFriendsData:self.friendsData forUid:[IMUserHelper sharedHelper].userID];
-    if (!ok) {
-        DDLogError(@"保存好友数据到数据库失败!");
-    }
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        [self p_resetFriendData];
-    });
-    
-    // 群数据
-    path = [[NSBundle mainBundle] pathForResource:@"FriendGroupList" ofType:@"json"];
-    jsonData = [NSData dataWithContentsOfFile:path];
-    jsonArray = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
-    arr = [IMGroup mj_objectArrayWithKeyValuesArray:jsonArray];
-    [self.groupsData removeAllObjects];
-    [self.groupsData addObjectsFromArray:arr];
-    ok = [self.groupStore updateGroupsData:self.groupsData forUid:[IMUserHelper sharedHelper].userID];
-    if (!ok) {
-        DDLogError(@"保存群数据到数据库失败!");
-    }
-    // 生成Group Icon
-    for (IMGroup *group in self.groupsData) {
-        [group createGroupAvatarWithCompleteAction:nil];
-    }
+- (void)p_clearFriendArray{
+    [self.allFriendArray removeAllObjects];
+    [self.bothFriendArray removeAllObjects];
+    [self.removeFriendArray removeAllObjects];
+    [self.noneFriendArray removeAllObjects];
+    [self.toFriendArray removeAllObjects];
+    [self.fromFriendArray removeAllObjects];
 }
+
 
 #pragma mark - Getter
-- (NSInteger)friendCount
-{
-    return self.friendsData.count;
-}
-
 - (IMDBFriendStore *)friendStore
 {
     if (_friendStore == nil) {
@@ -238,6 +191,102 @@ static IMFriendHelper *friendHelper = nil;
         _groupStore = [[IMDBGroupStore alloc] init];
     }
     return _groupStore;
+}
+
+- (NSMutableArray *)addFriendJidArray{
+    if (!_addFriendJidArray) {
+        _addFriendJidArray = [NSMutableArray array];
+    }
+    return _addFriendJidArray;
+}
+
+
+- (NSArray <IMUser *> *)sortArray{
+    NSArray *array = self.allFriendArray;
+    _totalCount = array.count;
+    return  [array sortedArrayUsingComparator:^NSComparisonResult(IMUser *  _Nonnull obj1, IMUser *  _Nonnull obj2) {
+        return [obj1.pinyin compare:obj2.pinyin];
+    }];
+}
+
+- (NSArray <IMUserGroup *> *)sortGroupArray{
+    NSArray *array = [self sortArray]; //  已经排序所以无需对IMGroup再次排序
+    NSMutableArray *enumArray = [NSMutableArray array];
+    NSInteger sortInt = 0;
+    for (IMUser *user in array) {
+        IMUserGroup *group = [enumArray zh_objectOfBlock:^id _Nonnull(IMUserGroup * _Nonnull value) {
+            return [value.groupName.pinyinInitial isEqualToString:user.pinyinInitial]?value:nil;
+        }];
+        if (!group){
+            group = [[IMUserGroup alloc] init];
+            group.groupName = user.pinyinInitial;
+            group.tag = sortInt;
+            [group addObject:user];
+            [enumArray addObject:group];
+            sortInt += 1;
+        }else{
+            [group addObject:user];
+            enumArray = [enumArray zh_replaceOfObject:^id _Nonnull(IMUserGroup *  _Nonnull value) {
+                return [value.groupName.pinyinInitial  isEqualToString:group.groupName.pinyinInitial]?group:nil;
+            }].mutableCopy;
+        }
+    }
+    return enumArray;
+}
+
+- (NSArray <NSString *> *)pinyinInitialArray{
+    NSArray *array = [self sortArray]; //  已经排序所以无需对IMGroup再次排序
+    NSMutableArray *enumArray = [NSMutableArray arrayWithObjects:UITableViewIndexSearch, nil];
+    for (IMUser *user in array) {
+        if (![enumArray containsObject:user.pinyinInitial]) [enumArray addObject:user.pinyinInitial];
+    }
+    return enumArray;
+}
+
+- (NSMutableArray<IMUser *> *)allFriendArray{
+    if (!_allFriendArray) {
+        _allFriendArray = [NSMutableArray array];
+    }
+    [_allFriendArray removeAllObjects];
+    [_allFriendArray addObjectsFromArray:self.bothFriendArray];
+    [_allFriendArray addObjectsFromArray:self.fromFriendArray];
+    [_allFriendArray addObjectsFromArray:self.toFriendArray];
+    return _allFriendArray;
+}
+
+- (NSMutableArray<IMUser *> *)bothFriendArray{
+    if (!_bothFriendArray) {
+        _bothFriendArray = [NSMutableArray array];
+    }
+    return _bothFriendArray;
+}
+
+- (NSMutableArray<IMUser *> *)toFriendArray{
+    if (!_toFriendArray) {
+        _toFriendArray = [NSMutableArray array];
+    }
+    return _toFriendArray;
+}
+
+- (NSMutableArray<IMUser *> *)fromFriendArray{
+    if (!_fromFriendArray) {
+        _fromFriendArray = [NSMutableArray array];
+    }
+    return _fromFriendArray;
+}
+
+- (NSMutableArray<IMUser *> *)removeFriendArray{
+    if (!_removeFriendArray) {
+        _removeFriendArray = [NSMutableArray array];
+    }
+    return _removeFriendArray;
+}
+
+- (NSMutableArray<IMUser *> *)noneFriendArray{
+    if (!_noneFriendArray) {
+        _noneFriendArray = [NSMutableArray array];
+    }
+    return _noneFriendArray;
 }
 
 @end

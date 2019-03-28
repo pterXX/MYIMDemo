@@ -59,6 +59,9 @@
         [self.emojiKeyboard dismissWithAnimation:NO];
     }
     [self.messageDisplayView scrollToBottomWithAnimation:YES];
+    [self.chatBar mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(49.0f);
+    }];
 }
 
 - (void)keyboardFrameWillChange:(NSNotification *)notification
@@ -92,6 +95,7 @@
     }
     [self.chatBar mas_updateConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(self.view);
+        make.height.mas_equalTo(IMTABBAR_HEIGHT);
     }];
     [self.view layoutIfNeeded];
 }
@@ -206,6 +210,17 @@
     }
     else if (toStatus == IMChatBarStatusMore) {
         [self.moreKeyboard showInView:self.view withAnimation:YES];
+    }
+    
+    if (toStatus == IMChatBarStatusMore
+        || toStatus == IMChatBarStatusEmoji) {
+        [self.chatBar mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(49);
+        }];
+    }else{
+        [self.chatBar mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(IMTABBAR_HEIGHT);
+        }];
     }
 }
 

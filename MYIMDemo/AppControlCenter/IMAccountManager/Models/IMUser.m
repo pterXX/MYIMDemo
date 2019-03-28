@@ -105,7 +105,20 @@
 
 - (UIImage *)avatar{
     if (_avatar == nil) {
-        _avatar = [UIImage imageDefaultHeadPortrait];
+        NSString *filePath = nil;
+        BOOL ok = [self.userID isEqualToString:[IMUserHelper sharedHelper].userID];
+        if (ok) {
+          filePath = [NSFileManager pathUserAvatar:self.userID];
+        }else{
+          filePath = [NSFileManager pathContactsAvatar:self.userID];
+        }
+        NSData *data = [NSData dataWithContentsOfFile:filePath];
+        if (data) {
+            _avatar = [UIImage imageWithData:data];
+        }else{
+            UIImage *image = [KIMXMPPHelper userAvatarForJid:self.userJid];
+            _avatar = image;
+        }
     }
     return _avatar;
 }

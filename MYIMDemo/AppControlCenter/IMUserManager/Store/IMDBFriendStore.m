@@ -41,7 +41,8 @@
                         IMNoNilString(user.nikeName),
                         IMNoNilString(user.avatarURL),
                         IMNoNilString(user.remarkName),
-                        @"", @"", @"", @"", @"", nil];
+                        IMNoNilString(user.subscription)
+                        , @"", @"", @"", @"", nil];
     BOOL ok = [self excuteSQL:sqlString withArrParameter:arrPara];
     return ok;
 }
@@ -87,7 +88,9 @@
             user.username = [retSet stringForColumn:@"username"];
             user.nikeName = [retSet stringForColumn:@"nikename"];
             user.avatarURL = [retSet stringForColumn:@"avatar"];
+            user.avatarPath = [retSet stringForColumn:@"avatar"];
             user.remarkName = [retSet stringForColumn:@"remark"];
+            user.subscription = [retSet stringForColumn:@"subscription"];
             [data addObject:user];
         }
         [retSet close];

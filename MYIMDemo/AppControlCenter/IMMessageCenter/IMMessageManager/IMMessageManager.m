@@ -33,8 +33,9 @@ static IMMessageManager *messageManager;
             success:(void (^)(IMMessage *))success
             failure:(void (^)(IMMessage *))failure
 {
+    [self p_sendMessage:message];
     // 图灵机器人
-    [self p_sendMessageToReboot:message];
+//    [self p_sendMessageToReboot:message];
     
     BOOL ok = [self.messageStore addMessage:message];
     if (!ok) {
@@ -49,6 +50,35 @@ static IMMessageManager *messageManager;
 }
 
 #pragma mark - # Private
+- (void)p_sendMessage:(IMMessage *)message{
+    if (message.messageType == IMMessageTypeText){
+        // 聊天的用户
+        IMUser *user;
+        if (message.partnerType == IMPartnerTypeGroup) {
+            IMGroup *group = [[IMFriendHelper sharedFriendHelper] getGroupInfoByGroupID:message.groupID];
+            NSInteger index = arc4random() % group.count;
+            user = group.users[index];
+        }
+        else {
+            user = [[IMFriendHelper sharedFriendHelper] getFriendInfoByUserID:message.friendID];
+        }
+        
+        NSMutableDictionary *dict = [message mj_keyValuesWithKeys:@[@"messageID",@"userID",@"friendID",@"groupID",@"date",@"messageType",@"readState",@"content"]].mutableCopy;
+        if ([dict[@"date"] isKindOfClass:[NSDate class]]) {
+            NSInteger time = [((NSDate *)dict[@"date"] ) timeIntervalSince1970];
+            dict[@"date"] = [@(time) stringValue];
+        }
+        dict[@"text"]=  dict[@"content"][@"text"];
+        [KIMXMPPHelper sendMessage:dict to:user.userJid];
+        
+        if (!KIMXMPPHelper.messageDidChangeEnd) {
+            [KIMXMPPHelper setMessageDidChangeEnd:^(XMPPMessage * _Nonnull xmppMessage) {
+                NSLog(@"xmppMessage == > %@",xmppMessage);
+            }];
+        }
+    }
+}
+
 - (void)p_sendMessageToReboot:(IMMessage *)message
 {
     if (message.messageType == IMMessageTypeText) {

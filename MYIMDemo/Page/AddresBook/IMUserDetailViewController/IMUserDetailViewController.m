@@ -9,6 +9,8 @@
 #import "IMUserDetailViewController.h"
 #import "IMUserSettingViewController.h"
 #import "IMChatViewController.h"
+#import "IMUserDetailBaseInfoCell.h"
+#import "IMUserDetailChatButtonCell.h"
 //#import "IMConversationModel.h"
 
 typedef NS_ENUM(NSInteger, IMUserDetailVCSectionType) {
@@ -91,7 +93,7 @@ typedef NS_ENUM(NSInteger, IMUserDetailVCSectionType) {
     
     // 基本信息
     self.addSection(IMUserDetailVCSectionTypeBaseInfo).sectionInsets(UIEdgeInsetsMake(15, 0, 0, 0));
-    self.addCell(@"IMUserDetailBaseInfoCell").toSection(IMUserDetailVCSectionTypeBaseInfo).withDataModel(userModel).eventAction(^ id(NSInteger eventType, id data) {
+    self.addCell(NSStringFromClass([IMUserDetailBaseInfoCell class])).toSection(IMUserDetailVCSectionTypeBaseInfo).withDataModel(userModel).eventAction(^ id(NSInteger eventType, id data) {
         @strongify(self);
         IMUser *userModel = data;
         NSURL *url = IMURL(userModel.avatarURL);
@@ -105,7 +107,7 @@ typedef NS_ENUM(NSInteger, IMUserDetailVCSectionType) {
     // 功能
     self.addSection(IMUserDetailVCSectionTypeFunction).sectionInsets(UIEdgeInsetsMake(20, 0, 40, 0));
     // 发消息
-    self.addCell(@"IMUserDetailChatButtonCell").toSection(IMUserDetailVCSectionTypeFunction).withDataModel(@"发消息").eventAction(^ id(NSInteger eventType, id data) {
+    self.addCell(NSStringFromClass([IMUserDetailChatButtonCell class])).toSection(IMUserDetailVCSectionTypeFunction).withDataModel(@"发消息").eventAction(^ id(NSInteger eventType, id data) {
         @strongify(self);
         IMChatViewController *chatVC = [[IMChatViewController alloc] initWithUserId:self.userModel.userID];
         if ([IMLaunchManager sharedInstance].tabBarController.selectedIndex != 0) {

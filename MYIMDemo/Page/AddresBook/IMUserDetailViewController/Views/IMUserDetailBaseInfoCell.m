@@ -68,10 +68,10 @@
 - (void)setUserModel:(IMUser *)userModel
 {
     _userModel = userModel;
-    if (userModel.avatarPath) {
+    if (userModel.avatarPath.length > 0) {
         [self.avatarBtn setImage:[UIImage imageNamed:userModel.avatarPath] forState:UIControlStateNormal];
     }
-    else if(userModel.avatarURL){
+    else if(userModel.avatarURL.length > 0){
         [self.avatarBtn sd_setBackgroundImageWithURL:IMURL(userModel.avatarURL) forState:UIControlStateNormal placeholderImage:[UIImage imageDefaultHeadPortrait]];
     }else if (userModel.avatar){
         [self.avatarBtn setImage:userModel.avatar forState:UIControlStateNormal];

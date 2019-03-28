@@ -29,7 +29,7 @@
 }
 
 - (void)loadListUIWithData{
-    [self.tableViewAngel resetListWithContactsData:KIMXMPPHelper.userHelper.addFriendJidArray];
+    [self.tableViewAngel resetListWithContactsData:[IMFriendHelper sharedFriendHelper].addFriendJidArray];
     [self.tableView reloadData];
 }
 

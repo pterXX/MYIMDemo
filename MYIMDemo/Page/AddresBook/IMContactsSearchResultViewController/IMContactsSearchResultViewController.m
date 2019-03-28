@@ -44,7 +44,7 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    self.friendsData = KIMXMPPHelper.userHelper.allFriendArray;
+    self.friendsData = [IMFriendHelper sharedFriendHelper].allFriendArray;
 }
 
 //MARK: UISearchResultsUpdating

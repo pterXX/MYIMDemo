@@ -9,7 +9,7 @@
 #ifndef IMDBFriendSQL_h
 #define IMDBFriendSQL_h
 
-#define     FRIENDS_TABLE_NAME              @"friends"
+#define     FRIENDS_TABLE_NAME              @"friends1"
 
 #define     SQL_CREATE_FRIENDS_TABLE        @"CREATE TABLE IF NOT EXISTS %@(\
                                             uid TEXT,\
@@ -18,16 +18,16 @@
                                             nikename TEXT, \
                                             avatar TEXT,\
                                             remark TEXT,\
+                                            subscription TEXT,\
                                             ext1 TEXT,\
                                             ext2 TEXT,\
                                             ext3 TEXT,\
                                             ext4 TEXT,\
-                                            ext5 TEXT,\
                                             PRIMARY KEY(uid, fid))"
 
-#define     SQL_UPDATE_FRIEND               @"REPLACE INTO %@ ( uid, fid, username, nikename, avatar, remark, ext1, ext2, ext3, ext4, ext5) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+#define     SQL_UPDATE_FRIEND               @"REPLACE INTO %@ ( uid, fid, username, nikename, avatar, remark, subscription, ext1, ext2, ext3, ext4) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
 
-#define     SQL_SELECT_FRIENDS              @"SELECT * FROM %@ WHERE uid = %@"
+#define     SQL_SELECT_FRIENDS              @"SELECT * FROM %@ WHERE uid = '%@'"
 
 #define     SQL_DELETE_FRIEND               @"DELETE FROM %@ WHERE uid = '%@' and fid = '%@'"
 

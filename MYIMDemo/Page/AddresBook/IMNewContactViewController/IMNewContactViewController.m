@@ -83,7 +83,7 @@
 
 //  请求好友列表
 - (void)requestUserStoreage{
-    NSArray *array = [KIMXMPPHelper userHelper].addFriendJidArray;
+    NSArray *array = [IMFriendHelper sharedFriendHelper].addFriendJidArray;
     self.dataSource = [array zh_enumerateObjectsUsingBlock:^id _Nonnull(XMPPJID * _Nonnull obj) {
         return [IMUser user:obj];
     }];

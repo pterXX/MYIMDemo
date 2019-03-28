@@ -10,7 +10,7 @@
 #import <XMPP.h>
 #import <XMPPFramework/XMPPFramework.h>
 #import "IMUserHelper.h"
-
+#import "IMFriendHelper.h"
 
 #ifdef DEBUG
 
@@ -44,7 +44,6 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
 };
 
 @interface IMXMPPHelper : NSObject
-@property (nonatomic ,copy  ) IMUserHelper                        *userHelper;
 
 
 @property (nonatomic ,copy) void(^imageUploadBlock)(NSData *imgData,void(^handleBlock)(NSString *fileUrl));
@@ -91,6 +90,7 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
 @interface IMXMPPHelper(Class)
 + (XMPPJID *)jid:(NSString *)userName;
 + (IMUser *)storageObjectConverUser:(XMPPUserMemoryStorageObject *)item;
++ (NSArray<IMUser *> *)storageArrayObjectConverUserArray:(NSArray *)array;
 @end
 
 
@@ -185,7 +185,12 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
 @end
 
 
+typedef void(^MessageChangeBlock)(XMPPMessage *xmppMessage);
 @interface IMXMPPHelper (message)
+
+@property (nonatomic ,copy) MessageChangeBlock messageSendSuccess;
+@property (nonatomic ,copy) MessageChangeBlock messageReceiveMessage;
+@property (nonatomic ,copy) MessageChangeBlock messageSendFail;
 
 /**
  根据jid 查找消息俩表
@@ -201,7 +206,7 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
  *  @param message 消息内容
  *  @param jid     发送对方的ID
  */
-//- (void)sendMessageModel:(IMMessageModel *)message to:(XMPPJID *)jid;
+- (void)sendMessage:(NSDictionary *)message to:(XMPPJID *)jid;
 
 /**
  监听已经接收到的消息
