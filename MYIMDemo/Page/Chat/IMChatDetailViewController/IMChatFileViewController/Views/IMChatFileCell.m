@@ -35,7 +35,7 @@
             [self.imageView setImage:[UIImage imageNamed:imagePath]];
         }
         else if ([(IMImageMessage *)message imageURL].length > 0) {
-            [self.imageView tt_setImageWithURL:IMURL([(IMImageMessage *)message imageURL]) placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
+            [self.imageView tt_setImageWithURL:IMURL([(IMImageMessage *)message imageURL]) placeholderImage:[UIImage imageDefaultHeadPortrait]];
         }
         else {
             [self.imageView setImage:nil];

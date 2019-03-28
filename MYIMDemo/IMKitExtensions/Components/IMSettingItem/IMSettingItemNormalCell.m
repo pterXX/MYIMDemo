@@ -38,7 +38,7 @@
         [self.rightImageView setImage: [UIImage imageNamed:item.rightImagePath]];
     }
     else if (item.rightImageURL){
-        [self.rightImageView tt_setImageWithURL:IMURL(item.rightImageURL) placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
+        [self.rightImageView tt_setImageWithURL:IMURL(item.rightImageURL) placeholderImage:[UIImage imageDefaultHeadPortrait]];
     }
     else {
         [self.rightImageView setImage:nil];

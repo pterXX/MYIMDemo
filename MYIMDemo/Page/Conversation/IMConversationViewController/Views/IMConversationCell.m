@@ -87,7 +87,7 @@
         [self.avatarView setImage:[UIImage imageNamed:path]];
     }
     else {
-        [self.avatarView tt_setImageWithURL:IMURL(conversation.avatarURL) placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH]];
+        [self.avatarView tt_setImageWithURL:IMURL(conversation.avatarURL) placeholderImage:[UIImage imageDefaultHeadPortrait]];
     }
     [self.nameLabel setText:conversation.partnerName];
     [self.detailLabel setText:conversation.content];

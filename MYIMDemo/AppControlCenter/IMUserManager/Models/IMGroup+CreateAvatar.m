@@ -49,7 +49,7 @@
             IMUser *user = [self.users objectAtIndex:i];
             UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(x, y, width, width)];
             [view addSubview:imageView];
-            [imageView tt_setImageWithURL:user.avatarURL.toURL placeholderImage:[UIImage imageNamed:DEFAULT_AVATAR_PATH] completed:^(UIImage *image, NSError *error, IMImageCacheType cacheType, NSURL *imageURL) {
+            [imageView tt_setImageWithURL:user.avatarURL.toURL placeholderImage:[UIImage imageDefaultHeadPortrait] completed:^(UIImage *image, NSError *error, IMImageCacheType cacheType, NSURL *imageURL) {
                 count ++;
                 if (count == usersCount) {     // 图片全部下载完成
                     UIGraphicsBeginImageContextWithOptions(view.frame.size, NO, 2.0);
