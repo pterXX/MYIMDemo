@@ -24,6 +24,10 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self.contentView addSubview:self.msgImageView];
+//        [self.msgImageView addSubview:self.progressView];
+//        [self.progressView mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.edges.mas_equalTo(UIEdgeInsetsMake(0, 0, 0, 0));
+//        }];
     }
     return self;
 }

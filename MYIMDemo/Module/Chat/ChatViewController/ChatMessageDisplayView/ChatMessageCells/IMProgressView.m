@@ -87,7 +87,12 @@
     [self.backgroundLayer removeFromSuperlayer];
     [self.textLabel removeFromSuperview];
     [backgroundView.layer addSublayer:self.backgroundLayer];
-    [backgroundView addSubview:self.textLabel];
+    if ([backgroundView isKindOfClass:[UIVisualEffectView class]]) {
+        UIVisualEffectView *visual = (UIVisualEffectView *)backgroundView;
+        [visual.contentView  addSubview:self.textLabel];
+    }else{
+        [backgroundView addSubview:self.textLabel];
+    }
     
     [self addSubview:backgroundView];
     
@@ -200,7 +205,12 @@
         [self.backgroundLayer removeFromSuperlayer];
         [self.textLabel removeFromSuperview];
         [self.backgroundView.layer addSublayer:self.backgroundLayer];
-        [self.backgroundView addSubview:self.textLabel];
+        if ([self.backgroundView isKindOfClass:[UIVisualEffectView class]]) {
+            UIVisualEffectView *visual = (UIVisualEffectView *)self.backgroundView;
+            [visual.contentView  addSubview:self.textLabel];
+        }else{
+            [self.backgroundView addSubview:self.textLabel];
+        }
     }
 }
 

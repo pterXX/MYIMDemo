@@ -8,7 +8,6 @@
 
 #import "IMMessageBaseCell.h"
 #import "IMImageMessage.h"
-
+#import "IMProgressView.h"
 @interface IMImageMessageCell : IMMessageBaseCell
-
 @end
