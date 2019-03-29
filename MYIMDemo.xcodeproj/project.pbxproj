@@ -46,6 +46,7 @@
 		84325940223F7386003A33F2 /* IMLaunchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8432593F223F7385003A33F2 /* IMLaunchManager.m */; };
 		8438D543222F60BF001FD530 /* IMXMPPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8438D542222F60BF001FD530 /* IMXMPPHelper.m */; };
 		84681F772230EF000056372A /* IMSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84681F762230EF000056372A /* IMSignUpViewController.m */; };
+		84998F44224DFA2200CF296C /* IMProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84998F43224DFA2200CF296C /* IMProgressView.m */; };
 		849D688B224B05110074AE1F /* SystemEmoji.json in Resources */ = {isa = PBXBuildFile; fileRef = 849D67FB224B05110074AE1F /* SystemEmoji.json */; };
 		849D688C224B05110074AE1F /* FaceEmoji.json in Resources */ = {isa = PBXBuildFile; fileRef = 849D67FC224B05110074AE1F /* FaceEmoji.json */; };
 		849D688D224B05110074AE1F /* Chat.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 849D67FD224B05110074AE1F /* Chat.xcassets */; };
@@ -349,6 +350,8 @@
 		8438D542222F60BF001FD530 /* IMXMPPHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMXMPPHelper.m; sourceTree = "<group>"; };
 		84681F752230EF000056372A /* IMSignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMSignUpViewController.h; sourceTree = "<group>"; };
 		84681F762230EF000056372A /* IMSignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMSignUpViewController.m; sourceTree = "<group>"; };
+		84998F42224DFA2200CF296C /* IMProgressView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMProgressView.h; sourceTree = "<group>"; };
+		84998F43224DFA2200CF296C /* IMProgressView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMProgressView.m; sourceTree = "<group>"; };
 		849D67FB224B05110074AE1F /* SystemEmoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SystemEmoji.json; sourceTree = "<group>"; };
 		849D67FC224B05110074AE1F /* FaceEmoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FaceEmoji.json; sourceTree = "<group>"; };
 		849D67FD224B05110074AE1F /* Chat.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Chat.xcassets; sourceTree = "<group>"; };
@@ -1103,8 +1106,7 @@
 				8428F4872235F6120064DA35 /* AddresBook */,
 				842510EA222E2276004C3954 /* Login */,
 			);
-			name = Module;
-			path = Page;
+			path = Module;
 			sourceTree = "<group>";
 		};
 		8428F4872235F6120064DA35 /* AddresBook */ = {
@@ -1548,6 +1550,8 @@
 				849D69A3224B09340074AE1F /* IMVoiceImageView.m */,
 				849D69A2224B09340074AE1F /* IMVoiceMessageCell.h */,
 				849D6999224B09340074AE1F /* IMVoiceMessageCell.m */,
+				84998F42224DFA2200CF296C /* IMProgressView.h */,
+				84998F43224DFA2200CF296C /* IMProgressView.m */,
 			);
 			path = ChatMessageCells;
 			sourceTree = "<group>";
@@ -2877,6 +2881,7 @@
 				849D6ADE224B0EE40074AE1F /* IMExpressionItemCell.m in Sources */,
 				8432593C223F7094003A33F2 /* IMUserDetailChatButtonCell.m in Sources */,
 				EE7FE45D222CC42500073210 /* FSActionSheet.m in Sources */,
+				84998F44224DFA2200CF296C /* IMProgressView.m in Sources */,
 				849D7B6A224B7FE60074AE1F /* IMEmojiKBHelper.m in Sources */,
 				849D78D5224B26E60074AE1F /* IMNetworkAgent.m in Sources */,
 				849D693F224B06370074AE1F /* IMChatBaseViewController.m in Sources */,
