@@ -36,7 +36,6 @@ PODS:
     - MBProgressHUD (~> 0.9)
     - "SDWebImage (!= 3.7.2, ~> 3.7)"
   - PrivateKit (13)
-  - ReactiveObjC (3.1.0)
   - SDAutoLayout (2.2.1)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
@@ -63,7 +62,6 @@ DEPENDENCIES:
   - MJRefresh
   - MWPhotoBrowser
   - PrivateKit (from `../PrivateKit`)
-  - ReactiveObjC
   - SDAutoLayout
   - SDWebImage
   - SVProgressHUD
@@ -86,7 +84,6 @@ SPEC REPOS:
     - MJExtension
     - MJRefresh
     - MWPhotoBrowser
-    - ReactiveObjC
     - SDAutoLayout
     - SDWebImage
     - SVProgressHUD
@@ -116,7 +113,6 @@ SPEC CHECKSUMS:
   MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
   MWPhotoBrowser: 5836d7aa041dc05a13de380c246826578adc5ea5
   PrivateKit: 7212b20c6e3d79a4d2eea4d7d555c4698e25fa04
-  ReactiveObjC: 2a38ea15335de4119d8b17caf1db1484f61db902
   SDAutoLayout: 8bf6b3bbc8b01f775d4defbb4fda2ace805461be
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
@@ -124,6 +120,6 @@ SPEC CHECKSUMS:
   TZImagePickerController: 7850b158d025065b162a1a963d445040b828abc9
   XMPPFramework: 5d31ff9f73dce031b24bc49bcf88093627a3a86e
 
-PODFILE CHECKSUM: 29b2dc6cb88f3b736fbcb35abd2905d059034418
+PODFILE CHECKSUM: bcb8429acb0de1132385da6510e1e45ad4dabe3d
 
 COCOAPODS: 1.6.1

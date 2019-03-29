@@ -185,12 +185,29 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
 @end
 
 
-typedef void(^MessageChangeBlock)(XMPPMessage *xmppMessage);
+
+//typedef void(^MessageChangeBlock)(XMPPMessage *xmppMessage);
+
+@protocol IMXMPPHelperMessageProtocol <NSObject>
+
+@optional
+- (void)xmppHelper:(IMXMPPHelper *)xmppHelper sendSuccessMessage:(XMPPMessage *)message;
+
+- (void)xmppHelper:(IMXMPPHelper *)xmppHelper receiveMessage:(XMPPMessage *)message;
+
+- (void)xmppHelper:(IMXMPPHelper *)xmppHelper messageSendFail:(XMPPMessage *)message;
+
+@end
+
 @interface IMXMPPHelper (message)
 
+@property (nonatomic ,weak) id<IMXMPPHelperMessageProtocol> messageDelegate;
+/*
 @property (nonatomic ,copy) MessageChangeBlock messageSendSuccess;
 @property (nonatomic ,copy) MessageChangeBlock messageReceiveMessage;
 @property (nonatomic ,copy) MessageChangeBlock messageSendFail;
+*/
+
 
 /**
  根据jid 查找消息俩表

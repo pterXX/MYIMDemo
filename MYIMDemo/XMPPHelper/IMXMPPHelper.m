@@ -670,10 +670,15 @@ static IMXMPPHelper *helper;
 }
 @end
 
+/*
 static const char *messageSendSuccessKey = "messageSendSuccess";
 static const char *messageSendFailKey = "messageSendFail";
 static const char *messageReceiveMessageKey = "messageReceiveMessage";
+ */
+static const char *messageDelegateKey = "messageDelegate";
+
 @implementation IMXMPPHelper (message)
+/*
 - (void)setMessageSendSuccess:(MessageChangeBlock)messageSendSuccess{
     objc_setAssociatedObject(self, messageSendSuccessKey, messageSendSuccess, OBJC_ASSOCIATION_COPY);
 }
@@ -696,6 +701,15 @@ static const char *messageReceiveMessageKey = "messageReceiveMessage";
 
 - (MessageChangeBlock)messageReceiveMessage{
      return objc_getAssociatedObject(self, messageReceiveMessageKey);
+}
+ */
+
+- (void)setMessageDelegate:(id<IMXMPPHelperMessageProtocol>)messageDelegate{
+    objc_setAssociatedObject(self, messageDelegateKey, messageDelegate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (id<IMXMPPHelperMessageProtocol>)messageDelegate{
+    return objc_getAssociatedObject(self, messageDelegateKey);
 }
 
 - (void)addChatDidReceiveMessageNotificationObserver:(id)observer usingBlock:(void(^)(void))usingBlock{
@@ -837,9 +851,10 @@ static const char *messageReceiveMessageKey = "messageReceiveMessage";
             {
                 //发送成功
                 NSLog(@"message send success!");
-                if (self.messageSendSuccess) {
-                    self.messageSendSuccess(message);
-                }
+            }
+        }else{
+            if (self.messageDelegate && [self.messageDelegate respondsToSelector:@selector(xmppHelper:receiveMessage:)]) {
+                [[self messageDelegate] xmppHelper:self receiveMessage:message];
             }
         }
     }
@@ -847,14 +862,17 @@ static const char *messageReceiveMessageKey = "messageReceiveMessage";
 
 - (void)xmppStream:(XMPPStream *)sender didSendMessage:(XMPPMessage *)message{
     [IMNotificationCenter postNotificationName:kChatDidSendMessageNot object:message];
+    if (self.messageDelegate && [self.messageDelegate respondsToSelector:@selector(xmppHelper:sendSuccessMessage:)]) {
+        [[self messageDelegate] xmppHelper:self sendSuccessMessage:message];
+    }
 }
 
 - (void)xmppStream:(XMPPStream *)sender didFailToSendMessage:(XMPPMessage *)message error:(NSError *)error{
     if (error) XMPPErrorLog(error.code);
     [IMNotificationCenter postNotificationName:kChatDidFailToSendMessageNot object:message];
     [IMNotificationCenter postNotificationName:kChatUserDidFailToSendMessageNot object:message];
-    if (self.messageSendFail) {
-        self.messageSendFail(message);
+    if (self.messageDelegate && [self.messageDelegate respondsToSelector:@selector(xmppHelper:messageSendFail:)]) {
+        [[self messageDelegate] xmppHelper:self messageSendFail:message];
     }
 }
 

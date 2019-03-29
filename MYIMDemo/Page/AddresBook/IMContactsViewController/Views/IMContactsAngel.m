@@ -64,14 +64,15 @@
             }
         });
     }
+    
     // 企业
 //    self.addSection(IMContactsVCSectionTypeEnterprise);
-    
     // 好友
     IMContactsItem *(^createContactsItemModelWithUserModel)(IMUser *userModel) = ^IMContactsItem *(IMUser *userModel){
         IMContactsItem *model = createContactsItemModel(userModel.avatarPath, userModel.avatarURL, userModel.showName, userModel.detailInfo.remarkInfo, userModel);
         return model;
     };
+    
     for (IMUserGroup *group in contactsData) {
         NSInteger sectionTag = group.tag;
         self.addSection(sectionTag);
@@ -91,13 +92,11 @@
     }
 }
 
-- (void)tryPushVC:(__kindof UIViewController *)vc
-{
+- (void)tryPushVC:(__kindof UIViewController *)vc{
     if (self.pushAction) {
         self.pushAction(vc);
     }
 }
-
 
 #pragma mark - # Delegate
 // 拼音首字母检索

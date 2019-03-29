@@ -15,7 +15,22 @@
 #import "IMTextMessage.h"
 #import "IMImageMessage.h"
 
+
+#define kMessageType @"messageType"
+#define kPartnerType @"partnerType"
+#define kContent @"content"
+#define kText @"text"
+#define kUserID @"userID"
+#define kFriendID @"friendID"
+#define kGroupID @"groupID"
+#define kPath @"path"
+#define kWidth @"w"
+#define kHeight @"h"
+
 static IMMessageManager *messageManager;
+@interface IMMessageManager()<IMXMPPHelperMessageProtocol>
+
+@end
 
 @implementation IMMessageManager
 
@@ -24,6 +39,7 @@ static IMMessageManager *messageManager;
     static dispatch_once_t once;
     dispatch_once(&once, ^{
         messageManager = [[IMMessageManager alloc] init];
+        KIMXMPPHelper.messageDelegate = messageManager;
     });
     return messageManager;
 }
@@ -51,31 +67,53 @@ static IMMessageManager *messageManager;
 
 #pragma mark - # Private
 - (void)p_sendMessage:(IMMessage *)message{
-    if (message.messageType == IMMessageTypeText){
-        // 聊天的用户
-        IMUser *user;
-        if (message.partnerType == IMPartnerTypeGroup) {
-            IMGroup *group = [[IMFriendHelper sharedFriendHelper] getGroupInfoByGroupID:message.groupID];
-            NSInteger index = arc4random() % group.count;
-            user = group.users[index];
-        }
-        else {
-            user = [[IMFriendHelper sharedFriendHelper] getFriendInfoByUserID:message.friendID];
-        }
-        
-        NSMutableDictionary *dict = [message mj_keyValuesWithKeys:@[@"messageID",@"userID",@"friendID",@"groupID",@"date",@"messageType",@"readState",@"content"]].mutableCopy;
-        if ([dict[@"date"] isKindOfClass:[NSDate class]]) {
-            NSInteger time = [((NSDate *)dict[@"date"] ) timeIntervalSince1970];
-            dict[@"date"] = [@(time) stringValue];
-        }
-        dict[@"text"]=  dict[@"content"][@"text"];
-        [KIMXMPPHelper sendMessage:dict to:user.userJid];
-        
-        if (!KIMXMPPHelper.messageDidChangeEnd) {
-            [KIMXMPPHelper setMessageDidChangeEnd:^(XMPPMessage * _Nonnull xmppMessage) {
-                NSLog(@"xmppMessage == > %@",xmppMessage);
-            }];
-        }
+    // 聊天的用户
+    IMUser *user;
+    if (message.partnerType == IMPartnerTypeGroup) {
+        IMGroup *group = [[IMFriendHelper sharedFriendHelper] getGroupInfoByGroupID:message.groupID];
+        NSInteger index = arc4random() % group.count;
+        user = group.users[index];
+    }
+    else {
+        user = [[IMFriendHelper sharedFriendHelper] getFriendInfoByUserID:message.friendID];
+    }
+    
+    //  获取值
+    NSMutableDictionary *dict = [message mj_keyValuesWithKeys:@[@"messageID",kUserID,kFriendID,kGroupID,@"date",kMessageType,kPartnerType,@"readState",kContent]].mutableCopy;
+    if ([dict[@"date"] isKindOfClass:[NSDate class]]) {
+        NSInteger time = [((NSDate *)dict[@"date"] ) timeIntervalSince1970];
+        dict[@"date"] = [@(time) stringValue];
+    }
+    //  区分聊天类型
+     dict[kText] = [self p_messageTypeText:message.messageType]?:dict[kContent][kText];
+    // 发送消息
+     [KIMXMPPHelper sendMessage:dict to:user.userJid];
+}
+
+- (NSString *)p_messageTypeText:(IMMessageType)messageType{
+    switch (messageType) {
+        case IMMessageTypeUnknown:
+            return @"[未知消息]";
+        case IMMessageTypeText:
+            return nil;
+        case IMMessageTypeImage:
+            return @"[图片]";
+        case IMMessageTypeExpression:
+            return @"[表情]";
+        case IMMessageTypeVoice:
+            return @"[语音]";
+        case IMMessageTypeVideo:
+            return @"[视频]";
+        case IMMessageTypeURL:
+            return @"[链接]";
+        case IMMessageTypePosition:
+            return @"[位置]";
+        case IMMessageTypeBusinessCard:
+            return @"[名片]";
+        case IMMessageTypeSystem:
+            return @"[系统消息]";
+        default:
+            return @"[其他消息]";
     }
 }
 
@@ -161,6 +199,68 @@ static IMMessageManager *messageManager;
             }
         } failureAction:nil];
     }
+}
+
+#define Messgae(key) [message elementForName:key]
+#define MessageString(key) [Messgae(key) stringValue]
+#define MessageInt(key) [Messgae(key) stringValueAsInt]
+
+#define IMMessage_Funtion(name,ModelName)\
+ ModelName *name = [[ModelName alloc] init];\
+ name.partnerType = MessageInt(kPartnerType); \
+ name.ownerTyper = IMMessageOwnerTypeFriend;\
+ name.userID = MessageString(kUserID);\
+ name.friendID = user.userID;\
+ name.date = [NSDate date];\
+ name.groupID =MessageString(kGroupID); \
+ name.fromUser = (id <IMChatUserProtocol>)user;\
+
+#pragma mark - # IMXMPPHelperMessageProtocol
+- (void)xmppHelper:(IMXMPPHelper *)xmppHelper sendSuccessMessage:(XMPPMessage *)message{
+    NSLog(@"sendSuccessMessage ===> %@",message);
+}
+
+- (void)xmppHelper:(IMXMPPHelper *)xmppHelper receiveMessage:(XMPPMessage *)message{
+    NSLog(@"receiveMessage ===> %@",message);
+    NSInteger messageType = MessageInt(kMessageType);
+    
+    IMPartnerType partnerType = MessageInt(kPartnerType);
+    // 聊天的用户
+    IMUser *user;
+    if (partnerType == IMPartnerTypeGroup) {
+        IMGroup *group = [[IMFriendHelper sharedFriendHelper] getGroupInfoByGroupID:MessageString(kGroupID)];
+        NSInteger index = arc4random() % group.count;
+        user = group.users[index];
+    }
+    else {
+        user = [[IMFriendHelper sharedFriendHelper] getFriendInfoByUserID:MessageString(kFriendID)];
+    }
+    IMMessage *immessage = nil;
+    if (messageType == IMMessageTypeText) {
+        IMMessage_Funtion(textMessage, IMTextMessage);
+        textMessage.text = [[Messgae(kContent) elementForName:kText] stringValue];
+        immessage = textMessage;
+    }else if(messageType == IMMessageTypeImage){
+        IMMessage_Funtion(imageMessage, IMImageMessage);
+        CGFloat w = [[Messgae(kContent) elementForName:kWidth] stringValueAsFloat];
+        CGFloat h = [[Messgae(kContent) elementForName:kHeight] stringValueAsFloat];
+        imageMessage.imageURL = [[Messgae(kContent) elementForName:kPath] stringValue];
+        imageMessage.imageSize = CGSizeMake(w, h);
+        immessage = imageMessage;
+    }
+    
+    //  发送给聊天页面
+    if (immessage) {
+        [self.messageStore addMessage:immessage];
+        if (self.messageDelegate && [self.messageDelegate respondsToSelector:@selector(didReceivedMessage:)]) {
+            [self.messageDelegate didReceivedMessage:immessage];
+        }
+    }
+    
+}
+
+- (void)xmppHelper:(IMXMPPHelper *)xmppHelper messageSendFail:(XMPPMessage *)message{
+    NSLog(@"messageSendFail ===> %@",message);
 }
 
 #pragma mark - # Getters

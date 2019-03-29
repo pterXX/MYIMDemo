@@ -113,19 +113,28 @@
 /**
  *  发送图片消息
  */
-- (void)sendImageMessage:(UIImage *)image
+- (void)sendImageMessage:(NSData *)imageData
 {
-    NSData *imageData = (UIImagePNGRepresentation(image) ? UIImagePNGRepresentation(image) :UIImageJPEGRepresentation(image, 0.5));
-    NSString *imageName = [NSString stringWithFormat:@"%lf.jpg", [NSDate date].timeIntervalSince1970];
-    NSString *imagePath = [NSFileManager pathUserChatImage:imageName];
-    [[NSFileManager defaultManager] createFileAtPath:imagePath contents:imageData attributes:nil];
-    
-    IMImageMessage *message = [[IMImageMessage alloc] init];
-    message.fromUser = self.user;
-    message.ownerTyper = IMMessageOwnerTypeSelf;
-    message.imagePath = imageName;
-    message.imageSize = image.size;
-    [self sendMessage:message];
+    if (!imageData) return;
+    @autoreleasepool {
+        @weakify(self);
+        //  上传图片
+        KIMXMPPHelper.imageUploadBlock(imageData, ^(NSString * _Nonnull fileUrl) {
+            @strongify(self);
+            NSString *imageName = [NSString stringWithFormat:@"%lf.jpg", [NSDate date].timeIntervalSince1970];
+            NSString *imagePath = [NSFileManager pathUserChatImage:imageName];
+            [[NSFileManager defaultManager] createFileAtPath:imagePath contents:imageData attributes:nil];
+            UIImage *image = [UIImage imageWithData:imageData];
+        
+            IMImageMessage *message = [[IMImageMessage alloc] init];
+            message.fromUser = self.user;
+            message.ownerTyper = IMMessageOwnerTypeSelf;
+            message.imagePath = imageName;
+            message.imageURL = fileUrl;
+            message.imageSize = image.size;
+            [self sendMessage:message];
+        });
+    }
 }
 
 #pragma mark - # Private Methods

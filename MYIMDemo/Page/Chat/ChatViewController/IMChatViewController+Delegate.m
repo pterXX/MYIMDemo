@@ -13,7 +13,7 @@
 #import <MWPhotoBrowser/MWPhotoBrowser.h>
 #import "NSFileManager+IMChat.h"
 
-@interface IMChatViewController ()
+@interface IMChatViewController ()<UIImagePickerControllerDelegate>
 
 @end
 
@@ -38,15 +38,6 @@
             [imagePickerController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
         }
         [self presentViewController:imagePickerController animated:YES completion:nil];
-        __weak typeof(self) weakSelf = self;
-        [imagePickerController.rac_imageSelectedSignal subscribeNext:^(id x) {
-            [imagePickerController dismissViewControllerAnimated:YES completion:^{
-                UIImage *image = [x objectForKey:UIImagePickerControllerOriginalImage];
-                [weakSelf sendImageMessage:image];
-            }];
-        } completed:^{
-            [imagePickerController dismissViewControllerAnimated:YES completion:nil];
-        }];
     }
     else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:[NSString stringWithFormat:@"选中”%@“ 按钮", funcItem.title] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
@@ -88,7 +79,7 @@
         else {
             url = IMURL([(IMImageMessage *)message imageURL]);
         }
-  
+        
         MWPhoto *photo = [MWPhoto photoWithURL:url];
         [data addObject:photo];
     }
@@ -98,4 +89,20 @@
     UINavigationController *broserNavC = [[UINavigationController alloc] initWithRootViewController:browser];
     [self presentViewController:broserNavC animated:NO completion:nil];
 }
+
+#pragma mark - #UIImagePickerControllerDelegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    @weakify(self);
+    @autoreleasepool {
+        UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+        [picker dismissViewControllerAnimated:YES completion:^{
+            [image compressedWithImageKilobyte:1024 imageBlock:^(NSData *imageData) {
+                @strongify(self);
+                [self sendImageMessage:imageData];
+            }];
+        }];
+    }
+}
+
 @end

@@ -204,9 +204,14 @@ static IMFriendHelper *friendHelper = nil;
 - (NSArray <IMUser *> *)sortArray{
     NSArray *array = self.allFriendArray;
     _totalCount = array.count;
-    return  [array sortedArrayUsingComparator:^NSComparisonResult(IMUser *  _Nonnull obj1, IMUser *  _Nonnull obj2) {
-        return [obj1.pinyin compare:obj2.pinyin];
-    }];
+    if (array.count > 0) {
+        return  [array sortedArrayUsingComparator:^NSComparisonResult(IMUser *  _Nonnull obj1, IMUser *  _Nonnull obj2) {
+            return [obj1.pinyin compare:obj2.pinyin];
+        }];
+    }else{
+        return @[];
+    }
+   
 }
 
 - (NSArray <IMUserGroup *> *)sortGroupArray{

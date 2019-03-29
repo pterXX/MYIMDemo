@@ -106,8 +106,7 @@
 }
 
 #pragma mark - # Private Methods
-- (void)p_loadUI
-{
+- (void)p_loadUI{
     // 列表
     self.tableView = self.view.addTableView(1)
     .backgroundColor([UIColor whiteColor])

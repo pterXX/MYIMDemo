@@ -67,6 +67,6 @@
 /**
  *  发送图片信息
  */
-- (void)sendImageMessage:(UIImage *)image;
+- (void)sendImageMessage:(NSData *)imageData;
 
 @end
