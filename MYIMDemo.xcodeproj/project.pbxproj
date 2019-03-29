@@ -1090,7 +1090,7 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		8428F45D22326A300064DA35 /* Page */ = {
+		8428F45D22326A300064DA35 /* Module */ = {
 			isa = PBXGroup;
 			children = (
 				849D7B87224B83E00074AE1F /* Conversation */,
@@ -1103,6 +1103,7 @@
 				8428F4872235F6120064DA35 /* AddresBook */,
 				842510EA222E2276004C3954 /* Login */,
 			);
+			name = Module;
 			path = Page;
 			sourceTree = "<group>";
 		};
@@ -1532,21 +1533,21 @@
 		849D6997224B09340074AE1F /* ChatMessageCells */ = {
 			isa = PBXGroup;
 			children = (
-				849D6998224B09340074AE1F /* IMMessageBaseCell.h */,
-				849D6999224B09340074AE1F /* IMVoiceMessageCell.m */,
-				849D699A224B09340074AE1F /* IMMessageCellDelegate.h */,
 				849D699B224B09340074AE1F /* IMExpressionMessageCell.h */,
-				849D699C224B09340074AE1F /* IMImageMessageCell.h */,
-				849D699D224B09340074AE1F /* IMMessageImageView.h */,
-				849D699E224B09340074AE1F /* IMTextMessageCell.h */,
-				849D699F224B09340074AE1F /* IMVoiceImageView.h */,
-				849D69A0224B09340074AE1F /* IMMessageBaseCell.m */,
 				849D69A1224B09340074AE1F /* IMExpressionMessageCell.m */,
-				849D69A2224B09340074AE1F /* IMVoiceMessageCell.h */,
-				849D69A3224B09340074AE1F /* IMVoiceImageView.m */,
-				849D69A4224B09340074AE1F /* IMTextMessageCell.m */,
-				849D69A5224B09340074AE1F /* IMMessageImageView.m */,
+				849D699C224B09340074AE1F /* IMImageMessageCell.h */,
 				849D69A6224B09340074AE1F /* IMImageMessageCell.m */,
+				849D6998224B09340074AE1F /* IMMessageBaseCell.h */,
+				849D69A0224B09340074AE1F /* IMMessageBaseCell.m */,
+				849D699A224B09340074AE1F /* IMMessageCellDelegate.h */,
+				849D699D224B09340074AE1F /* IMMessageImageView.h */,
+				849D69A5224B09340074AE1F /* IMMessageImageView.m */,
+				849D699E224B09340074AE1F /* IMTextMessageCell.h */,
+				849D69A4224B09340074AE1F /* IMTextMessageCell.m */,
+				849D699F224B09340074AE1F /* IMVoiceImageView.h */,
+				849D69A3224B09340074AE1F /* IMVoiceImageView.m */,
+				849D69A2224B09340074AE1F /* IMVoiceMessageCell.h */,
+				849D6999224B09340074AE1F /* IMVoiceMessageCell.m */,
 			);
 			path = ChatMessageCells;
 			sourceTree = "<group>";
@@ -2136,21 +2137,21 @@
 		849D7B24224B7FE50074AE1F /* IMMessage */ = {
 			isa = PBXGroup;
 			children = (
-				849D7B25224B7FE50074AE1F /* IMExpressionMessage.m */,
-				849D7B26224B7FE50074AE1F /* IMMessage.m */,
-				849D7B27224B7FE50074AE1F /* IMVideoMessage.h */,
-				849D7B28224B7FE50074AE1F /* IMMessageFrame.m */,
-				849D7B29224B7FE50074AE1F /* IMImageMessage.h */,
-				849D7B2A224B7FE50074AE1F /* IMTextMessage.m */,
-				849D7B2B224B7FE50074AE1F /* IMVoiceMessage.h */,
-				849D7B2C224B7FE50074AE1F /* IMVideoMessage.m */,
-				849D7B2D224B7FE50074AE1F /* IMMessage.h */,
-				849D7B2E224B7FE50074AE1F /* IMMessageProtocol.h */,
 				849D7B2F224B7FE50074AE1F /* IMExpressionMessage.h */,
+				849D7B25224B7FE50074AE1F /* IMExpressionMessage.m */,
+				849D7B29224B7FE50074AE1F /* IMImageMessage.h */,
+				849D7B32224B7FE50074AE1F /* IMImageMessage.m */,
+				849D7B2D224B7FE50074AE1F /* IMMessage.h */,
+				849D7B26224B7FE50074AE1F /* IMMessage.m */,
 				849D7B30224B7FE50074AE1F /* IMMessageConstants.h */,
 				849D7B31224B7FE50074AE1F /* IMMessageFrame.h */,
-				849D7B32224B7FE50074AE1F /* IMImageMessage.m */,
+				849D7B28224B7FE50074AE1F /* IMMessageFrame.m */,
+				849D7B2E224B7FE50074AE1F /* IMMessageProtocol.h */,
 				849D7B33224B7FE50074AE1F /* IMTextMessage.h */,
+				849D7B2A224B7FE50074AE1F /* IMTextMessage.m */,
+				849D7B27224B7FE50074AE1F /* IMVideoMessage.h */,
+				849D7B2C224B7FE50074AE1F /* IMVideoMessage.m */,
+				849D7B2B224B7FE50074AE1F /* IMVoiceMessage.h */,
 				849D7B34224B7FE50074AE1F /* IMVoiceMessage.m */,
 			);
 			path = IMMessage;
@@ -2159,10 +2160,10 @@
 		849D7B35224B7FE50074AE1F /* IMConversation */ = {
 			isa = PBXGroup;
 			children = (
-				849D7B36224B7FE50074AE1F /* IMConversation+IMUser.h */,
 				849D7B37224B7FE50074AE1F /* IMConversation.h */,
-				849D7B38224B7FE50074AE1F /* IMConversation+IMUser.m */,
 				849D7B39224B7FE50074AE1F /* IMConversation.m */,
+				849D7B36224B7FE50074AE1F /* IMConversation+IMUser.h */,
+				849D7B38224B7FE50074AE1F /* IMConversation+IMUser.m */,
 			);
 			path = IMConversation;
 			sourceTree = "<group>";
@@ -2435,7 +2436,7 @@
 			children = (
 				849D7B0F224B7FE50074AE1F /* AppControlCenter */,
 				849D7856224B26E50074AE1F /* IMKitExtensions */,
-				8428F45D22326A300064DA35 /* Page */,
+				8428F45D22326A300064DA35 /* Module */,
 				8438D53D222F6069001FD530 /* XMPPHelper */,
 				EE7FE434222CC42500073210 /* BAPhotoBrowser */,
 				EE8936BE2227DA4E004F1F6E /* Common */,

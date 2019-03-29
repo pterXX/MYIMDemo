@@ -46,7 +46,7 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
 @interface IMXMPPHelper : NSObject
 
 
-@property (nonatomic ,copy) void(^imageUploadBlock)(NSData *imgData,void(^handleBlock)(NSString *fileUrl));
+@property (nonatomic ,copy) void(^imageUploadBlock)(UIImage *image,void(^handleBlock)(NSString *fileUrl,NSData *imgData ));
 
 //表示是否手动验证IMS/SSL
 @property (nonatomic ,assign) BOOL                                customCertEvaluation;

@@ -2,8 +2,8 @@
 //  IMFriendHelper.h
 //  IMChat
 //
-//  Created by 李伯坤 on 16/1/27.
-//  Copyright © 2016年 李伯坤. All rights reserved.
+//  Created by 徐世杰 on 16/1/27.
+//  Copyright © 2016年 徐世杰. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -28,9 +28,9 @@
 //  好友总数量
 @property (nonatomic, assign ,readonly) NSInteger totalCount;
 //  根据allFriendArray 排序后的数组
-@property (nonatomic, strong ,readonly) NSArray<IMUser *> *sortArray;
-@property (nonatomic, strong ,readonly) NSArray <IMUserGroup *> *sortGroupArray;
-@property (nonatomic, strong ,readonly) NSArray <NSString *> *pinyinInitialArray;
+@property (nonatomic, strong ,readonly) NSMutableArray <IMUser *> *sortArray;
+@property (nonatomic, strong ,readonly) NSMutableArray <IMUserGroup *> *sortGroupArray;
+@property (nonatomic, strong ,readonly) NSMutableArray <NSString *> *pinyinInitialArray;
 
 //  添加好友数据
 @property (nonatomic, strong) NSMutableArray<XMPPJID *> *addFriendJidArray;

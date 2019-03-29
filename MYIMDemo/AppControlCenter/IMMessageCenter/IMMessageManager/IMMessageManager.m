@@ -2,8 +2,8 @@
 //  IMMessageManager.m
 //  IMChat
 //
-//  Created by 李伯坤 on 16/3/13.
-//  Copyright © 2016年 李伯坤. All rights reserved.
+//  Created by 徐世杰 on 16/3/13.
+//  Copyright © 2016年 徐世杰. All rights reserved.
 //
 
 #import "IMMessageManager.h"
@@ -24,6 +24,7 @@
 #define kFriendID @"friendID"
 #define kGroupID @"groupID"
 #define kPath @"path"
+#define kUrl @"url"
 #define kWidth @"w"
 #define kHeight @"h"
 
@@ -212,7 +213,7 @@ static IMMessageManager *messageManager;
  name.userID = MessageString(kUserID);\
  name.friendID = user.userID;\
  name.date = [NSDate date];\
- name.groupID =MessageString(kGroupID); \
+ name.groupID = MessageString(kGroupID); \
  name.fromUser = (id <IMChatUserProtocol>)user;\
 
 #pragma mark - # IMXMPPHelperMessageProtocol
@@ -244,7 +245,8 @@ static IMMessageManager *messageManager;
         IMMessage_Funtion(imageMessage, IMImageMessage);
         CGFloat w = [[Messgae(kContent) elementForName:kWidth] stringValueAsFloat];
         CGFloat h = [[Messgae(kContent) elementForName:kHeight] stringValueAsFloat];
-        imageMessage.imageURL = [[Messgae(kContent) elementForName:kPath] stringValue];
+        imageMessage.imageURL = [[Messgae(kContent) elementForName:kUrl] stringValue];
+        imageMessage.imagePath = [[Messgae(kContent) elementForName:kPath] stringValue];
         imageMessage.imageSize = CGSizeMake(w, h);
         immessage = imageMessage;
     }

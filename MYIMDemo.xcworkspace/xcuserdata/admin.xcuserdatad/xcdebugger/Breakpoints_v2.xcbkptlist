@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MYIMDemo/AppControlCenter/IMMessageCenter/IMMessageManager/IMMessageManager.m"
-            timestampString = "575521234.907125"
+            timestampString = "575532184.379316"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "238"
-            endingLineNumber = "238"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
             landmarkName = "-xmppHelper:receiveMessage:"
             landmarkType = "7">
          </BreakpointContent>

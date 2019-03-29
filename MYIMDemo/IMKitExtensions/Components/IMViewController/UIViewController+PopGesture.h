@@ -2,8 +2,8 @@
 //  UIViewController+PopGesture.h
 //  IMChat
 //
-//  Created by 李伯坤 on 2017/9/26.
-//  Copyright © 2017年 李伯坤. All rights reserved.
+//  Created by 徐世杰 on 2017/9/26.
+//  Copyright © 2017年 徐世杰. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

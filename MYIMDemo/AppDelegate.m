@@ -35,17 +35,20 @@
     //  是否以base64的方式传文件
 //    KIMXMPPHelper.fileUploadIsBase64 = YES;
     //  文件上传的方法
-    [KIMXMPPHelper setImageUploadBlock:^(NSData * _Nonnull imgData, void (^ _Nonnull handleBlock)(NSString * _Nonnull)) {
+    [KIMXMPPHelper setImageUploadBlock:^(UIImage * _Nonnull image, void (^ _Nonnull handleBlock)(NSString * _Nonnull,NSData *imageData)) {
         @autoreleasepool {
-            AVFile *file = [AVFile fileWithData:imgData];
-            [file uploadWithCompletionHandler:^(BOOL succeeded, NSError * _Nullable error) {
-                NSLog(@"成功  %@", file.url);//返回一个唯一的 Url 地址
-                if (succeeded) {
-                    handleBlock(file.url);
-                    NSLog(@"图片上传成功");
-                }else{
-                    NSLog(@"上传失败");
-                }
+            //  压缩图片并上传
+            [image compressedWithImageKilobyte:500 imageBlock:^(NSData *imageData) {
+                AVFile *file = [AVFile fileWithData:imageData];
+                [file uploadWithCompletionHandler:^(BOOL succeeded, NSError * _Nullable error) {
+                    NSLog(@"成功  %@", file.url);//返回一个唯一的 Url 地址
+                    if (succeeded) {
+                        handleBlock(file.url,imageData);
+                        NSLog(@"图片上传成功");
+                    }else{
+                        NSLog(@"上传失败");
+                    }
+                }];
             }];
         }
     }];

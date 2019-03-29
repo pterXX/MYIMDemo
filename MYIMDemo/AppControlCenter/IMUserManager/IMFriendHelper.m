@@ -2,8 +2,8 @@
 //  IMFriendHelper.m
 //  IMChat
 //
-//  Created by 李伯坤 on 16/1/27.
-//  Copyright © 2016年 李伯坤. All rights reserved.
+//  Created by 徐世杰 on 16/1/27.
+//  Copyright © 2016年 徐世杰. All rights reserved.
 //
 
 #import "IMFriendHelper.h"
@@ -51,7 +51,7 @@ static IMFriendHelper *friendHelper = nil;
         [KIMXMPPHelper addRosterChangeNotificationObserver:self usingBlock:^{
             @strongify(self);
             XMPPRosterMemoryStorage *storage = KIMXMPPHelper.xmppRosterStorage;
-            NSArray *array = [storage sortedUsersByName];
+            NSMutableArray *array = [storage sortedUsersByName];
             if (array.count > 0) {
                 [self updateFriendsByArray:[IMXMPPHelper storageArrayObjectConverUserArray:array] userID:[IMUserHelper sharedHelper].userID];
             }
@@ -201,21 +201,13 @@ static IMFriendHelper *friendHelper = nil;
 }
 
 
-- (NSArray <IMUser *> *)sortArray{
-    NSArray *array = self.allFriendArray;
-    _totalCount = array.count;
-    if (array.count > 0) {
-        return  [array sortedArrayUsingComparator:^NSComparisonResult(IMUser *  _Nonnull obj1, IMUser *  _Nonnull obj2) {
-            return [obj1.pinyin compare:obj2.pinyin];
-        }];
-    }else{
-        return @[];
-    }
-   
+- (NSMutableArray <IMUser *> *)sortArray{
+    NSMutableArray *array = self.allFriendArray;
+    return array;
 }
 
-- (NSArray <IMUserGroup *> *)sortGroupArray{
-    NSArray *array = [self sortArray]; //  已经排序所以无需对IMGroup再次排序
+- (NSMutableArray <IMUserGroup *> *)sortGroupArray{
+    NSMutableArray *array = [self sortArray]; //  已经排序所以无需对IMGroup再次排序
     NSMutableArray *enumArray = [NSMutableArray array];
     NSInteger sortInt = 0;
     for (IMUser *user in array) {
@@ -239,8 +231,8 @@ static IMFriendHelper *friendHelper = nil;
     return enumArray;
 }
 
-- (NSArray <NSString *> *)pinyinInitialArray{
-    NSArray *array = [self sortArray]; //  已经排序所以无需对IMGroup再次排序
+- (NSMutableArray <NSString *> *)pinyinInitialArray{
+    NSMutableArray *array = [self sortArray]; //  已经排序所以无需对IMGroup再次排序
     NSMutableArray *enumArray = [NSMutableArray arrayWithObjects:UITableViewIndexSearch, nil];
     for (IMUser *user in array) {
         if (![enumArray containsObject:user.pinyinInitial]) [enumArray addObject:user.pinyinInitial];

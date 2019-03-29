@@ -3,8 +3,8 @@
 //  IMDBConversationSQL.h
 //  IMChat
 //
-//  Created by 李伯坤 on 16/3/20.
-//  Copyright © 2016年 李伯坤. All rights reserved.
+//  Created by 徐世杰 on 16/3/20.
+//  Copyright © 2016年 徐世杰. All rights reserved.
 //
 
 #ifndef IMDBConversationSQL_h
