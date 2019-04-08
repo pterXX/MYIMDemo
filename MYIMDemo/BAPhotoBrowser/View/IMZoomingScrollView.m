@@ -307,7 +307,7 @@
     }
     else {
         
-        [weakSelf.photoImageView sd_setImageWithURL:url placeholderImage:photo.defaultImage options:SDWebImageRetryFailed | SDWebImageLowPriority | SDWebImageHandleCookies progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
+        [weakSelf.photoImageView sd_setImageWithURL:url placeholderImage:photo.defaultImage options:SDWebImageRetryFailed | SDWebImageLowPriority | SDWebImageHandleCookies progress:^(NSInteger receivedSize, NSInteger expectedSize) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 __strong __typeof(weakSelf)strongSelf = weakSelf;
                 if (expectedSize > 0) {
@@ -315,7 +315,7 @@
                     //                NSLog(@"targetURL %@ , strongSelf %@ , strongSelf.imageURL = %@ , progress = %f",targetURL , strongSelf , strongSelf.imageURL,strongSelf.progress);
                 }
             });
-        } completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+        } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             __strong __typeof(weakSelf)strongSelf = weakSelf;
             [strongSelf.progressView removeFromSuperview];
             if (error) {

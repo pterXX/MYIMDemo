@@ -1,0 +1,6 @@
+framework module PrivateKit {
+  umbrella header "PrivateKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

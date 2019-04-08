@@ -10,9 +10,7 @@
 #import <XMPP.h>
 #import <XMPPFramework/XMPPFramework.h>
 #import "IMUserHelper.h"
-#import "IMConversationHelper.h"
-#import "IMMessageModel.h"
-
+#import "IMFriendHelper.h"
 
 #ifdef DEBUG
 
@@ -46,13 +44,11 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
 };
 
 @interface IMXMPPHelper : NSObject
-@property (nonatomic ,copy  ) IMUserHelper                        *userHelper;
 
-@property (nonatomic ,copy  ) IMConversationHelper                *conversationHelper;
-// 图片上传是否采用base64
-@property (nonatomic ,assign) BOOL                                fileUploadIsBase64;
 
-//表示是否手动验证TLS/SSL
+@property (nonatomic ,copy) void(^imageUploadBlock)(UIImage *image,void(^handleBlock)(NSString *fileUrl,NSData *imgData ));
+
+//表示是否手动验证IMS/SSL
 @property (nonatomic ,assign) BOOL                                customCertEvaluation;
 //表示一个地址
 @property (nonatomic ,strong) XMPPJID                             *myJID;
@@ -69,6 +65,10 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
 //接入消息模块，将消息存储到本地
 @property (nonatomic ,strong) XMPPMessageArchivingCoreDataStorage *xmppMessageArchivingCoreDataStorage;
 @property (nonatomic ,strong) XMPPMessageArchiving                *xmppMessageArchiving;
+
+// 性能相关
+@property (nonatomic, strong) XMPPCapabilities                    * xmppCapabilities;
+@property (nonatomic, strong) XMPPCapabilitiesCoreDataStorage     * xmppCapailitiesStorage;
 
 //  文件发送
 @property (nonatomic, strong) XMPPOutgoingFileTransfer            *xmppOutgoingFileTransfer;
@@ -90,6 +90,7 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
 @interface IMXMPPHelper(Class)
 + (XMPPJID *)jid:(NSString *)userName;
 + (IMUser *)storageObjectConverUser:(XMPPUserMemoryStorageObject *)item;
++ (NSArray<IMUser *> *)storageArrayObjectConverUserArray:(NSArray *)array;
 @end
 
 
@@ -184,7 +185,29 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
 @end
 
 
+
+//typedef void(^MessageChangeBlock)(XMPPMessage *xmppMessage);
+
+@protocol IMXMPPHelperMessageProtocol <NSObject>
+
+@optional
+- (void)xmppHelper:(IMXMPPHelper *)xmppHelper sendSuccessMessage:(XMPPMessage *)message;
+
+- (void)xmppHelper:(IMXMPPHelper *)xmppHelper receiveMessage:(XMPPMessage *)message;
+
+- (void)xmppHelper:(IMXMPPHelper *)xmppHelper messageSendFail:(XMPPMessage *)message;
+
+@end
+
 @interface IMXMPPHelper (message)
+
+@property (nonatomic ,weak) id<IMXMPPHelperMessageProtocol> messageDelegate;
+/*
+@property (nonatomic ,copy) MessageChangeBlock messageSendSuccess;
+@property (nonatomic ,copy) MessageChangeBlock messageReceiveMessage;
+@property (nonatomic ,copy) MessageChangeBlock messageSendFail;
+*/
+
 
 /**
  根据jid 查找消息俩表
@@ -200,7 +223,7 @@ typedef NS_ENUM(NSUInteger, IMXMPPErrorCode) {
  *  @param message 消息内容
  *  @param jid     发送对方的ID
  */
-- (void)sendMessageModel:(IMMessageModel *)message to:(XMPPJID *)jid;
+- (void)sendMessage:(NSDictionary *)message to:(XMPPJID *)jid;
 
 /**
  监听已经接收到的消息

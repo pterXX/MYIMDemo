@@ -19,29 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MYIMDemo/Page/Chat/IMChatViewController+Image.m"
-            timestampString = "574768022.617178"
+            filePath = "MYIMDemo/AppControlCenter/IMMessageCenter/IMMessageManager/IMMessageManager.m"
+            timestampString = "575538269.077037"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "210"
-            endingLineNumber = "210"
-            landmarkName = "-saveAndSendMessageWithMessageModel:filePath:indexPath:cellHeight:selectImage:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MYIMDemo/Page/Chat/IMChatViewController+Image.m"
-            timestampString = "574768022.618083"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "212"
-            endingLineNumber = "212"
-            landmarkName = "-saveAndSendMessageWithMessageModel:filePath:indexPath:cellHeight:selectImage:"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
+            landmarkName = "-xmppHelper:receiveMessage:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

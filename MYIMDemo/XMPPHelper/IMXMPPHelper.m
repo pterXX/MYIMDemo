@@ -8,12 +8,14 @@
 
 #import "IMXMPPHelper.h"
 
+#define XMPPErrorLog(errorCode) NSLog(@"%@----->%@",NSStringFromSelector(_cmd),[self errorMessageWithErrorCode:errorCode]);
 static NSString * const kAvailable     = @"available";//  上线
 static NSString * const kAway          = @"away";//  离开
 static NSString * const kDotNotDisturb = @"do not disturb";//  忙碌
 static NSString * const kSubscribe     = @"subscribe";//  订阅
 static NSString * const kUnavailable   = @"unavailable";//  下线
 static NSString * const kUnsubscribe   = @"unsubscribe";//  取消订阅
+static NSString * const kUnsubscribed  = @"unsubscribed";//
 
 
 @interface IMXMPPHelper()<XMPPStreamDelegate,XMPPRosterMemoryStorageDelegate,XMPPRosterDelegate,XMPPReconnectDelegate,XMPPOutgoingFileTransferDelegate>
@@ -21,6 +23,8 @@ static NSString * const kUnsubscribe   = @"unsubscribe";//  取消订阅
 @property (nonatomic ,copy  ) IMXMPPSuccessBlock success;//  成功
 @property (nonatomic ,assign) BOOL               xmppNeedRegister;// 是否是注册
 
+
+- (NSString*)errorMessageWithErrorCode:(NSInteger)errorCode;
 @end
 
 @implementation IMXMPPHelper
@@ -45,19 +49,12 @@ static IMXMPPHelper *helper;
     return self;
 }
 
-- (IMUserHelper *)userHelper{
-    if (!_userHelper) {
-        _userHelper = [IMUserHelper sharedHelper];
-    }
-    return _userHelper;
-}
-
-- (IMConversationHelper *)conversationHelper{
-    if (!_conversationHelper) {
-        _conversationHelper = [IMConversationHelper sharedConversationHelper];
-    }
-    return _conversationHelper;
-}
+//- (IMConversationHelper *)conversationHelper{
+//    if (!_conversationHelper) {
+//        _conversationHelper = [IMConversationHelper sharedConversationHelper];
+//    }
+//    return _conversationHelper;
+//}
 
 - (void)setupStream{
     if (!_xmppStream) {
@@ -67,7 +64,11 @@ static IMXMPPHelper *helper;
         [_xmppStream setKeepAliveInterval:30];        //心跳包间隔时长
         
         //  保证xmpp早后台运行。iOS10 需要使用iOS 10不再提供后台套接字。您必须使用Pushkit和XEP-0357模块。
+#if !TARGET_IPHONE_SIMULATOR
+        // 设置此行为YES,表示允许socket在后台运行
+        // 在模拟器上是不支持在后台运行的
         _xmppStream.enableBackgroundingOnSocket = YES;
+#endif
         [_xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
         
         [self setupReconnect];
@@ -76,6 +77,7 @@ static IMXMPPHelper *helper;
         [self setupMessage];
         [self setupVCard];
         [self setupFile];
+        [self setupCapailities];
     }
 }
 
@@ -129,15 +131,25 @@ static IMXMPPHelper *helper;
 
 //  文件处理
 -(void)setupFile{
-    _xmppOutgoingFileTransfer = [[XMPPOutgoingFileTransfer alloc] initWithDispatchQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)];
+    _xmppOutgoingFileTransfer = [[XMPPOutgoingFileTransfer alloc] initWithDispatchQueue:dispatch_get_main_queue()];
     [_xmppOutgoingFileTransfer activate:self.xmppStream];
     [_xmppOutgoingFileTransfer addDelegate:self delegateQueue:dispatch_get_main_queue()];
     
-    _xmppIncomingFileTransfer = [[XMPPIncomingFileTransfer alloc] initWithDispatchQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)];
+    _xmppIncomingFileTransfer = [[XMPPIncomingFileTransfer alloc] initWithDispatchQueue:dispatch_get_main_queue()];
     [_xmppIncomingFileTransfer activate:self.xmppStream];
     [_xmppIncomingFileTransfer addDelegate:self delegateQueue:dispatch_get_main_queue()];
     //设置为自动接收文件，当然也可以在代理方法中弹出一个alertView来让用户选择是否接收
     [_xmppIncomingFileTransfer setAutoAcceptFileTransfers:YES];
+}
+
+- (void)setupCapailities{
+    // XMPP特性模块配置，用于处理复杂的哈希协议等
+    _xmppCapailitiesStorage = [[XMPPCapabilitiesCoreDataStorage alloc] init];
+    _xmppCapabilities = [[XMPPCapabilities alloc]
+                         initWithCapabilitiesStorage:_xmppCapailitiesStorage];
+    _xmppCapabilities.autoFetchHashedCapabilities = YES;
+    _xmppCapabilities.autoFetchNonHashedCapabilities = NO;
+    [_xmppCapabilities activate:self.xmppStream];
 }
 
 #pragma mark - 连接
@@ -165,6 +177,7 @@ static IMXMPPHelper *helper;
 
 - (void)xmppStreamDidDisconnect:(XMPPStream *)sender withError:(NSError *)error{
     if (error) {
+        XMPPErrorLog(error.code);
         [self failCompleteCode:IMXMPPErrorCodeConnect description:@"连接失败,请检查服务器地址"];
     }
 }
@@ -210,9 +223,10 @@ static IMXMPPHelper *helper;
  */
 - (void)applicationDidBecomeActive{
     //  如果已经登录的话就直接返回
-    if (self.userHelper.isLogin && self.userHelper.userAccount && self.userHelper.password) {
+    IMUserHelper *userHelper = [IMUserHelper sharedHelper];
+    if (userHelper.isLogin && userHelper.userAccount && userHelper.password) {
         //  重新登录
-        [self loginWithName:self.userHelper.userAccount andPassword:self.userHelper.password success:nil fail:nil];
+        [self loginWithName:userHelper.userAccount andPassword:userHelper.password success:nil fail:nil];
     }
     // 如果连接已经关闭
     if (self.xmppStream.isDisconnected ) {
@@ -253,13 +267,14 @@ static IMXMPPHelper *helper;
  成功后的回调
  */
 - (void)successComplete {
+    IMUserHelper *userHelper = [IMUserHelper sharedHelper];
     IMUser *user         = [[IMUser alloc] init];
     // 测试的userID和nickname，remarkName 都是username，具体等线上修改
-    user.userID          = self.userHelper.userAccount;
-    user.nikeName        = self.userHelper.userAccount;
-    user.username        = self.userHelper.userAccount;
-    user.remarkName      = self.userHelper.userAccount;
-    self.userHelper.user = user;
+    user.userID          = userHelper.userAccount;
+    user.nikeName        = userHelper.userAccount;
+    user.username        = userHelper.userAccount;
+    user.remarkName      = userHelper.userAccount;
+    [IMUserHelper sharedHelper].user = user;
     if (self.success) {
         self.success();
         self.fail = nil;
@@ -282,6 +297,58 @@ static IMXMPPHelper *helper;
         self.success = nil;
         self.fail = nil;
     }
+}
+
+
+#pragma mark - XMPP协议错误码
+- (NSString*)errorMessageWithErrorCode:(NSInteger)errorCode
+{
+    switch (errorCode) {
+        case 302:
+            return @"重定向";
+        case 400:
+            return @"无效的请求";
+        case 401:
+            return @"未经过授权认证";
+        case 402: // 目前保留，未使用
+            return @"";
+        case 403:
+            return @"服务器拒绝执行，可能是注册密码存储失败";
+        case 404:
+            return @"找不到匹配的资源";
+        case 405:
+            return @"可能是权限不够，不允许操作";
+        case 406:
+            return @"服务器不授受";
+        case 407: // 目前未使用
+            return @"";
+        case 408: // 当前只用于Jabber会话管理器使用的零度认证模式中。
+            return @"注册超时";
+        case 409:
+            return @"用户名已经存在"; // 冲突
+        case 500:
+            return @"服务器内部错误";
+        case 501:
+            return @"服务器不支持此功能，不可执行";
+        case 502:
+            return @"远程服务器错误";
+        case 503:
+            return @"无法提供此服务";
+        case 504:
+            return @"远程服务器超时";
+        case 510:
+            return @"连接失败";
+        default:
+            break;
+    }
+    
+    return @"发生未知错误";
+}
+
+#pragma mark - Private
+- (NSManagedObjectContext*)capabilitesContext
+{
+    return [_xmppCapailitiesStorage mainThreadManagedObjectContext];
 }
 
 @end
@@ -309,6 +376,12 @@ static IMXMPPHelper *helper;
     user.subscription = subscription;
     return user;
 }
+
++ (NSArray<IMUser *> *)storageArrayObjectConverUserArray:(NSArray *)array{
+    return [array zh_enumerateObjectsUsingBlock:^id _Nonnull(id  _Nonnull obj) {
+        return [self storageObjectConverUser:obj];
+    }];
+}
 @end
 
 
@@ -316,9 +389,10 @@ static IMXMPPHelper *helper;
 
 #pragma mark -- go onlie, offline
 - (void)initUser:(IMXMPPFailBlock _Nonnull)fail password:(NSString * _Nonnull)password success:(IMXMPPSuccessBlock _Nonnull)success userName:(NSString * _Nonnull)userName {
+    IMUserHelper *userHelper = [IMUserHelper sharedHelper];
     _myJID = [[self class] jid:userName];
-    self.userHelper.userAccount = userName;
-    self.userHelper.password = password;
+    userHelper.userAccount = userName;
+    userHelper.password = password;
     self.success         = success;
     self.fail            = fail;
     if (![self connect:_myJID]) {
@@ -341,25 +415,26 @@ static IMXMPPHelper *helper;
 //  用户授权
 -(void)userAuth{
     NSError *error = nil;
+    IMUserHelper *userHelper = [IMUserHelper sharedHelper];
     if (self.xmppNeedRegister) {
         //  用户注册，发送注册请求
-        [[self xmppStream] registerWithPassword:self.userHelper.password error:&error];
+        [[self xmppStream] registerWithPassword:userHelper.password error:&error];
     }else{
         //  用户登录，发送身份验证请求
-        [[self xmppStream] authenticateWithPassword:self.userHelper.password error:&error];
+        [[self xmppStream] authenticateWithPassword:userHelper.password error:&error];
     }
-    if (error) DDLogError(@"%@",error);
+    if (error) XMPPErrorLog(error.code);
 }
 
 -(void)logOut{
     [self goOffline];
     [_xmppStream disconnectAfterSending];
-    [self.userHelper signOut];
+    [[IMUserHelper sharedHelper] signOut];
 }
 
 - (void)goOnline{
     XMPPPresence *presence = [XMPPPresence presence];
-    [self.xmppStream sendElement:presence]; 
+    [self.xmppStream sendElement:presence];
 }
 
 - (void)goOffline{
@@ -383,6 +458,8 @@ static IMXMPPHelper *helper;
 
 // 授权失败DDLog
 - (void)xmppStream:(XMPPStream *)sender didNotAuthenticate:(NSXMLElement *)error{
+    DDXMLNode *node = [error attributeForName:@"code"];
+    XMPPErrorLog([node.stringValue integerValue]);
     [self failCompleteCode:IMXMPPErrorCodeLogin description:@"登录失败,请检查登录账户和密码"];
 }
 
@@ -395,8 +472,9 @@ static IMXMPPHelper *helper;
 }
 
 - (void)xmppStream:(XMPPStream *)sender didNotRegister:(NSXMLElement *)error{
-    DDLogError(@"注册授权失败 %@",error);
-    NSString *str = [self analysisForDDXMLElement:error elementsName:@"error" nodeName:@"code"];
+    DDXMLNode *node = [error attributeForName:@"code"];
+    XMPPErrorLog([node.stringValue integerValue]);
+    NSString *str = node.stringValue;
     if (str && [str isEqualToString:@"409"]) {
         [self failCompleteCode:IMXMPPErrorCodeDidRegister description:@"注册失败,请检查登录账户和密码"];
     }else{
@@ -404,9 +482,9 @@ static IMXMPPHelper *helper;
     }
 }
 
-#pragma mark ------ SSL/TLS
+#pragma mark ------ SSL/IMS
 /**
- 此方法在流通过SSL/TLS得到保护之后调用。
+ 此方法在流通过SSL/IMS得到保护之后调用。
  如果服务器在打开过程中需要安全连接，则可以调用此方法，
  或者如果secureConnection:方法是手动调用的。
  */
@@ -439,7 +517,7 @@ static IMXMPPHelper *helper;
     //这里的nickname是我对它的备注，并非他得个人资料中得nickname
     BOOL isExist = NO;
     //判断是否重复请求
-    for (XMPPJID *objJID in self.userHelper.addFriendJidArray) {
+    for (XMPPJID *objJID in [IMFriendHelper sharedFriendHelper].addFriendJidArray) {
         if ([jid.user isEqualToString:objJID.user] && [jid.domain isEqualToString:objJID.domain]) {
             isExist = YES;
         }
@@ -486,48 +564,21 @@ static IMXMPPHelper *helper;
 
 - (void)p_deleteUser:(XMPPJID *)fromJid{
     XMPPJID *deleteJid;
-    for (XMPPJID *objJid in self.userHelper.addFriendJidArray) {
+    for (XMPPJID *objJid in [IMFriendHelper sharedFriendHelper].addFriendJidArray) {
         if ([objJid isEqualToJID:fromJid]) {
             deleteJid = objJid;
             break;
         }
     }
-    if (deleteJid) [self.userHelper.addFriendJidArray removeObject:deleteJid];
+    if (deleteJid) [[IMFriendHelper sharedFriendHelper].addFriendJidArray removeObject:deleteJid];
 }
 
 // 好友列表改变
 - (void)addRosterChangeNotificationObserver:(id)observer usingBlock:(void(^)(void))usingBlock{
     if (observer == nil) return;
-    kWeakSelf;
     [IMNotificationCenter addObserver:observer forName:kXmppRosterChangeNot object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note, id  _Nonnull observer) {
-        [weakSelf p_rosterStorage];
         if (usingBlock) {
             usingBlock();
-        }
-    }];
-}
-
-//  好友列表
-- (void )p_rosterStorage{
-    XMPPRosterMemoryStorage *storage = KIMXMPPHelper.xmppRosterStorage;
-    NSArray *array = [storage sortedUsersByName];
-    if (array.count > 0) {
-        //  清空所有好友信息
-        [self.userHelper clearFriendArray];
-    }
-    [array enumerateObjectsUsingBlock:^(XMPPUserMemoryStorageObject * _Nonnull item, NSUInteger idx, BOOL * _Nonnull stop) {
-        IMUser *user = [[self class] storageObjectConverUser:item];
-        user.avatar = [UIImage imageWithData:[self.vCardAvatorModule photoDataForJID:user.userJid]];
-        if ([user.subscription isEqualToString:@"both"]) {
-            [self.userHelper.bothFriendArray addObject:user];
-        }else if ([user.subscription isEqualToString:@"remove"]) {
-            [self.userHelper.removeFriendArray addObject:user];
-        }else if ([user.subscription isEqualToString:@"to"]) {
-            [self.userHelper.toFriendArray addObject:user];
-        }else if ([user.subscription isEqualToString:@"from"]) {
-            [self.userHelper.fromFriendArray addObject:user];
-        }else{
-            [self.userHelper.noneFriendArray addObject:user];
         }
     }];
 }
@@ -560,14 +611,14 @@ static IMXMPPHelper *helper;
 - (void)xmppRoster:(XMPPRoster *)sender didReceivePresenceSubscriptionRequest:(XMPPPresence *)presence{
     BOOL isExist = NO;
     //判断是否重复请求
-    for (XMPPJID *objJID in self.userHelper.addFriendJidArray) {
+    for (XMPPJID *objJID in [IMFriendHelper sharedFriendHelper].addFriendJidArray) {
         if ([presence.from.user isEqualToString:objJID.user] &&[presence.from.domain isEqualToString:objJID.domain]) {
             isExist = YES;
         }
     }
-
+    
     if (!isExist) {
-        [self.userHelper.addFriendJidArray insertObject:presence.from atIndex:0];
+        [[IMFriendHelper sharedFriendHelper].addFriendJidArray insertObject:presence.from atIndex:0];
         //添加好友一定会订阅对方，但是接受订阅不一定要添加对方为好友
         [IMNotificationCenter postNotificationName:kXmppSubscriptionRequestNot object:presence];
     }
@@ -575,7 +626,7 @@ static IMXMPPHelper *helper;
 
 - (void)xmppStream:(XMPPStream *)sender didReceivePresence:(XMPPPresence *)presence{
     if ([presence.type isEqualToString:kAvailable] && ![presence.from isEqualToJID:_myJID]) {
-        for (IMUser *obj in self.userHelper.allFriendArray) {
+        for (IMUser *obj in [IMFriendHelper sharedFriendHelper].allFriendArray) {
             if ([presence.from.user isEqualToString:obj.userJid.user]) {
                 if (!obj.isAvailable) {
                     obj.isAvailable = YES;
@@ -587,7 +638,7 @@ static IMXMPPHelper *helper;
     }
     
     if ([presence.type isEqualToString:kUnavailable] && ![presence.from isEqualToJID:_myJID]) {
-        for (IMUser *obj in self.userHelper.allFriendArray) {
+        for (IMUser *obj in [IMFriendHelper sharedFriendHelper].allFriendArray) {
             if ([presence.from.user isEqualToString:obj.userJid.user]) {
                 if (!obj.isAvailable) {
                     obj.isAvailable = NO;
@@ -599,7 +650,7 @@ static IMXMPPHelper *helper;
     }
     
     //收到对方取消定阅我得消息
-    if ([presence.type isEqualToString:kUnsubscribe]) {
+    if ([presence.type isEqualToString:kUnsubscribe] || [presence.type isEqualToString:kUnsubscribed]) {
         //从我的本地通讯录中将他移除
         [self removeUser:[IMUser user:presence.from]];
     }
@@ -619,8 +670,47 @@ static IMXMPPHelper *helper;
 }
 @end
 
+/*
+static const char *messageSendSuccessKey = "messageSendSuccess";
+static const char *messageSendFailKey = "messageSendFail";
+static const char *messageReceiveMessageKey = "messageReceiveMessage";
+ */
+static const char *messageDelegateKey = "messageDelegate";
 
 @implementation IMXMPPHelper (message)
+/*
+- (void)setMessageSendSuccess:(MessageChangeBlock)messageSendSuccess{
+    objc_setAssociatedObject(self, messageSendSuccessKey, messageSendSuccess, OBJC_ASSOCIATION_COPY);
+}
+
+- (void)setMessageSendFail:(MessageChangeBlock)messageSendFail{
+    objc_setAssociatedObject(self, messageSendFailKey, messageSendFail, OBJC_ASSOCIATION_COPY);
+}
+
+- (void)setMessageReceiveMessage:(MessageChangeBlock)messageReceiveMessage{
+    objc_setAssociatedObject(self, messageReceiveMessageKey, messageReceiveMessage, OBJC_ASSOCIATION_COPY);
+}
+
+-(MessageChangeBlock)messageSendSuccess{
+    return objc_getAssociatedObject(self, messageSendSuccessKey);
+}
+
+- (MessageChangeBlock)messageSendFail{
+    return objc_getAssociatedObject(self, messageSendFailKey);
+}
+
+- (MessageChangeBlock)messageReceiveMessage{
+     return objc_getAssociatedObject(self, messageReceiveMessageKey);
+}
+ */
+
+- (void)setMessageDelegate:(id<IMXMPPHelperMessageProtocol>)messageDelegate{
+    objc_setAssociatedObject(self, messageDelegateKey, messageDelegate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (id<IMXMPPHelperMessageProtocol>)messageDelegate{
+    return objc_getAssociatedObject(self, messageDelegateKey);
+}
 
 - (void)addChatDidReceiveMessageNotificationObserver:(id)observer usingBlock:(void(^)(void))usingBlock{
     if (observer == nil) return;
@@ -686,27 +776,51 @@ static IMXMPPHelper *helper;
     [fetchRequest setSortDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
     NSError *error = nil;
     NSArray *fetchedObjects = [storage.mainThreadManagedObjectContext executeFetchRequest:fetchRequest error:&error];
+    if (error) XMPPErrorLog(error.code);
+    
     return fetchedObjects;
 }
 
 // 发送消息
-- (void)sendMessageModel:(IMMessageModel *)message to:(XMPPJID *)jid{
+- (void)sendMessage:(NSDictionary *)message to:(XMPPJID *)jid{
+    if (message == nil) return;
     XMPPMessage* newMessage = [[XMPPMessage alloc] initWithType:@"chat" to:jid];
-    if (message.messageId.isEmptyString) {
-        message.messageId = [NSDate getCurrentTimestamp];
+    [newMessage addOriginId:message[@"messageID"]];
+    [newMessage addBody:message[@"text"]]; //消息内容
+    NSArray *subarr = [self p_element:message];
+    for (XMPPElement *item in subarr) {
+        [newMessage addChild:item];
     }
-    if (message.fileData && self.fileUploadIsBase64) {
-        message.content = [message.fileData base64EncodedStringWithOptions:0];
-    }
-    [newMessage addOriginId:message.messageId];
-    [newMessage addBody:message.messageBody]; //消息内容
-    NSDictionary *dict = [message mj_keyValuesWithKeys:@[@"messageId",@"msgType",@"messageChatType",@"content",@"recvTime",@"voiceTime",@"pictureType",@"sendTime"]];
-    NSArray *arr = [dict allKeys];
-    for (NSString *key in arr) {
-        NSString *str = IMStirngFormat(@"%@",[dict objectForKey:key]);
-        [newMessage addChild:[XMPPElement elementWithName:key stringValue:str]];
-    }
+    //  添加消息回执 ，用于判断消息是否已接收
+    XMPPElement *receipt = [XMPPElement elementWithName:@"request" xmlns:@"urn:xmpp:receipts"];
+    [newMessage addChild:receipt];
     [_xmppStream sendElement:newMessage];
+}
+
+- (NSArray *)p_element:(NSDictionary *)message{
+    NSMutableArray *nodes = [NSMutableArray array];
+    NSArray *arr = [message allKeys];
+    for (NSString *key in arr) {
+        id obj = [message objectForKey:key];
+        XMPPElement *elemnt = [XMPPElement elementWithName:key];
+        if ([obj isKindOfClass:[NSDictionary class]]) {
+            NSArray *subarr = [self p_element:obj];
+            for (XMPPElement *item in subarr) {
+                [elemnt addChild:item];
+            }
+        }else if([obj isKindOfClass:[NSNumber class]]) {
+            elemnt = [XMPPElement elementWithName:key numberValue:obj];
+        }else if([obj isKindOfClass:[NSURL class]]){
+            elemnt = [XMPPElement elementWithName:key URI:obj];
+        }else if([obj isKindOfClass:[NSString class]]){
+            elemnt = [XMPPElement elementWithName:key stringValue:obj];
+        }else{
+            elemnt = [XMPPElement elementWithName:key objectValue:obj];
+        }
+        
+        [nodes addObject:elemnt];
+    }
+    return nodes;
 }
 
 #pragma mark -- XMPPMessage Delegate
@@ -715,15 +829,51 @@ static IMXMPPHelper *helper;
     [IMNotificationCenter postNotificationName:kChatDidReceiveMessageNot object:message];
     //  通知当前正在聊天的对话
     [IMNotificationCenter postNotificationName:kChatUserDidReceiveMessageNot object:message];
+    
+    NSXMLElement *request = [message elementForName:@"request"];
+    if (request)
+    {
+        if ([request.xmlns isEqualToString:@"urn:xmpp:receipts"])//消息回执
+        {
+            //组装消息回执
+            XMPPMessage *msg = [XMPPMessage messageWithType:[message attributeStringValueForName:@"type"] to:message.from elementID:[message attributeStringValueForName:@"id"]];
+            NSXMLElement *recieved = [NSXMLElement elementWithName:@"received" xmlns:@"urn:xmpp:receipts"];
+            [msg addChild:recieved];
+            //发送回执
+            [self.xmppStream sendElement:msg];
+        }
+    }else
+    {
+        NSXMLElement *received = [message elementForName:@"received"];
+        if (received)
+        {
+            if ([received.xmlns isEqualToString:@"urn:xmpp:receipts"])//消息回执
+            {
+                //发送成功
+                NSLog(@"message send success!");
+            }
+        }else{
+            if (self.messageDelegate && [self.messageDelegate respondsToSelector:@selector(xmppHelper:receiveMessage:)]) {
+                [[self messageDelegate] xmppHelper:self receiveMessage:message];
+            }
+        }
+    }
 }
 
 - (void)xmppStream:(XMPPStream *)sender didSendMessage:(XMPPMessage *)message{
     [IMNotificationCenter postNotificationName:kChatDidSendMessageNot object:message];
+    if (self.messageDelegate && [self.messageDelegate respondsToSelector:@selector(xmppHelper:sendSuccessMessage:)]) {
+        [[self messageDelegate] xmppHelper:self sendSuccessMessage:message];
+    }
 }
 
 - (void)xmppStream:(XMPPStream *)sender didFailToSendMessage:(XMPPMessage *)message error:(NSError *)error{
+    if (error) XMPPErrorLog(error.code);
     [IMNotificationCenter postNotificationName:kChatDidFailToSendMessageNot object:message];
     [IMNotificationCenter postNotificationName:kChatUserDidFailToSendMessageNot object:message];
+    if (self.messageDelegate && [self.messageDelegate respondsToSelector:@selector(xmppHelper:messageSendFail:)]) {
+        [[self messageDelegate] xmppHelper:self messageSendFail:message];
+    }
 }
 
 @end
@@ -742,7 +892,7 @@ static IMXMPPHelper *helper;
     }else if ([@"wav" isEqualToString:extension]){
         subject = @"video";
     }
-
+    
     XMPPMessage *message = [XMPPMessage messageWithType:@"chat" to:jid];
     [message addAttributeWithName:@"from" stringValue:sender.xmppStream.myJID.bare];
     [message addSubject:subject];
@@ -763,7 +913,7 @@ static IMXMPPHelper *helper;
 //是否同意对方发文件
 - (void)xmppIncomingFileTransfer:(XMPPIncomingFileTransfer *)sender didReceiveSIOffer:(XMPPIQ *)offer{
     NSLog(@"===============> 文件接收");
-//    [self.xmppIncomingFileTransfer acceptSIOffer:offer];
+    //    [self.xmppIncomingFileTransfer acceptSIOffer:offer];
 }
 
 //存储文件 音频为amr格式  图片为jpg格式
@@ -776,7 +926,7 @@ static IMXMPPHelper *helper;
     }else if([@"jpg" isEqualToString:extension] || [@"png" isEqualToString:extension]){
         subject = @"picture";
     }else if ([@"wav" isEqualToString:extension]){
-         subject = @"video";
+        subject = @"video";
     }
     
     XMPPMessage *message = [XMPPMessage messageWithType:@"chat" to:jid];
@@ -825,7 +975,7 @@ static IMXMPPHelper *helper;
         return [UIImage imageDefaultHeadPortrait];
     }
 }
-     
+
 #pragma mark =====头像修改 =======
 /**
  只要对方的头像发生更改, 或者自己上传了新都头像, 就会调用上述的两个代理方法, 那么, 我们在这两个代理方法中

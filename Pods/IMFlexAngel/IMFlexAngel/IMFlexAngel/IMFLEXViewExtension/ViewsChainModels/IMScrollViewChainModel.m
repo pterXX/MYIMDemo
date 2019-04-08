@@ -1,0 +1,35 @@
+//
+//  IMScrollViewChainModel.m
+//  zhuanzhuan
+//
+//  Created by 李伯坤 on 2017/10/24.
+//  Copyright © 2017年 转转. All rights reserved.
+//
+
+#import "IMScrollViewChainModel.h"
+
+#define     IMFLEX_CHAIN_SCROLLVIEW_IMPLEMENTATION(methodName, IMParamType)      IMFLEX_CHAIN_IMPLEMENTATION(methodName, IMParamType, IMScrollViewChainModel *, UIScrollView)
+
+@implementation IMScrollViewChainModel
+
+IMFLEX_CHAIN_SCROLLVIEW_IMPLEMENTATION(delegate, id<UIScrollViewDelegate>)
+
+IMFLEX_CHAIN_SCROLLVIEW_IMPLEMENTATION(contentSize, CGSize)
+IMFLEX_CHAIN_SCROLLVIEW_IMPLEMENTATION(contentOffset, CGPoint)
+IMFLEX_CHAIN_SCROLLVIEW_IMPLEMENTATION(contentInset, UIEdgeInsets)
+
+IMFLEX_CHAIN_SCROLLVIEW_IMPLEMENTATION(bounces, BOOL)
+IMFLEX_CHAIN_SCROLLVIEW_IMPLEMENTATION(alwaysBounceVertical, BOOL)
+IMFLEX_CHAIN_SCROLLVIEW_IMPLEMENTATION(alwaysBounceHorizontal, BOOL)
+
+IMFLEX_CHAIN_SCROLLVIEW_IMPLEMENTATION(pagingEnabled, BOOL)
+IMFLEX_CHAIN_SCROLLVIEW_IMPLEMENTATION(scrollEnabled, BOOL)
+
+IMFLEX_CHAIN_SCROLLVIEW_IMPLEMENTATION(showsHorizontalScrollIndicator, BOOL)
+IMFLEX_CHAIN_SCROLLVIEW_IMPLEMENTATION(showsVerticalScrollIndicator, BOOL)
+
+IMFLEX_CHAIN_SCROLLVIEW_IMPLEMENTATION(scrollsToTop, BOOL)
+
+@end
+
+IMFLEX_EX_IMPLEMENTATION(UIScrollView, IMScrollViewChainModel)
