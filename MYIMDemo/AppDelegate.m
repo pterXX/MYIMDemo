@@ -13,10 +13,10 @@
 #import "IMLoginViewController.h"
 // Other
 #import "AppDelegate.h"
-#import <AVOSCloud/AVOSCloud.h>
-
 #if __has_include(<AVOSCloud/AVOSCloud.h>)
+#import <AVOSCloud/AVOSCloud.h>
 #endif
+
 @interface AppDelegate ()
 
 @end
