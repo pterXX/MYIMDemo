@@ -7,9 +7,9 @@
 //
 
 #import "IMSystemAuthorization.h"
-#import <Photos/Photos.h>
-#import <AVFoundation/AVFoundation.h>
 #import "UIViewController+Category.h"
+#import <AVFoundation/AVFoundation.h>
+#import <Photos/Photos.h>
 
 @implementation IMSystemAuthorization
 static IMSystemAuthorization *systemAuth = nil;
@@ -21,7 +21,6 @@ static IMSystemAuthorization *systemAuth = nil;
     });
     return systemAuth;
 }
-
 
 /**第2步: 分配内存孔家时都会调用这个方法. 保证分配内存alloc时都相同*/
 +(id)allocWithZone:(struct _NSZone *)zone{

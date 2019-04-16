@@ -6,15 +6,16 @@
 //  Copyright © 2016年 徐世杰. All rights reserved.
 //
 
+// Manager
 #import "IMMessageManager.h"
-#import "IMMessageManager+ConversationRecord.h"
-#import "IMUserHelper.h"
-#import "IMNetwork.h"
-
+// Helper
 #import "IMFriendHelper.h"
-#import "IMTextMessage.h"
+#import "IMUserHelper.h"
+// Other
 #import "IMImageMessage.h"
-
+#import "IMMessageManager+ConversationRecord.h"
+#import "IMNetwork.h"
+#import "IMTextMessage.h"
 
 #define kMessageType @"messageType"
 #define kPartnerType @"partnerType"

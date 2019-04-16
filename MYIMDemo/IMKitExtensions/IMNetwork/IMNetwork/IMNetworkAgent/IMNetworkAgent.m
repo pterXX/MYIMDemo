@@ -6,16 +6,15 @@
 //  Copyright © 2017年 徐世杰. All rights reserved.
 //
 
+#import "IMBaseRequest+Private.h"
+#import "IMDownloadRequest.h"
 #import "IMNetworkAgent.h"
 #import "IMNetworkConfig.h"
-#import "NSMutableURLRequest+IMNetwork.h"
 #import "IMResponse.h"
-#import <AFNetworking/AFNetworking.h>
-#import "NSString+IMNetwork.h"
-
-#import "IMBaseRequest+Private.h"
 #import "IMUploadRequest.h"
-#import "IMDownloadRequest.h"
+#import "NSMutableURLRequest+IMNetwork.h"
+#import "NSString+IMNetwork.h"
+#import <AFNetworking/AFNetworking.h>
 
 NSString * const IMNetworkAgenIMockName = @"com.lbk.IMKit.IMNetwork.IMNetworkAgent.lock";
 

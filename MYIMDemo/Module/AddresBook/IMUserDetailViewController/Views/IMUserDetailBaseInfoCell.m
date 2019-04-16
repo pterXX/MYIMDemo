@@ -6,9 +6,11 @@
 //  Copyright © 2016年 徐世杰. All rights reserved.
 //
 
+// Cells
 #import "IMUserDetailBaseInfoCell.h"
-#import <SDWebImage/UIButton+WebCache.h>
+// Other
 #import "IMUser.h"
+#import <SDWebImage/UIButton+WebCache.h>
 
 #define     MINE_SPACE_X        14.0f
 #define     MINE_SPACE_Y        12.0f

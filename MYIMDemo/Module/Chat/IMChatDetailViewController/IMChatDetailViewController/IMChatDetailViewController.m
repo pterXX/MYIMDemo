@@ -6,12 +6,15 @@
 //  Copyright © 2016年 徐世杰. All rights reserved.
 //
 
+// Controller
 #import "IMChatDetailViewController.h"
-#import "IMUserDetailViewController.h"
 #import "IMChatFileViewController.h"
-#import "IMMessageManager+MessageRecord.h"
+#import "IMUserDetailViewController.h"
+// Cells
 #import "IMUserGroupCell.h"
+// Other
 #import "IMChatNotificationKey.h"
+#import "IMMessageManager+MessageRecord.h"
 #import "IMSettingItem.h"
 
 typedef NS_ENUM(NSInteger, IMChatDetailVCSectionType) {

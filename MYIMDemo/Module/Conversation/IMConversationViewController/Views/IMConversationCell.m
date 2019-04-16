@@ -6,9 +6,11 @@
 //  Copyright © 2016年 徐世杰. All rights reserved.
 //
 
+// Cells
 #import "IMConversationCell.h"
-#import "NSDate+IMChat.h"
+// Other
 #import "IMMacros.h"
+#import "NSDate+IMChat.h"
 #import "NSFileManager+IMChat.h"
 #import <TLTabBarController/TLBadge.h>
 

@@ -6,13 +6,15 @@
 //  Copyright © 2019 徐世杰. All rights reserved.
 //
 
-#import "IMNewContactViewController.h"
-#import "IMNewContactTableViewCell.h"
+// Controller
 #import "IMChatViewController.h"
 #import "IMLoginViewController.h"
+#import "IMNewContactViewController.h"
+// Cells
+#import "IMNewContactTableViewCell.h"
+// Other
 #import "UIViewController+Category.h"
 #import <XMPPFramework/XMPPFramework.h>
-
 
 @interface IMNewContactViewController ()<UITableViewDelegate, UITableViewDataSource,IMNewContactTableViewCellDelegate>
 @property (nonatomic, strong) UITableView                   *tableView;
@@ -139,7 +141,6 @@
         [weakSelf requestUserStoreage];
     }];
 }
-
 
 @end
 

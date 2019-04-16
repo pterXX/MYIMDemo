@@ -6,11 +6,13 @@
 //  Copyright © 2017年 徐世杰. All rights reserved.
 //
 
-#import "IMConversationAngel.h"
-#import <IMFlexAngel/IMFLEXAngel+Private.h>
-#import "IMConversation.h"
-#import "IMMessageManager+ConversationRecord.h"
+// Cells
 #import "IMConversationCell.h"
+// Other
+#import "IMConversation.h"
+#import "IMConversationAngel.h"
+#import "IMMessageManager+ConversationRecord.h"
+#import <IMFlexAngel/IMFLEXAngel+Private.h>
 
 @implementation IMConversationAngel
 

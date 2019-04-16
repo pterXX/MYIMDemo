@@ -6,19 +6,22 @@
 //  Copyright © 2016年 徐世杰. All rights reserved.
 //
 
-#import "IMConversationViewController.h"
-#import "IMConversationAngel.h"
-#import "IMNetworkStatusManager.h"
-#import "IMMessageManager+ConversationRecord.h"
-#import "IMConversation+IMUser.h"
-#import "IMFriendHelper.h"
-#import "IMAddMenuView.h"
-
-#import "IMSearchController.h"
+// Controller
 #import "IMContactsSearchResultViewController.h"
-#import "IMChatViewController+Conversation.h"
+#import "IMConversationViewController.h"
+#import "IMSearchController.h"
 #import "IMUserDetailViewController.h"
-
+// Views
+#import "IMAddMenuView.h"
+// Manager
+#import "IMNetworkStatusManager.h"
+// Helper
+#import "IMFriendHelper.h"
+// Other
+#import "IMChatViewController+Conversation.h"
+#import "IMConversation+IMUser.h"
+#import "IMConversationAngel.h"
+#import "IMMessageManager+ConversationRecord.h"
 #import <Masonry/Masonry.h>
 
 @interface IMConversationViewController () <IMMessageManagerConvVCDelegate>

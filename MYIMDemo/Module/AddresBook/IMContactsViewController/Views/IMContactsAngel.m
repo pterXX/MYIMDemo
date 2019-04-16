@@ -6,13 +6,16 @@
 //  Copyright © 2019 徐世杰. All rights reserved.
 //
 
-#import "IMContactItemCell.h"
-#import "IMContactsAngel.h"
+// Controller
 #import "IMGroupViewController.h"
 #import "IMNewFriendViewController.h"
 #import "IMOfficialAccountViewController.h"
 #import "IMTagsViewController.h"
 #import "IMUserDetailViewController.h"
+// Cells
+#import "IMContactItemCell.h"
+// Other
+#import "IMContactsAngel.h"
 
 @interface IMContactsAngel()
 /// header

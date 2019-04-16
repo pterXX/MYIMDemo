@@ -6,11 +6,13 @@
 //  Copyright © 2016年 徐世杰. All rights reserved.
 //
 
+// Manager
+#import "IMDBManager.h"
+// Other
+#import "IMConversation.h"
+#import "IMDBConversationSQL.h"
 #import "IMDBConversationStore.h"
 #import "IMDBMessageStore.h"
-#import "IMDBConversationSQL.h"
-#import "IMDBManager.h"
-#import "IMConversation.h"
 #import "IMMacros.h"
 
 @interface IMDBConversationStore ()

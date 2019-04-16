@@ -1,13 +1,16 @@
 
-#import "IMAddressBookTableViewCell.h"
+// Controller
 #import "IMChatViewController.h"
-#import "IMContactItemCell.h"
-#import "IMContactsAngel.h"
 #import "IMContactsSearchResultViewController.h"
 #import "IMContactsViewController.h"
 #import "IMLoginViewController.h"
 #import "IMNewContactViewController.h"
 #import "IMUserDetailViewController.h"
+// Cells
+#import "IMAddressBookTableViewCell.h"
+#import "IMContactItemCell.h"
+// Other
+#import "IMContactsAngel.h"
 #import "UIViewController+Category.h"
 #import <XMPPFramework/XMPPFramework.h>
 
@@ -104,7 +107,6 @@
     [self.tableView reloadData];
 }
 
-
 #pragma mark - # Getters
 - (IMSearchController *)searchController
 {
@@ -134,7 +136,6 @@
     return _footerLabel;
 }
 @end
-
 
 @implementation IMContactsViewController(Class)
 + (IMBaseNavigationController *)navAddressBookVc{

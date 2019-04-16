@@ -6,10 +6,10 @@
 //  Copyright © 2016年 徐世杰. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "IMChatMacros.h"
 #import "IMKeyboardDelegate.h"
 #import "IMKeyboardProtocol.h"
+#import <UIKit/UIKit.h>
 
 @interface IMBaseKeyboard : UIView <IMKeyboardProtocol>
 

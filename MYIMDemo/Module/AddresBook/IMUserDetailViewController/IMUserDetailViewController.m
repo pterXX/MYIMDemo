@@ -6,11 +6,15 @@
 //  Copyright © 2019 徐世杰. All rights reserved.
 //
 
+// Controller
+#import "IMChatViewController.h"
 #import "IMUserDetailViewController.h"
 #import "IMUserSettingViewController.h"
-#import "IMChatViewController.h"
+// Cells
 #import "IMUserDetailBaseInfoCell.h"
 #import "IMUserDetailChatButtonCell.h"
+// Other
+
 //#import "IMConversationModel.h"
 
 typedef NS_ENUM(NSInteger, IMUserDetailVCSectionType) {
@@ -121,7 +125,7 @@ typedef NS_ENUM(NSInteger, IMUserDetailVCSectionType) {
             IMPushVC(chatVC);
         }
         return nil;
-    });    
+    });
     [self reloadView];
 }
 

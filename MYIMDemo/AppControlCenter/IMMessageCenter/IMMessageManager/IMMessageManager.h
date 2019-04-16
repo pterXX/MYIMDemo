@@ -6,13 +6,12 @@
 //  Copyright © 2016年 徐世杰. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "IMDBMessageStore.h"
 #import "IMDBConversationStore.h"
+#import "IMDBMessageStore.h"
 #import "IMMessage.h"
-
 #import "IMMessageManagerChatVCDelegate.h"
 #import "IMMessageManagerConvVCDelegate.h"
+#import <Foundation/Foundation.h>
 
 @interface IMMessageManager : NSObject
 
@@ -32,6 +31,5 @@
            progress:(void (^)(IMMessage *, CGFloat))progress
             success:(void (^)(IMMessage *))success
             failure:(void (^)(IMMessage *))failure;
-
 
 @end
