@@ -18,7 +18,7 @@
         self.dbQueue = [IMDBManager sharedInstance].commonQueue;
         BOOL ok = [self createTable];
         if (!ok) {
-            DDLogError(@"DB: 用户表创建失败");
+            NSLog(@"DB: 用户表创建失败");
         }
     }
     return self;

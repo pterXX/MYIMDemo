@@ -18,7 +18,7 @@
         self.dbQueue = [IMDBManager sharedInstance].commonQueue;
         BOOL ok = [self createTable];
         if (!ok) {
-            DDLogError(@"DB: 讨论组表创建失败");
+            NSLog(@"DB: 讨论组表创建失败");
         }
     }
     return self;
@@ -64,7 +64,7 @@
             if ([newDataHash objectForKey:group.groupID] == nil) {
                 BOOL ok = [self deleteGroupByGid:group.groupID forUid:uid];
                 if (!ok) {
-                    DDLogError(@"DBError: 删除过期讨论组失败！");
+                    NSLog(@"DBError: 删除过期讨论组失败！");
                 }
             }
         }
@@ -143,7 +143,7 @@
             if ([newDataHash objectForKey:user.userID] == nil) {
                 BOOL ok = [self deleteGroupMemberForUid:uid gid:gid andFid:user.userID];
                 if (!ok) {
-                    DDLogError(@"DBError: 删除过期好友失败");
+                    NSLog(@"DBError: 删除过期好友失败");
                 }
             }
         }

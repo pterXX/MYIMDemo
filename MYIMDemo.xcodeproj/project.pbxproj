@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		840AD5182240C91A0025DAB3 /* IMImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 840AD5172240C91A0025DAB3 /* IMImagePicker.m */; };
+		841878C622670FC800543A34 /* NSString+Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 841878C522670FC800543A34 /* NSString+Message.m */; };
+		841878C92267100400543A34 /* NSFileManager+IMChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 841878C72267100400543A34 /* NSFileManager+IMChat.m */; };
 		841D27002238D4470004D0FE /* IMNewContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 841D26FF2238D4470004D0FE /* IMNewContactViewController.m */; };
 		841D27032238D8E40004D0FE /* IMNewContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 841D27022238D8E40004D0FE /* IMNewContactTableViewCell.m */; };
 		8423C2C8223B410B00E999F5 /* IMContactItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8423C2C7223B410B00E999F5 /* IMContactItemCell.m */; };
@@ -30,7 +32,6 @@
 		8423C36C223BAD1800E999F5 /* IMNewFriendAngel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8423C369223BA99A00E999F5 /* IMNewFriendAngel.m */; };
 		842510F5222E24A7004C3954 /* IMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842510F4222E24A7004C3954 /* IMLoginViewController.m */; };
 		842510F7222E24E0004C3954 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842510F6222E24E0004C3954 /* Launch Screen.storyboard */; };
-		842511C3222E6539004C3954 /* NSFileManager+IMChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 842511C2222E6538004C3954 /* NSFileManager+IMChat.m */; };
 		8425CEB72241E5C800E1A12E /* UIImageView+IMChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 8425CEB62241E5C800E1A12E /* UIImageView+IMChat.m */; };
 		8428F46622326AD00064DA35 /* IMBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8428F46522326AD00064DA35 /* IMBaseNavigationController.m */; };
 		8428F46922326B060064DA35 /* IMBaseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8428F46822326B060064DA35 /* IMBaseTabBarController.m */; };
@@ -126,7 +127,6 @@
 		849D6AFC224B0F0F0074AE1F /* IMExpressionDetailItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D6AF5224B0F0E0074AE1F /* IMExpressionDetailItemCell.m */; };
 		849D6AFD224B0F0F0074AE1F /* IMExpressionDetailSeperatorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D6AF6224B0F0E0074AE1F /* IMExpressionDetailSeperatorCell.m */; };
 		849D6AFE224B0F0F0074AE1F /* IMExpressionDetailBannerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D6AF9224B0F0F0074AE1F /* IMExpressionDetailBannerCell.m */; };
-		849D7855224B267A0074AE1F /* NSString+Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D7854224B267A0074AE1F /* NSString+Message.m */; };
 		849D78CE224B26E60074AE1F /* UIButton+IMWebImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D785D224B26E50074AE1F /* UIButton+IMWebImage.m */; };
 		849D78CF224B26E60074AE1F /* IMImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D785E224B26E50074AE1F /* IMImageDownloader.m */; };
 		849D78D0224B26E60074AE1F /* UIImageView+IMWebImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D785F224B26E50074AE1F /* UIImageView+IMWebImage.m */; };
@@ -152,7 +152,6 @@
 		849D78E6224B26E60074AE1F /* IMAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D789F224B26E50074AE1F /* IMAudioPlayer.m */; };
 		849D78E7224B26E60074AE1F /* IMAudioRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D78A0224B26E50074AE1F /* IMAudioRecorder.m */; };
 		849D78E8224B26E60074AE1F /* IMNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D78A3224B26E50074AE1F /* IMNetworking.m */; };
-		849D78E9224B26E60074AE1F /* NSString+Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D78A9224B26E50074AE1F /* NSString+Message.m */; };
 		849D78EB224B26E60074AE1F /* NSDate+IMChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D78AB224B26E50074AE1F /* NSDate+IMChat.m */; };
 		849D78EC224B26E60074AE1F /* IMSettingItemButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D78AF224B26E50074AE1F /* IMSettingItemButtonCell.m */; };
 		849D78ED224B26E60074AE1F /* IMSettingItemSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D78B0224B26E50074AE1F /* IMSettingItemSwitchCell.m */; };
@@ -263,6 +262,10 @@
 		7C3F4F19E5365490C5CF6230 /* Pods-MYIMDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MYIMDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-MYIMDemo/Pods-MYIMDemo.release.xcconfig"; sourceTree = "<group>"; };
 		840AD5162240C91A0025DAB3 /* IMImagePicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMImagePicker.h; sourceTree = "<group>"; };
 		840AD5172240C91A0025DAB3 /* IMImagePicker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMImagePicker.m; sourceTree = "<group>"; };
+		841878C422670FC800543A34 /* NSString+Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Message.h"; sourceTree = "<group>"; };
+		841878C522670FC800543A34 /* NSString+Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Message.m"; sourceTree = "<group>"; };
+		841878C72267100400543A34 /* NSFileManager+IMChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+IMChat.m"; sourceTree = "<group>"; };
+		841878C82267100400543A34 /* NSFileManager+IMChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+IMChat.h"; sourceTree = "<group>"; };
 		841D26FE2238D4470004D0FE /* IMNewContactViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMNewContactViewController.h; sourceTree = "<group>"; };
 		841D26FF2238D4470004D0FE /* IMNewContactViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMNewContactViewController.m; sourceTree = "<group>"; };
 		841D27012238D8E40004D0FE /* IMNewContactTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMNewContactTableViewCell.h; sourceTree = "<group>"; };
@@ -303,8 +306,6 @@
 		842510F3222E24A7004C3954 /* IMLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMLoginViewController.h; sourceTree = "<group>"; };
 		842510F4222E24A7004C3954 /* IMLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMLoginViewController.m; sourceTree = "<group>"; };
 		842510F6222E24E0004C3954 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		842511C1222E6538004C3954 /* NSFileManager+IMChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSFileManager+IMChat.h"; path = "../../../Utils/DataUtils/NSFileManager+IMChat.h"; sourceTree = "<group>"; };
-		842511C2222E6538004C3954 /* NSFileManager+IMChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSFileManager+IMChat.m"; path = "../../../Utils/DataUtils/NSFileManager+IMChat.m"; sourceTree = "<group>"; };
 		8425CEB52241E5C800E1A12E /* UIImageView+IMChat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+IMChat.h"; sourceTree = "<group>"; };
 		8425CEB62241E5C800E1A12E /* UIImageView+IMChat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+IMChat.m"; sourceTree = "<group>"; };
 		8428F46422326AD00064DA35 /* IMBaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMBaseNavigationController.h; sourceTree = "<group>"; };
@@ -504,8 +505,6 @@
 		849D6AF8224B0F0F0074AE1F /* IMExpressionDetailBannerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMExpressionDetailBannerCell.h; sourceTree = "<group>"; };
 		849D6AF9224B0F0F0074AE1F /* IMExpressionDetailBannerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMExpressionDetailBannerCell.m; sourceTree = "<group>"; };
 		849D6AFA224B0F0F0074AE1F /* IMExpressionDetailInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMExpressionDetailInfoCell.h; sourceTree = "<group>"; };
-		849D7853224B267A0074AE1F /* NSString+Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Message.h"; path = "../../../Utils/DataUtils/NSString+Message.h"; sourceTree = "<group>"; };
-		849D7854224B267A0074AE1F /* NSString+Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Message.m"; path = "../../../Utils/DataUtils/NSString+Message.m"; sourceTree = "<group>"; };
 		849D7859224B26E50074AE1F /* IMMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMacros.h; sourceTree = "<group>"; };
 		849D785D224B26E50074AE1F /* UIButton+IMWebImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+IMWebImage.m"; sourceTree = "<group>"; };
 		849D785E224B26E50074AE1F /* IMImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMImageDownloader.m; sourceTree = "<group>"; };
@@ -560,7 +559,6 @@
 		849D78A3224B26E50074AE1F /* IMNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMNetworking.m; sourceTree = "<group>"; };
 		849D78A4224B26E50074AE1F /* IMNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMNetworking.h; sourceTree = "<group>"; };
 		849D78A7224B26E50074AE1F /* NSDate+IMChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+IMChat.h"; sourceTree = "<group>"; };
-		849D78A9224B26E50074AE1F /* NSString+Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Message.m"; sourceTree = "<group>"; };
 		849D78AB224B26E50074AE1F /* NSDate+IMChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+IMChat.m"; sourceTree = "<group>"; };
 		849D78AE224B26E50074AE1F /* IMSettingItemNormalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMSettingItemNormalCell.h; sourceTree = "<group>"; };
 		849D78AF224B26E50074AE1F /* IMSettingItemButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMSettingItemButtonCell.m; sourceTree = "<group>"; };
@@ -1510,11 +1508,9 @@
 			isa = PBXGroup;
 			children = (
 				849D6AC3224B0EE40074AE1F /* IMExpressionDetailViewController */,
-				849D6AB3224B0EE40074AE1F /* IMExpressionManager */,
 				849D6ABD224B0EE40074AE1F /* IMExpressionSearchResultViewController */,
 				849D6A8F224B0EE30074AE1F /* IMExpressionViewController */,
 				849D6AD2224B0EE40074AE1F /* IMMyExpressionViewController */,
-				849D6AAE224B0EE30074AE1F /* Models */,
 			);
 			path = Expression;
 			sourceTree = "<group>";
@@ -1612,6 +1608,7 @@
 		849D6AB3224B0EE40074AE1F /* IMExpressionManager */ = {
 			isa = PBXGroup;
 			children = (
+				849D6AAE224B0EE30074AE1F /* Models */,
 				849D6AB4224B0EE40074AE1F /* IMExpressionHelper.m */,
 				849D6AB5224B0EE40074AE1F /* Download */,
 				849D6AB8224B0EE40074AE1F /* IMExpressionHelper.h */,
@@ -1946,16 +1943,15 @@
 		849D78A5224B26E50074AE1F /* DataUtilities */ = {
 			isa = PBXGroup;
 			children = (
-				849D7853224B267A0074AE1F /* NSString+Message.h */,
-				849D7854224B267A0074AE1F /* NSString+Message.m */,
+				841878C82267100400543A34 /* NSFileManager+IMChat.h */,
+				841878C72267100400543A34 /* NSFileManager+IMChat.m */,
+				841878C422670FC800543A34 /* NSString+Message.h */,
+				841878C522670FC800543A34 /* NSString+Message.m */,
 				84E97AC72248B64400DF8842 /* NSAttributedString+Addition.h */,
 				84E97AC62248B64300DF8842 /* NSAttributedString+Addition.m */,
 				EE8939BC222902EE004F1F6E /* NSTextAttachment+Emoji.h */,
 				EE8939BD222902EF004F1F6E /* NSTextAttachment+Emoji.m */,
-				842511C1222E6538004C3954 /* NSFileManager+IMChat.h */,
-				842511C2222E6538004C3954 /* NSFileManager+IMChat.m */,
 				849D78A7224B26E50074AE1F /* NSDate+IMChat.h */,
-				849D78A9224B26E50074AE1F /* NSString+Message.m */,
 				849D78AB224B26E50074AE1F /* NSDate+IMChat.m */,
 			);
 			path = DataUtilities;
@@ -2030,6 +2026,7 @@
 		849D7B0F224B7FE50074AE1F /* AppControlCenter */ = {
 			isa = PBXGroup;
 			children = (
+				849D6AB3224B0EE40074AE1F /* IMExpressionManager */,
 				849D7B10224B7FE50074AE1F /* IMDBManager */,
 				849D7B15224B7FE50074AE1F /* IMMessageCenter */,
 				849D7B41224B7FE50074AE1F /* AppConfig */,
@@ -2249,12 +2246,12 @@
 		849D7B8D224B83E00074AE1F /* IMConversationViewController */ = {
 			isa = PBXGroup;
 			children = (
-				849D7B8E224B83E00074AE1F /* IMConversationAngel.h */,
-				849D7B8F224B83E00074AE1F /* IMConversationViewController.m */,
-				849D7B90224B83E00074AE1F /* IMConversationAngel.m */,
-				849D7B91224B83E00074AE1F /* Views */,
-				849D7B96224B83E00074AE1F /* IMConversationViewController.h */,
 				849D7B97224B83E00074AE1F /* IMAddMenuView */,
+				849D7B8E224B83E00074AE1F /* IMConversationAngel.h */,
+				849D7B90224B83E00074AE1F /* IMConversationAngel.m */,
+				849D7B96224B83E00074AE1F /* IMConversationViewController.h */,
+				849D7B8F224B83E00074AE1F /* IMConversationViewController.m */,
+				849D7B91224B83E00074AE1F /* Views */,
 			);
 			path = IMConversationViewController;
 			sourceTree = "<group>";
@@ -2671,6 +2668,7 @@
 				EE8936942227D997004F1F6E /* main.m in Sources */,
 				849D6AE9224B0EE40074AE1F /* IMExpressionGroupModel+SearchRequest.m in Sources */,
 				8423C35F223B9C0E00E999F5 /* IMFriendFindViewController.m in Sources */,
+				841878C622670FC800543A34 /* NSString+Message.m in Sources */,
 				840AD5182240C91A0025DAB3 /* IMImagePicker.m in Sources */,
 				849D694E224B06370074AE1F /* IMTalkButton.m in Sources */,
 				849D69AF224B09340074AE1F /* IMTextMessageCell.m in Sources */,
@@ -2681,16 +2679,13 @@
 				EE8936C42227DA4F004F1F6E /* IMColorTools.m in Sources */,
 				849D78DF224B26E60074AE1F /* NSHTTPURLResponse+IMNetwork.m in Sources */,
 				849D7B7D224B7FE60074AE1F /* IMDBGroupStore.m in Sources */,
-				842511C3222E6539004C3954 /* NSFileManager+IMChat.m in Sources */,
 				849D78F1224B26E60074AE1F /* IMSettingSectionFooterView.m in Sources */,
 				849D7B68224B7FE60074AE1F /* IMDBManager.m in Sources */,
 				849D695B224B06370074AE1F /* IMEmojiImageItemCell.m in Sources */,
 				849D7B75224B7FE60074AE1F /* IMConversation+IMUser.m in Sources */,
 				EE8936F92228D0E5004F1F6E /* UIFont+IMChat.m in Sources */,
 				849D6AE4224B0EE40074AE1F /* IMExpressionModel.m in Sources */,
-				849D7855224B267A0074AE1F /* NSString+Message.m in Sources */,
 				849D695D224B06370074AE1F /* IMEmojiGroupDisplayModel.m in Sources */,
-				849D78E9224B26E60074AE1F /* NSString+Message.m in Sources */,
 				849D7B9F224B83E00074AE1F /* IMChatViewController+Conversation.m in Sources */,
 				849D7BB1224B87030074AE1F /* UIViewController+IMBaseNavigationController.m in Sources */,
 				849D7B72224B7FE60074AE1F /* IMVideoMessage.m in Sources */,
@@ -2753,6 +2748,7 @@
 				849D7BA3224B83E00074AE1F /* IMConversationCell.m in Sources */,
 				849D6AE2224B0EE40074AE1F /* IMExpressionMoreCell.m in Sources */,
 				849D7B71224B7FE60074AE1F /* IMTextMessage.m in Sources */,
+				841878C92267100400543A34 /* NSFileManager+IMChat.m in Sources */,
 				849D7B7F224B7FE60074AE1F /* IMFriendHelper.m in Sources */,
 				849D7B7B224B7FE60074AE1F /* IMGroup.m in Sources */,
 				849D6954224B06370074AE1F /* IMEmojiKeyboard+DisplayView.m in Sources */,
