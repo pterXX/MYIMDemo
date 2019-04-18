@@ -9,7 +9,10 @@
 #import "IMFriendHelper.h"
 #import "IMDBFriendStore.h"
 #import "IMDBGroupStore.h"
+#import "IMGroup+CreateAvatar.h"
 #import "IMUserHelper.h"
+#import "IMMessageManager+MessageRecord.h"
+#import "IMChatNotificationKey.h"
 
 static IMFriendHelper *friendHelper = nil;
 
@@ -88,7 +91,7 @@ static IMFriendHelper *friendHelper = nil;
     if (array == nil) return NO;
     BOOL ok = [self.friendStore updateFriendsData:array forUid:userID];
     if (!ok) {
-        NSLog(@"保存好友数据到数据库失败!");
+        DDLogError(@"保存好友数据到数据库失败!");
     }else{
         _friendsData = [self.friendStore friendsDataByUid:[IMUserHelper sharedHelper].userID];
         dispatch_async(dispatch_get_global_queue(0, 0), ^{

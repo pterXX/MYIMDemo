@@ -19,7 +19,7 @@
         self.dbQueue = [IMDBManager sharedInstance].commonQueue;
         BOOL ok = [self createTable];
         if (!ok) {
-            NSLog(@"DB: 好友表创建失败");
+            DDLogError(@"DB: 好友表创建失败");
         }
     }
     return self;
@@ -60,7 +60,7 @@
             if ([newDataHash objectForKey:user.userID] == nil) {
                 BOOL ok = [self deleteFriendByFid:user.userID forUid:uid];
                 if (!ok) {
-                    NSLog(@"DBError: 删除过期好友失败");
+                    DDLogError(@"DBError: 删除过期好友失败");
                 }
             }
         }

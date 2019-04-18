@@ -49,7 +49,7 @@
     _user = user;
     IMDBUserStore *userStore = [[IMDBUserStore alloc] init];
     if (![userStore updateUser:user]) {
-        NSLog(@"登录数据存库失败");
+        DDLogError(@"登录数据存库失败");
     }
     
     [IMUserDefaults setObject:user.userID forKey:KLoginUid];
@@ -97,7 +97,7 @@
     if (self.isLogin || self.userID) {
         IMDBUserStore *userStore = [[IMDBUserStore alloc] init];
         if (![userStore deleteUsersByUid:self.userID]) {
-            NSLog(@"登录数据存库失败");
+            DDLogError(@"登录数据存库失败");
             ok = NO;
         }else{
             [IMUserDefaults removeObjectForKey:KLoginUid];

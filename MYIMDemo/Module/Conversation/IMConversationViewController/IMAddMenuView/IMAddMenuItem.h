@@ -12,7 +12,7 @@ typedef NS_ENUM(NSInteger, IMAddMneuType) {
     IMAddMneuTypeGroupChat = 0,
     IMAddMneuTypeAddFriend,
     IMAddMneuTypeScan,
-    IMAddMneuTypeWallet
+    IMAddMneuTypeWallet,
 };
 
 @interface IMAddMenuItem : NSObject

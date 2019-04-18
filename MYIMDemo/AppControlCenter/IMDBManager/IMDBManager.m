@@ -8,6 +8,7 @@
 
 #import "IMDBManager.h"
 #import "IMUserHelper.h"
+#import "NSFileManager+IMChat.h"
 
 static IMDBManager *manager;
 
@@ -36,7 +37,7 @@ static IMDBManager *manager;
 
 - (id)init
 {
-    NSLog(@"IMDBManager：请使用 initWithUserID: 方法初始化");
+    DDLogError(@"IMDBManager：请使用 initWithUserID: 方法初始化");
     return nil;
 }
 

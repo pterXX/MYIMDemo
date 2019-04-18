@@ -8,7 +8,6 @@
 //
 
 #import "IMUser.h"
-#import "IMXMPPHelper.h"
 
 @implementation IMUser
 
