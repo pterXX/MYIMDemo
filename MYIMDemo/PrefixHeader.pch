@@ -40,37 +40,37 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 #define kDebugAvatarURLA @""
 #endif
 
+// Controller
+#import "IMBaseNavigationController.h"
+#import "IMBaseTabBarController.h"
+#import "IMBaseViewController.h" //  基础视图控制器
+// Cells
+#import "IMBaseTableViewCell.h" //  基础cell
+// Manager
+#import "IMLaunchManager.h"
+#import <SDWebImage/SDWebImageManager.h>
+// Helper
+#import "IMUserHelper.h"
+#import "IMXMPPHelper.h"
+// Other
+#import "IMBaseModel.h" // 基础model
+#import "IMKitExtension.h"
 #import "IMNotificationHeader.h" // 通知头文件
-#import "IMStyleHeader.h"  //  样式头文件
 #import "IMOptionsHeader.h"  //  枚举类型头文件
-
-#import "MJRefresh.h"
-#import "SDWebImageManager.h"
-#import "SVProgressHUD.h"
-#import "UITableView+SDAutoTableViewCellHeight.h"           // SDAutoLayout
-#import "UIView+SDAutoLayout.h"                             // SDAutoLayout
+#import "IMStyleHeader.h"  //  样式头文件
+#import "IMUIUtility.h"
 #import <CocoaLumberjack/CocoaLumberjack.h>
-#import <MJExtension/MJExtension.h>
-#import <Masonry/Masonry.h>
-#import <SDWebImage/UIImageView+WebCache.h>
-#import <SDWebImage/UIButton+WebCache.h>
 #import <IMFlexAngel/IMFlexibleLayoutFramework.h>  //  #私有库, 方便便捷加载tableView 或者 collectionView的数据
 #import <IMFlexAngel/IMFlexibleLayoutViewProtocol.h>
 #import <IMFlexAngel/IMFLEXMacros.h>
+#import <Masonry/Masonry.h>
+#import <MJExtension/MJExtension.h>
+#import <MJRefresh/MJRefresh.h>
 #import <PrivateKit/IMCategory.h>   //  私有库, 常用分类
-
-#import "IMBaseModel.h" // 基础model
-#import "IMBaseNavigationController.h"
-#import "IMBaseTabBarController.h"
-#import "IMBaseTableViewCell.h" //  基础cell
-#import "IMBaseViewController.h" //  基础视图控制器
-
-#import "IMKitExtension.h"
-#import "IMXMPPHelper.h"
-#import "IMUserHelper.h"
-//#import "IMChatMessageHelper.h"
-#import "IMLaunchManager.h"
-#import "IMUIUtility.h"
+#import <SDAutoLayout/SDAutoLayout.h>
+#import <SDWebImage/UIButton+WebCache.h>
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 
 // 对于block的弱引用
 #define kWeakSelf           __weak __typeof(self) weakSelf = self;
