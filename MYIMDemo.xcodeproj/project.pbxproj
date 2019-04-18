@@ -91,24 +91,6 @@
 		8459412822680E130094039A /* IMUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 84593F4322680E0E0094039A /* IMUser.m */; };
 		8459412922680E130094039A /* IMAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84593F4522680E0E0094039A /* IMAccountManager.m */; };
 		8459412A22680E130094039A /* IMDBUserStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 84593F4922680E0E0094039A /* IMDBUserStore.m */; };
-		8459412B22680E130094039A /* IMPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 84593F4D22680E0F0094039A /* IMPhoto.m */; };
-		8459412C22680E130094039A /* IMZoomingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84593F5222680E0F0094039A /* IMZoomingScrollView.m */; };
-		8459412D22680E130094039A /* FSActionSheetConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 84593F5622680E0F0094039A /* FSActionSheetConfig.m */; };
-		8459412E22680E130094039A /* FSActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 84593F5722680E0F0094039A /* FSActionSheet.m */; };
-		8459412F22680E130094039A /* FSActionSheetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84593F5822680E0F0094039A /* FSActionSheetCell.m */; };
-		8459413022680E130094039A /* FSActionSheetItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 84593F5922680E0F0094039A /* FSActionSheetItem.m */; };
-		8459413122680E130094039A /* BAProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84593F5D22680E0F0094039A /* BAProgressView.m */; };
-		8459413222680E130094039A /* IMPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 84593F5E22680E0F0094039A /* IMPhotoBrowser.m */; };
-		8459413322680E130094039A /* TADotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84593F6222680E0F0094039A /* TADotView.m */; };
-		8459413422680E130094039A /* TAPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 84593F6322680E0F0094039A /* TAPageControl.m */; };
-		8459413522680E130094039A /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84593F6422680E0F0094039A /* TAAnimatedDotView.m */; };
-		8459413622680E130094039A /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84593F6522680E0F0094039A /* TAAbstractDotView.m */; };
-		8459413722680E130094039A /* IMVideoPlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84593F6922680E0F0094039A /* IMVideoPlayView.m */; };
-		8459413822680E130094039A /* icon_inputBox_videoPlay_cancel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84593F6B22680E0F0094039A /* icon_inputBox_videoPlay_cancel@3x.png */; };
-		8459413922680E130094039A /* icon_inputBox_video_bttom_play@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84593F6C22680E0F0094039A /* icon_inputBox_video_bttom_play@3x.png */; };
-		8459413A22680E130094039A /* icon_inputBox_video_play@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84593F6D22680E0F0094039A /* icon_inputBox_video_play@3x.png */; };
-		8459413B22680E130094039A /* icon_inputBox_video_ pause@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84593F6E22680E0F0094039A /* icon_inputBox_video_ pause@3x.png */; };
-		8459413C22680E130094039A /* icon_inputBox_thumb@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84593F6F22680E0F0094039A /* icon_inputBox_thumb@3x.png */; };
 		8459413D22680E130094039A /* IMImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 84593F7222680E100094039A /* IMImagePicker.m */; };
 		8459413E22680E130094039A /* IMFileManagement.m in Sources */ = {isa = PBXBuildFile; fileRef = 84593F7522680E100094039A /* IMFileManagement.m */; };
 		8459413F22680E130094039A /* IMFileCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 84593F7722680E100094039A /* IMFileCache.m */; };
@@ -459,38 +441,6 @@
 		84593F4722680E0E0094039A /* IMDBUserStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDBUserStore.h; sourceTree = "<group>"; };
 		84593F4822680E0E0094039A /* IMDBUserStoreSQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDBUserStoreSQL.h; sourceTree = "<group>"; };
 		84593F4922680E0E0094039A /* IMDBUserStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMDBUserStore.m; sourceTree = "<group>"; };
-		84593F4B22680E0F0094039A /* IMPhotoBrowserConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMPhotoBrowserConfig.h; sourceTree = "<group>"; };
-		84593F4D22680E0F0094039A /* IMPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMPhoto.m; sourceTree = "<group>"; };
-		84593F4E22680E0F0094039A /* IMPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMPhoto.h; sourceTree = "<group>"; };
-		84593F5022680E0F0094039A /* IMPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMPhotoBrowser.h; sourceTree = "<group>"; };
-		84593F5122680E0F0094039A /* BAProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAProgressView.h; sourceTree = "<group>"; };
-		84593F5222680E0F0094039A /* IMZoomingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMZoomingScrollView.m; sourceTree = "<group>"; };
-		84593F5422680E0F0094039A /* FSActionSheetItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSActionSheetItem.h; sourceTree = "<group>"; };
-		84593F5522680E0F0094039A /* FSActionSheetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSActionSheetCell.h; sourceTree = "<group>"; };
-		84593F5622680E0F0094039A /* FSActionSheetConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSActionSheetConfig.m; sourceTree = "<group>"; };
-		84593F5722680E0F0094039A /* FSActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSActionSheet.m; sourceTree = "<group>"; };
-		84593F5822680E0F0094039A /* FSActionSheetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSActionSheetCell.m; sourceTree = "<group>"; };
-		84593F5922680E0F0094039A /* FSActionSheetItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSActionSheetItem.m; sourceTree = "<group>"; };
-		84593F5A22680E0F0094039A /* FSActionSheetConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSActionSheetConfig.h; sourceTree = "<group>"; };
-		84593F5B22680E0F0094039A /* FSActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSActionSheet.h; sourceTree = "<group>"; };
-		84593F5C22680E0F0094039A /* IMVideoPlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMVideoPlayView.h; sourceTree = "<group>"; };
-		84593F5D22680E0F0094039A /* BAProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAProgressView.m; sourceTree = "<group>"; };
-		84593F5E22680E0F0094039A /* IMPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMPhotoBrowser.m; sourceTree = "<group>"; };
-		84593F5F22680E0F0094039A /* IMZoomingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMZoomingScrollView.h; sourceTree = "<group>"; };
-		84593F6122680E0F0094039A /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
-		84593F6222680E0F0094039A /* TADotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TADotView.m; sourceTree = "<group>"; };
-		84593F6322680E0F0094039A /* TAPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAPageControl.m; sourceTree = "<group>"; };
-		84593F6422680E0F0094039A /* TAAnimatedDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAnimatedDotView.m; sourceTree = "<group>"; };
-		84593F6522680E0F0094039A /* TAAbstractDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAbstractDotView.m; sourceTree = "<group>"; };
-		84593F6622680E0F0094039A /* TADotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TADotView.h; sourceTree = "<group>"; };
-		84593F6722680E0F0094039A /* TAAnimatedDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAnimatedDotView.h; sourceTree = "<group>"; };
-		84593F6822680E0F0094039A /* TAPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAPageControl.h; sourceTree = "<group>"; };
-		84593F6922680E0F0094039A /* IMVideoPlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMVideoPlayView.m; sourceTree = "<group>"; };
-		84593F6B22680E0F0094039A /* icon_inputBox_videoPlay_cancel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_inputBox_videoPlay_cancel@3x.png"; sourceTree = "<group>"; };
-		84593F6C22680E0F0094039A /* icon_inputBox_video_bttom_play@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_inputBox_video_bttom_play@3x.png"; sourceTree = "<group>"; };
-		84593F6D22680E0F0094039A /* icon_inputBox_video_play@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_inputBox_video_play@3x.png"; sourceTree = "<group>"; };
-		84593F6E22680E0F0094039A /* icon_inputBox_video_ pause@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_inputBox_video_ pause@3x.png"; sourceTree = "<group>"; };
-		84593F6F22680E0F0094039A /* icon_inputBox_thumb@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_inputBox_thumb@3x.png"; sourceTree = "<group>"; };
 		84593F7222680E100094039A /* IMImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMImagePicker.m; sourceTree = "<group>"; };
 		84593F7322680E100094039A /* IMImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMImagePicker.h; sourceTree = "<group>"; };
 		84593F7522680E100094039A /* IMFileManagement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMFileManagement.m; sourceTree = "<group>"; };
@@ -1354,85 +1304,6 @@
 				84593F4922680E0E0094039A /* IMDBUserStore.m */,
 			);
 			path = Store;
-			sourceTree = "<group>";
-		};
-		84593F4A22680E0F0094039A /* BAPhotoBrowser */ = {
-			isa = PBXGroup;
-			children = (
-				84593F4B22680E0F0094039A /* IMPhotoBrowserConfig.h */,
-				84593F4C22680E0F0094039A /* Model */,
-				84593F4F22680E0F0094039A /* View */,
-				84593F6A22680E0F0094039A /* Resource */,
-			);
-			path = BAPhotoBrowser;
-			sourceTree = "<group>";
-		};
-		84593F4C22680E0F0094039A /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				84593F4D22680E0F0094039A /* IMPhoto.m */,
-				84593F4E22680E0F0094039A /* IMPhoto.h */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		84593F4F22680E0F0094039A /* View */ = {
-			isa = PBXGroup;
-			children = (
-				84593F5022680E0F0094039A /* IMPhotoBrowser.h */,
-				84593F5122680E0F0094039A /* BAProgressView.h */,
-				84593F5222680E0F0094039A /* IMZoomingScrollView.m */,
-				84593F5322680E0F0094039A /* FSActionSheet */,
-				84593F5C22680E0F0094039A /* IMVideoPlayView.h */,
-				84593F5D22680E0F0094039A /* BAProgressView.m */,
-				84593F5E22680E0F0094039A /* IMPhotoBrowser.m */,
-				84593F5F22680E0F0094039A /* IMZoomingScrollView.h */,
-				84593F6022680E0F0094039A /* PageControl */,
-				84593F6922680E0F0094039A /* IMVideoPlayView.m */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		84593F5322680E0F0094039A /* FSActionSheet */ = {
-			isa = PBXGroup;
-			children = (
-				84593F5422680E0F0094039A /* FSActionSheetItem.h */,
-				84593F5522680E0F0094039A /* FSActionSheetCell.h */,
-				84593F5622680E0F0094039A /* FSActionSheetConfig.m */,
-				84593F5722680E0F0094039A /* FSActionSheet.m */,
-				84593F5822680E0F0094039A /* FSActionSheetCell.m */,
-				84593F5922680E0F0094039A /* FSActionSheetItem.m */,
-				84593F5A22680E0F0094039A /* FSActionSheetConfig.h */,
-				84593F5B22680E0F0094039A /* FSActionSheet.h */,
-			);
-			path = FSActionSheet;
-			sourceTree = "<group>";
-		};
-		84593F6022680E0F0094039A /* PageControl */ = {
-			isa = PBXGroup;
-			children = (
-				84593F6122680E0F0094039A /* TAAbstractDotView.h */,
-				84593F6222680E0F0094039A /* TADotView.m */,
-				84593F6322680E0F0094039A /* TAPageControl.m */,
-				84593F6422680E0F0094039A /* TAAnimatedDotView.m */,
-				84593F6522680E0F0094039A /* TAAbstractDotView.m */,
-				84593F6622680E0F0094039A /* TADotView.h */,
-				84593F6722680E0F0094039A /* TAAnimatedDotView.h */,
-				84593F6822680E0F0094039A /* TAPageControl.h */,
-			);
-			path = PageControl;
-			sourceTree = "<group>";
-		};
-		84593F6A22680E0F0094039A /* Resource */ = {
-			isa = PBXGroup;
-			children = (
-				84593F6B22680E0F0094039A /* icon_inputBox_videoPlay_cancel@3x.png */,
-				84593F6C22680E0F0094039A /* icon_inputBox_video_bttom_play@3x.png */,
-				84593F6D22680E0F0094039A /* icon_inputBox_video_play@3x.png */,
-				84593F6E22680E0F0094039A /* icon_inputBox_video_ pause@3x.png */,
-				84593F6F22680E0F0094039A /* icon_inputBox_thumb@3x.png */,
-			);
-			path = Resource;
 			sourceTree = "<group>";
 		};
 		84593F7022680E100094039A /* Common */ = {
@@ -2463,7 +2334,6 @@
 			children = (
 				845941C122680E3A0094039A /* Resource */,
 				84593EF222680E0E0094039A /* AppControlCenter */,
-				84593F4A22680E0F0094039A /* BAPhotoBrowser */,
 				84593F7022680E100094039A /* Common */,
 				84593E6C22680E0D0094039A /* IMKitExtensions */,
 				84593F8922680E120094039A /* Module */,
@@ -2614,8 +2484,6 @@
 				842510F7222E24E0004C3954 /* Launch Screen.storyboard in Resources */,
 				845941CD22680E3A0094039A /* icon_nav_back@3x.png in Resources */,
 				845941B822680E130094039A /* Conversation.xcassets in Resources */,
-				8459413822680E130094039A /* icon_inputBox_videoPlay_cancel@3x.png in Resources */,
-				8459413B22680E130094039A /* icon_inputBox_video_ pause@3x.png in Resources */,
 				845941B622680E130094039A /* Login.xcassets in Resources */,
 				845941CB22680E3A0094039A /* default_headPortrait.jpeg in Resources */,
 				8459415022680E130094039A /* FaceEmoji.json in Resources */,
@@ -2623,9 +2491,6 @@
 				845941CF22680E3A0094039A /* icon_nav_back.png in Resources */,
 				8459419722680E130094039A /* Contacts.xcassets in Resources */,
 				EE89368C2227D997004F1F6E /* Main.storyboard in Resources */,
-				8459413922680E130094039A /* icon_inputBox_video_bttom_play@3x.png in Resources */,
-				8459413A22680E130094039A /* icon_inputBox_video_play@3x.png in Resources */,
-				8459413C22680E130094039A /* icon_inputBox_thumb@3x.png in Resources */,
 				845941CE22680E3A0094039A /* icon_nav_back@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2785,7 +2650,6 @@
 				845941AC22680E130094039A /* IMExpressionBannerCell.m in Sources */,
 				8459412A22680E130094039A /* IMDBUserStore.m in Sources */,
 				8459417C22680E130094039A /* IMEmojiKeyboard.m in Sources */,
-				8459413322680E130094039A /* TADotView.m in Sources */,
 				8459419D22680E130094039A /* IMExpressionDetailItemCell.m in Sources */,
 				8459415922680E130094039A /* IMChatViewController.m in Sources */,
 				8459414C22680E130094039A /* IMChatFileViewController.m in Sources */,
@@ -2815,7 +2679,6 @@
 				8459415322680E130094039A /* IMChatBar.m in Sources */,
 				8459416722680E130094039A /* IMChatBaseViewController+Proxy.m in Sources */,
 				8459419622680E130094039A /* IMGroupViewController.m in Sources */,
-				8459412F22680E130094039A /* FSActionSheetCell.m in Sources */,
 				8459413F22680E130094039A /* IMFileCache.m in Sources */,
 				8459411522680E130094039A /* IMTextMessage.m in Sources */,
 				845940FC22680E130094039A /* NSDate+IMChat.m in Sources */,
@@ -2828,7 +2691,6 @@
 				EE8936942227D997004F1F6E /* main.m in Sources */,
 				845940E622680E130094039A /* IMNetworkStatusManager.m in Sources */,
 				845941C022680E130094039A /* IMAddMenuView.m in Sources */,
-				8459413622680E130094039A /* TAAbstractDotView.m in Sources */,
 				8459414B22680E130094039A /* IMUserGroupCell.m in Sources */,
 				845940F122680E130094039A /* IMColorTools.m in Sources */,
 				845940FB22680E130094039A /* NSTextAttachment+Emoji.m in Sources */,
@@ -2836,7 +2698,6 @@
 				845941BA22680E130094039A /* IMConversationAngel.m in Sources */,
 				8459418122680E130094039A /* IMLaunchManager.m in Sources */,
 				8459419322680E130094039A /* IMUserDetailViewController.m in Sources */,
-				8459412E22680E130094039A /* FSActionSheet.m in Sources */,
 				8459416922680E130094039A /* IMChatBaseViewController.m in Sources */,
 				845941B922680E130094039A /* IMConversationViewController.m in Sources */,
 				8459410322680E130094039A /* IMSettingItem.m in Sources */,
@@ -2856,9 +2717,7 @@
 				845940DD22680E130094039A /* UIView+IMEmpty.m in Sources */,
 				8459414722680E130094039A /* IMGroupQRCodeViewController.m in Sources */,
 				845940F922680E130094039A /* NSString+Message.m in Sources */,
-				8459413022680E130094039A /* FSActionSheetItem.m in Sources */,
 				8459416822680E130094039A /* IMChatBaseViewController+ChatBar.m in Sources */,
-				8459412C22680E130094039A /* IMZoomingScrollView.m in Sources */,
 				8459416422680E130094039A /* IMMessageImageView.m in Sources */,
 				845940E322680E130094039A /* IMDownloadRequest.m in Sources */,
 				845941B222680E130094039A /* IMExpressionViewController.m in Sources */,
@@ -2871,7 +2730,6 @@
 				8459410422680E130094039A /* IMMenuItem.m in Sources */,
 				8459414E22680E130094039A /* IMChatFileHeaderView.m in Sources */,
 				845941AE22680E130094039A /* IMExpressionMoreViewController.m in Sources */,
-				8459412D22680E130094039A /* FSActionSheetConfig.m in Sources */,
 				8459410D22680E130094039A /* IMMoreKBHelper.m in Sources */,
 				8459416022680E130094039A /* IMMessageBaseCell.m in Sources */,
 				8459412122680E130094039A /* IMDBGroupStore.m in Sources */,
@@ -2888,7 +2746,6 @@
 				8459414122680E130094039A /* IMBaseTableViewCell.m in Sources */,
 				8459413D22680E130094039A /* IMImagePicker.m in Sources */,
 				8459414922680E130094039A /* IMChatGroupDetailViewController.m in Sources */,
-				8459413122680E130094039A /* BAProgressView.m in Sources */,
 				8459410E22680E130094039A /* IMEmojiKBHelper.m in Sources */,
 				8459413E22680E130094039A /* IMFileManagement.m in Sources */,
 				8459412922680E130094039A /* IMAccountManager.m in Sources */,
@@ -2897,7 +2754,6 @@
 				845941D222680EA00094039A /* NSFileManager+IMChat.m in Sources */,
 				8459410522680E130094039A /* IMMenuItemCell.m in Sources */,
 				8459412422680E130094039A /* IMUserChatSetting.m in Sources */,
-				8459413522680E130094039A /* TAAnimatedDotView.m in Sources */,
 				845941B422680E130094039A /* IMSignUpViewController.m in Sources */,
 				845940EF22680E130094039A /* UIColor+IMChat.m in Sources */,
 				8459418722680E130094039A /* IMNewFriendFuncationCell.m in Sources */,
@@ -2918,7 +2774,6 @@
 				845940F222680E130094039A /* UIImage+IMChat.m in Sources */,
 				845941A422680E130094039A /* IMExpressionGroupModel+Download.m in Sources */,
 				8459418322680E130094039A /* IMTagsViewController.m in Sources */,
-				8459412B22680E130094039A /* IMPhoto.m in Sources */,
 				8459417B22680E130094039A /* IMEmojiGroupCell.m in Sources */,
 				845941B722680E130094039A /* IMChatViewController+Conversation.m in Sources */,
 				8459411922680E130094039A /* IMConversation+IMUser.m in Sources */,
@@ -2928,8 +2783,6 @@
 				8459419B22680E130094039A /* IMExpressionDetailViewController.m in Sources */,
 				845941AA22680E130094039A /* IMExpressionDownloadButton.m in Sources */,
 				8459416E22680E130094039A /* IMMoreKeyboardCell.m in Sources */,
-				8459413222680E130094039A /* IMPhotoBrowser.m in Sources */,
-				8459413422680E130094039A /* TAPageControl.m in Sources */,
 				8459411022680E130094039A /* IMMessageManager+ConversationRecord.m in Sources */,
 				8459417A22680E130094039A /* IMEmojiGroupControl.m in Sources */,
 				845940D922680E130094039A /* IMImageDownloader.m in Sources */,
@@ -2969,7 +2822,6 @@
 				8459410C22680E130094039A /* IMDBManager.m in Sources */,
 				8459411322680E130094039A /* IMMessage.m in Sources */,
 				EE8936862227D997004F1F6E /* AppDelegate.m in Sources */,
-				8459413722680E130094039A /* IMVideoPlayView.m in Sources */,
 				8459419C22680E130094039A /* IMExpressionDetailInfoCell.m in Sources */,
 				8459411D22680E130094039A /* IMAppConfig.m in Sources */,
 				8459418B22680E130094039A /* IMAddressBookTableViewCell.m in Sources */,

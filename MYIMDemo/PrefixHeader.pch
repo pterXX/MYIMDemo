@@ -57,7 +57,6 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 #import <IMFlexAngel/IMFlexibleLayoutFramework.h>  //  #私有库, 方便便捷加载tableView 或者 collectionView的数据
 #import <IMFlexAngel/IMFlexibleLayoutViewProtocol.h>
 #import <IMFlexAngel/IMFLEXMacros.h>
-
 #import <PrivateKit/IMCategory.h>   //  私有库, 常用分类
 
 #import "IMBaseModel.h" // 基础model
