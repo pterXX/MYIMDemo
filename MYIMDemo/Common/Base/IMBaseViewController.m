@@ -78,7 +78,6 @@
 }
 
 - (void)initializeSelfVCSetting {
-    
     if ([self respondsToSelector:@selector(setAutomaticallyAdjustsScrollViewInsets:)]) {
         [self setAutomaticallyAdjustsScrollViewInsets:NO];
     }
